@@ -58,7 +58,7 @@ the selection syntax is uniform.
 | Linkup | `linkup` | `LINKUP_API_KEY` | `linkup-sdk` |
 | Perplexity | `perplexity`, `pplx` | `PERPLEXITY_API_KEY` | `perplexityai` |
 | Serper | `serper` | `SERPER_API_KEY` | — |
-| SerpApi | `serpapi`, `serp` | `SERPAPI_API_KEY` | `google-search-results` |
+| SerpApi | `serpapi`, `serp` | `SERPAPI_API_KEY` | `google-search-results` (engine: bing, baidu, yandex, …) |
 | SearchApi | `searchapi` | `SEARCHAPI_API_KEY` | — |
 | You.com | `you`, `ydc` | `YDC_API_KEY` | — |
 | Jina | `jina` | `JINA_API_KEY` | — |

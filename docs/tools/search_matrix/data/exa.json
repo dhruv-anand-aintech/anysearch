@@ -1,90 +1,89 @@
 {
   "name": "Exa",
   "links": {
-    "docs": "https://docs.exa.ai/reference/search",
+    "docs": "https://exa.ai/docs/reference/search",
     "github": "https://github.com/dhruv-anand-aintech/anysearch",
     "website": "https://exa.ai",
     "slug": "exa"
   },
   "env_keys": {
     "value": "EXA_API_KEY",
-    "source_url": "https://docs.exa.ai/reference/search",
-    "comment": "Environment variables read by anysearch."
+    "source_url": "https://exa.ai/docs/reference/quickstart",
+    "comment": "API keys and configuration variables documented by the provider."
   },
   "python_extra": {
     "value": "exa-py",
-    "source_url": "https://github.com/dhruv-anand-aintech/anysearch/tree/main/python#install",
-    "comment": "Optional: pip install 'anysearch-sdk[exa] @ git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python'"
+    "source_url": "https://pypi.org/project/exa-py/",
+    "comment": "Optional PyPI package: exa-py (install via anysearch-sdk extra `exa`)."
   },
   "requires_key": {
     "support": "full",
-    "source_url": "https://docs.exa.ai/reference/search",
-    "comment": "Keyless providers work without credentials."
+    "source_url": "https://exa.ai/docs/reference/quickstart",
+    "comment": "Valid API key required for every request."
   },
   "snippet": {
     "support": "full",
-    "source_url": "https://docs.exa.ai/reference/search",
-    "comment": "Short description field; available on virtually all providers."
+    "source_url": "https://exa.ai/docs/reference/search",
+    "comment": "Short description field returned with each result."
   },
   "domains": {
     "support": "full",
-    "source_url": "https://docs.exa.ai/reference/search",
-    "comment": "Domain filters"
+    "source_url": "https://exa.ai/docs/reference/search",
+    "comment": "`includeDomains` / `excludeDomains` on POST /search."
   },
   "country": {
     "support": "full",
-    "source_url": "https://docs.exa.ai/reference/search",
-    "comment": "Country (gl)"
+    "source_url": "https://exa.ai/docs/reference/search",
+    "comment": "`userLocation` (ISO country code) biases results."
   },
   "language": {
     "support": "none",
-    "source_url": "https://docs.exa.ai/reference/search",
+    "source_url": "https://exa.ai/docs/reference/search",
     "comment": "Language"
   },
   "date": {
     "support": "full",
-    "source_url": "https://docs.exa.ai/reference/search",
-    "comment": "Published date range"
+    "source_url": "https://exa.ai/docs/reference/search",
+    "comment": "`startPublishedDate` / `endPublishedDate` (ISO dates)."
   },
   "safe_search": {
     "support": "full",
-    "source_url": "https://docs.exa.ai/reference/search",
-    "comment": "Safe search"
-  },
-  "mode": {
-    "support": "full",
-    "source_url": "https://docs.exa.ai/reference/search",
-    "comment": "Mapped: fast \u2192 fast, balanced \u2192 auto, deep \u2192 deep"
+    "source_url": "https://exa.ai/docs/reference/search",
+    "comment": "`moderation: true` enables content filtering."
   },
   "answer": {
     "support": "none",
-    "source_url": "https://docs.exa.ai/reference/search",
-    "comment": "Synthesized answer"
+    "source_url": "https://exa.ai/docs/reference/search",
+    "comment": "AI answer"
   },
   "content": {
     "support": "full",
-    "source_url": "https://docs.exa.ai/reference/search",
-    "comment": "Full page text"
+    "source_url": "https://exa.ai/docs/reference/search",
+    "comment": "`contents.text` (or highlights) in the request body."
   },
   "summary": {
     "support": "full",
-    "source_url": "https://docs.exa.ai/reference/search",
-    "comment": "AI per-result summary"
+    "source_url": "https://exa.ai/docs/reference/search",
+    "comment": "`contents.summary` returns an AI summary per result."
   },
   "highlights": {
     "support": "full",
-    "source_url": "https://docs.exa.ai/reference/search",
-    "comment": "Query highlights"
+    "source_url": "https://exa.ai/docs/reference/search-best-practices",
+    "comment": "`contents.highlights` \u2014 query-relevant excerpts (~10\u00d7 fewer tokens than full text)."
   },
   "news": {
     "support": "full",
-    "source_url": "https://docs.exa.ai/reference/search",
-    "comment": "News search type"
+    "source_url": "https://exa.ai/docs/reference/search",
+    "comment": "`category: news` or `type` tuned for news-style retrieval."
   },
-  "mode_notes": {
-    "value": "fast \u2192 fast, balanced \u2192 auto, deep \u2192 deep",
-    "source_url": "https://docs.exa.ai/reference/search",
-    "comment": "Unified mode knob mapping."
+  "mode": {
+    "values": [
+      "fast",
+      "balanced",
+      "deep"
+    ],
+    "source_url": "https://exa.ai/docs/reference/search-best-practices",
+    "comment": "Native `type` on /search: `fast` (~500ms), `auto` default (balanced), `deep` / `deep-lite` / `deep-reasoning` for multi-step research. anysearch maps fast\u2192fast, balanced\u2192auto, deep\u2192deep."
   },
-  "notes": "Native SDK extra: exa-py."
+  "notes": "Native SDK package: exa-py."
 }

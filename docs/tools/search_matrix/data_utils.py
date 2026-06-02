@@ -55,6 +55,17 @@ def _validate_string_field(filename: str, key: str, value: object) -> None:
             raise ValueError(f"{filename}: {key}.{req} must be a string")
 
 
+def _validate_string_list_field(filename: str, key: str, value: object) -> None:
+    if not isinstance(value, dict):
+        raise ValueError(f"{filename}: {key} must be an object")
+    values = value.get("values")
+    if not isinstance(values, list) or not all(isinstance(v, str) for v in values):
+        raise ValueError(f"{filename}: {key}.values must be a string array")
+    for req in ("source_url", "comment"):
+        if req not in value or not isinstance(value[req], str):
+            raise ValueError(f"{filename}: {key}.{req} must be a string")
+
+
 def validate() -> None:
     schema = _load_json(SCHEMA_PATH)
     properties = schema.get("properties", {})
@@ -68,6 +79,11 @@ def validate() -> None:
         k
         for k, spec in properties.items()
         if spec.get("allOf", [{}])[0].get("$ref", "").endswith("stringWithSource")
+    ]
+    list_keys = [
+        k
+        for k, spec in properties.items()
+        if spec.get("allOf", [{}])[0].get("$ref", "").endswith("stringListWithSource")
     ]
 
     for filename in sorted(glob.glob(DATA_GLOB)):
@@ -84,6 +100,9 @@ def validate() -> None:
         for key in string_keys:
             if key in data:
                 _validate_string_field(filename, key, data[key])
+        for key in list_keys:
+            if key in data:
+                _validate_string_list_field(filename, key, data[key])
         print("ok", Path(filename).name)
 
     print("validate: all files passed")
@@ -107,7 +126,7 @@ def llms_txt() -> None:
     feature_cols = [
         (k, g, l)
         for k, g, l in cols
-        if k not in ("name", "env_keys", "python_extra", "requires_key", "mode_notes", "snippet")
+        if k not in ("name", "env_keys", "python_extra", "requires_key", "snippet")
     ]
 
     lines = [
@@ -122,6 +141,10 @@ def llms_txt() -> None:
         lines.append(f"- Env: {row['env_keys']['value']}")
         for key, _g, label in feature_cols:
             cell = row.get(key, {})
+            if key == "mode" and isinstance(cell, dict):
+                vals = cell.get("values") or []
+                lines.append(f"- {label}: {', '.join(vals) if vals else 'none'}")
+                continue
             sup = cell.get("support", "") if isinstance(cell, dict) else ""
             if sup:
                 lines.append(f"- {label}: {sup}")

@@ -12,44 +12,66 @@ drop silently.
 
 Legend: ✅ supported · — not supported (the param is ignored for that provider).
 
-| Provider | domains | country | language | date | safe_search | mode | answer | content | summary | highlights | news |
-| --- | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
-| **exa** | ✅ | ✅ | — | ✅ | ✅ | ✅ | — | ✅ | ✅ | ✅ | ✅ |
-| **parallel** | ✅ | ✅ | — | ✅ | — | ✅ | — | ✅ | — | ✅ | — |
-| **tavily** | ✅ | ✅ | — | ✅ | — | ✅ | ✅ | ✅ | — | — | ✅ |
-| **brave** | — | ✅ | ✅ | ✅ | ✅ | — | — | — | — | ✅ | ✅ |
-| **linkup** | ✅ | — | — | ✅ | — | ✅ | ✅ | ✅ | — | — | — |
-| **perplexity** | ✅ | — | ✅ | — | — | — | — | ✅ | — | — | — |
-| **serper** | — | ✅ | ✅ | — | — | — | ✅* | — | — | — | ✅ |
-| **serpapi** | — | ✅ | ✅ | — | ✅ | — | ✅* | — | — | — | ✅ |
-| **searchapi** | — | ✅ | ✅ | — | — | — | ✅* | — | — | — | ✅ |
-| **you** | ✅ | ✅ | — | — | — | — | — | — | — | ✅ | — |
-| **jina** | — | — | — | — | — | — | — | ✅ | — | — | — |
-| **kagi** | — | — | — | — | — | — | — | — | — | — | — |
-| **firecrawl** | — | ✅ | — | — | — | — | — | ✅ | — | — | ✅ |
-| **google_pse** | ✅† | ✅ | ✅ | ✅ | ✅ | — | — | — | — | — | — |
-| **searxng** | — | — | ✅ | — | ✅ | — | ✅‡ | — | — | — | — |
-| **duckduckgo** | — | ✅ | — | — | ✅ | — | — | — | — | — | — |
+| Provider | domains | country | language | date | safe_search | mode | engine | answer | content | summary | highlights | news |
+| --- | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+| **exa** | ✅ | ✅ | — | ✅ | ✅ | ✅ | — | — | ✅ | ✅ | ✅ | ✅ |
+| **parallel** | ✅ | ✅ | — | ✅ | — | ✅ | — | — | ✅ | — | ✅ | — |
+| **tavily** | ✅ | ✅ | — | ✅ | — | ✅ | — | ✅ | ✅ | — | — | ✅ |
+| **brave** | — | ✅ | ✅ | ✅ | ✅ | — | — | — | — | — | ✅ | ✅ |
+| **linkup** | ✅ | — | — | ✅ | — | ✅ | — | ✅ | ✅ | — | — | — |
+| **perplexity** | ✅ | — | ✅ | — | — | — | — | — | ✅ | — | — | — |
+| **serper** | — | ✅ | ✅ | — | — | — | — | ✅* | — | — | — | ✅ |
+| **serpapi** | — | ✅ | ✅ | — | ✅ | — | ✅ | ✅* | — | — | — | ✅ |
+| **searchapi** | — | ✅ | ✅ | — | — | — | — | ✅* | — | — | — | ✅ |
+| **you** | ✅ | ✅ | — | — | — | — | — | — | — | — | ✅ | — |
+| **jina** | — | — | — | — | — | — | — | — | ✅ | — | — | — |
+| **kagi** | — | — | — | — | — | — | — | — | — | — | — | — |
+| **firecrawl** | — | ✅ | — | — | — | — | — | — | ✅ | — | — | ✅ |
+| **google_pse** | ✅‡ | ✅ | ✅ | ✅ | ✅ | — | — | — | — | — | — | — |
+| **searxng** | — | — | ✅ | — | ✅ | — | — | ✅§ | — | — | — | — |
+| **duckduckgo** | — | ✅ | — | — | ✅ | — | — | — | — | — | — | — |
 
 \* Serper / SerpApi / SearchApi surface an answer only when the SERP includes an answer
 box; it is not requested explicitly.
-† Google PSE supports a single include **or** exclude domain (first one wins) via
+‡ Google PSE supports a single include **or** exclude domain (first one wins) via
 `siteSearch`.
-‡ SearXNG returns instant-answer text from its `answers` field when available.
+§ SearXNG returns instant-answer text from its `answers` field when available.
+
+## SerpApi engines
+
+Pass `engine` on `search()` (or set `AnySearch(provider="serpapi", provider_config={"serpapi": {"engine": "bing"}})`):
+
+```python
+client.search("query", provider="serpapi", engine="bing")
+client.search("query", provider="serpapi", engine="baidu", country="cn")
+client.search("headlines", provider="serpapi", engine="bing", search_type="news")
+```
+
+Common web engines: `google`, `bing`, `baidu`, `yandex`, `duckduckgo`, `yahoo`. See
+[SerpApi Search API](https://serpapi.com/search-api) for the full catalog and engine-specific
+parameters (pass via `extra`).
 
 ## Notes on `mode`
 
-The `mode` knob (`fast` / `balanced` / `deep`) is mapped to each provider's nearest
-equivalent:
+The matrix **Mode** row lists which of `fast`, `balanced`, and `deep` apply per API.
+When anysearch maps `mode`, it uses the provider's nearest native knob:
 
-| Provider | fast | balanced | deep |
-| --- | --- | --- | --- |
-| exa | `fast` | `auto` | `deep` |
-| tavily | `fast` | `basic` | `advanced` |
-| parallel | `basic` | `basic` | `advanced` |
-| linkup | `fast` | `standard` | `deep` |
+| Provider | Matrix modes | Native / mapping |
+| --- | --- | --- |
+| exa | fast, balanced, deep | `type`: fast → fast, balanced → auto, deep → deep |
+| tavily | fast, balanced, deep | `search_depth`: fast → fast, balanced → basic, deep → advanced |
+| parallel | fast, balanced, deep | `mode`: fast/balanced → basic, deep → advanced |
+| linkup | fast, balanced, deep | `depth`: fast → fast, balanced → standard, deep → deep |
+| brave | fast, balanced, deep | Default search vs `extra_snippets=true` for richer excerpts |
+| jina | fast, balanced, deep | `X-Respond-With: no-content` (fast) vs full Reader fetch |
+| perplexity | fast, balanced, deep | `snippet_mode` low / medium / high (+ token budgets) |
+| firecrawl | balanced, deep | Metadata-only search vs `scrapeOptions` inline scrape |
+| you | fast, balanced, deep | Snippet search vs `livecrawl` + `livecrawl_formats` |
+| kagi | balanced, deep | Snippet length from account Settings → Search |
+| serper, serpapi, searchapi, google_pse, searxng, duckduckgo | balanced | No separate depth API; single SERP tier |
 
-For providers without a depth setting, `mode` is ignored.
+Providers with only `balanced` in the matrix have no documented fast/deep API parameter;
+pass `mode` via `extra` if the vendor adds one later.
 
 ## Content fields, by intent
 

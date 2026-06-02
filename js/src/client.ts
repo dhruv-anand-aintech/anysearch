@@ -15,7 +15,7 @@ import { availableProviders, enforceCapabilities, selectProvider } from "./route
 import { makeRequest, type Env, type SearchParams, type SearchRequest, type SearchResponse } from "./types.js";
 
 const UNIFIED_FIELDS = [
-  "maxResults", "searchType", "country", "language", "includeDomains", "excludeDomains",
+  "maxResults", "searchType", "engine", "country", "language", "includeDomains", "excludeDomains",
   "startPublishedDate", "endPublishedDate", "safeSearch", "mode", "answer",
   "includeContent", "includeSummary", "highlights",
 ] as const;

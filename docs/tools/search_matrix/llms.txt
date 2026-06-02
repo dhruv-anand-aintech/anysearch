@@ -10,8 +10,8 @@ Providers: 16. Unified parameters and response fields supported via anysearch.
 - Language: full
 - Date range: full
 - Safe search: full
-- Mode: none
-- Answer: none
+- Mode: fast, balanced, deep
+- AI Answer: none
 - Full text: none
 - Summary: none
 - Highlights: full
@@ -25,68 +25,68 @@ Providers: 16. Unified parameters and response fields supported via anysearch.
 - Language: none
 - Date range: none
 - Safe search: full
-- Mode: none
-- Answer: none
+- Mode: balanced
+- AI Answer: none
 - Full text: none
 - Summary: none
 - Highlights: none
 - News: none
 
 ## Exa
-- Docs: https://docs.exa.ai/reference/search
+- Docs: https://exa.ai/docs/reference/search
 - Env: EXA_API_KEY
 - Domain filters: full
 - Country: full
 - Language: none
 - Date range: full
 - Safe search: full
-- Mode: full
-- Answer: none
+- Mode: fast, balanced, deep
+- AI Answer: none
 - Full text: full
 - Summary: full
 - Highlights: full
 - News: full
 
 ## Firecrawl
-- Docs: https://docs.firecrawl.dev/features/search
+- Docs: https://docs.firecrawl.dev/api-reference/endpoint/search
 - Env: FIRECRAWL_API_KEY
 - Domain filters: none
 - Country: full
 - Language: none
 - Date range: none
 - Safe search: none
-- Mode: none
-- Answer: none
+- Mode: balanced, deep
+- AI Answer: none
 - Full text: full
 - Summary: none
 - Highlights: none
 - News: full
 
 ## Google PSE
-- Docs: https://developers.google.com/custom-search/v1/overview
+- Docs: https://developers.google.com/custom-search/v1/reference/rest/v1/cse/list
 - Env: GOOGLE_PSE_API_KEY, GOOGLE_CSE_API_KEY, GOOGLE_API_KEY
-- Domain filters: full
+- Domain filters: partial
 - Country: full
 - Language: full
-- Date range: none
+- Date range: partial
 - Safe search: full
-- Mode: none
-- Answer: none
+- Mode: balanced
+- AI Answer: none
 - Full text: none
 - Summary: none
 - Highlights: none
 - News: none
 
 ## Jina
-- Docs: https://jina.ai/reader
+- Docs: https://jina.ai/reader/
 - Env: JINA_API_KEY
 - Domain filters: none
 - Country: none
 - Language: none
 - Date range: none
 - Safe search: none
-- Mode: none
-- Answer: none
+- Mode: fast, balanced, deep
+- AI Answer: none
 - Full text: full
 - Summary: none
 - Highlights: none
@@ -100,53 +100,53 @@ Providers: 16. Unified parameters and response fields supported via anysearch.
 - Language: none
 - Date range: none
 - Safe search: none
-- Mode: none
-- Answer: none
+- Mode: balanced, deep
+- AI Answer: none
 - Full text: none
 - Summary: none
 - Highlights: none
 - News: none
 
 ## Linkup
-- Docs: https://docs.linkup.so/pages/sdk/python/python
+- Docs: https://docs.linkup.so/pages/documentation/endpoints/search/overview
 - Env: LINKUP_API_KEY
 - Domain filters: full
 - Country: none
 - Language: none
 - Date range: full
 - Safe search: none
-- Mode: full
-- Answer: full
+- Mode: fast, balanced, deep
+- AI Answer: full
 - Full text: full
 - Summary: none
 - Highlights: none
 - News: none
 
 ## Parallel
-- Docs: https://docs.parallel.ai/search/search-quickstart
+- Docs: https://docs.parallel.ai/search/modes
 - Env: PARALLEL_API_KEY
 - Domain filters: full
 - Country: full
 - Language: none
 - Date range: full
 - Safe search: none
-- Mode: full
-- Answer: none
+- Mode: fast, balanced, deep
+- AI Answer: none
 - Full text: full
 - Summary: none
 - Highlights: full
 - News: none
 
 ## Perplexity
-- Docs: https://docs.perplexity.ai/guides/search-quickstart
+- Docs: https://docs.perplexity.ai/api-reference/search-post
 - Env: PERPLEXITY_API_KEY, PPLX_API_KEY
 - Domain filters: full
 - Country: none
 - Language: full
 - Date range: none
 - Safe search: none
-- Mode: none
-- Answer: none
+- Mode: fast, balanced, deep
+- AI Answer: none
 - Full text: full
 - Summary: none
 - Highlights: none
@@ -160,8 +160,8 @@ Providers: 16. Unified parameters and response fields supported via anysearch.
 - Language: full
 - Date range: none
 - Safe search: full
-- Mode: none
-- Answer: full
+- Mode: balanced
+- AI Answer: full
 - Full text: none
 - Summary: none
 - Highlights: none
@@ -175,8 +175,8 @@ Providers: 16. Unified parameters and response fields supported via anysearch.
 - Language: full
 - Date range: none
 - Safe search: none
-- Mode: none
-- Answer: partial
+- Mode: balanced
+- AI Answer: partial
 - Full text: none
 - Summary: none
 - Highlights: none
@@ -190,8 +190,8 @@ Providers: 16. Unified parameters and response fields supported via anysearch.
 - Language: full
 - Date range: none
 - Safe search: full
-- Mode: none
-- Answer: partial
+- Mode: balanced
+- AI Answer: partial
 - Full text: none
 - Summary: none
 - Highlights: none
@@ -205,8 +205,8 @@ Providers: 16. Unified parameters and response fields supported via anysearch.
 - Language: full
 - Date range: none
 - Safe search: none
-- Mode: none
-- Answer: partial
+- Mode: balanced
+- AI Answer: partial
 - Full text: none
 - Summary: none
 - Highlights: none
@@ -220,23 +220,23 @@ Providers: 16. Unified parameters and response fields supported via anysearch.
 - Language: none
 - Date range: full
 - Safe search: none
-- Mode: full
-- Answer: full
+- Mode: fast, balanced, deep
+- AI Answer: full
 - Full text: full
 - Summary: none
 - Highlights: none
 - News: full
 
 ## You
-- Docs: https://documentation.you.com
+- Docs: https://you.com/docs/search/overview
 - Env: YDC_API_KEY, YOU_API_KEY
 - Domain filters: full
 - Country: full
 - Language: none
 - Date range: none
 - Safe search: none
-- Mode: none
-- Answer: none
+- Mode: fast, balanced, deep
+- AI Answer: none
 - Full text: none
 - Summary: none
 - Highlights: full

@@ -1,85 +1,89 @@
 {
   "name": "You",
   "links": {
-    "docs": "https://documentation.you.com",
+    "docs": "https://you.com/docs/search/overview",
     "github": "https://github.com/dhruv-anand-aintech/anysearch",
     "website": "https://you.com",
     "slug": "you"
   },
   "env_keys": {
     "value": "YDC_API_KEY, YOU_API_KEY",
-    "source_url": "https://documentation.you.com",
-    "comment": "Environment variables read by anysearch."
+    "source_url": "https://you.com/docs/api-reference/search/v1-search",
+    "comment": "API keys and configuration variables documented by the provider."
   },
   "python_extra": {
     "value": "\u2014 (REST only)",
-    "source_url": "https://github.com/dhruv-anand-aintech/anysearch/tree/main/python#install",
-    "comment": "Optional: pip install 'anysearch-sdk[you] @ git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python'"
+    "source_url": "https://you.com/docs/search/overview",
+    "comment": "HTTP API only; no required vendor Python SDK."
   },
   "requires_key": {
     "support": "full",
-    "source_url": "https://documentation.you.com",
-    "comment": "Keyless providers work without credentials."
+    "source_url": "https://you.com/docs/api-reference/search/v1-search",
+    "comment": "Valid API key required for every request."
   },
   "snippet": {
     "support": "full",
-    "source_url": "https://documentation.you.com",
-    "comment": "Short description field; available on virtually all providers."
+    "source_url": "https://you.com/docs/search/overview",
+    "comment": "Short description field returned with each result."
   },
   "domains": {
     "support": "full",
-    "source_url": "https://documentation.you.com",
-    "comment": "Domain filters"
+    "source_url": "https://you.com/docs/search/overview",
+    "comment": "`include_domains`, `exclude_domains`, `boost_domains` (POST JSON arrays, up to 500)."
   },
   "country": {
     "support": "full",
-    "source_url": "https://documentation.you.com",
-    "comment": "Country (gl)"
+    "source_url": "https://you.com/docs/search/overview",
+    "comment": "`country` \u2014 ISO 3166-1 alpha-2 (e.g. US, GB)."
   },
   "language": {
     "support": "none",
-    "source_url": "https://documentation.you.com",
+    "source_url": "https://you.com/docs/search/overview",
     "comment": "Language"
   },
   "date": {
     "support": "none",
-    "source_url": "https://documentation.you.com",
+    "source_url": "https://you.com/docs/search/overview",
     "comment": "Published date range"
   },
   "safe_search": {
     "support": "none",
-    "source_url": "https://documentation.you.com",
+    "source_url": "https://you.com/docs/search/overview",
     "comment": "Safe search"
-  },
-  "mode": {
-    "support": "none",
-    "source_url": "https://documentation.you.com",
-    "comment": "Depth (fast/balanced/deep)"
   },
   "answer": {
     "support": "none",
-    "source_url": "https://documentation.you.com",
-    "comment": "Synthesized answer"
+    "source_url": "https://you.com/docs/search/overview",
+    "comment": "AI answer"
   },
   "content": {
     "support": "none",
-    "source_url": "https://documentation.you.com",
+    "source_url": "https://you.com/docs/search/overview",
     "comment": "Full page text"
   },
   "summary": {
     "support": "none",
-    "source_url": "https://documentation.you.com",
+    "source_url": "https://you.com/docs/search/overview",
     "comment": "AI per-result summary"
   },
   "highlights": {
     "support": "full",
-    "source_url": "https://documentation.you.com",
-    "comment": "Query highlights"
+    "source_url": "https://you.com/docs/api-reference/search/v1-search",
+    "comment": "Multiple `snippets` strings per web result in the JSON response."
   },
   "news": {
     "support": "none",
-    "source_url": "https://documentation.you.com",
+    "source_url": "https://you.com/docs/search/overview",
     "comment": "News search type"
+  },
+  "mode": {
+    "values": [
+      "fast",
+      "balanced",
+      "deep"
+    ],
+    "source_url": "https://you.com/docs/search/overview",
+    "comment": "No `mode` field; depth is implicit. `fast`/`balanced`: web/news snippets from /v1/search (no livecrawl). `deep`: `livecrawl` (`web`, `news`, or `all`) plus `livecrawl_formats` (`markdown` / `html`) to pull page bodies."
   },
   "notes": ""
 }

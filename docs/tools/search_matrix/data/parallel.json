@@ -1,90 +1,89 @@
 {
   "name": "Parallel",
   "links": {
-    "docs": "https://docs.parallel.ai/search/search-quickstart",
+    "docs": "https://docs.parallel.ai/search/modes",
     "github": "https://github.com/dhruv-anand-aintech/anysearch",
     "website": "https://parallel.ai",
     "slug": "parallel"
   },
   "env_keys": {
     "value": "PARALLEL_API_KEY",
-    "source_url": "https://docs.parallel.ai/search/search-quickstart",
-    "comment": "Environment variables read by anysearch."
+    "source_url": "https://docs.parallel.ai/getting-started/overview",
+    "comment": "API keys and configuration variables documented by the provider."
   },
   "python_extra": {
     "value": "parallel-web",
-    "source_url": "https://github.com/dhruv-anand-aintech/anysearch/tree/main/python#install",
-    "comment": "Optional: pip install 'anysearch-sdk[parallel] @ git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python'"
+    "source_url": "https://pypi.org/project/parallel-web/",
+    "comment": "Optional PyPI package: parallel-web (install via anysearch-sdk extra `parallel`)."
   },
   "requires_key": {
     "support": "full",
-    "source_url": "https://docs.parallel.ai/search/search-quickstart",
-    "comment": "Keyless providers work without credentials."
+    "source_url": "https://docs.parallel.ai/getting-started/overview",
+    "comment": "Valid API key required for every request."
   },
   "snippet": {
     "support": "full",
-    "source_url": "https://docs.parallel.ai/search/search-quickstart",
-    "comment": "Short description field; available on virtually all providers."
+    "source_url": "https://docs.parallel.ai/search/modes",
+    "comment": "Short description field returned with each result."
   },
   "domains": {
     "support": "full",
-    "source_url": "https://docs.parallel.ai/search/search-quickstart",
-    "comment": "Domain filters"
+    "source_url": "https://docs.parallel.ai/search/advanced-search-settings",
+    "comment": "`advanced_settings.source_policy.include_domains` / `exclude_domains` (use sparingly)."
   },
   "country": {
     "support": "full",
-    "source_url": "https://docs.parallel.ai/search/search-quickstart",
-    "comment": "Country (gl)"
+    "source_url": "https://docs.parallel.ai/search/advanced-search-settings",
+    "comment": "`advanced_settings.location` \u2014 ISO 3166-1 alpha-2 (subset of countries)."
   },
   "language": {
     "support": "none",
-    "source_url": "https://docs.parallel.ai/search/search-quickstart",
+    "source_url": "https://docs.parallel.ai/search/modes",
     "comment": "Language"
   },
   "date": {
     "support": "full",
-    "source_url": "https://docs.parallel.ai/search/search-quickstart",
-    "comment": "Published date range"
+    "source_url": "https://docs.parallel.ai/search/advanced-search-settings",
+    "comment": "`source_policy.after_date` for freshness in advanced_settings."
   },
   "safe_search": {
     "support": "none",
-    "source_url": "https://docs.parallel.ai/search/search-quickstart",
+    "source_url": "https://docs.parallel.ai/search/modes",
     "comment": "Safe search"
-  },
-  "mode": {
-    "support": "full",
-    "source_url": "https://docs.parallel.ai/search/search-quickstart",
-    "comment": "Mapped: fast/balanced \u2192 basic, deep \u2192 advanced"
   },
   "answer": {
     "support": "none",
-    "source_url": "https://docs.parallel.ai/search/search-quickstart",
-    "comment": "Synthesized answer"
+    "source_url": "https://docs.parallel.ai/search/modes",
+    "comment": "AI answer"
   },
   "content": {
     "support": "full",
-    "source_url": "https://docs.parallel.ai/search/search-quickstart",
-    "comment": "Full page text"
+    "source_url": "https://docs.parallel.ai/api-reference/search/search",
+    "comment": "Excerpts are pre-compressed in search results (excerpt_settings optional)."
   },
   "summary": {
     "support": "none",
-    "source_url": "https://docs.parallel.ai/search/search-quickstart",
+    "source_url": "https://docs.parallel.ai/search/modes",
     "comment": "AI per-result summary"
   },
   "highlights": {
     "support": "full",
-    "source_url": "https://docs.parallel.ai/search/search-quickstart",
-    "comment": "Query highlights"
+    "source_url": "https://docs.parallel.ai/search/best-practices",
+    "comment": "Ranked excerpts per URL are the default Search API payload."
   },
   "news": {
     "support": "none",
-    "source_url": "https://docs.parallel.ai/search/search-quickstart",
+    "source_url": "https://docs.parallel.ai/search/modes",
     "comment": "News search type"
   },
-  "mode_notes": {
-    "value": "fast/balanced \u2192 basic, deep \u2192 advanced",
-    "source_url": "https://docs.parallel.ai/search/search-quickstart",
-    "comment": "Unified mode knob mapping."
+  "mode": {
+    "values": [
+      "fast",
+      "balanced",
+      "deep"
+    ],
+    "source_url": "https://docs.parallel.ai/search/modes",
+    "comment": "Native `mode`: `basic` (lower latency, 2\u20133 queries) vs `advanced` (default, higher-quality retrieval). anysearch: fast/balanced\u2192basic, deep\u2192advanced."
   },
-  "notes": "Native SDK extra: parallel-web."
+  "notes": "Native SDK package: parallel-web."
 }

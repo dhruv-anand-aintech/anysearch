@@ -1,85 +1,89 @@
 {
   "name": "Perplexity",
   "links": {
-    "docs": "https://docs.perplexity.ai/guides/search-quickstart",
+    "docs": "https://docs.perplexity.ai/api-reference/search-post",
     "github": "https://github.com/dhruv-anand-aintech/anysearch",
     "website": "https://www.perplexity.ai",
     "slug": "perplexity"
   },
   "env_keys": {
     "value": "PERPLEXITY_API_KEY, PPLX_API_KEY",
-    "source_url": "https://docs.perplexity.ai/guides/search-quickstart",
-    "comment": "Environment variables read by anysearch."
+    "source_url": "https://docs.perplexity.ai/docs/search/quickstart",
+    "comment": "API keys and configuration variables documented by the provider."
   },
   "python_extra": {
     "value": "perplexityai",
-    "source_url": "https://github.com/dhruv-anand-aintech/anysearch/tree/main/python#install",
-    "comment": "Optional: pip install 'anysearch-sdk[perplexity] @ git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python'"
+    "source_url": "https://pypi.org/project/perplexityai/",
+    "comment": "Optional PyPI package: perplexityai (install via anysearch-sdk extra `perplexity`)."
   },
   "requires_key": {
     "support": "full",
-    "source_url": "https://docs.perplexity.ai/guides/search-quickstart",
-    "comment": "Keyless providers work without credentials."
+    "source_url": "https://docs.perplexity.ai/docs/search/quickstart",
+    "comment": "Valid API key required for every request."
   },
   "snippet": {
     "support": "full",
-    "source_url": "https://docs.perplexity.ai/guides/search-quickstart",
-    "comment": "Short description field; available on virtually all providers."
+    "source_url": "https://docs.perplexity.ai/api-reference/search-post",
+    "comment": "Short description field returned with each result."
   },
   "domains": {
     "support": "full",
-    "source_url": "https://docs.perplexity.ai/guides/search-quickstart",
-    "comment": "Domain filters"
+    "source_url": "https://docs.perplexity.ai/docs/search/quickstart",
+    "comment": "`search_domain_filter` \u2014 allowlist entries or `-domain` denylist prefixes."
   },
   "country": {
     "support": "none",
-    "source_url": "https://docs.perplexity.ai/guides/search-quickstart",
+    "source_url": "https://docs.perplexity.ai/api-reference/search-post",
     "comment": "Country (gl)"
   },
   "language": {
     "support": "full",
-    "source_url": "https://docs.perplexity.ai/guides/search-quickstart",
-    "comment": "Language"
+    "source_url": "https://docs.perplexity.ai/api-reference/search-post",
+    "comment": "`search_language_filter` \u2014 array of ISO 639-1 language codes."
   },
   "date": {
     "support": "none",
-    "source_url": "https://docs.perplexity.ai/guides/search-quickstart",
+    "source_url": "https://docs.perplexity.ai/api-reference/search-post",
     "comment": "Published date range"
   },
   "safe_search": {
     "support": "none",
-    "source_url": "https://docs.perplexity.ai/guides/search-quickstart",
+    "source_url": "https://docs.perplexity.ai/api-reference/search-post",
     "comment": "Safe search"
-  },
-  "mode": {
-    "support": "none",
-    "source_url": "https://docs.perplexity.ai/guides/search-quickstart",
-    "comment": "Depth (fast/balanced/deep)"
   },
   "answer": {
     "support": "none",
-    "source_url": "https://docs.perplexity.ai/guides/search-quickstart",
-    "comment": "Synthesized answer"
+    "source_url": "https://docs.perplexity.ai/api-reference/search-post",
+    "comment": "AI answer"
   },
   "content": {
     "support": "full",
-    "source_url": "https://docs.perplexity.ai/guides/search-quickstart",
-    "comment": "Full page text"
+    "source_url": "https://docs.perplexity.ai/api-reference/search-post",
+    "comment": "`snippet` field size via `snippet_mode`, `max_tokens`, `max_tokens_per_page`."
   },
   "summary": {
     "support": "none",
-    "source_url": "https://docs.perplexity.ai/guides/search-quickstart",
+    "source_url": "https://docs.perplexity.ai/api-reference/search-post",
     "comment": "AI per-result summary"
   },
   "highlights": {
     "support": "none",
-    "source_url": "https://docs.perplexity.ai/guides/search-quickstart",
+    "source_url": "https://docs.perplexity.ai/api-reference/search-post",
     "comment": "Query highlights"
   },
   "news": {
     "support": "none",
-    "source_url": "https://docs.perplexity.ai/guides/search-quickstart",
+    "source_url": "https://docs.perplexity.ai/api-reference/search-post",
     "comment": "News search type"
   },
-  "notes": "Native SDK extra: perplexityai."
+  "mode": {
+    "values": [
+      "fast",
+      "balanced",
+      "deep"
+    ],
+    "source_url": "https://docs.perplexity.ai/api-reference/search-post",
+    "comment": "Search API `snippet_mode`: `low`, `medium` (default), `high` (more extracted text). Tune with `max_tokens` / `max_tokens_per_page` for total content budget. anysearch sets `snippet_mode=high` when `include_content` is true (deep)."
+  },
+  "notes": "Native SDK package: perplexityai."
 }

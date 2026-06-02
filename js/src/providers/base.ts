@@ -48,6 +48,7 @@ export const PARAM_CAPABILITY: Record<string, Capability> = {
   endPublishedDate: "date",
   safeSearch: "safe_search",
   mode: "mode",
+  engine: "engine",
   answer: "answer",
   includeContent: "content",
   includeSummary: "summary",

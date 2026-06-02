@@ -26,6 +26,7 @@ class Capability:
     SUMMARY = "summary"  # per-result AI summary
     HIGHLIGHTS = "highlights"  # query-relevant excerpts
     NEWS = "news"  # dedicated news search
+    ENGINE = "engine"  # SerpApi-style backend selector (bing, baidu, yandex, …)
 
 
 # Maps a unified request field to the capability it requires.
@@ -42,6 +43,7 @@ PARAM_CAPABILITY: Dict[str, str] = {
     "include_content": Capability.CONTENT,
     "include_summary": Capability.SUMMARY,
     "highlights": Capability.HIGHLIGHTS,
+    "engine": Capability.ENGINE,
 }
 
 

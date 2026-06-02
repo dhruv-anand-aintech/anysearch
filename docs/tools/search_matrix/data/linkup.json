@@ -1,90 +1,89 @@
 {
   "name": "Linkup",
   "links": {
-    "docs": "https://docs.linkup.so/pages/sdk/python/python",
+    "docs": "https://docs.linkup.so/pages/documentation/endpoints/search/overview",
     "github": "https://github.com/dhruv-anand-aintech/anysearch",
     "website": "https://www.linkup.so",
     "slug": "linkup"
   },
   "env_keys": {
     "value": "LINKUP_API_KEY",
-    "source_url": "https://docs.linkup.so/pages/sdk/python/python",
-    "comment": "Environment variables read by anysearch."
+    "source_url": "https://docs.linkup.so/pages/documentation/endpoints/search/reference",
+    "comment": "API keys and configuration variables documented by the provider."
   },
   "python_extra": {
     "value": "linkup-sdk",
-    "source_url": "https://github.com/dhruv-anand-aintech/anysearch/tree/main/python#install",
-    "comment": "Optional: pip install 'anysearch-sdk[linkup] @ git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python'"
+    "source_url": "https://docs.linkup.so/pages/sdk/python/python",
+    "comment": "Optional PyPI package: linkup-sdk (install via anysearch-sdk extra `linkup`)."
   },
   "requires_key": {
     "support": "full",
-    "source_url": "https://docs.linkup.so/pages/sdk/python/python",
-    "comment": "Keyless providers work without credentials."
+    "source_url": "https://docs.linkup.so/pages/documentation/endpoints/search/reference",
+    "comment": "Valid API key required for every request."
   },
   "snippet": {
     "support": "full",
-    "source_url": "https://docs.linkup.so/pages/sdk/python/python",
-    "comment": "Short description field; available on virtually all providers."
+    "source_url": "https://docs.linkup.so/pages/documentation/endpoints/search/overview",
+    "comment": "Short description field returned with each result."
   },
   "domains": {
     "support": "full",
-    "source_url": "https://docs.linkup.so/pages/sdk/python/python",
-    "comment": "Domain filters"
+    "source_url": "https://docs.linkup.so/pages/documentation/endpoints/search/reference",
+    "comment": "`includeDomains` / `excludeDomains` arrays on POST /v1/search."
   },
   "country": {
     "support": "none",
-    "source_url": "https://docs.linkup.so/pages/sdk/python/python",
+    "source_url": "https://docs.linkup.so/pages/documentation/endpoints/search/overview",
     "comment": "Country (gl)"
   },
   "language": {
     "support": "none",
-    "source_url": "https://docs.linkup.so/pages/sdk/python/python",
+    "source_url": "https://docs.linkup.so/pages/documentation/endpoints/search/overview",
     "comment": "Language"
   },
   "date": {
     "support": "full",
-    "source_url": "https://docs.linkup.so/pages/sdk/python/python",
-    "comment": "Published date range"
+    "source_url": "https://docs.linkup.so/pages/documentation/endpoints/search/reference",
+    "comment": "`fromDate` / `toDate` (YYYY-MM-DD) filter sources by publication date."
   },
   "safe_search": {
     "support": "none",
-    "source_url": "https://docs.linkup.so/pages/sdk/python/python",
+    "source_url": "https://docs.linkup.so/pages/documentation/endpoints/search/overview",
     "comment": "Safe search"
-  },
-  "mode": {
-    "support": "full",
-    "source_url": "https://docs.linkup.so/pages/sdk/python/python",
-    "comment": "Mapped: fast \u2192 fast, balanced \u2192 standard, deep \u2192 deep"
   },
   "answer": {
     "support": "full",
-    "source_url": "https://docs.linkup.so/pages/sdk/python/python",
-    "comment": "Synthesized answer"
+    "source_url": "https://docs.linkup.so/pages/documentation/endpoints/search/overview",
+    "comment": "`outputType`: `sourcedAnswer` returns a cited natural-language answer."
   },
   "content": {
     "support": "full",
-    "source_url": "https://docs.linkup.so/pages/sdk/python/python",
-    "comment": "Full page text"
+    "source_url": "https://docs.linkup.so/pages/documentation/endpoints/search/overview",
+    "comment": "`outputType`: `searchResults` with page content in standard/deep depths."
   },
   "summary": {
     "support": "none",
-    "source_url": "https://docs.linkup.so/pages/sdk/python/python",
+    "source_url": "https://docs.linkup.so/pages/documentation/endpoints/search/overview",
     "comment": "AI per-result summary"
   },
   "highlights": {
     "support": "none",
-    "source_url": "https://docs.linkup.so/pages/sdk/python/python",
+    "source_url": "https://docs.linkup.so/pages/documentation/endpoints/search/overview",
     "comment": "Query highlights"
   },
   "news": {
     "support": "none",
-    "source_url": "https://docs.linkup.so/pages/sdk/python/python",
+    "source_url": "https://docs.linkup.so/pages/documentation/endpoints/search/overview",
     "comment": "News search type"
   },
-  "mode_notes": {
-    "value": "fast \u2192 fast, balanced \u2192 standard, deep \u2192 deep",
-    "source_url": "https://docs.linkup.so/pages/sdk/python/python",
-    "comment": "Unified mode knob mapping."
+  "mode": {
+    "values": [
+      "fast",
+      "balanced",
+      "deep"
+    ],
+    "source_url": "https://docs.linkup.so/pages/documentation/endpoints/search/overview",
+    "comment": "Native `depth`: `fast` (<1s, keyword-only), `standard` (1\u20133s agentic), `deep` (5\u201330s multi-iteration). anysearch: fast\u2192fast, balanced\u2192standard, deep\u2192deep."
   },
-  "notes": "Native SDK extra: linkup-sdk."
+  "notes": "Native SDK package: linkup-sdk."
 }

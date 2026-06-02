@@ -74,6 +74,14 @@ def _search_schema(provider_enum: List[str]) -> Dict[str, Any]:
             "provider": provider_prop,
             "max_results": {"type": "integer", "default": 10, "minimum": 1, "maximum": 100},
             "search_type": {"type": "string", "enum": ["web", "news"], "default": "web"},
+            "engine": {
+                "type": "string",
+                "description": (
+                    "SerpApi search backend when provider is serpapi: google (default), "
+                    "bing, baidu, yandex, duckduckgo, yahoo, and others documented at "
+                    "https://serpapi.com/search-api"
+                ),
+            },
             "country": {"type": "string", "description": "ISO 3166-1 alpha-2, e.g. 'us'."},
             "language": {"type": "string", "description": "ISO 639-1, e.g. 'en'."},
             "include_domains": {"type": "array", "items": {"type": "string"}},

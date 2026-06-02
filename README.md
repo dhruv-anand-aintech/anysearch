@@ -49,7 +49,7 @@ glue code each time. `anysearch` normalizes all of it:
 | [Linkup](https://linkup.so) | `linkup` | `LINKUP_API_KEY` | answer, content, domains, dates, mode |
 | [Perplexity](https://docs.perplexity.ai) | `perplexity`, `pplx` | `PERPLEXITY_API_KEY` | content, domains, language |
 | [Serper](https://serper.dev) | `serper` | `SERPER_API_KEY` | answer, country, language, news |
-| [SerpApi](https://serpapi.com) | `serpapi`, `serp` | `SERPAPI_API_KEY` | answer, country, language, safe, news |
+| [SerpApi](https://serpapi.com) | `serpapi`, `serp` | `SERPAPI_API_KEY` | engine (bing/baidu/yandex/…), country, language, safe, news, answer* |
 | [SearchApi](https://searchapi.io) | `searchapi` | `SEARCHAPI_API_KEY` | answer, country, language, news |
 | [You.com](https://you.com) | `you`, `ydc` | `YDC_API_KEY` | highlights, content, domains |
 | [Jina](https://jina.ai/reader) | `jina` | `JINA_API_KEY` | content |

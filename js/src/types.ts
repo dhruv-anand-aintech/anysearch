@@ -11,6 +11,7 @@ export type Capability =
   | "date"
   | "safe_search"
   | "mode"
+  | "engine"
   | "answer"
   | "content"
   | "summary"
@@ -25,6 +26,8 @@ export interface SearchParams {
   provider?: string;
   maxResults?: number;
   searchType?: SearchType;
+  /** SerpApi backend (google, bing, baidu, yandex, duckduckgo, …). */
+  engine?: string;
   /** ISO 3166-1 alpha-2, e.g. "us". */
   country?: string;
   /** ISO 639-1, e.g. "en". */
@@ -66,6 +69,7 @@ export interface SearchRequest {
   query: string;
   maxResults: number;
   searchType: SearchType;
+  engine?: string;
   country?: string;
   language?: string;
   includeDomains: string[];
@@ -121,6 +125,7 @@ export function makeRequest(query: string, params: Partial<SearchRequest> = {}):
     query,
     maxResults: params.maxResults ?? 10,
     searchType: params.searchType ?? "web",
+    engine: params.engine,
     country: params.country,
     language: params.language,
     includeDomains: params.includeDomains ?? [],

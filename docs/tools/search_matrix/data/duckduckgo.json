@@ -9,22 +9,22 @@
   "env_keys": {
     "value": "(none \u2014 keyless)",
     "source_url": "https://pypi.org/project/ddgs/",
-    "comment": "Environment variables read by anysearch."
+    "comment": "API keys and configuration variables documented by the provider."
   },
   "python_extra": {
     "value": "ddgs",
-    "source_url": "https://github.com/dhruv-anand-aintech/anysearch/tree/main/python#install",
-    "comment": "Optional: pip install 'anysearch-sdk[duckduckgo] @ git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python'"
+    "source_url": "https://pypi.org/project/ddgs/",
+    "comment": "Optional PyPI package: ddgs (install via anysearch-sdk extra `duckduckgo`)."
   },
   "requires_key": {
     "support": "none",
     "source_url": "https://pypi.org/project/ddgs/",
-    "comment": "Keyless providers work without credentials."
+    "comment": "No API key required."
   },
   "snippet": {
     "support": "full",
     "source_url": "https://pypi.org/project/ddgs/",
-    "comment": "Short description field; available on virtually all providers."
+    "comment": "Short description field returned with each result."
   },
   "domains": {
     "support": "none",
@@ -34,7 +34,7 @@
   "country": {
     "support": "full",
     "source_url": "https://pypi.org/project/ddgs/",
-    "comment": "Country (gl)"
+    "comment": "DDGS `region` / locale parameters (see package docs)."
   },
   "language": {
     "support": "none",
@@ -49,17 +49,12 @@
   "safe_search": {
     "support": "full",
     "source_url": "https://pypi.org/project/ddgs/",
-    "comment": "Safe search"
-  },
-  "mode": {
-    "support": "none",
-    "source_url": "https://pypi.org/project/ddgs/",
-    "comment": "Depth (fast/balanced/deep)"
+    "comment": "DDGS `safesearch` mapping for web search."
   },
   "answer": {
     "support": "none",
     "source_url": "https://pypi.org/project/ddgs/",
-    "comment": "Synthesized answer"
+    "comment": "AI answer"
   },
   "content": {
     "support": "none",
@@ -81,5 +76,12 @@
     "source_url": "https://pypi.org/project/ddgs/",
     "comment": "News search type"
   },
-  "notes": "No API key required (keyless fallback). Native SDK extra: ddgs."
+  "mode": {
+    "values": [
+      "balanced"
+    ],
+    "source_url": "https://pypi.org/project/ddgs/",
+    "comment": "Keyless DDGS client: instant web results without a depth parameter. Matrix `balanced` = default `text()` search."
+  },
+  "notes": "No API key required (keyless fallback). Native SDK package: ddgs."
 }

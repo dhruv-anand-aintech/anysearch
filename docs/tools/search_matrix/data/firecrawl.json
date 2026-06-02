@@ -1,85 +1,88 @@
 {
   "name": "Firecrawl",
   "links": {
-    "docs": "https://docs.firecrawl.dev/features/search",
+    "docs": "https://docs.firecrawl.dev/api-reference/endpoint/search",
     "github": "https://github.com/dhruv-anand-aintech/anysearch",
     "website": "https://www.firecrawl.dev",
     "slug": "firecrawl"
   },
   "env_keys": {
     "value": "FIRECRAWL_API_KEY",
-    "source_url": "https://docs.firecrawl.dev/features/search",
-    "comment": "Environment variables read by anysearch."
+    "source_url": "https://docs.firecrawl.dev/api-reference/endpoint/search",
+    "comment": "API keys and configuration variables documented by the provider."
   },
   "python_extra": {
     "value": "firecrawl-py",
-    "source_url": "https://github.com/dhruv-anand-aintech/anysearch/tree/main/python#install",
-    "comment": "Optional: pip install 'anysearch-sdk[firecrawl] @ git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python'"
+    "source_url": "https://pypi.org/project/firecrawl-py/",
+    "comment": "Optional PyPI package: firecrawl-py (install via anysearch-sdk extra `firecrawl`)."
   },
   "requires_key": {
     "support": "full",
-    "source_url": "https://docs.firecrawl.dev/features/search",
-    "comment": "Keyless providers work without credentials."
+    "source_url": "https://docs.firecrawl.dev/api-reference/endpoint/search",
+    "comment": "Valid API key required for every request."
   },
   "snippet": {
     "support": "full",
-    "source_url": "https://docs.firecrawl.dev/features/search",
-    "comment": "Short description field; available on virtually all providers."
+    "source_url": "https://docs.firecrawl.dev/api-reference/endpoint/search",
+    "comment": "Short description field returned with each result."
   },
   "domains": {
     "support": "none",
-    "source_url": "https://docs.firecrawl.dev/features/search",
+    "source_url": "https://docs.firecrawl.dev/api-reference/endpoint/search",
     "comment": "Domain filters"
   },
   "country": {
     "support": "full",
-    "source_url": "https://docs.firecrawl.dev/features/search",
-    "comment": "Country (gl)"
+    "source_url": "https://docs.firecrawl.dev/api-reference/endpoint/search",
+    "comment": "`country` \u2014 ISO country code on POST /v2/search."
   },
   "language": {
     "support": "none",
-    "source_url": "https://docs.firecrawl.dev/features/search",
+    "source_url": "https://docs.firecrawl.dev/api-reference/endpoint/search",
     "comment": "Language"
   },
   "date": {
     "support": "none",
-    "source_url": "https://docs.firecrawl.dev/features/search",
+    "source_url": "https://docs.firecrawl.dev/api-reference/endpoint/search",
     "comment": "Published date range"
   },
   "safe_search": {
     "support": "none",
-    "source_url": "https://docs.firecrawl.dev/features/search",
+    "source_url": "https://docs.firecrawl.dev/api-reference/endpoint/search",
     "comment": "Safe search"
-  },
-  "mode": {
-    "support": "none",
-    "source_url": "https://docs.firecrawl.dev/features/search",
-    "comment": "Depth (fast/balanced/deep)"
   },
   "answer": {
     "support": "none",
-    "source_url": "https://docs.firecrawl.dev/features/search",
-    "comment": "Synthesized answer"
+    "source_url": "https://docs.firecrawl.dev/api-reference/endpoint/search",
+    "comment": "AI answer"
   },
   "content": {
     "support": "full",
     "source_url": "https://docs.firecrawl.dev/features/search",
-    "comment": "Full page text"
+    "comment": "`scrapeOptions.formats` (e.g. `markdown`) embeds full page text per hit."
   },
   "summary": {
     "support": "none",
-    "source_url": "https://docs.firecrawl.dev/features/search",
+    "source_url": "https://docs.firecrawl.dev/api-reference/endpoint/search",
     "comment": "AI per-result summary"
   },
   "highlights": {
     "support": "none",
-    "source_url": "https://docs.firecrawl.dev/features/search",
+    "source_url": "https://docs.firecrawl.dev/api-reference/endpoint/search",
     "comment": "Query highlights"
   },
   "news": {
     "support": "full",
-    "source_url": "https://docs.firecrawl.dev/features/search",
-    "comment": "News search type"
+    "source_url": "https://docs.firecrawl.dev/api-reference/endpoint/search",
+    "comment": "`sources: [{\"type\": \"news\"}]` for news results."
   },
-  "notes": "Native SDK extra: firecrawl-py."
+  "mode": {
+    "values": [
+      "balanced",
+      "deep"
+    ],
+    "source_url": "https://docs.firecrawl.dev/features/search",
+    "comment": "No separate speed preset on /v2/search. `balanced`: results are title, URL, description only. `deep`: pass `scrapeOptions` (e.g. markdown) to scrape each hit inline."
+  },
+  "notes": "Native SDK package: firecrawl-py."
 }

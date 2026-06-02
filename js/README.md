@@ -55,6 +55,7 @@ npm install @tavily/core    # then: await native("tavily")
 | `provider` | `string` | omit to auto-select |
 | `maxResults` | `number` | honored everywhere |
 | `searchType` | `"web" \| "news"` | |
+| `engine` | `string` | SerpApi only: `google`, `bing`, `baidu`, `yandex`, `duckduckgo`, … |
 | `country` / `language` | `string` | ISO codes |
 | `includeDomains` / `excludeDomains` | `string[]` | |
 | `startPublishedDate` / `endPublishedDate` | `string` | ISO 8601 |

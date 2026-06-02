@@ -9,32 +9,32 @@
   "env_keys": {
     "value": "TAVILY_API_KEY",
     "source_url": "https://docs.tavily.com/documentation/api-reference/endpoint/search",
-    "comment": "Environment variables read by anysearch."
+    "comment": "API keys and configuration variables documented by the provider."
   },
   "python_extra": {
     "value": "tavily-python",
-    "source_url": "https://github.com/dhruv-anand-aintech/anysearch/tree/main/python#install",
-    "comment": "Optional: pip install 'anysearch-sdk[tavily] @ git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python'"
+    "source_url": "https://pypi.org/project/tavily-python/",
+    "comment": "Optional PyPI package: tavily-python (install via anysearch-sdk extra `tavily`)."
   },
   "requires_key": {
     "support": "full",
     "source_url": "https://docs.tavily.com/documentation/api-reference/endpoint/search",
-    "comment": "Keyless providers work without credentials."
+    "comment": "Valid API key required for every request."
   },
   "snippet": {
     "support": "full",
     "source_url": "https://docs.tavily.com/documentation/api-reference/endpoint/search",
-    "comment": "Short description field; available on virtually all providers."
+    "comment": "Short description field returned with each result."
   },
   "domains": {
     "support": "full",
     "source_url": "https://docs.tavily.com/documentation/api-reference/endpoint/search",
-    "comment": "Domain filters"
+    "comment": "`include_domains` / `exclude_domains` (max 300 domains)."
   },
   "country": {
     "support": "full",
     "source_url": "https://docs.tavily.com/documentation/api-reference/endpoint/search",
-    "comment": "Country (gl)"
+    "comment": "`country` (topic `general` only) \u2014 ISO country name."
   },
   "language": {
     "support": "none",
@@ -44,27 +44,22 @@
   "date": {
     "support": "full",
     "source_url": "https://docs.tavily.com/documentation/api-reference/endpoint/search",
-    "comment": "Published date range"
+    "comment": "`start_date` / `end_date` or `time_range` (`day`, `week`, `month`, `year`)."
   },
   "safe_search": {
     "support": "none",
     "source_url": "https://docs.tavily.com/documentation/api-reference/endpoint/search",
     "comment": "Safe search"
   },
-  "mode": {
-    "support": "full",
-    "source_url": "https://docs.tavily.com/documentation/api-reference/endpoint/search",
-    "comment": "Mapped: fast \u2192 fast, balanced \u2192 basic, deep \u2192 advanced"
-  },
   "answer": {
     "support": "full",
     "source_url": "https://docs.tavily.com/documentation/api-reference/endpoint/search",
-    "comment": "Synthesized answer"
+    "comment": "`include_answer`: `basic` or `advanced` LLM answer from results."
   },
   "content": {
     "support": "full",
     "source_url": "https://docs.tavily.com/documentation/api-reference/endpoint/search",
-    "comment": "Full page text"
+    "comment": "`include_raw_content` returns raw page text per source."
   },
   "summary": {
     "support": "none",
@@ -79,12 +74,16 @@
   "news": {
     "support": "full",
     "source_url": "https://docs.tavily.com/documentation/api-reference/endpoint/search",
-    "comment": "News search type"
+    "comment": "`topic`: `news` (or `general` with news-oriented query)."
   },
-  "mode_notes": {
-    "value": "fast \u2192 fast, balanced \u2192 basic, deep \u2192 advanced",
-    "source_url": "https://docs.tavily.com/documentation/api-reference/endpoint/search",
-    "comment": "Unified mode knob mapping."
+  "mode": {
+    "values": [
+      "fast",
+      "balanced",
+      "deep"
+    ],
+    "source_url": "https://docs.tavily.com/documentation/best-practices/best-practices-search",
+    "comment": "Native `search_depth`: `ultra-fast`, `fast`, `basic` (balanced default), `advanced` (highest relevance, 2 credits). anysearch: fast\u2192fast, balanced\u2192basic, deep\u2192advanced."
   },
-  "notes": "Native SDK extra: tavily-python."
+  "notes": "Native SDK package: tavily-python."
 }

@@ -14,6 +14,7 @@ from .types import SearchRequest, SearchResponse
 _UNIFIED_FIELDS = (
     "max_results",
     "search_type",
+    "engine",
     "country",
     "language",
     "include_domains",

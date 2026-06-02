@@ -10,69 +10,26 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 PYTHON_SRC = ROOT / "python" / "src"
 sys.path.insert(0, str(PYTHON_SRC))
+sys.path.insert(0, str(ROOT / "scripts"))
 
 from anysearch.client import AnySearch  # noqa: E402
 
+from search_matrix_provider_meta import (  # noqa: E402
+    ENV_SOURCES,
+    EXTRA_SOURCES,
+    FEATURE_META,
+    PARTIAL_NOTES,
+    SUPPORT_OVERRIDE,
+    feat,
+    feature_entry,
+    links_for,
+    list_val,
+    mode_for,
+    string_val,
+)
+
 DATA_DIR = ROOT / "docs" / "tools" / "search_matrix" / "data"
 GITHUB_REPO = "https://github.com/dhruv-anand-aintech/anysearch"
-GITHUB_INSTALL_PY = f"git+{GITHUB_REPO}.git@main#subdirectory=python"
-GITHUB_INSTALL_DOC = f"{GITHUB_REPO}/tree/main/python#install"
-
-# Official docs / marketing URLs per provider slug.
-LINKS: dict[str, dict[str, str]] = {
-    "exa": {
-        "docs": "https://docs.exa.ai/reference/search",
-        "website": "https://exa.ai",
-    },
-    "parallel": {
-        "docs": "https://docs.parallel.ai/search/search-quickstart",
-        "website": "https://parallel.ai",
-    },
-    "tavily": {
-        "docs": "https://docs.tavily.com/documentation/api-reference/endpoint/search",
-        "website": "https://tavily.com",
-    },
-    "brave": {
-        "docs": "https://api-dashboard.search.brave.com/app/documentation/web-search/get-started",
-        "website": "https://brave.com/search/api/",
-    },
-    "linkup": {
-        "docs": "https://docs.linkup.so/pages/sdk/python/python",
-        "website": "https://www.linkup.so",
-    },
-    "perplexity": {
-        "docs": "https://docs.perplexity.ai/guides/search-quickstart",
-        "website": "https://www.perplexity.ai",
-    },
-    "serper": {"docs": "https://serper.dev/docs", "website": "https://serper.dev"},
-    "serpapi": {"docs": "https://serpapi.com/search-api", "website": "https://serpapi.com"},
-    "searchapi": {
-        "docs": "https://www.searchapi.io/docs/google",
-        "website": "https://www.searchapi.io",
-    },
-    "you": {"docs": "https://documentation.you.com", "website": "https://you.com"},
-    "jina": {"docs": "https://jina.ai/reader", "website": "https://jina.ai"},
-    "kagi": {
-        "docs": "https://help.kagi.com/kagi/api/search.html",
-        "website": "https://kagi.com",
-    },
-    "firecrawl": {
-        "docs": "https://docs.firecrawl.dev/features/search",
-        "website": "https://www.firecrawl.dev",
-    },
-    "google_pse": {
-        "docs": "https://developers.google.com/custom-search/v1/overview",
-        "website": "https://programmablesearchengine.google.com",
-    },
-    "searxng": {
-        "docs": "https://docs.searxng.org/dev/search_api.html",
-        "website": "https://docs.searxng.org",
-    },
-    "duckduckgo": {
-        "docs": "https://pypi.org/project/ddgs/",
-        "website": "https://duckduckgo.com",
-    },
-}
 
 DISPLAY_NAMES = {
     "google_pse": "Google PSE",
@@ -81,39 +38,12 @@ DISPLAY_NAMES = {
     "serpapi": "SerpApi",
 }
 
-# Opportunistic / partial support notes.
-PARTIAL: dict[str, dict[str, str]] = {
-    "serper": {
-        "answer": "Answer only when the SERP includes an answer box (not explicitly requested).",
-    },
-    "serpapi": {
-        "answer": "Answer only when the SERP includes an answer box (not explicitly requested).",
-    },
-    "searchapi": {
-        "answer": "Answer only when the SERP includes an answer box (not explicitly requested).",
-    },
-    "google_pse": {
-        "domains": "Single include or exclude domain via siteSearch (first list item).",
-    },
-    "searxng": {
-        "answer": "Returns instant-answer text from the answers field when available.",
-    },
-}
-
-MODE_MAP = {
-    "exa": "fast → fast, balanced → auto, deep → deep",
-    "tavily": "fast → fast, balanced → basic, deep → advanced",
-    "parallel": "fast/balanced → basic, deep → advanced",
-    "linkup": "fast → fast, balanced → standard, deep → deep",
-}
-
 FEATURE_KEYS = [
     "domains",
     "country",
     "language",
     "date",
     "safe_search",
-    "mode",
     "answer",
     "content",
     "summary",
@@ -127,8 +57,7 @@ FEATURE_LABELS = {
     "language": "Language",
     "date": "Published date range",
     "safe_search": "Safe search",
-    "mode": "Depth (fast/balanced/deep)",
-    "answer": "Synthesized answer",
+    "answer": "AI answer",
     "content": "Full page text",
     "summary": "AI per-result summary",
     "highlights": "Query highlights",
@@ -136,31 +65,35 @@ FEATURE_LABELS = {
 }
 
 
-def feat(support: str, source_url: str, comment: str) -> dict:
-    return {"support": support, "source_url": source_url, "comment": comment}
-
-
-def string_val(value: str, source_url: str, comment: str) -> dict:
-    return {"value": value, "source_url": source_url, "comment": comment}
-
-
 def build_provider(row: dict) -> dict:
     name = row["name"]
     slug = name
     caps = set(row["capabilities"])
-    links_meta = LINKS.get(slug, {})
+    links_meta = links_for(slug)
     docs = links_meta.get("docs", row.get("config_hint", ""))
     website = links_meta.get("website", "")
     display = DISPLAY_NAMES.get(slug, name.replace("_", " ").title())
+    env_source = ENV_SOURCES.get(slug, docs or website)
+    extra_pkg = row.get("extra_package") or ""
+    if extra_pkg:
+        extra_source = EXTRA_SOURCES.get(slug, docs or website)
+        extra_value = extra_pkg
+        extra_comment = f"Optional PyPI package: {extra_pkg} (install via anysearch-sdk extra `{slug}`)."
+    else:
+        extra_source = docs or website
+        extra_value = "— (REST only)"
+        extra_comment = "HTTP API only; no required vendor Python SDK."
 
-    partial_notes = PARTIAL.get(slug, {})
+    partial_notes = PARTIAL_NOTES.get(slug, {})
+    overrides = SUPPORT_OVERRIDE.get(slug, {})
 
     def support_for(key: str) -> str:
+        if key in overrides:
+            return overrides[key]
         if key in caps:
             return "full"
         if key in partial_notes:
             return "partial"
-        # Opportunistic answer on serper family
         if key == "answer" and slug in ("serper", "serpapi", "searchapi"):
             return "partial"
         if key == "domains" and slug == "google_pse":
@@ -169,7 +102,6 @@ def build_provider(row: dict) -> dict:
             return "partial"
         return "none"
 
-    base_url = docs or website or GITHUB_REPO
     out: dict = {
         "name": display,
         "links": {
@@ -180,43 +112,40 @@ def build_provider(row: dict) -> dict:
         },
         "env_keys": string_val(
             ", ".join(row["env_keys"]) if row["env_keys"] else "(none — keyless)",
-            base_url,
-            "Environment variables read by anysearch.",
+            env_source,
+            "API keys and configuration variables documented by the provider.",
         ),
-        "python_extra": string_val(
-            row["extra_package"] or "— (REST only)",
-            GITHUB_INSTALL_DOC,
-            f"Optional: pip install 'anysearch-sdk[{slug}] @ {GITHUB_INSTALL_PY}'",
-        ),
+        "python_extra": string_val(extra_value, extra_source, extra_comment),
         "requires_key": feat(
             "none" if not row["requires_key"] else "full",
-            base_url,
-            "Keyless providers work without credentials.",
+            env_source,
+            "No API key required."
+            if not row["requires_key"]
+            else "Valid API key required for every request.",
         ),
         "snippet": feat(
             "full",
-            base_url,
-            "Short description field; available on virtually all providers.",
+            FEATURE_META.get(slug, {}).get("snippet", {}).get("source", docs or website),
+            FEATURE_META.get(slug, {}).get("snippet", {}).get(
+                "comment",
+                "Short description field returned with each result.",
+            ),
         ),
     }
 
     for key in FEATURE_KEYS:
         sup = support_for(key)
-        comment = FEATURE_LABELS.get(key, key)
-        if key in partial_notes:
-            comment = partial_notes[key]
-        elif key == "mode" and slug in MODE_MAP:
-            comment = f"Mapped: {MODE_MAP[slug]}"
-        out[key] = feat(sup, docs or website or base_url, comment)
+        default_comment = FEATURE_LABELS.get(key, key)
+        out[key] = feature_entry(slug, key, sup, docs, website, default_comment)
 
-    if slug in MODE_MAP:
-        out["mode_notes"] = string_val(MODE_MAP[slug], docs or base_url, "Unified mode knob mapping.")
+    mode = mode_for(slug, docs, website)
+    out["mode"] = list_val(mode["values"], mode["source_url"], mode["comment"])
 
     notes = []
     if not row["requires_key"]:
         notes.append("No API key required (keyless fallback).")
-    if row.get("extra_package"):
-        notes.append(f"Native SDK extra: {row['extra_package']}.")
+    if extra_pkg:
+        notes.append(f"Native SDK package: {extra_pkg}.")
     out["notes"] = " ".join(notes)
 
     return out

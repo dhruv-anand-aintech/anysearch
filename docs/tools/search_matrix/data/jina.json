@@ -1,85 +1,89 @@
 {
   "name": "Jina",
   "links": {
-    "docs": "https://jina.ai/reader",
+    "docs": "https://jina.ai/reader/",
     "github": "https://github.com/dhruv-anand-aintech/anysearch",
     "website": "https://jina.ai",
     "slug": "jina"
   },
   "env_keys": {
     "value": "JINA_API_KEY",
-    "source_url": "https://jina.ai/reader",
-    "comment": "Environment variables read by anysearch."
+    "source_url": "https://jina.ai/reader/",
+    "comment": "API keys and configuration variables documented by the provider."
   },
   "python_extra": {
     "value": "\u2014 (REST only)",
-    "source_url": "https://github.com/dhruv-anand-aintech/anysearch/tree/main/python#install",
-    "comment": "Optional: pip install 'anysearch-sdk[jina] @ git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python'"
+    "source_url": "https://jina.ai/reader/",
+    "comment": "HTTP API only; no required vendor Python SDK."
   },
   "requires_key": {
     "support": "full",
-    "source_url": "https://jina.ai/reader",
-    "comment": "Keyless providers work without credentials."
+    "source_url": "https://jina.ai/reader/",
+    "comment": "Valid API key required for every request."
   },
   "snippet": {
     "support": "full",
-    "source_url": "https://jina.ai/reader",
-    "comment": "Short description field; available on virtually all providers."
+    "source_url": "https://jina.ai/reader/",
+    "comment": "Short description field returned with each result."
   },
   "domains": {
     "support": "none",
-    "source_url": "https://jina.ai/reader",
+    "source_url": "https://jina.ai/reader/",
     "comment": "Domain filters"
   },
   "country": {
     "support": "none",
-    "source_url": "https://jina.ai/reader",
+    "source_url": "https://jina.ai/reader/",
     "comment": "Country (gl)"
   },
   "language": {
     "support": "none",
-    "source_url": "https://jina.ai/reader",
+    "source_url": "https://jina.ai/reader/",
     "comment": "Language"
   },
   "date": {
     "support": "none",
-    "source_url": "https://jina.ai/reader",
+    "source_url": "https://jina.ai/reader/",
     "comment": "Published date range"
   },
   "safe_search": {
     "support": "none",
-    "source_url": "https://jina.ai/reader",
+    "source_url": "https://jina.ai/reader/",
     "comment": "Safe search"
-  },
-  "mode": {
-    "support": "none",
-    "source_url": "https://jina.ai/reader",
-    "comment": "Depth (fast/balanced/deep)"
   },
   "answer": {
     "support": "none",
-    "source_url": "https://jina.ai/reader",
-    "comment": "Synthesized answer"
+    "source_url": "https://jina.ai/reader/",
+    "comment": "AI answer"
   },
   "content": {
     "support": "full",
-    "source_url": "https://jina.ai/reader",
-    "comment": "Full page text"
+    "source_url": "https://jina.ai/reader/",
+    "comment": "Search returns markdown page bodies unless `X-Respond-With: no-content` is set."
   },
   "summary": {
     "support": "none",
-    "source_url": "https://jina.ai/reader",
+    "source_url": "https://jina.ai/reader/",
     "comment": "AI per-result summary"
   },
   "highlights": {
     "support": "none",
-    "source_url": "https://jina.ai/reader",
+    "source_url": "https://jina.ai/reader/",
     "comment": "Query highlights"
   },
   "news": {
     "support": "none",
-    "source_url": "https://jina.ai/reader",
+    "source_url": "https://jina.ai/reader/",
     "comment": "News search type"
+  },
+  "mode": {
+    "values": [
+      "fast",
+      "balanced",
+      "deep"
+    ],
+    "source_url": "https://jina.ai/reader/",
+    "comment": "Reader Search (`s.jina.ai`): `fast` = header `X-Respond-With: no-content` (SERP metadata only). `balanced`/`deep` = fetch and return page markdown (default Reader pipeline; `deep` when full `include_content` is requested)."
   },
   "notes": ""
 }

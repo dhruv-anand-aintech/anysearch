@@ -24,6 +24,7 @@ class SearchRequest:
     query: str
     max_results: int = 10
     search_type: str = "web"  # "web" | "news"
+    engine: Optional[str] = None  # SerpApi backend, e.g. google | bing | baidu | yandex
     country: Optional[str] = None  # ISO 3166-1 alpha-2, e.g. "us"
     language: Optional[str] = None  # ISO 639-1, e.g. "en"
     include_domains: List[str] = field(default_factory=list)

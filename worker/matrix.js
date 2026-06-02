@@ -143,7 +143,10 @@ a { color: inherit; text-decoration: none; }
   padding-bottom: var(--footer-h);
   scroll-padding-bottom: var(--footer-h);
 }
-table { border-collapse: separate; border-spacing: 0; background: var(--panel); table-layout: fixed; }
+table {
+  border-collapse: separate; border-spacing: 0; background: var(--panel); table-layout: fixed;
+  width: 100%; min-width: 100%;
+}
 thead { position: sticky; top: 0; z-index: 20; }
 th {
   background: #eee7d8; color: #2a241b; font-weight: 700; font-size: 10px;
@@ -153,22 +156,36 @@ th {
 }
 th.corner { position: sticky; left: 0; z-index: 25; background: #e8decc; min-width: 156px; width: 156px; }
 th.agent-col {
-  min-width: 44px; max-width: 44px; width: 44px; height: 44px; cursor: pointer;
-  transition: opacity .15s;
+  width: var(--agent-col-w, 88px); min-width: var(--agent-col-w, 88px); max-width: var(--agent-col-w, 88px);
+  min-height: 64px; height: auto; cursor: pointer; transition: opacity .15s;
+  padding: 5px 6px 7px; vertical-align: bottom;
 }
 th.agent-col.dragging { opacity: .4; }
 th.agent-col.drag-over { background: #d5cdbb; }
-th.agent-col.hidden-col { opacity: .25; }
+th.agent-col.hidden-col {
+  width: var(--agent-col-hidden-w, 36px); min-width: var(--agent-col-hidden-w, 36px);
+  max-width: var(--agent-col-hidden-w, 36px); opacity: .35;
+}
+th.agent-col.hidden-col .agent-name { display: none; }
+td.col-hidden-slot {
+  width: var(--agent-col-hidden-w, 36px); min-width: var(--agent-col-hidden-w, 36px);
+  max-width: var(--agent-col-hidden-w, 36px); padding: 0; opacity: .2;
+}
+.agent-head {
+  display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
+  gap: 4px; min-height: 48px;
+}
+.agent-name {
+  width: 100%; box-sizing: border-box; font-weight: 700; line-height: 1.15; color: var(--ink);
+  text-align: center; overflow-wrap: anywhere; word-break: break-word; hyphens: auto;
+  overflow: hidden; max-height: 2.6em;
+}
 .row-label.dragging { opacity: .4; }
 .row-label.drag-over { outline: 2px dashed var(--accent); outline-offset: -2px; }
 .fav-box { display: inline-block; background: #fff; border-radius: 6px; line-height: 0; box-shadow: inset 0 0 0 1px var(--line); }
 th.agent-col .fav { width: 32px; height: 32px; vertical-align: middle; border-radius: 6px; }
 th.agent-col.deprecated-col { opacity: .42; }
-th.agent-col.deprecated-col .agent-full::after { content: " (deprecated)"; font-weight: 400; }
-th.agent-col .agent-full { display: none; position: absolute; left: 50%; transform: translateX(-50%);
-  top: calc(100% + 2px); background: #2a241b; color: #f6f4ee; font-size: 10px; padding: 2px 6px;
-  border-radius: 3px; white-space: nowrap; z-index: 30; pointer-events: none; }
-th.agent-col:hover .agent-full { display: block; }
+th.agent-col.deprecated-col .agent-name::after { content: " (deprecated)"; font-weight: 400; font-size: 8px; }
 th.agent-col .eye {
   position: absolute; top: 1px; right: 2px; font-size: 9px; color: var(--muted); opacity: .5; pointer-events: none;
 }
@@ -234,8 +251,8 @@ td.cell-wrap .dot {
 .cell-tip-link { white-space: nowrap; }
 td.value {
   font-size: 9px; color: var(--muted); line-height: 1.35; text-align: left; vertical-align: top;
-  width: 44px; max-width: 44px; min-width: 44px; white-space: normal;
-  overflow-wrap: anywhere; word-break: break-word; hyphens: auto;
+  width: var(--agent-col-w, 88px); max-width: var(--agent-col-w, 88px); min-width: var(--agent-col-w, 88px);
+  white-space: normal; overflow-wrap: anywhere; word-break: break-word; hyphens: auto;
 }
 td.value .cell-value {
   display: block; max-width: 100%; overflow-wrap: anywhere; word-break: break-word;
@@ -278,7 +295,7 @@ td.value .cell-value {
   </nav>
 </header>
 <section class="hero">
-  <p>Compare ${htmlEscape(matrix.length)} search APIs on unified <strong>anysearch</strong> parameters. Hover a column for the provider name, drag to reorder, click to hide/show.</p>
+  <p>Compare ${htmlEscape(matrix.length)} search APIs on unified <strong>anysearch</strong> parameters. Drag columns to reorder; click a header to hide or show a provider.</p>
   <div class="meta-row">
     <span class="pill">${htmlEscape(matrix.length)} providers</span>
     <span class="pill"><a href="${GITHUB_REPO}">anysearch SDK</a></span>
@@ -332,7 +349,7 @@ function refreshUpdatedPill() {
 refreshUpdatedPill();
 setInterval(refreshUpdatedPill, 60000);
 // String/metadata rows in About; feature-shaped rows (e.g. requires_key) stay in featureCols.
-const metaCols = new Set(['name','env_keys','python_extra','mode_notes','notes']);
+const metaCols = new Set(['name','env_keys','python_extra','notes']);
 const featureCols = columns.filter(c => !metaCols.has(c.key));
 const aboutCols = columns.filter(c => metaCols.has(c.key) && c.key !== 'name' && c.key !== 'notes');
 const DATE_SORT_ROWS = new Set([]);
@@ -345,6 +362,16 @@ let hidden = new Set();
 let rowSort = [];
 const SORT_ORDER = { full:0, partial:1, none:2, unknown:3, "":4 };
 const FORM_FACTOR_ORDER = ['CLI','IDE','Extension','SDK','Web','Mac App'];
+const MODE_ORDER = ['fast','balanced','deep'];
+const MULTI_VALUE_COLS = new Set(['form_factor','mode']);
+function sortModes(vals) {
+  var rank = {};
+  MODE_ORDER.forEach(function(v,i){rank[v]=i});
+  return vals.slice().sort(function(a,b){
+    var ra = rank[a]!==undefined?rank[a]:99, rb = rank[b]!==undefined?rank[b]:99;
+    return ra-rb || String(a).localeCompare(String(b));
+  });
+}
 function sortFormFactors(vals) {
   var rank = {};
   FORM_FACTOR_ORDER.forEach(function(v,i){rank[v]=i});
@@ -367,11 +394,14 @@ function dateSortKey(agent, key) {
   if (field.sort_date) return Date.parse(field.sort_date + 'T12:00:00Z') || 0;
   return parseDisplayDate(field.value);
 }
+function sortPriorityNumber(sortEntry) {
+  return rowSort.length - rowSort.indexOf(sortEntry);
+}
 function sortableLabelHtml(label, key) {
   var sortEntry = rowSort.find(function(s){ return s.key === key; });
   var isSort = !!sortEntry;
   var active = isSort ? ' filter-active' : '';
-  var arrow = isSort ? (rowSort.indexOf(sortEntry) + 1) : '&#9654;';
+  var arrow = isSort ? sortPriorityNumber(sortEntry) : '&#9654;';
   return '<td class="row-label'+active+'" data-rowkey="'+key+'" onclick="cycleSort('+"'"+key+"'"+')" title="Sort columns by this date"><span class="row-label-tip">'+esc(label)+'</span><span class="arrow">'+arrow+'</span>'+esc(label)+'</td>';
 }
 
@@ -444,10 +474,12 @@ function favimg(agent, idx) {
 function cell(agent, col) {
   var v = agent[col.key];
   if (!v) return '<td>&mdash;</td>';
-  if (col.key==='form_factor') {
-    var tags = sortFormFactors((v.values||[v.value]).filter(Boolean));
+  if (MULTI_VALUE_COLS.has(col.key)) {
+    var sortFn = col.key === 'mode' ? sortModes : sortFormFactors;
+    var tags = sortFn((v.values||[v.value]).filter(Boolean));
     var links = v.links || {};
     var tip = cellTipHtml(v.comment, v.source_url, links);
+    if (!tags.length) return '<td class="cell-wrap value"><span class="cell-value">&mdash;</span>'+tip+'</td>';
     var tagHtml = tags.map(function(x){
       var href = links[x];
       if (href) return '<a class="form-tag" href="'+esc(href)+'" target="_blank" rel="noreferrer">'+esc(x)+'</a>';
@@ -472,37 +504,90 @@ function cell(agent, col) {
   }
   return '<td>&mdash;</td>';
 }
+function updateColWidths() {
+  var wrap = document.querySelector('.table-wrap');
+  var corner = 156;
+  var minVisible = 80;
+  var minHidden = 36;
+  var hiddenCount = 0;
+  colOrder.forEach(function(i){ if (hidden.has(i)) hiddenCount++; });
+  var visibleCount = visibleCols().length || 1;
+  var avail = Math.max(0, (wrap ? wrap.clientWidth : window.innerWidth) - corner);
+  var hiddenW = hiddenCount * minHidden;
+  var w = Math.max(minVisible, Math.floor((avail - hiddenW) / visibleCount));
+  document.documentElement.style.setProperty('--agent-col-w', w + 'px');
+  document.documentElement.style.setProperty('--agent-col-hidden-w', minHidden + 'px');
+}
+function fitAgentHeaderNames() {
+  document.querySelectorAll('th.agent-col:not(.hidden-col) .agent-name').forEach(function(el) {
+    el.style.fontSize = '';
+    var box = el.parentElement;
+    if (!box) return;
+    var maxW = Math.max(0, box.clientWidth - 2);
+    var maxH = 34;
+    var fs = 10;
+    el.style.fontSize = fs + 'px';
+    while (fs > 5.5 && (el.scrollWidth > maxW + 1 || el.scrollHeight > maxH)) {
+      fs -= 0.5;
+      el.style.fontSize = fs + 'px';
+    }
+  });
+}
+function scheduleFitAgentHeaderNames() {
+  requestAnimationFrame(function() {
+    requestAnimationFrame(fitAgentHeaderNames);
+  });
+}
 function renderHeader() {
-  document.getElementById('headerRow').innerHTML = '<th class="corner"></th>'+colOrder.map(function(i){
+  document.getElementById('headerRow').innerHTML = '<th class="corner"></th>'+displayColOrder().map(function(i){
     var agent = matrix[i], hc = hidden.has(i)?' hidden-col':'', dep = agent.deprecated?' deprecated-col':'';
     return '<th class="agent-col'+hc+dep+'" data-idx="'+i+'" draggable="true" onclick="toggleCol('+i+')" title="Click to toggle visibility">'+
-      favimg(agent, i)+'<span class="eye">'+(hidden.has(i)?'&#8855;':'&#9679;')+'</span><div class="agent-full">'+esc(agent.name)+'</div></th>';
-  }).join(''); setupColDrag();
+      '<div class="agent-head">'+favimg(agent, i)+'<span class="agent-name">'+esc(agent.name)+'</span></div>'+
+      '<span class="eye">'+(hidden.has(i)?'&#8855;':'&#9679;')+'</span></th>';
+  }).join(''); setupColDrag(); updateColWidths(); scheduleFitAgentHeaderNames();
 }
 function visibleCols() { return colOrder.filter(function(i){return !hidden.has(i)}); }
+function sortVisibleColumnIndices(indices) {
+  if (!rowSort.length) return indices.slice();
+  var originalRank = {};
+  indices.forEach(function(i, idx){ originalRank[i] = idx; });
+  var priority = rowSort.slice().reverse();
+  return indices.slice().sort(function(a,b){
+    for (var p=0; p<priority.length; p++) {
+      var key = priority[p].key;
+      var va = SORT_ORDER[(matrix[a][key]||{}).support||''];
+      var vb = SORT_ORDER[(matrix[b][key]||{}).support||''];
+      if (va === undefined) va = 4;
+      if (vb === undefined) vb = 4;
+      if (va !== vb) return va - vb;
+    }
+    return originalRank[a] - originalRank[b];
+  });
+}
+function displayColOrder() {
+  if (!rowSort.length) return colOrder.slice();
+  var sortedVisible = sortVisibleColumnIndices(visibleCols());
+  var qi = 0;
+  return colOrder.map(function(i) {
+    if (hidden.has(i)) return i;
+    return sortedVisible[qi++];
+  });
+}
+function colCell(i, col, render) {
+  if (hidden.has(i)) return '<td class="col-hidden-slot" aria-hidden="true"></td>';
+  return render();
+}
 function renderBody() {
-  var vc = visibleCols();
-  if (rowSort.length) {
-    var originalRank = {};
-    vc.forEach(function(i, idx){ originalRank[i] = idx; });
-    var priority = rowSort.slice().reverse();
-    vc = vc.slice().sort(function(a,b){
-      for (var p=0; p<priority.length; p++) {
-        var key = priority[p].key;
-        var va = SORT_ORDER[(matrix[a][key]||{}).support||''];
-        var vb = SORT_ORDER[(matrix[b][key]||{}).support||''];
-        if (va === undefined) va = 4;
-        if (vb === undefined) vb = 4;
-        if (va !== vb) return va - vb;
-      }
-      return originalRank[a] - originalRank[b];
-    });
-  }
+  var cols = displayColOrder();
   var rows = [];
-  rows.push('<tr class="group-head">'+rowLabelCell('About',' group-row-label','')+vc.map(function(){return '<td class="group-spacer"></td>'}).join('')+'</tr>');
+  rows.push('<tr class="group-head">'+rowLabelCell('About',' group-row-label','')+cols.map(function(i){
+    return colCell(i, null, function(){ return '<td class="group-spacer"></td>'; });
+  }).join('')+'</tr>');
   aboutCols.forEach(function(col){
     var label = rowLabelCell(col.label,'','');
-    rows.push('<tr>'+label+vc.map(function(i){return cell(matrix[i],col)}).join('')+'</tr>');
+    rows.push('<tr>'+label+cols.map(function(i){
+      return colCell(i, col, function(){ return cell(matrix[i], col); });
+    }).join('')+'</tr>');
   });
   // Feature rows in saved order, grouped
   var used = {};
@@ -512,12 +597,10 @@ function renderBody() {
     var sortEntry = rowSort.find(function(s){ return s.key===key; });
     var isSort = !!sortEntry;
     var active = isSort?' filter-active':'';
-    var arrow = isSort?(rowSort.indexOf(sortEntry)+1):'&#9654;';
+    var arrow = isSort ? sortPriorityNumber(sortEntry) : '&#9654;';
     var labelHtml = '<td class="row-label'+active+'" draggable="true" data-rowkey="'+key+'" onclick="cycleSort('+"'"+key+"'"+')" title="Sort columns by this feature"><span class="row-label-tip">'+esc(col.label)+'</span><span class="arrow">'+arrow+'</span>'+esc(col.label)+'</td>';
-    var cells = vc.map(function(i){
-      if (!isSort) return cell(matrix[i],col);
-      var s = (matrix[i][col.key]||{}).support||'';
-      return cell(matrix[i],col);
+    var cells = cols.map(function(i){
+      return colCell(i, col, function(){ return cell(matrix[i], col); });
     }).join('');
     rows.push('<tr>'+labelHtml+cells+'</tr>');
   });
@@ -525,13 +608,15 @@ function renderBody() {
   setupRowDrag();
   setupCellTips();
 }
-function toggleCol(i) { hidden.has(i)?hidden.delete(i):hidden.add(i); renderHeader(); renderBody(); }
+function toggleCol(i) { hidden.has(i)?hidden.delete(i):hidden.add(i); renderHeader(); renderBody(); updateColWidths(); scheduleFitAgentHeaderNames(); }
 function cycleSort(key) {
   if (DATE_SORT_ROWS.has(key)) return;
   var idx = rowSort.findIndex(function(s){ return s.key === key; });
   if (idx !== -1) rowSort.splice(idx, 1);
   else rowSort.push({key:key});
+  renderHeader();
   renderBody();
+  updateColWidths();
 }
 function setupColDrag() {
   document.querySelectorAll('th.agent-col').forEach(function(th){
@@ -544,7 +629,7 @@ function setupColDrag() {
       if (isNaN(from)||isNaN(to)||from===to) return;
       var fp=colOrder.indexOf(from),tp=colOrder.indexOf(to);
       if (fp===-1||tp===-1) return;
-      colOrder.splice(fp,1);colOrder.splice(tp,0,from);saveState();renderHeader();renderBody();
+      colOrder.splice(fp,1);colOrder.splice(tp,0,from);saveState();renderHeader();renderBody();updateColWidths();scheduleFitAgentHeaderNames();
     });
   });
 }
@@ -610,6 +695,7 @@ function setupCellTips() {
 }
 var state = loadState(); colOrder = state.cols; rowOrder = state.rows;
 renderHeader(); renderBody();
+window.addEventListener('resize', function(){ updateColWidths(); scheduleFitAgentHeaderNames(); });
 </script>
 </body>
 </html>`;

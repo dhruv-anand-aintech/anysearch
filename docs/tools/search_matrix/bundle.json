@@ -10,22 +10,22 @@
     "env_keys": {
       "value": "BRAVE_API_KEY, BRAVE_SEARCH_API_KEY",
       "source_url": "https://api-dashboard.search.brave.com/app/documentation/web-search/get-started",
-      "comment": "Environment variables read by anysearch."
+      "comment": "API keys and configuration variables documented by the provider."
     },
     "python_extra": {
       "value": "\u2014 (REST only)",
-      "source_url": "https://github.com/dhruv-anand-aintech/anysearch/tree/main/python#install",
-      "comment": "Optional: pip install 'anysearch-sdk[brave] @ git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python'"
+      "source_url": "https://api-dashboard.search.brave.com/app/documentation/web-search/get-started",
+      "comment": "HTTP API only; no required vendor Python SDK."
     },
     "requires_key": {
       "support": "full",
       "source_url": "https://api-dashboard.search.brave.com/app/documentation/web-search/get-started",
-      "comment": "Keyless providers work without credentials."
+      "comment": "Valid API key required for every request."
     },
     "snippet": {
       "support": "full",
       "source_url": "https://api-dashboard.search.brave.com/app/documentation/web-search/get-started",
-      "comment": "Short description field; available on virtually all providers."
+      "comment": "Short description field returned with each result."
     },
     "domains": {
       "support": "none",
@@ -35,32 +35,27 @@
     "country": {
       "support": "full",
       "source_url": "https://api-dashboard.search.brave.com/app/documentation/web-search/get-started",
-      "comment": "Country (gl)"
+      "comment": "`country` \u2014 filter by country (web and news)."
     },
     "language": {
       "support": "full",
       "source_url": "https://api-dashboard.search.brave.com/app/documentation/web-search/get-started",
-      "comment": "Language"
+      "comment": "`search_lang` and `ui_lang` for result and UI language."
     },
     "date": {
       "support": "full",
       "source_url": "https://api-dashboard.search.brave.com/app/documentation/web-search/get-started",
-      "comment": "Published date range"
+      "comment": "`freshness` presets (`pd`, `pw`, `pm`, `py`) or custom `YYYY-MM-DDtoYYYY-MM-DD`."
     },
     "safe_search": {
       "support": "full",
       "source_url": "https://api-dashboard.search.brave.com/app/documentation/web-search/get-started",
-      "comment": "Safe search"
-    },
-    "mode": {
-      "support": "none",
-      "source_url": "https://api-dashboard.search.brave.com/app/documentation/web-search/get-started",
-      "comment": "Depth (fast/balanced/deep)"
+      "comment": "`safesearch`: `off`, `moderate`, `strict`."
     },
     "answer": {
       "support": "none",
       "source_url": "https://api-dashboard.search.brave.com/app/documentation/web-search/get-started",
-      "comment": "Synthesized answer"
+      "comment": "AI answer"
     },
     "content": {
       "support": "none",
@@ -74,13 +69,22 @@
     },
     "highlights": {
       "support": "full",
-      "source_url": "https://api-dashboard.search.brave.com/app/documentation/web-search/get-started",
-      "comment": "Query highlights"
+      "source_url": "https://api-dashboard.search.brave.com/app/documentation/web-search",
+      "comment": "`extra_snippets=true` \u2014 up to 5 alternate excerpts per web result (Pro)."
     },
     "news": {
       "support": "full",
       "source_url": "https://api-dashboard.search.brave.com/app/documentation/web-search/get-started",
-      "comment": "News search type"
+      "comment": "Dedicated `/res/v1/news/search` endpoint."
+    },
+    "mode": {
+      "values": [
+        "fast",
+        "balanced",
+        "deep"
+      ],
+      "source_url": "https://api-dashboard.search.brave.com/app/documentation/web-search",
+      "comment": "No named depth tier; latency/richness via query params. `fast`/`balanced`: default web/news search (one description per result). `deep`: `extra_snippets=true` (up to 5 alternate excerpts per result; Pro plans)."
     },
     "notes": ""
   },
@@ -95,22 +99,22 @@
     "env_keys": {
       "value": "(none \u2014 keyless)",
       "source_url": "https://pypi.org/project/ddgs/",
-      "comment": "Environment variables read by anysearch."
+      "comment": "API keys and configuration variables documented by the provider."
     },
     "python_extra": {
       "value": "ddgs",
-      "source_url": "https://github.com/dhruv-anand-aintech/anysearch/tree/main/python#install",
-      "comment": "Optional: pip install 'anysearch-sdk[duckduckgo] @ git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python'"
+      "source_url": "https://pypi.org/project/ddgs/",
+      "comment": "Optional PyPI package: ddgs (install via anysearch-sdk extra `duckduckgo`)."
     },
     "requires_key": {
       "support": "none",
       "source_url": "https://pypi.org/project/ddgs/",
-      "comment": "Keyless providers work without credentials."
+      "comment": "No API key required."
     },
     "snippet": {
       "support": "full",
       "source_url": "https://pypi.org/project/ddgs/",
-      "comment": "Short description field; available on virtually all providers."
+      "comment": "Short description field returned with each result."
     },
     "domains": {
       "support": "none",
@@ -120,7 +124,7 @@
     "country": {
       "support": "full",
       "source_url": "https://pypi.org/project/ddgs/",
-      "comment": "Country (gl)"
+      "comment": "DDGS `region` / locale parameters (see package docs)."
     },
     "language": {
       "support": "none",
@@ -135,17 +139,12 @@
     "safe_search": {
       "support": "full",
       "source_url": "https://pypi.org/project/ddgs/",
-      "comment": "Safe search"
-    },
-    "mode": {
-      "support": "none",
-      "source_url": "https://pypi.org/project/ddgs/",
-      "comment": "Depth (fast/balanced/deep)"
+      "comment": "DDGS `safesearch` mapping for web search."
     },
     "answer": {
       "support": "none",
       "source_url": "https://pypi.org/project/ddgs/",
-      "comment": "Synthesized answer"
+      "comment": "AI answer"
     },
     "content": {
       "support": "none",
@@ -167,350 +166,365 @@
       "source_url": "https://pypi.org/project/ddgs/",
       "comment": "News search type"
     },
-    "notes": "No API key required (keyless fallback). Native SDK extra: ddgs."
+    "mode": {
+      "values": [
+        "balanced"
+      ],
+      "source_url": "https://pypi.org/project/ddgs/",
+      "comment": "Keyless DDGS client: instant web results without a depth parameter. Matrix `balanced` = default `text()` search."
+    },
+    "notes": "No API key required (keyless fallback). Native SDK package: ddgs."
   },
   {
     "name": "Exa",
     "links": {
-      "docs": "https://docs.exa.ai/reference/search",
+      "docs": "https://exa.ai/docs/reference/search",
       "github": "https://github.com/dhruv-anand-aintech/anysearch",
       "website": "https://exa.ai",
       "slug": "exa"
     },
     "env_keys": {
       "value": "EXA_API_KEY",
-      "source_url": "https://docs.exa.ai/reference/search",
-      "comment": "Environment variables read by anysearch."
+      "source_url": "https://exa.ai/docs/reference/quickstart",
+      "comment": "API keys and configuration variables documented by the provider."
     },
     "python_extra": {
       "value": "exa-py",
-      "source_url": "https://github.com/dhruv-anand-aintech/anysearch/tree/main/python#install",
-      "comment": "Optional: pip install 'anysearch-sdk[exa] @ git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python'"
+      "source_url": "https://pypi.org/project/exa-py/",
+      "comment": "Optional PyPI package: exa-py (install via anysearch-sdk extra `exa`)."
     },
     "requires_key": {
       "support": "full",
-      "source_url": "https://docs.exa.ai/reference/search",
-      "comment": "Keyless providers work without credentials."
+      "source_url": "https://exa.ai/docs/reference/quickstart",
+      "comment": "Valid API key required for every request."
     },
     "snippet": {
       "support": "full",
-      "source_url": "https://docs.exa.ai/reference/search",
-      "comment": "Short description field; available on virtually all providers."
+      "source_url": "https://exa.ai/docs/reference/search",
+      "comment": "Short description field returned with each result."
     },
     "domains": {
       "support": "full",
-      "source_url": "https://docs.exa.ai/reference/search",
-      "comment": "Domain filters"
+      "source_url": "https://exa.ai/docs/reference/search",
+      "comment": "`includeDomains` / `excludeDomains` on POST /search."
     },
     "country": {
       "support": "full",
-      "source_url": "https://docs.exa.ai/reference/search",
-      "comment": "Country (gl)"
+      "source_url": "https://exa.ai/docs/reference/search",
+      "comment": "`userLocation` (ISO country code) biases results."
     },
     "language": {
       "support": "none",
-      "source_url": "https://docs.exa.ai/reference/search",
+      "source_url": "https://exa.ai/docs/reference/search",
       "comment": "Language"
     },
     "date": {
       "support": "full",
-      "source_url": "https://docs.exa.ai/reference/search",
-      "comment": "Published date range"
+      "source_url": "https://exa.ai/docs/reference/search",
+      "comment": "`startPublishedDate` / `endPublishedDate` (ISO dates)."
     },
     "safe_search": {
       "support": "full",
-      "source_url": "https://docs.exa.ai/reference/search",
-      "comment": "Safe search"
-    },
-    "mode": {
-      "support": "full",
-      "source_url": "https://docs.exa.ai/reference/search",
-      "comment": "Mapped: fast \u2192 fast, balanced \u2192 auto, deep \u2192 deep"
+      "source_url": "https://exa.ai/docs/reference/search",
+      "comment": "`moderation: true` enables content filtering."
     },
     "answer": {
       "support": "none",
-      "source_url": "https://docs.exa.ai/reference/search",
-      "comment": "Synthesized answer"
+      "source_url": "https://exa.ai/docs/reference/search",
+      "comment": "AI answer"
     },
     "content": {
       "support": "full",
-      "source_url": "https://docs.exa.ai/reference/search",
-      "comment": "Full page text"
+      "source_url": "https://exa.ai/docs/reference/search",
+      "comment": "`contents.text` (or highlights) in the request body."
     },
     "summary": {
       "support": "full",
-      "source_url": "https://docs.exa.ai/reference/search",
-      "comment": "AI per-result summary"
+      "source_url": "https://exa.ai/docs/reference/search",
+      "comment": "`contents.summary` returns an AI summary per result."
     },
     "highlights": {
       "support": "full",
-      "source_url": "https://docs.exa.ai/reference/search",
-      "comment": "Query highlights"
+      "source_url": "https://exa.ai/docs/reference/search-best-practices",
+      "comment": "`contents.highlights` \u2014 query-relevant excerpts (~10\u00d7 fewer tokens than full text)."
     },
     "news": {
       "support": "full",
-      "source_url": "https://docs.exa.ai/reference/search",
-      "comment": "News search type"
+      "source_url": "https://exa.ai/docs/reference/search",
+      "comment": "`category: news` or `type` tuned for news-style retrieval."
     },
-    "mode_notes": {
-      "value": "fast \u2192 fast, balanced \u2192 auto, deep \u2192 deep",
-      "source_url": "https://docs.exa.ai/reference/search",
-      "comment": "Unified mode knob mapping."
+    "mode": {
+      "values": [
+        "fast",
+        "balanced",
+        "deep"
+      ],
+      "source_url": "https://exa.ai/docs/reference/search-best-practices",
+      "comment": "Native `type` on /search: `fast` (~500ms), `auto` default (balanced), `deep` / `deep-lite` / `deep-reasoning` for multi-step research. anysearch maps fast\u2192fast, balanced\u2192auto, deep\u2192deep."
     },
-    "notes": "Native SDK extra: exa-py."
+    "notes": "Native SDK package: exa-py."
   },
   {
     "name": "Firecrawl",
     "links": {
-      "docs": "https://docs.firecrawl.dev/features/search",
+      "docs": "https://docs.firecrawl.dev/api-reference/endpoint/search",
       "github": "https://github.com/dhruv-anand-aintech/anysearch",
       "website": "https://www.firecrawl.dev",
       "slug": "firecrawl"
     },
     "env_keys": {
       "value": "FIRECRAWL_API_KEY",
-      "source_url": "https://docs.firecrawl.dev/features/search",
-      "comment": "Environment variables read by anysearch."
+      "source_url": "https://docs.firecrawl.dev/api-reference/endpoint/search",
+      "comment": "API keys and configuration variables documented by the provider."
     },
     "python_extra": {
       "value": "firecrawl-py",
-      "source_url": "https://github.com/dhruv-anand-aintech/anysearch/tree/main/python#install",
-      "comment": "Optional: pip install 'anysearch-sdk[firecrawl] @ git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python'"
+      "source_url": "https://pypi.org/project/firecrawl-py/",
+      "comment": "Optional PyPI package: firecrawl-py (install via anysearch-sdk extra `firecrawl`)."
     },
     "requires_key": {
       "support": "full",
-      "source_url": "https://docs.firecrawl.dev/features/search",
-      "comment": "Keyless providers work without credentials."
+      "source_url": "https://docs.firecrawl.dev/api-reference/endpoint/search",
+      "comment": "Valid API key required for every request."
     },
     "snippet": {
       "support": "full",
-      "source_url": "https://docs.firecrawl.dev/features/search",
-      "comment": "Short description field; available on virtually all providers."
+      "source_url": "https://docs.firecrawl.dev/api-reference/endpoint/search",
+      "comment": "Short description field returned with each result."
     },
     "domains": {
       "support": "none",
-      "source_url": "https://docs.firecrawl.dev/features/search",
+      "source_url": "https://docs.firecrawl.dev/api-reference/endpoint/search",
       "comment": "Domain filters"
     },
     "country": {
       "support": "full",
-      "source_url": "https://docs.firecrawl.dev/features/search",
-      "comment": "Country (gl)"
+      "source_url": "https://docs.firecrawl.dev/api-reference/endpoint/search",
+      "comment": "`country` \u2014 ISO country code on POST /v2/search."
     },
     "language": {
       "support": "none",
-      "source_url": "https://docs.firecrawl.dev/features/search",
+      "source_url": "https://docs.firecrawl.dev/api-reference/endpoint/search",
       "comment": "Language"
     },
     "date": {
       "support": "none",
-      "source_url": "https://docs.firecrawl.dev/features/search",
+      "source_url": "https://docs.firecrawl.dev/api-reference/endpoint/search",
       "comment": "Published date range"
     },
     "safe_search": {
       "support": "none",
-      "source_url": "https://docs.firecrawl.dev/features/search",
+      "source_url": "https://docs.firecrawl.dev/api-reference/endpoint/search",
       "comment": "Safe search"
-    },
-    "mode": {
-      "support": "none",
-      "source_url": "https://docs.firecrawl.dev/features/search",
-      "comment": "Depth (fast/balanced/deep)"
     },
     "answer": {
       "support": "none",
-      "source_url": "https://docs.firecrawl.dev/features/search",
-      "comment": "Synthesized answer"
+      "source_url": "https://docs.firecrawl.dev/api-reference/endpoint/search",
+      "comment": "AI answer"
     },
     "content": {
       "support": "full",
       "source_url": "https://docs.firecrawl.dev/features/search",
-      "comment": "Full page text"
+      "comment": "`scrapeOptions.formats` (e.g. `markdown`) embeds full page text per hit."
     },
     "summary": {
       "support": "none",
-      "source_url": "https://docs.firecrawl.dev/features/search",
+      "source_url": "https://docs.firecrawl.dev/api-reference/endpoint/search",
       "comment": "AI per-result summary"
     },
     "highlights": {
       "support": "none",
-      "source_url": "https://docs.firecrawl.dev/features/search",
+      "source_url": "https://docs.firecrawl.dev/api-reference/endpoint/search",
       "comment": "Query highlights"
     },
     "news": {
       "support": "full",
-      "source_url": "https://docs.firecrawl.dev/features/search",
-      "comment": "News search type"
+      "source_url": "https://docs.firecrawl.dev/api-reference/endpoint/search",
+      "comment": "`sources: [{\"type\": \"news\"}]` for news results."
     },
-    "notes": "Native SDK extra: firecrawl-py."
+    "mode": {
+      "values": [
+        "balanced",
+        "deep"
+      ],
+      "source_url": "https://docs.firecrawl.dev/features/search",
+      "comment": "No separate speed preset on /v2/search. `balanced`: results are title, URL, description only. `deep`: pass `scrapeOptions` (e.g. markdown) to scrape each hit inline."
+    },
+    "notes": "Native SDK package: firecrawl-py."
   },
   {
     "name": "Google PSE",
     "links": {
-      "docs": "https://developers.google.com/custom-search/v1/overview",
+      "docs": "https://developers.google.com/custom-search/v1/reference/rest/v1/cse/list",
       "github": "https://github.com/dhruv-anand-aintech/anysearch",
       "website": "https://programmablesearchengine.google.com",
       "slug": "google_pse"
     },
     "env_keys": {
       "value": "GOOGLE_PSE_API_KEY, GOOGLE_CSE_API_KEY, GOOGLE_API_KEY",
-      "source_url": "https://developers.google.com/custom-search/v1/overview",
-      "comment": "Environment variables read by anysearch."
+      "source_url": "https://developers.google.com/custom-search/v1/using_rest",
+      "comment": "API keys and configuration variables documented by the provider."
     },
     "python_extra": {
       "value": "\u2014 (REST only)",
-      "source_url": "https://github.com/dhruv-anand-aintech/anysearch/tree/main/python#install",
-      "comment": "Optional: pip install 'anysearch-sdk[google_pse] @ git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python'"
+      "source_url": "https://developers.google.com/custom-search/v1/reference/rest/v1/cse/list",
+      "comment": "HTTP API only; no required vendor Python SDK."
     },
     "requires_key": {
       "support": "full",
-      "source_url": "https://developers.google.com/custom-search/v1/overview",
-      "comment": "Keyless providers work without credentials."
+      "source_url": "https://developers.google.com/custom-search/v1/using_rest",
+      "comment": "Valid API key required for every request."
     },
     "snippet": {
       "support": "full",
-      "source_url": "https://developers.google.com/custom-search/v1/overview",
-      "comment": "Short description field; available on virtually all providers."
+      "source_url": "https://developers.google.com/custom-search/v1/reference/rest/v1/cse/list",
+      "comment": "Short description field returned with each result."
     },
     "domains": {
-      "support": "full",
-      "source_url": "https://developers.google.com/custom-search/v1/overview",
-      "comment": "Single include or exclude domain via siteSearch (first list item)."
+      "support": "partial",
+      "source_url": "https://developers.google.com/custom-search/v1/reference/rest/v1/cse/list",
+      "comment": "Single `siteSearch` + `siteSearchFilter` (`i` include / `e` exclude)\u2014first domain only."
     },
     "country": {
       "support": "full",
-      "source_url": "https://developers.google.com/custom-search/v1/overview",
-      "comment": "Country (gl)"
+      "source_url": "https://developers.google.com/custom-search/v1/reference/rest/v1/cse/list",
+      "comment": "`gl` \u2014 geolocation of end user."
     },
     "language": {
       "support": "full",
-      "source_url": "https://developers.google.com/custom-search/v1/overview",
-      "comment": "Language"
+      "source_url": "https://developers.google.com/custom-search/v1/reference/rest/v1/cse/list",
+      "comment": "`hl` UI language and `lr` lang_restrict."
     },
     "date": {
-      "support": "none",
-      "source_url": "https://developers.google.com/custom-search/v1/overview",
-      "comment": "Published date range"
+      "support": "partial",
+      "source_url": "https://developers.google.com/custom-search/v1/reference/rest/v1/cse/list",
+      "comment": "`sort=date:r:YYYYMMDD:YYYYMMDD` when both range ends are set."
     },
     "safe_search": {
       "support": "full",
-      "source_url": "https://developers.google.com/custom-search/v1/overview",
-      "comment": "Safe search"
-    },
-    "mode": {
-      "support": "none",
-      "source_url": "https://developers.google.com/custom-search/v1/overview",
-      "comment": "Depth (fast/balanced/deep)"
+      "source_url": "https://developers.google.com/custom-search/v1/reference/rest/v1/cse/list",
+      "comment": "`safe`: `active` or `off`."
     },
     "answer": {
       "support": "none",
-      "source_url": "https://developers.google.com/custom-search/v1/overview",
-      "comment": "Synthesized answer"
+      "source_url": "https://developers.google.com/custom-search/v1/reference/rest/v1/cse/list",
+      "comment": "AI answer"
     },
     "content": {
       "support": "none",
-      "source_url": "https://developers.google.com/custom-search/v1/overview",
+      "source_url": "https://developers.google.com/custom-search/v1/reference/rest/v1/cse/list",
       "comment": "Full page text"
     },
     "summary": {
       "support": "none",
-      "source_url": "https://developers.google.com/custom-search/v1/overview",
+      "source_url": "https://developers.google.com/custom-search/v1/reference/rest/v1/cse/list",
       "comment": "AI per-result summary"
     },
     "highlights": {
       "support": "none",
-      "source_url": "https://developers.google.com/custom-search/v1/overview",
+      "source_url": "https://developers.google.com/custom-search/v1/reference/rest/v1/cse/list",
       "comment": "Query highlights"
     },
     "news": {
       "support": "none",
-      "source_url": "https://developers.google.com/custom-search/v1/overview",
+      "source_url": "https://developers.google.com/custom-search/v1/reference/rest/v1/cse/list",
       "comment": "News search type"
+    },
+    "mode": {
+      "values": [
+        "balanced"
+      ],
+      "source_url": "https://developers.google.com/custom-search/v1/reference/rest/v1/cse/list",
+      "comment": "Custom Search JSON API: no search-depth or speed preset\u2014only `num`, `sort`, and `siteSearch` filters. Matrix `balanced` = default `cse.list` behavior."
     },
     "notes": ""
   },
   {
     "name": "Jina",
     "links": {
-      "docs": "https://jina.ai/reader",
+      "docs": "https://jina.ai/reader/",
       "github": "https://github.com/dhruv-anand-aintech/anysearch",
       "website": "https://jina.ai",
       "slug": "jina"
     },
     "env_keys": {
       "value": "JINA_API_KEY",
-      "source_url": "https://jina.ai/reader",
-      "comment": "Environment variables read by anysearch."
+      "source_url": "https://jina.ai/reader/",
+      "comment": "API keys and configuration variables documented by the provider."
     },
     "python_extra": {
       "value": "\u2014 (REST only)",
-      "source_url": "https://github.com/dhruv-anand-aintech/anysearch/tree/main/python#install",
-      "comment": "Optional: pip install 'anysearch-sdk[jina] @ git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python'"
+      "source_url": "https://jina.ai/reader/",
+      "comment": "HTTP API only; no required vendor Python SDK."
     },
     "requires_key": {
       "support": "full",
-      "source_url": "https://jina.ai/reader",
-      "comment": "Keyless providers work without credentials."
+      "source_url": "https://jina.ai/reader/",
+      "comment": "Valid API key required for every request."
     },
     "snippet": {
       "support": "full",
-      "source_url": "https://jina.ai/reader",
-      "comment": "Short description field; available on virtually all providers."
+      "source_url": "https://jina.ai/reader/",
+      "comment": "Short description field returned with each result."
     },
     "domains": {
       "support": "none",
-      "source_url": "https://jina.ai/reader",
+      "source_url": "https://jina.ai/reader/",
       "comment": "Domain filters"
     },
     "country": {
       "support": "none",
-      "source_url": "https://jina.ai/reader",
+      "source_url": "https://jina.ai/reader/",
       "comment": "Country (gl)"
     },
     "language": {
       "support": "none",
-      "source_url": "https://jina.ai/reader",
+      "source_url": "https://jina.ai/reader/",
       "comment": "Language"
     },
     "date": {
       "support": "none",
-      "source_url": "https://jina.ai/reader",
+      "source_url": "https://jina.ai/reader/",
       "comment": "Published date range"
     },
     "safe_search": {
       "support": "none",
-      "source_url": "https://jina.ai/reader",
+      "source_url": "https://jina.ai/reader/",
       "comment": "Safe search"
-    },
-    "mode": {
-      "support": "none",
-      "source_url": "https://jina.ai/reader",
-      "comment": "Depth (fast/balanced/deep)"
     },
     "answer": {
       "support": "none",
-      "source_url": "https://jina.ai/reader",
-      "comment": "Synthesized answer"
+      "source_url": "https://jina.ai/reader/",
+      "comment": "AI answer"
     },
     "content": {
       "support": "full",
-      "source_url": "https://jina.ai/reader",
-      "comment": "Full page text"
+      "source_url": "https://jina.ai/reader/",
+      "comment": "Search returns markdown page bodies unless `X-Respond-With: no-content` is set."
     },
     "summary": {
       "support": "none",
-      "source_url": "https://jina.ai/reader",
+      "source_url": "https://jina.ai/reader/",
       "comment": "AI per-result summary"
     },
     "highlights": {
       "support": "none",
-      "source_url": "https://jina.ai/reader",
+      "source_url": "https://jina.ai/reader/",
       "comment": "Query highlights"
     },
     "news": {
       "support": "none",
-      "source_url": "https://jina.ai/reader",
+      "source_url": "https://jina.ai/reader/",
       "comment": "News search type"
+    },
+    "mode": {
+      "values": [
+        "fast",
+        "balanced",
+        "deep"
+      ],
+      "source_url": "https://jina.ai/reader/",
+      "comment": "Reader Search (`s.jina.ai`): `fast` = header `X-Respond-With: no-content` (SERP metadata only). `balanced`/`deep` = fetch and return page markdown (default Reader pipeline; `deep` when full `include_content` is requested)."
     },
     "notes": ""
   },
@@ -525,22 +539,22 @@
     "env_keys": {
       "value": "KAGI_API_KEY",
       "source_url": "https://help.kagi.com/kagi/api/search.html",
-      "comment": "Environment variables read by anysearch."
+      "comment": "API keys and configuration variables documented by the provider."
     },
     "python_extra": {
       "value": "\u2014 (REST only)",
-      "source_url": "https://github.com/dhruv-anand-aintech/anysearch/tree/main/python#install",
-      "comment": "Optional: pip install 'anysearch-sdk[kagi] @ git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python'"
+      "source_url": "https://help.kagi.com/kagi/api/search.html",
+      "comment": "HTTP API only; no required vendor Python SDK."
     },
     "requires_key": {
       "support": "full",
       "source_url": "https://help.kagi.com/kagi/api/search.html",
-      "comment": "Keyless providers work without credentials."
+      "comment": "Valid API key required for every request."
     },
     "snippet": {
       "support": "full",
       "source_url": "https://help.kagi.com/kagi/api/search.html",
-      "comment": "Short description field; available on virtually all providers."
+      "comment": "Each result includes a `snippet`; length follows account Search settings."
     },
     "domains": {
       "support": "none",
@@ -567,15 +581,10 @@
       "source_url": "https://help.kagi.com/kagi/api/search.html",
       "comment": "Safe search"
     },
-    "mode": {
-      "support": "none",
-      "source_url": "https://help.kagi.com/kagi/api/search.html",
-      "comment": "Depth (fast/balanced/deep)"
-    },
     "answer": {
       "support": "none",
       "source_url": "https://help.kagi.com/kagi/api/search.html",
-      "comment": "Synthesized answer"
+      "comment": "AI answer"
     },
     "content": {
       "support": "none",
@@ -596,273 +605,283 @@
       "support": "none",
       "source_url": "https://help.kagi.com/kagi/api/search.html",
       "comment": "News search type"
+    },
+    "mode": {
+      "values": [
+        "balanced",
+        "deep"
+      ],
+      "source_url": "https://help.kagi.com/kagi/api/search.html",
+      "comment": "Search API has no request `mode`; snippet length is inherited from your Kagi account (Settings \u2192 Search \u2192 longer vs shorter snippets). Treat `deep` as longer snippets configured on the account."
     },
     "notes": ""
   },
   {
     "name": "Linkup",
     "links": {
-      "docs": "https://docs.linkup.so/pages/sdk/python/python",
+      "docs": "https://docs.linkup.so/pages/documentation/endpoints/search/overview",
       "github": "https://github.com/dhruv-anand-aintech/anysearch",
       "website": "https://www.linkup.so",
       "slug": "linkup"
     },
     "env_keys": {
       "value": "LINKUP_API_KEY",
-      "source_url": "https://docs.linkup.so/pages/sdk/python/python",
-      "comment": "Environment variables read by anysearch."
+      "source_url": "https://docs.linkup.so/pages/documentation/endpoints/search/reference",
+      "comment": "API keys and configuration variables documented by the provider."
     },
     "python_extra": {
       "value": "linkup-sdk",
-      "source_url": "https://github.com/dhruv-anand-aintech/anysearch/tree/main/python#install",
-      "comment": "Optional: pip install 'anysearch-sdk[linkup] @ git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python'"
+      "source_url": "https://docs.linkup.so/pages/sdk/python/python",
+      "comment": "Optional PyPI package: linkup-sdk (install via anysearch-sdk extra `linkup`)."
     },
     "requires_key": {
       "support": "full",
-      "source_url": "https://docs.linkup.so/pages/sdk/python/python",
-      "comment": "Keyless providers work without credentials."
+      "source_url": "https://docs.linkup.so/pages/documentation/endpoints/search/reference",
+      "comment": "Valid API key required for every request."
     },
     "snippet": {
       "support": "full",
-      "source_url": "https://docs.linkup.so/pages/sdk/python/python",
-      "comment": "Short description field; available on virtually all providers."
+      "source_url": "https://docs.linkup.so/pages/documentation/endpoints/search/overview",
+      "comment": "Short description field returned with each result."
     },
     "domains": {
       "support": "full",
-      "source_url": "https://docs.linkup.so/pages/sdk/python/python",
-      "comment": "Domain filters"
+      "source_url": "https://docs.linkup.so/pages/documentation/endpoints/search/reference",
+      "comment": "`includeDomains` / `excludeDomains` arrays on POST /v1/search."
     },
     "country": {
       "support": "none",
-      "source_url": "https://docs.linkup.so/pages/sdk/python/python",
+      "source_url": "https://docs.linkup.so/pages/documentation/endpoints/search/overview",
       "comment": "Country (gl)"
     },
     "language": {
       "support": "none",
-      "source_url": "https://docs.linkup.so/pages/sdk/python/python",
+      "source_url": "https://docs.linkup.so/pages/documentation/endpoints/search/overview",
       "comment": "Language"
     },
     "date": {
       "support": "full",
-      "source_url": "https://docs.linkup.so/pages/sdk/python/python",
-      "comment": "Published date range"
+      "source_url": "https://docs.linkup.so/pages/documentation/endpoints/search/reference",
+      "comment": "`fromDate` / `toDate` (YYYY-MM-DD) filter sources by publication date."
     },
     "safe_search": {
       "support": "none",
-      "source_url": "https://docs.linkup.so/pages/sdk/python/python",
+      "source_url": "https://docs.linkup.so/pages/documentation/endpoints/search/overview",
       "comment": "Safe search"
-    },
-    "mode": {
-      "support": "full",
-      "source_url": "https://docs.linkup.so/pages/sdk/python/python",
-      "comment": "Mapped: fast \u2192 fast, balanced \u2192 standard, deep \u2192 deep"
     },
     "answer": {
       "support": "full",
-      "source_url": "https://docs.linkup.so/pages/sdk/python/python",
-      "comment": "Synthesized answer"
+      "source_url": "https://docs.linkup.so/pages/documentation/endpoints/search/overview",
+      "comment": "`outputType`: `sourcedAnswer` returns a cited natural-language answer."
     },
     "content": {
       "support": "full",
-      "source_url": "https://docs.linkup.so/pages/sdk/python/python",
-      "comment": "Full page text"
+      "source_url": "https://docs.linkup.so/pages/documentation/endpoints/search/overview",
+      "comment": "`outputType`: `searchResults` with page content in standard/deep depths."
     },
     "summary": {
       "support": "none",
-      "source_url": "https://docs.linkup.so/pages/sdk/python/python",
+      "source_url": "https://docs.linkup.so/pages/documentation/endpoints/search/overview",
       "comment": "AI per-result summary"
     },
     "highlights": {
       "support": "none",
-      "source_url": "https://docs.linkup.so/pages/sdk/python/python",
+      "source_url": "https://docs.linkup.so/pages/documentation/endpoints/search/overview",
       "comment": "Query highlights"
     },
     "news": {
       "support": "none",
-      "source_url": "https://docs.linkup.so/pages/sdk/python/python",
+      "source_url": "https://docs.linkup.so/pages/documentation/endpoints/search/overview",
       "comment": "News search type"
     },
-    "mode_notes": {
-      "value": "fast \u2192 fast, balanced \u2192 standard, deep \u2192 deep",
-      "source_url": "https://docs.linkup.so/pages/sdk/python/python",
-      "comment": "Unified mode knob mapping."
+    "mode": {
+      "values": [
+        "fast",
+        "balanced",
+        "deep"
+      ],
+      "source_url": "https://docs.linkup.so/pages/documentation/endpoints/search/overview",
+      "comment": "Native `depth`: `fast` (<1s, keyword-only), `standard` (1\u20133s agentic), `deep` (5\u201330s multi-iteration). anysearch: fast\u2192fast, balanced\u2192standard, deep\u2192deep."
     },
-    "notes": "Native SDK extra: linkup-sdk."
+    "notes": "Native SDK package: linkup-sdk."
   },
   {
     "name": "Parallel",
     "links": {
-      "docs": "https://docs.parallel.ai/search/search-quickstart",
+      "docs": "https://docs.parallel.ai/search/modes",
       "github": "https://github.com/dhruv-anand-aintech/anysearch",
       "website": "https://parallel.ai",
       "slug": "parallel"
     },
     "env_keys": {
       "value": "PARALLEL_API_KEY",
-      "source_url": "https://docs.parallel.ai/search/search-quickstart",
-      "comment": "Environment variables read by anysearch."
+      "source_url": "https://docs.parallel.ai/getting-started/overview",
+      "comment": "API keys and configuration variables documented by the provider."
     },
     "python_extra": {
       "value": "parallel-web",
-      "source_url": "https://github.com/dhruv-anand-aintech/anysearch/tree/main/python#install",
-      "comment": "Optional: pip install 'anysearch-sdk[parallel] @ git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python'"
+      "source_url": "https://pypi.org/project/parallel-web/",
+      "comment": "Optional PyPI package: parallel-web (install via anysearch-sdk extra `parallel`)."
     },
     "requires_key": {
       "support": "full",
-      "source_url": "https://docs.parallel.ai/search/search-quickstart",
-      "comment": "Keyless providers work without credentials."
+      "source_url": "https://docs.parallel.ai/getting-started/overview",
+      "comment": "Valid API key required for every request."
     },
     "snippet": {
       "support": "full",
-      "source_url": "https://docs.parallel.ai/search/search-quickstart",
-      "comment": "Short description field; available on virtually all providers."
+      "source_url": "https://docs.parallel.ai/search/modes",
+      "comment": "Short description field returned with each result."
     },
     "domains": {
       "support": "full",
-      "source_url": "https://docs.parallel.ai/search/search-quickstart",
-      "comment": "Domain filters"
+      "source_url": "https://docs.parallel.ai/search/advanced-search-settings",
+      "comment": "`advanced_settings.source_policy.include_domains` / `exclude_domains` (use sparingly)."
     },
     "country": {
       "support": "full",
-      "source_url": "https://docs.parallel.ai/search/search-quickstart",
-      "comment": "Country (gl)"
+      "source_url": "https://docs.parallel.ai/search/advanced-search-settings",
+      "comment": "`advanced_settings.location` \u2014 ISO 3166-1 alpha-2 (subset of countries)."
     },
     "language": {
       "support": "none",
-      "source_url": "https://docs.parallel.ai/search/search-quickstart",
+      "source_url": "https://docs.parallel.ai/search/modes",
       "comment": "Language"
     },
     "date": {
       "support": "full",
-      "source_url": "https://docs.parallel.ai/search/search-quickstart",
-      "comment": "Published date range"
+      "source_url": "https://docs.parallel.ai/search/advanced-search-settings",
+      "comment": "`source_policy.after_date` for freshness in advanced_settings."
     },
     "safe_search": {
       "support": "none",
-      "source_url": "https://docs.parallel.ai/search/search-quickstart",
+      "source_url": "https://docs.parallel.ai/search/modes",
       "comment": "Safe search"
-    },
-    "mode": {
-      "support": "full",
-      "source_url": "https://docs.parallel.ai/search/search-quickstart",
-      "comment": "Mapped: fast/balanced \u2192 basic, deep \u2192 advanced"
     },
     "answer": {
       "support": "none",
-      "source_url": "https://docs.parallel.ai/search/search-quickstart",
-      "comment": "Synthesized answer"
+      "source_url": "https://docs.parallel.ai/search/modes",
+      "comment": "AI answer"
     },
     "content": {
       "support": "full",
-      "source_url": "https://docs.parallel.ai/search/search-quickstart",
-      "comment": "Full page text"
+      "source_url": "https://docs.parallel.ai/api-reference/search/search",
+      "comment": "Excerpts are pre-compressed in search results (excerpt_settings optional)."
     },
     "summary": {
       "support": "none",
-      "source_url": "https://docs.parallel.ai/search/search-quickstart",
+      "source_url": "https://docs.parallel.ai/search/modes",
       "comment": "AI per-result summary"
     },
     "highlights": {
       "support": "full",
-      "source_url": "https://docs.parallel.ai/search/search-quickstart",
-      "comment": "Query highlights"
+      "source_url": "https://docs.parallel.ai/search/best-practices",
+      "comment": "Ranked excerpts per URL are the default Search API payload."
     },
     "news": {
       "support": "none",
-      "source_url": "https://docs.parallel.ai/search/search-quickstart",
+      "source_url": "https://docs.parallel.ai/search/modes",
       "comment": "News search type"
     },
-    "mode_notes": {
-      "value": "fast/balanced \u2192 basic, deep \u2192 advanced",
-      "source_url": "https://docs.parallel.ai/search/search-quickstart",
-      "comment": "Unified mode knob mapping."
+    "mode": {
+      "values": [
+        "fast",
+        "balanced",
+        "deep"
+      ],
+      "source_url": "https://docs.parallel.ai/search/modes",
+      "comment": "Native `mode`: `basic` (lower latency, 2\u20133 queries) vs `advanced` (default, higher-quality retrieval). anysearch: fast/balanced\u2192basic, deep\u2192advanced."
     },
-    "notes": "Native SDK extra: parallel-web."
+    "notes": "Native SDK package: parallel-web."
   },
   {
     "name": "Perplexity",
     "links": {
-      "docs": "https://docs.perplexity.ai/guides/search-quickstart",
+      "docs": "https://docs.perplexity.ai/api-reference/search-post",
       "github": "https://github.com/dhruv-anand-aintech/anysearch",
       "website": "https://www.perplexity.ai",
       "slug": "perplexity"
     },
     "env_keys": {
       "value": "PERPLEXITY_API_KEY, PPLX_API_KEY",
-      "source_url": "https://docs.perplexity.ai/guides/search-quickstart",
-      "comment": "Environment variables read by anysearch."
+      "source_url": "https://docs.perplexity.ai/docs/search/quickstart",
+      "comment": "API keys and configuration variables documented by the provider."
     },
     "python_extra": {
       "value": "perplexityai",
-      "source_url": "https://github.com/dhruv-anand-aintech/anysearch/tree/main/python#install",
-      "comment": "Optional: pip install 'anysearch-sdk[perplexity] @ git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python'"
+      "source_url": "https://pypi.org/project/perplexityai/",
+      "comment": "Optional PyPI package: perplexityai (install via anysearch-sdk extra `perplexity`)."
     },
     "requires_key": {
       "support": "full",
-      "source_url": "https://docs.perplexity.ai/guides/search-quickstart",
-      "comment": "Keyless providers work without credentials."
+      "source_url": "https://docs.perplexity.ai/docs/search/quickstart",
+      "comment": "Valid API key required for every request."
     },
     "snippet": {
       "support": "full",
-      "source_url": "https://docs.perplexity.ai/guides/search-quickstart",
-      "comment": "Short description field; available on virtually all providers."
+      "source_url": "https://docs.perplexity.ai/api-reference/search-post",
+      "comment": "Short description field returned with each result."
     },
     "domains": {
       "support": "full",
-      "source_url": "https://docs.perplexity.ai/guides/search-quickstart",
-      "comment": "Domain filters"
+      "source_url": "https://docs.perplexity.ai/docs/search/quickstart",
+      "comment": "`search_domain_filter` \u2014 allowlist entries or `-domain` denylist prefixes."
     },
     "country": {
       "support": "none",
-      "source_url": "https://docs.perplexity.ai/guides/search-quickstart",
+      "source_url": "https://docs.perplexity.ai/api-reference/search-post",
       "comment": "Country (gl)"
     },
     "language": {
       "support": "full",
-      "source_url": "https://docs.perplexity.ai/guides/search-quickstart",
-      "comment": "Language"
+      "source_url": "https://docs.perplexity.ai/api-reference/search-post",
+      "comment": "`search_language_filter` \u2014 array of ISO 639-1 language codes."
     },
     "date": {
       "support": "none",
-      "source_url": "https://docs.perplexity.ai/guides/search-quickstart",
+      "source_url": "https://docs.perplexity.ai/api-reference/search-post",
       "comment": "Published date range"
     },
     "safe_search": {
       "support": "none",
-      "source_url": "https://docs.perplexity.ai/guides/search-quickstart",
+      "source_url": "https://docs.perplexity.ai/api-reference/search-post",
       "comment": "Safe search"
-    },
-    "mode": {
-      "support": "none",
-      "source_url": "https://docs.perplexity.ai/guides/search-quickstart",
-      "comment": "Depth (fast/balanced/deep)"
     },
     "answer": {
       "support": "none",
-      "source_url": "https://docs.perplexity.ai/guides/search-quickstart",
-      "comment": "Synthesized answer"
+      "source_url": "https://docs.perplexity.ai/api-reference/search-post",
+      "comment": "AI answer"
     },
     "content": {
       "support": "full",
-      "source_url": "https://docs.perplexity.ai/guides/search-quickstart",
-      "comment": "Full page text"
+      "source_url": "https://docs.perplexity.ai/api-reference/search-post",
+      "comment": "`snippet` field size via `snippet_mode`, `max_tokens`, `max_tokens_per_page`."
     },
     "summary": {
       "support": "none",
-      "source_url": "https://docs.perplexity.ai/guides/search-quickstart",
+      "source_url": "https://docs.perplexity.ai/api-reference/search-post",
       "comment": "AI per-result summary"
     },
     "highlights": {
       "support": "none",
-      "source_url": "https://docs.perplexity.ai/guides/search-quickstart",
+      "source_url": "https://docs.perplexity.ai/api-reference/search-post",
       "comment": "Query highlights"
     },
     "news": {
       "support": "none",
-      "source_url": "https://docs.perplexity.ai/guides/search-quickstart",
+      "source_url": "https://docs.perplexity.ai/api-reference/search-post",
       "comment": "News search type"
     },
-    "notes": "Native SDK extra: perplexityai."
+    "mode": {
+      "values": [
+        "fast",
+        "balanced",
+        "deep"
+      ],
+      "source_url": "https://docs.perplexity.ai/api-reference/search-post",
+      "comment": "Search API `snippet_mode`: `low`, `medium` (default), `high` (more extracted text). Tune with `max_tokens` / `max_tokens_per_page` for total content budget. anysearch sets `snippet_mode=high` when `include_content` is true (deep)."
+    },
+    "notes": "Native SDK package: perplexityai."
   },
   {
     "name": "SearXNG",
@@ -874,23 +893,23 @@
     },
     "env_keys": {
       "value": "SEARXNG_API_KEY",
-      "source_url": "https://docs.searxng.org/dev/search_api.html",
-      "comment": "Environment variables read by anysearch."
+      "source_url": "https://docs.searxng.org/admin/settings/settings_search/",
+      "comment": "API keys and configuration variables documented by the provider."
     },
     "python_extra": {
       "value": "\u2014 (REST only)",
-      "source_url": "https://github.com/dhruv-anand-aintech/anysearch/tree/main/python#install",
-      "comment": "Optional: pip install 'anysearch-sdk[searxng] @ git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python'"
+      "source_url": "https://docs.searxng.org/dev/search_api.html",
+      "comment": "HTTP API only; no required vendor Python SDK."
     },
     "requires_key": {
       "support": "none",
-      "source_url": "https://docs.searxng.org/dev/search_api.html",
-      "comment": "Keyless providers work without credentials."
+      "source_url": "https://docs.searxng.org/admin/settings/settings_search/",
+      "comment": "No API key required."
     },
     "snippet": {
       "support": "full",
       "source_url": "https://docs.searxng.org/dev/search_api.html",
-      "comment": "Short description field; available on virtually all providers."
+      "comment": "Short description field returned with each result."
     },
     "domains": {
       "support": "none",
@@ -905,7 +924,7 @@
     "language": {
       "support": "full",
       "source_url": "https://docs.searxng.org/dev/search_api.html",
-      "comment": "Language"
+      "comment": "`language` query parameter (instance default if omitted)."
     },
     "date": {
       "support": "none",
@@ -915,17 +934,12 @@
     "safe_search": {
       "support": "full",
       "source_url": "https://docs.searxng.org/dev/search_api.html",
-      "comment": "Safe search"
-    },
-    "mode": {
-      "support": "none",
-      "source_url": "https://docs.searxng.org/dev/search_api.html",
-      "comment": "Depth (fast/balanced/deep)"
+      "comment": "`safesearch` 0=off, 1=moderate, 2=strict."
     },
     "answer": {
       "support": "full",
       "source_url": "https://docs.searxng.org/dev/search_api.html",
-      "comment": "Returns instant-answer text from the answers field when available."
+      "comment": "Instant answers in the `answers` array when engines provide them."
     },
     "content": {
       "support": "none",
@@ -946,6 +960,13 @@
       "support": "none",
       "source_url": "https://docs.searxng.org/dev/search_api.html",
       "comment": "News search type"
+    },
+    "mode": {
+      "values": [
+        "balanced"
+      ],
+      "source_url": "https://docs.searxng.org/dev/search_api.html",
+      "comment": "Meta-search JSON API: result richness depends on configured engines, not a global depth flag. Matrix `balanced` = default instance search."
     },
     "notes": "No API key required (keyless fallback)."
   },
@@ -960,22 +981,22 @@
     "env_keys": {
       "value": "SEARCHAPI_API_KEY, SEARCHAPI_KEY",
       "source_url": "https://www.searchapi.io/docs/google",
-      "comment": "Environment variables read by anysearch."
+      "comment": "API keys and configuration variables documented by the provider."
     },
     "python_extra": {
       "value": "\u2014 (REST only)",
-      "source_url": "https://github.com/dhruv-anand-aintech/anysearch/tree/main/python#install",
-      "comment": "Optional: pip install 'anysearch-sdk[searchapi] @ git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python'"
+      "source_url": "https://www.searchapi.io/docs/google",
+      "comment": "HTTP API only; no required vendor Python SDK."
     },
     "requires_key": {
       "support": "full",
       "source_url": "https://www.searchapi.io/docs/google",
-      "comment": "Keyless providers work without credentials."
+      "comment": "Valid API key required for every request."
     },
     "snippet": {
       "support": "full",
       "source_url": "https://www.searchapi.io/docs/google",
-      "comment": "Short description field; available on virtually all providers."
+      "comment": "Short description field returned with each result."
     },
     "domains": {
       "support": "none",
@@ -985,12 +1006,12 @@
     "country": {
       "support": "full",
       "source_url": "https://www.searchapi.io/docs/google",
-      "comment": "Country (gl)"
+      "comment": "`gl` parameter on Google engine requests."
     },
     "language": {
       "support": "full",
       "source_url": "https://www.searchapi.io/docs/google",
-      "comment": "Language"
+      "comment": "`hl` \u2014 language of the SERP."
     },
     "date": {
       "support": "none",
@@ -1002,15 +1023,10 @@
       "source_url": "https://www.searchapi.io/docs/google",
       "comment": "Safe search"
     },
-    "mode": {
-      "support": "none",
-      "source_url": "https://www.searchapi.io/docs/google",
-      "comment": "Depth (fast/balanced/deep)"
-    },
     "answer": {
       "support": "partial",
       "source_url": "https://www.searchapi.io/docs/google",
-      "comment": "Answer only when the SERP includes an answer box (not explicitly requested)."
+      "comment": "Featured snippets / answer box when returned by the engine."
     },
     "content": {
       "support": "none",
@@ -1029,8 +1045,15 @@
     },
     "news": {
       "support": "full",
+      "source_url": "https://www.searchapi.io/docs/google-news",
+      "comment": "Use the Google News engine for news results."
+    },
+    "mode": {
+      "values": [
+        "balanced"
+      ],
       "source_url": "https://www.searchapi.io/docs/google",
-      "comment": "News search type"
+      "comment": "Google engine wrapper: single SERP depth per request (no native fast/deep tier)."
     },
     "notes": ""
   },
@@ -1045,22 +1068,22 @@
     "env_keys": {
       "value": "SERPAPI_API_KEY, SERPAPI_KEY",
       "source_url": "https://serpapi.com/search-api",
-      "comment": "Environment variables read by anysearch."
+      "comment": "API keys and configuration variables documented by the provider."
     },
     "python_extra": {
       "value": "google-search-results",
-      "source_url": "https://github.com/dhruv-anand-aintech/anysearch/tree/main/python#install",
-      "comment": "Optional: pip install 'anysearch-sdk[serpapi] @ git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python'"
+      "source_url": "https://pypi.org/project/google-search-results/",
+      "comment": "Optional PyPI package: google-search-results (install via anysearch-sdk extra `serpapi`)."
     },
     "requires_key": {
       "support": "full",
       "source_url": "https://serpapi.com/search-api",
-      "comment": "Keyless providers work without credentials."
+      "comment": "Valid API key required for every request."
     },
     "snippet": {
       "support": "full",
       "source_url": "https://serpapi.com/search-api",
-      "comment": "Short description field; available on virtually all providers."
+      "comment": "Short description field returned with each result."
     },
     "domains": {
       "support": "none",
@@ -1070,12 +1093,12 @@
     "country": {
       "support": "full",
       "source_url": "https://serpapi.com/search-api",
-      "comment": "Country (gl)"
+      "comment": "`gl` \u2014 country code."
     },
     "language": {
       "support": "full",
       "source_url": "https://serpapi.com/search-api",
-      "comment": "Language"
+      "comment": "`hl` \u2014 language code."
     },
     "date": {
       "support": "none",
@@ -1085,17 +1108,12 @@
     "safe_search": {
       "support": "full",
       "source_url": "https://serpapi.com/search-api",
-      "comment": "Safe search"
-    },
-    "mode": {
-      "support": "none",
-      "source_url": "https://serpapi.com/search-api",
-      "comment": "Depth (fast/balanced/deep)"
+      "comment": "`safe` \u2014 active or off."
     },
     "answer": {
       "support": "partial",
       "source_url": "https://serpapi.com/search-api",
-      "comment": "Answer only when the SERP includes an answer box (not explicitly requested)."
+      "comment": "Answer box fields when present in the engine JSON."
     },
     "content": {
       "support": "none",
@@ -1115,9 +1133,16 @@
     "news": {
       "support": "full",
       "source_url": "https://serpapi.com/search-api",
-      "comment": "News search type"
+      "comment": "`engine=google_news` (or other news engines)."
     },
-    "notes": "Native SDK extra: google-search-results."
+    "mode": {
+      "values": [
+        "balanced"
+      ],
+      "source_url": "https://serpapi.com/search-api",
+      "comment": "Aggregated Google engine API: no latency/depth parameter on the search call. Matrix `balanced` = default engine JSON response."
+    },
+    "notes": "Native SDK package: google-search-results."
   },
   {
     "name": "Serper",
@@ -1130,22 +1155,22 @@
     "env_keys": {
       "value": "SERPER_API_KEY",
       "source_url": "https://serper.dev/docs",
-      "comment": "Environment variables read by anysearch."
+      "comment": "API keys and configuration variables documented by the provider."
     },
     "python_extra": {
       "value": "\u2014 (REST only)",
-      "source_url": "https://github.com/dhruv-anand-aintech/anysearch/tree/main/python#install",
-      "comment": "Optional: pip install 'anysearch-sdk[serper] @ git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python'"
+      "source_url": "https://serper.dev/docs",
+      "comment": "HTTP API only; no required vendor Python SDK."
     },
     "requires_key": {
       "support": "full",
       "source_url": "https://serper.dev/docs",
-      "comment": "Keyless providers work without credentials."
+      "comment": "Valid API key required for every request."
     },
     "snippet": {
       "support": "full",
       "source_url": "https://serper.dev/docs",
-      "comment": "Short description field; available on virtually all providers."
+      "comment": "Short description field returned with each result."
     },
     "domains": {
       "support": "none",
@@ -1155,12 +1180,12 @@
     "country": {
       "support": "full",
       "source_url": "https://serper.dev/docs",
-      "comment": "Country (gl)"
+      "comment": "`gl` \u2014 country code on POST /search and /news."
     },
     "language": {
       "support": "full",
       "source_url": "https://serper.dev/docs",
-      "comment": "Language"
+      "comment": "`hl` \u2014 interface language."
     },
     "date": {
       "support": "none",
@@ -1172,15 +1197,10 @@
       "source_url": "https://serper.dev/docs",
       "comment": "Safe search"
     },
-    "mode": {
-      "support": "none",
-      "source_url": "https://serper.dev/docs",
-      "comment": "Depth (fast/balanced/deep)"
-    },
     "answer": {
       "support": "partial",
       "source_url": "https://serper.dev/docs",
-      "comment": "Answer only when the SERP includes an answer box (not explicitly requested)."
+      "comment": "Answer box / knowledge graph surfaced in JSON when Google returns them."
     },
     "content": {
       "support": "none",
@@ -1200,7 +1220,14 @@
     "news": {
       "support": "full",
       "source_url": "https://serper.dev/docs",
-      "comment": "News search type"
+      "comment": "POST /news for news SERP."
+    },
+    "mode": {
+      "values": [
+        "balanced"
+      ],
+      "source_url": "https://serper.dev/docs",
+      "comment": "Google SERP proxy: one ranked result style per call (no fast/deep API knob). Matrix `balanced` = standard /search or /news endpoint."
     },
     "notes": ""
   },
@@ -1215,32 +1242,32 @@
     "env_keys": {
       "value": "TAVILY_API_KEY",
       "source_url": "https://docs.tavily.com/documentation/api-reference/endpoint/search",
-      "comment": "Environment variables read by anysearch."
+      "comment": "API keys and configuration variables documented by the provider."
     },
     "python_extra": {
       "value": "tavily-python",
-      "source_url": "https://github.com/dhruv-anand-aintech/anysearch/tree/main/python#install",
-      "comment": "Optional: pip install 'anysearch-sdk[tavily] @ git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python'"
+      "source_url": "https://pypi.org/project/tavily-python/",
+      "comment": "Optional PyPI package: tavily-python (install via anysearch-sdk extra `tavily`)."
     },
     "requires_key": {
       "support": "full",
       "source_url": "https://docs.tavily.com/documentation/api-reference/endpoint/search",
-      "comment": "Keyless providers work without credentials."
+      "comment": "Valid API key required for every request."
     },
     "snippet": {
       "support": "full",
       "source_url": "https://docs.tavily.com/documentation/api-reference/endpoint/search",
-      "comment": "Short description field; available on virtually all providers."
+      "comment": "Short description field returned with each result."
     },
     "domains": {
       "support": "full",
       "source_url": "https://docs.tavily.com/documentation/api-reference/endpoint/search",
-      "comment": "Domain filters"
+      "comment": "`include_domains` / `exclude_domains` (max 300 domains)."
     },
     "country": {
       "support": "full",
       "source_url": "https://docs.tavily.com/documentation/api-reference/endpoint/search",
-      "comment": "Country (gl)"
+      "comment": "`country` (topic `general` only) \u2014 ISO country name."
     },
     "language": {
       "support": "none",
@@ -1250,27 +1277,22 @@
     "date": {
       "support": "full",
       "source_url": "https://docs.tavily.com/documentation/api-reference/endpoint/search",
-      "comment": "Published date range"
+      "comment": "`start_date` / `end_date` or `time_range` (`day`, `week`, `month`, `year`)."
     },
     "safe_search": {
       "support": "none",
       "source_url": "https://docs.tavily.com/documentation/api-reference/endpoint/search",
       "comment": "Safe search"
     },
-    "mode": {
-      "support": "full",
-      "source_url": "https://docs.tavily.com/documentation/api-reference/endpoint/search",
-      "comment": "Mapped: fast \u2192 fast, balanced \u2192 basic, deep \u2192 advanced"
-    },
     "answer": {
       "support": "full",
       "source_url": "https://docs.tavily.com/documentation/api-reference/endpoint/search",
-      "comment": "Synthesized answer"
+      "comment": "`include_answer`: `basic` or `advanced` LLM answer from results."
     },
     "content": {
       "support": "full",
       "source_url": "https://docs.tavily.com/documentation/api-reference/endpoint/search",
-      "comment": "Full page text"
+      "comment": "`include_raw_content` returns raw page text per source."
     },
     "summary": {
       "support": "none",
@@ -1285,97 +1307,105 @@
     "news": {
       "support": "full",
       "source_url": "https://docs.tavily.com/documentation/api-reference/endpoint/search",
-      "comment": "News search type"
+      "comment": "`topic`: `news` (or `general` with news-oriented query)."
     },
-    "mode_notes": {
-      "value": "fast \u2192 fast, balanced \u2192 basic, deep \u2192 advanced",
-      "source_url": "https://docs.tavily.com/documentation/api-reference/endpoint/search",
-      "comment": "Unified mode knob mapping."
+    "mode": {
+      "values": [
+        "fast",
+        "balanced",
+        "deep"
+      ],
+      "source_url": "https://docs.tavily.com/documentation/best-practices/best-practices-search",
+      "comment": "Native `search_depth`: `ultra-fast`, `fast`, `basic` (balanced default), `advanced` (highest relevance, 2 credits). anysearch: fast\u2192fast, balanced\u2192basic, deep\u2192advanced."
     },
-    "notes": "Native SDK extra: tavily-python."
+    "notes": "Native SDK package: tavily-python."
   },
   {
     "name": "You",
     "links": {
-      "docs": "https://documentation.you.com",
+      "docs": "https://you.com/docs/search/overview",
       "github": "https://github.com/dhruv-anand-aintech/anysearch",
       "website": "https://you.com",
       "slug": "you"
     },
     "env_keys": {
       "value": "YDC_API_KEY, YOU_API_KEY",
-      "source_url": "https://documentation.you.com",
-      "comment": "Environment variables read by anysearch."
+      "source_url": "https://you.com/docs/api-reference/search/v1-search",
+      "comment": "API keys and configuration variables documented by the provider."
     },
     "python_extra": {
       "value": "\u2014 (REST only)",
-      "source_url": "https://github.com/dhruv-anand-aintech/anysearch/tree/main/python#install",
-      "comment": "Optional: pip install 'anysearch-sdk[you] @ git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python'"
+      "source_url": "https://you.com/docs/search/overview",
+      "comment": "HTTP API only; no required vendor Python SDK."
     },
     "requires_key": {
       "support": "full",
-      "source_url": "https://documentation.you.com",
-      "comment": "Keyless providers work without credentials."
+      "source_url": "https://you.com/docs/api-reference/search/v1-search",
+      "comment": "Valid API key required for every request."
     },
     "snippet": {
       "support": "full",
-      "source_url": "https://documentation.you.com",
-      "comment": "Short description field; available on virtually all providers."
+      "source_url": "https://you.com/docs/search/overview",
+      "comment": "Short description field returned with each result."
     },
     "domains": {
       "support": "full",
-      "source_url": "https://documentation.you.com",
-      "comment": "Domain filters"
+      "source_url": "https://you.com/docs/search/overview",
+      "comment": "`include_domains`, `exclude_domains`, `boost_domains` (POST JSON arrays, up to 500)."
     },
     "country": {
       "support": "full",
-      "source_url": "https://documentation.you.com",
-      "comment": "Country (gl)"
+      "source_url": "https://you.com/docs/search/overview",
+      "comment": "`country` \u2014 ISO 3166-1 alpha-2 (e.g. US, GB)."
     },
     "language": {
       "support": "none",
-      "source_url": "https://documentation.you.com",
+      "source_url": "https://you.com/docs/search/overview",
       "comment": "Language"
     },
     "date": {
       "support": "none",
-      "source_url": "https://documentation.you.com",
+      "source_url": "https://you.com/docs/search/overview",
       "comment": "Published date range"
     },
     "safe_search": {
       "support": "none",
-      "source_url": "https://documentation.you.com",
+      "source_url": "https://you.com/docs/search/overview",
       "comment": "Safe search"
-    },
-    "mode": {
-      "support": "none",
-      "source_url": "https://documentation.you.com",
-      "comment": "Depth (fast/balanced/deep)"
     },
     "answer": {
       "support": "none",
-      "source_url": "https://documentation.you.com",
-      "comment": "Synthesized answer"
+      "source_url": "https://you.com/docs/search/overview",
+      "comment": "AI answer"
     },
     "content": {
       "support": "none",
-      "source_url": "https://documentation.you.com",
+      "source_url": "https://you.com/docs/search/overview",
       "comment": "Full page text"
     },
     "summary": {
       "support": "none",
-      "source_url": "https://documentation.you.com",
+      "source_url": "https://you.com/docs/search/overview",
       "comment": "AI per-result summary"
     },
     "highlights": {
       "support": "full",
-      "source_url": "https://documentation.you.com",
-      "comment": "Query highlights"
+      "source_url": "https://you.com/docs/api-reference/search/v1-search",
+      "comment": "Multiple `snippets` strings per web result in the JSON response."
     },
     "news": {
       "support": "none",
-      "source_url": "https://documentation.you.com",
+      "source_url": "https://you.com/docs/search/overview",
       "comment": "News search type"
+    },
+    "mode": {
+      "values": [
+        "fast",
+        "balanced",
+        "deep"
+      ],
+      "source_url": "https://you.com/docs/search/overview",
+      "comment": "No `mode` field; depth is implicit. `fast`/`balanced`: web/news snippets from /v1/search (no livecrawl). `deep`: `livecrawl` (`web`, `news`, or `all`) plus `livecrawl_formats` (`markdown` / `html`) to pull page bodies."
     },
     "notes": ""
   }
