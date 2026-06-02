@@ -21,7 +21,7 @@ Legend: ✅ supported · — not supported (the param is ignored for that provid
 | **linkup** | ✅ | — | — | ✅ | — | ✅ | — | ✅ | ✅ | — | — | — |
 | **perplexity** | ✅ | — | ✅ | — | — | — | — | — | ✅ | — | — | — |
 | **serper** | — | ✅ | ✅ | — | — | — | — | ✅* | — | — | — | ✅ |
-| **serpapi** | — | ✅ | ✅ | — | ✅ | — | ✅ | ✅* | — | — | — | ✅ |
+| **serpapi** (`engine=…`) | — | ✅† | ✅† | — | ✅† | — | ✅ | ✅* | — | — | — | ✅† |
 | **searchapi** | — | ✅ | ✅ | — | — | — | — | ✅* | — | — | — | ✅ |
 | **you** | ✅ | ✅ | — | — | — | — | — | — | — | — | ✅ | — |
 | **jina** | — | — | — | — | — | — | — | — | ✅ | — | — | — |
@@ -36,8 +36,13 @@ box; it is not requested explicitly.
 ‡ Google PSE supports a single include **or** exclude domain (first one wins) via
 `siteSearch`.
 § SearXNG returns instant-answer text from its `answers` field when available.
+† SerpApi: locale/safe/news params vary by `engine` (see matrix columns per backend).
 
 ## SerpApi engines
+
+The [capability matrix](https://compare-anysearch.ainorthstar.tech) lists each SerpApi backend as its
+own column (**Google · SerpApi**, **Bing · SerpApi**, **Baidu · SerpApi**, etc.) so capabilities
+are compared per engine, not as a single aggregated SerpApi row.
 
 Pass `engine` on `search()` (or set `AnySearch(provider="serpapi", provider_config={"serpapi": {"engine": "bing"}})`):
 

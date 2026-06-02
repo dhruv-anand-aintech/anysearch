@@ -1,0 +1,87 @@
+{
+  "name": "Bing \u00b7 SerpApi",
+  "links": {
+    "docs": "https://serpapi.com/bing-search-api",
+    "github": "https://github.com/dhruv-anand-aintech/anysearch",
+    "website": "https://www.bing.com",
+    "slug": "serpapi_bing"
+  },
+  "env_keys": {
+    "value": "SERPAPI_API_KEY, SERPAPI_KEY",
+    "source_url": "https://serpapi.com/search-api",
+    "comment": "Same SerpApi key for all engines; anysearch uses `engine=\"bing\"`."
+  },
+  "python_extra": {
+    "value": "google-search-results",
+    "source_url": "https://pypi.org/project/google-search-results/",
+    "comment": "pip extra `serpapi`; call with `provider=\"serpapi\"`, `engine=\"bing\"`."
+  },
+  "requires_key": {
+    "support": "full",
+    "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+    "comment": "Valid API key required for every request."
+  },
+  "snippet": {
+    "support": "full",
+    "source_url": "https://serpapi.com/bing-search-api",
+    "comment": "Organic results via SerpApi `engine=bing`."
+  },
+  "domains": {
+    "support": "none",
+    "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+    "comment": "Domain filters"
+  },
+  "country": {
+    "support": "full",
+    "source_url": "https://serpapi.com/bing-search-api",
+    "comment": "`cc` \u2014 country code on `engine=bing`."
+  },
+  "language": {
+    "support": "full",
+    "source_url": "https://serpapi.com/bing-search-api",
+    "comment": "`setlang` \u2014 UI/search language."
+  },
+  "date": {
+    "support": "none",
+    "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+    "comment": "Published date range"
+  },
+  "safe_search": {
+    "support": "full",
+    "source_url": "https://serpapi.com/bing-search-api",
+    "comment": "`safe_search`: off, moderate, strict."
+  },
+  "answer": {
+    "support": "partial",
+    "source_url": "https://serpapi.com/bing-search-api",
+    "comment": "Answer box when the engine JSON includes one (not explicitly requested)."
+  },
+  "content": {
+    "support": "none",
+    "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+    "comment": "Full page text"
+  },
+  "summary": {
+    "support": "none",
+    "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+    "comment": "AI per-result summary"
+  },
+  "highlights": {
+    "support": "none",
+    "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+    "comment": "Query highlights"
+  },
+  "news": {
+    "support": "full",
+    "source_url": "https://serpapi.com/bing-search-api",
+    "comment": "`search_type=news` \u2192 `engine=bing_news` on SerpApi."
+  },
+  "mode": {
+    "values": [
+      "balanced"
+    ],
+    "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+    "comment": "Fixed SerpApi backend `engine=bing` (set via anysearch `engine=\"bing\"` with `provider=\"serpapi\"`). No separate fast/deep tier on this engine."
+  },
+  "notes": "SerpApi proxy to Bing (`engine=bing`). Native SDK package: google-search-results."
+}

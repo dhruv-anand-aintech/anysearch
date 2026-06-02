@@ -1,6 +1,36 @@
 # anysearch Search API Provider Matrix
 
-Providers: 16. Unified parameters and response fields supported via anysearch.
+Providers: 21. Unified parameters and response fields supported via anysearch.
+
+## Baidu · SerpApi
+- Docs: https://serpapi.com/baidu-search-api
+- Env: SERPAPI_API_KEY, SERPAPI_KEY
+- Domain filters: none
+- Country: full
+- Language: full
+- Date range: none
+- Safe search: full
+- Mode: balanced
+- AI Answer: partial
+- Full text: none
+- Summary: none
+- Highlights: none
+- News: full
+
+## Bing · SerpApi
+- Docs: https://serpapi.com/bing-search-api
+- Env: SERPAPI_API_KEY, SERPAPI_KEY
+- Domain filters: none
+- Country: full
+- Language: full
+- Date range: none
+- Safe search: full
+- Mode: balanced
+- AI Answer: partial
+- Full text: none
+- Summary: none
+- Highlights: none
+- News: full
 
 ## Brave
 - Docs: https://api-dashboard.search.brave.com/app/documentation/web-search/get-started
@@ -31,6 +61,21 @@ Providers: 16. Unified parameters and response fields supported via anysearch.
 - Summary: none
 - Highlights: none
 - News: none
+
+## DuckDuckGo · SerpApi
+- Docs: https://serpapi.com/duckduckgo-search-api
+- Env: SERPAPI_API_KEY, SERPAPI_KEY
+- Domain filters: none
+- Country: full
+- Language: full
+- Date range: none
+- Safe search: full
+- Mode: balanced
+- AI Answer: partial
+- Full text: none
+- Summary: none
+- Highlights: none
+- News: full
 
 ## Exa
 - Docs: https://exa.ai/docs/reference/search
@@ -76,6 +121,21 @@ Providers: 16. Unified parameters and response fields supported via anysearch.
 - Summary: none
 - Highlights: none
 - News: none
+
+## Google · SerpApi
+- Docs: https://serpapi.com/search-api
+- Env: SERPAPI_API_KEY, SERPAPI_KEY
+- Domain filters: none
+- Country: full
+- Language: full
+- Date range: none
+- Safe search: full
+- Mode: balanced
+- AI Answer: partial
+- Full text: none
+- Summary: none
+- Highlights: none
+- News: full
 
 ## Jina
 - Docs: https://jina.ai/reader/
@@ -182,21 +242,6 @@ Providers: 16. Unified parameters and response fields supported via anysearch.
 - Highlights: none
 - News: full
 
-## SerpApi
-- Docs: https://serpapi.com/search-api
-- Env: SERPAPI_API_KEY, SERPAPI_KEY
-- Domain filters: none
-- Country: full
-- Language: full
-- Date range: none
-- Safe search: full
-- Mode: balanced
-- AI Answer: partial
-- Full text: none
-- Summary: none
-- Highlights: none
-- News: full
-
 ## Serper
 - Docs: https://serper.dev/docs
 - Env: SERPER_API_KEY
@@ -226,6 +271,36 @@ Providers: 16. Unified parameters and response fields supported via anysearch.
 - Summary: none
 - Highlights: none
 - News: full
+
+## Yahoo · SerpApi
+- Docs: https://serpapi.com/yahoo-search-api
+- Env: SERPAPI_API_KEY, SERPAPI_KEY
+- Domain filters: none
+- Country: full
+- Language: full
+- Date range: none
+- Safe search: full
+- Mode: balanced
+- AI Answer: partial
+- Full text: none
+- Summary: none
+- Highlights: none
+- News: full
+
+## Yandex · SerpApi
+- Docs: https://serpapi.com/yandex-search-api
+- Env: SERPAPI_API_KEY, SERPAPI_KEY
+- Domain filters: none
+- Country: full
+- Language: full
+- Date range: none
+- Safe search: full
+- Mode: balanced
+- AI Answer: partial
+- Full text: none
+- Summary: none
+- Highlights: none
+- News: none
 
 ## You
 - Docs: https://you.com/docs/search/overview

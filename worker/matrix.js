@@ -32,7 +32,7 @@ function faviconSrc(agent) {
 }
 
 function metaTags() {
-  const desc = "Compare 16 web search API providers on unified anysearch parameters: domains, mode, answers, full text, highlights, and more.";
+  const desc = "Compare web search API providers (including SerpApi Bing, Baidu, Yandex, and more) on unified anysearch parameters.";
   return `
     <meta name="description" content="${htmlEscape(desc)}">
     <meta name="robots" content="index, follow">
@@ -406,11 +406,21 @@ function sortableLabelHtml(label, key) {
 }
 
 // Pinned agents (always at top), then rest sorted by full-feature count
-const PINNED = ['Exa','Tavily','Brave','Parallel','Perplexity','SerpApi'];
+const PINNED = [
+  'Exa','Tavily','Brave','Parallel','Perplexity',
+  'Google · SerpApi','Bing · SerpApi','Baidu · SerpApi','Yandex · SerpApi',
+  'DuckDuckGo · SerpApi','Yahoo · SerpApi',
+];
+function serpapiPinRank(name) {
+  var i = PINNED.indexOf(name);
+  return i === -1 ? null : -900 + i;
+}
 const ALL_FEATS = featureCols.map(function(c){return c.key});
 function rankAgent(i) {
   var agent = matrix[i];
   if (agent.deprecated) return 2000 + i;
+  var sp = serpapiPinRank(agent.name);
+  if (sp !== null) return sp;
   var p = PINNED.indexOf(agent.name);
   if (p !== -1) return -1000 + p;
   var cnt = 0;

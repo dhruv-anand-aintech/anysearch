@@ -1,0 +1,87 @@
+{
+  "name": "DuckDuckGo \u00b7 SerpApi",
+  "links": {
+    "docs": "https://serpapi.com/duckduckgo-search-api",
+    "github": "https://github.com/dhruv-anand-aintech/anysearch",
+    "website": "https://duckduckgo.com",
+    "slug": "serpapi_duckduckgo"
+  },
+  "env_keys": {
+    "value": "SERPAPI_API_KEY, SERPAPI_KEY",
+    "source_url": "https://serpapi.com/search-api",
+    "comment": "Same SerpApi key for all engines; anysearch uses `engine=\"duckduckgo\"`."
+  },
+  "python_extra": {
+    "value": "google-search-results",
+    "source_url": "https://pypi.org/project/google-search-results/",
+    "comment": "pip extra `serpapi`; call with `provider=\"serpapi\"`, `engine=\"duckduckgo\"`."
+  },
+  "requires_key": {
+    "support": "full",
+    "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+    "comment": "Valid API key required for every request."
+  },
+  "snippet": {
+    "support": "full",
+    "source_url": "https://serpapi.com/duckduckgo-search-api",
+    "comment": "Organic results via SerpApi `engine=duckduckgo`."
+  },
+  "domains": {
+    "support": "none",
+    "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+    "comment": "Domain filters"
+  },
+  "country": {
+    "support": "full",
+    "source_url": "https://serpapi.com/duckduckgo-search-api",
+    "comment": "`kl` region tag (e.g. us-en) combines country + language."
+  },
+  "language": {
+    "support": "full",
+    "source_url": "https://serpapi.com/duckduckgo-search-api",
+    "comment": "Set via `kl` (e.g. us-en, uk-en)."
+  },
+  "date": {
+    "support": "none",
+    "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+    "comment": "Published date range"
+  },
+  "safe_search": {
+    "support": "full",
+    "source_url": "https://serpapi.com/duckduckgo-search-api",
+    "comment": "`safe_search` on DuckDuckGo engine."
+  },
+  "answer": {
+    "support": "partial",
+    "source_url": "https://serpapi.com/duckduckgo-search-api",
+    "comment": "Answer box when the engine JSON includes one (not explicitly requested)."
+  },
+  "content": {
+    "support": "none",
+    "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+    "comment": "Full page text"
+  },
+  "summary": {
+    "support": "none",
+    "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+    "comment": "AI per-result summary"
+  },
+  "highlights": {
+    "support": "none",
+    "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+    "comment": "Query highlights"
+  },
+  "news": {
+    "support": "full",
+    "source_url": "https://serpapi.com/duckduckgo-search-api",
+    "comment": "`search_type=news` \u2192 `engine=duckduckgo_news` on SerpApi."
+  },
+  "mode": {
+    "values": [
+      "balanced"
+    ],
+    "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+    "comment": "Fixed SerpApi backend `engine=duckduckgo` (set via anysearch `engine=\"duckduckgo\"` with `provider=\"serpapi\"`). No separate fast/deep tier on this engine."
+  },
+  "notes": "SerpApi proxy to DuckDuckGo (`engine=duckduckgo`). Native SDK package: google-search-results."
+}

@@ -19,12 +19,15 @@ from search_matrix_provider_meta import (  # noqa: E402
     EXTRA_SOURCES,
     FEATURE_META,
     PARTIAL_NOTES,
+    SERPAPI_MATRIX_ENGINES,
     SUPPORT_OVERRIDE,
     feat,
     feature_entry,
     links_for,
     list_val,
     mode_for,
+    serpapi_matrix_display,
+    serpapi_matrix_slug,
     string_val,
 )
 
@@ -65,14 +68,14 @@ FEATURE_LABELS = {
 }
 
 
-def build_provider(row: dict) -> dict:
+def build_provider(row: dict, *, slug: str | None = None, display: str | None = None) -> dict:
     name = row["name"]
-    slug = name
+    slug = slug or name
     caps = set(row["capabilities"])
     links_meta = links_for(slug)
     docs = links_meta.get("docs", row.get("config_hint", ""))
     website = links_meta.get("website", "")
-    display = DISPLAY_NAMES.get(slug, name.replace("_", " ").title())
+    display = display or DISPLAY_NAMES.get(slug, name.replace("_", " ").title())
     env_source = ENV_SOURCES.get(slug, docs or website)
     extra_pkg = row.get("extra_package") or ""
     if extra_pkg:
@@ -94,7 +97,9 @@ def build_provider(row: dict) -> dict:
             return "full"
         if key in partial_notes:
             return "partial"
-        if key == "answer" and slug in ("serper", "serpapi", "searchapi"):
+        if key == "answer" and (
+            slug in ("serper", "serpapi", "searchapi") or slug.startswith("serpapi_")
+        ):
             return "partial"
         if key == "domains" and slug == "google_pse":
             return "partial"
@@ -138,7 +143,8 @@ def build_provider(row: dict) -> dict:
         default_comment = FEATURE_LABELS.get(key, key)
         out[key] = feature_entry(slug, key, sup, docs, website, default_comment)
 
-    mode = mode_for(slug, docs, website)
+    engine_hint = slug.removeprefix("serpapi_") if slug.startswith("serpapi_") else None
+    mode = mode_for(slug, docs, website, engine=engine_hint)
     out["mode"] = list_val(mode["values"], mode["source_url"], mode["comment"])
 
     notes = []
@@ -151,19 +157,64 @@ def build_provider(row: dict) -> dict:
     return out
 
 
+def build_serpapi_matrix_provider(row: dict, entry: dict[str, str]) -> dict:
+    """One matrix column per SerpApi engine backend."""
+    engine = entry["engine"]
+    slug = serpapi_matrix_slug(engine)
+    display = serpapi_matrix_display(entry["brand"])
+    docs = entry["docs"]
+    website = entry["website"]
+    payload = build_provider(row, slug=slug, display=display)
+    payload["links"] = {
+        "docs": docs,
+        "github": GITHUB_REPO,
+        "website": website,
+        "slug": slug,
+    }
+    payload["env_keys"] = string_val(
+        "SERPAPI_API_KEY, SERPAPI_KEY",
+        ENV_SOURCES["serpapi"],
+        f"Same SerpApi key for all engines; anysearch uses `engine=\"{engine}\"`.",
+    )
+    payload["python_extra"] = string_val(
+        row.get("extra_package") or "google-search-results",
+        EXTRA_SOURCES["serpapi"],
+        f"pip extra `serpapi`; call with `provider=\"serpapi\"`, `engine=\"{engine}\"`.",
+    )
+    payload["notes"] = (
+        f"SerpApi proxy to {entry['brand']} (`engine={engine}`). "
+        + (payload.get("notes") or "")
+    ).strip()
+    return payload
+
+
 def main() -> None:
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     for p in DATA_DIR.glob("*.json"):
         p.unlink()
 
     info = AnySearch().provider_info()
+    serpapi_row = next((r for r in info if r["name"] == "serpapi"), None)
+    written = 0
     for row in sorted(info, key=lambda r: r["name"]):
+        if row["name"] == "serpapi":
+            if not serpapi_row:
+                continue
+            for entry in SERPAPI_MATRIX_ENGINES:
+                payload = build_serpapi_matrix_provider(serpapi_row, entry)
+                fname = f"{serpapi_matrix_slug(entry['engine'])}.json"
+                path = DATA_DIR / fname
+                path.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+                print("wrote", path.name)
+                written += 1
+            continue
         payload = build_provider(row)
         path = DATA_DIR / f"{row['name']}.json"
         path.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
         print("wrote", path.name)
+        written += 1
 
-    print(f"Generated {len(info)} provider files in {DATA_DIR}")
+    print(f"Generated {written} provider files in {DATA_DIR}")
 
 
 if __name__ == "__main__":

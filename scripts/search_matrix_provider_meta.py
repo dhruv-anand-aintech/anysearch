@@ -240,6 +240,9 @@ SUPPORT_OVERRIDE: dict[str, dict[str, str]] = {
         "domains": "partial",
         "date": "partial",
     },
+    "serpapi_yandex": {
+        "news": "none",
+    },
 }
 
 # Per-feature comments and doc anchors (slug → feature key → {source, comment}).
@@ -531,6 +534,61 @@ FEATURE_META: dict[str, dict[str, dict[str, str]]] = {
     },
 }
 
+# Extra matrix columns: one per SerpApi `engine=` backend (replaces a single SerpApi column).
+SERPAPI_MATRIX_ENGINES: tuple[dict[str, str], ...] = (
+    {
+        "engine": "google",
+        "brand": "Google",
+        "docs": "https://serpapi.com/search-api",
+        "website": "https://www.google.com",
+        "news_engine": "google_news",
+    },
+    {
+        "engine": "bing",
+        "brand": "Bing",
+        "docs": "https://serpapi.com/bing-search-api",
+        "website": "https://www.bing.com",
+        "news_engine": "bing_news",
+    },
+    {
+        "engine": "baidu",
+        "brand": "Baidu",
+        "docs": "https://serpapi.com/baidu-search-api",
+        "website": "https://www.baidu.com",
+        "news_engine": "baidu_news",
+    },
+    {
+        "engine": "yandex",
+        "brand": "Yandex",
+        "docs": "https://serpapi.com/yandex-search-api",
+        "website": "https://yandex.com",
+        "news_engine": "",
+    },
+    {
+        "engine": "duckduckgo",
+        "brand": "DuckDuckGo",
+        "docs": "https://serpapi.com/duckduckgo-search-api",
+        "website": "https://duckduckgo.com",
+        "news_engine": "duckduckgo_news",
+    },
+    {
+        "engine": "yahoo",
+        "brand": "Yahoo",
+        "docs": "https://serpapi.com/yahoo-search-api",
+        "website": "https://www.yahoo.com",
+        "news_engine": "yahoo",
+    },
+)
+
+
+def serpapi_matrix_slug(engine: str) -> str:
+    return f"serpapi_{engine}"
+
+
+def serpapi_matrix_display(brand: str) -> str:
+    return f"{brand} · SerpApi"
+
+
 PARTIAL_NOTES: dict[str, dict[str, str]] = {
     "serper": {
         "answer": "Answer only when the SERP includes an answer box (not explicitly requested).",
@@ -551,11 +609,99 @@ PARTIAL_NOTES: dict[str, dict[str, str]] = {
 }
 
 
+def _register_serpapi_matrix_meta() -> None:
+    """Populate FEATURE_META / PARTIAL_NOTES for serpapi_<engine> matrix slugs."""
+    for entry in SERPAPI_MATRIX_ENGINES:
+        slug = serpapi_matrix_slug(entry["engine"])
+        docs = entry["docs"]
+        engine = entry["engine"]
+        news = entry.get("news_engine") or ""
+        locale: dict[str, dict[str, str]] = {}
+        if engine == "google":
+            locale = {
+                "country": {"source": docs, "comment": "`gl` — country code on `engine=google`."},
+                "language": {"source": docs, "comment": "`hl` — language code."},
+                "safe_search": {"source": docs, "comment": "`safe`: `active` or `off`."},
+            }
+        elif engine == "bing":
+            locale = {
+                "country": {"source": docs, "comment": "`cc` — country code on `engine=bing`."},
+                "language": {"source": docs, "comment": "`setlang` — UI/search language."},
+                "safe_search": {
+                    "source": docs,
+                    "comment": "`safe_search`: off, moderate, strict.",
+                },
+            }
+        elif engine == "duckduckgo":
+            locale = {
+                "country": {
+                    "source": docs,
+                    "comment": "`kl` region tag (e.g. us-en) combines country + language.",
+                },
+                "language": {"source": docs, "comment": "Set via `kl` (e.g. us-en, uk-en)."},
+                "safe_search": {"source": docs, "comment": "`safe_search` on DuckDuckGo engine."},
+            }
+        elif engine == "yandex":
+            locale = {
+                "country": {"source": docs, "comment": "`lr` — Yandex region id when supported."},
+                "language": {
+                    "source": docs,
+                    "comment": "Language via Yandex-specific params (see SerpApi docs).",
+                },
+            }
+        elif engine == "baidu":
+            locale = {
+                "language": {
+                    "source": docs,
+                    "comment": "Language filter via Baidu-specific params (`ct`, etc.).",
+                },
+            }
+        elif engine == "yahoo":
+            locale = {
+                "safe_search": {"source": docs, "comment": "`safe_search` on Yahoo engine."},
+            }
+
+        FEATURE_META[slug] = {
+            "snippet": {
+                "source": docs,
+                "comment": f"Organic results via SerpApi `engine={engine}`.",
+            },
+            "answer": {
+                "source": docs,
+                "comment": "Answer box when the engine JSON includes one (not explicitly requested).",
+            },
+            "news": {
+                "source": docs,
+                "comment": (
+                    f"`search_type=news` → `engine={news}` on SerpApi."
+                    if news
+                    else "News via SerpApi where a dedicated news engine exists for this backend."
+                ),
+            },
+            **locale,
+        }
+        PARTIAL_NOTES[slug] = {
+            "answer": "Answer only when the SERP includes an answer box (not explicitly requested).",
+        }
+
+
+_register_serpapi_matrix_meta()
+
+
 def links_for(slug: str) -> dict[str, str]:
     return LINKS.get(slug, {})
 
 
-def mode_for(slug: str, docs: str, website: str) -> dict:
+def mode_for(slug: str, docs: str, website: str, *, engine: str | None = None) -> dict:
+    if engine:
+        return {
+            "values": ["balanced"],
+            "source_url": docs or website,
+            "comment": (
+                f"Fixed SerpApi backend `engine={engine}` (set via anysearch `engine=\"{engine}\"` "
+                f"with `provider=\"serpapi\"`). No separate fast/deep tier on this engine."
+            ),
+        }
     meta = MODE_META.get(slug)
     if meta:
         return {

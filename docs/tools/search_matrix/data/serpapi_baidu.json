@@ -1,0 +1,87 @@
+{
+  "name": "Baidu \u00b7 SerpApi",
+  "links": {
+    "docs": "https://serpapi.com/baidu-search-api",
+    "github": "https://github.com/dhruv-anand-aintech/anysearch",
+    "website": "https://www.baidu.com",
+    "slug": "serpapi_baidu"
+  },
+  "env_keys": {
+    "value": "SERPAPI_API_KEY, SERPAPI_KEY",
+    "source_url": "https://serpapi.com/search-api",
+    "comment": "Same SerpApi key for all engines; anysearch uses `engine=\"baidu\"`."
+  },
+  "python_extra": {
+    "value": "google-search-results",
+    "source_url": "https://pypi.org/project/google-search-results/",
+    "comment": "pip extra `serpapi`; call with `provider=\"serpapi\"`, `engine=\"baidu\"`."
+  },
+  "requires_key": {
+    "support": "full",
+    "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+    "comment": "Valid API key required for every request."
+  },
+  "snippet": {
+    "support": "full",
+    "source_url": "https://serpapi.com/baidu-search-api",
+    "comment": "Organic results via SerpApi `engine=baidu`."
+  },
+  "domains": {
+    "support": "none",
+    "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+    "comment": "Domain filters"
+  },
+  "country": {
+    "support": "full",
+    "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+    "comment": "Country (gl)"
+  },
+  "language": {
+    "support": "full",
+    "source_url": "https://serpapi.com/baidu-search-api",
+    "comment": "Language filter via Baidu-specific params (`ct`, etc.)."
+  },
+  "date": {
+    "support": "none",
+    "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+    "comment": "Published date range"
+  },
+  "safe_search": {
+    "support": "full",
+    "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+    "comment": "Safe search"
+  },
+  "answer": {
+    "support": "partial",
+    "source_url": "https://serpapi.com/baidu-search-api",
+    "comment": "Answer box when the engine JSON includes one (not explicitly requested)."
+  },
+  "content": {
+    "support": "none",
+    "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+    "comment": "Full page text"
+  },
+  "summary": {
+    "support": "none",
+    "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+    "comment": "AI per-result summary"
+  },
+  "highlights": {
+    "support": "none",
+    "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+    "comment": "Query highlights"
+  },
+  "news": {
+    "support": "full",
+    "source_url": "https://serpapi.com/baidu-search-api",
+    "comment": "`search_type=news` \u2192 `engine=baidu_news` on SerpApi."
+  },
+  "mode": {
+    "values": [
+      "balanced"
+    ],
+    "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+    "comment": "Fixed SerpApi backend `engine=baidu` (set via anysearch `engine=\"baidu\"` with `provider=\"serpapi\"`). No separate fast/deep tier on this engine."
+  },
+  "notes": "SerpApi proxy to Baidu (`engine=baidu`). Native SDK package: google-search-results."
+}
