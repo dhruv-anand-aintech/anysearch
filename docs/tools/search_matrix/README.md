@@ -41,8 +41,12 @@ Open the URL Wrangler prints (usually `http://localhost:8787`).
 ## Deploy
 
 Push to `main` (touches matrix paths) → GitHub Action runs `matrix:sync` and
-`wrangler deploy`. Requires repo secrets `CLOUDFLARE_API_TOKEN` and
-`CLOUDFLARE_ACCOUNT_ID` (same as agent-launch-cli matrix).
+(optionally) `wrangler deploy`. Requires repo secrets:
+
+| Secret | Notes |
+| --- | --- |
+| `CLOUDFLARE_ACCOUNT_ID` | Set on this repo (same account as local Wrangler OAuth). |
+| `CLOUDFLARE_API_TOKEN` | Copy from [dhruv-anand-aintech/agent-launch](https://github.com/dhruv-anand-aintech/agent-launch/settings/secrets/actions) → this repo’s Actions secrets. Without it, CI still validates/bundles matrix data but skips deploy. |
 
 Manual:
 
