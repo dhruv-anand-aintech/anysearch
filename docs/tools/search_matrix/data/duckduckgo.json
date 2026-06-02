@@ -2,7 +2,7 @@
   "name": "DuckDuckGo",
   "links": {
     "docs": "https://pypi.org/project/ddgs/",
-    "github": "https://github.com/AI-Northstar-Tech/anysearch",
+    "github": "https://github.com/dhruv-anand-aintech/anysearch",
     "website": "https://duckduckgo.com",
     "slug": "duckduckgo"
   },
@@ -13,8 +13,8 @@
   },
   "python_extra": {
     "value": "ddgs",
-    "source_url": "https://github.com/AI-Northstar-Tech/anysearch/tree/main/python#install",
-    "comment": "Optional: pip install 'anysearch-sdk[duckduckgo] @ git+https://github.com/AI-Northstar-Tech/anysearch.git@main#subdirectory=python'"
+    "source_url": "https://github.com/dhruv-anand-aintech/anysearch/tree/main/python#install",
+    "comment": "Optional: pip install 'anysearch-sdk[duckduckgo] @ git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python'"
   },
   "requires_key": {
     "support": "none",

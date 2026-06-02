@@ -146,7 +146,7 @@ class BaseProvider:
         if cls.extra_package:
             parts.append(
                 "Optional native SDK: pip install "
-                f"'anysearch-sdk[{cls.name}] @ git+https://github.com/AI-Northstar-Tech/anysearch.git@main#subdirectory=python'."
+                f"'anysearch-sdk[{cls.name}] @ git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python'."
             )
         return " ".join(parts)
 
@@ -250,7 +250,7 @@ class BaseProvider:
                 f"Native SDK for '{self.name}' is not installed. "
                 "Install it with: pip install "
                 f"'anysearch-sdk[{self.name}] @ "
-                "git+https://github.com/AI-Northstar-Tech/anysearch.git@main#subdirectory=python'"
+                "git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python'"
             ) from exc
         for cls_name in class_names:
             cls = getattr(module, cls_name, None)

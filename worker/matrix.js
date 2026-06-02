@@ -4,7 +4,7 @@ import schema from "../docs/tools/search_matrix/schema.json";
 import updatedMeta from "../docs/tools/search_matrix/updated.json";
 
 const CANONICAL_ORIGIN = "https://compare-anysearch.ainorthstar.tech";
-const GITHUB_REPO = "https://github.com/AI-Northstar-Tech/anysearch";
+const GITHUB_REPO = "https://github.com/dhruv-anand-aintech/anysearch";
 
 const columns = Object.entries(schema.properties)
   .filter(([key]) => !["links", "notes"].includes(key))
@@ -143,7 +143,7 @@ a { color: inherit; text-decoration: none; }
   padding-bottom: var(--footer-h);
   scroll-padding-bottom: var(--footer-h);
 }
-table { border-collapse: separate; border-spacing: 0; background: var(--panel); }
+table { border-collapse: separate; border-spacing: 0; background: var(--panel); table-layout: fixed; }
 thead { position: sticky; top: 0; z-index: 20; }
 th {
   background: #eee7d8; color: #2a241b; font-weight: 700; font-size: 10px;
@@ -153,7 +153,7 @@ th {
 }
 th.corner { position: sticky; left: 0; z-index: 25; background: #e8decc; min-width: 156px; width: 156px; }
 th.agent-col {
-  min-width: 44px; max-width: 44px; height: 44px; cursor: pointer;
+  min-width: 44px; max-width: 44px; width: 44px; height: 44px; cursor: pointer;
   transition: opacity .15s;
 }
 th.agent-col.dragging { opacity: .4; }
@@ -232,7 +232,14 @@ td.cell-wrap .dot {
   margin-top: 5px; padding-top: 5px; border-top: 1px solid rgba(246,244,238,.22);
 }
 .cell-tip-link { white-space: nowrap; }
-td.value { font-size: 9px; color: var(--muted); line-height: 1.25; white-space: normal; max-width: 110px; }
+td.value {
+  font-size: 9px; color: var(--muted); line-height: 1.35; text-align: left; vertical-align: top;
+  width: 44px; max-width: 44px; min-width: 44px; white-space: normal;
+  overflow-wrap: anywhere; word-break: break-word; hyphens: auto;
+}
+td.value .cell-value {
+  display: block; max-width: 100%; overflow-wrap: anywhere; word-break: break-word;
+}
 .form-tags { display: flex; flex-wrap: wrap; gap: 1px; justify-content: center; }
 .form-tag { border: 1px solid var(--line); background: #fff; padding: 1px 2px; font-size: 8px; }
 .form-tag.deprecated-tag { color: var(--warn); border-color: #d4a574; }

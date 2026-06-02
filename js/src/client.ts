@@ -104,7 +104,7 @@ export class AnySearch {
       mod = (await import(spec.nativeImport.module)) as Record<string, unknown>;
     } catch (err) {
       throw new ConfigurationError(
-        `Native SDK for '${spec.name}' is not installed. Install anysearch from GitHub (npm install github:AI-Northstar-Tech/anysearch#main:js), then: npm install ${spec.nativeImport.module}`,
+        `Native SDK for '${spec.name}' is not installed. Install anysearch from GitHub (npm install github:dhruv-anand-aintech/anysearch#main:js), then: npm install ${spec.nativeImport.module}`,
       );
     }
     const ctx = this.context(spec);

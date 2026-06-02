@@ -14,10 +14,9 @@ sys.path.insert(0, str(PYTHON_SRC))
 from anysearch.client import AnySearch  # noqa: E402
 
 DATA_DIR = ROOT / "docs" / "tools" / "search_matrix" / "data"
-GITHUB_INSTALL_PY = (
-    "git+https://github.com/AI-Northstar-Tech/anysearch.git@main#subdirectory=python"
-)
-GITHUB_INSTALL_DOC = "https://github.com/AI-Northstar-Tech/anysearch/tree/main/python#install"
+GITHUB_REPO = "https://github.com/dhruv-anand-aintech/anysearch"
+GITHUB_INSTALL_PY = f"git+{GITHUB_REPO}.git@main#subdirectory=python"
+GITHUB_INSTALL_DOC = f"{GITHUB_REPO}/tree/main/python#install"
 
 # Official docs / marketing URLs per provider slug.
 LINKS: dict[str, dict[str, str]] = {
@@ -170,12 +169,12 @@ def build_provider(row: dict) -> dict:
             return "partial"
         return "none"
 
-    base_url = docs or website or f"https://github.com/AI-Northstar-Tech/anysearch"
+    base_url = docs or website or GITHUB_REPO
     out: dict = {
         "name": display,
         "links": {
             "docs": docs,
-            "github": "https://github.com/AI-Northstar-Tech/anysearch",
+            "github": GITHUB_REPO,
             "website": website,
             "slug": slug,
         },

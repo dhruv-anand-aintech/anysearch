@@ -29,18 +29,18 @@ resp = anysearch.search(
 Install the latest version from GitHub **`main`** (not on PyPI yet):
 
 ```bash
-pip install "git+https://github.com/AI-Northstar-Tech/anysearch.git@main#subdirectory=python"
+pip install "git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python"
 # or
-uv add "anysearch-sdk @ git+https://github.com/AI-Northstar-Tech/anysearch.git@main#subdirectory=python"
+uv add "anysearch-sdk @ git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python"
 ```
 
 The base install works for **all** providers (every adapter is REST-based on `httpx`).
 Use extras to also install a provider's official SDK (for `anysearch.native(...)`):
 
 ```bash
-pip install "anysearch-sdk[exa,parallel] @ git+https://github.com/AI-Northstar-Tech/anysearch.git@main#subdirectory=python"
-pip install "anysearch-sdk[all] @ git+https://github.com/AI-Northstar-Tech/anysearch.git@main#subdirectory=python"
-uv add "anysearch-sdk[exa,tavily,brave] @ git+https://github.com/AI-Northstar-Tech/anysearch.git@main#subdirectory=python"
+pip install "anysearch-sdk[exa,parallel] @ git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python"
+pip install "anysearch-sdk[all] @ git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python"
+uv add "anysearch-sdk[exa,tavily,brave] @ git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python"
 ```
 
 REST-only providers (`brave`, `serper`, `you`, `jina`, `kagi`, `searchapi`,

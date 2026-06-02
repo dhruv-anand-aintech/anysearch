@@ -27,7 +27,7 @@ const exa = await search("how do transformers work", {
 Install the latest version from GitHub **`main`** (not on npm yet):
 
 ```bash
-npm install github:AI-Northstar-Tech/anysearch#main:js
+npm install github:dhruv-anand-aintech/anysearch#main:js
 ```
 
 The package is REST-based (uses the built-in `fetch`), so it has **no runtime

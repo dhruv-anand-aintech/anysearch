@@ -2,7 +2,7 @@
   "name": "Tavily",
   "links": {
     "docs": "https://docs.tavily.com/documentation/api-reference/endpoint/search",
-    "github": "https://github.com/AI-Northstar-Tech/anysearch",
+    "github": "https://github.com/dhruv-anand-aintech/anysearch",
     "website": "https://tavily.com",
     "slug": "tavily"
   },
@@ -13,8 +13,8 @@
   },
   "python_extra": {
     "value": "tavily-python",
-    "source_url": "https://github.com/AI-Northstar-Tech/anysearch/tree/main/python#install",
-    "comment": "Optional: pip install 'anysearch-sdk[tavily] @ git+https://github.com/AI-Northstar-Tech/anysearch.git@main#subdirectory=python'"
+    "source_url": "https://github.com/dhruv-anand-aintech/anysearch/tree/main/python#install",
+    "comment": "Optional: pip install 'anysearch-sdk[tavily] @ git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python'"
   },
   "requires_key": {
     "support": "full",

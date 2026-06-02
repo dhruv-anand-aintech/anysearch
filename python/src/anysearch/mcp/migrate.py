@@ -152,7 +152,7 @@ def scan_codebase(
         "counts_by_provider": per_provider,
         "findings": findings,
         "next_steps": [
-            "Install anysearch: pip install \"git+https://github.com/AI-Northstar-Tech/anysearch.git@main#subdirectory=python\"",
+            "Install anysearch: pip install \"git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python\"",
             "Replace each call site with anysearch.search(...) using the unified params.",
             "Keep the existing API key env vars — anysearch reads them automatically.",
             "Use provider='<name>' to pin a provider, or omit it to auto-select.",

@@ -197,7 +197,7 @@ export function scanCodebase(
     countsByProvider: counts,
     findings,
     nextSteps: [
-      "Install anysearch: npm install github:AI-Northstar-Tech/anysearch#main:js",
+      "Install anysearch: npm install github:dhruv-anand-aintech/anysearch#main:js",
       "Replace each call site with anysearch search(...) using the unified params.",
       "Keep the existing API key env vars — anysearch reads them automatically.",
       "Use { provider: '<name>' } to pin a provider, or omit it to auto-select.",

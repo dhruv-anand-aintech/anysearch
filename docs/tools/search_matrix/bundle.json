@@ -3,7 +3,7 @@
     "name": "Brave",
     "links": {
       "docs": "https://api-dashboard.search.brave.com/app/documentation/web-search/get-started",
-      "github": "https://github.com/AI-Northstar-Tech/anysearch",
+      "github": "https://github.com/dhruv-anand-aintech/anysearch",
       "website": "https://brave.com/search/api/",
       "slug": "brave"
     },
@@ -14,8 +14,8 @@
     },
     "python_extra": {
       "value": "\u2014 (REST only)",
-      "source_url": "https://github.com/AI-Northstar-Tech/anysearch/tree/main/python#install",
-      "comment": "Optional: pip install 'anysearch-sdk[brave] @ git+https://github.com/AI-Northstar-Tech/anysearch.git@main#subdirectory=python'"
+      "source_url": "https://github.com/dhruv-anand-aintech/anysearch/tree/main/python#install",
+      "comment": "Optional: pip install 'anysearch-sdk[brave] @ git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python'"
     },
     "requires_key": {
       "support": "full",
@@ -88,7 +88,7 @@
     "name": "DuckDuckGo",
     "links": {
       "docs": "https://pypi.org/project/ddgs/",
-      "github": "https://github.com/AI-Northstar-Tech/anysearch",
+      "github": "https://github.com/dhruv-anand-aintech/anysearch",
       "website": "https://duckduckgo.com",
       "slug": "duckduckgo"
     },
@@ -99,8 +99,8 @@
     },
     "python_extra": {
       "value": "ddgs",
-      "source_url": "https://github.com/AI-Northstar-Tech/anysearch/tree/main/python#install",
-      "comment": "Optional: pip install 'anysearch-sdk[duckduckgo] @ git+https://github.com/AI-Northstar-Tech/anysearch.git@main#subdirectory=python'"
+      "source_url": "https://github.com/dhruv-anand-aintech/anysearch/tree/main/python#install",
+      "comment": "Optional: pip install 'anysearch-sdk[duckduckgo] @ git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python'"
     },
     "requires_key": {
       "support": "none",
@@ -173,7 +173,7 @@
     "name": "Exa",
     "links": {
       "docs": "https://docs.exa.ai/reference/search",
-      "github": "https://github.com/AI-Northstar-Tech/anysearch",
+      "github": "https://github.com/dhruv-anand-aintech/anysearch",
       "website": "https://exa.ai",
       "slug": "exa"
     },
@@ -184,8 +184,8 @@
     },
     "python_extra": {
       "value": "exa-py",
-      "source_url": "https://github.com/AI-Northstar-Tech/anysearch/tree/main/python#install",
-      "comment": "Optional: pip install 'anysearch-sdk[exa] @ git+https://github.com/AI-Northstar-Tech/anysearch.git@main#subdirectory=python'"
+      "source_url": "https://github.com/dhruv-anand-aintech/anysearch/tree/main/python#install",
+      "comment": "Optional: pip install 'anysearch-sdk[exa] @ git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python'"
     },
     "requires_key": {
       "support": "full",
@@ -263,7 +263,7 @@
     "name": "Firecrawl",
     "links": {
       "docs": "https://docs.firecrawl.dev/features/search",
-      "github": "https://github.com/AI-Northstar-Tech/anysearch",
+      "github": "https://github.com/dhruv-anand-aintech/anysearch",
       "website": "https://www.firecrawl.dev",
       "slug": "firecrawl"
     },
@@ -274,8 +274,8 @@
     },
     "python_extra": {
       "value": "firecrawl-py",
-      "source_url": "https://github.com/AI-Northstar-Tech/anysearch/tree/main/python#install",
-      "comment": "Optional: pip install 'anysearch-sdk[firecrawl] @ git+https://github.com/AI-Northstar-Tech/anysearch.git@main#subdirectory=python'"
+      "source_url": "https://github.com/dhruv-anand-aintech/anysearch/tree/main/python#install",
+      "comment": "Optional: pip install 'anysearch-sdk[firecrawl] @ git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python'"
     },
     "requires_key": {
       "support": "full",
@@ -348,7 +348,7 @@
     "name": "Google PSE",
     "links": {
       "docs": "https://developers.google.com/custom-search/v1/overview",
-      "github": "https://github.com/AI-Northstar-Tech/anysearch",
+      "github": "https://github.com/dhruv-anand-aintech/anysearch",
       "website": "https://programmablesearchengine.google.com",
       "slug": "google_pse"
     },
@@ -359,8 +359,8 @@
     },
     "python_extra": {
       "value": "\u2014 (REST only)",
-      "source_url": "https://github.com/AI-Northstar-Tech/anysearch/tree/main/python#install",
-      "comment": "Optional: pip install 'anysearch-sdk[google_pse] @ git+https://github.com/AI-Northstar-Tech/anysearch.git@main#subdirectory=python'"
+      "source_url": "https://github.com/dhruv-anand-aintech/anysearch/tree/main/python#install",
+      "comment": "Optional: pip install 'anysearch-sdk[google_pse] @ git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python'"
     },
     "requires_key": {
       "support": "full",
@@ -433,7 +433,7 @@
     "name": "Jina",
     "links": {
       "docs": "https://jina.ai/reader",
-      "github": "https://github.com/AI-Northstar-Tech/anysearch",
+      "github": "https://github.com/dhruv-anand-aintech/anysearch",
       "website": "https://jina.ai",
       "slug": "jina"
     },
@@ -444,8 +444,8 @@
     },
     "python_extra": {
       "value": "\u2014 (REST only)",
-      "source_url": "https://github.com/AI-Northstar-Tech/anysearch/tree/main/python#install",
-      "comment": "Optional: pip install 'anysearch-sdk[jina] @ git+https://github.com/AI-Northstar-Tech/anysearch.git@main#subdirectory=python'"
+      "source_url": "https://github.com/dhruv-anand-aintech/anysearch/tree/main/python#install",
+      "comment": "Optional: pip install 'anysearch-sdk[jina] @ git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python'"
     },
     "requires_key": {
       "support": "full",
@@ -518,7 +518,7 @@
     "name": "Kagi",
     "links": {
       "docs": "https://help.kagi.com/kagi/api/search.html",
-      "github": "https://github.com/AI-Northstar-Tech/anysearch",
+      "github": "https://github.com/dhruv-anand-aintech/anysearch",
       "website": "https://kagi.com",
       "slug": "kagi"
     },
@@ -529,8 +529,8 @@
     },
     "python_extra": {
       "value": "\u2014 (REST only)",
-      "source_url": "https://github.com/AI-Northstar-Tech/anysearch/tree/main/python#install",
-      "comment": "Optional: pip install 'anysearch-sdk[kagi] @ git+https://github.com/AI-Northstar-Tech/anysearch.git@main#subdirectory=python'"
+      "source_url": "https://github.com/dhruv-anand-aintech/anysearch/tree/main/python#install",
+      "comment": "Optional: pip install 'anysearch-sdk[kagi] @ git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python'"
     },
     "requires_key": {
       "support": "full",
@@ -603,7 +603,7 @@
     "name": "Linkup",
     "links": {
       "docs": "https://docs.linkup.so/pages/sdk/python/python",
-      "github": "https://github.com/AI-Northstar-Tech/anysearch",
+      "github": "https://github.com/dhruv-anand-aintech/anysearch",
       "website": "https://www.linkup.so",
       "slug": "linkup"
     },
@@ -614,8 +614,8 @@
     },
     "python_extra": {
       "value": "linkup-sdk",
-      "source_url": "https://github.com/AI-Northstar-Tech/anysearch/tree/main/python#install",
-      "comment": "Optional: pip install 'anysearch-sdk[linkup] @ git+https://github.com/AI-Northstar-Tech/anysearch.git@main#subdirectory=python'"
+      "source_url": "https://github.com/dhruv-anand-aintech/anysearch/tree/main/python#install",
+      "comment": "Optional: pip install 'anysearch-sdk[linkup] @ git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python'"
     },
     "requires_key": {
       "support": "full",
@@ -693,7 +693,7 @@
     "name": "Parallel",
     "links": {
       "docs": "https://docs.parallel.ai/search/search-quickstart",
-      "github": "https://github.com/AI-Northstar-Tech/anysearch",
+      "github": "https://github.com/dhruv-anand-aintech/anysearch",
       "website": "https://parallel.ai",
       "slug": "parallel"
     },
@@ -704,8 +704,8 @@
     },
     "python_extra": {
       "value": "parallel-web",
-      "source_url": "https://github.com/AI-Northstar-Tech/anysearch/tree/main/python#install",
-      "comment": "Optional: pip install 'anysearch-sdk[parallel] @ git+https://github.com/AI-Northstar-Tech/anysearch.git@main#subdirectory=python'"
+      "source_url": "https://github.com/dhruv-anand-aintech/anysearch/tree/main/python#install",
+      "comment": "Optional: pip install 'anysearch-sdk[parallel] @ git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python'"
     },
     "requires_key": {
       "support": "full",
@@ -783,7 +783,7 @@
     "name": "Perplexity",
     "links": {
       "docs": "https://docs.perplexity.ai/guides/search-quickstart",
-      "github": "https://github.com/AI-Northstar-Tech/anysearch",
+      "github": "https://github.com/dhruv-anand-aintech/anysearch",
       "website": "https://www.perplexity.ai",
       "slug": "perplexity"
     },
@@ -794,8 +794,8 @@
     },
     "python_extra": {
       "value": "perplexityai",
-      "source_url": "https://github.com/AI-Northstar-Tech/anysearch/tree/main/python#install",
-      "comment": "Optional: pip install 'anysearch-sdk[perplexity] @ git+https://github.com/AI-Northstar-Tech/anysearch.git@main#subdirectory=python'"
+      "source_url": "https://github.com/dhruv-anand-aintech/anysearch/tree/main/python#install",
+      "comment": "Optional: pip install 'anysearch-sdk[perplexity] @ git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python'"
     },
     "requires_key": {
       "support": "full",
@@ -868,7 +868,7 @@
     "name": "SearXNG",
     "links": {
       "docs": "https://docs.searxng.org/dev/search_api.html",
-      "github": "https://github.com/AI-Northstar-Tech/anysearch",
+      "github": "https://github.com/dhruv-anand-aintech/anysearch",
       "website": "https://docs.searxng.org",
       "slug": "searxng"
     },
@@ -879,8 +879,8 @@
     },
     "python_extra": {
       "value": "\u2014 (REST only)",
-      "source_url": "https://github.com/AI-Northstar-Tech/anysearch/tree/main/python#install",
-      "comment": "Optional: pip install 'anysearch-sdk[searxng] @ git+https://github.com/AI-Northstar-Tech/anysearch.git@main#subdirectory=python'"
+      "source_url": "https://github.com/dhruv-anand-aintech/anysearch/tree/main/python#install",
+      "comment": "Optional: pip install 'anysearch-sdk[searxng] @ git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python'"
     },
     "requires_key": {
       "support": "none",
@@ -953,7 +953,7 @@
     "name": "Searchapi",
     "links": {
       "docs": "https://www.searchapi.io/docs/google",
-      "github": "https://github.com/AI-Northstar-Tech/anysearch",
+      "github": "https://github.com/dhruv-anand-aintech/anysearch",
       "website": "https://www.searchapi.io",
       "slug": "searchapi"
     },
@@ -964,8 +964,8 @@
     },
     "python_extra": {
       "value": "\u2014 (REST only)",
-      "source_url": "https://github.com/AI-Northstar-Tech/anysearch/tree/main/python#install",
-      "comment": "Optional: pip install 'anysearch-sdk[searchapi] @ git+https://github.com/AI-Northstar-Tech/anysearch.git@main#subdirectory=python'"
+      "source_url": "https://github.com/dhruv-anand-aintech/anysearch/tree/main/python#install",
+      "comment": "Optional: pip install 'anysearch-sdk[searchapi] @ git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python'"
     },
     "requires_key": {
       "support": "full",
@@ -1038,7 +1038,7 @@
     "name": "SerpApi",
     "links": {
       "docs": "https://serpapi.com/search-api",
-      "github": "https://github.com/AI-Northstar-Tech/anysearch",
+      "github": "https://github.com/dhruv-anand-aintech/anysearch",
       "website": "https://serpapi.com",
       "slug": "serpapi"
     },
@@ -1049,8 +1049,8 @@
     },
     "python_extra": {
       "value": "google-search-results",
-      "source_url": "https://github.com/AI-Northstar-Tech/anysearch/tree/main/python#install",
-      "comment": "Optional: pip install 'anysearch-sdk[serpapi] @ git+https://github.com/AI-Northstar-Tech/anysearch.git@main#subdirectory=python'"
+      "source_url": "https://github.com/dhruv-anand-aintech/anysearch/tree/main/python#install",
+      "comment": "Optional: pip install 'anysearch-sdk[serpapi] @ git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python'"
     },
     "requires_key": {
       "support": "full",
@@ -1123,7 +1123,7 @@
     "name": "Serper",
     "links": {
       "docs": "https://serper.dev/docs",
-      "github": "https://github.com/AI-Northstar-Tech/anysearch",
+      "github": "https://github.com/dhruv-anand-aintech/anysearch",
       "website": "https://serper.dev",
       "slug": "serper"
     },
@@ -1134,8 +1134,8 @@
     },
     "python_extra": {
       "value": "\u2014 (REST only)",
-      "source_url": "https://github.com/AI-Northstar-Tech/anysearch/tree/main/python#install",
-      "comment": "Optional: pip install 'anysearch-sdk[serper] @ git+https://github.com/AI-Northstar-Tech/anysearch.git@main#subdirectory=python'"
+      "source_url": "https://github.com/dhruv-anand-aintech/anysearch/tree/main/python#install",
+      "comment": "Optional: pip install 'anysearch-sdk[serper] @ git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python'"
     },
     "requires_key": {
       "support": "full",
@@ -1208,7 +1208,7 @@
     "name": "Tavily",
     "links": {
       "docs": "https://docs.tavily.com/documentation/api-reference/endpoint/search",
-      "github": "https://github.com/AI-Northstar-Tech/anysearch",
+      "github": "https://github.com/dhruv-anand-aintech/anysearch",
       "website": "https://tavily.com",
       "slug": "tavily"
     },
@@ -1219,8 +1219,8 @@
     },
     "python_extra": {
       "value": "tavily-python",
-      "source_url": "https://github.com/AI-Northstar-Tech/anysearch/tree/main/python#install",
-      "comment": "Optional: pip install 'anysearch-sdk[tavily] @ git+https://github.com/AI-Northstar-Tech/anysearch.git@main#subdirectory=python'"
+      "source_url": "https://github.com/dhruv-anand-aintech/anysearch/tree/main/python#install",
+      "comment": "Optional: pip install 'anysearch-sdk[tavily] @ git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python'"
     },
     "requires_key": {
       "support": "full",
@@ -1298,7 +1298,7 @@
     "name": "You",
     "links": {
       "docs": "https://documentation.you.com",
-      "github": "https://github.com/AI-Northstar-Tech/anysearch",
+      "github": "https://github.com/dhruv-anand-aintech/anysearch",
       "website": "https://you.com",
       "slug": "you"
     },
@@ -1309,8 +1309,8 @@
     },
     "python_extra": {
       "value": "\u2014 (REST only)",
-      "source_url": "https://github.com/AI-Northstar-Tech/anysearch/tree/main/python#install",
-      "comment": "Optional: pip install 'anysearch-sdk[you] @ git+https://github.com/AI-Northstar-Tech/anysearch.git@main#subdirectory=python'"
+      "source_url": "https://github.com/dhruv-anand-aintech/anysearch/tree/main/python#install",
+      "comment": "Optional: pip install 'anysearch-sdk[you] @ git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python'"
     },
     "requires_key": {
       "support": "full",

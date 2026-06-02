@@ -1,6 +1,6 @@
 # Search API provider matrix
 
-Interactive capability matrix for [anysearch](https://github.com/AI-Northstar-Tech/anysearch),
+Interactive capability matrix for [anysearch](https://github.com/dhruv-anand-aintech/anysearch),
 deployed at **https://compare-anysearch.ainorthstar.tech** (same UX pattern as
 [compare.ainorthstar.tech](https://compare.ainorthstar.tech/) for coding agents).
 

@@ -68,14 +68,14 @@ Install from the latest **`main`** on GitHub (not published to PyPI/npm yet).
 ### Python (pip / uv)
 
 ```bash
-pip install "git+https://github.com/AI-Northstar-Tech/anysearch.git@main#subdirectory=python"
+pip install "git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python"
 
 # Optional: provider native SDKs via extras (for anysearch.native("exa"), etc.)
-pip install "anysearch-sdk[exa,parallel] @ git+https://github.com/AI-Northstar-Tech/anysearch.git@main#subdirectory=python"
-pip install "anysearch-sdk[all] @ git+https://github.com/AI-Northstar-Tech/anysearch.git@main#subdirectory=python"
+pip install "anysearch-sdk[exa,parallel] @ git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python"
+pip install "anysearch-sdk[all] @ git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python"
 
-uv add "anysearch-sdk @ git+https://github.com/AI-Northstar-Tech/anysearch.git@main#subdirectory=python"
-uv add "anysearch-sdk[exa,tavily,brave] @ git+https://github.com/AI-Northstar-Tech/anysearch.git@main#subdirectory=python"
+uv add "anysearch-sdk @ git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python"
+uv add "anysearch-sdk[exa,tavily,brave] @ git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python"
 ```
 
 The base install works for **every** provider (REST via `httpx`). Per-provider extras
@@ -84,7 +84,7 @@ add that provider's official SDK for the `anysearch.native("<provider>")` escape
 ### JavaScript / TypeScript (npm)
 
 ```bash
-npm install github:AI-Northstar-Tech/anysearch#main:js
+npm install github:dhruv-anand-aintech/anysearch#main:js
 ```
 
 No runtime dependencies (uses built-in `fetch`). Provider SDKs are optional and only
