@@ -175,10 +175,22 @@ td.col-hidden-slot {
   display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
   gap: 4px; min-height: 48px;
 }
+.agent-head:has(.agent-name-stacked) { min-height: 56px; }
 .agent-name {
   width: 100%; box-sizing: border-box; font-weight: 700; line-height: 1.15; color: var(--ink);
-  text-align: center; overflow-wrap: anywhere; word-break: break-word; hyphens: auto;
-  overflow: hidden; max-height: 2.6em;
+  text-align: center;
+}
+.agent-name-stacked {
+  display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
+  gap: 1px; overflow: visible; max-height: none;
+}
+.agent-name-line {
+  display: block; width: 100%; max-width: 100%;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.agent-name-via {
+  font-weight: 600; font-size: 0.92em; color: var(--muted);
+  overflow: visible; text-overflow: clip; flex-shrink: 0;
 }
 .row-label.dragging { opacity: .4; }
 .row-label.drag-over { outline: 2px dashed var(--accent); outline-offset: -2px; }
@@ -462,7 +474,22 @@ function cellTipHtml(comment, sourceUrl, links) {
   return html + '</div>';
 }
 var COLORS = ['#176b5b','#2d4f9e','#9a3c32','#a35f00','#4a6fa5','#7b4f9e','#27ae60','#8e44ad','#d35400','#16a085','#2c3e50','#f39c12','#1abc9c','#34495e','#e74c3c','#2980b9','#c0392b'];
+var SERPAPI_VIA_SUFFIX = ' \u00b7 SerpApi';
+function formatAgentNameHtml(name) {
+  if (name.endsWith(SERPAPI_VIA_SUFFIX)) {
+    var brand = name.slice(0, -SERPAPI_VIA_SUFFIX.length);
+    return '<span class="agent-name agent-name-stacked" title="'+esc(name)+'">'+
+      '<span class="agent-name-line">'+esc(brand)+'</span>'+
+      '<span class="agent-name-line agent-name-via">SerpApi</span></span>';
+  }
+  return '<span class="agent-name" title="'+esc(name)+'">'+
+    '<span class="agent-name-line">'+esc(name)+'</span></span>';
+}
 function agentInitials(name) {
+  if (name.endsWith(SERPAPI_VIA_SUFFIX)) {
+    var brand = name.slice(0, -SERPAPI_VIA_SUFFIX.length);
+    return brand.slice(0, 2).toUpperCase();
+  }
   var p = name.split(/\s+/);
   return p.length===1 ? name.slice(0,2).toUpperCase() : (p[0][0]+p[1][0]).toUpperCase();
 }
@@ -534,10 +561,21 @@ function fitAgentHeaderNames() {
     var box = el.parentElement;
     if (!box) return;
     var maxW = Math.max(0, box.clientWidth - 2);
-    var maxH = 34;
+    var lines = el.querySelectorAll('.agent-name-line');
+    var stacked = el.classList.contains('agent-name-stacked');
+    var maxH = stacked ? 42 : 34;
     var fs = 10;
     el.style.fontSize = fs + 'px';
-    while (fs > 5.5 && (el.scrollWidth > maxW + 1 || el.scrollHeight > maxH)) {
+    function overflows() {
+      if (el.scrollHeight > maxH + 1) return true;
+      for (var li = 0; li < lines.length; li++) {
+        var line = lines[li];
+        if (line.classList.contains('agent-name-via')) continue;
+        if (line.scrollWidth > maxW + 1) return true;
+      }
+      return false;
+    }
+    while (fs > 5.5 && overflows()) {
       fs -= 0.5;
       el.style.fontSize = fs + 'px';
     }
@@ -552,7 +590,7 @@ function renderHeader() {
   document.getElementById('headerRow').innerHTML = '<th class="corner"></th>'+displayColOrder().map(function(i){
     var agent = matrix[i], hc = hidden.has(i)?' hidden-col':'', dep = agent.deprecated?' deprecated-col':'';
     return '<th class="agent-col'+hc+dep+'" data-idx="'+i+'" draggable="true" onclick="toggleCol('+i+')" title="Click to toggle visibility">'+
-      '<div class="agent-head">'+favimg(agent, i)+'<span class="agent-name">'+esc(agent.name)+'</span></div>'+
+      '<div class="agent-head">'+favimg(agent, i)+formatAgentNameHtml(agent.name)+'</div>'+
       '<span class="eye">'+(hidden.has(i)?'&#8855;':'&#9679;')+'</span></th>';
   }).join(''); setupColDrag(); updateColWidths(); scheduleFitAgentHeaderNames();
 }
