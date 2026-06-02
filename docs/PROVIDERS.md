@@ -65,16 +65,14 @@ The matrix **Mode** row lists which unified tiers each API actually exposes:
 - **balanced** — the default search tier.
 - **deep** — an AI synthesis / multi-step research mode (not richer snippets, scraping, or `include_content`).
 
-The [comparison matrix](https://compare-anysearch.ainorthstar.tech) includes **extra columns** for
-vendor synthesis/research APIs that use the same API key as a search product but a different
-endpoint (e.g. **Research · Tavily**). **Perplexity**, **You**, **Brave**, and **Parallel** each
-document search + synthesis APIs in one column.
+The [comparison matrix](https://compare-anysearch.ainorthstar.tech) documents search and
+synthesis/research APIs in one column when they share an API key (**Tavily**, **Perplexity**,
+**You**, **Brave**, **Parallel**).
 
 | Column | Matrix modes | Native API |
 | --- | --- | --- |
 | exa | fast, balanced, deep | `/search` `type`: instant/fast, auto, deep/deep-lite/deep-reasoning |
-| tavily | fast, balanced | Search `search_depth` |
-| **Research · Tavily** | balanced, deep | Research API `model`: mini/auto, pro |
+| tavily | fast, balanced, deep | Search `search_depth`; Research API `model`: mini/auto, pro |
 | parallel | fast, balanced, deep | Search `mode`: basic/advanced; Task API `processor`: Lite/Base, Core, Pro/Ultra |
 | linkup | fast, balanced, deep | `depth` + `outputType=sourcedAnswer` for cited synthesis |
 | perplexity | balanced, deep | Search API `POST /search` (SDK); Sonar `POST /chat/completions` — `sonar`, `sonar-pro` |
@@ -83,9 +81,9 @@ document search + synthesis APIs in one column.
 | you | fast, balanced, deep | `POST /v1/search` (SDK); Research `research_effort`: lite, standard, deep, exhaustive |
 | serper, serpapi, searchapi, google_pse, searxng, duckduckgo, jina, firecrawl, kagi | balanced | No fast or synthesis depth preset |
 
-anysearch SDK today implements the **search** columns only; synthesis columns document vendor
-APIs you can call directly (or future anysearch providers). Tavily `mode=deep` still maps to
-`advanced` retrieval in code — the matrix does not list that as a synthesis tier.
+anysearch SDK today implements **search** endpoints for these providers; merged matrix rows also
+document synthesis APIs (Sonar, Tavily Research, etc.) you can call directly. Tavily `mode=deep` in
+the SDK still maps to Search `advanced` retrieval — matrix `deep` is the Research API `pro` tier only.
 
 ## Content fields, by intent
 

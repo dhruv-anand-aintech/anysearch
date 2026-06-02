@@ -1,6 +1,6 @@
 # anysearch Search API Provider Matrix
 
-Providers: 23. Unified parameters and response fields supported via anysearch.
+Providers: 22. Unified parameters and response fields supported via anysearch.
 
 ## Baidu · SerpApi
 - Docs: https://serpapi.com/baidu-search-api
@@ -227,21 +227,6 @@ Providers: 23. Unified parameters and response fields supported via anysearch.
 - Highlights: none
 - News: none
 
-## Research · Tavily
-- Docs: https://docs.tavily.com/documentation/api-reference/endpoint/research
-- Env: TAVILY_API_KEY
-- Domain filters: none
-- Country: none
-- Language: none
-- Date range: none
-- Safe search: none
-- Mode: balanced, deep
-- AI Answer: full
-- Full text: partial
-- Summary: none
-- Highlights: none
-- News: none
-
 ## SearXNG
 - Docs: https://docs.searxng.org/dev/search_api.html
 - Env: SEARXNG_API_KEY
@@ -295,9 +280,9 @@ Providers: 23. Unified parameters and response fields supported via anysearch.
 - Language: none
 - Date range: full
 - Safe search: none
-- Mode: fast, balanced
+- Mode: fast, balanced, deep
 - AI Answer: full
-- Full text: full
+- Full text: partial
 - Summary: none
 - Highlights: none
 - News: full

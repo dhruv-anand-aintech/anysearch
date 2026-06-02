@@ -441,18 +441,13 @@ function sortableLabelHtml(label, key) {
 
 // Pinned agents (always at top), then rest sorted by full-feature count
 const PINNED = [
-  'Exa','Tavily','Research · Tavily','Brave','Parallel','Perplexity','Gemini',
+  'Exa','Tavily','Brave','Parallel','Perplexity','Gemini',
   'You','Linkup',
   'Google · SerpApi','Bing · SerpApi','Baidu · SerpApi','Yandex · SerpApi',
   'DuckDuckGo · SerpApi','Yahoo · SerpApi',
 ];
-const FAVICON_PARENT_SLUG = {
-  tavily_research: 'tavily',
-};
 function faviconSlugForAgent(agent) {
-  var slug = agent.links && agent.links.slug;
-  if (slug && FAVICON_PARENT_SLUG[slug]) return FAVICON_PARENT_SLUG[slug];
-  return slug;
+  return agent.links && agent.links.slug;
 }
 function serpapiPinRank(name) {
   var i = PINNED.indexOf(name);

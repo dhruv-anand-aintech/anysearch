@@ -24,17 +24,17 @@
   "snippet": {
     "support": "full",
     "source_url": "https://docs.tavily.com/documentation/api-reference/endpoint/search",
-    "comment": "Short description field returned with each result."
+    "comment": "Search API ranked result snippets. Research API returns a report only \u2014 no SERP list."
   },
   "domains": {
     "support": "full",
     "source_url": "https://docs.tavily.com/documentation/api-reference/endpoint/search",
-    "comment": "`include_domains` / `exclude_domains` (max 300 domains)."
+    "comment": "Search API: `include_domains` / `exclude_domains` (max 300). Research API has no domain filter."
   },
   "country": {
     "support": "full",
     "source_url": "https://docs.tavily.com/documentation/api-reference/endpoint/search",
-    "comment": "`country` (topic `general` only) \u2014 ISO country name."
+    "comment": "Search API `country` (topic `general` only). Not on Research API."
   },
   "language": {
     "support": "none",
@@ -44,7 +44,7 @@
   "date": {
     "support": "full",
     "source_url": "https://docs.tavily.com/documentation/api-reference/endpoint/search",
-    "comment": "`start_date` / `end_date` or `time_range` (`day`, `week`, `month`, `year`)."
+    "comment": "Search API `start_date` / `end_date` or `time_range`. Research API has no date filter."
   },
   "safe_search": {
     "support": "none",
@@ -53,13 +53,13 @@
   },
   "answer": {
     "support": "full",
-    "source_url": "https://docs.tavily.com/documentation/api-reference/endpoint/search",
-    "comment": "`include_answer`: `basic` or `advanced` LLM answer from results."
+    "source_url": "https://docs.tavily.com/documentation/api-reference/endpoint/research",
+    "comment": "Search: `include_answer` (`basic`/`advanced`) short LLM blurb from results. Research: completed task `content` is a full cited research report."
   },
   "content": {
-    "support": "full",
+    "support": "partial",
     "source_url": "https://docs.tavily.com/documentation/api-reference/endpoint/search",
-    "comment": "`include_raw_content` returns raw page text per source."
+    "comment": "Search: `include_raw_content` per result. Research: `sources[]` URLs + optional `output_schema`."
   },
   "summary": {
     "support": "none",
@@ -74,15 +74,16 @@
   "news": {
     "support": "full",
     "source_url": "https://docs.tavily.com/documentation/api-reference/endpoint/search",
-    "comment": "`topic`: `news` (or `general` with news-oriented query)."
+    "comment": "Search API `topic`: `news`. Research API has no news topic."
   },
   "mode": {
     "values": [
       "fast",
-      "balanced"
+      "balanced",
+      "deep"
     ],
     "source_url": "https://docs.tavily.com/documentation/best-practices/best-practices-search",
-    "comment": "Search API `search_depth`: `ultra-fast`/`fast` or `basic` (balanced). `include_answer` adds a short LLM blurb \u2014 not full research. Multi-agent reports: **Research \u00b7 Tavily**."
+    "comment": "**Search API** `search_depth`: `ultra-fast`/`fast`\u2192fast, `basic`\u2192balanced (`include_answer` is a short blurb, not deep research). **Research API** (`POST /research`) `model`: `mini`/`auto`\u2192balanced, `pro`\u2192deep (multi-agent cited report). Same `TAVILY_API_KEY`."
   },
-  "notes": "Native SDK package: tavily-python."
+  "notes": "Native SDK package: tavily-python. Search API is in the anysearch SDK; Research API (`POST /research`) is documented in the matrix (use `tavily-python` `research()` / `get_research()`)."
 }

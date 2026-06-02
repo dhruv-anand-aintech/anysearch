@@ -110,11 +110,12 @@ MODE_META: dict[str, dict] = {
         ),
     },
     "tavily": {
-        "values": ["fast", "balanced"],
+        "values": ["fast", "balanced", "deep"],
         "source": "https://docs.tavily.com/documentation/best-practices/best-practices-search",
         "comment": (
-            "Search API `search_depth`: `ultra-fast`/`fast` or `basic` (balanced). `include_answer` "
-            "adds a short LLM blurb — not full research. Multi-agent reports: **Research · Tavily**."
+            "**Search API** `search_depth`: `ultra-fast`/`fast`→fast, `basic`→balanced (`include_answer` "
+            "is a short blurb, not deep research). **Research API** (`POST /research`) `model`: "
+            "`mini`/`auto`→balanced, `pro`→deep (multi-agent cited report). Same `TAVILY_API_KEY`."
         ),
     },
     "parallel": {
@@ -262,6 +263,9 @@ SUPPORT_OVERRIDE: dict[str, dict[str, str]] = {
         "answer": "full",
         "content": "partial",
     },
+    "tavily": {
+        "content": "partial",
+    },
     "parallel": {
         "answer": "full",
     },
@@ -287,6 +291,10 @@ MATRIX_NOTES: dict[str, str] = {
     "parallel": (
         "Search API is in the anysearch SDK; Task API (`POST /v1/tasks/runs`) is documented "
         "in the matrix but not wired in the SDK yet."
+    ),
+    "tavily": (
+        "Search API is in the anysearch SDK; Research API (`POST /research`) is documented "
+        "in the matrix (use `tavily-python` `research()` / `get_research()`)."
     ),
 }
 
@@ -330,27 +338,44 @@ FEATURE_META: dict[str, dict[str, dict[str, str]]] = {
     "tavily": {
         "domains": {
             "source": "https://docs.tavily.com/documentation/api-reference/endpoint/search",
-            "comment": "`include_domains` / `exclude_domains` (max 300 domains).",
+            "comment": (
+                "Search API: `include_domains` / `exclude_domains` (max 300). Research API has no domain filter."
+            ),
         },
         "country": {
             "source": "https://docs.tavily.com/documentation/api-reference/endpoint/search",
-            "comment": "`country` (topic `general` only) — ISO country name.",
+            "comment": (
+                "Search API `country` (topic `general` only). Not on Research API."
+            ),
         },
         "date": {
             "source": "https://docs.tavily.com/documentation/api-reference/endpoint/search",
-            "comment": "`start_date` / `end_date` or `time_range` (`day`, `week`, `month`, `year`).",
+            "comment": (
+                "Search API `start_date` / `end_date` or `time_range`. Research API has no date filter."
+            ),
         },
         "answer": {
-            "source": "https://docs.tavily.com/documentation/api-reference/endpoint/search",
-            "comment": "`include_answer`: `basic` or `advanced` LLM answer from results.",
+            "source": "https://docs.tavily.com/documentation/api-reference/endpoint/research",
+            "comment": (
+                "Search: `include_answer` (`basic`/`advanced`) short LLM blurb from results. "
+                "Research: completed task `content` is a full cited research report."
+            ),
         },
         "content": {
             "source": "https://docs.tavily.com/documentation/api-reference/endpoint/search",
-            "comment": "`include_raw_content` returns raw page text per source.",
+            "comment": (
+                "Search: `include_raw_content` per result. Research: `sources[]` URLs + optional `output_schema`."
+            ),
+        },
+        "snippet": {
+            "source": "https://docs.tavily.com/documentation/api-reference/endpoint/search",
+            "comment": (
+                "Search API ranked result snippets. Research API returns a report only — no SERP list."
+            ),
         },
         "news": {
             "source": "https://docs.tavily.com/documentation/api-reference/endpoint/search",
-            "comment": "`topic`: `news` (or `general` with news-oriented query).",
+            "comment": "Search API `topic`: `news`. Research API has no news topic.",
         },
     },
     "parallel": {
@@ -698,43 +723,8 @@ FEATURE_META: dict[str, dict[str, dict[str, str]]] = {
 }
 
 # Extra matrix columns: synthesis / research APIs (same API keys as base provider, different endpoint).
-AI_MATRIX_PRODUCTS: tuple[dict[str, str | list[str] | dict[str, tuple[str, str, str]]], ...] = (
-    {
-        "slug": "tavily_research",
-        "base": "tavily",
-        "product": "Research",
-        "brand": "Tavily",
-        "docs": "https://docs.tavily.com/documentation/api-reference/endpoint/research",
-        "website": "https://tavily.com",
-        "endpoint": "POST https://api.tavily.com/research",
-        "modes": ["balanced", "deep"],
-        "mode_source": "https://docs.tavily.com/documentation/api-reference/endpoint/research",
-        "mode_comment": (
-            "Research API `model`: `mini`→balanced (focused), `pro`→deep (multi-agent, subtopics). "
-            "`auto` picks between them. Async poll or SSE stream; returns a cited report in `content`."
-        ),
-        "features": {
-            "answer": (
-                "full",
-                "https://docs.tavily.com/documentation/api-reference/endpoint/research",
-                "Completed task `content` is a synthesized research report with citations.",
-            ),
-            "content": (
-                "partial",
-                "https://docs.tavily.com/documentation/api-reference/endpoint/research",
-                "`sources[]` lists URLs used; optional `output_schema` for structured JSON output.",
-            ),
-            "snippet": (
-                "none",
-                "https://docs.tavily.com/documentation/api-reference/endpoint/research",
-                "No ranked SERP snippets — end-to-end research report only.",
-            ),
-        },
-        "notes": (
-            "Multi-agent research (poll/stream). Same `TAVILY_API_KEY`. Use `tavily-python` `research()` / `get_research()`."
-        ),
-    },
-)
+# Empty — multi-product providers are merged into base columns (see MODE_META / FEATURE_META).
+AI_MATRIX_PRODUCTS: tuple[dict[str, str | list[str] | dict[str, tuple[str, str, str]]], ...] = ()
 
 VIA_SUFFIX = " · "  # display suffix for multi-product columns (e.g. "Research · You.com")
 
