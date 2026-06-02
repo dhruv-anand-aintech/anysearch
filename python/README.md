@@ -26,21 +26,21 @@ resp = anysearch.search(
 
 ## Install
 
-The base install works for **all** providers (every adapter is REST-based on `httpx`):
+Install the latest version from GitHub **`main`** (not on PyPI yet):
 
 ```bash
-pip install anysearch-sdk
+pip install "git+https://github.com/AI-Northstar-Tech/anysearch.git@main#subdirectory=python"
 # or
-uv add anysearch-sdk
+uv add "anysearch-sdk @ git+https://github.com/AI-Northstar-Tech/anysearch.git@main#subdirectory=python"
 ```
 
-Use extras to also install a provider's official SDK (exposed via `anysearch.native(...)`).
-Selection is multi-provider and drives the installed requirements:
+The base install works for **all** providers (every adapter is REST-based on `httpx`).
+Use extras to also install a provider's official SDK (for `anysearch.native(...)`):
 
 ```bash
-pip install "anysearch-sdk[exa,parallel]"     # just those two SDKs
-pip install "anysearch-sdk[all]"              # every provider SDK
-uv add "anysearch-sdk[exa,tavily,brave]"
+pip install "anysearch-sdk[exa,parallel] @ git+https://github.com/AI-Northstar-Tech/anysearch.git@main#subdirectory=python"
+pip install "anysearch-sdk[all] @ git+https://github.com/AI-Northstar-Tech/anysearch.git@main#subdirectory=python"
+uv add "anysearch-sdk[exa,tavily,brave] @ git+https://github.com/AI-Northstar-Tech/anysearch.git@main#subdirectory=python"
 ```
 
 REST-only providers (`brave`, `serper`, `you`, `jina`, `kagi`, `searchapi`,

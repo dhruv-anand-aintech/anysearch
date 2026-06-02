@@ -14,6 +14,10 @@ sys.path.insert(0, str(PYTHON_SRC))
 from anysearch.client import AnySearch  # noqa: E402
 
 DATA_DIR = ROOT / "docs" / "tools" / "search_matrix" / "data"
+GITHUB_INSTALL_PY = (
+    "git+https://github.com/AI-Northstar-Tech/anysearch.git@main#subdirectory=python"
+)
+GITHUB_INSTALL_DOC = "https://github.com/AI-Northstar-Tech/anysearch/tree/main/python#install"
 
 # Official docs / marketing URLs per provider slug.
 LINKS: dict[str, dict[str, str]] = {
@@ -182,8 +186,8 @@ def build_provider(row: dict) -> dict:
         ),
         "python_extra": string_val(
             row["extra_package"] or "— (REST only)",
-            "https://github.com/AI-Northstar-Tech/anysearch/tree/main/python#install",
-            "Optional pip extra: pip install 'anysearch-sdk[<name>]'",
+            GITHUB_INSTALL_DOC,
+            f"Optional: pip install 'anysearch-sdk[{slug}] @ {GITHUB_INSTALL_PY}'",
         ),
         "requires_key": feat(
             "none" if not row["requires_key"] else "full",

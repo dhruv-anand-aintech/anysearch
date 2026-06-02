@@ -63,23 +63,28 @@ See [`docs/PROVIDERS.md`](docs/PROVIDERS.md) for the full capability matrix.
 
 ## Install
 
-### Python
+Install from the latest **`main`** on GitHub (not published to PyPI/npm yet).
+
+### Python (pip / uv)
 
 ```bash
-pip install anysearch-sdk                     # base — all providers work (REST/httpx)
-pip install "anysearch-sdk[exa,parallel]"     # + those providers' official SDKs
-pip install "anysearch-sdk[all]"              # + every provider SDK
-uv add "anysearch-sdk[exa,tavily,brave]"
+pip install "git+https://github.com/AI-Northstar-Tech/anysearch.git@main#subdirectory=python"
+
+# Optional: provider native SDKs via extras (for anysearch.native("exa"), etc.)
+pip install "anysearch-sdk[exa,parallel] @ git+https://github.com/AI-Northstar-Tech/anysearch.git@main#subdirectory=python"
+pip install "anysearch-sdk[all] @ git+https://github.com/AI-Northstar-Tech/anysearch.git@main#subdirectory=python"
+
+uv add "anysearch-sdk @ git+https://github.com/AI-Northstar-Tech/anysearch.git@main#subdirectory=python"
+uv add "anysearch-sdk[exa,tavily,brave] @ git+https://github.com/AI-Northstar-Tech/anysearch.git@main#subdirectory=python"
 ```
 
-The base install works for **every** provider. Per-provider extras additionally install
-that provider's official SDK, reachable via the `anysearch.native("<provider>")` escape
-hatch for provider-specific features beyond the unified surface.
+The base install works for **every** provider (REST via `httpx`). Per-provider extras
+add that provider's official SDK for the `anysearch.native("<provider>")` escape hatch.
 
-### JavaScript / TypeScript
+### JavaScript / TypeScript (npm)
 
 ```bash
-npm install anysearch
+npm install github:AI-Northstar-Tech/anysearch#main:js
 ```
 
 No runtime dependencies (uses built-in `fetch`). Provider SDKs are optional and only
@@ -176,8 +181,8 @@ Source: `docs/tools/search_matrix/` · Worker: `worker/matrix.js` · Regenerate 
 
 ```
 anysearch/
-├── python/   # anysearch-sdk (PyPI) — SDK + anysearch-mcp
-├── js/       # anysearch (npm) — SDK + anysearch-mcp
+├── python/   # anysearch-sdk — SDK + anysearch-mcp (install from GitHub, see above)
+├── js/       # anysearch — SDK + anysearch-mcp (install from GitHub, see above)
 ├── worker/   # Cloudflare Worker for the compare matrix site
 ├── docs/     # PROVIDERS.md + search_matrix data
 └── scripts/  # generate_search_matrix_data.py

@@ -144,7 +144,10 @@ class BaseProvider:
         if cls.requires_base_url and cls.base_url_env:
             parts.append(f"Set {cls.base_url_env[0]}.")
         if cls.extra_package:
-            parts.append(f"Optional native SDK: pip install 'anysearch-sdk[{cls.name}]'.")
+            parts.append(
+                "Optional native SDK: pip install "
+                f"'anysearch-sdk[{cls.name}] @ git+https://github.com/AI-Northstar-Tech/anysearch.git@main#subdirectory=python'."
+            )
         return " ".join(parts)
 
     # -- request execution -------------------------------------------------
@@ -245,7 +248,9 @@ class BaseProvider:
         except ImportError as exc:
             raise ConfigurationError(
                 f"Native SDK for '{self.name}' is not installed. "
-                f"Install it with: pip install 'anysearch-sdk[{self.name}]'"
+                "Install it with: pip install "
+                f"'anysearch-sdk[{self.name}] @ "
+                "git+https://github.com/AI-Northstar-Tech/anysearch.git@main#subdirectory=python'"
             ) from exc
         for cls_name in class_names:
             cls = getattr(module, cls_name, None)
