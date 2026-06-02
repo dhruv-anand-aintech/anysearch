@@ -40,7 +40,7 @@ Providers: 21. Unified parameters and response fields supported via anysearch.
 - Language: full
 - Date range: full
 - Safe search: full
-- Mode: fast, balanced, deep
+- Mode: balanced
 - AI Answer: none
 - Full text: none
 - Summary: none
@@ -100,7 +100,7 @@ Providers: 21. Unified parameters and response fields supported via anysearch.
 - Language: none
 - Date range: none
 - Safe search: none
-- Mode: balanced, deep
+- Mode: balanced
 - AI Answer: none
 - Full text: full
 - Summary: none
@@ -145,7 +145,7 @@ Providers: 21. Unified parameters and response fields supported via anysearch.
 - Language: none
 - Date range: none
 - Safe search: none
-- Mode: fast, balanced, deep
+- Mode: balanced
 - AI Answer: none
 - Full text: full
 - Summary: none
@@ -160,7 +160,7 @@ Providers: 21. Unified parameters and response fields supported via anysearch.
 - Language: none
 - Date range: none
 - Safe search: none
-- Mode: balanced, deep
+- Mode: balanced
 - AI Answer: none
 - Full text: none
 - Summary: none
@@ -175,7 +175,7 @@ Providers: 21. Unified parameters and response fields supported via anysearch.
 - Language: none
 - Date range: full
 - Safe search: none
-- Mode: fast, balanced, deep
+- Mode: fast, balanced
 - AI Answer: full
 - Full text: full
 - Summary: none
@@ -190,7 +190,7 @@ Providers: 21. Unified parameters and response fields supported via anysearch.
 - Language: none
 - Date range: full
 - Safe search: none
-- Mode: fast, balanced, deep
+- Mode: fast, balanced
 - AI Answer: none
 - Full text: full
 - Summary: none
@@ -205,7 +205,7 @@ Providers: 21. Unified parameters and response fields supported via anysearch.
 - Language: full
 - Date range: none
 - Safe search: none
-- Mode: fast, balanced, deep
+- Mode: balanced
 - AI Answer: none
 - Full text: full
 - Summary: none
@@ -265,7 +265,7 @@ Providers: 21. Unified parameters and response fields supported via anysearch.
 - Language: none
 - Date range: full
 - Safe search: none
-- Mode: fast, balanced, deep
+- Mode: fast, balanced
 - AI Answer: full
 - Full text: full
 - Summary: none
@@ -310,7 +310,7 @@ Providers: 21. Unified parameters and response fields supported via anysearch.
 - Language: none
 - Date range: none
 - Safe search: none
-- Mode: fast, balanced, deep
+- Mode: balanced
 - AI Answer: none
 - Full text: none
 - Summary: none

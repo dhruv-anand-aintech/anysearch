@@ -78,12 +78,10 @@
   },
   "mode": {
     "values": [
-      "fast",
-      "balanced",
-      "deep"
+      "balanced"
     ],
     "source_url": "https://you.com/docs/search/overview",
-    "comment": "No `mode` field; depth is implicit. `fast`/`balanced`: web/news snippets from /v1/search (no livecrawl). `deep`: `livecrawl` (`web`, `news`, or `all`) plus `livecrawl_formats` (`markdown` / `html`) to pull page bodies."
+    "comment": "Standard /v1 search snippets. `livecrawl` fetches page HTML/markdown \u2014 not a fast or synthesis depth mode."
   },
   "notes": ""
 }

@@ -83,7 +83,7 @@
       "deep"
     ],
     "source_url": "https://exa.ai/docs/reference/search-best-practices",
-    "comment": "Native `type` on /search: `fast` (~500ms), `auto` default (balanced), `deep` / `deep-lite` / `deep-reasoning` for multi-step research. anysearch maps fast\u2192fast, balanced\u2192auto, deep\u2192deep."
+    "comment": "Native `type`: `fast` / `instant` (latency tiers), `auto` (balanced default), `deep` / `deep-lite` / `deep-reasoning` (multi-step research with synthesized output). anysearch: fast\u2192fast, balanced\u2192auto, deep\u2192deep."
   },
   "notes": "Native SDK package: exa-py."
 }

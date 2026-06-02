@@ -78,11 +78,10 @@
   },
   "mode": {
     "values": [
-      "balanced",
-      "deep"
+      "balanced"
     ],
     "source_url": "https://docs.firecrawl.dev/features/search",
-    "comment": "No separate speed preset on /v2/search. `balanced`: results are title, URL, description only. `deep`: pass `scrapeOptions` (e.g. markdown) to scrape each hit inline."
+    "comment": "Single search tier (title, URL, description). `scrapeOptions` fetches page bodies but is not an AI synthesis `mode`."
   },
   "notes": "Native SDK package: firecrawl-py."
 }

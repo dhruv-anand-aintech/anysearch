@@ -253,12 +253,10 @@
     },
     "mode": {
       "values": [
-        "fast",
-        "balanced",
-        "deep"
+        "balanced"
       ],
       "source_url": "https://api-dashboard.search.brave.com/app/documentation/web-search",
-      "comment": "No named depth tier; latency/richness via query params. `fast`/`balanced`: default web/news search (one description per result). `deep`: `extra_snippets=true` (up to 5 alternate excerpts per result; Pro plans)."
+      "comment": "No fast or synthesis depth preset \u2014 default web/news search only. `extra_snippets` adds excerpts but is not a unified `mode` tier."
     },
     "notes": ""
   },
@@ -521,7 +519,7 @@
         "deep"
       ],
       "source_url": "https://exa.ai/docs/reference/search-best-practices",
-      "comment": "Native `type` on /search: `fast` (~500ms), `auto` default (balanced), `deep` / `deep-lite` / `deep-reasoning` for multi-step research. anysearch maps fast\u2192fast, balanced\u2192auto, deep\u2192deep."
+      "comment": "Native `type`: `fast` / `instant` (latency tiers), `auto` (balanced default), `deep` / `deep-lite` / `deep-reasoning` (multi-step research with synthesized output). anysearch: fast\u2192fast, balanced\u2192auto, deep\u2192deep."
     },
     "notes": "Native SDK package: exa-py."
   },
@@ -605,11 +603,10 @@
     },
     "mode": {
       "values": [
-        "balanced",
-        "deep"
+        "balanced"
       ],
       "source_url": "https://docs.firecrawl.dev/features/search",
-      "comment": "No separate speed preset on /v2/search. `balanced`: results are title, URL, description only. `deep`: pass `scrapeOptions` (e.g. markdown) to scrape each hit inline."
+      "comment": "Single search tier (title, URL, description). `scrapeOptions` fetches page bodies but is not an AI synthesis `mode`."
     },
     "notes": "Native SDK package: firecrawl-py."
   },
@@ -867,12 +864,10 @@
     },
     "mode": {
       "values": [
-        "fast",
-        "balanced",
-        "deep"
+        "balanced"
       ],
       "source_url": "https://jina.ai/reader/",
-      "comment": "Reader Search (`s.jina.ai`): `fast` = header `X-Respond-With: no-content` (SERP metadata only). `balanced`/`deep` = fetch and return page markdown (default Reader pipeline; `deep` when full `include_content` is requested)."
+      "comment": "Reader Search has no vendor fast/synthesis mode knob. Default returns SERP + optional page markdown; `X-Respond-With: no-content` is a fetch shortcut, not a latency tier."
     },
     "notes": ""
   },
@@ -956,11 +951,10 @@
     },
     "mode": {
       "values": [
-        "balanced",
-        "deep"
+        "balanced"
       ],
       "source_url": "https://help.kagi.com/kagi/api/search.html",
-      "comment": "Search API has no request `mode`; snippet length is inherited from your Kagi account (Settings \u2192 Search \u2192 longer vs shorter snippets). Treat `deep` as longer snippets configured on the account."
+      "comment": "No request `mode`; snippet length comes from account Settings \u2192 Search."
     },
     "notes": ""
   },
@@ -1045,11 +1039,10 @@
     "mode": {
       "values": [
         "fast",
-        "balanced",
-        "deep"
+        "balanced"
       ],
       "source_url": "https://docs.linkup.so/pages/documentation/endpoints/search/overview",
-      "comment": "Native `depth`: `fast` (<1s, keyword-only), `standard` (1\u20133s agentic), `deep` (5\u201330s multi-iteration). anysearch: fast\u2192fast, balanced\u2192standard, deep\u2192deep."
+      "comment": "Native `depth`: `fast` (<1s, keyword-only) or `standard` (balanced, agentic). `deep` is multi-iteration search; cited answers use `outputType=sourcedAnswer`, not `mode`. anysearch: fast\u2192fast, balanced\u2192standard."
     },
     "notes": "Native SDK package: linkup-sdk."
   },
@@ -1134,11 +1127,10 @@
     "mode": {
       "values": [
         "fast",
-        "balanced",
-        "deep"
+        "balanced"
       ],
       "source_url": "https://docs.parallel.ai/search/modes",
-      "comment": "Native `mode`: `basic` (lower latency, 2\u20133 queries) vs `advanced` (default, higher-quality retrieval). anysearch: fast/balanced\u2192basic, deep\u2192advanced."
+      "comment": "Native `mode`: `basic` (fast tier, lower latency) vs `advanced` (default, higher-quality retrieval \u2014 not AI synthesis). anysearch: fast/balanced\u2192basic, deep\u2192advanced."
     },
     "notes": "Native SDK package: parallel-web."
   },
@@ -1222,12 +1214,10 @@
     },
     "mode": {
       "values": [
-        "fast",
-        "balanced",
-        "deep"
+        "balanced"
       ],
       "source_url": "https://docs.perplexity.ai/api-reference/search-post",
-      "comment": "Search API `snippet_mode`: `low`, `medium` (default), `high` (more extracted text). Tune with `max_tokens` / `max_tokens_per_page` for total content budget. anysearch sets `snippet_mode=high` when `include_content` is true (deep)."
+      "comment": "Search API has no fast/deep synthesis preset. `snippet_mode` and token limits control excerpt size only; use Sonar/chat APIs for synthesized answers."
     },
     "notes": "Native SDK package: perplexityai."
   },
@@ -1573,11 +1563,10 @@
     "mode": {
       "values": [
         "fast",
-        "balanced",
-        "deep"
+        "balanced"
       ],
       "source_url": "https://docs.tavily.com/documentation/best-practices/best-practices-search",
-      "comment": "Native `search_depth`: `ultra-fast`, `fast`, `basic` (balanced default), `advanced` (highest relevance, 2 credits). anysearch: fast\u2192fast, balanced\u2192basic, deep\u2192advanced."
+      "comment": "Native `search_depth`: `ultra-fast`, `fast`, or `basic` (balanced default). `advanced` is richer retrieval, not an AI synthesis mode (use `include_answer` for that). anysearch: fast\u2192fast, balanced\u2192basic; `deep` maps to advanced in code but is not listed here."
     },
     "notes": "Native SDK package: tavily-python."
   },
@@ -1835,12 +1824,10 @@
     },
     "mode": {
       "values": [
-        "fast",
-        "balanced",
-        "deep"
+        "balanced"
       ],
       "source_url": "https://you.com/docs/search/overview",
-      "comment": "No `mode` field; depth is implicit. `fast`/`balanced`: web/news snippets from /v1/search (no livecrawl). `deep`: `livecrawl` (`web`, `news`, or `all`) plus `livecrawl_formats` (`markdown` / `html`) to pull page bodies."
+      "comment": "Standard /v1 search snippets. `livecrawl` fetches page HTML/markdown \u2014 not a fast or synthesis depth mode."
     },
     "notes": ""
   }

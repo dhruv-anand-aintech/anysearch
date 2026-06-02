@@ -79,11 +79,10 @@
   "mode": {
     "values": [
       "fast",
-      "balanced",
-      "deep"
+      "balanced"
     ],
     "source_url": "https://docs.parallel.ai/search/modes",
-    "comment": "Native `mode`: `basic` (lower latency, 2\u20133 queries) vs `advanced` (default, higher-quality retrieval). anysearch: fast/balanced\u2192basic, deep\u2192advanced."
+    "comment": "Native `mode`: `basic` (fast tier, lower latency) vs `advanced` (default, higher-quality retrieval \u2014 not AI synthesis). anysearch: fast/balanced\u2192basic, deep\u2192advanced."
   },
   "notes": "Native SDK package: parallel-web."
 }

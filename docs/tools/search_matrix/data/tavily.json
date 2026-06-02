@@ -79,11 +79,10 @@
   "mode": {
     "values": [
       "fast",
-      "balanced",
-      "deep"
+      "balanced"
     ],
     "source_url": "https://docs.tavily.com/documentation/best-practices/best-practices-search",
-    "comment": "Native `search_depth`: `ultra-fast`, `fast`, `basic` (balanced default), `advanced` (highest relevance, 2 credits). anysearch: fast\u2192fast, balanced\u2192basic, deep\u2192advanced."
+    "comment": "Native `search_depth`: `ultra-fast`, `fast`, or `basic` (balanced default). `advanced` is richer retrieval, not an AI synthesis mode (use `include_answer` for that). anysearch: fast\u2192fast, balanced\u2192basic; `deep` maps to advanced in code but is not listed here."
   },
   "notes": "Native SDK package: tavily-python."
 }

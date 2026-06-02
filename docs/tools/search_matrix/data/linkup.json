@@ -79,11 +79,10 @@
   "mode": {
     "values": [
       "fast",
-      "balanced",
-      "deep"
+      "balanced"
     ],
     "source_url": "https://docs.linkup.so/pages/documentation/endpoints/search/overview",
-    "comment": "Native `depth`: `fast` (<1s, keyword-only), `standard` (1\u20133s agentic), `deep` (5\u201330s multi-iteration). anysearch: fast\u2192fast, balanced\u2192standard, deep\u2192deep."
+    "comment": "Native `depth`: `fast` (<1s, keyword-only) or `standard` (balanced, agentic). `deep` is multi-iteration search; cited answers use `outputType=sourcedAnswer`, not `mode`. anysearch: fast\u2192fast, balanced\u2192standard."
   },
   "notes": "Native SDK package: linkup-sdk."
 }

@@ -78,12 +78,10 @@
   },
   "mode": {
     "values": [
-      "fast",
-      "balanced",
-      "deep"
+      "balanced"
     ],
     "source_url": "https://api-dashboard.search.brave.com/app/documentation/web-search",
-    "comment": "No named depth tier; latency/richness via query params. `fast`/`balanced`: default web/news search (one description per result). `deep`: `extra_snippets=true` (up to 5 alternate excerpts per result; Pro plans)."
+    "comment": "No fast or synthesis depth preset \u2014 default web/news search only. `extra_snippets` adds excerpts but is not a unified `mode` tier."
   },
   "notes": ""
 }

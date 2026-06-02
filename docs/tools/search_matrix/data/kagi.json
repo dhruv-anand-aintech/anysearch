@@ -78,11 +78,10 @@
   },
   "mode": {
     "values": [
-      "balanced",
-      "deep"
+      "balanced"
     ],
     "source_url": "https://help.kagi.com/kagi/api/search.html",
-    "comment": "Search API has no request `mode`; snippet length is inherited from your Kagi account (Settings \u2192 Search \u2192 longer vs shorter snippets). Treat `deep` as longer snippets configured on the account."
+    "comment": "No request `mode`; snippet length comes from account Settings \u2192 Search."
   },
   "notes": ""
 }

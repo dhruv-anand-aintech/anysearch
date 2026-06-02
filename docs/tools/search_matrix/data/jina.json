@@ -78,12 +78,10 @@
   },
   "mode": {
     "values": [
-      "fast",
-      "balanced",
-      "deep"
+      "balanced"
     ],
     "source_url": "https://jina.ai/reader/",
-    "comment": "Reader Search (`s.jina.ai`): `fast` = header `X-Respond-With: no-content` (SERP metadata only). `balanced`/`deep` = fetch and return page markdown (default Reader pipeline; `deep` when full `include_content` is requested)."
+    "comment": "Reader Search has no vendor fast/synthesis mode knob. Default returns SERP + optional page markdown; `X-Respond-With: no-content` is a fetch shortcut, not a latency tier."
   },
   "notes": ""
 }

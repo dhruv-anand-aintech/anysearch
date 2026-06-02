@@ -78,12 +78,10 @@
   },
   "mode": {
     "values": [
-      "fast",
-      "balanced",
-      "deep"
+      "balanced"
     ],
     "source_url": "https://docs.perplexity.ai/api-reference/search-post",
-    "comment": "Search API `snippet_mode`: `low`, `medium` (default), `high` (more extracted text). Tune with `max_tokens` / `max_tokens_per_page` for total content budget. anysearch sets `snippet_mode=high` when `include_content` is true (deep)."
+    "comment": "Search API has no fast/deep synthesis preset. `snippet_mode` and token limits control excerpt size only; use Sonar/chat APIs for synthesized answers."
   },
   "notes": "Native SDK package: perplexityai."
 }

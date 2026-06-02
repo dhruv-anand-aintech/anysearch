@@ -58,25 +58,22 @@ parameters (pass via `extra`).
 
 ## Notes on `mode`
 
-The matrix **Mode** row lists which of `fast`, `balanced`, and `deep` apply per API.
-When anysearch maps `mode`, it uses the provider's nearest native knob:
+The matrix **Mode** row lists which unified tiers each API actually exposes:
+
+- **fast** — a documented low-latency / lightweight search preset (not “less content” shortcuts).
+- **balanced** — the default search tier.
+- **deep** — an AI synthesis / multi-step research mode (not richer snippets, scraping, or `include_content`).
 
 | Provider | Matrix modes | Native / mapping |
 | --- | --- | --- |
-| exa | fast, balanced, deep | `type`: fast → fast, balanced → auto, deep → deep |
-| tavily | fast, balanced, deep | `search_depth`: fast → fast, balanced → basic, deep → advanced |
-| parallel | fast, balanced, deep | `mode`: fast/balanced → basic, deep → advanced |
-| linkup | fast, balanced, deep | `depth`: fast → fast, balanced → standard, deep → deep |
-| brave | fast, balanced, deep | Default search vs `extra_snippets=true` for richer excerpts |
-| jina | fast, balanced, deep | `X-Respond-With: no-content` (fast) vs full Reader fetch |
-| perplexity | fast, balanced, deep | `snippet_mode` low / medium / high (+ token budgets) |
-| firecrawl | balanced, deep | Metadata-only search vs `scrapeOptions` inline scrape |
-| you | fast, balanced, deep | Snippet search vs `livecrawl` + `livecrawl_formats` |
-| kagi | balanced, deep | Snippet length from account Settings → Search |
-| serper, serpapi, searchapi, google_pse, searxng, duckduckgo | balanced | No separate depth API; single SERP tier |
+| exa | fast, balanced, deep | `type`: fast → fast, balanced → auto, deep → deep (synthesized research) |
+| tavily | fast, balanced | `search_depth`: fast → fast, balanced → basic (`advanced` is retrieval-only) |
+| parallel | fast, balanced | `mode`: basic (fast) vs advanced (balanced quality; not synthesis) |
+| linkup | fast, balanced | `depth`: fast → fast, balanced → standard |
+| serper, serpapi, searchapi, google_pse, searxng, duckduckgo, brave, jina, perplexity, firecrawl, you, kagi | balanced | No fast or synthesis depth preset |
 
-Providers with only `balanced` in the matrix have no documented fast/deep API parameter;
-pass `mode` via `extra` if the vendor adds one later.
+anysearch may still map `mode=deep` on some providers for compatibility; the matrix only
+tags modes that match the definitions above.
 
 ## Content fields, by intent
 
