@@ -689,6 +689,11 @@ _register_serpapi_matrix_meta()
 
 
 def links_for(slug: str) -> dict[str, str]:
+    if slug.startswith("serpapi_"):
+        engine = slug.removeprefix("serpapi_")
+        for entry in SERPAPI_MATRIX_ENGINES:
+            if entry["engine"] == engine:
+                return {"docs": entry["docs"], "website": entry["website"]}
     return LINKS.get(slug, {})
 
 

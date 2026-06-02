@@ -76,7 +76,9 @@ def build_provider(row: dict, *, slug: str | None = None, display: str | None = 
     docs = links_meta.get("docs", row.get("config_hint", ""))
     website = links_meta.get("website", "")
     display = display or DISPLAY_NAMES.get(slug, name.replace("_", " ").title())
-    env_source = ENV_SOURCES.get(slug, docs or website)
+    env_source = ENV_SOURCES.get(
+        "serpapi" if slug.startswith("serpapi_") else slug, docs or website
+    )
     extra_pkg = row.get("extra_package") or ""
     if extra_pkg:
         extra_source = EXTRA_SOURCES.get(slug, docs or website)

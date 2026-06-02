@@ -19,7 +19,7 @@
     },
     "requires_key": {
       "support": "full",
-      "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+      "source_url": "https://serpapi.com/search-api",
       "comment": "Valid API key required for every request."
     },
     "snippet": {
@@ -29,12 +29,12 @@
     },
     "domains": {
       "support": "none",
-      "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+      "source_url": "https://serpapi.com/baidu-search-api",
       "comment": "Domain filters"
     },
     "country": {
       "support": "full",
-      "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+      "source_url": "https://serpapi.com/baidu-search-api",
       "comment": "Country (gl)"
     },
     "language": {
@@ -44,12 +44,12 @@
     },
     "date": {
       "support": "none",
-      "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+      "source_url": "https://serpapi.com/baidu-search-api",
       "comment": "Published date range"
     },
     "safe_search": {
       "support": "full",
-      "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+      "source_url": "https://serpapi.com/baidu-search-api",
       "comment": "Safe search"
     },
     "answer": {
@@ -59,17 +59,17 @@
     },
     "content": {
       "support": "none",
-      "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+      "source_url": "https://serpapi.com/baidu-search-api",
       "comment": "Full page text"
     },
     "summary": {
       "support": "none",
-      "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+      "source_url": "https://serpapi.com/baidu-search-api",
       "comment": "AI per-result summary"
     },
     "highlights": {
       "support": "none",
-      "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+      "source_url": "https://serpapi.com/baidu-search-api",
       "comment": "Query highlights"
     },
     "news": {
@@ -81,7 +81,7 @@
       "values": [
         "balanced"
       ],
-      "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+      "source_url": "https://serpapi.com/baidu-search-api",
       "comment": "Fixed SerpApi backend `engine=baidu` (set via anysearch `engine=\"baidu\"` with `provider=\"serpapi\"`). No separate fast/deep tier on this engine."
     },
     "notes": "SerpApi proxy to Baidu (`engine=baidu`). Native SDK package: google-search-results."
@@ -106,7 +106,7 @@
     },
     "requires_key": {
       "support": "full",
-      "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+      "source_url": "https://serpapi.com/search-api",
       "comment": "Valid API key required for every request."
     },
     "snippet": {
@@ -116,7 +116,7 @@
     },
     "domains": {
       "support": "none",
-      "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+      "source_url": "https://serpapi.com/bing-search-api",
       "comment": "Domain filters"
     },
     "country": {
@@ -131,7 +131,7 @@
     },
     "date": {
       "support": "none",
-      "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+      "source_url": "https://serpapi.com/bing-search-api",
       "comment": "Published date range"
     },
     "safe_search": {
@@ -146,17 +146,17 @@
     },
     "content": {
       "support": "none",
-      "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+      "source_url": "https://serpapi.com/bing-search-api",
       "comment": "Full page text"
     },
     "summary": {
       "support": "none",
-      "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+      "source_url": "https://serpapi.com/bing-search-api",
       "comment": "AI per-result summary"
     },
     "highlights": {
       "support": "none",
-      "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+      "source_url": "https://serpapi.com/bing-search-api",
       "comment": "Query highlights"
     },
     "news": {
@@ -168,7 +168,7 @@
       "values": [
         "balanced"
       ],
-      "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+      "source_url": "https://serpapi.com/bing-search-api",
       "comment": "Fixed SerpApi backend `engine=bing` (set via anysearch `engine=\"bing\"` with `provider=\"serpapi\"`). No separate fast/deep tier on this engine."
     },
     "notes": "SerpApi proxy to Bing (`engine=bing`). Native SDK package: google-search-results."
@@ -369,7 +369,7 @@
     },
     "requires_key": {
       "support": "full",
-      "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+      "source_url": "https://serpapi.com/search-api",
       "comment": "Valid API key required for every request."
     },
     "snippet": {
@@ -379,7 +379,7 @@
     },
     "domains": {
       "support": "none",
-      "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+      "source_url": "https://serpapi.com/duckduckgo-search-api",
       "comment": "Domain filters"
     },
     "country": {
@@ -394,7 +394,7 @@
     },
     "date": {
       "support": "none",
-      "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+      "source_url": "https://serpapi.com/duckduckgo-search-api",
       "comment": "Published date range"
     },
     "safe_search": {
@@ -409,17 +409,17 @@
     },
     "content": {
       "support": "none",
-      "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+      "source_url": "https://serpapi.com/duckduckgo-search-api",
       "comment": "Full page text"
     },
     "summary": {
       "support": "none",
-      "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+      "source_url": "https://serpapi.com/duckduckgo-search-api",
       "comment": "AI per-result summary"
     },
     "highlights": {
       "support": "none",
-      "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+      "source_url": "https://serpapi.com/duckduckgo-search-api",
       "comment": "Query highlights"
     },
     "news": {
@@ -431,7 +431,7 @@
       "values": [
         "balanced"
       ],
-      "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+      "source_url": "https://serpapi.com/duckduckgo-search-api",
       "comment": "Fixed SerpApi backend `engine=duckduckgo` (set via anysearch `engine=\"duckduckgo\"` with `provider=\"serpapi\"`). No separate fast/deep tier on this engine."
     },
     "notes": "SerpApi proxy to DuckDuckGo (`engine=duckduckgo`). Native SDK package: google-search-results."
@@ -720,7 +720,7 @@
     },
     "requires_key": {
       "support": "full",
-      "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+      "source_url": "https://serpapi.com/search-api",
       "comment": "Valid API key required for every request."
     },
     "snippet": {
@@ -730,7 +730,7 @@
     },
     "domains": {
       "support": "none",
-      "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+      "source_url": "https://serpapi.com/search-api",
       "comment": "Domain filters"
     },
     "country": {
@@ -745,7 +745,7 @@
     },
     "date": {
       "support": "none",
-      "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+      "source_url": "https://serpapi.com/search-api",
       "comment": "Published date range"
     },
     "safe_search": {
@@ -760,17 +760,17 @@
     },
     "content": {
       "support": "none",
-      "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+      "source_url": "https://serpapi.com/search-api",
       "comment": "Full page text"
     },
     "summary": {
       "support": "none",
-      "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+      "source_url": "https://serpapi.com/search-api",
       "comment": "AI per-result summary"
     },
     "highlights": {
       "support": "none",
-      "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+      "source_url": "https://serpapi.com/search-api",
       "comment": "Query highlights"
     },
     "news": {
@@ -782,7 +782,7 @@
       "values": [
         "balanced"
       ],
-      "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+      "source_url": "https://serpapi.com/search-api",
       "comment": "Fixed SerpApi backend `engine=google` (set via anysearch `engine=\"google\"` with `provider=\"serpapi\"`). No separate fast/deep tier on this engine."
     },
     "notes": "SerpApi proxy to Google (`engine=google`). Native SDK package: google-search-results."
@@ -1601,7 +1601,7 @@
     },
     "requires_key": {
       "support": "full",
-      "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+      "source_url": "https://serpapi.com/search-api",
       "comment": "Valid API key required for every request."
     },
     "snippet": {
@@ -1611,22 +1611,22 @@
     },
     "domains": {
       "support": "none",
-      "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+      "source_url": "https://serpapi.com/yahoo-search-api",
       "comment": "Domain filters"
     },
     "country": {
       "support": "full",
-      "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+      "source_url": "https://serpapi.com/yahoo-search-api",
       "comment": "Country (gl)"
     },
     "language": {
       "support": "full",
-      "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+      "source_url": "https://serpapi.com/yahoo-search-api",
       "comment": "Language"
     },
     "date": {
       "support": "none",
-      "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+      "source_url": "https://serpapi.com/yahoo-search-api",
       "comment": "Published date range"
     },
     "safe_search": {
@@ -1641,17 +1641,17 @@
     },
     "content": {
       "support": "none",
-      "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+      "source_url": "https://serpapi.com/yahoo-search-api",
       "comment": "Full page text"
     },
     "summary": {
       "support": "none",
-      "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+      "source_url": "https://serpapi.com/yahoo-search-api",
       "comment": "AI per-result summary"
     },
     "highlights": {
       "support": "none",
-      "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+      "source_url": "https://serpapi.com/yahoo-search-api",
       "comment": "Query highlights"
     },
     "news": {
@@ -1663,7 +1663,7 @@
       "values": [
         "balanced"
       ],
-      "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+      "source_url": "https://serpapi.com/yahoo-search-api",
       "comment": "Fixed SerpApi backend `engine=yahoo` (set via anysearch `engine=\"yahoo\"` with `provider=\"serpapi\"`). No separate fast/deep tier on this engine."
     },
     "notes": "SerpApi proxy to Yahoo (`engine=yahoo`). Native SDK package: google-search-results."
@@ -1688,7 +1688,7 @@
     },
     "requires_key": {
       "support": "full",
-      "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+      "source_url": "https://serpapi.com/search-api",
       "comment": "Valid API key required for every request."
     },
     "snippet": {
@@ -1698,7 +1698,7 @@
     },
     "domains": {
       "support": "none",
-      "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+      "source_url": "https://serpapi.com/yandex-search-api",
       "comment": "Domain filters"
     },
     "country": {
@@ -1713,12 +1713,12 @@
     },
     "date": {
       "support": "none",
-      "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+      "source_url": "https://serpapi.com/yandex-search-api",
       "comment": "Published date range"
     },
     "safe_search": {
       "support": "full",
-      "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+      "source_url": "https://serpapi.com/yandex-search-api",
       "comment": "Safe search"
     },
     "answer": {
@@ -1728,17 +1728,17 @@
     },
     "content": {
       "support": "none",
-      "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+      "source_url": "https://serpapi.com/yandex-search-api",
       "comment": "Full page text"
     },
     "summary": {
       "support": "none",
-      "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+      "source_url": "https://serpapi.com/yandex-search-api",
       "comment": "AI per-result summary"
     },
     "highlights": {
       "support": "none",
-      "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+      "source_url": "https://serpapi.com/yandex-search-api",
       "comment": "Query highlights"
     },
     "news": {
@@ -1750,7 +1750,7 @@
       "values": [
         "balanced"
       ],
-      "source_url": "Set SERPAPI_API_KEY. Optional `engine` (e.g. bing, baidu, yandex) \u2014 supported web engines include: amazon, apple_app_store, baidu, bing, duckduckgo, ebay, google, naver, walmart, yahoo, yandex, yelp, youtube.",
+      "source_url": "https://serpapi.com/yandex-search-api",
       "comment": "Fixed SerpApi backend `engine=yandex` (set via anysearch `engine=\"yandex\"` with `provider=\"serpapi\"`). No separate fast/deep tier on this engine."
     },
     "notes": "SerpApi proxy to Yandex (`engine=yandex`). Native SDK package: google-search-results."
