@@ -1,0 +1,82 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "anysearch-sdk"
+version = "0.1.0"
+description = "A unified adapter layer to call any web search API provider (Exa, Parallel, Brave, Tavily, SerpAPI, and more) with one interface — plus a stdio MCP server."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "anysearch contributors" }]
+keywords = ["search", "search-api", "exa", "brave", "tavily", "serpapi", "parallel", "mcp", "llm", "rag"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Internet :: WWW/HTTP :: Indexing/Search",
+]
+dependencies = ["httpx>=0.24"]
+
+[project.optional-dependencies]
+# --- Per-provider extras -------------------------------------------------
+# Every provider works over its REST API with just the base install (httpx).
+# These extras additionally install each provider's official SDK, which the
+# `anysearch.native("<provider>")` escape hatch returns for provider-specific
+# features beyond the unified surface. REST-only providers need nothing extra,
+# so their extra is intentionally empty (the name still resolves for uniform
+# `pip install 'anysearch-sdk[name]'` selection).
+exa = ["exa-py>=1.0"]
+parallel = ["parallel-web>=0.4"]
+tavily = ["tavily-python>=0.5"]
+perplexity = ["perplexityai>=0.4"]
+linkup = ["linkup-sdk>=0.2"]
+firecrawl = ["firecrawl-py>=1.0"]
+serpapi = ["google-search-results>=2.4"]
+duckduckgo = ["ddgs>=6.0"]
+brave = []
+serper = []
+you = []
+jina = []
+kagi = []
+searchapi = []
+google-pse = []
+searxng = []
+
+# --- Aggregate extras ----------------------------------------------------
+all = [
+    "exa-py>=1.0",
+    "parallel-web>=0.4",
+    "tavily-python>=0.5",
+    "perplexityai>=0.4",
+    "linkup-sdk>=0.2",
+    "firecrawl-py>=1.0",
+    "google-search-results>=2.4",
+    "ddgs>=6.0",
+]
+
+dev = ["pytest>=7", "pytest-asyncio>=0.21", "respx>=0.20", "ruff>=0.4"]
+
+[project.scripts]
+anysearch-mcp = "anysearch.mcp.server:main"
+
+[project.urls]
+Homepage = "https://github.com/anysearch/anysearch"
+Repository = "https://github.com/anysearch/anysearch"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/anysearch"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"

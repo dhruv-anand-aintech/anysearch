@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "search_matrix/schema/provider",
+  "type": "object",
+  "required": [
+    "name",
+    "links",
+    "env_keys",
+    "python_extra",
+    "requires_key",
+    "snippet",
+    "domains",
+    "country",
+    "language",
+    "date",
+    "safe_search",
+    "mode",
+    "answer",
+    "content",
+    "summary",
+    "highlights",
+    "news"
+  ],
+  "properties": {
+    "name": { "type": "string", "$comment": "About | Name | Search API provider." },
+    "links": { "allOf": [{ "$ref": "#/$defs/links" }], "$comment": "About | Links | Docs, site, and slug." },
+    "env_keys": { "allOf": [{ "$ref": "#/$defs/stringWithSource" }], "$comment": "About | Env vars | API keys anysearch reads from the environment." },
+    "python_extra": { "allOf": [{ "$ref": "#/$defs/stringWithSource" }], "$comment": "About | pip extra | Optional anysearch-sdk extra that installs the native SDK." },
+    "requires_key": { "allOf": [{ "$ref": "#/$defs/featureWithSource" }], "$comment": "About | API key required | full = credentials required; none = keyless." },
+    "mode_notes": { "allOf": [{ "$ref": "#/$defs/stringWithSource" }], "$comment": "About | Mode mapping | How fast/balanced/deep maps to this provider." },
+    "snippet": { "allOf": [{ "$ref": "#/$defs/featureWithSource" }], "$comment": "Response | Snippet | Short result description in the unified response." },
+    "domains": { "allOf": [{ "$ref": "#/$defs/featureWithSource" }], "$comment": "Request | Domain filters | include_domains / exclude_domains." },
+    "country": { "allOf": [{ "$ref": "#/$defs/featureWithSource" }], "$comment": "Request | Country | ISO 3166-1 alpha-2 region bias." },
+    "language": { "allOf": [{ "$ref": "#/$defs/featureWithSource" }], "$comment": "Request | Language | ISO 639-1 language filter." },
+    "date": { "allOf": [{ "$ref": "#/$defs/featureWithSource" }], "$comment": "Request | Date range | start/end published date filters." },
+    "safe_search": { "allOf": [{ "$ref": "#/$defs/featureWithSource" }], "$comment": "Request | Safe search | off / moderate / strict." },
+    "mode": { "allOf": [{ "$ref": "#/$defs/featureWithSource" }], "$comment": "Request | Mode | fast / balanced / deep depth knob." },
+    "answer": { "allOf": [{ "$ref": "#/$defs/featureWithSource" }], "$comment": "Response | Answer | Top-level synthesized answer on SearchResponse." },
+    "content": { "allOf": [{ "$ref": "#/$defs/featureWithSource" }], "$comment": "Response | Full text | include_content → SearchResult.text." },
+    "summary": { "allOf": [{ "$ref": "#/$defs/featureWithSource" }], "$comment": "Response | Summary | include_summary → SearchResult.summary." },
+    "highlights": { "allOf": [{ "$ref": "#/$defs/featureWithSource" }], "$comment": "Response | Highlights | Query-relevant excerpts." },
+    "news": { "allOf": [{ "$ref": "#/$defs/featureWithSource" }], "$comment": "Request | News | search_type=news." },
+    "notes": { "type": "string", "$comment": "About | Notes | Caveats for this row." }
+  },
+  "$defs": {
+    "links": {
+      "type": "object",
+      "required": ["docs", "github", "website", "slug"],
+      "properties": {
+        "docs": { "type": "string" },
+        "github": { "type": "string" },
+        "website": { "type": "string" },
+        "slug": { "type": "string" }
+      }
+    },
+    "featureWithSource": {
+      "type": "object",
+      "required": ["support", "source_url", "comment"],
+      "properties": {
+        "support": { "enum": ["", "none", "partial", "full", "unknown"] },
+        "source_url": { "type": "string" },
+        "comment": { "type": "string" }
+      }
+    },
+    "stringWithSource": {
+      "type": "object",
+      "required": ["value", "source_url", "comment"],
+      "properties": {
+        "value": { "type": "string" },
+        "source_url": { "type": "string" },
+        "comment": { "type": "string" }
+      }
+    }
+  }
+}

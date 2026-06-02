@@ -1,0 +1,243 @@
+# anysearch Search API Provider Matrix
+
+Providers: 16. Unified parameters and response fields supported via anysearch.
+
+## Brave
+- Docs: https://api-dashboard.search.brave.com/app/documentation/web-search/get-started
+- Env: BRAVE_API_KEY, BRAVE_SEARCH_API_KEY
+- Domain filters: none
+- Country: full
+- Language: full
+- Date range: full
+- Safe search: full
+- Mode: none
+- Answer: none
+- Full text: none
+- Summary: none
+- Highlights: full
+- News: full
+
+## DuckDuckGo
+- Docs: https://pypi.org/project/ddgs/
+- Env: (none — keyless)
+- Domain filters: none
+- Country: full
+- Language: none
+- Date range: none
+- Safe search: full
+- Mode: none
+- Answer: none
+- Full text: none
+- Summary: none
+- Highlights: none
+- News: none
+
+## Exa
+- Docs: https://docs.exa.ai/reference/search
+- Env: EXA_API_KEY
+- Domain filters: full
+- Country: full
+- Language: none
+- Date range: full
+- Safe search: full
+- Mode: full
+- Answer: none
+- Full text: full
+- Summary: full
+- Highlights: full
+- News: full
+
+## Firecrawl
+- Docs: https://docs.firecrawl.dev/features/search
+- Env: FIRECRAWL_API_KEY
+- Domain filters: none
+- Country: full
+- Language: none
+- Date range: none
+- Safe search: none
+- Mode: none
+- Answer: none
+- Full text: full
+- Summary: none
+- Highlights: none
+- News: full
+
+## Google PSE
+- Docs: https://developers.google.com/custom-search/v1/overview
+- Env: GOOGLE_PSE_API_KEY, GOOGLE_CSE_API_KEY, GOOGLE_API_KEY
+- Domain filters: full
+- Country: full
+- Language: full
+- Date range: none
+- Safe search: full
+- Mode: none
+- Answer: none
+- Full text: none
+- Summary: none
+- Highlights: none
+- News: none
+
+## Jina
+- Docs: https://jina.ai/reader
+- Env: JINA_API_KEY
+- Domain filters: none
+- Country: none
+- Language: none
+- Date range: none
+- Safe search: none
+- Mode: none
+- Answer: none
+- Full text: full
+- Summary: none
+- Highlights: none
+- News: none
+
+## Kagi
+- Docs: https://help.kagi.com/kagi/api/search.html
+- Env: KAGI_API_KEY
+- Domain filters: none
+- Country: none
+- Language: none
+- Date range: none
+- Safe search: none
+- Mode: none
+- Answer: none
+- Full text: none
+- Summary: none
+- Highlights: none
+- News: none
+
+## Linkup
+- Docs: https://docs.linkup.so/pages/sdk/python/python
+- Env: LINKUP_API_KEY
+- Domain filters: full
+- Country: none
+- Language: none
+- Date range: full
+- Safe search: none
+- Mode: full
+- Answer: full
+- Full text: full
+- Summary: none
+- Highlights: none
+- News: none
+
+## Parallel
+- Docs: https://docs.parallel.ai/search/search-quickstart
+- Env: PARALLEL_API_KEY
+- Domain filters: full
+- Country: full
+- Language: none
+- Date range: full
+- Safe search: none
+- Mode: full
+- Answer: none
+- Full text: full
+- Summary: none
+- Highlights: full
+- News: none
+
+## Perplexity
+- Docs: https://docs.perplexity.ai/guides/search-quickstart
+- Env: PERPLEXITY_API_KEY, PPLX_API_KEY
+- Domain filters: full
+- Country: none
+- Language: full
+- Date range: none
+- Safe search: none
+- Mode: none
+- Answer: none
+- Full text: full
+- Summary: none
+- Highlights: none
+- News: none
+
+## SearXNG
+- Docs: https://docs.searxng.org/dev/search_api.html
+- Env: SEARXNG_API_KEY
+- Domain filters: none
+- Country: none
+- Language: full
+- Date range: none
+- Safe search: full
+- Mode: none
+- Answer: full
+- Full text: none
+- Summary: none
+- Highlights: none
+- News: none
+
+## Searchapi
+- Docs: https://www.searchapi.io/docs/google
+- Env: SEARCHAPI_API_KEY, SEARCHAPI_KEY
+- Domain filters: none
+- Country: full
+- Language: full
+- Date range: none
+- Safe search: none
+- Mode: none
+- Answer: partial
+- Full text: none
+- Summary: none
+- Highlights: none
+- News: full
+
+## SerpApi
+- Docs: https://serpapi.com/search-api
+- Env: SERPAPI_API_KEY, SERPAPI_KEY
+- Domain filters: none
+- Country: full
+- Language: full
+- Date range: none
+- Safe search: full
+- Mode: none
+- Answer: partial
+- Full text: none
+- Summary: none
+- Highlights: none
+- News: full
+
+## Serper
+- Docs: https://serper.dev/docs
+- Env: SERPER_API_KEY
+- Domain filters: none
+- Country: full
+- Language: full
+- Date range: none
+- Safe search: none
+- Mode: none
+- Answer: partial
+- Full text: none
+- Summary: none
+- Highlights: none
+- News: full
+
+## Tavily
+- Docs: https://docs.tavily.com/documentation/api-reference/endpoint/search
+- Env: TAVILY_API_KEY
+- Domain filters: full
+- Country: full
+- Language: none
+- Date range: full
+- Safe search: none
+- Mode: full
+- Answer: full
+- Full text: full
+- Summary: none
+- Highlights: none
+- News: full
+
+## You
+- Docs: https://documentation.you.com
+- Env: YDC_API_KEY, YOU_API_KEY
+- Domain filters: full
+- Country: full
+- Language: none
+- Date range: none
+- Safe search: none
+- Mode: none
+- Answer: none
+- Full text: none
+- Summary: none
+- Highlights: full
+- News: none

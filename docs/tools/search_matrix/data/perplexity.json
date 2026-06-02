@@ -1,0 +1,85 @@
+{
+  "name": "Perplexity",
+  "links": {
+    "docs": "https://docs.perplexity.ai/guides/search-quickstart",
+    "github": "https://github.com/AI-Northstar-Tech/anysearch",
+    "website": "https://www.perplexity.ai",
+    "slug": "perplexity"
+  },
+  "env_keys": {
+    "value": "PERPLEXITY_API_KEY, PPLX_API_KEY",
+    "source_url": "https://docs.perplexity.ai/guides/search-quickstart",
+    "comment": "Environment variables read by anysearch."
+  },
+  "python_extra": {
+    "value": "perplexityai",
+    "source_url": "https://github.com/AI-Northstar-Tech/anysearch/tree/main/python#install",
+    "comment": "Optional pip extra: pip install 'anysearch-sdk[<name>]'"
+  },
+  "requires_key": {
+    "support": "full",
+    "source_url": "https://docs.perplexity.ai/guides/search-quickstart",
+    "comment": "Keyless providers work without credentials."
+  },
+  "snippet": {
+    "support": "full",
+    "source_url": "https://docs.perplexity.ai/guides/search-quickstart",
+    "comment": "Short description field; available on virtually all providers."
+  },
+  "domains": {
+    "support": "full",
+    "source_url": "https://docs.perplexity.ai/guides/search-quickstart",
+    "comment": "Domain filters"
+  },
+  "country": {
+    "support": "none",
+    "source_url": "https://docs.perplexity.ai/guides/search-quickstart",
+    "comment": "Country (gl)"
+  },
+  "language": {
+    "support": "full",
+    "source_url": "https://docs.perplexity.ai/guides/search-quickstart",
+    "comment": "Language"
+  },
+  "date": {
+    "support": "none",
+    "source_url": "https://docs.perplexity.ai/guides/search-quickstart",
+    "comment": "Published date range"
+  },
+  "safe_search": {
+    "support": "none",
+    "source_url": "https://docs.perplexity.ai/guides/search-quickstart",
+    "comment": "Safe search"
+  },
+  "mode": {
+    "support": "none",
+    "source_url": "https://docs.perplexity.ai/guides/search-quickstart",
+    "comment": "Depth (fast/balanced/deep)"
+  },
+  "answer": {
+    "support": "none",
+    "source_url": "https://docs.perplexity.ai/guides/search-quickstart",
+    "comment": "Synthesized answer"
+  },
+  "content": {
+    "support": "full",
+    "source_url": "https://docs.perplexity.ai/guides/search-quickstart",
+    "comment": "Full page text"
+  },
+  "summary": {
+    "support": "none",
+    "source_url": "https://docs.perplexity.ai/guides/search-quickstart",
+    "comment": "AI per-result summary"
+  },
+  "highlights": {
+    "support": "none",
+    "source_url": "https://docs.perplexity.ai/guides/search-quickstart",
+    "comment": "Query highlights"
+  },
+  "news": {
+    "support": "none",
+    "source_url": "https://docs.perplexity.ai/guides/search-quickstart",
+    "comment": "News search type"
+  },
+  "notes": "Native SDK extra: perplexityai."
+}

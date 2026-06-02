@@ -1,0 +1,85 @@
+{
+  "name": "Searchapi",
+  "links": {
+    "docs": "https://www.searchapi.io/docs/google",
+    "github": "https://github.com/AI-Northstar-Tech/anysearch",
+    "website": "https://www.searchapi.io",
+    "slug": "searchapi"
+  },
+  "env_keys": {
+    "value": "SEARCHAPI_API_KEY, SEARCHAPI_KEY",
+    "source_url": "https://www.searchapi.io/docs/google",
+    "comment": "Environment variables read by anysearch."
+  },
+  "python_extra": {
+    "value": "\u2014 (REST only)",
+    "source_url": "https://github.com/AI-Northstar-Tech/anysearch/tree/main/python#install",
+    "comment": "Optional pip extra: pip install 'anysearch-sdk[<name>]'"
+  },
+  "requires_key": {
+    "support": "full",
+    "source_url": "https://www.searchapi.io/docs/google",
+    "comment": "Keyless providers work without credentials."
+  },
+  "snippet": {
+    "support": "full",
+    "source_url": "https://www.searchapi.io/docs/google",
+    "comment": "Short description field; available on virtually all providers."
+  },
+  "domains": {
+    "support": "none",
+    "source_url": "https://www.searchapi.io/docs/google",
+    "comment": "Domain filters"
+  },
+  "country": {
+    "support": "full",
+    "source_url": "https://www.searchapi.io/docs/google",
+    "comment": "Country (gl)"
+  },
+  "language": {
+    "support": "full",
+    "source_url": "https://www.searchapi.io/docs/google",
+    "comment": "Language"
+  },
+  "date": {
+    "support": "none",
+    "source_url": "https://www.searchapi.io/docs/google",
+    "comment": "Published date range"
+  },
+  "safe_search": {
+    "support": "none",
+    "source_url": "https://www.searchapi.io/docs/google",
+    "comment": "Safe search"
+  },
+  "mode": {
+    "support": "none",
+    "source_url": "https://www.searchapi.io/docs/google",
+    "comment": "Depth (fast/balanced/deep)"
+  },
+  "answer": {
+    "support": "partial",
+    "source_url": "https://www.searchapi.io/docs/google",
+    "comment": "Answer only when the SERP includes an answer box (not explicitly requested)."
+  },
+  "content": {
+    "support": "none",
+    "source_url": "https://www.searchapi.io/docs/google",
+    "comment": "Full page text"
+  },
+  "summary": {
+    "support": "none",
+    "source_url": "https://www.searchapi.io/docs/google",
+    "comment": "AI per-result summary"
+  },
+  "highlights": {
+    "support": "none",
+    "source_url": "https://www.searchapi.io/docs/google",
+    "comment": "Query highlights"
+  },
+  "news": {
+    "support": "full",
+    "source_url": "https://www.searchapi.io/docs/google",
+    "comment": "News search type"
+  },
+  "notes": ""
+}

@@ -1,0 +1,17 @@
+{
+  "name": "anysearch",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "matrix:generate": "python3 scripts/generate_search_matrix_data.py",
+    "matrix:validate": "python3 docs/tools/search_matrix/data_utils.py validate",
+    "matrix:bundle": "python3 docs/tools/search_matrix/data_utils.py bundle",
+    "matrix:llms-txt": "python3 docs/tools/search_matrix/data_utils.py llms-txt",
+    "matrix:sync": "npm run matrix:generate && npm run matrix:validate && npm run matrix:bundle && npm run matrix:llms-txt",
+    "deploy:matrix": "npm run matrix:sync && wrangler deploy --config wrangler.toml"
+  },
+  "devDependencies": {
+    "wrangler": "^4.18.0"
+  }
+}

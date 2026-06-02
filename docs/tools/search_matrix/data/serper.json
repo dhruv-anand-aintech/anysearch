@@ -1,0 +1,85 @@
+{
+  "name": "Serper",
+  "links": {
+    "docs": "https://serper.dev/docs",
+    "github": "https://github.com/AI-Northstar-Tech/anysearch",
+    "website": "https://serper.dev",
+    "slug": "serper"
+  },
+  "env_keys": {
+    "value": "SERPER_API_KEY",
+    "source_url": "https://serper.dev/docs",
+    "comment": "Environment variables read by anysearch."
+  },
+  "python_extra": {
+    "value": "\u2014 (REST only)",
+    "source_url": "https://github.com/AI-Northstar-Tech/anysearch/tree/main/python#install",
+    "comment": "Optional pip extra: pip install 'anysearch-sdk[<name>]'"
+  },
+  "requires_key": {
+    "support": "full",
+    "source_url": "https://serper.dev/docs",
+    "comment": "Keyless providers work without credentials."
+  },
+  "snippet": {
+    "support": "full",
+    "source_url": "https://serper.dev/docs",
+    "comment": "Short description field; available on virtually all providers."
+  },
+  "domains": {
+    "support": "none",
+    "source_url": "https://serper.dev/docs",
+    "comment": "Domain filters"
+  },
+  "country": {
+    "support": "full",
+    "source_url": "https://serper.dev/docs",
+    "comment": "Country (gl)"
+  },
+  "language": {
+    "support": "full",
+    "source_url": "https://serper.dev/docs",
+    "comment": "Language"
+  },
+  "date": {
+    "support": "none",
+    "source_url": "https://serper.dev/docs",
+    "comment": "Published date range"
+  },
+  "safe_search": {
+    "support": "none",
+    "source_url": "https://serper.dev/docs",
+    "comment": "Safe search"
+  },
+  "mode": {
+    "support": "none",
+    "source_url": "https://serper.dev/docs",
+    "comment": "Depth (fast/balanced/deep)"
+  },
+  "answer": {
+    "support": "partial",
+    "source_url": "https://serper.dev/docs",
+    "comment": "Answer only when the SERP includes an answer box (not explicitly requested)."
+  },
+  "content": {
+    "support": "none",
+    "source_url": "https://serper.dev/docs",
+    "comment": "Full page text"
+  },
+  "summary": {
+    "support": "none",
+    "source_url": "https://serper.dev/docs",
+    "comment": "AI per-result summary"
+  },
+  "highlights": {
+    "support": "none",
+    "source_url": "https://serper.dev/docs",
+    "comment": "Query highlights"
+  },
+  "news": {
+    "support": "full",
+    "source_url": "https://serper.dev/docs",
+    "comment": "News search type"
+  },
+  "notes": ""
+}

@@ -1,0 +1,33 @@
+{
+  "name": "anysearch",
+  "version": "0.1.0",
+  "description": "One interface for every web search API (Exa, Parallel, Brave, Tavily, SerpAPI, and more) — plus a stdio MCP server.",
+  "type": "module",
+  "license": "MIT",
+  "engines": { "node": ">=18" },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js" },
+    "./mcp": { "types": "./dist/mcp/server.d.ts", "import": "./dist/mcp/server.js" }
+  },
+  "bin": {
+    "anysearch-mcp": "./dist/mcp/server.js"
+  },
+  "files": ["dist", "README.md"],
+  "scripts": {
+    "build": "tsc -p tsconfig.json && chmod +x dist/mcp/server.js",
+    "test": "node --import tsx --test test/*.test.ts",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "search", "search-api", "exa", "brave", "tavily", "serpapi", "parallel",
+    "perplexity", "mcp", "llm", "rag", "websearch"
+  ],
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "tsx": "^4.16.0",
+    "typescript": "^5.5.0"
+  }
+}

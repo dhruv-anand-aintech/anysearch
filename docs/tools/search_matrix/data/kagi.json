@@ -1,0 +1,85 @@
+{
+  "name": "Kagi",
+  "links": {
+    "docs": "https://help.kagi.com/kagi/api/search.html",
+    "github": "https://github.com/AI-Northstar-Tech/anysearch",
+    "website": "https://kagi.com",
+    "slug": "kagi"
+  },
+  "env_keys": {
+    "value": "KAGI_API_KEY",
+    "source_url": "https://help.kagi.com/kagi/api/search.html",
+    "comment": "Environment variables read by anysearch."
+  },
+  "python_extra": {
+    "value": "\u2014 (REST only)",
+    "source_url": "https://github.com/AI-Northstar-Tech/anysearch/tree/main/python#install",
+    "comment": "Optional pip extra: pip install 'anysearch-sdk[<name>]'"
+  },
+  "requires_key": {
+    "support": "full",
+    "source_url": "https://help.kagi.com/kagi/api/search.html",
+    "comment": "Keyless providers work without credentials."
+  },
+  "snippet": {
+    "support": "full",
+    "source_url": "https://help.kagi.com/kagi/api/search.html",
+    "comment": "Short description field; available on virtually all providers."
+  },
+  "domains": {
+    "support": "none",
+    "source_url": "https://help.kagi.com/kagi/api/search.html",
+    "comment": "Domain filters"
+  },
+  "country": {
+    "support": "none",
+    "source_url": "https://help.kagi.com/kagi/api/search.html",
+    "comment": "Country (gl)"
+  },
+  "language": {
+    "support": "none",
+    "source_url": "https://help.kagi.com/kagi/api/search.html",
+    "comment": "Language"
+  },
+  "date": {
+    "support": "none",
+    "source_url": "https://help.kagi.com/kagi/api/search.html",
+    "comment": "Published date range"
+  },
+  "safe_search": {
+    "support": "none",
+    "source_url": "https://help.kagi.com/kagi/api/search.html",
+    "comment": "Safe search"
+  },
+  "mode": {
+    "support": "none",
+    "source_url": "https://help.kagi.com/kagi/api/search.html",
+    "comment": "Depth (fast/balanced/deep)"
+  },
+  "answer": {
+    "support": "none",
+    "source_url": "https://help.kagi.com/kagi/api/search.html",
+    "comment": "Synthesized answer"
+  },
+  "content": {
+    "support": "none",
+    "source_url": "https://help.kagi.com/kagi/api/search.html",
+    "comment": "Full page text"
+  },
+  "summary": {
+    "support": "none",
+    "source_url": "https://help.kagi.com/kagi/api/search.html",
+    "comment": "AI per-result summary"
+  },
+  "highlights": {
+    "support": "none",
+    "source_url": "https://help.kagi.com/kagi/api/search.html",
+    "comment": "Query highlights"
+  },
+  "news": {
+    "support": "none",
+    "source_url": "https://help.kagi.com/kagi/api/search.html",
+    "comment": "News search type"
+  },
+  "notes": ""
+}

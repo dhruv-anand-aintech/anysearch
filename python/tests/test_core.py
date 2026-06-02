@@ -1,0 +1,190 @@
+"""Core unit tests: routing, capability gating, response normalization, MCP."""
+
+from __future__ import annotations
+
+import httpx
+import pytest
+import respx
+
+import anysearch
+from anysearch import AnySearch, Capability
+from anysearch.exceptions import ProviderError, UnsupportedParameterError
+from anysearch.providers import get_provider_class, list_provider_names
+from anysearch.router import available_providers, enforce_capabilities, select_provider
+from anysearch.types import SearchRequest
+
+
+def test_all_providers_registered():
+    names = list_provider_names()
+    for required in ("exa", "parallel", "serpapi", "brave"):
+        assert required in names
+    assert len(names) >= 14
+
+
+def test_aliases_resolve():
+    assert get_provider_class("serp").name == "serpapi"
+    assert get_provider_class("ddg").name == "duckduckgo"
+    assert get_provider_class("google").name == "google_pse"
+
+
+def test_available_and_select_with_env():
+    assert available_providers(env={}) == ["duckduckgo"]
+    assert select_provider(env={}) == "duckduckgo"
+    env = {"EXA_API_KEY": "x", "TAVILY_API_KEY": "y"}
+    avail = available_providers(env=env)
+    assert "exa" in avail and "tavily" in avail and "duckduckgo" in avail
+    assert select_provider(env=env) == "exa"  # priority order
+    assert select_provider(env={"ANYSEARCH_PROVIDER": "tavily", "EXA_API_KEY": "x"}) == "tavily"
+
+
+def test_capability_enforcement_modes():
+    serper = get_provider_class("serper")
+    req = SearchRequest(query="q", include_domains=["a.com"], start_published_date="2024-01-01")
+    with pytest.raises(UnsupportedParameterError):
+        enforce_capabilities(serper, req, on_unsupported="error")
+    # warn/ignore drop the unsupported fields
+    safe = enforce_capabilities(serper, req, on_unsupported="ignore")
+    assert safe.include_domains == []
+    assert safe.start_published_date is None
+
+
+def test_exa_supports_domains_and_content():
+    exa = get_provider_class("exa")
+    assert Capability.DOMAINS in exa.capabilities
+    assert Capability.CONTENT in exa.capabilities
+
+
+@respx.mock
+def test_exa_search_normalizes_response():
+    route = respx.post("https://api.exa.ai/search").mock(
+        return_value=httpx.Response(
+            200,
+            json={
+                "requestId": "req-1",
+                "results": [
+                    {
+                        "title": "Vector DBs",
+                        "url": "https://example.com/a",
+                        "text": "full text here",
+                        "summary": "a summary",
+                        "highlights": ["hl one", "hl two"],
+                        "score": 0.91,
+                        "publishedDate": "2026-01-02",
+                        "author": "Jane",
+                    }
+                ],
+            },
+        )
+    )
+    client = AnySearch(provider="exa", api_key="test-key", env={})
+    resp = client.search("vector dbs", include_content=True, highlights=True, include_summary=True)
+
+    assert route.called
+    sent = route.calls.last.request
+    assert sent.headers["x-api-key"] == "test-key"
+    assert resp.provider == "exa"
+    assert resp.request_id == "req-1"
+    assert len(resp) == 1
+    r = resp.results[0]
+    assert r.title == "Vector DBs"
+    assert r.url == "https://example.com/a"
+    assert r.text == "full text here"
+    assert r.summary == "a summary"
+    assert r.highlights == ["hl one", "hl two"]
+    assert r.source == "example.com"
+    assert resp.urls == ["https://example.com/a"]
+
+
+@respx.mock
+def test_tavily_answer_and_content():
+    respx.post("https://api.tavily.com/search").mock(
+        return_value=httpx.Response(
+            200,
+            json={
+                "query": "q",
+                "answer": "the answer",
+                "results": [
+                    {
+                        "title": "T",
+                        "url": "https://t.example/x",
+                        "content": "snippet text",
+                        "raw_content": "raw page text",
+                        "score": 0.5,
+                        "published_date": "2026-02-02",
+                    }
+                ],
+            },
+        )
+    )
+    client = AnySearch(provider="tavily", api_key="tvly-test", env={})
+    resp = client.search("q", answer=True, include_content=True)
+    assert resp.answer == "the answer"
+    assert resp.results[0].text == "raw page text"
+    assert resp.results[0].snippet == "snippet text"
+
+
+@respx.mock
+def test_brave_get_request_and_parse():
+    respx.get(url__startswith="https://api.search.brave.com/res/v1/web/search").mock(
+        return_value=httpx.Response(
+            200,
+            json={
+                "web": {
+                    "results": [
+                        {
+                            "title": "B",
+                            "url": "https://b.example",
+                            "description": "desc",
+                            "extra_snippets": ["x", "y"],
+                            "page_age": "2026-03-03",
+                        }
+                    ]
+                }
+            },
+        )
+    )
+    client = AnySearch(provider="brave", api_key="brave-test", env={})
+    resp = client.search("q", highlights=True, max_results=5)
+    assert resp.results[0].highlights == ["x", "y"]
+    assert resp.results[0].published_date == "2026-03-03"
+
+
+@respx.mock
+def test_fallback_on_provider_error():
+    respx.post("https://api.exa.ai/search").mock(return_value=httpx.Response(500, json={"error": "boom"}))
+    respx.post("https://api.tavily.com/search").mock(
+        return_value=httpx.Response(200, json={"results": [{"title": "ok", "url": "https://ok.example", "content": "c"}]})
+    )
+    client = AnySearch(
+        provider="exa",
+        api_key="exa-test",
+        fallbacks=["tavily"],
+        env={"TAVILY_API_KEY": "tvly-test"},
+    )
+    resp = client.search("q")
+    assert resp.provider == "tavily"
+    assert resp.results[0].title == "ok"
+
+
+@respx.mock
+def test_provider_error_raised_without_fallback():
+    respx.post("https://api.exa.ai/search").mock(return_value=httpx.Response(401, json={"error": "bad key"}))
+    client = AnySearch(provider="exa", api_key="bad", env={})
+    with pytest.raises(ProviderError):
+        client.search("q")
+
+
+@respx.mock
+async def test_async_search():
+    respx.post("https://api.tavily.com/search").mock(
+        return_value=httpx.Response(200, json={"results": [{"title": "A", "url": "https://a.example", "content": "c"}]})
+    )
+    client = AnySearch(provider="tavily", api_key="tvly-test", env={})
+    resp = await client.asearch("q")
+    assert resp.results[0].title == "A"
+
+
+def test_unknown_kwargs_passthrough_to_extra():
+    client = AnySearch(provider="exa", api_key="k", env={})
+    req = client._build_request("exa", "q", {"use_autoprompt": True, "extra": {"foo": 1}})
+    assert req.extra == {"foo": 1, "use_autoprompt": True}

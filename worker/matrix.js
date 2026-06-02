@@ -1,0 +1,631 @@
+import matrix from "../docs/tools/search_matrix/bundle.json";
+import llmsTxt from "../docs/tools/search_matrix/llms.txt";
+import schema from "../docs/tools/search_matrix/schema.json";
+import updatedMeta from "../docs/tools/search_matrix/updated.json";
+
+const CANONICAL_ORIGIN = "https://compare-anysearch.ainorthstar.tech";
+const GITHUB_REPO = "https://github.com/AI-Northstar-Tech/anysearch";
+
+const columns = Object.entries(schema.properties)
+  .filter(([key]) => !["links", "notes"].includes(key))
+  .map(([key, value]) => {
+    const parts = (value.$comment || "").split("|").map(p => p.trim());
+    return { key, group: parts[0] || "Other", label: parts[1] || key, description: parts[2] || "" };
+  });
+
+const groups = [...new Set(columns.map(c => c.group))];
+
+function htmlEscape(v) { return String(v ?? "").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;"); }
+
+function agentDomain(agent) {
+  const u = agent.links.website || agent.links.docs || "";
+  try { return new URL(u).hostname.replace(/^www\./, ""); } catch { return ""; }
+}
+
+const FAVICON_OVERRIDES = {};
+
+function faviconSrc(agent) {
+  const slug = agent.links?.slug;
+  if (slug && FAVICON_OVERRIDES[slug]) return FAVICON_OVERRIDES[slug];
+  const d = agentDomain(agent);
+  return d ? `https://www.google.com/s2/favicons?domain=${encodeURIComponent(d)}&sz=64` : "";
+}
+
+function metaTags() {
+  const desc = "Compare 16 web search API providers on unified anysearch parameters: domains, mode, answers, full text, highlights, and more.";
+  return `
+    <meta name="description" content="${htmlEscape(desc)}">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="${CANONICAL_ORIGIN}">
+    <meta property="og:title" content="Search API Provider Matrix — anysearch">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Search API Provider Matrix — anysearch">`;
+}
+
+function feedbackIssueUrl() {
+  const body = [
+    "## What should be fixed?",
+    "",
+    "<!-- Describe the wrong/missing matrix value, broken link, or UX issue. -->",
+    "",
+    "## Matrix location",
+    "",
+    "- Provider:",
+    "- Capability row:",
+    "- Current value:",
+    "- Expected value:",
+    "",
+    "## Source or evidence",
+    "",
+    "<!-- Paste the official docs/source link that supports the correction. -->",
+    "",
+    "## Extra context",
+    "",
+    "<!-- Screenshots, notes, or reproduction steps. -->",
+  ].join("\n");
+  const params = new URLSearchParams({
+    title: "Matrix feedback: ",
+    body,
+    labels: "matrix,feedback",
+  });
+  return `${GITHUB_REPO}/issues/new?${params.toString()}`;
+}
+
+function formatUpdatedLabel(iso) {
+  const then = Date.parse(iso);
+  if (!then) return "Updated recently";
+  const diff = Math.max(0, Date.now() - then);
+  const minute = 60 * 1000;
+  const hour = 60 * minute;
+  const day = 24 * hour;
+  if (diff < minute) return "Updated now";
+  if (diff < hour) return `Updated ${Math.floor(diff / minute)} min ago`;
+  if (diff < day) {
+    const hours = Math.floor(diff / hour);
+    return `Updated ${hours} ${hours === 1 ? "hour" : "hours"} ago`;
+  }
+  if (diff < 60 * day) {
+    const days = Math.floor(diff / day);
+    return `Updated ${days} ${days === 1 ? "day" : "days"} ago`;
+  }
+  if (diff < 183 * day) {
+    const months = Math.max(2, Math.floor(diff / (30 * day)));
+    return `Updated ${months} months ago`;
+  }
+  return `Updated ${new Intl.DateTimeFormat("en-US", { month: "long", day: "numeric", year: "numeric" }).format(new Date(then))}`;
+}
+
+function render() {
+  const payload = JSON.stringify({ matrix, columns, groups, faviconOverrides: FAVICON_OVERRIDES }).replaceAll("</", "<\\/");
+  const updatedAt = updatedMeta.updated_at || new Date().toISOString();
+  return `<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Search API Provider Matrix — anysearch</title>
+${metaTags()}
+<style>
+:root {
+  color-scheme: light; --bg: #f6f4ee; --panel: #fffdf8; --ink: #17130d; --muted: #766f63;
+  --line: #ded7c9; --line-strong: #bdb3a2; --accent: #176b5b; --warn: #a35f00; --none: #9a3c32; --unknown: #8a8173;
+  --footer-h: 26px;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0; height: 100vh; height: 100dvh; display: flex; flex-direction: column; overflow: hidden;
+  background: var(--bg); color: var(--ink);
+}
+a { color: inherit; text-decoration: none; }
+.topbar {
+  height: 44px; display: flex; align-items: center; justify-content: space-between;
+  padding: 0 14px; border-bottom: 1px solid var(--line); background: rgba(255,253,248,.92);
+  position: sticky; top: 0; z-index: 30; backdrop-filter: blur(10px);
+}
+.brand { display: flex; gap: 6px; align-items: center; font-weight: 700; font-size: 13px; }
+.mark { width: 20px; height: 20px; border: 1px solid var(--ink); display: grid; place-items: center; font-size: 10px; }
+.topnav { display: flex; gap: 8px; align-items: center; }
+.gh-btn {
+  display: inline-flex; align-items: center; gap: 4px; border: 1px solid var(--line);
+  background: #fff; padding: 3px 8px; font-size: 12px; color: var(--ink); white-space: nowrap;
+}
+.gh-btn:hover { background: #f0eeeb; }
+.feedback-btn { border-color: var(--accent); color: var(--accent); font-weight: 650; }
+.feedback-btn:hover { background: #e8f1ee; }
+.hero { padding: 10px 14px 8px; border-bottom: 1px solid var(--line); background: var(--panel); }
+.hero p { margin: 0; color: var(--muted); font-size: 12px; }
+.meta-row { margin-top: 6px; display: flex; gap: 6px; flex-wrap: wrap; }
+.pill { border: 1px solid var(--line); padding: 3px 7px; background: #fff; font-size: 11px; color: var(--muted); }
+.table-wrap {
+  flex: 1 1 auto; overflow: auto; min-height: 0; position: relative;
+  padding-bottom: var(--footer-h);
+  scroll-padding-bottom: var(--footer-h);
+}
+table { border-collapse: separate; border-spacing: 0; background: var(--panel); }
+thead { position: sticky; top: 0; z-index: 20; }
+th {
+  background: #eee7d8; color: #2a241b; font-weight: 700; font-size: 10px;
+  border-right: 1px solid var(--line); border-bottom: 1px solid var(--line-strong);
+  padding: 0; vertical-align: middle; text-align: center; position: relative;
+  user-select: none;
+}
+th.corner { position: sticky; left: 0; z-index: 25; background: #e8decc; min-width: 156px; width: 156px; }
+th.agent-col {
+  min-width: 44px; max-width: 44px; height: 44px; cursor: pointer;
+  transition: opacity .15s;
+}
+th.agent-col.dragging { opacity: .4; }
+th.agent-col.drag-over { background: #d5cdbb; }
+th.agent-col.hidden-col { opacity: .25; }
+.row-label.dragging { opacity: .4; }
+.row-label.drag-over { outline: 2px dashed var(--accent); outline-offset: -2px; }
+.fav-box { display: inline-block; background: #fff; border-radius: 6px; line-height: 0; box-shadow: inset 0 0 0 1px var(--line); }
+th.agent-col .fav { width: 32px; height: 32px; vertical-align: middle; border-radius: 6px; }
+th.agent-col.deprecated-col { opacity: .42; }
+th.agent-col.deprecated-col .agent-full::after { content: " (deprecated)"; font-weight: 400; }
+th.agent-col .agent-full { display: none; position: absolute; left: 50%; transform: translateX(-50%);
+  top: calc(100% + 2px); background: #2a241b; color: #f6f4ee; font-size: 10px; padding: 2px 6px;
+  border-radius: 3px; white-space: nowrap; z-index: 30; pointer-events: none; }
+th.agent-col:hover .agent-full { display: block; }
+th.agent-col .eye {
+  position: absolute; top: 1px; right: 2px; font-size: 9px; color: var(--muted); opacity: .5; pointer-events: none;
+}
+th.agent-col.hidden-col .eye { opacity: 1; color: var(--none); }
+tbody td { padding: 3px 4px; font-size: 11px; text-align: center; vertical-align: middle;
+  border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+td.cell-wrap { position: relative; cursor: default; }
+td.cell-wrap.has-source { cursor: pointer; }
+td.cell-wrap:hover { outline: 1.5px solid var(--line-strong); outline-offset: -1px; }
+td.cell-wrap .cell-value,
+td.cell-wrap .support { position: relative; z-index: 1; pointer-events: none; }
+td.cell-wrap .cell-value,
+td.cell-wrap .form-tags { position: relative; z-index: 1; }
+td.cell-wrap .dot {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 16px; height: 16px; border-radius: 50%; color: #fff; font-size: 9px; line-height: 1;
+}
+.full .dot { background: var(--accent); }
+.partial .dot { background: var(--warn); }
+.none .dot { background: var(--none); }
+.unknown .dot { background: var(--unknown); }
+.row-label {
+  position: sticky; left: 0; z-index: 5; background: var(--panel);
+  text-align: left; font-size: 11px; font-weight: 600; padding: 3px 8px !important;
+  min-width: 156px; max-width: 156px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  cursor: pointer; user-select: none;
+}
+.row-label:hover .row-label-tip { display: block; }
+.row-label-tip {
+  display: none; position: absolute; left: 8px; top: calc(100% + 4px);
+  background: #2a241b; color: #f6f4ee; font-size: 10px; line-height: 1.3; padding: 3px 6px;
+  border-radius: 3px; z-index: 50; pointer-events: none; max-width: 240px; white-space: normal;
+  outline: 1px solid #555; font-weight: 400;
+}
+.row-label .arrow { font-size: 8px; margin-right: 3px; color: var(--muted); }
+.row-label.filter-active { color: var(--accent); }
+.row-label.filter-active .arrow { color: var(--accent); }
+.group-head .row-label.group-row-label {
+  font-size: 9px; text-transform: uppercase; letter-spacing: .03em;
+  color: var(--muted); font-weight: 600; cursor: default; background: #e2d8c5;
+}
+.group-head .group-spacer {
+  background: #e2d8c5; padding: 2px 4px !important; border-bottom: 1px solid var(--line);
+}
+.cell-tip {
+  display: none; position: fixed; left: 0; top: 0; transform: none;
+  background: #2a241b; color: #f6f4ee; font-size: 10px; line-height: 1.35; padding: 6px 8px;
+  border-radius: 3px; z-index: 60; pointer-events: auto; width: max-content; max-width: min(520px, calc(100vw - 16px)); white-space: normal;
+  overflow-wrap: anywhere;
+  outline: 1px solid #555; text-align: left; font-weight: 400;
+  box-shadow: 0 8px 24px rgba(23, 19, 13, .22);
+}
+.cell-tip-note { display: block; }
+.cell-tip-url {
+  display: block; margin-top: 4px; padding-top: 4px; border-top: 1px solid rgba(246,244,238,.22);
+  color: #d8d1c4; font-size: 8px; line-height: 1.25;
+}
+.cell-tip a { color: #fff7d1; text-decoration: underline; text-underline-offset: 2px; }
+.cell-tip-links {
+  display: grid; grid-template-columns: repeat(2, minmax(0, max-content)); gap: 3px 8px;
+  margin-top: 5px; padding-top: 5px; border-top: 1px solid rgba(246,244,238,.22);
+}
+.cell-tip-link { white-space: nowrap; }
+td.value { font-size: 9px; color: var(--muted); line-height: 1.25; white-space: normal; max-width: 110px; }
+.form-tags { display: flex; flex-wrap: wrap; gap: 1px; justify-content: center; }
+.form-tag { border: 1px solid var(--line); background: #fff; padding: 1px 2px; font-size: 8px; }
+.form-tag.deprecated-tag { color: var(--warn); border-color: #d4a574; }
+.site-footer {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 40;
+  height: var(--footer-h); display: flex; align-items: center; justify-content: center; gap: 6px;
+  padding: 0 14px; background: var(--panel); border-top: 1px solid var(--line);
+  box-shadow: 0 -4px 12px rgba(23, 19, 13, .06);
+}
+.site-footer-copy { font-size: 8px; line-height: 1.2; color: var(--muted); white-space: nowrap; }
+.site-footer-copy a { color: var(--ink); text-decoration: none; }
+.site-footer-copy a:hover { text-decoration: underline; }
+.cell-link {
+  position: absolute; inset: 0; z-index: 2;
+}
+.source-mark {
+  position: absolute; top: 0; right: 0; z-index: 3;
+  width: 0; height: 0; pointer-events: none;
+  border-style: solid; border-width: 0 6px 6px 0;
+  border-color: transparent var(--line-strong) transparent transparent;
+  opacity: .35;
+}
+.cell-wrap:hover .source-mark { opacity: 1; }
+.hidden { display: none; }
+</style>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="/"><span class="mark">AS</span><span>Search API Provider Matrix</span></a>
+  <nav class="topnav">
+    <a href="${htmlEscape(feedbackIssueUrl())}" class="gh-btn feedback-btn" target="_blank" rel="noreferrer">Report fix</a>
+    <a href="${GITHUB_REPO}" class="gh-btn" target="_blank" rel="noreferrer">
+      <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+      Star
+    </a>
+  </nav>
+</header>
+<section class="hero">
+  <p>Compare ${htmlEscape(matrix.length)} search APIs on unified <strong>anysearch</strong> parameters. Hover a column for the provider name, drag to reorder, click to hide/show.</p>
+  <div class="meta-row">
+    <span class="pill">${htmlEscape(matrix.length)} providers</span>
+    <span class="pill"><a href="${GITHUB_REPO}">anysearch SDK</a></span>
+    <span class="pill" id="updatedPill" data-updated-at="${htmlEscape(updatedAt)}">${htmlEscape(formatUpdatedLabel(updatedAt))}</span>
+  </div>
+</section>
+<div class="table-wrap">
+<table>
+<thead><tr id="headerRow"></tr></thead>
+<tbody id="tbody"></tbody>
+</table>
+</div>
+<footer class="site-footer">
+  <span class="site-footer-copy">© 2026 <a href="https://ainorthstartech.com" target="_blank" rel="noopener noreferrer">AI Northstar Tech</a> Private Limited, All Rights Reserved.</span>
+</footer>
+<script type="application/json" id="payload">${payload}</script>
+<script>
+function agentDomain(agent) {
+  var u = agent.links.website || agent.links.docs || "";
+  try { return new URL(u).hostname.replace(/^www\\./, ""); } catch(e) { return ""; }
+}
+const { matrix, columns, groups, faviconOverrides } = JSON.parse(document.getElementById('payload').textContent);
+function formatUpdatedLabelClient(iso) {
+  var then = Date.parse(iso);
+  if (!then) return 'Updated recently';
+  var diff = Math.max(0, Date.now() - then);
+  var minute = 60 * 1000, hour = 60 * minute, day = 24 * hour;
+  if (diff < minute) return 'Updated now';
+  if (diff < hour) {
+    var mins = Math.floor(diff / minute);
+    return 'Updated ' + mins + ' min ago';
+  }
+  if (diff < day) {
+    var hours = Math.floor(diff / hour);
+    return 'Updated ' + hours + ' ' + (hours === 1 ? 'hour' : 'hours') + ' ago';
+  }
+  if (diff < 60 * day) {
+    var days = Math.floor(diff / day);
+    return 'Updated ' + days + ' ' + (days === 1 ? 'day' : 'days') + ' ago';
+  }
+  if (diff < 183 * day) {
+    var months = Math.max(2, Math.floor(diff / (30 * day)));
+    return 'Updated ' + months + ' months ago';
+  }
+  return 'Updated ' + new Intl.DateTimeFormat('en-US', {month:'long', day:'numeric', year:'numeric'}).format(new Date(then));
+}
+function refreshUpdatedPill() {
+  var pill = document.getElementById('updatedPill');
+  if (pill) pill.textContent = formatUpdatedLabelClient(pill.dataset.updatedAt);
+}
+refreshUpdatedPill();
+setInterval(refreshUpdatedPill, 60000);
+const metaCols = new Set(['name','env_keys','python_extra','requires_key','mode_notes','notes']);
+const featureCols = columns.filter(c => !metaCols.has(c.key));
+const aboutCols = columns.filter(c => metaCols.has(c.key) && c.key !== 'name' && c.key !== 'notes');
+const DATE_SORT_ROWS = new Set([]);
+const MONTH_MAP = {Jan:1,Feb:2,Mar:3,Apr:4,May:5,Jun:6,Jul:7,Aug:8,Sep:9,Oct:10,Nov:11,Dec:12};
+
+const COOKIE = 'asmat_state';
+let colOrder = [];
+let rowOrder = [];
+let hidden = new Set();
+let rowSort = [];
+const SORT_ORDER = { full:0, partial:1, none:2, unknown:3, "":4 };
+const FORM_FACTOR_ORDER = ['CLI','IDE','Extension','SDK','Web','Mac App'];
+function sortFormFactors(vals) {
+  var rank = {};
+  FORM_FACTOR_ORDER.forEach(function(v,i){rank[v]=i});
+  return vals.slice().sort(function(a,b){
+    var ra = rank[a]!==undefined?rank[a]:99, rb = rank[b]!==undefined?rank[b]:99;
+    return ra-rb || String(a).localeCompare(String(b));
+  });
+}
+function parseDisplayDate(value) {
+  var v = String(value || '').trim();
+  if (!v) return 0;
+  var m = v.match(/^([A-Za-z]{3})\s*['\u2019](\d{2})$/);
+  if (m && MONTH_MAP[m[1]]) return Date.UTC(2000 + parseInt(m[2],10), MONTH_MAP[m[1]] - 1, 1);
+  if (/^\d{4}$/.test(v)) return Date.UTC(parseInt(v,10), 0, 1);
+  if (/^\d{4}-\d{2}-\d{2}$/.test(v)) return Date.parse(v + 'T12:00:00Z') || 0;
+  return 0;
+}
+function dateSortKey(agent, key) {
+  var field = agent[key] || {};
+  if (field.sort_date) return Date.parse(field.sort_date + 'T12:00:00Z') || 0;
+  return parseDisplayDate(field.value);
+}
+function sortableLabelHtml(label, key) {
+  var sortEntry = rowSort.find(function(s){ return s.key === key; });
+  var isSort = !!sortEntry;
+  var active = isSort ? ' filter-active' : '';
+  var arrow = isSort ? (rowSort.indexOf(sortEntry) + 1) : '&#9654;';
+  return '<td class="row-label'+active+'" data-rowkey="'+key+'" onclick="cycleSort('+"'"+key+"'"+')" title="Sort columns by this date"><span class="row-label-tip">'+esc(label)+'</span><span class="arrow">'+arrow+'</span>'+esc(label)+'</td>';
+}
+
+// Pinned agents (always at top), then rest sorted by full-feature count
+const PINNED = ['Exa','Tavily','Brave','Parallel','Perplexity','SerpApi'];
+const ALL_FEATS = featureCols.map(function(c){return c.key});
+function rankAgent(i) {
+  var agent = matrix[i];
+  if (agent.deprecated) return 2000 + i;
+  var p = PINNED.indexOf(agent.name);
+  if (p !== -1) return -1000 + p;
+  var cnt = 0;
+  ALL_FEATS.forEach(function(k){if((agent[k]||{}).support==='full')cnt++});
+  return -cnt;
+}
+
+function loadState() {
+  var def = { cols: matrix.map(function(_,i){return i}).sort(function(a,b){return rankAgent(a)-rankAgent(b)}), rows: featureCols.map(function(c){return c.key}) };
+  try {
+    var c = document.cookie.split('; ').find(r => r.startsWith(COOKIE+'='));
+    if (c) { var p = JSON.parse(decodeURIComponent(c.split('=')[1]));
+      if (Array.isArray(p.cols) && p.cols.length===matrix.length) def.cols = p.cols;
+      if (Array.isArray(p.rows) && p.rows.length===featureCols.length) def.rows = p.rows;
+    }
+  } catch(e) {}
+  return def;
+}
+function saveState() {
+  document.cookie = COOKIE + '=' + encodeURIComponent(JSON.stringify({cols:colOrder, rows:rowOrder})) + ';path=/;max-age=31536000';
+}
+function esc(v) { return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function rowLabelCell(label, extraClass, extraAttrs) {
+  return '<td class="row-label'+extraClass+'"'+extraAttrs+'><span class="row-label-tip">'+esc(label)+'</span>'+esc(label)+'</td>';
+}
+function cellTipHtml(comment, sourceUrl, links) {
+  var linkEntries = links ? Object.entries(links).filter(function(entry){ return entry[1]; }) : [];
+  if (!comment && !sourceUrl && !linkEntries.length) return '';
+  var html = '<div class="cell-tip">';
+  if (comment) html += '<span class="cell-tip-note">'+esc(comment)+'</span>';
+  if (linkEntries.length) {
+    html += '<span class="cell-tip-links">';
+    linkEntries.forEach(function(entry){
+      html += '<a class="cell-tip-link" href="'+esc(entry[1])+'" target="_blank" rel="noopener noreferrer">'+esc(entry[0])+'</a>';
+    });
+    html += '</span>';
+  }
+  if (sourceUrl) html += '<a class="cell-tip-url" href="'+esc(sourceUrl)+'" target="_blank" rel="noopener noreferrer">Source: '+esc(sourceUrl)+'</a>';
+  return html + '</div>';
+}
+var COLORS = ['#176b5b','#2d4f9e','#9a3c32','#a35f00','#4a6fa5','#7b4f9e','#27ae60','#8e44ad','#d35400','#16a085','#2c3e50','#f39c12','#1abc9c','#34495e','#e74c3c','#2980b9','#c0392b'];
+function agentInitials(name) {
+  var p = name.split(/\s+/);
+  return p.length===1 ? name.slice(0,2).toUpperCase() : (p[0][0]+p[1][0]).toUpperCase();
+}
+function avatarSvg(ini, c, size) {
+  var s = size||32, r = Math.round(s/5), fs = Math.round(s*0.44);
+  return '<svg width="'+s+'" height="'+s+'" viewBox="0 0 '+s+' '+s+'" xmlns="http://www.w3.org/2000/svg"><rect width="'+s+'" height="'+s+'" rx="'+r+'" fill="'+c+'"/><text x="'+s/2+'" y="'+s/2+'" text-anchor="middle" dominant-baseline="central" fill="white" font-size="'+fs+'" font-weight="700" font-family="Inter,sans-serif">'+ini+'</text></svg>';
+}
+function favimg(agent, idx) {
+  var ini = agentInitials(agent.name), c = COLORS[idx%COLORS.length];
+  var fallback = avatarSvg(ini, c, 32);
+  var slug = (agent.links && agent.links.slug) || '';
+  var src = faviconOverrides[slug] || (function(){
+    var d = agentDomain(agent);
+    return d ? 'https://www.google.com/s2/favicons?domain='+esc(encodeURIComponent(d))+'&sz=64' : '';
+  })();
+  if (!src) return '<span class="fav-box">'+fallback+'</span>';
+  return '<span class="fav-box" style="position:relative"><img class="fav" src="'+esc(src)+'" alt="" width="32" height="32" loading="lazy" onerror="var p=this.parentElement;this.style.display=\\x27none\\x27;var s=p.querySelector(\\x27.fav-av\\x27);if(s)s.style.display=\\x27inline\\x27"><span class="fav-av" style="display:none">'+fallback+'</span></span>';
+}
+function cell(agent, col) {
+  var v = agent[col.key];
+  if (!v) return '<td>&mdash;</td>';
+  if (col.key==='form_factor') {
+    var tags = sortFormFactors((v.values||[v.value]).filter(Boolean));
+    var links = v.links || {};
+    var tip = cellTipHtml(v.comment, v.source_url, links);
+    var tagHtml = tags.map(function(x){
+      var href = links[x];
+      if (href) return '<a class="form-tag" href="'+esc(href)+'" target="_blank" rel="noreferrer">'+esc(x)+'</a>';
+      return '<span class="form-tag">'+esc(x)+'</span>';
+    }).join('');
+    if (agent.deprecated) tagHtml += '<span class="form-tag deprecated-tag">deprecated</span>';
+    return '<td class="cell-wrap"><div class="form-tags">'+tagHtml+'</div>'+tip+'</td>';
+  }
+  var tip = cellTipHtml(v.comment, v.source_url);
+  var hasSrc = !!v.source_url;
+  var link = hasSrc ? '<a class="cell-link" href="'+esc(v.source_url)+'" target="_blank" rel="noreferrer" title="Open source" aria-label="Open source"></a>' : '';
+  var mark = hasSrc ? '<span class="source-mark" aria-hidden="true"></span>' : '';
+  var wrapCls = 'cell-wrap'+(hasSrc?' has-source':'');
+  if (featureCols.some(function(c){ return c.key===col.key; })) {
+    var g = {full:'&#10003;',partial:'&#9678;',none:'&#10005;',unknown:'?','':'—'};
+    return '<td class="'+wrapCls+'">'+link+'<span class="support '+(v.support||'')+'"><span class="dot">'+(g[v.support||'']||'?')+'</span></span>'+mark+tip+'</td>';
+  }
+  if (v.value!==undefined) return '<td class="'+wrapCls+' value"><span class="cell-value">'+esc(v.value)+'</span>'+link+mark+tip+'</td>';
+  return '<td>'+esc(v)+'</td>';
+}
+function renderHeader() {
+  document.getElementById('headerRow').innerHTML = '<th class="corner"></th>'+colOrder.map(function(i){
+    var agent = matrix[i], hc = hidden.has(i)?' hidden-col':'', dep = agent.deprecated?' deprecated-col':'';
+    return '<th class="agent-col'+hc+dep+'" data-idx="'+i+'" draggable="true" onclick="toggleCol('+i+')" title="Click to toggle visibility">'+
+      favimg(agent, i)+'<span class="eye">'+(hidden.has(i)?'&#8855;':'&#9679;')+'</span><div class="agent-full">'+esc(agent.name)+'</div></th>';
+  }).join(''); setupColDrag();
+}
+function visibleCols() { return colOrder.filter(function(i){return !hidden.has(i)}); }
+function renderBody() {
+  var vc = visibleCols();
+  if (rowSort.length) {
+    var originalRank = {};
+    vc.forEach(function(i, idx){ originalRank[i] = idx; });
+    var priority = rowSort.slice().reverse();
+    vc = vc.slice().sort(function(a,b){
+      for (var p=0; p<priority.length; p++) {
+        var key = priority[p].key;
+        var va = SORT_ORDER[(matrix[a][key]||{}).support||''];
+        var vb = SORT_ORDER[(matrix[b][key]||{}).support||''];
+        if (va === undefined) va = 4;
+        if (vb === undefined) vb = 4;
+        if (va !== vb) return va - vb;
+      }
+      return originalRank[a] - originalRank[b];
+    });
+  }
+  var rows = [];
+  rows.push('<tr class="group-head">'+rowLabelCell('About',' group-row-label','')+vc.map(function(){return '<td class="group-spacer"></td>'}).join('')+'</tr>');
+  aboutCols.forEach(function(col){
+    var label = rowLabelCell(col.label,'','');
+    rows.push('<tr>'+label+vc.map(function(i){return cell(matrix[i],col)}).join('')+'</tr>');
+  });
+  // Feature rows in saved order, grouped
+  var used = {};
+  rowOrder.forEach(function(key){
+    var col = featureCols.find(function(c){return c.key===key});
+    if (!col||used[key]) return; used[key]=true;
+    var sortEntry = rowSort.find(function(s){ return s.key===key; });
+    var isSort = !!sortEntry;
+    var active = isSort?' filter-active':'';
+    var arrow = isSort?(rowSort.indexOf(sortEntry)+1):'&#9654;';
+    var labelHtml = '<td class="row-label'+active+'" draggable="true" data-rowkey="'+key+'" onclick="cycleSort('+"'"+key+"'"+')" title="Sort columns by this feature"><span class="row-label-tip">'+esc(col.label)+'</span><span class="arrow">'+arrow+'</span>'+esc(col.label)+'</td>';
+    var cells = vc.map(function(i){
+      if (!isSort) return cell(matrix[i],col);
+      var s = (matrix[i][col.key]||{}).support||'';
+      return cell(matrix[i],col);
+    }).join('');
+    rows.push('<tr>'+labelHtml+cells+'</tr>');
+  });
+  document.getElementById('tbody').innerHTML = rows.join('');
+  setupRowDrag();
+  setupCellTips();
+}
+function toggleCol(i) { hidden.has(i)?hidden.delete(i):hidden.add(i); renderHeader(); renderBody(); }
+function cycleSort(key) {
+  if (DATE_SORT_ROWS.has(key)) return;
+  var idx = rowSort.findIndex(function(s){ return s.key === key; });
+  if (idx !== -1) rowSort.splice(idx, 1);
+  else rowSort.push({key:key});
+  renderBody();
+}
+function setupColDrag() {
+  document.querySelectorAll('th.agent-col').forEach(function(th){
+    th.addEventListener('dragstart',function(e){this.classList.add('dragging');e.dataTransfer.setData('text/col',this.dataset.idx)});
+    th.addEventListener('dragend',function(){this.classList.remove('dragging')});
+    th.addEventListener('dragover',function(e){e.preventDefault();this.classList.add('drag-over')});
+    th.addEventListener('dragleave',function(){this.classList.remove('drag-over')});
+    th.addEventListener('drop',function(e){e.preventDefault();this.classList.remove('drag-over');
+      var from=parseInt(e.dataTransfer.getData('text/col')),to=parseInt(this.dataset.idx);
+      if (isNaN(from)||isNaN(to)||from===to) return;
+      var fp=colOrder.indexOf(from),tp=colOrder.indexOf(to);
+      if (fp===-1||tp===-1) return;
+      colOrder.splice(fp,1);colOrder.splice(tp,0,from);saveState();renderHeader();renderBody();
+    });
+  });
+}
+function setupRowDrag() {
+  document.querySelectorAll('.row-label[draggable]').forEach(function(td){
+    td.addEventListener('dragstart',function(e){this.classList.add('dragging');e.dataTransfer.setData('text/row',this.dataset.rowkey)});
+    td.addEventListener('dragend',function(){this.classList.remove('dragging')});
+    td.addEventListener('dragover',function(e){e.preventDefault();this.classList.add('drag-over')});
+    td.addEventListener('dragleave',function(){this.classList.remove('drag-over')});
+    td.addEventListener('drop',function(e){e.preventDefault();this.classList.remove('drag-over');
+      var from=e.dataTransfer.getData('text/row'),to=this.dataset.rowkey;
+      if (!from||!to||from===to) return;
+      var fp=rowOrder.indexOf(from),tp=rowOrder.indexOf(to);
+      if (fp===-1||tp===-1) return;
+      rowOrder.splice(fp,1);rowOrder.splice(tp,0,from);saveState();renderBody();
+    });
+  });
+}
+function setupCellTips() {
+  document.querySelectorAll('.cell-wrap .cell-tip').forEach(function(tip){
+    var cell = tip.closest('.cell-wrap');
+    if (!cell) return;
+    var hideTimer = null;
+    function showTip(){
+      if (hideTimer) {
+        clearTimeout(hideTimer);
+        hideTimer = null;
+      }
+      tip.style.display = 'block';
+      tip.style.visibility = 'hidden';
+      tip.style.left = '0px';
+      tip.style.top = '0px';
+      var cr = cell.getBoundingClientRect();
+      var tr = tip.getBoundingClientRect();
+      var margin = 8;
+      var left = cr.right + 6;
+      if (left + tr.width > window.innerWidth - margin) left = cr.left - tr.width - 6;
+      left = Math.max(margin, Math.min(left, window.innerWidth - tr.width - margin));
+      var top = cr.top;
+      if (top + tr.height > window.innerHeight - margin) top = Math.min(window.innerHeight - tr.height - margin, cr.bottom + 6);
+      top = Math.max(margin, top);
+      tip.style.left = left + 'px';
+      tip.style.top = top + 'px';
+      tip.style.visibility = 'visible';
+    }
+    function scheduleHide(){
+      if (hideTimer) clearTimeout(hideTimer);
+      hideTimer = setTimeout(function(){
+        hideTimer = null;
+        if (!cell.matches(':hover') && !tip.matches(':hover')) hideTip();
+      }, 180);
+    }
+    function hideTip(){
+      tip.style.display = '';
+      tip.style.visibility = '';
+    }
+    cell.addEventListener('mouseenter', showTip);
+    cell.addEventListener('mouseleave', scheduleHide);
+    tip.addEventListener('mouseenter', showTip);
+    tip.addEventListener('mouseleave', scheduleHide);
+    tip.addEventListener('click', function(e){ e.stopPropagation(); });
+  });
+}
+var state = loadState(); colOrder = state.cols; rowOrder = state.rows;
+renderHeader(); renderBody();
+</script>
+</body>
+</html>`;
+}
+
+function renderRobots() {
+  return `User-agent: *\nAllow: /\nSitemap: ${CANONICAL_ORIGIN}/sitemap.xml\n`;
+}
+function renderSitemap() {
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>${CANONICAL_ORIGIN}/</loc><lastmod>${new Date().toISOString().slice(0,10)}</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+</urlset>`;
+}
+
+const bundleJson = JSON.stringify(matrix, null, 2);
+
+export default {
+  async fetch(request, env) {
+    const url = new URL(request.url);
+    if (env.ASSETS) {
+      const asset = await env.ASSETS.fetch(request);
+      if (asset.status !== 404) return asset;
+    }
+    if (url.pathname === "/llms.txt") return new Response(llmsTxt, {headers: {"content-type":"text/plain; charset=utf-8","cache-control":"public, max-age=300"}});
+    if (url.pathname === "/robots.txt") return new Response(renderRobots(), {headers: {"content-type":"text/plain; charset=utf-8","cache-control":"public, max-age=86400"}});
+    if (url.pathname === "/sitemap.xml") return new Response(renderSitemap(), {headers: {"content-type":"application/xml; charset=utf-8","cache-control":"public, max-age=3600"}});
+    if (url.pathname === "/bundle.json") return new Response(bundleJson, {headers: {"content-type":"application/json; charset=utf-8","cache-control":"public, max-age=300","access-control-allow-origin":"*"}});
+    return new Response(render(), {headers: {"content-type":"text/html; charset=utf-8","cache-control":"public, max-age=300"}});
+  },
+};

@@ -1,0 +1,85 @@
+{
+  "name": "DuckDuckGo",
+  "links": {
+    "docs": "https://pypi.org/project/ddgs/",
+    "github": "https://github.com/AI-Northstar-Tech/anysearch",
+    "website": "https://duckduckgo.com",
+    "slug": "duckduckgo"
+  },
+  "env_keys": {
+    "value": "(none \u2014 keyless)",
+    "source_url": "https://pypi.org/project/ddgs/",
+    "comment": "Environment variables read by anysearch."
+  },
+  "python_extra": {
+    "value": "ddgs",
+    "source_url": "https://github.com/AI-Northstar-Tech/anysearch/tree/main/python#install",
+    "comment": "Optional pip extra: pip install 'anysearch-sdk[<name>]'"
+  },
+  "requires_key": {
+    "support": "none",
+    "source_url": "https://pypi.org/project/ddgs/",
+    "comment": "Keyless providers work without credentials."
+  },
+  "snippet": {
+    "support": "full",
+    "source_url": "https://pypi.org/project/ddgs/",
+    "comment": "Short description field; available on virtually all providers."
+  },
+  "domains": {
+    "support": "none",
+    "source_url": "https://pypi.org/project/ddgs/",
+    "comment": "Domain filters"
+  },
+  "country": {
+    "support": "full",
+    "source_url": "https://pypi.org/project/ddgs/",
+    "comment": "Country (gl)"
+  },
+  "language": {
+    "support": "none",
+    "source_url": "https://pypi.org/project/ddgs/",
+    "comment": "Language"
+  },
+  "date": {
+    "support": "none",
+    "source_url": "https://pypi.org/project/ddgs/",
+    "comment": "Published date range"
+  },
+  "safe_search": {
+    "support": "full",
+    "source_url": "https://pypi.org/project/ddgs/",
+    "comment": "Safe search"
+  },
+  "mode": {
+    "support": "none",
+    "source_url": "https://pypi.org/project/ddgs/",
+    "comment": "Depth (fast/balanced/deep)"
+  },
+  "answer": {
+    "support": "none",
+    "source_url": "https://pypi.org/project/ddgs/",
+    "comment": "Synthesized answer"
+  },
+  "content": {
+    "support": "none",
+    "source_url": "https://pypi.org/project/ddgs/",
+    "comment": "Full page text"
+  },
+  "summary": {
+    "support": "none",
+    "source_url": "https://pypi.org/project/ddgs/",
+    "comment": "AI per-result summary"
+  },
+  "highlights": {
+    "support": "none",
+    "source_url": "https://pypi.org/project/ddgs/",
+    "comment": "Query highlights"
+  },
+  "news": {
+    "support": "none",
+    "source_url": "https://pypi.org/project/ddgs/",
+    "comment": "News search type"
+  },
+  "notes": "No API key required (keyless fallback). Native SDK extra: ddgs."
+}

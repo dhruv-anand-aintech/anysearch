@@ -1,0 +1,12 @@
+name = "anysearch-matrix"
+main = "worker/matrix.js"
+compatibility_date = "2026-05-20"
+workers_dev = true
+
+[assets]
+directory = "docs/tools/search_matrix/icons"
+binding = "ASSETS"
+
+[[routes]]
+pattern = "compare-anysearch.ainorthstar.tech"
+custom_domain = true
