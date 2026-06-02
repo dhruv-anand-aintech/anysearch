@@ -23,18 +23,6 @@ function agentDomain(agent) {
 }
 
 const FAVICON_OVERRIDES = {};
-function faviconSlugForAgent(agent) {
-  const slug = agent.links && agent.links.slug;
-  if (slug && FAVICON_PARENT_SLUG[slug]) return FAVICON_PARENT_SLUG[slug];
-  return slug;
-}
-
-function faviconSrc(agent) {
-  const slug = faviconSlugForAgent(agent);
-  if (slug && FAVICON_OVERRIDES[slug]) return FAVICON_OVERRIDES[slug];
-  const d = agentDomain(agent);
-  return d ? `https://www.google.com/s2/favicons?domain=${encodeURIComponent(d)}&sz=64` : "";
-}
 
 function metaTags() {
   const desc = "Compare web search API providers (including SerpApi Bing, Baidu, Yandex, and more) on unified anysearch parameters.";
@@ -466,6 +454,11 @@ const FAVICON_PARENT_SLUG = {
   perplexity_sonar: 'perplexity',
   brave_answers: 'brave',
 };
+function faviconSlugForAgent(agent) {
+  var slug = agent.links && agent.links.slug;
+  if (slug && FAVICON_PARENT_SLUG[slug]) return FAVICON_PARENT_SLUG[slug];
+  return slug;
+}
 function serpapiPinRank(name) {
   var i = PINNED.indexOf(name);
   return i === -1 ? null : -900 + i;

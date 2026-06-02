@@ -7,6 +7,8 @@ on:
       - ".github/workflows/deploy-matrix.yml"
       - "docs/tools/search_matrix/**"
       - "scripts/generate_search_matrix_data.py"
+      - "scripts/verify_matrix_page.mjs"
+      - "scripts/matrix_import_hooks.mjs"
       - "python/src/anysearch/providers/**"
       - "worker/matrix.js"
       - "wrangler.toml"
@@ -38,6 +40,9 @@ jobs:
           pip install -e ./python
           npm run matrix:sync
 
+      - name: Verify matrix page renders
+        run: npm run matrix:verify-page
+
   deploy:
     needs: sync
     runs-on: ubuntu-latest
@@ -56,6 +61,16 @@ jobs:
           python-version: "3.12"
 
       - run: npm ci
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Sync matrix data and verify page
+        run: |
+          pip install -e ./python
+          npm run matrix:sync
+          npm run matrix:verify-page
 
       - name: Deploy to Cloudflare Workers
         env:

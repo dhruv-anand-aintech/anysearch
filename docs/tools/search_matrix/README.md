@@ -23,6 +23,7 @@ npm run matrix:bundle
 npm run matrix:llms-txt
 # or
 npm run matrix:sync
+npm run matrix:verify-page   # smoke-test HTML + client script (table must render)
 ```
 
 After changing `python/src/anysearch/providers/*`, run `matrix:sync` and commit
