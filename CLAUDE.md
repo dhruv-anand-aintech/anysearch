@@ -10,7 +10,7 @@ After changing matrix metadata, generated data, or `worker/matrix.js`:
 
 ```bash
 npm run matrix:sync && npm run matrix:verify-page
-git add docs/tools/search_matrix/ docs/PROVIDERS.md scripts/search_matrix_provider_meta.py scripts/generate_search_matrix_data.py worker/matrix.js
+git add docs/tools/search_matrix/ docs/PROVIDERS.md scripts/search_matrix_provider_meta.py scripts/generate_search_matrix_data.py worker/matrix.js CLAUDE.md
 git commit -m "…"
 git push origin HEAD
 npm run deploy:matrix
