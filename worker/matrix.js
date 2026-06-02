@@ -23,9 +23,14 @@ function agentDomain(agent) {
 }
 
 const FAVICON_OVERRIDES = {};
+function faviconSlugForAgent(agent) {
+  const slug = agent.links && agent.links.slug;
+  if (slug && FAVICON_PARENT_SLUG[slug]) return FAVICON_PARENT_SLUG[slug];
+  return slug;
+}
 
 function faviconSrc(agent) {
-  const slug = agent.links?.slug;
+  const slug = faviconSlugForAgent(agent);
   if (slug && FAVICON_OVERRIDES[slug]) return FAVICON_OVERRIDES[slug];
   const d = agentDomain(agent);
   return d ? `https://www.google.com/s2/favicons?domain=${encodeURIComponent(d)}&sz=64` : "";
@@ -419,10 +424,19 @@ function sortableLabelHtml(label, key) {
 
 // Pinned agents (always at top), then rest sorted by full-feature count
 const PINNED = [
-  'Exa','Tavily','Brave','Parallel','Perplexity',
+  'Exa','Tavily','Research · Tavily','Brave','Answers · Brave',
+  'Parallel','Task · Parallel','Perplexity','Sonar · Perplexity',
+  'You','Research · You.com','Linkup',
   'Google · SerpApi','Bing · SerpApi','Baidu · SerpApi','Yandex · SerpApi',
   'DuckDuckGo · SerpApi','Yahoo · SerpApi',
 ];
+const FAVICON_PARENT_SLUG = {
+  you_research: 'you',
+  tavily_research: 'tavily',
+  parallel_task: 'parallel',
+  perplexity_sonar: 'perplexity',
+  brave_answers: 'brave',
+};
 function serpapiPinRank(name) {
   var i = PINNED.indexOf(name);
   return i === -1 ? null : -900 + i;
@@ -475,20 +489,31 @@ function cellTipHtml(comment, sourceUrl, links) {
 }
 var COLORS = ['#176b5b','#2d4f9e','#9a3c32','#a35f00','#4a6fa5','#7b4f9e','#27ae60','#8e44ad','#d35400','#16a085','#2c3e50','#f39c12','#1abc9c','#34495e','#e74c3c','#2980b9','#c0392b'];
 var SERPAPI_VIA_SUFFIX = ' \u00b7 SerpApi';
-function formatAgentNameHtml(name) {
+var NAME_VIA_SEP = ' \u00b7 ';
+function splitStackedAgentName(name) {
   if (name.endsWith(SERPAPI_VIA_SUFFIX)) {
-    var brand = name.slice(0, -SERPAPI_VIA_SUFFIX.length);
+    return { top: name.slice(0, -SERPAPI_VIA_SUFFIX.length), bottom: 'SerpApi' };
+  }
+  var i = name.lastIndexOf(NAME_VIA_SEP);
+  if (i > 0) {
+    return { top: name.slice(0, i), bottom: name.slice(i + NAME_VIA_SEP.length) };
+  }
+  return null;
+}
+function formatAgentNameHtml(name) {
+  var parts = splitStackedAgentName(name);
+  if (parts) {
     return '<span class="agent-name agent-name-stacked" title="'+esc(name)+'">'+
-      '<span class="agent-name-line">'+esc(brand)+'</span>'+
-      '<span class="agent-name-line agent-name-via">SerpApi</span></span>';
+      '<span class="agent-name-line">'+esc(parts.top)+'</span>'+
+      '<span class="agent-name-line agent-name-via">'+esc(parts.bottom)+'</span></span>';
   }
   return '<span class="agent-name" title="'+esc(name)+'">'+
     '<span class="agent-name-line">'+esc(name)+'</span></span>';
 }
 function agentInitials(name) {
-  if (name.endsWith(SERPAPI_VIA_SUFFIX)) {
-    var brand = name.slice(0, -SERPAPI_VIA_SUFFIX.length);
-    return brand.slice(0, 2).toUpperCase();
+  var parts = splitStackedAgentName(name);
+  if (parts) {
+    return parts.top.slice(0, 2).toUpperCase();
   }
   var p = name.split(/\s+/);
   return p.length===1 ? name.slice(0,2).toUpperCase() : (p[0][0]+p[1][0]).toUpperCase();
@@ -500,7 +525,7 @@ function avatarSvg(ini, c, size) {
 function favimg(agent, idx) {
   var ini = agentInitials(agent.name), c = COLORS[idx%COLORS.length];
   var fallback = avatarSvg(ini, c, 32);
-  var slug = (agent.links && agent.links.slug) || '';
+  var slug = faviconSlugForAgent(agent) || '';
   var src = faviconOverrides[slug] || (function(){
     var d = agentDomain(agent);
     return d ? 'https://www.google.com/s2/favicons?domain='+esc(encodeURIComponent(d))+'&sz=64' : '';

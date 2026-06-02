@@ -81,7 +81,7 @@
       "balanced"
     ],
     "source_url": "https://you.com/docs/search/overview",
-    "comment": "Standard /v1 search snippets. `livecrawl` fetches page HTML/markdown \u2014 not a fast or synthesis depth mode."
+    "comment": "POST /v1/search \u2014 ranked web snippets (~sub-second). For multi-step synthesized research, see the **Research \u00b7 You.com** column (`POST /v1/research`)."
   },
   "notes": ""
 }

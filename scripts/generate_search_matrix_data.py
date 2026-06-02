@@ -15,12 +15,14 @@ sys.path.insert(0, str(ROOT / "scripts"))
 from anysearch.client import AnySearch  # noqa: E402
 
 from search_matrix_provider_meta import (  # noqa: E402
+    AI_MATRIX_PRODUCTS,
     ENV_SOURCES,
     EXTRA_SOURCES,
     FEATURE_META,
     PARTIAL_NOTES,
     SERPAPI_MATRIX_ENGINES,
     SUPPORT_OVERRIDE,
+    ai_matrix_display,
     feat,
     feature_entry,
     links_for,
@@ -190,6 +192,77 @@ def build_serpapi_matrix_provider(row: dict, entry: dict[str, str]) -> dict:
     return payload
 
 
+def build_ai_matrix_provider(base_row: dict, entry: dict) -> dict:
+    """Matrix column for a synthesis/research API that shares credentials with a base provider."""
+    slug = str(entry["slug"])
+    base = str(entry["base"])
+    display = ai_matrix_display(str(entry["product"]), str(entry["brand"]))
+    docs = str(entry["docs"])
+    website = str(entry["website"])
+    env_source = ENV_SOURCES.get(base, docs)
+    extra_pkg = base_row.get("extra_package") or ""
+    if extra_pkg:
+        extra_source = EXTRA_SOURCES.get(base, docs)
+        extra_value = extra_pkg
+        extra_comment = (
+            f"Optional PyPI package via anysearch extra `{base}` (vendor SDK exposes this API)."
+        )
+    else:
+        extra_source = docs
+        extra_value = "— (REST only)"
+        extra_comment = "HTTP API only; no required vendor Python SDK."
+
+    overrides = SUPPORT_OVERRIDE.get(slug, {})
+
+    def support_for(key: str) -> str:
+        if key in overrides:
+            return overrides[key]
+        return "none"
+
+    out: dict = {
+        "name": display,
+        "links": {
+            "docs": docs,
+            "github": GITHUB_REPO,
+            "website": website,
+            "slug": slug,
+        },
+        "env_keys": string_val(
+            ", ".join(base_row["env_keys"]) if base_row["env_keys"] else "(none)",
+            env_source,
+            f"Same credentials as {display.split(' · ')[-1]} Search (`{', '.join(base_row['env_keys'])}`).",
+        ),
+        "python_extra": string_val(extra_value, extra_source, extra_comment),
+        "requires_key": feat(
+            "none" if not base_row["requires_key"] else "full",
+            env_source,
+            "Valid API key required for every request.",
+        ),
+        "snippet": feat(
+            support_for("snippet"),
+            FEATURE_META.get(slug, {}).get("snippet", {}).get("source", docs),
+            FEATURE_META.get(slug, {}).get("snippet", {}).get(
+                "comment",
+                "Short description field returned with each result.",
+            ),
+        ),
+    }
+
+    for key in FEATURE_KEYS:
+        sup = support_for(key)
+        default_comment = FEATURE_LABELS.get(key, key)
+        out[key] = feature_entry(slug, key, sup, docs, website, default_comment)
+
+    mode = mode_for(slug, docs, website)
+    out["mode"] = list_val(mode["values"], mode["source_url"], mode["comment"])
+    note = str(entry.get("notes") or "")
+    endpoint = entry.get("endpoint")
+    if endpoint:
+        note = f"{endpoint}. {note}".strip()
+    out["notes"] = note
+    return out
+
+
 def main() -> None:
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     for p in DATA_DIR.glob("*.json"):
@@ -212,6 +285,20 @@ def main() -> None:
             continue
         payload = build_provider(row)
         path = DATA_DIR / f"{row['name']}.json"
+        path.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+        print("wrote", path.name)
+        written += 1
+
+    by_name = {r["name"]: r for r in info}
+    for entry in AI_MATRIX_PRODUCTS:
+        base = str(entry["base"])
+        base_row = by_name.get(base)
+        if not base_row:
+            print("skip", entry["slug"], "(missing base", base + ")")
+            continue
+        payload = build_ai_matrix_provider(base_row, entry)
+        fname = f"{entry['slug']}.json"
+        path = DATA_DIR / fname
         path.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
         print("wrote", path.name)
         written += 1

@@ -82,8 +82,8 @@
       "balanced",
       "deep"
     ],
-    "source_url": "https://exa.ai/docs/reference/search-best-practices",
-    "comment": "Native `type`: `fast` / `instant` (latency tiers), `auto` (balanced default), `deep` / `deep-lite` / `deep-reasoning` (multi-step research with synthesized output). anysearch: fast\u2192fast, balanced\u2192auto, deep\u2192deep."
+    "source_url": "https://exa.ai/docs/reference/search-api-guide",
+    "comment": "POST /search `type`: `instant`/`fast` (latency), `auto` (balanced), `deep` / `deep-lite` / `deep-reasoning` (agentic multi-source synthesis; optional `output_schema`). anysearch: fast\u2192fast, balanced\u2192auto, deep\u2192deep."
   },
   "notes": "Native SDK package: exa-py."
 }

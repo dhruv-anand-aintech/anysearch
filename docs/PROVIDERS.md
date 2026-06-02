@@ -64,16 +64,29 @@ The matrix **Mode** row lists which unified tiers each API actually exposes:
 - **balanced** — the default search tier.
 - **deep** — an AI synthesis / multi-step research mode (not richer snippets, scraping, or `include_content`).
 
-| Provider | Matrix modes | Native / mapping |
-| --- | --- | --- |
-| exa | fast, balanced, deep | `type`: fast → fast, balanced → auto, deep → deep (synthesized research) |
-| tavily | fast, balanced | `search_depth`: fast → fast, balanced → basic (`advanced` is retrieval-only) |
-| parallel | fast, balanced | `mode`: basic (fast) vs advanced (balanced quality; not synthesis) |
-| linkup | fast, balanced | `depth`: fast → fast, balanced → standard |
-| serper, serpapi, searchapi, google_pse, searxng, duckduckgo, brave, jina, perplexity, firecrawl, you, kagi | balanced | No fast or synthesis depth preset |
+The [comparison matrix](https://compare-anysearch.ainorthstar.tech) includes **extra columns** for
+vendor synthesis/research APIs that use the same API key as a search product but a different
+endpoint (e.g. **Research · You.com**, **Sonar · Perplexity**, **Answers · Brave**).
 
-anysearch may still map `mode=deep` on some providers for compatibility; the matrix only
-tags modes that match the definitions above.
+| Column | Matrix modes | Native API |
+| --- | --- | --- |
+| exa | fast, balanced, deep | `/search` `type`: instant/fast, auto, deep/deep-lite/deep-reasoning |
+| tavily | fast, balanced | Search `search_depth` |
+| **Research · Tavily** | balanced, deep | Research API `model`: mini/auto, pro |
+| parallel | fast, balanced | Search `mode`: basic, advanced |
+| **Task · Parallel** | fast, balanced, deep | Task API `processor`: Lite/Base, Core, Pro/Ultra |
+| linkup | fast, balanced, deep | `depth` + `outputType=sourcedAnswer` for cited synthesis |
+| perplexity | balanced | Search API (raw `results[]` only) |
+| **Sonar · Perplexity** | balanced, deep | `/chat/completions` — `sonar`, `sonar-pro` |
+| brave | balanced | Web/news SERP |
+| **Answers · Brave** | balanced, deep | `/chat/completions` `model=brave`; `enable_research` → deep |
+| you | balanced | `POST /v1/search` snippets |
+| **Research · You.com** | fast, balanced, deep | `POST /v1/research` `research_effort`: lite, standard, deep, exhaustive |
+| serper, serpapi, searchapi, google_pse, searxng, duckduckgo, jina, firecrawl, kagi | balanced | No fast or synthesis depth preset |
+
+anysearch SDK today implements the **search** columns only; synthesis columns document vendor
+APIs you can call directly (or future anysearch providers). Tavily `mode=deep` still maps to
+`advanced` retrieval in code — the matrix does not list that as a synthesis tier.
 
 ## Content fields, by intent
 

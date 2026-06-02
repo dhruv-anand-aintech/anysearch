@@ -81,7 +81,7 @@
       "balanced"
     ],
     "source_url": "https://api-dashboard.search.brave.com/app/documentation/web-search",
-    "comment": "No fast or synthesis depth preset \u2014 default web/news search only. `extra_snippets` adds excerpts but is not a unified `mode` tier."
+    "comment": "Web/news SERP (`/res/v1/web/search`). Grounded AI answers use **Answers \u00b7 Brave** (`POST /res/v1/chat/completions`, `model=brave`; `enable_research` for deep research)."
   },
   "notes": ""
 }

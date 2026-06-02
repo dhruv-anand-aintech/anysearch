@@ -82,7 +82,7 @@
       "balanced"
     ],
     "source_url": "https://docs.tavily.com/documentation/best-practices/best-practices-search",
-    "comment": "Native `search_depth`: `ultra-fast`, `fast`, or `basic` (balanced default). `advanced` is richer retrieval, not an AI synthesis mode (use `include_answer` for that). anysearch: fast\u2192fast, balanced\u2192basic; `deep` maps to advanced in code but is not listed here."
+    "comment": "Search API `search_depth`: `ultra-fast`/`fast` or `basic` (balanced). `include_answer` adds a short LLM blurb \u2014 not full research. Multi-agent reports: **Research \u00b7 Tavily**."
   },
   "notes": "Native SDK package: tavily-python."
 }

@@ -80,8 +80,8 @@
     "values": [
       "balanced"
     ],
-    "source_url": "https://docs.perplexity.ai/api-reference/search-post",
-    "comment": "Search API has no fast/deep synthesis preset. `snippet_mode` and token limits control excerpt size only; use Sonar/chat APIs for synthesized answers."
+    "source_url": "https://docs.perplexity.ai/docs/search/quickstart",
+    "comment": "Search API \u2014 raw ranked `results[]` only (no LLM synthesis). For prose answers with citations, see **Sonar \u00b7 Perplexity** (`/chat/completions` with Sonar models)."
   },
   "notes": "Native SDK package: perplexityai."
 }
