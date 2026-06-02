@@ -41,8 +41,9 @@ Open the URL Wrangler prints (usually `http://localhost:8787`).
 
 ## Deploy
 
-Push to `main` (touches matrix paths) → GitHub Action runs `matrix:sync` and
-(optionally) `wrangler deploy`. Requires repo secrets:
+Push to `main` (touches matrix paths) → GitHub Action runs `matrix:sync`,
+`matrix:verify-page` (catches broken client JS before deploy), and optionally
+`wrangler deploy`. Requires repo secrets:
 
 | Secret | Notes |
 | --- | --- |
