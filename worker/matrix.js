@@ -324,7 +324,8 @@ function refreshUpdatedPill() {
 }
 refreshUpdatedPill();
 setInterval(refreshUpdatedPill, 60000);
-const metaCols = new Set(['name','env_keys','python_extra','requires_key','mode_notes','notes']);
+// String/metadata rows in About; feature-shaped rows (e.g. requires_key) stay in featureCols.
+const metaCols = new Set(['name','env_keys','python_extra','mode_notes','notes']);
 const featureCols = columns.filter(c => !metaCols.has(c.key));
 const aboutCols = columns.filter(c => metaCols.has(c.key) && c.key !== 'name' && c.key !== 'notes');
 const DATE_SORT_ROWS = new Set([]);
@@ -457,8 +458,12 @@ function cell(agent, col) {
     var g = {full:'&#10003;',partial:'&#9678;',none:'&#10005;',unknown:'?','':'—'};
     return '<td class="'+wrapCls+'">'+link+'<span class="support '+(v.support||'')+'"><span class="dot">'+(g[v.support||'']||'?')+'</span></span>'+mark+tip+'</td>';
   }
-  if (v.value!==undefined) return '<td class="'+wrapCls+' value"><span class="cell-value">'+esc(v.value)+'</span>'+link+mark+tip+'</td>';
-  return '<td>'+esc(v)+'</td>';
+  if (v.value !== undefined) return '<td class="'+wrapCls+' value"><span class="cell-value">'+esc(v.value)+'</span>'+link+mark+tip+'</td>';
+  if (v.support !== undefined) {
+    var g = {full:'&#10003;',partial:'&#9678;',none:'&#10005;',unknown:'?','':'—'};
+    return '<td class="'+wrapCls+'">'+link+'<span class="support '+(v.support||'')+'"><span class="dot">'+(g[v.support||'']||'?')+'</span></span>'+mark+tip+'</td>';
+  }
+  return '<td>&mdash;</td>';
 }
 function renderHeader() {
   document.getElementById('headerRow').innerHTML = '<th class="corner"></th>'+colOrder.map(function(i){
