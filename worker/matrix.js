@@ -162,9 +162,10 @@ th {
 th.corner { position: sticky; left: 0; z-index: 25; background: #e8decc; min-width: 156px; width: 156px; }
 th.agent-col {
   width: var(--agent-col-w, 88px); min-width: var(--agent-col-w, 88px); max-width: var(--agent-col-w, 88px);
-  min-height: 64px; height: auto; cursor: pointer; transition: opacity .15s;
+  min-height: 64px; height: auto; cursor: grab; transition: opacity .15s;
   padding: 5px 6px 7px; vertical-align: bottom;
 }
+th.agent-col.hidden-col { cursor: default; }
 th.agent-col.dragging { opacity: .4; }
 th.agent-col.drag-over { background: #d5cdbb; }
 th.agent-col.hidden-col {
@@ -178,8 +179,16 @@ td.col-hidden-slot {
 }
 .agent-head {
   display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
-  gap: 4px; min-height: 48px;
+  gap: 4px; min-height: 48px; width: 100%;
 }
+.agent-brand-link {
+  display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
+  gap: 4px; width: 100%; text-decoration: none; color: inherit; border-radius: 4px;
+}
+.agent-brand-link:hover { background: rgba(42, 36, 27, 0.06); }
+.agent-brand-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+a.docs-link { font-weight: 600; color: var(--accent); text-decoration: underline; font-size: 10px; }
+a.docs-link:hover { text-decoration: none; }
 .agent-head:has(.agent-name-stacked) { min-height: 56px; }
 .agent-name {
   width: 100%; box-sizing: border-box; font-weight: 700; line-height: 1.15; color: var(--ink);
@@ -204,8 +213,11 @@ th.agent-col .fav { width: 32px; height: 32px; vertical-align: middle; border-ra
 th.agent-col.deprecated-col { opacity: .42; }
 th.agent-col.deprecated-col .agent-name::after { content: " (deprecated)"; font-weight: 400; font-size: 8px; }
 th.agent-col .eye {
-  position: absolute; top: 1px; right: 2px; font-size: 9px; color: var(--muted); opacity: .5; pointer-events: none;
+  position: absolute; top: 1px; right: 2px; font-size: 9px; color: var(--muted); opacity: .5;
+  pointer-events: auto; cursor: pointer; background: none; border: none; padding: 2px 3px; line-height: 1;
+  font: inherit; border-radius: 3px; z-index: 2;
 }
+th.agent-col .eye:hover { opacity: 1; background: rgba(42, 36, 27, 0.08); }
 th.agent-col.hidden-col .eye { opacity: 1; color: var(--none); }
 tbody td { padding: 3px 4px; font-size: 11px; text-align: center; vertical-align: middle;
   border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
@@ -312,7 +324,7 @@ td.value .cell-value {
   </nav>
 </header>
 <section class="hero">
-  <p>Compare ${htmlEscape(matrix.length)} search APIs on unified <strong>anysearch</strong> parameters. Drag columns to reorder; click a header to hide or show a provider.</p>
+  <p>Compare ${htmlEscape(matrix.length)} search APIs on unified <strong>anysearch</strong> parameters. <strong>Name or icon</strong> opens the provider site; <strong>⊙</strong> hides or shows a column; drag headers to reorder; use the <strong>API docs</strong> row for official references.</p>
   <div class="meta-row">
     <span class="pill">${htmlEscape(matrix.length)} providers</span>
     <span class="pill"><a href="${GITHUB_REPO}">anysearch SDK</a></span>
@@ -333,6 +345,23 @@ td.value .cell-value {
 function agentDomain(agent) {
   var u = agent.links.website || agent.links.docs || "";
   try { return new URL(u).hostname.replace(/^www\\./, ""); } catch(e) { return ""; }
+}
+function agentBrandUrl(agent) {
+  var links = agent.links || {};
+  return links.website || links.docs || "";
+}
+function agentBrandHeadHtml(agent, idx) {
+  var url = agentBrandUrl(agent);
+  var inner = favimg(agent, idx) + formatAgentNameHtml(agent.name);
+  if (!url) return '<div class="agent-head">'+inner+'</div>';
+  var host = agentDomain(agent);
+  var title = host ? ('Open ' + host) : 'Open provider site';
+  return '<div class="agent-head"><a class="agent-brand-link" href="'+esc(url)+'" target="_blank" rel="noopener noreferrer" draggable="false" title="'+esc(title)+'">'+inner+'</a></div>';
+}
+function providerDocsCell(agent) {
+  var url = agent.links && agent.links.docs;
+  if (!url) return '<td class="cell-wrap value"><span class="cell-value">&mdash;</span></td>';
+  return '<td class="cell-wrap value"><a class="docs-link" href="'+esc(url)+'" target="_blank" rel="noopener noreferrer">Docs</a></td>';
 }
 const { matrix, columns, groups, faviconOverrides } = JSON.parse(document.getElementById('payload').textContent);
 function formatUpdatedLabelClient(iso) {
@@ -583,7 +612,7 @@ function updateColWidths() {
 function fitAgentHeaderNames() {
   document.querySelectorAll('th.agent-col:not(.hidden-col) .agent-name').forEach(function(el) {
     el.style.fontSize = '';
-    var box = el.parentElement;
+    var box = el.closest('.agent-head');
     if (!box) return;
     var maxW = Math.max(0, box.clientWidth - 2);
     var lines = el.querySelectorAll('.agent-name-line');
@@ -614,9 +643,11 @@ function scheduleFitAgentHeaderNames() {
 function renderHeader() {
   document.getElementById('headerRow').innerHTML = '<th class="corner"></th>'+displayColOrder().map(function(i){
     var agent = matrix[i], hc = hidden.has(i)?' hidden-col':'', dep = agent.deprecated?' deprecated-col':'';
-    return '<th class="agent-col'+hc+dep+'" data-idx="'+i+'" draggable="true" onclick="toggleCol('+i+')" title="Click to toggle visibility">'+
-      '<div class="agent-head">'+favimg(agent, i)+formatAgentNameHtml(agent.name)+'</div>'+
-      '<span class="eye">'+(hidden.has(i)?'&#8855;':'&#9679;')+'</span></th>';
+    var eyeTitle = hidden.has(i) ? 'Show this provider' : 'Hide this provider';
+    return '<th class="agent-col'+hc+dep+'" data-idx="'+i+'" draggable="true">'+
+      agentBrandHeadHtml(agent, i)+
+      '<button type="button" class="eye" onclick="toggleCol('+i+'); event.stopPropagation();" title="'+esc(eyeTitle)+'" aria-label="'+esc(eyeTitle)+'">'+
+      (hidden.has(i)?'&#8855;':'&#9679;')+'</button></th>';
   }).join(''); setupColDrag(); updateColWidths(); scheduleFitAgentHeaderNames();
 }
 function visibleCols() { return colOrder.filter(function(i){return !hidden.has(i)}); }
@@ -656,6 +687,9 @@ function renderBody() {
   rows.push('<tr class="group-head">'+rowLabelCell('About',' group-row-label','')+cols.map(function(i){
     return colCell(i, null, function(){ return '<td class="group-spacer"></td>'; });
   }).join('')+'</tr>');
+  rows.push('<tr>'+rowLabelCell('API docs','',' title="Official API documentation for this provider"')+cols.map(function(i){
+    return colCell(i, null, function(){ return providerDocsCell(matrix[i]); });
+  }).join('')+'</tr>');
   aboutCols.forEach(function(col){
     var label = rowLabelCell(col.label,'','');
     rows.push('<tr>'+label+cols.map(function(i){
@@ -693,7 +727,10 @@ function cycleSort(key) {
 }
 function setupColDrag() {
   document.querySelectorAll('th.agent-col').forEach(function(th){
-    th.addEventListener('dragstart',function(e){this.classList.add('dragging');e.dataTransfer.setData('text/col',this.dataset.idx)});
+    th.addEventListener('dragstart',function(e){
+      if (e.target.closest('.agent-brand-link')) { e.preventDefault(); return; }
+      this.classList.add('dragging');e.dataTransfer.setData('text/col',this.dataset.idx);
+    });
     th.addEventListener('dragend',function(){this.classList.remove('dragging')});
     th.addEventListener('dragover',function(e){e.preventDefault();this.classList.add('drag-over')});
     th.addEventListener('dragleave',function(){this.classList.remove('drag-over')});
