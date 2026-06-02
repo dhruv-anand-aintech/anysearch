@@ -35,7 +35,8 @@ test("all required providers registered", () => {
   for (const required of ["exa", "parallel", "serpapi", "brave"]) {
     assert.ok(names.includes(required), `${required} missing`);
   }
-  assert.ok(names.length >= 14);
+  assert.ok(names.includes("gemini"));
+  assert.ok(names.length >= 15);
 });
 
 test("aliases resolve to canonical providers", () => {

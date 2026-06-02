@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import json
+
 import httpx
 import pytest
 import respx
@@ -18,7 +20,8 @@ def test_all_providers_registered():
     names = list_provider_names()
     for required in ("exa", "parallel", "serpapi", "brave"):
         assert required in names
-    assert len(names) >= 14
+    assert len(names) >= 15
+    assert "gemini" in names
 
 
 def test_aliases_resolve():
@@ -93,6 +96,59 @@ def test_exa_search_normalizes_response():
     assert r.highlights == ["hl one", "hl two"]
     assert r.source == "example.com"
     assert resp.urls == ["https://example.com/a"]
+
+
+@respx.mock
+def test_gemini_google_search_grounding():
+    respx.post(
+        "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
+    ).mock(
+        return_value=httpx.Response(
+            200,
+            json={
+                "candidates": [
+                    {
+                        "content": {
+                            "parts": [
+                                {
+                                    "text": "Spain won Euro 2024, defeating England 2-1 in the final."
+                                }
+                            ],
+                            "role": "model",
+                        },
+                        "groundingMetadata": {
+                            "webSearchQueries": ["UEFA Euro 2024 winner"],
+                            "groundingChunks": [
+                                {
+                                    "web": {
+                                        "uri": "https://example.com/uefa",
+                                        "title": "uefa.com",
+                                    }
+                                },
+                                {
+                                    "web": {
+                                        "uri": "https://example.com/news",
+                                        "title": "aljazeera.com",
+                                    }
+                                },
+                            ],
+                        },
+                    }
+                ],
+            },
+        )
+    )
+    client = AnySearch(provider="gemini", api_key="gemini-test", env={})
+    resp = client.search("Who won Euro 2024?", answer=True, max_results=5)
+    assert resp.provider == "gemini"
+    assert "Spain won Euro 2024" in (resp.answer or "")
+    assert len(resp.results) == 2
+    assert resp.results[0].url == "https://example.com/uefa"
+    assert resp.results[0].title == "uefa.com"
+    sent = respx.calls.last.request
+    assert sent.headers["x-goog-api-key"] == "gemini-test"
+    payload = json.loads(sent.read())
+    assert payload["tools"] == [{"google_search": {}}]
 
 
 @respx.mock

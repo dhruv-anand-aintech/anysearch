@@ -1,6 +1,6 @@
 # anysearch Search API Provider Matrix
 
-Providers: 26. Unified parameters and response fields supported via anysearch.
+Providers: 27. Unified parameters and response fields supported via anysearch.
 
 ## Answers · Brave
 - Docs: https://api-dashboard.search.brave.com/app/documentation/ai-grounding
@@ -121,6 +121,21 @@ Providers: 26. Unified parameters and response fields supported via anysearch.
 - Summary: none
 - Highlights: none
 - News: full
+
+## Gemini
+- Docs: https://ai.google.dev/gemini-api/docs/google-search
+- Env: GEMINI_API_KEY, GOOGLE_GEMINI_API_KEY
+- Domain filters: none
+- Country: none
+- Language: none
+- Date range: none
+- Safe search: none
+- Mode: balanced
+- AI Answer: full
+- Full text: none
+- Summary: none
+- Highlights: none
+- News: none
 
 ## Google PSE
 - Docs: https://developers.google.com/custom-search/v1/reference/rest/v1/cse/list

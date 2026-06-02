@@ -1,0 +1,87 @@
+{
+  "name": "Gemini",
+  "links": {
+    "docs": "https://ai.google.dev/gemini-api/docs/google-search",
+    "github": "https://github.com/dhruv-anand-aintech/anysearch",
+    "website": "https://ai.google.dev/gemini-api",
+    "slug": "gemini"
+  },
+  "env_keys": {
+    "value": "GEMINI_API_KEY, GOOGLE_GEMINI_API_KEY",
+    "source_url": "https://ai.google.dev/gemini-api/docs/api-key",
+    "comment": "API keys and configuration variables documented by the provider."
+  },
+  "python_extra": {
+    "value": "google-genai",
+    "source_url": "https://pypi.org/project/google-genai/",
+    "comment": "Optional PyPI package: google-genai (install via anysearch-sdk extra `gemini`)."
+  },
+  "requires_key": {
+    "support": "full",
+    "source_url": "https://ai.google.dev/gemini-api/docs/api-key",
+    "comment": "Valid API key required for every request."
+  },
+  "snippet": {
+    "support": "full",
+    "source_url": "https://ai.google.dev/gemini-api/docs/google-search",
+    "comment": "`groundingMetadata.groundingChunks[]` \u2014 each `web.uri` / `web.title` becomes a result row."
+  },
+  "domains": {
+    "support": "none",
+    "source_url": "https://ai.google.dev/gemini-api/docs/google-search",
+    "comment": "Domain filters"
+  },
+  "country": {
+    "support": "none",
+    "source_url": "https://ai.google.dev/gemini-api/docs/google-search",
+    "comment": "Country (gl)"
+  },
+  "language": {
+    "support": "none",
+    "source_url": "https://ai.google.dev/gemini-api/docs/google-search",
+    "comment": "Language"
+  },
+  "date": {
+    "support": "none",
+    "source_url": "https://ai.google.dev/gemini-api/docs/google-search",
+    "comment": "Published date range"
+  },
+  "safe_search": {
+    "support": "none",
+    "source_url": "https://ai.google.dev/gemini-api/docs/google-search",
+    "comment": "Safe search"
+  },
+  "answer": {
+    "support": "full",
+    "source_url": "https://ai.google.dev/gemini-api/docs/google-search",
+    "comment": "Grounded model text in `candidates[0].content.parts`; request with `answer=true` to populate SearchResponse.answer."
+  },
+  "content": {
+    "support": "none",
+    "source_url": "https://ai.google.dev/gemini-api/docs/google-search",
+    "comment": "Full page text"
+  },
+  "summary": {
+    "support": "none",
+    "source_url": "https://ai.google.dev/gemini-api/docs/google-search",
+    "comment": "AI per-result summary"
+  },
+  "highlights": {
+    "support": "none",
+    "source_url": "https://ai.google.dev/gemini-api/docs/google-search",
+    "comment": "Query highlights"
+  },
+  "news": {
+    "support": "none",
+    "source_url": "https://ai.google.dev/gemini-api/docs/google-search",
+    "comment": "News search type"
+  },
+  "mode": {
+    "values": [
+      "balanced"
+    ],
+    "source_url": "https://ai.google.dev/gemini-api/docs/google-search",
+    "comment": "`generateContent` with `tools: [{google_search: {}}]` \u2014 model decides when to search and returns synthesized text plus `groundingMetadata` sources (use `answer=true` in anysearch). Default model `gemini-2.5-flash` via `provider_config.gemini.model`."
+  },
+  "notes": "Native SDK package: google-genai."
+}

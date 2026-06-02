@@ -20,6 +20,7 @@ Legend: ✅ supported · — not supported (the param is ignored for that provid
 | **brave** | — | ✅ | ✅ | ✅ | ✅ | — | — | — | — | — | ✅ | ✅ |
 | **linkup** | ✅ | — | — | ✅ | — | ✅ | — | ✅ | ✅ | — | — | — |
 | **perplexity** | ✅ | — | ✅ | — | — | — | — | — | ✅ | — | — | — |
+| **gemini** | — | — | — | — | — | — | — | ✅ | — | — | — | — |
 | **serper** | — | ✅ | ✅ | — | — | — | — | ✅* | — | — | — | ✅ |
 | **serpapi** (`engine=…`) | — | ✅† | ✅† | — | ✅† | — | ✅ | ✅* | — | — | — | ✅† |
 | **searchapi** | — | ✅ | ✅ | — | — | — | — | ✅* | — | — | — | ✅ |
@@ -77,6 +78,7 @@ endpoint (e.g. **Research · You.com**, **Sonar · Perplexity**, **Answers · Br
 | **Task · Parallel** | fast, balanced, deep | Task API `processor`: Lite/Base, Core, Pro/Ultra |
 | linkup | fast, balanced, deep | `depth` + `outputType=sourcedAnswer` for cited synthesis |
 | perplexity | balanced | Search API (raw `results[]` only) |
+| **gemini** | balanced | `generateContent` + `google_search` tool (grounded synthesis) |
 | **Sonar · Perplexity** | balanced, deep | `/chat/completions` — `sonar`, `sonar-pro` |
 | brave | balanced | Web/news SERP |
 | **Answers · Brave** | balanced, deep | `/chat/completions` `model=brave`; `enable_research` → deep |
@@ -98,7 +100,7 @@ APIs you can call directly (or future anysearch providers). Tavily `mode=deep` s
 - **`highlights`** — query-relevant excerpts. Request with `highlights` (exa, brave,
   parallel, you).
 - **`answer`** (top-level on the response) — a synthesized, often cited answer to the
-  whole query. Request with `answer` (tavily, linkup; opportunistic on serper/serpapi/
+  whole query. Request with `answer` (gemini, tavily, linkup; opportunistic on serper/serpapi/
   searchapi/searxng).
 
 ## Configuration reference
@@ -111,6 +113,7 @@ APIs you can call directly (or future anysearch providers). Tavily `mode=deep` s
 | brave | `BRAVE_API_KEY` | — |
 | linkup | `LINKUP_API_KEY` | extra `linkup` → `linkup-sdk` |
 | perplexity | `PERPLEXITY_API_KEY` | extra `perplexity` → `perplexityai` |
+| gemini | `GEMINI_API_KEY` | extra `gemini` → `google-genai`; optional `provider_config.gemini.model` |
 | serper | `SERPER_API_KEY` | — |
 | serpapi | `SERPAPI_API_KEY` | extra `serpapi` → `google-search-results` |
 | searchapi | `SEARCHAPI_API_KEY` | — |

@@ -28,6 +28,10 @@ LINKS: dict[str, dict[str, str]] = {
         "docs": "https://docs.perplexity.ai/api-reference/search-post",
         "website": "https://www.perplexity.ai",
     },
+    "gemini": {
+        "docs": "https://ai.google.dev/gemini-api/docs/google-search",
+        "website": "https://ai.google.dev/gemini-api",
+    },
     "serper": {"docs": "https://serper.dev/docs", "website": "https://serper.dev"},
     "serpapi": {"docs": "https://serpapi.com/search-api", "website": "https://serpapi.com"},
     "searchapi": {
@@ -68,6 +72,7 @@ EXTRA_SOURCES: dict[str, str] = {
     "tavily": "https://pypi.org/project/tavily-python/",
     "linkup": "https://docs.linkup.so/pages/sdk/python/python",
     "perplexity": "https://pypi.org/project/perplexityai/",
+    "gemini": "https://pypi.org/project/google-genai/",
     "serpapi": "https://pypi.org/project/google-search-results/",
     "firecrawl": "https://pypi.org/project/firecrawl-py/",
     "duckduckgo": "https://pypi.org/project/ddgs/",
@@ -81,6 +86,7 @@ ENV_SOURCES: dict[str, str] = {
     "brave": "https://api-dashboard.search.brave.com/app/documentation/web-search/get-started",
     "linkup": "https://docs.linkup.so/pages/documentation/endpoints/search/reference",
     "perplexity": "https://docs.perplexity.ai/docs/search/quickstart",
+    "gemini": "https://ai.google.dev/gemini-api/docs/api-key",
     "serper": "https://serper.dev/docs",
     "serpapi": "https://serpapi.com/search-api",
     "searchapi": "https://www.searchapi.io/docs/google",
@@ -150,6 +156,15 @@ MODE_META: dict[str, dict] = {
         "comment": (
             "Search API — raw ranked `results[]` only (no LLM synthesis). For prose answers with "
             "citations, see **Sonar · Perplexity** (`/chat/completions` with Sonar models)."
+        ),
+    },
+    "gemini": {
+        "values": ["balanced"],
+        "source": "https://ai.google.dev/gemini-api/docs/google-search",
+        "comment": (
+            "`generateContent` with `tools: [{google_search: {}}]` — model decides when to search "
+            "and returns synthesized text plus `groundingMetadata` sources (use `answer=true` in anysearch). "
+            "Default model `gemini-2.5-flash` via `provider_config.gemini.model`."
         ),
     },
     "firecrawl": {
@@ -376,6 +391,21 @@ FEATURE_META: dict[str, dict[str, dict[str, str]]] = {
         "content": {
             "source": "https://docs.perplexity.ai/api-reference/search-post",
             "comment": "`snippet` field size via `snippet_mode`, `max_tokens`, `max_tokens_per_page`.",
+        },
+    },
+    "gemini": {
+        "answer": {
+            "source": "https://ai.google.dev/gemini-api/docs/google-search",
+            "comment": (
+                "Grounded model text in `candidates[0].content.parts`; request with `answer=true` "
+                "to populate SearchResponse.answer."
+            ),
+        },
+        "snippet": {
+            "source": "https://ai.google.dev/gemini-api/docs/google-search",
+            "comment": (
+                "`groundingMetadata.groundingChunks[]` — each `web.uri` / `web.title` becomes a result row."
+            ),
         },
     },
     "you": {

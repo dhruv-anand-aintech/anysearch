@@ -454,7 +454,7 @@ function sortableLabelHtml(label, key) {
 // Pinned agents (always at top), then rest sorted by full-feature count
 const PINNED = [
   'Exa','Tavily','Research · Tavily','Brave','Answers · Brave',
-  'Parallel','Task · Parallel','Perplexity','Sonar · Perplexity',
+  'Parallel','Task · Parallel','Perplexity','Sonar · Perplexity','Gemini',
   'You','Research · You.com','Linkup',
   'Google · SerpApi','Bing · SerpApi','Baidu · SerpApi','Yandex · SerpApi',
   'DuckDuckGo · SerpApi','Yahoo · SerpApi',

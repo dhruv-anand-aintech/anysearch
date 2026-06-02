@@ -9,6 +9,7 @@ from .brave import BraveProvider
 from .duckduckgo import DuckDuckGoProvider
 from .exa import ExaProvider
 from .firecrawl import FirecrawlProvider
+from .gemini import GeminiProvider
 from .google_pse import GooglePSEProvider
 from .jina import JinaProvider
 from .kagi import KagiProvider
@@ -29,6 +30,7 @@ PROVIDER_CLASSES: List[Type[BaseProvider]] = [
     BraveProvider,
     LinkupProvider,
     PerplexityProvider,
+    GeminiProvider,
     SerperProvider,
     SerpApiProvider,
     SearchApiProvider,

@@ -6,6 +6,7 @@ import { brave } from "./brave.js";
 import { duckduckgo } from "./duckduckgo.js";
 import { exa } from "./exa.js";
 import { firecrawl } from "./firecrawl.js";
+import { gemini } from "./gemini.js";
 import { googlePse } from "./googlePse.js";
 import { jina } from "./jina.js";
 import { kagi } from "./kagi.js";
@@ -27,6 +28,7 @@ export const PROVIDER_SPECS: ProviderSpec[] = [
   brave,
   linkup,
   perplexity,
+  gemini,
   serper,
   serpapi,
   searchapi,

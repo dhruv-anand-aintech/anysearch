@@ -37,6 +37,7 @@ DATA_DIR = ROOT / "docs" / "tools" / "search_matrix" / "data"
 GITHUB_REPO = "https://github.com/dhruv-anand-aintech/anysearch"
 
 DISPLAY_NAMES = {
+    "gemini": "Gemini",
     "google_pse": "Google PSE",
     "duckduckgo": "DuckDuckGo",
     "searxng": "SearXNG",

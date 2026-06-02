@@ -38,7 +38,7 @@ glue code each time. `anysearch` normalizes all of it:
 - **One response shape**: `title, url, snippet, text, summary, highlights, score,
   published_date, author, source, raw` + a top-level `answer`.
 
-## Providers (16)
+## Providers (17)
 
 | Provider | Name / aliases | Env var(s) | Highlights of support |
 | --- | --- | --- | --- |
@@ -48,6 +48,7 @@ glue code each time. `anysearch` normalizes all of it:
 | [Brave](https://brave.com/search/api/) | `brave` | `BRAVE_API_KEY` | highlights, country, language, dates, news |
 | [Linkup](https://linkup.so) | `linkup` | `LINKUP_API_KEY` | answer, content, domains, dates, mode |
 | [Perplexity](https://docs.perplexity.ai) | `perplexity`, `pplx` | `PERPLEXITY_API_KEY` | content, domains, language |
+| [Gemini](https://ai.google.dev/gemini-api/docs/google-search) | `gemini`, `google_gemini` | `GEMINI_API_KEY` | Google Search grounding, answer, source chunks |
 | [Serper](https://serper.dev) | `serper` | `SERPER_API_KEY` | answer, country, language, news |
 | [SerpApi](https://serpapi.com) | `serpapi`, `serp` | `SERPAPI_API_KEY` | engine (bing/baidu/yandex/…), country, language, safe, news, answer* |
 | [SearchApi](https://searchapi.io) | `searchapi` | `SEARCHAPI_API_KEY` | answer, country, language, news |
@@ -164,12 +165,12 @@ Example client config (Cursor / Claude Desktop style):
 - **`list_providers`** — every provider, its capabilities, and whether it's configured.
 - **`check_providers`** — runs a tiny live query to report which providers actually work.
 - **`migrate_codebase`** — scans a repo for direct search-API usage (SDK imports, client
-  constructors, REST endpoints for all 16 providers) and returns precise call sites with
+  constructors, REST endpoints for all 17 providers) and returns precise call sites with
   suggested unified `anysearch` replacements, so an agent can mechanically migrate it.
 
 ## Provider capability matrix
 
-Interactive comparison of all 16 providers (unified params + response fields), same
+Interactive comparison of all 17 providers (unified params + response fields), same
 interaction model as [compare.ainorthstar.tech](https://compare.ainorthstar.tech/):
 
 **https://compare-anysearch.ainorthstar.tech**
