@@ -24,17 +24,17 @@
   "snippet": {
     "support": "full",
     "source_url": "https://docs.parallel.ai/search/modes",
-    "comment": "Short description field returned with each result."
+    "comment": "Search API ranked result excerpts. Task API is not a snippet SERP \u2014 structured task output."
   },
   "domains": {
     "support": "full",
     "source_url": "https://docs.parallel.ai/search/advanced-search-settings",
-    "comment": "`advanced_settings.source_policy.include_domains` / `exclude_domains` (use sparingly)."
+    "comment": "Search API: `advanced_settings.source_policy` domain allow/deny. Task API has no domain filter knob."
   },
   "country": {
     "support": "full",
     "source_url": "https://docs.parallel.ai/search/advanced-search-settings",
-    "comment": "`advanced_settings.location` \u2014 ISO 3166-1 alpha-2 (subset of countries)."
+    "comment": "Search API `advanced_settings.location` (ISO 3166-1 alpha-2). Not on Task API."
   },
   "language": {
     "support": "none",
@@ -44,7 +44,7 @@
   "date": {
     "support": "full",
     "source_url": "https://docs.parallel.ai/search/advanced-search-settings",
-    "comment": "`source_policy.after_date` for freshness in advanced_settings."
+    "comment": "Search API `source_policy.after_date` for freshness. Task API has no date filter."
   },
   "safe_search": {
     "support": "none",
@@ -52,14 +52,14 @@
     "comment": "Safe search"
   },
   "answer": {
-    "support": "none",
-    "source_url": "https://docs.parallel.ai/search/modes",
-    "comment": "AI answer"
+    "support": "full",
+    "source_url": "https://docs.parallel.ai/task-api/guides/access-research-basis",
+    "comment": "Task API synthesized output plus `basis` (citations, reasoning, confidence). Search API returns ranked excerpts only."
   },
   "content": {
     "support": "full",
     "source_url": "https://docs.parallel.ai/api-reference/search/search",
-    "comment": "Excerpts are pre-compressed in search results (excerpt_settings optional)."
+    "comment": "Search API: pre-compressed excerpts (`excerpt_settings` optional). Task API: text/JSON/markdown via `task_spec.output_schema`."
   },
   "summary": {
     "support": "none",
@@ -69,7 +69,7 @@
   "highlights": {
     "support": "full",
     "source_url": "https://docs.parallel.ai/search/best-practices",
-    "comment": "Ranked excerpts per URL are the default Search API payload."
+    "comment": "Ranked excerpts per URL are the default Search API payload (not Task API)."
   },
   "news": {
     "support": "none",
@@ -79,10 +79,11 @@
   "mode": {
     "values": [
       "fast",
-      "balanced"
+      "balanced",
+      "deep"
     ],
     "source_url": "https://docs.parallel.ai/search/modes",
-    "comment": "Search API `mode`: `basic` (fast) vs `advanced` (richer retrieval, not synthesis). For cited structured research output, see **Task \u00b7 Parallel** (Task API)."
+    "comment": "**Search API** `mode`: `basic`\u2192fast, `advanced`\u2192balanced (richer retrieval, not synthesis). **Task API** (`POST /v1/tasks/runs`) `processor`: Lite/Base\u2192fast, Core\u2192balanced, Pro/Ultra\u2192deep (structured output with citations). Same `PARALLEL_API_KEY`."
   },
-  "notes": "Native SDK package: parallel-web."
+  "notes": "Native SDK package: parallel-web. Search API is in the anysearch SDK; Task API (`POST /v1/tasks/runs`) is documented in the matrix but not wired in the SDK yet."
 }

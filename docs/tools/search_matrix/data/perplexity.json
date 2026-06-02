@@ -24,22 +24,22 @@
   "snippet": {
     "support": "full",
     "source_url": "https://docs.perplexity.ai/api-reference/search-post",
-    "comment": "Short description field returned with each result."
+    "comment": "Search API `results[].snippet`. Sonar has no ranked snippet list \u2014 use Search API or citations."
   },
   "domains": {
     "support": "full",
     "source_url": "https://docs.perplexity.ai/docs/search/quickstart",
-    "comment": "`search_domain_filter` \u2014 allowlist entries or `-domain` denylist prefixes."
+    "comment": "`search_domain_filter` on Search API and Sonar (allowlist or `-domain` denylist)."
   },
   "country": {
-    "support": "none",
-    "source_url": "https://docs.perplexity.ai/api-reference/search-post",
-    "comment": "Country (gl)"
+    "support": "partial",
+    "source_url": "https://docs.perplexity.ai/docs/sonar/quickstart",
+    "comment": "Search API has no `gl` country param; Sonar supports regional bias via search options."
   },
   "language": {
     "support": "full",
     "source_url": "https://docs.perplexity.ai/api-reference/search-post",
-    "comment": "`search_language_filter` \u2014 array of ISO 639-1 language codes."
+    "comment": "`search_language_filter` on Search API (ISO 639-1). Not exposed on Sonar chat requests."
   },
   "date": {
     "support": "none",
@@ -52,14 +52,14 @@
     "comment": "Safe search"
   },
   "answer": {
-    "support": "none",
-    "source_url": "https://docs.perplexity.ai/api-reference/search-post",
-    "comment": "AI answer"
+    "support": "full",
+    "source_url": "https://docs.perplexity.ai/docs/sonar/quickstart",
+    "comment": "Sonar assistant message \u2014 synthesized prose with citations (`/chat/completions`). Search API returns raw `results[]` only (no LLM answer field)."
   },
   "content": {
     "support": "full",
     "source_url": "https://docs.perplexity.ai/api-reference/search-post",
-    "comment": "`snippet` field size via `snippet_mode`, `max_tokens`, `max_tokens_per_page`."
+    "comment": "Search API: larger `snippet` via `snippet_mode`, `max_tokens`, `max_tokens_per_page`. Sonar does not return full page bodies."
   },
   "summary": {
     "support": "none",
@@ -78,10 +78,11 @@
   },
   "mode": {
     "values": [
-      "balanced"
+      "balanced",
+      "deep"
     ],
     "source_url": "https://docs.perplexity.ai/docs/search/quickstart",
-    "comment": "Search API \u2014 raw ranked `results[]` only (no LLM synthesis). For prose answers with citations, see **Sonar \u00b7 Perplexity** (`/chat/completions` with Sonar models)."
+    "comment": "**Search API** (`POST /search`) \u2192 matrix `balanced`: raw ranked `results[]` (anysearch SDK). **Sonar** (`POST /chat/completions`) \u2192 model `sonar`\u2192balanced (grounded answer + citations), `sonar-pro`\u2192deep (multi-source research synthesis). Same `PERPLEXITY_API_KEY`."
   },
-  "notes": "Native SDK package: perplexityai."
+  "notes": "Native SDK package: perplexityai. Search API (`POST /search`) is in the anysearch SDK; Sonar (`POST /chat/completions`) is documented in the matrix but not wired in the SDK yet."
 }

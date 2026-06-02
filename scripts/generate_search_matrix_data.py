@@ -19,6 +19,7 @@ from search_matrix_provider_meta import (  # noqa: E402
     ENV_SOURCES,
     EXTRA_SOURCES,
     FEATURE_META,
+    MATRIX_NOTES,
     PARTIAL_NOTES,
     SERPAPI_MATRIX_ENGINES,
     SUPPORT_OVERRIDE,
@@ -157,6 +158,8 @@ def build_provider(row: dict, *, slug: str | None = None, display: str | None = 
         notes.append("No API key required (keyless fallback).")
     if extra_pkg:
         notes.append(f"Native SDK package: {extra_pkg}.")
+    if slug in MATRIX_NOTES:
+        notes.append(MATRIX_NOTES[slug])
     out["notes"] = " ".join(notes)
 
     return out

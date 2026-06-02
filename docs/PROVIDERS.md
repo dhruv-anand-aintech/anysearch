@@ -67,23 +67,20 @@ The matrix **Mode** row lists which unified tiers each API actually exposes:
 
 The [comparison matrix](https://compare-anysearch.ainorthstar.tech) includes **extra columns** for
 vendor synthesis/research APIs that use the same API key as a search product but a different
-endpoint (e.g. **Research · You.com**, **Sonar · Perplexity**, **Answers · Brave**).
+endpoint (e.g. **Research · Tavily**). **Perplexity**, **You**, **Brave**, and **Parallel** each
+document search + synthesis APIs in one column.
 
 | Column | Matrix modes | Native API |
 | --- | --- | --- |
 | exa | fast, balanced, deep | `/search` `type`: instant/fast, auto, deep/deep-lite/deep-reasoning |
 | tavily | fast, balanced | Search `search_depth` |
 | **Research · Tavily** | balanced, deep | Research API `model`: mini/auto, pro |
-| parallel | fast, balanced | Search `mode`: basic, advanced |
-| **Task · Parallel** | fast, balanced, deep | Task API `processor`: Lite/Base, Core, Pro/Ultra |
+| parallel | fast, balanced, deep | Search `mode`: basic/advanced; Task API `processor`: Lite/Base, Core, Pro/Ultra |
 | linkup | fast, balanced, deep | `depth` + `outputType=sourcedAnswer` for cited synthesis |
-| perplexity | balanced | Search API (raw `results[]` only) |
+| perplexity | balanced, deep | Search API `POST /search` (SDK); Sonar `POST /chat/completions` — `sonar`, `sonar-pro` |
 | **gemini** | balanced | `generateContent` + `google_search` tool (grounded synthesis) |
-| **Sonar · Perplexity** | balanced, deep | `/chat/completions` — `sonar`, `sonar-pro` |
-| brave | balanced | Web/news SERP |
-| **Answers · Brave** | balanced, deep | `/chat/completions` `model=brave`; `enable_research` → deep |
-| you | balanced | `POST /v1/search` snippets |
-| **Research · You.com** | fast, balanced, deep | `POST /v1/research` `research_effort`: lite, standard, deep, exhaustive |
+| brave | balanced, deep | Web/news SERP; Answers `/chat/completions` (`enable_research` → deep) |
+| you | fast, balanced, deep | `POST /v1/search` (SDK); Research `research_effort`: lite, standard, deep, exhaustive |
 | serper, serpapi, searchapi, google_pse, searxng, duckduckgo, jina, firecrawl, kagi | balanced | No fast or synthesis depth preset |
 
 anysearch SDK today implements the **search** columns only; synthesis columns document vendor

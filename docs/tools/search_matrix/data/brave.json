@@ -24,7 +24,7 @@
   "snippet": {
     "support": "full",
     "source_url": "https://api-dashboard.search.brave.com/app/documentation/web-search/get-started",
-    "comment": "Short description field returned with each result."
+    "comment": "Web/news SERP snippets. Answers API has no ranked snippet list \u2014 use web search or citations."
   },
   "domains": {
     "support": "none",
@@ -34,32 +34,32 @@
   "country": {
     "support": "full",
     "source_url": "https://api-dashboard.search.brave.com/app/documentation/web-search/get-started",
-    "comment": "`country` \u2014 filter by country (web and news)."
+    "comment": "`country` on web/news SERP. Answers API does not expose the same filters."
   },
   "language": {
     "support": "full",
     "source_url": "https://api-dashboard.search.brave.com/app/documentation/web-search/get-started",
-    "comment": "`search_lang` and `ui_lang` for result and UI language."
+    "comment": "`search_lang` and `ui_lang` on web search. Not on Answers chat completions."
   },
   "date": {
     "support": "full",
     "source_url": "https://api-dashboard.search.brave.com/app/documentation/web-search/get-started",
-    "comment": "`freshness` presets (`pd`, `pw`, `pm`, `py`) or custom `YYYY-MM-DDtoYYYY-MM-DD`."
+    "comment": "Web/news `freshness` presets (`pd`, `pw`, `pm`, `py`) or custom range. Answers: none."
   },
   "safe_search": {
     "support": "full",
     "source_url": "https://api-dashboard.search.brave.com/app/documentation/web-search/get-started",
-    "comment": "`safesearch`: `off`, `moderate`, `strict`."
+    "comment": "Web/news `safesearch`: `off`, `moderate`, `strict`."
   },
   "answer": {
-    "support": "none",
-    "source_url": "https://api-dashboard.search.brave.com/app/documentation/web-search/get-started",
-    "comment": "AI answer"
+    "support": "full",
+    "source_url": "https://api-dashboard.search.brave.com/app/documentation/ai-grounding",
+    "comment": "Answers API: OpenAI-compatible grounded completion with citations. Web search returns SERP JSON only (no LLM answer field)."
   },
   "content": {
-    "support": "none",
-    "source_url": "https://api-dashboard.search.brave.com/app/documentation/web-search/get-started",
-    "comment": "Full page text"
+    "support": "partial",
+    "source_url": "https://api-dashboard.search.brave.com/app/documentation/ai-grounding",
+    "comment": "Answers API embeds cited source URLs in the completion. Web search has snippets, not full pages."
   },
   "summary": {
     "support": "none",
@@ -74,14 +74,15 @@
   "news": {
     "support": "full",
     "source_url": "https://api-dashboard.search.brave.com/app/documentation/web-search/get-started",
-    "comment": "Dedicated `/res/v1/news/search` endpoint."
+    "comment": "Dedicated `/res/v1/news/search` endpoint (not Answers API)."
   },
   "mode": {
     "values": [
-      "balanced"
+      "balanced",
+      "deep"
     ],
     "source_url": "https://api-dashboard.search.brave.com/app/documentation/web-search",
-    "comment": "Web/news SERP (`/res/v1/web/search`). Grounded AI answers use **Answers \u00b7 Brave** (`POST /res/v1/chat/completions`, `model=brave`; `enable_research` for deep research)."
+    "comment": "**Web/news SERP** (`/res/v1/web/search`) \u2192 matrix `balanced`. **Answers API** (`POST /res/v1/chat/completions`, `model=brave`) \u2192 balanced (single-pass grounded answer); `enable_research=true` (streaming)\u2192deep. Same `BRAVE_API_KEY`."
   },
-  "notes": ""
+  "notes": "Web/news Search API is in the anysearch SDK; Answers API (`/res/v1/chat/completions`) is documented in the matrix but not wired in the SDK yet."
 }

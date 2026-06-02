@@ -118,11 +118,12 @@ MODE_META: dict[str, dict] = {
         ),
     },
     "parallel": {
-        "values": ["fast", "balanced"],
+        "values": ["fast", "balanced", "deep"],
         "source": "https://docs.parallel.ai/search/modes",
         "comment": (
-            "Search API `mode`: `basic` (fast) vs `advanced` (richer retrieval, not synthesis). "
-            "For cited structured research output, see **Task · Parallel** (Task API)."
+            "**Search API** `mode`: `basic`→fast, `advanced`→balanced (richer retrieval, not synthesis). "
+            "**Task API** (`POST /v1/tasks/runs`) `processor`: Lite/Base→fast, Core→balanced, "
+            "Pro/Ultra→deep (structured output with citations). Same `PARALLEL_API_KEY`."
         ),
     },
     "linkup": {
@@ -135,11 +136,12 @@ MODE_META: dict[str, dict] = {
         ),
     },
     "brave": {
-        "values": ["balanced"],
+        "values": ["balanced", "deep"],
         "source": "https://api-dashboard.search.brave.com/app/documentation/web-search",
         "comment": (
-            "Web/news SERP (`/res/v1/web/search`). Grounded AI answers use **Answers · Brave** "
-            "(`POST /res/v1/chat/completions`, `model=brave`; `enable_research` for deep research)."
+            "**Web/news SERP** (`/res/v1/web/search`) → matrix `balanced`. **Answers API** "
+            "(`POST /res/v1/chat/completions`, `model=brave`) → balanced (single-pass grounded answer); "
+            "`enable_research=true` (streaming)→deep. Same `BRAVE_API_KEY`."
         ),
     },
     "jina": {
@@ -151,11 +153,12 @@ MODE_META: dict[str, dict] = {
         ),
     },
     "perplexity": {
-        "values": ["balanced"],
+        "values": ["balanced", "deep"],
         "source": "https://docs.perplexity.ai/docs/search/quickstart",
         "comment": (
-            "Search API — raw ranked `results[]` only (no LLM synthesis). For prose answers with "
-            "citations, see **Sonar · Perplexity** (`/chat/completions` with Sonar models)."
+            "**Search API** (`POST /search`) → matrix `balanced`: raw ranked `results[]` (anysearch SDK). "
+            "**Sonar** (`POST /chat/completions`) → model `sonar`→balanced (grounded answer + citations), "
+            "`sonar-pro`→deep (multi-source research synthesis). Same `PERPLEXITY_API_KEY`."
         ),
     },
     "gemini": {
@@ -176,11 +179,12 @@ MODE_META: dict[str, dict] = {
         ),
     },
     "you": {
-        "values": ["balanced"],
+        "values": ["fast", "balanced", "deep"],
         "source": "https://you.com/docs/search/overview",
         "comment": (
-            "POST /v1/search — ranked web snippets (~sub-second). For multi-step synthesized "
-            "research, see the **Research · You.com** column (`POST /v1/research`)."
+            "**Search API** (`POST /v1/search`) → matrix `balanced` (ranked snippets, SDK). "
+            "**Research API** (`POST /v1/research`) → `research_effort`: `lite`→fast, `standard`→balanced, "
+            "`deep` / `exhaustive`→deep (cited synthesis). Same `YDC_API_KEY`."
         ),
     },
     "kagi": {
@@ -245,9 +249,45 @@ SUPPORT_OVERRIDE: dict[str, dict[str, str]] = {
         "domains": "partial",
         "date": "partial",
     },
+    "perplexity": {
+        "answer": "full",
+        "country": "partial",
+    },
+    "you": {
+        "answer": "full",
+        "date": "partial",
+        "content": "partial",
+    },
+    "brave": {
+        "answer": "full",
+        "content": "partial",
+    },
+    "parallel": {
+        "answer": "full",
+    },
     "serpapi_yandex": {
         "news": "none",
     },
+}
+
+# Extra matrix footnotes (appended to generated provider notes).
+MATRIX_NOTES: dict[str, str] = {
+    "perplexity": (
+        "Search API (`POST /search`) is in the anysearch SDK; Sonar (`POST /chat/completions`) "
+        "is documented in the matrix but not wired in the SDK yet."
+    ),
+    "you": (
+        "Search API (`POST /v1/search`) is in the anysearch SDK; Research API (`POST /v1/research`) "
+        "is documented in the matrix but not wired in the SDK yet."
+    ),
+    "brave": (
+        "Web/news Search API is in the anysearch SDK; Answers API (`/res/v1/chat/completions`) "
+        "is documented in the matrix but not wired in the SDK yet."
+    ),
+    "parallel": (
+        "Search API is in the anysearch SDK; Task API (`POST /v1/tasks/runs`) is documented "
+        "in the matrix but not wired in the SDK yet."
+    ),
 }
 
 # Per-feature comments and doc anchors (slug → feature key → {source, comment}).
@@ -316,23 +356,46 @@ FEATURE_META: dict[str, dict[str, dict[str, str]]] = {
     "parallel": {
         "domains": {
             "source": "https://docs.parallel.ai/search/advanced-search-settings",
-            "comment": "`advanced_settings.source_policy.include_domains` / `exclude_domains` (use sparingly).",
+            "comment": (
+                "Search API: `advanced_settings.source_policy` domain allow/deny. "
+                "Task API has no domain filter knob."
+            ),
         },
         "country": {
             "source": "https://docs.parallel.ai/search/advanced-search-settings",
-            "comment": "`advanced_settings.location` — ISO 3166-1 alpha-2 (subset of countries).",
+            "comment": (
+                "Search API `advanced_settings.location` (ISO 3166-1 alpha-2). Not on Task API."
+            ),
         },
         "date": {
             "source": "https://docs.parallel.ai/search/advanced-search-settings",
-            "comment": "`source_policy.after_date` for freshness in advanced_settings.",
+            "comment": (
+                "Search API `source_policy.after_date` for freshness. Task API has no date filter."
+            ),
+        },
+        "answer": {
+            "source": "https://docs.parallel.ai/task-api/guides/access-research-basis",
+            "comment": (
+                "Task API synthesized output plus `basis` (citations, reasoning, confidence). "
+                "Search API returns ranked excerpts only."
+            ),
         },
         "content": {
             "source": "https://docs.parallel.ai/api-reference/search/search",
-            "comment": "Excerpts are pre-compressed in search results (excerpt_settings optional).",
+            "comment": (
+                "Search API: pre-compressed excerpts (`excerpt_settings` optional). "
+                "Task API: text/JSON/markdown via `task_spec.output_schema`."
+            ),
+        },
+        "snippet": {
+            "source": "https://docs.parallel.ai/search/modes",
+            "comment": (
+                "Search API ranked result excerpts. Task API is not a snippet SERP — structured task output."
+            ),
         },
         "highlights": {
             "source": "https://docs.parallel.ai/search/best-practices",
-            "comment": "Ranked excerpts per URL are the default Search API payload.",
+            "comment": "Ranked excerpts per URL are the default Search API payload (not Task API).",
         },
     },
     "linkup": {
@@ -356,19 +419,44 @@ FEATURE_META: dict[str, dict[str, dict[str, str]]] = {
     "brave": {
         "country": {
             "source": "https://api-dashboard.search.brave.com/app/documentation/web-search/get-started",
-            "comment": "`country` — filter by country (web and news).",
+            "comment": (
+                "`country` on web/news SERP. Answers API does not expose the same filters."
+            ),
         },
         "language": {
             "source": "https://api-dashboard.search.brave.com/app/documentation/web-search/get-started",
-            "comment": "`search_lang` and `ui_lang` for result and UI language.",
+            "comment": (
+                "`search_lang` and `ui_lang` on web search. Not on Answers chat completions."
+            ),
         },
         "date": {
             "source": "https://api-dashboard.search.brave.com/app/documentation/web-search/get-started",
-            "comment": "`freshness` presets (`pd`, `pw`, `pm`, `py`) or custom `YYYY-MM-DDtoYYYY-MM-DD`.",
+            "comment": (
+                "Web/news `freshness` presets (`pd`, `pw`, `pm`, `py`) or custom range. Answers: none."
+            ),
         },
         "safe_search": {
             "source": "https://api-dashboard.search.brave.com/app/documentation/web-search/get-started",
-            "comment": "`safesearch`: `off`, `moderate`, `strict`.",
+            "comment": "Web/news `safesearch`: `off`, `moderate`, `strict`.",
+        },
+        "answer": {
+            "source": "https://api-dashboard.search.brave.com/app/documentation/ai-grounding",
+            "comment": (
+                "Answers API: OpenAI-compatible grounded completion with citations. "
+                "Web search returns SERP JSON only (no LLM answer field)."
+            ),
+        },
+        "content": {
+            "source": "https://api-dashboard.search.brave.com/app/documentation/ai-grounding",
+            "comment": (
+                "Answers API embeds cited source URLs in the completion. Web search has snippets, not full pages."
+            ),
+        },
+        "snippet": {
+            "source": "https://api-dashboard.search.brave.com/app/documentation/web-search/get-started",
+            "comment": (
+                "Web/news SERP snippets. Answers API has no ranked snippet list — use web search or citations."
+            ),
         },
         "highlights": {
             "source": "https://api-dashboard.search.brave.com/app/documentation/web-search",
@@ -376,21 +464,47 @@ FEATURE_META: dict[str, dict[str, dict[str, str]]] = {
         },
         "news": {
             "source": "https://api-dashboard.search.brave.com/app/documentation/web-search/get-started",
-            "comment": "Dedicated `/res/v1/news/search` endpoint.",
+            "comment": "Dedicated `/res/v1/news/search` endpoint (not Answers API).",
         },
     },
     "perplexity": {
         "domains": {
             "source": "https://docs.perplexity.ai/docs/search/quickstart",
-            "comment": "`search_domain_filter` — allowlist entries or `-domain` denylist prefixes.",
+            "comment": (
+                "`search_domain_filter` on Search API and Sonar (allowlist or `-domain` denylist)."
+            ),
+        },
+        "country": {
+            "source": "https://docs.perplexity.ai/docs/sonar/quickstart",
+            "comment": (
+                "Search API has no `gl` country param; Sonar supports regional bias via search options."
+            ),
         },
         "language": {
             "source": "https://docs.perplexity.ai/api-reference/search-post",
-            "comment": "`search_language_filter` — array of ISO 639-1 language codes.",
+            "comment": (
+                "`search_language_filter` on Search API (ISO 639-1). Not exposed on Sonar chat requests."
+            ),
+        },
+        "answer": {
+            "source": "https://docs.perplexity.ai/docs/sonar/quickstart",
+            "comment": (
+                "Sonar assistant message — synthesized prose with citations (`/chat/completions`). "
+                "Search API returns raw `results[]` only (no LLM answer field)."
+            ),
         },
         "content": {
             "source": "https://docs.perplexity.ai/api-reference/search-post",
-            "comment": "`snippet` field size via `snippet_mode`, `max_tokens`, `max_tokens_per_page`.",
+            "comment": (
+                "Search API: larger `snippet` via `snippet_mode`, `max_tokens`, `max_tokens_per_page`. "
+                "Sonar does not return full page bodies."
+            ),
+        },
+        "snippet": {
+            "source": "https://docs.perplexity.ai/api-reference/search-post",
+            "comment": (
+                "Search API `results[].snippet`. Sonar has no ranked snippet list — use Search API or citations."
+            ),
         },
     },
     "gemini": {
@@ -411,15 +525,44 @@ FEATURE_META: dict[str, dict[str, dict[str, str]]] = {
     "you": {
         "domains": {
             "source": "https://you.com/docs/search/overview",
-            "comment": "`include_domains`, `exclude_domains`, `boost_domains` (POST JSON arrays, up to 500).",
+            "comment": (
+                "Search: `include_domains`, `exclude_domains`, `boost_domains` (up to 500). "
+                "Research: `source_control` domain lists (beta)."
+            ),
         },
         "country": {
             "source": "https://you.com/docs/search/overview",
-            "comment": "`country` — ISO 3166-1 alpha-2 (e.g. US, GB).",
+            "comment": (
+                "Search: `country` (ISO 3166-1 alpha-2). Research: `source_control.country`."
+            ),
+        },
+        "date": {
+            "source": "https://you.com/docs/research/overview",
+            "comment": (
+                "Research API `source_control.freshness` only. Search API has no date-range filter."
+            ),
+        },
+        "answer": {
+            "source": "https://you.com/docs/api-reference/research/v1-research",
+            "comment": (
+                "Research `output.content` — Markdown with citations. Search returns ranked snippets only."
+            ),
+        },
+        "content": {
+            "source": "https://you.com/docs/api-reference/research/v1-research",
+            "comment": (
+                "Research sources include URL, title, and excerpt text. Search has no full-page body field."
+            ),
+        },
+        "snippet": {
+            "source": "https://you.com/docs/api-reference/search/v1-search",
+            "comment": (
+                "Search: ranked web results with snippets. Research: source excerpts in `output.sources[]`."
+            ),
         },
         "highlights": {
             "source": "https://you.com/docs/api-reference/search/v1-search",
-            "comment": "Multiple `snippets` strings per web result in the JSON response.",
+            "comment": "Search API: multiple `snippets` strings per web result. Not on Research API.",
         },
     },
     "jina": {
@@ -557,57 +700,6 @@ FEATURE_META: dict[str, dict[str, dict[str, str]]] = {
 # Extra matrix columns: synthesis / research APIs (same API keys as base provider, different endpoint).
 AI_MATRIX_PRODUCTS: tuple[dict[str, str | list[str] | dict[str, tuple[str, str, str]]], ...] = (
     {
-        "slug": "you_research",
-        "base": "you",
-        "product": "Research",
-        "brand": "You.com",
-        "docs": "https://you.com/docs/research/overview",
-        "website": "https://you.com",
-        "endpoint": "POST https://api.you.com/v1/research",
-        "modes": ["fast", "balanced", "deep"],
-        "mode_source": "https://you.com/docs/research/overview",
-        "mode_comment": (
-            "Research API `research_effort`: `lite`→fast, `standard`→balanced (default), "
-            "`deep` / `exhaustive`→deep (multi-search synthesis with inline citations). "
-            "Not the /v1/search SERP endpoint."
-        ),
-        "features": {
-            "domains": (
-                "partial",
-                "https://you.com/docs/research/overview",
-                "`source_control.include_domains` / `exclude_domains` / `boost_domains` (beta).",
-            ),
-            "country": (
-                "partial",
-                "https://you.com/docs/research/overview",
-                "`source_control.country` — ISO 3166-1 alpha-2.",
-            ),
-            "date": (
-                "partial",
-                "https://you.com/docs/research/overview",
-                "`source_control.freshness` filters how recent sources may be.",
-            ),
-            "answer": (
-                "full",
-                "https://you.com/docs/api-reference/research/v1-research",
-                "Primary output: `output.content` — Markdown answer with numbered citations to `output.sources`.",
-            ),
-            "content": (
-                "partial",
-                "https://you.com/docs/api-reference/research/v1-research",
-                "Each source includes URL, title, and snippet excerpts used in synthesis.",
-            ),
-            "snippet": (
-                "partial",
-                "https://you.com/docs/api-reference/research/v1-research",
-                "Source-level snippets in `output.sources[]`, not a ranked SERP list.",
-            ),
-        },
-        "notes": (
-            "Synthesis-first API (5–60s). Same `YDC_API_KEY` as Search. Not implemented in anysearch SDK yet."
-        ),
-    },
-    {
         "slug": "tavily_research",
         "base": "tavily",
         "product": "Research",
@@ -640,116 +732,6 @@ AI_MATRIX_PRODUCTS: tuple[dict[str, str | list[str] | dict[str, tuple[str, str, 
         },
         "notes": (
             "Multi-agent research (poll/stream). Same `TAVILY_API_KEY`. Use `tavily-python` `research()` / `get_research()`."
-        ),
-    },
-    {
-        "slug": "parallel_task",
-        "base": "parallel",
-        "product": "Task",
-        "brand": "Parallel",
-        "docs": "https://docs.parallel.ai/task-api/task-quickstart",
-        "website": "https://parallel.ai",
-        "endpoint": "POST https://api.parallel.ai/v1/tasks/runs",
-        "modes": ["fast", "balanced", "deep"],
-        "mode_source": "https://parallel.ai/products/task",
-        "mode_comment": (
-            "Task API `processor` tiers: Lite/Base→fast, Core→balanced, Pro/Ultra→deep (more sources, "
-            "live crawl, validation). Returns structured output with per-field citations and confidence."
-        ),
-        "features": {
-            "answer": (
-                "full",
-                "https://docs.parallel.ai/task-api/guides/access-research-basis",
-                "Synthesized output plus `basis` (citations, reasoning, confidence per field).",
-            ),
-            "content": (
-                "partial",
-                "https://docs.parallel.ai/task-api/task-quickstart",
-                "Text, JSON, or markdown report schemas via `task_spec.output_schema`.",
-            ),
-            "snippet": (
-                "none",
-                "https://docs.parallel.ai/task-api/task-quickstart",
-                "Not a snippet SERP — declarative research/enrichment tasks.",
-            ),
-        },
-        "notes": (
-            "Research + enrichment API. Same `PARALLEL_API_KEY`. Not the Search API `mode=basic|advanced`."
-        ),
-    },
-    {
-        "slug": "perplexity_sonar",
-        "base": "perplexity",
-        "product": "Sonar",
-        "brand": "Perplexity",
-        "docs": "https://docs.perplexity.ai/docs/sonar/quickstart",
-        "website": "https://www.perplexity.ai",
-        "endpoint": "POST https://api.perplexity.ai/chat/completions",
-        "modes": ["balanced", "deep"],
-        "mode_source": "https://docs.perplexity.ai/docs/sonar/quickstart",
-        "mode_comment": (
-            "Sonar chat models: `sonar`→balanced (fast grounded answers), `sonar-pro`→deep (complex "
-            "multi-source research). OpenAI-compatible `/chat/completions` with built-in web search."
-        ),
-        "features": {
-            "domains": (
-                "full",
-                "https://docs.perplexity.ai/docs/sonar/quickstart",
-                "`search_domain_filter` on Sonar requests (allow/deny domains).",
-            ),
-            "country": (
-                "partial",
-                "https://docs.perplexity.ai/docs/sonar/quickstart",
-                "Regional bias via Sonar search options (see API reference).",
-            ),
-            "answer": (
-                "full",
-                "https://docs.perplexity.ai/docs/sonar/quickstart",
-                "Assistant message is a synthesized, cited prose answer (not raw `results[]`).",
-            ),
-            "snippet": (
-                "none",
-                "https://docs.perplexity.ai/docs/search/quickstart",
-                "No Search API-style snippet list — use **Perplexity** column for raw results.",
-            ),
-        },
-        "notes": (
-            "LLM + search synthesis. Same `PERPLEXITY_API_KEY`. Not wired in anysearch SDK (Search API only today)."
-        ),
-    },
-    {
-        "slug": "brave_answers",
-        "base": "brave",
-        "product": "Answers",
-        "brand": "Brave",
-        "docs": "https://api-dashboard.search.brave.com/app/documentation/ai-grounding",
-        "website": "https://brave.com/search/api/",
-        "endpoint": "POST https://api.search.brave.com/res/v1/chat/completions",
-        "modes": ["balanced", "deep"],
-        "mode_source": "https://github.com/brave/brave-search-skills/blob/main/skills/answers/SKILL.md",
-        "mode_comment": (
-            "Answers API (`model=brave`): default→balanced (single-pass grounded answer). "
-            "`enable_research=true` (streaming required)→deep (iterative multi-step research)."
-        ),
-        "features": {
-            "answer": (
-                "full",
-                "https://api-dashboard.search.brave.com/app/documentation/ai-grounding",
-                "OpenAI-compatible chat completion with web-grounded citations.",
-            ),
-            "content": (
-                "partial",
-                "https://api-dashboard.search.brave.com/app/documentation/ai-grounding",
-                "Cited source URLs embedded in the completion (see Brave Answers docs).",
-            ),
-            "snippet": (
-                "none",
-                "https://api-dashboard.search.brave.com/app/documentation/web-search/get-started",
-                "Not `/web/search` snippets — use **Brave** column for SERP JSON.",
-            ),
-        },
-        "notes": (
-            "Replaces deprecated Summarizer API. Same `BRAVE_API_KEY`. Not implemented in anysearch SDK yet."
         ),
     },
 )
