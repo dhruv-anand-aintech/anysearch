@@ -4,7 +4,8 @@
 LiteLLM, but for search providers — that lets you call Exa, Parallel, Brave, Tavily,
 SerpAPI, Perplexity, Linkup, Firecrawl, and more through a single function with a
 common set of parameters and a common response shape. It also ships a dependency-free
-**stdio MCP server** that adapts to whatever API keys you have configured.
+**stdio MCP server** and optional **FastAPI proxy server** that adapt to whatever API
+keys you have configured.
 
 ```python
 import anysearch
@@ -132,3 +133,29 @@ anysearch-mcp --probe    # also verify each provider with a tiny live query at s
 Tools exposed: `search`, `list_providers`, `check_providers`, and `migrate_codebase`
 (scans a repo for direct search-API usage and suggests unified replacements). See the
 repo root README for client configuration examples.
+
+## FastAPI proxy
+
+The proxy is a small search gateway inspired by LiteLLM Proxy: bearer-key auth,
+provider routing/fallbacks, OpenAI-style `/v1/models` and `/v1/search`, native
+`/search`, health checks, and simple in-process request limits.
+
+```bash
+pip install "anysearch-sdk[proxy] @ git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python"
+
+export ANYSEARCH_PROXY_KEYS="dev-key"
+export EXA_API_KEY="..."
+anysearch-proxy
+```
+
+```bash
+curl -H "Authorization: Bearer dev-key" http://localhost:4000/v1/models
+curl -X POST http://localhost:4000/v1/search \
+  -H "Authorization: Bearer dev-key" \
+  -H "Content-Type: application/json" \
+  -d '{"model":"exa","query":"best vector databases","max_results":3}'
+```
+
+Useful env vars: `ANYSEARCH_PROXY_KEYS`, `ANYSEARCH_PROXY_ADMIN_KEYS`,
+`ANYSEARCH_PROXY_REQUIRE_AUTH=0`, `ANYSEARCH_PROXY_REQUEST_LIMIT`,
+`ANYSEARCH_PROXY_HOST`, and `ANYSEARCH_PROXY_PORT`.

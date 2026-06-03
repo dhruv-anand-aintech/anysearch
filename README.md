@@ -6,7 +6,7 @@ every LLM) and [vector-io](https://github.com/AI-Northstar-Tech/vector-io) (one 
 for every vector DB). Call Exa, Parallel, Brave, Tavily, SerpAPI, Perplexity, Linkup,
 Firecrawl, and 8 more through a **single function**, with **common parameters** and a
 **common response shape**, in **Python and JavaScript/TypeScript** — plus a **stdio MCP
-server** that adapts to whatever API keys you have set.
+server** and optional **FastAPI proxy** that adapt to whatever API keys you have set.
 
 ```python
 # Python
@@ -77,6 +77,7 @@ pip install "anysearch-sdk[all] @ git+https://github.com/dhruv-anand-aintech/any
 
 uv add "anysearch-sdk @ git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python"
 uv add "anysearch-sdk[exa,tavily,brave] @ git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python"
+uv add "anysearch-sdk[proxy] @ git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python"
 ```
 
 The base install works for **every** provider (REST via `httpx`). Per-provider extras
@@ -130,6 +131,23 @@ const resp = await client.search("rust async runtimes", { mode: "deep" });
 ```
 
 Set `ANYSEARCH_PROVIDER` to force a default provider for the whole process.
+
+## FastAPI proxy
+
+The Python package includes an optional proxy server inspired by LiteLLM Proxy: bearer
+auth, centralized provider routing/fallbacks, OpenAI-style `/v1/models` and `/v1/search`,
+native `/search`, health checks, and simple in-process request limits.
+
+```bash
+export ANYSEARCH_PROXY_KEYS="dev-key"
+export EXA_API_KEY="..."
+anysearch-proxy
+
+curl -X POST http://localhost:4000/v1/search \
+  -H "Authorization: Bearer dev-key" \
+  -H "Content-Type: application/json" \
+  -d '{"model":"exa","query":"best vector databases","max_results":3}'
+```
 
 ## MCP server
 

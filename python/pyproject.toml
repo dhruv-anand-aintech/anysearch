@@ -49,6 +49,7 @@ kagi = []
 searchapi = []
 google-pse = []
 searxng = []
+proxy = ["fastapi>=0.100", "uvicorn[standard]>=0.23"]
 
 # --- Aggregate extras ----------------------------------------------------
 all = [
@@ -63,10 +64,18 @@ all = [
     "ddgs>=6.0",
 ]
 
-dev = ["pytest>=7", "pytest-asyncio>=0.21", "respx>=0.20", "ruff>=0.4"]
+dev = [
+    "pytest>=7",
+    "pytest-asyncio>=0.21",
+    "respx>=0.20",
+    "ruff>=0.4",
+    "fastapi>=0.100",
+    "uvicorn[standard]>=0.23",
+]
 
 [project.scripts]
 anysearch-mcp = "anysearch.mcp.server:main"
+anysearch-proxy = "anysearch.proxy.__main__:main"
 
 [project.urls]
 Homepage = "https://github.com/anysearch/anysearch"
