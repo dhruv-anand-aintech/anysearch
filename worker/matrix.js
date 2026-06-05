@@ -790,6 +790,7 @@ var state = loadState(); colOrder = state.cols; rowOrder = state.rows;
 renderHeader(); renderBody();
 window.addEventListener('resize', function(){ updateColWidths(); scheduleFitAgentHeaderNames(); });
 </script>
+<footer style="border-top:1px solid #ebebeb;background:#f2f2f2;padding:14px 24px;font-size:13px;color:#70757a;text-align:center;font-family:arial,sans-serif;">© 2026 AI Northstar Tech Private Limited. All Rights Reserved.</footer>
 </body>
 </html>`;
 }
