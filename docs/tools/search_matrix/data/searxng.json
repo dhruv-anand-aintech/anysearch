@@ -83,5 +83,10 @@
     "source_url": "https://docs.searxng.org/dev/search_api.html",
     "comment": "Meta-search JSON API: result richness depends on configured engines, not a global depth flag. Matrix `balanced` = default instance search."
   },
+  "pricing_per_1k": {
+    "value": "$0 API fee if self-hosted; infra/proxy costs separate",
+    "source_url": "https://docs.searxng.org/",
+    "comment": "Open-source self-hosted metasearch; operating costs depend on deployment."
+  },
   "notes": "No API key required (keyless fallback)."
 }

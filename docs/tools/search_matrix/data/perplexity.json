@@ -84,5 +84,10 @@
     "source_url": "https://docs.perplexity.ai/docs/search/quickstart",
     "comment": "**Search API** (`POST /search`) \u2192 matrix `balanced`: raw ranked `results[]` (anysearch SDK). **Sonar** (`POST /chat/completions`) \u2192 model `sonar`\u2192balanced (grounded answer + citations), `sonar-pro`\u2192deep (multi-source research synthesis). Same `PERPLEXITY_API_KEY`."
   },
+  "pricing_per_1k": {
+    "value": "search: $5; fast/sonar low: $5; balanced: $8-$10; deep/high/pro: $12-$22 + tokens",
+    "source_url": "https://docs.perplexity.ai/getting-started/pricing",
+    "comment": "Search API is request-only; Sonar tiers add token charges and request fees by context size/search type."
+  },
   "notes": "Native SDK package: perplexityai. Search API (`POST /search`) is in the anysearch SDK; Sonar (`POST /chat/completions`) is documented in the matrix but not wired in the SDK yet."
 }

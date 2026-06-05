@@ -83,5 +83,10 @@
     "source_url": "https://docs.firecrawl.dev/features/search",
     "comment": "Single search tier (title, URL, description). `scrapeOptions` fetches page bodies but is not an AI synthesis `mode`."
   },
+  "pricing_per_1k": {
+    "value": "balanced/search: 1 credit; with scrape: +1 credit/result",
+    "source_url": "https://docs.firecrawl.dev/api-reference/endpoint/search",
+    "comment": "Convert credits to dollars from your Firecrawl plan; search without scrape costs one credit."
+  },
   "notes": "Native SDK package: firecrawl-py."
 }

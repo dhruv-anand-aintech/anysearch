@@ -84,6 +84,11 @@
       "source_url": "https://serpapi.com/baidu-search-api",
       "comment": "Fixed SerpApi backend `engine=baidu` (set via anysearch `engine=\"baidu\"` with `provider=\"serpapi\"`). No separate fast/deep tier on this engine."
     },
+    "pricing_per_1k": {
+      "value": "balanced: $25 starter; ~$7.25-$15 volume",
+      "source_url": "https://serpapi.com/pricing",
+      "comment": "Monthly plan price divided by included searches; applies to all SerpApi engine rows."
+    },
     "notes": "SerpApi proxy to Baidu (`engine=baidu`). Native SDK package: google-search-results."
   },
   {
@@ -170,6 +175,11 @@
       ],
       "source_url": "https://serpapi.com/bing-search-api",
       "comment": "Fixed SerpApi backend `engine=bing` (set via anysearch `engine=\"bing\"` with `provider=\"serpapi\"`). No separate fast/deep tier on this engine."
+    },
+    "pricing_per_1k": {
+      "value": "balanced: $25 starter; ~$7.25-$15 volume",
+      "source_url": "https://serpapi.com/pricing",
+      "comment": "Monthly plan price divided by included searches; applies to all SerpApi engine rows."
     },
     "notes": "SerpApi proxy to Bing (`engine=bing`). Native SDK package: google-search-results."
   },
@@ -259,6 +269,11 @@
       "source_url": "https://api-dashboard.search.brave.com/app/documentation/web-search",
       "comment": "**Web/news SERP** (`/res/v1/web/search`) \u2192 matrix `balanced`. **Answers API** (`POST /res/v1/chat/completions`, `model=brave`) \u2192 balanced (single-pass grounded answer); `enable_research=true` (streaming)\u2192deep. Same `BRAVE_API_KEY`."
     },
+    "pricing_per_1k": {
+      "value": "balanced/search: $5-$9; deep/answers: $4 + tokens",
+      "source_url": "https://brave.com/search/api/",
+      "comment": "Search API pricing depends on Base AI vs Pro AI plan; Answers adds token charges."
+    },
     "notes": "Web/news Search API is in the anysearch SDK; Answers API (`/res/v1/chat/completions`) is documented in the matrix but not wired in the SDK yet."
   },
   {
@@ -346,6 +361,11 @@
       "source_url": "https://pypi.org/project/ddgs/",
       "comment": "Keyless DDGS client: instant web results without a depth parameter. Matrix `balanced` = default `text()` search."
     },
+    "pricing_per_1k": {
+      "value": "$0 API fee via keyless DDGS client; unofficial/fragile",
+      "source_url": "https://pypi.org/project/ddgs/",
+      "comment": "No paid official web search API is used by anysearch's keyless fallback."
+    },
     "notes": "No API key required (keyless fallback). Native SDK package: ddgs."
   },
   {
@@ -432,6 +452,11 @@
       ],
       "source_url": "https://serpapi.com/duckduckgo-search-api",
       "comment": "Fixed SerpApi backend `engine=duckduckgo` (set via anysearch `engine=\"duckduckgo\"` with `provider=\"serpapi\"`). No separate fast/deep tier on this engine."
+    },
+    "pricing_per_1k": {
+      "value": "balanced: $25 starter; ~$7.25-$15 volume",
+      "source_url": "https://serpapi.com/pricing",
+      "comment": "Monthly plan price divided by included searches; applies to all SerpApi engine rows."
     },
     "notes": "SerpApi proxy to DuckDuckGo (`engine=duckduckgo`). Native SDK package: google-search-results."
   },
@@ -522,6 +547,11 @@
       "source_url": "https://exa.ai/docs/reference/search-api-guide",
       "comment": "POST /search `type`: `instant`/`fast` (latency), `auto` (balanced), `deep` / `deep-lite` / `deep-reasoning` (agentic multi-source synthesis; optional `output_schema`). anysearch: fast\u2192fast, balanced\u2192auto, deep\u2192deep."
     },
+    "pricing_per_1k": {
+      "value": "fast/balanced: $7; deep: $12; deep reasoning: $15",
+      "source_url": "https://exa.ai/pricing",
+      "comment": "Per 1K requests with up to 10 results; summaries and additional results are billed separately."
+    },
     "notes": "Native SDK package: exa-py."
   },
   {
@@ -608,6 +638,11 @@
       ],
       "source_url": "https://docs.firecrawl.dev/features/search",
       "comment": "Single search tier (title, URL, description). `scrapeOptions` fetches page bodies but is not an AI synthesis `mode`."
+    },
+    "pricing_per_1k": {
+      "value": "balanced/search: 1 credit; with scrape: +1 credit/result",
+      "source_url": "https://docs.firecrawl.dev/api-reference/endpoint/search",
+      "comment": "Convert credits to dollars from your Firecrawl plan; search without scrape costs one credit."
     },
     "notes": "Native SDK package: firecrawl-py."
   },
@@ -696,6 +731,11 @@
       "source_url": "https://ai.google.dev/gemini-api/docs/google-search",
       "comment": "`generateContent` with `tools: [{google_search: {}}]` \u2014 model decides when to search and returns synthesized text plus `groundingMetadata` sources (use `answer=true` in anysearch). Default model `gemini-2.5-flash` via `provider_config.gemini.model`."
     },
+    "pricing_per_1k": {
+      "value": "balanced grounding: $35 + model tokens",
+      "source_url": "https://cloud.google.com/generative-ai-app-builder/pricing",
+      "comment": "Grounding with Google Search is billed per 1K grounded requests plus Gemini model token charges."
+    },
     "notes": "Native SDK package: google-genai."
   },
   {
@@ -782,6 +822,11 @@
       ],
       "source_url": "https://developers.google.com/custom-search/v1/reference/rest/v1/cse/list",
       "comment": "Custom Search JSON API: no search-depth or speed preset\u2014only `num`, `sort`, and `siteSearch` filters. Matrix `balanced` = default `cse.list` behavior."
+    },
+    "pricing_per_1k": {
+      "value": "balanced: $5",
+      "source_url": "https://support.google.com/programmable-search/answer/9069107",
+      "comment": "Custom Search JSON API and Programmable Search Element paid API are listed at $5/1K queries."
     },
     "notes": ""
   },
@@ -870,6 +915,11 @@
       "source_url": "https://serpapi.com/search-api",
       "comment": "Fixed SerpApi backend `engine=google` (set via anysearch `engine=\"google\"` with `provider=\"serpapi\"`). No separate fast/deep tier on this engine."
     },
+    "pricing_per_1k": {
+      "value": "balanced: $25 starter; ~$7.25-$15 volume",
+      "source_url": "https://serpapi.com/pricing",
+      "comment": "Monthly plan price divided by included searches; applies to all SerpApi engine rows."
+    },
     "notes": "SerpApi proxy to Google (`engine=google`). Native SDK package: google-search-results."
   },
   {
@@ -956,6 +1006,11 @@
       ],
       "source_url": "https://jina.ai/reader/",
       "comment": "Reader Search has no vendor fast/synthesis mode knob. Default returns SERP + optional page markdown; `X-Respond-With: no-content` is a fetch shortcut, not a latency tier."
+    },
+    "pricing_per_1k": {
+      "value": "token-based; no fixed per-query CPM",
+      "source_url": "https://jina.ai/reader/",
+      "comment": "Reader/Search usage is priced by tokens/usage tiers rather than a fixed per-1K query price."
     },
     "notes": ""
   },
@@ -1044,7 +1099,106 @@
       "source_url": "https://help.kagi.com/kagi/api/search.html",
       "comment": "No request `mode`; snippet length comes from account Settings \u2192 Search."
     },
+    "pricing_per_1k": {
+      "value": "not publicly itemized per 1K for Search API",
+      "source_url": "https://help.kagi.com/kagi/api/overview.html",
+      "comment": "Kagi documents pay-per-use API portal billing but not a stable public Search API CPM in docs."
+    },
     "notes": ""
+  },
+  {
+    "name": "Keiro",
+    "links": {
+      "docs": "https://keirolabs.cloud/",
+      "github": "https://github.com/dhruv-anand-aintech/anysearch",
+      "website": "https://keirolabs.cloud",
+      "slug": "keiro"
+    },
+    "env_keys": {
+      "value": "KEIRO_API_KEY, KEIROLABS_API_KEY",
+      "source_url": "https://keirolabs.cloud/",
+      "comment": "API keys and configuration variables documented by the provider."
+    },
+    "python_extra": {
+      "value": "keirolabs",
+      "source_url": "https://pypi.org/project/keirolabs/",
+      "comment": "Optional PyPI package: keirolabs (install via anysearch-sdk extra `keiro`)."
+    },
+    "requires_key": {
+      "support": "full",
+      "source_url": "https://keirolabs.cloud/",
+      "comment": "Valid API key required for every request."
+    },
+    "snippet": {
+      "support": "full",
+      "source_url": "https://keirolabs.cloud/",
+      "comment": "`results[]` include title, URL, snippet, score, and optional published date."
+    },
+    "domains": {
+      "support": "none",
+      "source_url": "https://keirolabs.cloud/",
+      "comment": "Domain filters"
+    },
+    "country": {
+      "support": "none",
+      "source_url": "https://keirolabs.cloud/",
+      "comment": "Country (gl)"
+    },
+    "language": {
+      "support": "none",
+      "source_url": "https://keirolabs.cloud/",
+      "comment": "Language"
+    },
+    "date": {
+      "support": "none",
+      "source_url": "https://keirolabs.cloud/",
+      "comment": "Published date range"
+    },
+    "safe_search": {
+      "support": "none",
+      "source_url": "https://keirolabs.cloud/",
+      "comment": "Safe search"
+    },
+    "answer": {
+      "support": "none",
+      "source_url": "https://keirolabs.cloud/",
+      "comment": "AI answer"
+    },
+    "content": {
+      "support": "full",
+      "source_url": "https://keirolabs.cloud/",
+      "comment": "`/api/v2/search/content` returns full page markdown (`full_text`) and optional chunks."
+    },
+    "summary": {
+      "support": "none",
+      "source_url": "https://keirolabs.cloud/",
+      "comment": "AI per-result summary"
+    },
+    "highlights": {
+      "support": "none",
+      "source_url": "https://keirolabs.cloud/",
+      "comment": "Query highlights"
+    },
+    "news": {
+      "support": "none",
+      "source_url": "https://keirolabs.cloud/",
+      "comment": "News search type"
+    },
+    "mode": {
+      "values": [
+        "fast",
+        "balanced",
+        "deep"
+      ],
+      "source_url": "https://keirolabs.cloud/",
+      "comment": "v2 Search `mode`: `light`\u2192fast, `ai`\u2192balanced, `deep`\u2192deep. anysearch uses `/api/v2/search/flash` for fast mode, `/api/v2/keiro` by default, and `/api/v2/search/content` for full-text content."
+    },
+    "pricing_per_1k": {
+      "value": "fast/balanced: ~$0.50; content: ~$1.50; batch: ~$0.50",
+      "source_url": "https://keirolabs.cloud/",
+      "comment": "Keiro docs list credit costs per v2 endpoint and headline cost per 1,000 searches."
+    },
+    "notes": "Native SDK package: keirolabs. SDK maps default v2 search to `/api/v2/keiro`, `mode=fast` to `/api/v2/search/flash`, and `include_content=true` to `/api/v2/search/content`."
   },
   {
     "name": "Linkup",
@@ -1132,6 +1286,11 @@
       ],
       "source_url": "https://docs.linkup.so/pages/documentation/endpoints/search/overview",
       "comment": "Native `depth`: `fast`, `standard` (balanced), or `deep` (multi-iteration agentic search-and-scrape). Cited synthesis uses `outputType=sourcedAnswer` (`answer=true` in anysearch), including at `deep` depth. anysearch: fast/balanced/deep\u2192matching depth."
+    },
+    "pricing_per_1k": {
+      "value": "fast: \u20ac5; balanced/standard: \u20ac5; deep: \u20ac50",
+      "source_url": "https://linkup-api.readme.io/reference/credits",
+      "comment": "Fast and standard cost one credit/call; deep costs ten credits/call. Fast docs list \u20ac0.005/call."
     },
     "notes": "Native SDK package: linkup-sdk."
   },
@@ -1222,6 +1381,11 @@
       "source_url": "https://docs.parallel.ai/search/modes",
       "comment": "**Search API** `mode`: `basic`\u2192fast, `advanced`\u2192balanced (richer retrieval, not synthesis). **Task API** (`POST /v1/tasks/runs`) `processor`: Lite/Base\u2192fast, Core\u2192balanced, Pro/Ultra\u2192deep (structured output with citations). Same `PARALLEL_API_KEY`."
     },
+    "pricing_per_1k": {
+      "value": "fast/search: $5; balanced/task: $10-$25; deep/task: $100-$300+",
+      "source_url": "https://docs.parallel.ai/resources/pricing",
+      "comment": "Search API is $5/1K requests; Task processors map roughly from Base/Core to Pro/Ultra for deeper modes."
+    },
     "notes": "Native SDK package: parallel-web. Search API is in the anysearch SDK; Task API (`POST /v1/tasks/runs`) is documented in the matrix but not wired in the SDK yet."
   },
   {
@@ -1310,6 +1474,11 @@
       "source_url": "https://docs.perplexity.ai/docs/search/quickstart",
       "comment": "**Search API** (`POST /search`) \u2192 matrix `balanced`: raw ranked `results[]` (anysearch SDK). **Sonar** (`POST /chat/completions`) \u2192 model `sonar`\u2192balanced (grounded answer + citations), `sonar-pro`\u2192deep (multi-source research synthesis). Same `PERPLEXITY_API_KEY`."
     },
+    "pricing_per_1k": {
+      "value": "search: $5; fast/sonar low: $5; balanced: $8-$10; deep/high/pro: $12-$22 + tokens",
+      "source_url": "https://docs.perplexity.ai/getting-started/pricing",
+      "comment": "Search API is request-only; Sonar tiers add token charges and request fees by context size/search type."
+    },
     "notes": "Native SDK package: perplexityai. Search API (`POST /search`) is in the anysearch SDK; Sonar (`POST /chat/completions`) is documented in the matrix but not wired in the SDK yet."
   },
   {
@@ -1396,6 +1565,11 @@
       ],
       "source_url": "https://docs.searxng.org/dev/search_api.html",
       "comment": "Meta-search JSON API: result richness depends on configured engines, not a global depth flag. Matrix `balanced` = default instance search."
+    },
+    "pricing_per_1k": {
+      "value": "$0 API fee if self-hosted; infra/proxy costs separate",
+      "source_url": "https://docs.searxng.org/",
+      "comment": "Open-source self-hosted metasearch; operating costs depend on deployment."
     },
     "notes": "No API key required (keyless fallback)."
   },
@@ -1484,6 +1658,11 @@
       "source_url": "https://www.searchapi.io/docs/google",
       "comment": "Google engine wrapper: single SERP depth per request (no native fast/deep tier)."
     },
+    "pricing_per_1k": {
+      "value": "balanced: published plans vary; roughly $2-$4+",
+      "source_url": "https://www.searchapi.io/pricing",
+      "comment": "Pricing is plan/volume based; verify current SearchApi.io plan before budgeting."
+    },
     "notes": ""
   },
   {
@@ -1570,6 +1749,11 @@
       ],
       "source_url": "https://serper.dev/docs",
       "comment": "Google SERP proxy: one ranked result style per call (no fast/deep API knob). Matrix `balanced` = standard /search or /news endpoint."
+    },
+    "pricing_per_1k": {
+      "value": "balanced: $1.00 starter; $0.30-$0.75 volume",
+      "source_url": "https://serper.dev/",
+      "comment": "Top-up credit pricing; exact per-1K rate decreases with larger credit packs."
     },
     "notes": ""
   },
@@ -1660,6 +1844,11 @@
       "source_url": "https://docs.tavily.com/documentation/best-practices/best-practices-search",
       "comment": "**Search API** `search_depth`: `ultra-fast`/`fast`\u2192fast, `basic`\u2192balanced (`include_answer` is a short blurb, not deep research). **Research API** (`POST /research`) `model`: `mini`/`auto`\u2192balanced, `pro`\u2192deep (multi-agent cited report). Same `TAVILY_API_KEY`."
     },
+    "pricing_per_1k": {
+      "value": "fast/basic: ~$8; balanced/advanced: ~$16; deep/research: plan/model dependent",
+      "source_url": "https://help.tavily.com/articles/8816424538-pricing",
+      "comment": "Uses API credits; pay-as-you-go credits are listed at $0.008/credit, with higher-depth calls consuming more credits."
+    },
     "notes": "Native SDK package: tavily-python. Search API is in the anysearch SDK; Research API (`POST /research`) is documented in the matrix (use `tavily-python` `research()` / `get_research()`)."
   },
   {
@@ -1747,6 +1936,11 @@
       "source_url": "https://serpapi.com/yahoo-search-api",
       "comment": "Fixed SerpApi backend `engine=yahoo` (set via anysearch `engine=\"yahoo\"` with `provider=\"serpapi\"`). No separate fast/deep tier on this engine."
     },
+    "pricing_per_1k": {
+      "value": "balanced: $25 starter; ~$7.25-$15 volume",
+      "source_url": "https://serpapi.com/pricing",
+      "comment": "Monthly plan price divided by included searches; applies to all SerpApi engine rows."
+    },
     "notes": "SerpApi proxy to Yahoo (`engine=yahoo`). Native SDK package: google-search-results."
   },
   {
@@ -1833,6 +2027,11 @@
       ],
       "source_url": "https://serpapi.com/yandex-search-api",
       "comment": "Fixed SerpApi backend `engine=yandex` (set via anysearch `engine=\"yandex\"` with `provider=\"serpapi\"`). No separate fast/deep tier on this engine."
+    },
+    "pricing_per_1k": {
+      "value": "balanced: $25 starter; ~$7.25-$15 volume",
+      "source_url": "https://serpapi.com/pricing",
+      "comment": "Monthly plan price divided by included searches; applies to all SerpApi engine rows."
     },
     "notes": "SerpApi proxy to Yandex (`engine=yandex`). Native SDK package: google-search-results."
   },
@@ -1922,6 +2121,11 @@
       ],
       "source_url": "https://you.com/docs/search/overview",
       "comment": "**Search API** (`POST /v1/search`) \u2192 matrix `balanced` (ranked snippets, SDK). **Research API** (`POST /v1/research`) \u2192 `research_effort`: `lite`\u2192fast, `standard`\u2192balanced, `deep` / `exhaustive`\u2192deep (cited synthesis). Same `YDC_API_KEY`."
+    },
+    "pricing_per_1k": {
+      "value": "search: $5; research lite: $12; deeper research: tier dependent",
+      "source_url": "https://you.com/pricing",
+      "comment": "Search API is $5/1K calls; Research API starts at $12/1K and increases by effort tier."
     },
     "notes": "Search API (`POST /v1/search`) is in the anysearch SDK; Research API (`POST /v1/research`) is documented in the matrix but not wired in the SDK yet."
   }

@@ -85,5 +85,10 @@
     "source_url": "https://docs.tavily.com/documentation/best-practices/best-practices-search",
     "comment": "**Search API** `search_depth`: `ultra-fast`/`fast`\u2192fast, `basic`\u2192balanced (`include_answer` is a short blurb, not deep research). **Research API** (`POST /research`) `model`: `mini`/`auto`\u2192balanced, `pro`\u2192deep (multi-agent cited report). Same `TAVILY_API_KEY`."
   },
+  "pricing_per_1k": {
+    "value": "fast/basic: ~$8; balanced/advanced: ~$16; deep/research: plan/model dependent",
+    "source_url": "https://help.tavily.com/articles/8816424538-pricing",
+    "comment": "Uses API credits; pay-as-you-go credits are listed at $0.008/credit, with higher-depth calls consuming more credits."
+  },
   "notes": "Native SDK package: tavily-python. Search API is in the anysearch SDK; Research API (`POST /research`) is documented in the matrix (use `tavily-python` `research()` / `get_research()`)."
 }

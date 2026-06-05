@@ -21,6 +21,7 @@ from search_matrix_provider_meta import (  # noqa: E402
     FEATURE_META,
     MATRIX_NOTES,
     PARTIAL_NOTES,
+    PRICING_META,
     SERPAPI_MATRIX_ENGINES,
     SUPPORT_OVERRIDE,
     ai_matrix_display,
@@ -152,6 +153,20 @@ def build_provider(row: dict, *, slug: str | None = None, display: str | None = 
     engine_hint = slug.removeprefix("serpapi_") if slug.startswith("serpapi_") else None
     mode = mode_for(slug, docs, website, engine=engine_hint)
     out["mode"] = list_val(mode["values"], mode["source_url"], mode["comment"])
+    pricing = PRICING_META.get(slug)
+    if pricing is None and slug.startswith("serpapi_"):
+        pricing = PRICING_META.get("serpapi")
+    if pricing is None:
+        pricing = {
+            "value": "Pricing not published as a fixed per-query API rate.",
+            "source_url": docs or website,
+            "comment": "No mode-specific per-1K search price was available in public docs.",
+        }
+    out["pricing_per_1k"] = string_val(
+        pricing["value"],
+        pricing["source_url"],
+        pricing["comment"],
+    )
 
     notes = []
     if not row["requires_key"]:
@@ -259,6 +274,16 @@ def build_ai_matrix_provider(base_row: dict, entry: dict) -> dict:
 
     mode = mode_for(slug, docs, website)
     out["mode"] = list_val(mode["values"], mode["source_url"], mode["comment"])
+    pricing = PRICING_META.get(slug) or {
+        "value": "Pricing not published as a fixed per-query API rate.",
+        "source_url": docs,
+        "comment": "No mode-specific per-1K search price was available in public docs.",
+    }
+    out["pricing_per_1k"] = string_val(
+        pricing["value"],
+        pricing["source_url"],
+        pricing["comment"],
+    )
     note = str(entry.get("notes") or "")
     endpoint = entry.get("endpoint")
     if endpoint:

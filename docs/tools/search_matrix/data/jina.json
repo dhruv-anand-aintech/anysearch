@@ -83,5 +83,10 @@
     "source_url": "https://jina.ai/reader/",
     "comment": "Reader Search has no vendor fast/synthesis mode knob. Default returns SERP + optional page markdown; `X-Respond-With: no-content` is a fetch shortcut, not a latency tier."
   },
+  "pricing_per_1k": {
+    "value": "token-based; no fixed per-query CPM",
+    "source_url": "https://jina.ai/reader/",
+    "comment": "Reader/Search usage is priced by tokens/usage tiers rather than a fixed per-1K query price."
+  },
   "notes": ""
 }

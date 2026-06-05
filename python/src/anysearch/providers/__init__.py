@@ -13,6 +13,7 @@ from .gemini import GeminiProvider
 from .google_pse import GooglePSEProvider
 from .jina import JinaProvider
 from .kagi import KagiProvider
+from .keiro import KeiroProvider
 from .linkup import LinkupProvider
 from .parallel import ParallelProvider
 from .perplexity import PerplexityProvider
@@ -28,6 +29,7 @@ PROVIDER_CLASSES: List[Type[BaseProvider]] = [
     ParallelProvider,
     TavilyProvider,
     BraveProvider,
+    KeiroProvider,
     LinkupProvider,
     PerplexityProvider,
     GeminiProvider,

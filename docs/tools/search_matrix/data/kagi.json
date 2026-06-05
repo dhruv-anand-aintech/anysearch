@@ -83,5 +83,10 @@
     "source_url": "https://help.kagi.com/kagi/api/search.html",
     "comment": "No request `mode`; snippet length comes from account Settings \u2192 Search."
   },
+  "pricing_per_1k": {
+    "value": "not publicly itemized per 1K for Search API",
+    "source_url": "https://help.kagi.com/kagi/api/overview.html",
+    "comment": "Kagi documents pay-per-use API portal billing but not a stable public Search API CPM in docs."
+  },
   "notes": ""
 }

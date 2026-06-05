@@ -10,6 +10,7 @@ import { gemini } from "./gemini.js";
 import { googlePse } from "./googlePse.js";
 import { jina } from "./jina.js";
 import { kagi } from "./kagi.js";
+import { keiro } from "./keiro.js";
 import { linkup } from "./linkup.js";
 import { parallel } from "./parallel.js";
 import { perplexity } from "./perplexity.js";
@@ -26,6 +27,7 @@ export const PROVIDER_SPECS: ProviderSpec[] = [
   parallel,
   tavily,
   brave,
+  keiro,
   linkup,
   perplexity,
   gemini,

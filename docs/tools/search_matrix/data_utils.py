@@ -145,6 +145,9 @@ def llms_txt() -> None:
                 vals = cell.get("values") or []
                 lines.append(f"- {label}: {', '.join(vals) if vals else 'none'}")
                 continue
+            if isinstance(cell, dict) and "value" in cell:
+                lines.append(f"- {label}: {cell.get('value') or 'none'}")
+                continue
             sup = cell.get("support", "") if isinstance(cell, dict) else ""
             if sup:
                 lines.append(f"- {label}: {sup}")

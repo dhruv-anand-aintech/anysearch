@@ -20,6 +20,10 @@ LINKS: dict[str, dict[str, str]] = {
         "docs": "https://api-dashboard.search.brave.com/app/documentation/web-search/get-started",
         "website": "https://brave.com/search/api/",
     },
+    "keiro": {
+        "docs": "https://keirolabs.cloud/",
+        "website": "https://keirolabs.cloud",
+    },
     "linkup": {
         "docs": "https://docs.linkup.so/pages/documentation/endpoints/search/overview",
         "website": "https://www.linkup.so",
@@ -70,6 +74,7 @@ EXTRA_SOURCES: dict[str, str] = {
     "exa": "https://pypi.org/project/exa-py/",
     "parallel": "https://pypi.org/project/parallel-web/",
     "tavily": "https://pypi.org/project/tavily-python/",
+    "keiro": "https://pypi.org/project/keirolabs/",
     "linkup": "https://docs.linkup.so/pages/sdk/python/python",
     "perplexity": "https://pypi.org/project/perplexityai/",
     "gemini": "https://pypi.org/project/google-genai/",
@@ -84,6 +89,7 @@ ENV_SOURCES: dict[str, str] = {
     "parallel": "https://docs.parallel.ai/getting-started/overview",
     "tavily": "https://docs.tavily.com/documentation/api-reference/endpoint/search",
     "brave": "https://api-dashboard.search.brave.com/app/documentation/web-search/get-started",
+    "keiro": "https://keirolabs.cloud/",
     "linkup": "https://docs.linkup.so/pages/documentation/endpoints/search/reference",
     "perplexity": "https://docs.perplexity.ai/docs/search/quickstart",
     "gemini": "https://ai.google.dev/gemini-api/docs/api-key",
@@ -134,6 +140,15 @@ MODE_META: dict[str, dict] = {
             "Native `depth`: `fast`, `standard` (balanced), or `deep` (multi-iteration agentic "
             "search-and-scrape). Cited synthesis uses `outputType=sourcedAnswer` (`answer=true` in "
             "anysearch), including at `deep` depth. anysearch: fast/balanced/deep→matching depth."
+        ),
+    },
+    "keiro": {
+        "values": ["fast", "balanced", "deep"],
+        "source": "https://keirolabs.cloud/",
+        "comment": (
+            "v2 Search `mode`: `light`→fast, `ai`→balanced, `deep`→deep. anysearch uses "
+            "`/api/v2/search/flash` for fast mode, `/api/v2/keiro` by default, "
+            "and `/api/v2/search/content` for full-text content."
         ),
     },
     "brave": {
@@ -244,6 +259,99 @@ MODE_META: dict[str, dict] = {
     },
 }
 
+PRICING_META: dict[str, dict[str, str]] = {
+    "exa": {
+        "value": "fast/balanced: $7; deep: $12; deep reasoning: $15",
+        "source_url": "https://exa.ai/pricing",
+        "comment": "Per 1K requests with up to 10 results; summaries and additional results are billed separately.",
+    },
+    "parallel": {
+        "value": "fast/search: $5; balanced/task: $10-$25; deep/task: $100-$300+",
+        "source_url": "https://docs.parallel.ai/resources/pricing",
+        "comment": "Search API is $5/1K requests; Task processors map roughly from Base/Core to Pro/Ultra for deeper modes.",
+    },
+    "tavily": {
+        "value": "fast/basic: ~$8; balanced/advanced: ~$16; deep/research: plan/model dependent",
+        "source_url": "https://help.tavily.com/articles/8816424538-pricing",
+        "comment": "Uses API credits; pay-as-you-go credits are listed at $0.008/credit, with higher-depth calls consuming more credits.",
+    },
+    "brave": {
+        "value": "balanced/search: $5-$9; deep/answers: $4 + tokens",
+        "source_url": "https://brave.com/search/api/",
+        "comment": "Search API pricing depends on Base AI vs Pro AI plan; Answers adds token charges.",
+    },
+    "keiro": {
+        "value": "fast/balanced: ~$0.50; content: ~$1.50; batch: ~$0.50",
+        "source_url": "https://keirolabs.cloud/",
+        "comment": "Keiro docs list credit costs per v2 endpoint and headline cost per 1,000 searches.",
+    },
+    "linkup": {
+        "value": "fast: €5; balanced/standard: €5; deep: €50",
+        "source_url": "https://linkup-api.readme.io/reference/credits",
+        "comment": "Fast and standard cost one credit/call; deep costs ten credits/call. Fast docs list €0.005/call.",
+    },
+    "perplexity": {
+        "value": "search: $5; fast/sonar low: $5; balanced: $8-$10; deep/high/pro: $12-$22 + tokens",
+        "source_url": "https://docs.perplexity.ai/getting-started/pricing",
+        "comment": "Search API is request-only; Sonar tiers add token charges and request fees by context size/search type.",
+    },
+    "gemini": {
+        "value": "balanced grounding: $35 + model tokens",
+        "source_url": "https://cloud.google.com/generative-ai-app-builder/pricing",
+        "comment": "Grounding with Google Search is billed per 1K grounded requests plus Gemini model token charges.",
+    },
+    "serper": {
+        "value": "balanced: $1.00 starter; $0.30-$0.75 volume",
+        "source_url": "https://serper.dev/",
+        "comment": "Top-up credit pricing; exact per-1K rate decreases with larger credit packs.",
+    },
+    "serpapi": {
+        "value": "balanced: $25 starter; ~$7.25-$15 volume",
+        "source_url": "https://serpapi.com/pricing",
+        "comment": "Monthly plan price divided by included searches; applies to all SerpApi engine rows.",
+    },
+    "searchapi": {
+        "value": "balanced: published plans vary; roughly $2-$4+",
+        "source_url": "https://www.searchapi.io/pricing",
+        "comment": "Pricing is plan/volume based; verify current SearchApi.io plan before budgeting.",
+    },
+    "you": {
+        "value": "search: $5; research lite: $12; deeper research: tier dependent",
+        "source_url": "https://you.com/pricing",
+        "comment": "Search API is $5/1K calls; Research API starts at $12/1K and increases by effort tier.",
+    },
+    "jina": {
+        "value": "token-based; no fixed per-query CPM",
+        "source_url": "https://jina.ai/reader/",
+        "comment": "Reader/Search usage is priced by tokens/usage tiers rather than a fixed per-1K query price.",
+    },
+    "kagi": {
+        "value": "not publicly itemized per 1K for Search API",
+        "source_url": "https://help.kagi.com/kagi/api/overview.html",
+        "comment": "Kagi documents pay-per-use API portal billing but not a stable public Search API CPM in docs.",
+    },
+    "firecrawl": {
+        "value": "balanced/search: 1 credit; with scrape: +1 credit/result",
+        "source_url": "https://docs.firecrawl.dev/api-reference/endpoint/search",
+        "comment": "Convert credits to dollars from your Firecrawl plan; search without scrape costs one credit.",
+    },
+    "google_pse": {
+        "value": "balanced: $5",
+        "source_url": "https://support.google.com/programmable-search/answer/9069107",
+        "comment": "Custom Search JSON API and Programmable Search Element paid API are listed at $5/1K queries.",
+    },
+    "searxng": {
+        "value": "$0 API fee if self-hosted; infra/proxy costs separate",
+        "source_url": "https://docs.searxng.org/",
+        "comment": "Open-source self-hosted metasearch; operating costs depend on deployment.",
+    },
+    "duckduckgo": {
+        "value": "$0 API fee via keyless DDGS client; unofficial/fragile",
+        "source_url": "https://pypi.org/project/ddgs/",
+        "comment": "No paid official web search API is used by anysearch's keyless fallback.",
+    },
+}
+
 # Per-feature support overrides (when code supports more/less than capabilities frozenset).
 SUPPORT_OVERRIDE: dict[str, dict[str, str]] = {
     "google_pse": {
@@ -269,6 +377,9 @@ SUPPORT_OVERRIDE: dict[str, dict[str, str]] = {
     "parallel": {
         "answer": "full",
     },
+    "keiro": {
+        "content": "full",
+    },
     "serpapi_yandex": {
         "news": "none",
     },
@@ -291,6 +402,10 @@ MATRIX_NOTES: dict[str, str] = {
     "parallel": (
         "Search API is in the anysearch SDK; Task API (`POST /v1/tasks/runs`) is documented "
         "in the matrix but not wired in the SDK yet."
+    ),
+    "keiro": (
+        "SDK maps default v2 search to `/api/v2/keiro`, `mode=fast` to "
+        "`/api/v2/search/flash`, and `include_content=true` to `/api/v2/search/content`."
     ),
     "tavily": (
         "Search API is in the anysearch SDK; Research API (`POST /research`) is documented "
@@ -439,6 +554,18 @@ FEATURE_META: dict[str, dict[str, dict[str, str]]] = {
         "content": {
             "source": "https://docs.linkup.so/pages/documentation/endpoints/search/overview",
             "comment": "`outputType`: `searchResults` with page content in standard/deep depths.",
+        },
+    },
+    "keiro": {
+        "content": {
+            "source": "https://keirolabs.cloud/",
+            "comment": (
+                "`/api/v2/search/content` returns full page markdown (`full_text`) and optional chunks."
+            ),
+        },
+        "snippet": {
+            "source": "https://keirolabs.cloud/",
+            "comment": "`results[]` include title, URL, snippet, score, and optional published date.",
         },
     },
     "brave": {

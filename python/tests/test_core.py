@@ -18,7 +18,7 @@ from anysearch.types import SearchRequest
 
 def test_all_providers_registered():
     names = list_provider_names()
-    for required in ("exa", "parallel", "serpapi", "brave"):
+    for required in ("exa", "parallel", "serpapi", "brave", "keiro"):
         assert required in names
     assert len(names) >= 15
     assert "gemini" in names
@@ -28,6 +28,7 @@ def test_aliases_resolve():
     assert get_provider_class("serp").name == "serpapi"
     assert get_provider_class("ddg").name == "duckduckgo"
     assert get_provider_class("google").name == "google_pse"
+    assert get_provider_class("keirolabs").name == "keiro"
 
 
 def test_available_and_select_with_env():
@@ -55,6 +56,68 @@ def test_exa_supports_domains_and_content():
     exa = get_provider_class("exa")
     assert Capability.DOMAINS in exa.capabilities
     assert Capability.CONTENT in exa.capabilities
+
+
+@respx.mock
+def test_keiro_default_cited_search_normalizes_response():
+    route = respx.post("https://kierolabs.space/api/v2/keiro").mock(
+        return_value=httpx.Response(
+            200,
+            json={
+                "query": "q",
+                "total_results": 1,
+                "latency_ms": 123,
+                "results": [
+                    {
+                        "title": "Keiro result",
+                        "url": "https://k.example/a",
+                        "snippet": "cited snippet",
+                        "score": 0.82,
+                        "published_date": "2026-05-27",
+                    }
+                ],
+            },
+        )
+    )
+    client = AnySearch(provider="keiro", api_key="keiro-test", env={})
+    resp = client.search("q", max_results=5)
+
+    assert route.called
+    payload = json.loads(route.calls.last.request.content)
+    assert route.calls.last.request.headers["authorization"] == "Bearer keiro-test"
+    assert payload["query"] == "q"
+    assert payload["maxResults"] == 5
+    assert resp.provider == "keiro"
+    assert resp.total_results == 1
+    assert resp.latency_ms == 123
+    assert resp.results[0].snippet == "cited snippet"
+    assert resp.results[0].published_date == "2026-05-27"
+
+
+@respx.mock
+def test_keiro_content_route_returns_full_text():
+    route = respx.post("https://kierolabs.space/api/v2/search/content").mock(
+        return_value=httpx.Response(
+            200,
+            json={
+                "results": [
+                    {
+                        "title": "Full text",
+                        "url": "https://k.example/full",
+                        "full_text": "markdown body",
+                        "score": 0.9,
+                    }
+                ]
+            },
+        )
+    )
+    client = AnySearch(provider="keiro", api_key="keiro-test", env={})
+    resp = client.search("q", include_content=True, mode="deep")
+
+    payload = json.loads(route.calls.last.request.content)
+    assert payload["mode"] == "deep"
+    assert resp.results[0].text == "markdown body"
+    assert resp.results[0].snippet == "markdown body"
 
 
 @respx.mock

@@ -32,7 +32,7 @@ afterEach(() => {
 
 test("all required providers registered", () => {
   const names = listProviderNames();
-  for (const required of ["exa", "parallel", "serpapi", "brave"]) {
+  for (const required of ["exa", "parallel", "serpapi", "brave", "keiro"]) {
     assert.ok(names.includes(required), `${required} missing`);
   }
   assert.ok(names.includes("gemini"));
@@ -43,6 +43,7 @@ test("aliases resolve to canonical providers", () => {
   assert.equal(getProviderSpec("serp").name, "serpapi");
   assert.equal(getProviderSpec("ddg").name, "duckduckgo");
   assert.equal(getProviderSpec("google").name, "google_pse");
+  assert.equal(getProviderSpec("keirolabs").name, "keiro");
 });
 
 test("availability and selection from env", () => {
@@ -53,6 +54,71 @@ test("availability and selection from env", () => {
   assert.ok(avail.includes("exa") && avail.includes("tavily"));
   assert.equal(selectProvider(env), "exa");
   assert.equal(selectProvider({ ANYSEARCH_PROVIDER: "tavily", EXA_API_KEY: "x" }), "tavily");
+});
+
+test("keiro default cited search normalizes response", async () => {
+  let sentBody: any;
+  let sentHeaders: Headers;
+  mockFetch({
+    "kierolabs.space/api/v2/keiro": (_url, init) => {
+      sentBody = JSON.parse(String(init.body));
+      sentHeaders = new Headers(init.headers);
+      return {
+        status: 200,
+        body: {
+          query: "q",
+          total_results: 1,
+          latency_ms: 123,
+          results: [
+            {
+              title: "Keiro result",
+              url: "https://k.example/a",
+              snippet: "cited snippet",
+              score: 0.82,
+              published_date: "2026-05-27",
+            },
+          ],
+        },
+      };
+    },
+  });
+  const client = new AnySearch({ provider: "keiro", apiKey: "keiro-test", env: {} });
+  const resp = await client.search("q", { maxResults: 5 });
+  assert.equal(sentHeaders!.get("authorization"), "Bearer keiro-test");
+  assert.equal(sentBody.query, "q");
+  assert.equal(sentBody.maxResults, 5);
+  assert.equal(resp.provider, "keiro");
+  assert.equal(resp.totalResults, 1);
+  assert.equal(resp.latencyMs, 123);
+  assert.equal(resp.results[0].snippet, "cited snippet");
+  assert.equal(resp.results[0].publishedDate, "2026-05-27");
+});
+
+test("keiro content route returns full text", async () => {
+  let sentBody: any;
+  mockFetch({
+    "kierolabs.space/api/v2/search/content": (_url, init) => {
+      sentBody = JSON.parse(String(init.body));
+      return {
+        status: 200,
+        body: {
+          results: [
+            {
+              title: "Full text",
+              url: "https://k.example/full",
+              full_text: "markdown body",
+              score: 0.9,
+            },
+          ],
+        },
+      };
+    },
+  });
+  const client = new AnySearch({ provider: "keiro", apiKey: "keiro-test", env: {} });
+  const resp = await client.search("q", { includeContent: true, mode: "deep" });
+  assert.equal(sentBody.mode, "deep");
+  assert.equal(resp.results[0].text, "markdown body");
+  assert.equal(resp.results[0].snippet, "markdown body");
 });
 
 test("capability enforcement modes", () => {

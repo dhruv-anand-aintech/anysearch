@@ -38,6 +38,7 @@ tavily = ["tavily-python>=0.5"]
 perplexity = ["perplexityai>=0.4"]
 gemini = ["google-genai>=1.0"]
 linkup = ["linkup-sdk>=0.2"]
+keiro = ["keirolabs>=0.1"]
 firecrawl = ["firecrawl-py>=1.0"]
 serpapi = ["google-search-results>=2.4"]
 duckduckgo = ["ddgs>=6.0"]
@@ -59,6 +60,7 @@ all = [
     "perplexityai>=0.4",
     "google-genai>=1.0",
     "linkup-sdk>=0.2",
+    "keirolabs>=0.1",
     "firecrawl-py>=1.0",
     "google-search-results>=2.4",
     "ddgs>=6.0",

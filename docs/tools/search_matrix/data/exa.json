@@ -85,5 +85,10 @@
     "source_url": "https://exa.ai/docs/reference/search-api-guide",
     "comment": "POST /search `type`: `instant`/`fast` (latency), `auto` (balanced), `deep` / `deep-lite` / `deep-reasoning` (agentic multi-source synthesis; optional `output_schema`). anysearch: fast\u2192fast, balanced\u2192auto, deep\u2192deep."
   },
+  "pricing_per_1k": {
+    "value": "fast/balanced: $7; deep: $12; deep reasoning: $15",
+    "source_url": "https://exa.ai/pricing",
+    "comment": "Per 1K requests with up to 10 results; summaries and additional results are billed separately."
+  },
   "notes": "Native SDK package: exa-py."
 }
