@@ -32,7 +32,7 @@ afterEach(() => {
 
 test("all required providers registered", () => {
   const names = listProviderNames();
-  for (const required of ["exa", "parallel", "serpapi", "brave"]) {
+  for (const required of ["exa", "parallel", "serpapi", "brave", "keiro"]) {
     assert.ok(names.includes(required), `${required} missing`);
   }
   assert.ok(names.includes("gemini"));
@@ -119,6 +119,49 @@ test("tavily answer and raw content", async () => {
   assert.equal(resp.answer, "the answer");
   assert.equal(resp.results[0].text, "raw text");
   assert.equal(resp.results[0].snippet, "snippet");
+});
+
+test("keiro source cited search normalizes answer and citations", async () => {
+  mockFetch({
+    "api.keiro.ai/v2/source-cited-search": (_url, init) => {
+      const body = JSON.parse(String(init.body));
+      assert.equal(body.query, "source cited search");
+      assert.equal(body.answer, true);
+      assert.equal(body.include_content, true);
+      assert.deepEqual(body.include_domains, ["example.com"]);
+      assert.equal(body.mode, "deep");
+      return {
+        status: 200,
+        body: {
+          request_id: "keiro-req-1",
+          answer: { text: "Keiro returns cited answers." },
+          sources: [
+            {
+              title: "Keiro source",
+              url: "https://example.com/keiro",
+              snippet: "source snippet",
+              content: "source body",
+              score: 0.82,
+              published_date: "2026-06-01",
+            },
+          ],
+        },
+      };
+    },
+  });
+  const client = new AnySearch({ provider: "keiro", apiKey: "keiro-test", env: {} });
+  const resp = await client.search("source cited search", {
+    answer: true,
+    includeContent: true,
+    includeDomains: ["example.com"],
+    mode: "deep",
+  });
+  assert.equal(resp.provider, "keiro");
+  assert.equal(resp.requestId, "keiro-req-1");
+  assert.equal(resp.answer, "Keiro returns cited answers.");
+  assert.equal(resp.results[0].title, "Keiro source");
+  assert.equal(resp.results[0].text, "source body");
+  assert.equal(resp.results[0].source, "example.com");
 });
 
 test("fallback on provider error", async () => {

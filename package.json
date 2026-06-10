@@ -13,6 +13,6 @@
     "deploy:matrix": "npm run matrix:sync && npm run matrix:verify-page && wrangler deploy --config wrangler.toml"
   },
   "devDependencies": {
-    "wrangler": "^4.18.0"
+    "wrangler": "^4.98.0"
   }
 }

@@ -1,6 +1,6 @@
 # anysearch Search API Provider Matrix
 
-Providers: 22. Unified parameters and response fields supported via anysearch.
+Providers: 23. Unified parameters and response fields supported via anysearch.
 
 ## Baidu · SerpApi
 - Docs: https://serpapi.com/baidu-search-api
@@ -178,6 +178,21 @@ Providers: 22. Unified parameters and response fields supported via anysearch.
 - Mode: balanced
 - AI Answer: none
 - Full text: none
+- Summary: none
+- Highlights: none
+- News: none
+
+## Keiro
+- Docs: https://www.keirolabs.cloud/docs/api-reference/research
+- Env: KEIRO_API_KEY
+- Domain filters: full
+- Country: none
+- Language: none
+- Date range: full
+- Safe search: none
+- Mode: fast, balanced, deep
+- AI Answer: full
+- Full text: full
 - Summary: none
 - Highlights: none
 - News: none

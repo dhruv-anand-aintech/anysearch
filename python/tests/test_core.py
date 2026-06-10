@@ -18,7 +18,7 @@ from anysearch.types import SearchRequest
 
 def test_all_providers_registered():
     names = list_provider_names()
-    for required in ("exa", "parallel", "serpapi", "brave"):
+    for required in ("exa", "parallel", "serpapi", "brave", "keiro"):
         assert required in names
     assert len(names) >= 15
     assert "gemini" in names
@@ -177,6 +177,53 @@ def test_tavily_answer_and_content():
     assert resp.answer == "the answer"
     assert resp.results[0].text == "raw page text"
     assert resp.results[0].snippet == "snippet text"
+
+
+@respx.mock
+def test_keiro_source_cited_search_normalizes_answer_and_citations():
+    route = respx.post("https://api.keiro.ai/v2/source-cited-search").mock(
+        return_value=httpx.Response(
+            200,
+            json={
+                "request_id": "keiro-req-1",
+                "answer": {"text": "Keiro returns cited answers."},
+                "sources": [
+                    {
+                        "title": "Keiro source",
+                        "url": "https://example.com/keiro",
+                        "snippet": "source snippet",
+                        "content": "source body",
+                        "score": 0.82,
+                        "published_date": "2026-06-01",
+                    }
+                ],
+            },
+        )
+    )
+    client = AnySearch(provider="keiro", api_key="keiro-test", env={})
+    resp = client.search(
+        "source cited search",
+        answer=True,
+        include_content=True,
+        include_domains=["example.com"],
+        mode="deep",
+    )
+
+    assert route.called
+    sent = route.calls.last.request
+    assert sent.headers["authorization"] == "Bearer keiro-test"
+    payload = json.loads(sent.read())
+    assert payload["query"] == "source cited search"
+    assert payload["answer"] is True
+    assert payload["include_content"] is True
+    assert payload["include_domains"] == ["example.com"]
+    assert payload["mode"] == "deep"
+    assert resp.provider == "keiro"
+    assert resp.request_id == "keiro-req-1"
+    assert resp.answer == "Keiro returns cited answers."
+    assert resp.results[0].title == "Keiro source"
+    assert resp.results[0].text == "source body"
+    assert resp.results[0].source == "example.com"
 
 
 @respx.mock
