@@ -98,16 +98,37 @@ class AnySearch:
         cls = get_provider_class(name)
         canonical = cls.name
         if canonical not in self._instances:
-            config = dict(self.provider_config.get(canonical, {}))
-            config.setdefault("env", self._env)
-            # api_key / base_url overrides only apply to the explicitly named provider.
-            if self.provider and get_provider_class(self.provider).name == canonical:
-                if self.api_key:
-                    config.setdefault("api_key", self.api_key)
-                if self.base_url:
-                    config.setdefault("base_url", self.base_url)
-            self._instances[canonical] = cls(**config)
+            self._instances[canonical] = self._make_provider(cls, self.provider, self.api_key, self.base_url)
         return self._instances[canonical]
+
+    def _make_provider(
+        self,
+        cls: type[BaseProvider],
+        request_provider: Optional[str],
+        api_key: Optional[str],
+        base_url: Optional[str],
+    ) -> BaseProvider:
+        config = dict(self.provider_config.get(cls.name, {}))
+        config.setdefault("env", self._env)
+        is_named = request_provider is not None and get_provider_class(request_provider).name == cls.name
+        if is_named:
+            if api_key:
+                config.setdefault("api_key", api_key)
+            if base_url:
+                config.setdefault("base_url", base_url)
+        return cls(**config)
+
+    def _provider_for_call(
+        self,
+        name: str,
+        request_provider: Optional[str],
+        api_key: Optional[str],
+        base_url: Optional[str],
+    ) -> BaseProvider:
+        if not api_key and not base_url:
+            return self._provider(name)
+        cls = get_provider_class(name)
+        return self._make_provider(cls, request_provider, api_key, base_url)
 
     # -- request building --------------------------------------------------
 
@@ -144,6 +165,8 @@ class AnySearch:
         override_fallbacks = params.pop("fallbacks", None)
         on_unsupported = params.pop("on_unsupported", None) or self.on_unsupported
         timeout = params.pop("timeout", None) or self.timeout
+        api_key = params.pop("api_key", None)
+        base_url = params.pop("base_url", None)
 
         primary = provider or select_provider(self._env, self.priority)
         chain = self._chain(primary, override_fallbacks)
@@ -153,7 +176,7 @@ class AnySearch:
             cls = get_provider_class(name)
             req = enforce_capabilities(cls, self._build_request(name, query, params), on_unsupported)
             try:
-                return self._provider(name).search(req, timeout=timeout)
+                return self._provider_for_call(name, provider, api_key, base_url).search(req, timeout=timeout)
             except _RECOVERABLE as exc:
                 last_error = exc
                 continue
@@ -164,6 +187,8 @@ class AnySearch:
         override_fallbacks = params.pop("fallbacks", None)
         on_unsupported = params.pop("on_unsupported", None) or self.on_unsupported
         timeout = params.pop("timeout", None) or self.timeout
+        api_key = params.pop("api_key", None)
+        base_url = params.pop("base_url", None)
 
         primary = provider or select_provider(self._env, self.priority)
         chain = self._chain(primary, override_fallbacks)
@@ -173,7 +198,7 @@ class AnySearch:
             cls = get_provider_class(name)
             req = enforce_capabilities(cls, self._build_request(name, query, params), on_unsupported)
             try:
-                return await self._provider(name).asearch(req, timeout=timeout)
+                return await self._provider_for_call(name, provider, api_key, base_url).asearch(req, timeout=timeout)
             except _RECOVERABLE as exc:
                 last_error = exc
                 continue

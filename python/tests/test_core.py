@@ -162,6 +162,40 @@ def test_exa_search_normalizes_response():
 
 
 @respx.mock
+def test_per_call_provider_overrides_set_api_key_and_base_url():
+    route = respx.post("https://override.example/search").mock(
+        return_value=httpx.Response(
+            200,
+            json={
+                "results": [
+                    {
+                        "title": "Override",
+                        "url": "https://override.example/r",
+                        "text": "ok",
+                    }
+                ]
+            },
+        )
+    )
+    client = AnySearch(env={})
+    resp = client.search(
+        "q",
+        provider="exa",
+        api_key="call-key",
+        base_url="https://override.example",
+    )
+
+    assert route.called
+    sent = route.calls.last.request
+    payload = json.loads(sent.content)
+    assert sent.headers["x-api-key"] == "call-key"
+    assert "api_key" not in payload
+    assert "base_url" not in payload
+    assert resp.provider == "exa"
+    assert resp.results[0].title == "Override"
+
+
+@respx.mock
 def test_gemini_google_search_grounding():
     respx.post(
         "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent"
@@ -283,6 +317,30 @@ def test_fallback_on_provider_error():
     resp = client.search("q")
     assert resp.provider == "tavily"
     assert resp.results[0].title == "ok"
+
+
+@respx.mock
+def test_per_call_provider_overrides_do_not_leak_to_fallbacks():
+    respx.post("https://override.example/search").mock(
+        return_value=httpx.Response(500, json={"error": "boom"})
+    )
+    tavily_route = respx.post("https://api.tavily.com/search").mock(
+        return_value=httpx.Response(
+            200,
+            json={"results": [{"title": "fallback", "url": "https://ok.example", "content": "c"}]},
+        )
+    )
+    client = AnySearch(provider="exa", fallbacks=["tavily"], env={"TAVILY_API_KEY": "tvly-env"})
+    resp = client.search(
+        "q",
+        api_key="call-key",
+        base_url="https://override.example",
+    )
+
+    assert tavily_route.called
+    assert tavily_route.calls.last.request.headers["authorization"] == "Bearer tvly-env"
+    assert resp.provider == "tavily"
+    assert resp.results[0].title == "fallback"
 
 
 @respx.mock
