@@ -2,7 +2,7 @@ import type { HttpResponse } from "../http.js";
 import type { SearchRequest, SearchResponse } from "../types.js";
 import { finalize, result, type ProviderContext, type ProviderSpec } from "./base.js";
 
-const MODE: Record<string, string> = { fast: "fast", balanced: "balanced", deep: "deep" };
+const MODE: Record<string, string> = { fast: "light", balanced: "ai", deep: "deep" };
 
 function firstString(...values: unknown[]): string | undefined {
   for (const value of values) {
@@ -25,31 +25,34 @@ function answerText(data: any): string | undefined {
   return firstString(data?.answer, data?.answer?.text, data?.answer?.content, data?.data?.answer);
 }
 
+function endpointFor(req: SearchRequest): string {
+  if (req.includeContent) return "/api/v2/search/content";
+  if (req.mode) return "/api/v2/search/fast";
+  return "/api/v2/keirolabs";
+}
+
 export const keiro: ProviderSpec = {
   name: "keiro",
   envKeys: ["KEIRO_API_KEY"],
   baseUrlEnv: ["KEIRO_BASE_URL"],
-  defaultBaseUrl: "https://api.keiro.ai",
-  capabilities: new Set(["domains", "date", "mode", "answer", "content"]),
+  defaultBaseUrl: "https://kierolabs.space",
+  capabilities: new Set(["mode", "content"]),
 
   prepare(ctx: ProviderContext, req: SearchRequest) {
+    const endpoint = endpointFor(req);
     const body: Record<string, unknown> = {
+      apiKey: ctx.apiKey,
       query: req.query,
-      max_results: req.maxResults,
-      mode: MODE[req.mode ?? ""] ?? "balanced",
-      source_citations: true,
+      maxResults: req.maxResults,
     };
-    if (req.answer) body.answer = true;
-    if (req.includeContent) body.include_content = true;
-    if (req.includeDomains.length) body.include_domains = req.includeDomains;
-    if (req.excludeDomains.length) body.exclude_domains = req.excludeDomains;
-    if (req.startPublishedDate) body.start_published_date = req.startPublishedDate.slice(0, 10);
-    if (req.endPublishedDate) body.end_published_date = req.endPublishedDate.slice(0, 10);
+    if (endpoint !== "/api/v2/keirolabs") {
+      body.mode = MODE[req.mode ?? ""] ?? "ai";
+    }
     Object.assign(body, req.extra);
     return {
       method: "POST",
-      url: `${ctx.baseUrl}/v2/source-cited-search`,
-      headers: { Authorization: `Bearer ${ctx.apiKey ?? ""}`, "Content-Type": "application/json" },
+      url: `${ctx.baseUrl}${endpoint}`,
+      headers: { "Content-Type": "application/json" },
       json: body,
     };
   },
@@ -62,7 +65,7 @@ export const keiro: ProviderSpec = {
         title: firstString(item.title, item.name),
         url: firstString(item.url, item.link, item.source_url),
         snippet,
-        text: req.includeContent ? firstString(item.text, item.content, item.raw_content) : undefined,
+        text: req.includeContent ? firstString(item.full_text, item.text, item.content, item.raw_content) : undefined,
         score: typeof item.score === "number" ? item.score : undefined,
         publishedDate: firstString(item.published_date, item.publishedDate, item.date),
         raw: item,

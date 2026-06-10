@@ -18,7 +18,7 @@ Legend: ✅ supported · — not supported (the param is ignored for that provid
 | **parallel** | ✅ | ✅ | — | ✅ | — | ✅ | — | — | ✅ | — | ✅ | — |
 | **tavily** | ✅ | ✅ | — | ✅ | — | ✅ | — | ✅ | ✅ | — | — | ✅ |
 | **brave** | — | ✅ | ✅ | ✅ | ✅ | — | — | — | — | — | ✅ | ✅ |
-| **keiro** | ✅ | — | — | ✅ | — | ✅ | — | ✅ | ✅ | — | — | — |
+| **keiro** | — | — | — | — | — | ✅ | — | — | ✅ | — | — | — |
 | **linkup** | ✅ | — | — | ✅ | — | ✅ | — | ✅ | ✅ | — | — | — |
 | **perplexity** | ✅ | — | ✅ | — | — | — | — | — | ✅ | — | — | — |
 | **gemini** | — | — | — | — | — | — | — | ✅ | — | — | — | — |
@@ -79,7 +79,7 @@ synthesis/research APIs in one column when they share an API key (**Tavily**, **
 | perplexity | balanced, deep | Search API `POST /search` (SDK); Sonar `POST /chat/completions` — `sonar`, `sonar-pro` |
 | **gemini** | balanced | `generateContent` + `google_search` tool (grounded synthesis) |
 | brave | balanced, deep | Web/news SERP; Answers `/chat/completions` (`enable_research` → deep) |
-| keiro | fast, balanced, deep | v2 source-cited search; REST adapter posts to `/v2/source-cited-search` |
+| keiro | fast, balanced, deep | v2 search endpoints; REST adapter posts `apiKey` in the JSON body |
 | you | fast, balanced, deep | `POST /v1/search` (SDK); Research `research_effort`: lite, standard, deep, exhaustive |
 | serper, serpapi, searchapi, google_pse, searxng, duckduckgo, jina, firecrawl, kagi | balanced | No fast or synthesis depth preset |
 
@@ -97,7 +97,7 @@ the SDK still maps to Search `advanced` retrieval — matrix `deep` is the Resea
 - **`highlights`** — query-relevant excerpts. Request with `highlights` (exa, brave,
   parallel, you).
 - **`answer`** (top-level on the response) — a synthesized, often cited answer to the
-  whole query. Request with `answer` (gemini, tavily, keiro, linkup; opportunistic on serper/serpapi/
+  whole query. Request with `answer` (gemini, tavily, linkup; opportunistic on serper/serpapi/
   searchapi/searxng).
 
 ## Configuration reference

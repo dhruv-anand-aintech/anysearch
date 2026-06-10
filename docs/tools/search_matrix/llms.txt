@@ -183,15 +183,15 @@ Providers: 23. Unified parameters and response fields supported via anysearch.
 - News: none
 
 ## Keiro
-- Docs: https://www.keirolabs.cloud/docs/api-reference/research
+- Docs: https://keirolabs.cloud/
 - Env: KEIRO_API_KEY
-- Domain filters: full
+- Domain filters: none
 - Country: none
 - Language: none
-- Date range: full
+- Date range: none
 - Safe search: none
 - Mode: fast, balanced, deep
-- AI Answer: full
+- AI Answer: none
 - Full text: full
 - Summary: none
 - Highlights: none

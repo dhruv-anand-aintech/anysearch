@@ -1049,79 +1049,79 @@
   {
     "name": "Keiro",
     "links": {
-      "docs": "https://www.keirolabs.cloud/docs/api-reference/research",
+      "docs": "https://keirolabs.cloud/",
       "github": "https://github.com/dhruv-anand-aintech/anysearch",
-      "website": "https://www.keirolabs.cloud",
+      "website": "https://keirolabs.cloud",
       "slug": "keiro"
     },
     "env_keys": {
       "value": "KEIRO_API_KEY",
-      "source_url": "https://www.keirolabs.cloud/docs/api-reference/research",
+      "source_url": "https://keirolabs.cloud/",
       "comment": "API keys and configuration variables documented by the provider."
     },
     "python_extra": {
       "value": "\u2014 (REST only)",
-      "source_url": "https://www.keirolabs.cloud/docs/api-reference/research",
+      "source_url": "https://keirolabs.cloud/",
       "comment": "HTTP API only; no required vendor Python SDK."
     },
     "requires_key": {
       "support": "full",
-      "source_url": "https://www.keirolabs.cloud/docs/api-reference/research",
+      "source_url": "https://keirolabs.cloud/",
       "comment": "Valid API key required for every request."
     },
     "snippet": {
       "support": "full",
-      "source_url": "https://www.keirolabs.cloud/docs/api-reference/research",
-      "comment": "Source rows are normalized from `results`, `sources`, `citations`, or nested answer sources."
+      "source_url": "https://keirolabs.cloud/",
+      "comment": "Source rows are normalized from v2 `results` or compatible source arrays."
     },
     "domains": {
-      "support": "full",
-      "source_url": "https://www.keirolabs.cloud/docs/api-reference/research",
-      "comment": "`include_domains` / `exclude_domains` are forwarded to the v2 source-cited search body."
+      "support": "none",
+      "source_url": "https://keirolabs.cloud/",
+      "comment": "Domain filters"
     },
     "country": {
       "support": "none",
-      "source_url": "https://www.keirolabs.cloud/docs/api-reference/research",
+      "source_url": "https://keirolabs.cloud/",
       "comment": "Country (gl)"
     },
     "language": {
       "support": "none",
-      "source_url": "https://www.keirolabs.cloud/docs/api-reference/research",
+      "source_url": "https://keirolabs.cloud/",
       "comment": "Language"
     },
     "date": {
-      "support": "full",
-      "source_url": "https://www.keirolabs.cloud/docs/api-reference/research",
-      "comment": "`start_published_date` / `end_published_date` are forwarded as YYYY-MM-DD values."
+      "support": "none",
+      "source_url": "https://keirolabs.cloud/",
+      "comment": "Published date range"
     },
     "safe_search": {
       "support": "none",
-      "source_url": "https://www.keirolabs.cloud/docs/api-reference/research",
+      "source_url": "https://keirolabs.cloud/",
       "comment": "Safe search"
     },
     "answer": {
-      "support": "full",
-      "source_url": "https://www.keirolabs.cloud/docs/api-reference/research",
-      "comment": "Top-level cited answer is normalized from `answer`, `answer.text`, or `answer.content`."
+      "support": "none",
+      "source_url": "https://keirolabs.cloud/",
+      "comment": "AI answer"
     },
     "content": {
       "support": "full",
-      "source_url": "https://www.keirolabs.cloud/docs/api-reference/research",
-      "comment": "`include_content=true` requests source content and maps `text` / `content` / `raw_content`."
+      "source_url": "https://keirolabs.cloud/",
+      "comment": "`include_content=true` routes to `/api/v2/search/content` and maps `full_text`."
     },
     "summary": {
       "support": "none",
-      "source_url": "https://www.keirolabs.cloud/docs/api-reference/research",
+      "source_url": "https://keirolabs.cloud/",
       "comment": "AI per-result summary"
     },
     "highlights": {
       "support": "none",
-      "source_url": "https://www.keirolabs.cloud/docs/api-reference/research",
+      "source_url": "https://keirolabs.cloud/",
       "comment": "Query highlights"
     },
     "news": {
       "support": "none",
-      "source_url": "https://www.keirolabs.cloud/docs/api-reference/research",
+      "source_url": "https://keirolabs.cloud/",
       "comment": "News search type"
     },
     "mode": {
@@ -1130,10 +1130,10 @@
         "balanced",
         "deep"
       ],
-      "source_url": "https://www.keirolabs.cloud/docs/api-reference/research",
-      "comment": "Source-cited v2 search exposed through `mode`: fast/balanced/deep in anysearch. Adapter sends `POST /v2/source-cited-search` with `source_citations=true`."
+      "source_url": "https://keirolabs.cloud/",
+      "comment": "v2 search endpoints exposed through `mode`: balanced uses `/api/v2/keirolabs`, fast/deep use `/api/v2/search/fast`, and content requests use `/api/v2/search/content`. KeiroLabs expects the API key in the JSON body."
     },
-    "notes": "Keiro source-cited v2 search is wired in the anysearch SDK as REST-only. Exact public endpoint/response docs were not independently verified."
+    "notes": "KeiroLabs v2 search is wired in the anysearch SDK as REST-only. The provider expects `apiKey`, `query`, and `maxResults` in the JSON request body."
   },
   {
     "name": "Linkup",

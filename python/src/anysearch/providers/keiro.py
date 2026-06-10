@@ -10,7 +10,7 @@ from .._http import PreparedRequest
 from ..types import SearchRequest, SearchResponse
 from .base import BaseProvider, Capability
 
-_MODE = {"fast": "fast", "balanced": "balanced", "deep": "deep"}
+_MODE = {"fast": "light", "balanced": "ai", "deep": "deep"}
 
 
 def _first_string(*values: Any) -> Optional[str]:
@@ -51,45 +51,40 @@ def _answer_text(data: Dict[str, Any]) -> Optional[str]:
     return None
 
 
+def _endpoint_for(req: SearchRequest) -> str:
+    if req.include_content:
+        return "/api/v2/search/content"
+    if req.mode:
+        return "/api/v2/search/fast"
+    return "/api/v2/keirolabs"
+
+
 class KeiroProvider(BaseProvider):
     name = "keiro"
     env_keys = ("KEIRO_API_KEY",)
     base_url_env = ("KEIRO_BASE_URL",)
-    default_base_url = "https://api.keiro.ai"
+    default_base_url = "https://kierolabs.space"
     capabilities = frozenset(
         {
-            Capability.DOMAINS,
-            Capability.DATE,
             Capability.MODE,
-            Capability.ANSWER,
             Capability.CONTENT,
         }
     )
 
     def prepare(self, req: SearchRequest) -> PreparedRequest:
+        endpoint = _endpoint_for(req)
         body: Dict[str, Any] = {
+            "apiKey": self.api_key,
             "query": req.query,
-            "max_results": req.max_results,
-            "mode": _MODE.get(req.mode or "", "balanced"),
-            "source_citations": True,
+            "maxResults": req.max_results,
         }
-        if req.answer:
-            body["answer"] = True
-        if req.include_content:
-            body["include_content"] = True
-        if req.include_domains:
-            body["include_domains"] = req.include_domains
-        if req.exclude_domains:
-            body["exclude_domains"] = req.exclude_domains
-        if req.start_published_date:
-            body["start_published_date"] = req.start_published_date[:10]
-        if req.end_published_date:
-            body["end_published_date"] = req.end_published_date[:10]
+        if endpoint != "/api/v2/keirolabs":
+            body["mode"] = _MODE.get(req.mode or "", "ai")
         body.update(req.extra)
         return PreparedRequest(
             method="POST",
-            url=f"{self.base_url}/v2/source-cited-search",
-            headers={"Authorization": f"Bearer {self.api_key}", "Content-Type": "application/json"},
+            url=f"{self.base_url}{endpoint}",
+            headers={"Content-Type": "application/json"},
             json=body,
         )
 
@@ -108,7 +103,9 @@ class KeiroProvider(BaseProvider):
                     title=_first_string(item.get("title"), item.get("name")),
                     url=_first_string(item.get("url"), item.get("link"), item.get("source_url")),
                     snippet=snippet,
-                    text=_first_string(item.get("text"), item.get("content"), item.get("raw_content"))
+                    text=_first_string(
+                        item.get("full_text"), item.get("text"), item.get("content"), item.get("raw_content")
+                    )
                     if req.include_content
                     else None,
                     score=item.get("score") if isinstance(item.get("score"), (int, float)) else None,

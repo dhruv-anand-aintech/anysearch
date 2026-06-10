@@ -46,7 +46,7 @@ glue code each time. `anysearch` normalizes all of it:
 | [Parallel](https://parallel.ai) | `parallel` | `PARALLEL_API_KEY` | content, highlights, domains, mode |
 | [Tavily](https://tavily.com) | `tavily` | `TAVILY_API_KEY` | answer, content, domains, mode, news |
 | [Brave](https://brave.com/search/api/) | `brave` | `BRAVE_API_KEY` | highlights, country, language, dates, news |
-| [Keiro](https://www.keirolabs.cloud) | `keiro` | `KEIRO_API_KEY` | source-cited answer, content, domains, dates, mode |
+| [Keiro](https://keirolabs.cloud) | `keiro` | `KEIRO_API_KEY` | source-cited snippets, content endpoint, mode |
 | [Linkup](https://linkup.so) | `linkup` | `LINKUP_API_KEY` | answer, content, domains, dates, mode |
 | [Perplexity](https://docs.perplexity.ai) | `perplexity`, `pplx` | `PERPLEXITY_API_KEY` | content, domains, language |
 | [Gemini](https://ai.google.dev/gemini-api/docs/google-search) | `gemini`, `google_gemini` | `GEMINI_API_KEY` | Google Search grounding, answer, source chunks |

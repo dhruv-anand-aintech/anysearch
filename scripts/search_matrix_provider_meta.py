@@ -21,8 +21,8 @@ LINKS: dict[str, dict[str, str]] = {
         "website": "https://brave.com/search/api/",
     },
     "keiro": {
-        "docs": "https://www.keirolabs.cloud/docs/api-reference/research",
-        "website": "https://www.keirolabs.cloud",
+        "docs": "https://keirolabs.cloud/",
+        "website": "https://keirolabs.cloud",
     },
     "linkup": {
         "docs": "https://docs.linkup.so/pages/documentation/endpoints/search/overview",
@@ -88,7 +88,7 @@ ENV_SOURCES: dict[str, str] = {
     "parallel": "https://docs.parallel.ai/getting-started/overview",
     "tavily": "https://docs.tavily.com/documentation/api-reference/endpoint/search",
     "brave": "https://api-dashboard.search.brave.com/app/documentation/web-search/get-started",
-    "keiro": "https://www.keirolabs.cloud/docs/api-reference/research",
+    "keiro": "https://keirolabs.cloud/",
     "linkup": "https://docs.linkup.so/pages/documentation/endpoints/search/reference",
     "perplexity": "https://docs.perplexity.ai/docs/search/quickstart",
     "gemini": "https://ai.google.dev/gemini-api/docs/api-key",
@@ -152,10 +152,11 @@ MODE_META: dict[str, dict] = {
     },
     "keiro": {
         "values": ["fast", "balanced", "deep"],
-        "source": "https://www.keirolabs.cloud/docs/api-reference/research",
+        "source": "https://keirolabs.cloud/",
         "comment": (
-            "Source-cited v2 search exposed through `mode`: fast/balanced/deep in anysearch. "
-            "Adapter sends `POST /v2/source-cited-search` with `source_citations=true`."
+            "v2 search endpoints exposed through `mode`: balanced uses `/api/v2/keirolabs`, "
+            "fast/deep use `/api/v2/search/fast`, and content requests use `/api/v2/search/content`. "
+            "KeiroLabs expects the API key in the JSON body."
         ),
     },
     "jina": {
@@ -310,8 +311,8 @@ MATRIX_NOTES: dict[str, str] = {
         "in the matrix (use `tavily-python` `research()` / `get_research()`)."
     ),
     "keiro": (
-        "Keiro source-cited v2 search is wired in the anysearch SDK as REST-only. "
-        "Exact public endpoint/response docs were not independently verified."
+        "KeiroLabs v2 search is wired in the anysearch SDK as REST-only. "
+        "The provider expects `apiKey`, `query`, and `maxResults` in the JSON request body."
     ),
 }
 
@@ -510,25 +511,13 @@ FEATURE_META: dict[str, dict[str, dict[str, str]]] = {
         },
     },
     "keiro": {
-        "domains": {
-            "source": "https://www.keirolabs.cloud/docs/api-reference/research",
-            "comment": "`include_domains` / `exclude_domains` are forwarded to the v2 source-cited search body.",
-        },
-        "date": {
-            "source": "https://www.keirolabs.cloud/docs/api-reference/research",
-            "comment": "`start_published_date` / `end_published_date` are forwarded as YYYY-MM-DD values.",
-        },
-        "answer": {
-            "source": "https://www.keirolabs.cloud/docs/api-reference/research",
-            "comment": "Top-level cited answer is normalized from `answer`, `answer.text`, or `answer.content`.",
-        },
         "content": {
-            "source": "https://www.keirolabs.cloud/docs/api-reference/research",
-            "comment": "`include_content=true` requests source content and maps `text` / `content` / `raw_content`.",
+            "source": "https://keirolabs.cloud/",
+            "comment": "`include_content=true` routes to `/api/v2/search/content` and maps `full_text`.",
         },
         "snippet": {
-            "source": "https://www.keirolabs.cloud/docs/api-reference/research",
-            "comment": "Source rows are normalized from `results`, `sources`, `citations`, or nested answer sources.",
+            "source": "https://keirolabs.cloud/",
+            "comment": "Source rows are normalized from v2 `results` or compatible source arrays.",
         },
     },
     "perplexity": {

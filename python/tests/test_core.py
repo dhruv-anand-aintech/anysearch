@@ -180,14 +180,15 @@ def test_tavily_answer_and_content():
 
 
 @respx.mock
-def test_keiro_source_cited_search_normalizes_answer_and_citations():
-    route = respx.post("https://api.keiro.ai/v2/source-cited-search").mock(
+def test_keiro_search_sends_documented_body_auth_and_normalizes_results():
+    route = respx.post("https://kierolabs.space/api/v2/keirolabs").mock(
         return_value=httpx.Response(
             200,
             json={
+                "query": "keiro search",
+                "total_results": 1,
                 "request_id": "keiro-req-1",
-                "answer": {"text": "Keiro returns cited answers."},
-                "sources": [
+                "results": [
                     {
                         "title": "Keiro source",
                         "url": "https://example.com/keiro",
@@ -201,29 +202,52 @@ def test_keiro_source_cited_search_normalizes_answer_and_citations():
         )
     )
     client = AnySearch(provider="keiro", api_key="keiro-test", env={})
-    resp = client.search(
-        "source cited search",
-        answer=True,
-        include_content=True,
-        include_domains=["example.com"],
-        mode="deep",
-    )
+    resp = client.search("keiro search", max_results=7)
 
     assert route.called
     sent = route.calls.last.request
-    assert sent.headers["authorization"] == "Bearer keiro-test"
+    assert "authorization" not in sent.headers
     payload = json.loads(sent.read())
-    assert payload["query"] == "source cited search"
-    assert payload["answer"] is True
-    assert payload["include_content"] is True
-    assert payload["include_domains"] == ["example.com"]
-    assert payload["mode"] == "deep"
+    assert payload["apiKey"] == "keiro-test"
+    assert payload["query"] == "keiro search"
+    assert payload["maxResults"] == 7
     assert resp.provider == "keiro"
     assert resp.request_id == "keiro-req-1"
-    assert resp.answer == "Keiro returns cited answers."
+    assert resp.total_results == 1
     assert resp.results[0].title == "Keiro source"
-    assert resp.results[0].text == "source body"
+    assert resp.results[0].snippet == "source snippet"
     assert resp.results[0].source == "example.com"
+
+
+@respx.mock
+def test_keiro_content_mode_uses_content_endpoint_and_full_text():
+    route = respx.post("https://kierolabs.space/api/v2/search/content").mock(
+        return_value=httpx.Response(
+            200,
+            json={
+                "results": [
+                    {
+                        "title": "Deep source",
+                        "url": "https://example.com/deep",
+                        "snippet": "deep snippet",
+                        "full_text": "full page markdown",
+                        "score": 0.91,
+                    }
+                ],
+            },
+        )
+    )
+    client = AnySearch(provider="keiro", api_key="keiro-test", env={})
+    resp = client.search("keiro content", include_content=True, max_results=2, mode="deep")
+
+    assert route.called
+    sent = route.calls.last.request
+    payload = json.loads(sent.read())
+    assert payload["apiKey"] == "keiro-test"
+    assert payload["query"] == "keiro content"
+    assert payload["maxResults"] == 2
+    assert payload["mode"] == "deep"
+    assert resp.results[0].text == "full page markdown"
 
 
 @respx.mock
