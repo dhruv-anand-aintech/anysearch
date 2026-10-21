@@ -38,7 +38,7 @@ def _validate_feature(filename: str, key: str, value: object) -> None:
     if not isinstance(value, dict):
         raise ValueError(f"{filename}: {key} must be an object")
     support = value.get("support")
-    if support not in {"", "none", "partial", "full", "unknown"}:
+    if support not in {"", "none", "partial", "full", "unknown", "not_applicable"}:
         raise ValueError(f"{filename}: {key}.support invalid: {support!r}")
     for req in ("source_url", "comment"):
         if req not in value or not isinstance(value[req], str):

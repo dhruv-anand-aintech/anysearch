@@ -14,7 +14,14 @@
       "name": "DeepSeek",
       "website": "https://www.deepseek.com",
       "effective_date": "2026-10-17",
-      "caveat": "Direct live guide rechecked October 21: Search 100 QPS and Fetch 25 QPS. Earlier indexed 5/5 snapshot is superseded. Direct API billing is separate from temporarily free server-side integrations, billed from October 31 16:00 UTC."
+      "caveat": "Direct live guide rechecked October 21: Search 100 QPS and Fetch 25 QPS. Earlier indexed 5/5 snapshot is superseded. Direct API billing is separate from temporarily free server-side integrations, billed from October 31 16:00 UTC.",
+      "primary_price": {
+        "amount_usd_per_1k": 0.75,
+        "billing_unit": "successful nonempty requests",
+        "basis": "Search; Fetch separately billed",
+        "source_url": "https://api-docs.deepseek.com/guides/search/",
+        "checked_at": "2026-10-21"
+      }
     },
     "exa": {
       "source_url": "https://exa.ai/pricing",
@@ -29,7 +36,14 @@
       "sources": [
         "https://exa.ai/blog/exa-3",
         "https://exa.ai/docs/reference/search"
-      ]
+      ],
+      "primary_price": {
+        "amount_usd_per_1k": 4,
+        "billing_unit": "Lite requests",
+        "basis": "\u226410 results; Auto/Deep and content add-ons differ",
+        "source_url": "https://exa.ai/pricing",
+        "checked_at": "2026-10-21"
+      }
     },
     "brave": {
       "source_url": "https://api-dashboard.search.brave.com/documentation/pricing",
@@ -42,7 +56,14 @@
       "checked_at": "2026-10-21",
       "sources": [
         "https://brave.com/blog/most-powerful-search-api-for-ai/"
-      ]
+      ],
+      "primary_price": {
+        "amount_usd_per_1k": 5,
+        "billing_unit": "Search requests",
+        "basis": "Answers and model tokens separate",
+        "source_url": "https://api-dashboard.search.brave.com/documentation/pricing",
+        "checked_at": "2026-10-21"
+      }
     },
     "tavily": {
       "source_url": "https://docs.tavily.com/documentation/api-credits",
@@ -56,7 +77,14 @@
       "sources": [
         "https://docs.tavily.com/documentation/rate-limits",
         "https://docs.tavily.com/documentation/api-reference/endpoint/search"
-      ]
+      ],
+      "primary_price": {
+        "amount_usd_per_1k": 8,
+        "billing_unit": "basic PAYG searches",
+        "basis": "Advanced uses two credits; subscription commitments differ",
+        "source_url": "https://docs.tavily.com/documentation/api-credits",
+        "checked_at": "2026-10-21"
+      }
     },
     "firecrawl": {
       "source_url": "https://www.firecrawl.dev/pricing",
@@ -69,7 +97,14 @@
       "checked_at": "2026-10-21",
       "sources": [
         "https://docs.firecrawl.dev/features/search"
-      ]
+      ],
+      "primary_price": {
+        "amount_usd_per_1k": null,
+        "billing_unit": "credits",
+        "basis": "Credit-based; no flat cash rate ranked",
+        "source_url": "https://www.firecrawl.dev/pricing",
+        "checked_at": "2026-10-21"
+      }
     },
     "perplexity": {
       "source_url": "https://docs.perplexity.ai/docs/getting-started/pricing",
@@ -82,7 +117,14 @@
       "checked_at": "2026-10-21",
       "sources": [
         "https://docs.perplexity.ai/docs/search/quickstart"
-      ]
+      ],
+      "primary_price": {
+        "amount_usd_per_1k": 1,
+        "billing_unit": "Fast Search requests",
+        "basis": "Standard $5; up to five queries per request",
+        "source_url": "https://docs.perplexity.ai/docs/getting-started/pricing",
+        "checked_at": "2026-10-21"
+      }
     },
     "you": {
       "source_url": "https://you.com/docs/administration/billing",
@@ -95,7 +137,14 @@
       "checked_at": "2026-10-21",
       "sources": [
         "https://you.com/pricing"
-      ]
+      ],
+      "primary_price": {
+        "amount_usd_per_1k": 5,
+        "billing_unit": "Search calls",
+        "basis": "Live page extraction extra",
+        "source_url": "https://you.com/docs/administration/billing",
+        "checked_at": "2026-10-21"
+      }
     },
     "linkup": {
       "source_url": "https://docs.linkup.so/pages/documentation/platform/pricing",
@@ -105,7 +154,14 @@
       "overview": "Raw searchResults, sourcedAnswer and structured output use distinct prices; errors/empty no-relevant-result calls not billed.",
       "category": "Standalone search API",
       "status": "Available",
-      "checked_at": "2026-10-21"
+      "checked_at": "2026-10-21",
+      "primary_price": {
+        "amount_usd_per_1k": 5,
+        "billing_unit": "raw standard requests",
+        "basis": "Answers/Deep cost more",
+        "source_url": "https://docs.linkup.so/pages/documentation/platform/pricing",
+        "checked_at": "2026-10-21"
+      }
     },
     "parallel": {
       "source_url": "https://docs.parallel.ai/getting-started/pricing",
@@ -120,7 +176,14 @@
         "https://parallel.ai/pricing",
         "https://parallel.ai/blog/free-tier-parallel",
         "https://docs.parallel.ai/resources/faqs"
-      ]
+      ],
+      "primary_price": {
+        "amount_usd_per_1k": 1,
+        "billing_unit": "Turbo/Fast requests",
+        "basis": "Basic/Advanced $5; extra results billed",
+        "source_url": "https://docs.parallel.ai/getting-started/pricing",
+        "checked_at": "2026-10-21"
+      }
     },
     "jina": {
       "source_url": "https://jina.ai/api-dashboard/pricing/",
@@ -130,7 +193,14 @@
       "overview": "s.jina.ai requires key; r.jina.ai URL reader uses separate output-token billing.",
       "category": "Standalone search API",
       "status": "Available",
-      "checked_at": "2026-10-21"
+      "checked_at": "2026-10-21",
+      "primary_price": {
+        "amount_usd_per_1k": null,
+        "billing_unit": "tokens",
+        "basis": "Token-priced; lower-bound request estimate is not a flat price",
+        "source_url": "https://jina.ai/api-dashboard/pricing/",
+        "checked_at": "2026-10-21"
+      }
     },
     "serper": {
       "source_url": "https://serper.dev/",
@@ -140,7 +210,14 @@
       "overview": "Third-party Google SERP service; successful responses billed; tax excluded. Lowest rate requires $3,750 prepaid.",
       "category": "Third-party SERP service",
       "status": "Available",
-      "checked_at": "2026-10-21"
+      "checked_at": "2026-10-21",
+      "primary_price": {
+        "amount_usd_per_1k": 1,
+        "billing_unit": "prepaid starter searches",
+        "basis": "$50 minimum purchase; bulk commitments differ",
+        "source_url": "https://serper.dev/",
+        "checked_at": "2026-10-21"
+      }
     },
     "serpapi": {
       "source_url": "https://serpapi.com/pricing",
@@ -150,7 +227,14 @@
       "overview": "Third-party SERP access to multiple engines; not official Google/Bing developer API.",
       "category": "Third-party SERP service",
       "status": "Available",
-      "checked_at": "2026-10-21"
+      "checked_at": "2026-10-21",
+      "primary_price": {
+        "amount_usd_per_1k": 25,
+        "billing_unit": "starter searches",
+        "basis": "$25 monthly plan; larger plans differ",
+        "source_url": "https://serpapi.com/pricing",
+        "checked_at": "2026-10-21"
+      }
     },
     "searchapi": {
       "source_url": "https://www.searchapi.io/pricing",
@@ -160,7 +244,14 @@
       "overview": "Third-party SERP service; only HTTP-200 success billed; $100/35K equals ~$2.86 / 1K.",
       "category": "Third-party SERP service",
       "status": "Available",
-      "checked_at": "2026-10-21"
+      "checked_at": "2026-10-21",
+      "primary_price": {
+        "amount_usd_per_1k": 4,
+        "billing_unit": "standard starter requests",
+        "basis": "$40/month for 10K requests",
+        "source_url": "https://www.searchapi.io/pricing",
+        "checked_at": "2026-10-21"
+      }
     },
     "google_pse": {
       "source_url": "https://developers.google.com/custom-search/v1/overview",
@@ -170,7 +261,14 @@
       "overview": "Configured Programmable Search Engine + key required; Vertex AI domain search is not unrestricted web search.",
       "category": "Legacy search API",
       "status": "Closed to new customers; discontinued January 1, 2027",
-      "checked_at": "2026-10-21"
+      "checked_at": "2026-10-21",
+      "primary_price": {
+        "amount_usd_per_1k": null,
+        "billing_unit": "legacy queries",
+        "basis": "Closed to new customers; not ranked as currently available",
+        "source_url": "https://developers.google.com/custom-search/v1/overview",
+        "checked_at": "2026-10-21"
+      }
     },
     "gemini": {
       "source_url": "https://ai.google.dev/gemini-api/docs/pricing",
@@ -183,7 +281,14 @@
       "checked_at": "2026-10-21",
       "sources": [
         "https://ai.google.dev/gemini-api/docs/google-search/"
-      ]
+      ],
+      "primary_price": {
+        "amount_usd_per_1k": 14,
+        "billing_unit": "Gemini 3+ search queries",
+        "basis": "Model tokens extra; older model rules differ",
+        "source_url": "https://ai.google.dev/gemini-api/docs/pricing",
+        "checked_at": "2026-10-21"
+      }
     },
     "dataforseo": {
       "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
@@ -195,7 +300,14 @@
       "status": "Available",
       "checked_at": "2026-10-21",
       "name": "DataForSEO",
-      "website": "https://dataforseo.com"
+      "website": "https://dataforseo.com",
+      "primary_price": {
+        "amount_usd_per_1k": 0.6,
+        "billing_unit": "Standard-queue SERP pages",
+        "basis": "\u226410 results/page; queued, not Live; $50 prepaid minimum",
+        "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+        "checked_at": "2026-10-21"
+      }
     },
     "brightdata": {
       "source_url": "https://brightdata.com/pricing/serp",
@@ -207,7 +319,14 @@
       "status": "Available",
       "checked_at": "2026-10-21",
       "name": "Bright Data",
-      "website": "https://brightdata.com"
+      "website": "https://brightdata.com",
+      "primary_price": {
+        "amount_usd_per_1k": 1.5,
+        "billing_unit": "successful PAYG SERP requests",
+        "basis": "Other plans differ",
+        "source_url": "https://brightdata.com/pricing/serp",
+        "checked_at": "2026-10-21"
+      }
     },
     "openai": {
       "source_url": "https://developers.openai.com/api/docs/pricing",
@@ -222,7 +341,14 @@
       "website": "https://openai.com",
       "sources": [
         "https://developers.openai.com/api/docs/guides/tools-web-search"
-      ]
+      ],
+      "primary_price": {
+        "amount_usd_per_1k": 10,
+        "billing_unit": "web_search tool calls",
+        "basis": "Model/search-content tokens extra",
+        "source_url": "https://developers.openai.com/api/docs/pricing",
+        "checked_at": "2026-10-21"
+      }
     },
     "anthropic": {
       "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
@@ -234,7 +360,14 @@
       "status": "Available",
       "checked_at": "2026-10-21",
       "name": "Anthropic Web Search",
-      "website": "https://anthropic.com"
+      "website": "https://anthropic.com",
+      "primary_price": {
+        "amount_usd_per_1k": 10,
+        "billing_unit": "web searches",
+        "basis": "Model tokens extra",
+        "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+        "checked_at": "2026-10-21"
+      }
     },
     "xai": {
       "source_url": "https://docs.x.ai/developers/pricing",
@@ -249,7 +382,14 @@
       "website": "https://x.ai",
       "sources": [
         "https://docs.x.ai/developers/tools/web-search"
-      ]
+      ],
+      "primary_price": {
+        "amount_usd_per_1k": 5,
+        "billing_unit": "web_search tool calls",
+        "basis": "Model tokens extra; X Search separate",
+        "source_url": "https://docs.x.ai/developers/pricing",
+        "checked_at": "2026-10-21"
+      }
     },
     "bing_legacy": {
       "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
@@ -261,7 +401,14 @@
       "status": "Retired August 11, 2025",
       "checked_at": "2026-10-21",
       "name": "Bing Search (retired)",
-      "website": "https://www.microsoft.com/bing"
+      "website": "https://www.microsoft.com/bing",
+      "primary_price": {
+        "amount_usd_per_1k": null,
+        "billing_unit": "retired",
+        "basis": "Unavailable; no current price",
+        "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+        "checked_at": "2026-10-21"
+      }
     },
     "kagi": {
       "source_url": "https://kagi.com/api/pricing",
@@ -275,7 +422,14 @@
       "sources": [
         "https://help.kagi.com/kagi/api/search.html",
         "https://kagi.com/api/docs"
-      ]
+      ],
+      "primary_price": {
+        "amount_usd_per_1k": 12,
+        "billing_unit": "Search requests",
+        "basis": "Extract separately billed",
+        "source_url": "https://kagi.com/api/pricing",
+        "checked_at": "2026-10-21"
+      }
     },
     "duckduckgo": {
       "source_url": "https://github.com/deedy5/ddgs",
@@ -285,7 +439,14 @@
       "overview": "Unofficial DDGS/Dux Distributed Global Search metasearch library; no verified DuckDuckGo affiliation or unlimited commercial service.",
       "category": "Unofficial metasearch library",
       "status": "Self-managed; upstream dependent",
-      "checked_at": "2026-10-21"
+      "checked_at": "2026-10-21",
+      "primary_price": {
+        "amount_usd_per_1k": 0,
+        "billing_unit": "library API fee",
+        "basis": "Self-managed; hosting/upstream/proxy costs extra",
+        "source_url": "https://github.com/deedy5/ddgs",
+        "checked_at": "2026-10-21"
+      }
     },
     "searxng": {
       "source_url": "https://docs.searxng.org/dev/search_api.html",
@@ -295,7 +456,14 @@
       "overview": "GET/POST / or /search; language/time/safe-search and query operators depend on upstream engines.",
       "category": "Self-hosted metasearch",
       "status": "Self-hosted; instance dependent",
-      "checked_at": "2026-10-21"
+      "checked_at": "2026-10-21",
+      "primary_price": {
+        "amount_usd_per_1k": 0,
+        "billing_unit": "software API fee",
+        "basis": "Self-hosted; infrastructure/upstream costs extra",
+        "source_url": "https://docs.searxng.org/dev/search_api.html",
+        "checked_at": "2026-10-21"
+      }
     },
     "keiro": {
       "source_url": "https://keirolabs.cloud/pricing",
@@ -309,7 +477,14 @@
       "sources": [
         "https://keirolabs.cloud/",
         "https://www.browserfoundry.cloud/pricing"
-      ]
+      ],
+      "primary_price": {
+        "amount_usd_per_1k": null,
+        "billing_unit": "conflicting official prices",
+        "basis": "No unambiguous primary price ranked",
+        "source_url": "https://keirolabs.cloud/pricing",
+        "checked_at": "2026-10-21"
+      }
     },
     "octen": {
       "source_url": "https://octen.ai/pricing",
@@ -323,7 +498,14 @@
       "sources": [
         "https://docs.octen.ai/capabilities/web-search",
         "https://docs.octen.ai/api-reference/search"
-      ]
+      ],
+      "primary_price": {
+        "amount_usd_per_1k": 1,
+        "billing_unit": "promotional Search requests",
+        "basis": "Normally $5; ten full-content results included; expansion extra",
+        "source_url": "https://octen.ai/pricing",
+        "checked_at": "2026-10-21"
+      }
     }
   }
 }

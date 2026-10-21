@@ -89,6 +89,13 @@
     "value": "PAYG $8 / 1K basic; $16 / 1K advanced (1/2 credits); subscriptions differ",
     "source_url": "https://docs.tavily.com/documentation/api-credits",
     "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+    "primary_price": {
+      "amount_usd_per_1k": 8,
+      "billing_unit": "basic PAYG searches",
+      "basis": "Advanced uses two credits; subscription commitments differ",
+      "source_url": "https://docs.tavily.com/documentation/api-credits",
+      "checked_at": "2026-10-21"
+    },
     "links": {
       "Official source 1": "https://docs.tavily.com/documentation/rate-limits",
       "Official source 2": "https://docs.tavily.com/documentation/api-reference/endpoint/search"
@@ -154,10 +161,15 @@
       "Official source 2": "https://docs.tavily.com/documentation/api-reference/endpoint/search"
     }
   },
+  "capability_basis": {
+    "value": "Existing SDK mappings",
+    "source_url": "https://docs.tavily.com/documentation/api-credits",
+    "comment": "SDK availability is separate from native provider capability. Each native feature cell carries its own checked date and evidence."
+  },
   "sdk_support": {
     "value": "Python + TypeScript adapters",
     "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
-    "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+    "comment": "SDK adapter availability only. See Capability basis for the feature rows; native features do not imply an SDK adapter."
   },
   "evidence": {
     "checked_at": "2026-10-21",

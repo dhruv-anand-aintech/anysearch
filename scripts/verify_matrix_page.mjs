@@ -4,6 +4,7 @@
  * Catches client-script ReferenceErrors (e.g. missing helpers) that break the table.
  */
 import vm from "node:vm";
+import assert from "node:assert/strict";
 import { register } from "node:module";
 import { pathToFileURL } from "node:url";
 import { dirname, join } from "node:path";
@@ -33,7 +34,7 @@ function extractClientScript(html) {
   return client;
 }
 
-function runClientScriptSmoke(clientScript, payload, cookie = "") {
+function runClientScriptSmoke(clientScript, payload, cookie = "", expectedPriceOrder = null) {
   const headerEl = { innerHTML: "" };
   const bodyEl = { innerHTML: "" };
   const pillEl = { textContent: "", dataset: { updatedAt: new Date().toISOString() } };
@@ -105,6 +106,36 @@ function runClientScriptSmoke(clientScript, payload, cookie = "") {
   if (elements.changelogView.hidden) throw new Error('Browser Back did not restore changelog');
   window.location.hash = ''; events.hashchange();
   if (elements.matrixView.hidden) throw new Error('Hash navigation did not restore matrix');
+
+  for (const provider of payload.matrix.filter(row => row.comparison_only)) {
+    for (const key of ['requires_key','snippet','domains','country','language','date','safe_search','answer','content','summary','highlights','news']) {
+      const id = 'cell-' + provider.links.slug.replaceAll('_','-') + '-' + key.replaceAll('_','-');
+      const row = bodyEl.innerHTML.match(new RegExp('<td id="' + id + '"[^>]*>([\\s\\S]*?)</td>'));
+      assert.ok(row, 'Missing rendered native cell '+id);
+      assert.ok(row[1].includes('support '+provider[key].support), 'Wrong rendered status '+id);
+      assert.ok(!row[1].includes('class="dot">?</span>'), 'Placeholder remains '+id);
+    }
+  }
+  vm.runInNewContext('colOrder = matrix.map((_,i)=>i); rowSort = []; cycleSort("pricing_per_1k");', sandbox);
+  const ascending = Array.from(vm.runInNewContext('displayColOrder()', sandbox));
+  vm.runInNewContext('cycleSort("pricing_per_1k")', sandbox);
+  const descending = Array.from(vm.runInNewContext('displayColOrder()', sandbox));
+  for (const [direction, order] of [['asc',ascending],['desc',descending]]) {
+    let missing = false, previous = null;
+    for (const index of order) {
+      const value = payload.matrix[index].pricing_per_1k.primary_price?.amount_usd_per_1k;
+      if (typeof value !== 'number' || !Number.isFinite(value) || value < 0) { missing = true; continue; }
+      assert.equal(missing, false, 'Unknown price must remain last in '+direction);
+      if (previous !== null) assert.ok(direction === 'asc' ? value >= previous : value <= previous, 'Numeric order '+direction);
+      previous = value;
+    }
+  }
+  if (expectedPriceOrder) {
+    assert.deepEqual(ascending, expectedPriceOrder.asc);
+    assert.deepEqual(descending, expectedPriceOrder.desc);
+  }
+  vm.runInNewContext('cycleSort("pricing_per_1k")', sandbox);
+  assert.equal(vm.runInNewContext('rowSort.length', sandbox), 0, 'Third click resets price sort');
 
   if (!headerEl.innerHTML.trim()) {
     throw new Error("renderHeader() produced empty #headerRow");
@@ -179,6 +210,19 @@ async function main() {
 
   const clientScript = extractClientScript(html);
   runClientScriptSmoke(clientScript, payload);
+  const priceFixture = structuredClone(payload);
+  priceFixture.matrix = [10, 0.75, 0, undefined, null, 1.5].map((amount,index) => {
+    const row = structuredClone(payload.matrix[0]);
+    row.name = 'Price fixture ' + index; row.links.slug = 'fixture-' + index;
+    row.comparison_only = false;
+    row.pricing_per_1k = {value: index === 1 ? '$10000; multiple tiers' : '$0.01 display text', primary_price:{amount_usd_per_1k:amount,billing_unit:'test requests',basis:'fixture'}};
+    return row;
+  });
+  runClientScriptSmoke(clientScript, priceFixture, '', {asc:[2,1,5,0,3,4],desc:[0,5,1,2,3,4]});
+  const compare = worker.comparePrimaryPriceCells;
+  assert.ok(compare({primary_price:{amount_usd_per_1k:0}}, {primary_price:{amount_usd_per_1k:0.75}}) < 0);
+  assert.ok(compare({}, {primary_price:{amount_usd_per_1k:0}}, 'desc') > 0);
+  assert.equal(compare({}, {primary_price:{amount_usd_per_1k:null}}, 'desc'), 0);
   const corrupt = {cols: Array(matrix.length).fill(9999), rows: Array(columns.length - 1).fill('invalid')};
   runClientScriptSmoke(clientScript, payload, 'asmat_state=' + encodeURIComponent(JSON.stringify(corrupt)));
   for (const route of ['/bundle.json','/llms.txt','/changelog.json','/updated.json','/deployment-info','/api/deployment-info']) {

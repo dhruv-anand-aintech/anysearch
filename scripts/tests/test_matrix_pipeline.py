@@ -31,6 +31,54 @@ class PipelineTests(unittest.TestCase):
         self.assertTrue(check.validate_research(audit, today=date(2027, 1, 1)))
         self.assertTrue(check.validate_research(audit, today=date(2026, 1, 1)))
 
+    def test_all_new_categorical_cells_have_individual_evidence(self):
+        folder = ROOT / "docs/tools/search_matrix"
+        review = json.loads((folder / "categorical-research.json").read_text())
+        self.assertEqual(len(review["providers"]), 7)
+        self.assertEqual(sum(len(p["cells"]) for p in review["providers"].values()), 84)
+        for slug, native in review["providers"].items():
+            row = json.loads((folder / "data" / (slug + ".json")).read_text())
+            self.assertTrue(row["comparison_only"])
+            self.assertEqual(row["mode"]["values"], native["mode"]["values"])
+            for key, source in native["cells"].items():
+                self.assertEqual(row[key]["support"], source["support"])
+                self.assertEqual(row[key]["source_url"], source["source_url"])
+                self.assertEqual(row[key]["checked_at"], source["checked_at"])
+                self.assertGreater(len(source["comment"]), 40)
+                self.assertNotIn(
+                    "No anysearch adapter; see native", row[key]["comment"]
+                )
+        self.assertEqual(
+            review["providers"]["bing_legacy"]["cells"]["snippet"]["support"],
+            "not_applicable",
+        )
+        self.assertEqual(
+            review["providers"]["deepseek"]["cells"]["snippet"]["support"], "full"
+        )
+
+    def test_explicit_primary_price_metadata(self):
+        rows = json.loads((ROOT / "docs/tools/search_matrix/bundle.json").read_text())
+        by_slug = {r["links"]["slug"]: r for r in rows}
+        self.assertEqual(
+            by_slug["deepseek"]["pricing_per_1k"]["primary_price"]["amount_usd_per_1k"],
+            0.75,
+        )
+        self.assertEqual(
+            by_slug["searxng"]["pricing_per_1k"]["primary_price"]["amount_usd_per_1k"],
+            0,
+        )
+        for slug in ["jina", "firecrawl", "keiro", "bing_legacy", "google_pse"]:
+            self.assertIsNone(
+                by_slug[slug]["pricing_per_1k"]["primary_price"]["amount_usd_per_1k"]
+            )
+        for row in rows:
+            self.assertTrue(row["pricing_per_1k"]["primary_price"]["billing_unit"])
+            self.assertTrue(
+                row["pricing_per_1k"]["primary_price"]["source_url"].startswith(
+                    "https://"
+                )
+            )
+
     def test_new_provider_has_cell_target(self):
         row = {
             "name": "DeepSeek",

@@ -88,6 +88,13 @@
     "value": "Fast $1; Standard $5 / 1K requests (up to 5 queries/request); no raw Search model tokens",
     "source_url": "https://docs.perplexity.ai/docs/getting-started/pricing",
     "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+    "primary_price": {
+      "amount_usd_per_1k": 1,
+      "billing_unit": "Fast Search requests",
+      "basis": "Standard $5; up to five queries per request",
+      "source_url": "https://docs.perplexity.ai/docs/getting-started/pricing",
+      "checked_at": "2026-10-21"
+    },
     "links": {
       "Official source 1": "https://docs.perplexity.ai/docs/search/quickstart"
     }
@@ -147,10 +154,15 @@
       "Official source 1": "https://docs.perplexity.ai/docs/search/quickstart"
     }
   },
+  "capability_basis": {
+    "value": "Existing SDK mappings",
+    "source_url": "https://docs.perplexity.ai/docs/getting-started/pricing",
+    "comment": "SDK availability is separate from native provider capability. Each native feature cell carries its own checked date and evidence."
+  },
   "sdk_support": {
     "value": "Python + TypeScript adapters",
     "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
-    "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+    "comment": "SDK adapter availability only. See Capability basis for the feature rows; native features do not imply an SDK adapter."
   },
   "evidence": {
     "checked_at": "2026-10-21",

@@ -1,0 +1,792 @@
+{
+  "checked_at": "2026-10-21",
+  "scope": "Seven new comparison columns; native product capabilities, not SDK adapter presence.",
+  "definitions": {
+    "full": "Documented capability",
+    "partial": "Indirect, conditional, limited or separate endpoint; see cell evidence",
+    "none": "Not exposed by the scoped documented contract, with specific explanation",
+    "not_applicable": "Retired or a different output abstraction",
+    "unknown": "Specific reviewed docs do not establish the capability; not assumed unsupported"
+  },
+  "providers": {
+    "deepseek": {
+      "source_url": "https://api-docs.deepseek.com/guides/search/",
+      "cells": {
+        "requires_key": {
+          "prior_value": "unknown",
+          "support": "full",
+          "comment": "Bearer DeepSeek API key required for both raw JSON tools.",
+          "source_url": "https://api-docs.deepseek.com/guides/search/",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "snippet": {
+          "prior_value": "unknown",
+          "support": "full",
+          "comment": "Each Search result has a short query-related snippet string.",
+          "source_url": "https://api-docs.deepseek.com/guides/search/",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "domains": {
+          "prior_value": "unknown",
+          "support": "partial",
+          "comment": "site: and -site: query operators, including OR alternatives; query syntax rather than typed domain arrays.",
+          "source_url": "https://api-docs.deepseek.com/guides/search/",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "country": {
+          "prior_value": "unknown",
+          "support": "partial",
+          "comment": "localization accepts an IP address; region localization is indirect, not an ISO country selector.",
+          "source_url": "https://api-docs.deepseek.com/guides/search/",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "language": {
+          "prior_value": "unknown",
+          "support": "partial",
+          "comment": "lang: query operator accepts comma-separated language codes; no typed language field.",
+          "source_url": "https://api-docs.deepseek.com/guides/search/",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "date": {
+          "prior_value": "unknown",
+          "support": "partial",
+          "comment": "after: and before: query operators restrict publication dates; no typed date fields.",
+          "source_url": "https://api-docs.deepseek.com/guides/search/",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "safe_search": {
+          "prior_value": "unknown",
+          "support": "unknown",
+          "comment": "Reviewed request table and operator list document no explicit safe-search setting. Filtering policy or unsupported status is not established.",
+          "source_url": "https://api-docs.deepseek.com/guides/search/",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "answer": {
+          "prior_value": "unknown",
+          "support": "none",
+          "comment": "The documented Search response is results only; per-result summaries are not a top-level synthesized answer. Chat model generation is separate.",
+          "source_url": "https://api-docs.deepseek.com/guides/search/",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "content": {
+          "prior_value": "unknown",
+          "support": "full",
+          "comment": "need_content=true returns page content when available; separate Fetch returns Markdown. No success/content guarantee for every page.",
+          "source_url": "https://api-docs.deepseek.com/guides/search/",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "summary": {
+          "prior_value": "unknown",
+          "support": "partial",
+          "comment": "Per-result summary is documented as a longer query-related summary; whether it is AI-generated is not specified.",
+          "source_url": "https://api-docs.deepseek.com/guides/search/",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "highlights": {
+          "prior_value": "unknown",
+          "support": "partial",
+          "comment": "Query-related snippet/summary excerpts are returned; no separate highlighted-span array in the complete response schema.",
+          "source_url": "https://api-docs.deepseek.com/guides/search/",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "news": {
+          "prior_value": "unknown",
+          "support": "none",
+          "comment": "The complete Search request contract has no news vertical selector; general search can retrieve news, which is not a dedicated News API.",
+          "source_url": "https://api-docs.deepseek.com/guides/search/",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        }
+      },
+      "mode": {
+        "prior_value": [],
+        "values": [
+          "Search (single endpoint)"
+        ],
+        "comment": "One raw Search endpoint; count and need_content configure results, not named fast/deep tiers.",
+        "source_url": "https://api-docs.deepseek.com/guides/search/",
+        "checked_at": "2026-10-21"
+      }
+    },
+    "dataforseo": {
+      "source_url": "https://docs.dataforseo.com/v3/serp-se-type-live-advanced/",
+      "cells": {
+        "requires_key": {
+          "prior_value": "unknown",
+          "support": "full",
+          "comment": "HTTP Basic authentication with API login/password; credentials are required, although not a bearer API key.",
+          "source_url": "https://docs.dataforseo.com/v3/auth/",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "snippet": {
+          "prior_value": "unknown",
+          "support": "full",
+          "comment": "Organic items expose description as the search-result description.",
+          "source_url": "https://docs.dataforseo.com/v3/serp-se-type-live-advanced/",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "domains": {
+          "prior_value": "unknown",
+          "support": "partial",
+          "comment": "keyword accepts site: operators; provider documents a 5x task charge for advanced operators. This is query syntax, not include/exclude domain arrays.",
+          "source_url": "https://docs.dataforseo.com/v3/serp-se-type-live-advanced/",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "country": {
+          "prior_value": "unknown",
+          "support": "full",
+          "comment": "location_code or location_name select search geography; country locations are documented.",
+          "source_url": "https://docs.dataforseo.com/v3/serp-se-type-live-advanced/",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "language": {
+          "prior_value": "unknown",
+          "support": "full",
+          "comment": "language_code or language_name select search engine language; lr is explicitly stripped.",
+          "source_url": "https://docs.dataforseo.com/v3/serp-se-type-live-advanced/",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "date": {
+          "prior_value": "unknown",
+          "support": "partial",
+          "comment": "search_param forwards supported Google tbs time filters; this is engine date filtering, not guaranteed publication metadata. as_qdr is explicitly stripped.",
+          "source_url": "https://dataforseo.com/help-center/google-search-engine-parameters-and-how-to-use-them",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "safe_search": {
+          "prior_value": "unknown",
+          "support": "partial",
+          "comment": "Supported search_param safe=active filters explicit results; engine-specific parameter behavior, not a unified safe_search enum.",
+          "source_url": "https://dataforseo.com/help-center/google-search-engine-parameters-and-how-to-use-them",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "answer": {
+          "prior_value": "unknown",
+          "support": "partial",
+          "comment": "Advanced response can contain search-engine ai_overview/answer_box; not an always-generated DataForSEO answer. Async overview retrieval is separately charged.",
+          "source_url": "https://docs.dataforseo.com/v3/serp-se-type-live-advanced/",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "content": {
+          "prior_value": "unknown",
+          "support": "none",
+          "comment": "This SERP contract returns result elements and descriptions; the HTML variant returns search-engine SERP HTML, not full text from linked result pages.",
+          "source_url": "https://docs.dataforseo.com/v3/serp-se-type-live-advanced/",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "summary": {
+          "prior_value": "unknown",
+          "support": "none",
+          "comment": "Organic result description is an engine snippet; the complete organic item schema has no generated per-result page-summary output. Separate AI Summary products are outside this column.",
+          "source_url": "https://docs.dataforseo.com/v3/serp-se-type-live-advanced/",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "highlights": {
+          "prior_value": "unknown",
+          "support": "partial",
+          "comment": "highlighted contains bold terms within engine results, not an independently generated excerpt/highlights service.",
+          "source_url": "https://docs.dataforseo.com/v3/serp-se-type-live-advanced/",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "news": {
+          "prior_value": "unknown",
+          "support": "full",
+          "comment": "Dedicated Google News SERP endpoint documented. Separate news request/engine variant, no anysearch adapter.",
+          "source_url": "https://docs.dataforseo.com/v3/serp/google/news/live/html/",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        }
+      },
+      "mode": {
+        "prior_value": [],
+        "values": [
+          "Standard queue",
+          "Priority queue",
+          "Live"
+        ],
+        "comment": "Delivery/priority options, not a unified SDK search quality mode. Queued and live rates differ.",
+        "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+        "checked_at": "2026-10-21"
+      }
+    },
+    "brightdata": {
+      "source_url": "https://docs.brightdata.com/products/serp-api/query-parameters/google",
+      "cells": {
+        "requires_key": {
+          "prior_value": "unknown",
+          "support": "full",
+          "comment": "REST request API requires bearer API key; proxy interface uses zone credentials.",
+          "source_url": "https://docs.brightdata.com/api-reference/rest-api/serp/serp-api",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "snippet": {
+          "prior_value": "unknown",
+          "support": "full",
+          "comment": "Parsed organic results expose description (search snippet).",
+          "source_url": "https://docs.brightdata.com/products/serp-api/parsed-json-results",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "domains": {
+          "prior_value": "unknown",
+          "support": "partial",
+          "comment": "Indirect engine query operator: provider forwards q in a Google search URL, and Google documents site:. This documented composition is not a typed domain allow/deny guarantee.",
+          "source_url": "https://docs.brightdata.com/products/serp-api/query-parameters/google",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation",
+          "links": {
+            "Google site: operator": "https://developers.google.com/search/docs/monitor-debug/search-operators/all-search-site"
+          }
+        },
+        "country": {
+          "prior_value": "unknown",
+          "support": "full",
+          "comment": "gl selects two-letter search country; localization is documented.",
+          "source_url": "https://docs.brightdata.com/products/serp-api/query-parameters/google",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "language": {
+          "prior_value": "unknown",
+          "support": "full",
+          "comment": "hl sets page/interface language; engine-supported language semantics, not a guarantee every result has that language.",
+          "source_url": "https://docs.brightdata.com/products/serp-api/query-parameters/google",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "date": {
+          "prior_value": "unknown",
+          "support": "partial",
+          "comment": "tbs filters publication time by engine-supported ranges; engine-specific date syntax rather than typed start/end fields.",
+          "source_url": "https://docs.brightdata.com/products/serp-api/query-parameters/google",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "safe_search": {
+          "prior_value": "unknown",
+          "support": "full",
+          "comment": "safe=active or safe=off enables/disables Google SafeSearch.",
+          "source_url": "https://docs.brightdata.com/products/serp-api/query-parameters/google",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "answer": {
+          "prior_value": "unknown",
+          "support": "partial",
+          "comment": "Parsed Google ai_overview is available when the upstream SERP includes it; no guaranteed independent synthesized answer.",
+          "source_url": "https://docs.brightdata.com/products/serp-api/query-parameters/google",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "content": {
+          "prior_value": "unknown",
+          "support": "none",
+          "comment": "Parsed JSON/HTML/Markdown formats describe the SERP response, not fetched full text of linked result pages. Separate scraper products are outside this column.",
+          "source_url": "https://docs.brightdata.com/products/serp-api/parsed-json-results",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "summary": {
+          "prior_value": "unknown",
+          "support": "none",
+          "comment": "The documented organic response has description snippets, not generated per-result page summaries. Upstream AI Overview is a separate SERP element.",
+          "source_url": "https://docs.brightdata.com/products/serp-api/parsed-json-results",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "highlights": {
+          "prior_value": "unknown",
+          "support": "partial",
+          "comment": "snippet_highlighted_words exposes engine-highlighted terms, not a standalone excerpt generation service.",
+          "source_url": "https://docs.brightdata.com/products/serp-api/parsed-json-results",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "news": {
+          "prior_value": "unknown",
+          "support": "full",
+          "comment": "tbm=nws selects Google News results; dedicated Fast SERP News also documented.",
+          "source_url": "https://docs.brightdata.com/products/serp-api/query-parameters/google",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        }
+      },
+      "mode": {
+        "prior_value": [],
+        "values": [
+          "SERP",
+          "Fast SERP"
+        ],
+        "comment": "Fast SERP has separate access requirements; no anysearch fast/balanced/deep mapping.",
+        "source_url": "https://docs.brightdata.com/products/serp-api/fast-serp/quickstart",
+        "checked_at": "2026-10-21"
+      }
+    },
+    "openai": {
+      "source_url": "https://developers.openai.com/api/docs/guides/tools-web-search",
+      "cells": {
+        "requires_key": {
+          "prior_value": "unknown",
+          "support": "full",
+          "comment": "Authenticated Responses API calls use an OpenAI API key.",
+          "source_url": "https://developers.openai.com/api/docs/guides/tools-web-search",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "snippet": {
+          "prior_value": "unknown",
+          "support": "not_applicable",
+          "comment": "Model-mediated cited answers and source metadata are returned, not a contracted raw ranked-result snippet field.",
+          "source_url": "https://developers.openai.com/api/docs/guides/tools-web-search",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "domains": {
+          "prior_value": "unknown",
+          "support": "full",
+          "comment": "Responses web_search filters allow up to 100 allowed_domains or blocked_domains; legacy Chat Completions search does not have this control.",
+          "source_url": "https://developers.openai.com/api/docs/guides/tools-web-search",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "country": {
+          "prior_value": "unknown",
+          "support": "full",
+          "comment": "user_location.country accepts a two-letter ISO country code; approximate user location biases search.",
+          "source_url": "https://developers.openai.com/api/docs/guides/tools-web-search",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "language": {
+          "prior_value": "unknown",
+          "support": "unknown",
+          "comment": "Reviewed web_search control guide documents no dedicated result-language filter. Prompt language is not equivalent to enforced retrieval language.",
+          "source_url": "https://developers.openai.com/api/docs/guides/tools-web-search",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "date": {
+          "prior_value": "unknown",
+          "support": "unknown",
+          "comment": "No typed publication-date range control is documented in the reviewed web_search guide; prompt instructions do not prove enforced filtering.",
+          "source_url": "https://developers.openai.com/api/docs/guides/tools-web-search",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "safe_search": {
+          "prior_value": "unknown",
+          "support": "unknown",
+          "comment": "No developer-configurable SafeSearch switch is documented in the reviewed tool guide; model safety behavior is not a search filter.",
+          "source_url": "https://developers.openai.com/api/docs/guides/tools-web-search",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "answer": {
+          "prior_value": "unknown",
+          "support": "full",
+          "comment": "The model produces a sourced answer with URL citations after web_search.",
+          "source_url": "https://developers.openai.com/api/docs/guides/tools-web-search",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "content": {
+          "prior_value": "unknown",
+          "support": "partial",
+          "comment": "Reasoning tools can open pages and find content for the model; this is not a guaranteed raw full-page export API.",
+          "source_url": "https://developers.openai.com/api/docs/guides/tools-web-search",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "summary": {
+          "prior_value": "unknown",
+          "support": "not_applicable",
+          "comment": "The contracted output is a cited model response, not a per-result summary array. An answer summary must not be confused with page summaries.",
+          "source_url": "https://developers.openai.com/api/docs/guides/tools-web-search",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "highlights": {
+          "prior_value": "unknown",
+          "support": "not_applicable",
+          "comment": "Citation offsets identify spans in generated answer text, not query-relevant source-page highlight excerpts.",
+          "source_url": "https://developers.openai.com/api/docs/guides/tools-web-search",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "news": {
+          "prior_value": "unknown",
+          "support": "partial",
+          "comment": "Official examples search current news via general web_search; no dedicated news-only vertical selector is documented.",
+          "source_url": "https://developers.openai.com/api/docs/guides/tools-web-search",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        }
+      },
+      "mode": {
+        "prior_value": [],
+        "values": [
+          "Non-reasoning",
+          "Reasoning",
+          "Deep research"
+        ],
+        "comment": "Official guide describes three search patterns by model; model-mediated generation, not raw SDK modes.",
+        "source_url": "https://developers.openai.com/api/docs/guides/tools-web-search",
+        "checked_at": "2026-10-21"
+      }
+    },
+    "anthropic": {
+      "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+      "cells": {
+        "requires_key": {
+          "prior_value": "unknown",
+          "support": "full",
+          "comment": "Claude API authentication is required; web_search is a server tool in an authenticated Messages request.",
+          "source_url": "https://platform.claude.com/docs/en/api/overview",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "snippet": {
+          "prior_value": "unknown",
+          "support": "partial",
+          "comment": "Search result blocks expose encrypted_content rather than plaintext snippets; citations may return cited_text up to 150 characters.",
+          "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "domains": {
+          "prior_value": "unknown",
+          "support": "full",
+          "comment": "allowed_domains or blocked_domains restrict searches; mutually exclusive in one tool configuration.",
+          "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "country": {
+          "prior_value": "unknown",
+          "support": "full",
+          "comment": "user_location.country is ISO 3166-1 alpha-2; approximate localization supported.",
+          "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "language": {
+          "prior_value": "unknown",
+          "support": "unknown",
+          "comment": "No result-language filter is documented in the reviewed web_search parameter guide. Multilingual model output is not retrieval-language enforcement.",
+          "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "date": {
+          "prior_value": "unknown",
+          "support": "unknown",
+          "comment": "page_age is response metadata; the reviewed request controls do not establish an enforced publication-date-range filter.",
+          "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "safe_search": {
+          "prior_value": "unknown",
+          "support": "unknown",
+          "comment": "No configurable SafeSearch switch is documented in the reviewed server-tool guide. Safety policy and retrieval filter are distinct.",
+          "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "answer": {
+          "prior_value": "unknown",
+          "support": "full",
+          "comment": "Claude returns a final answer with citations after tool searches.",
+          "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "content": {
+          "prior_value": "unknown",
+          "support": "partial",
+          "comment": "Search content is encrypted for continuation; plaintext page/document fetching is a separate web_fetch tool, not included raw search output.",
+          "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-fetch-tool",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "summary": {
+          "prior_value": "unknown",
+          "support": "not_applicable",
+          "comment": "Cited answer generation is not a per-result page-summary API; search result blocks have URL/title/page_age/encrypted_content.",
+          "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "highlights": {
+          "prior_value": "unknown",
+          "support": "partial",
+          "comment": "Citation cited_text contains up to 150 characters of cited source content; limited citation excerpts, not arbitrary full-page highlighting.",
+          "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "news": {
+          "prior_value": "unknown",
+          "support": "partial",
+          "comment": "Official documentation lists recent news as a web-search use case; no news-only vertical control is documented.",
+          "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        }
+      },
+      "mode": {
+        "prior_value": [],
+        "values": [
+          "Basic web search",
+          "Dynamic filtering"
+        ],
+        "comment": "Tool versions 20250305, 20260209 and 20260318 provide basic search, dynamic filtering and response-inclusion controls; model availability varies.",
+        "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+        "checked_at": "2026-10-21"
+      }
+    },
+    "xai": {
+      "source_url": "https://docs.x.ai/developers/tools/web-search",
+      "cells": {
+        "requires_key": {
+          "prior_value": "unknown",
+          "support": "full",
+          "comment": "Authenticated Responses API request uses bearer XAI_API_KEY.",
+          "source_url": "https://docs.x.ai/developers/tools/web-search",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "snippet": {
+          "prior_value": "unknown",
+          "support": "not_applicable",
+          "comment": "Documented web_search produces model answers/citations, not a raw ranked-result snippet contract.",
+          "source_url": "https://docs.x.ai/developers/tools/web-search",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "domains": {
+          "prior_value": "unknown",
+          "support": "full",
+          "comment": "allowed_domains or excluded_domains (up to five) restrict search/browsing; cannot use both together.",
+          "source_url": "https://docs.x.ai/developers/tools/web-search",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "country": {
+          "prior_value": "unknown",
+          "support": "unknown",
+          "comment": "The web_search parameter table lists domain and image controls but no country bias. Do not transfer X Search settings to Web Search.",
+          "source_url": "https://docs.x.ai/developers/tools/web-search",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "language": {
+          "prior_value": "unknown",
+          "support": "unknown",
+          "comment": "No result-language filter is documented in the web_search tool parameter table; model language capability is separate.",
+          "source_url": "https://docs.x.ai/developers/tools/web-search",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "date": {
+          "prior_value": "unknown",
+          "support": "unknown",
+          "comment": "No publication-date range control documented for web_search. X Search from_date/to_date options are a different tool.",
+          "source_url": "https://docs.x.ai/developers/tools/web-search",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "safe_search": {
+          "prior_value": "unknown",
+          "support": "unknown",
+          "comment": "No configurable SafeSearch setting documented for this tool; model safety is not an equivalent parameter.",
+          "source_url": "https://docs.x.ai/developers/tools/web-search",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "answer": {
+          "prior_value": "unknown",
+          "support": "full",
+          "comment": "Grok searches/browses then produces a model answer with citations.",
+          "source_url": "https://docs.x.ai/developers/tools/web-search",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "content": {
+          "prior_value": "unknown",
+          "support": "partial",
+          "comment": "Tool accesses/browses pages for the model; no guarantee of a raw full-page content export in the web_search response.",
+          "source_url": "https://docs.x.ai/developers/tools/web-search",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "summary": {
+          "prior_value": "unknown",
+          "support": "not_applicable",
+          "comment": "Generated answer/citations are not per-result page-summary objects.",
+          "source_url": "https://docs.x.ai/developers/tools/web-search",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "highlights": {
+          "prior_value": "unknown",
+          "support": "not_applicable",
+          "comment": "Citations identify sources; the reviewed web_search contract does not expose per-page highlighted excerpts.",
+          "source_url": "https://docs.x.ai/developers/tools/web-search",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "news": {
+          "prior_value": "unknown",
+          "support": "partial",
+          "comment": "General current-web retrieval can answer news queries; X Search is separate and is not a dedicated web-news vertical.",
+          "source_url": "https://docs.x.ai/developers/tools/web-search",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        }
+      },
+      "mode": {
+        "prior_value": [],
+        "values": [
+          "Model-mediated web search"
+        ],
+        "comment": "One server-side Web Search tool; separate X Search and image controls are not fast/deep search tiers.",
+        "source_url": "https://docs.x.ai/developers/tools/web-search",
+        "checked_at": "2026-10-21"
+      }
+    },
+    "bing_legacy": {
+      "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+      "cells": {
+        "requires_key": {
+          "prior_value": "unknown",
+          "support": "not_applicable",
+          "comment": "Retired August 11, 2025; all direct Bing Search API instances decommissioned. Current capability is N/A, not an assertion about historical features or SerpApi Bing.",
+          "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "snippet": {
+          "prior_value": "unknown",
+          "support": "not_applicable",
+          "comment": "Retired August 11, 2025; all direct Bing Search API instances decommissioned. Current capability is N/A, not an assertion about historical features or SerpApi Bing.",
+          "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "domains": {
+          "prior_value": "unknown",
+          "support": "not_applicable",
+          "comment": "Retired August 11, 2025; all direct Bing Search API instances decommissioned. Current capability is N/A, not an assertion about historical features or SerpApi Bing.",
+          "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "country": {
+          "prior_value": "unknown",
+          "support": "not_applicable",
+          "comment": "Retired August 11, 2025; all direct Bing Search API instances decommissioned. Current capability is N/A, not an assertion about historical features or SerpApi Bing.",
+          "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "language": {
+          "prior_value": "unknown",
+          "support": "not_applicable",
+          "comment": "Retired August 11, 2025; all direct Bing Search API instances decommissioned. Current capability is N/A, not an assertion about historical features or SerpApi Bing.",
+          "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "date": {
+          "prior_value": "unknown",
+          "support": "not_applicable",
+          "comment": "Retired August 11, 2025; all direct Bing Search API instances decommissioned. Current capability is N/A, not an assertion about historical features or SerpApi Bing.",
+          "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "safe_search": {
+          "prior_value": "unknown",
+          "support": "not_applicable",
+          "comment": "Retired August 11, 2025; all direct Bing Search API instances decommissioned. Current capability is N/A, not an assertion about historical features or SerpApi Bing.",
+          "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "answer": {
+          "prior_value": "unknown",
+          "support": "not_applicable",
+          "comment": "Retired August 11, 2025; all direct Bing Search API instances decommissioned. Current capability is N/A, not an assertion about historical features or SerpApi Bing.",
+          "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "content": {
+          "prior_value": "unknown",
+          "support": "not_applicable",
+          "comment": "Retired August 11, 2025; all direct Bing Search API instances decommissioned. Current capability is N/A, not an assertion about historical features or SerpApi Bing.",
+          "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "summary": {
+          "prior_value": "unknown",
+          "support": "not_applicable",
+          "comment": "Retired August 11, 2025; all direct Bing Search API instances decommissioned. Current capability is N/A, not an assertion about historical features or SerpApi Bing.",
+          "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "highlights": {
+          "prior_value": "unknown",
+          "support": "not_applicable",
+          "comment": "Retired August 11, 2025; all direct Bing Search API instances decommissioned. Current capability is N/A, not an assertion about historical features or SerpApi Bing.",
+          "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "news": {
+          "prior_value": "unknown",
+          "support": "not_applicable",
+          "comment": "Retired August 11, 2025; all direct Bing Search API instances decommissioned. Current capability is N/A, not an assertion about historical features or SerpApi Bing.",
+          "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        }
+      },
+      "mode": {
+        "prior_value": [],
+        "values": [
+          "N/A (retired)"
+        ],
+        "comment": "Retired service has no current usable search modes.",
+        "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+        "checked_at": "2026-10-21"
+      }
+    }
+  }
+}

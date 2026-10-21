@@ -16,9 +16,12 @@
     "comment": ""
   },
   "mode": {
-    "values": [],
-    "source_url": "https://docs.x.ai/developers/pricing",
-    "comment": "No unified SDK mode mapping."
+    "values": [
+      "Model-mediated web search"
+    ],
+    "comment": "One server-side Web Search tool; separate X Search and image controls are not fast/deep search tiers.",
+    "source_url": "https://docs.x.ai/developers/tools/web-search",
+    "checked_at": "2026-10-21"
   },
   "p50_latency": {
     "value": "No current comparable measurement verified",
@@ -28,64 +31,88 @@
   "notes": "Comparison only; no anysearch SDK adapter is claimed.",
   "comparison_only": true,
   "requires_key": {
-    "support": "unknown",
-    "source_url": "https://docs.x.ai/developers/pricing",
-    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    "support": "full",
+    "comment": "Authenticated Responses API request uses bearer XAI_API_KEY.",
+    "source_url": "https://docs.x.ai/developers/tools/web-search",
+    "checked_at": "2026-10-21",
+    "basis": "native API documentation"
   },
   "snippet": {
-    "support": "unknown",
-    "source_url": "https://docs.x.ai/developers/pricing",
-    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    "support": "not_applicable",
+    "comment": "Documented web_search produces model answers/citations, not a raw ranked-result snippet contract.",
+    "source_url": "https://docs.x.ai/developers/tools/web-search",
+    "checked_at": "2026-10-21",
+    "basis": "native API documentation"
   },
   "domains": {
-    "support": "unknown",
-    "source_url": "https://docs.x.ai/developers/pricing",
-    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    "support": "full",
+    "comment": "allowed_domains or excluded_domains (up to five) restrict search/browsing; cannot use both together.",
+    "source_url": "https://docs.x.ai/developers/tools/web-search",
+    "checked_at": "2026-10-21",
+    "basis": "native API documentation"
   },
   "country": {
     "support": "unknown",
-    "source_url": "https://docs.x.ai/developers/pricing",
-    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    "comment": "The web_search parameter table lists domain and image controls but no country bias. Do not transfer X Search settings to Web Search.",
+    "source_url": "https://docs.x.ai/developers/tools/web-search",
+    "checked_at": "2026-10-21",
+    "basis": "native API documentation"
   },
   "language": {
     "support": "unknown",
-    "source_url": "https://docs.x.ai/developers/pricing",
-    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    "comment": "No result-language filter is documented in the web_search tool parameter table; model language capability is separate.",
+    "source_url": "https://docs.x.ai/developers/tools/web-search",
+    "checked_at": "2026-10-21",
+    "basis": "native API documentation"
   },
   "date": {
     "support": "unknown",
-    "source_url": "https://docs.x.ai/developers/pricing",
-    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    "comment": "No publication-date range control documented for web_search. X Search from_date/to_date options are a different tool.",
+    "source_url": "https://docs.x.ai/developers/tools/web-search",
+    "checked_at": "2026-10-21",
+    "basis": "native API documentation"
   },
   "safe_search": {
     "support": "unknown",
-    "source_url": "https://docs.x.ai/developers/pricing",
-    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    "comment": "No configurable SafeSearch setting documented for this tool; model safety is not an equivalent parameter.",
+    "source_url": "https://docs.x.ai/developers/tools/web-search",
+    "checked_at": "2026-10-21",
+    "basis": "native API documentation"
   },
   "answer": {
-    "support": "unknown",
-    "source_url": "https://docs.x.ai/developers/pricing",
-    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    "support": "full",
+    "comment": "Grok searches/browses then produces a model answer with citations.",
+    "source_url": "https://docs.x.ai/developers/tools/web-search",
+    "checked_at": "2026-10-21",
+    "basis": "native API documentation"
   },
   "content": {
-    "support": "unknown",
-    "source_url": "https://docs.x.ai/developers/pricing",
-    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    "support": "partial",
+    "comment": "Tool accesses/browses pages for the model; no guarantee of a raw full-page content export in the web_search response.",
+    "source_url": "https://docs.x.ai/developers/tools/web-search",
+    "checked_at": "2026-10-21",
+    "basis": "native API documentation"
   },
   "summary": {
-    "support": "unknown",
-    "source_url": "https://docs.x.ai/developers/pricing",
-    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    "support": "not_applicable",
+    "comment": "Generated answer/citations are not per-result page-summary objects.",
+    "source_url": "https://docs.x.ai/developers/tools/web-search",
+    "checked_at": "2026-10-21",
+    "basis": "native API documentation"
   },
   "highlights": {
-    "support": "unknown",
-    "source_url": "https://docs.x.ai/developers/pricing",
-    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    "support": "not_applicable",
+    "comment": "Citations identify sources; the reviewed web_search contract does not expose per-page highlighted excerpts.",
+    "source_url": "https://docs.x.ai/developers/tools/web-search",
+    "checked_at": "2026-10-21",
+    "basis": "native API documentation"
   },
   "news": {
-    "support": "unknown",
-    "source_url": "https://docs.x.ai/developers/pricing",
-    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    "support": "partial",
+    "comment": "General current-web retrieval can answer news queries; X Search is separate and is not a dedicated web-news vertical.",
+    "source_url": "https://docs.x.ai/developers/tools/web-search",
+    "checked_at": "2026-10-21",
+    "basis": "native API documentation"
   },
   "api_category": {
     "value": "Model-hosted grounding",
@@ -124,15 +151,27 @@
       "Official source 1": "https://docs.x.ai/developers/tools/web-search"
     }
   },
+  "capability_basis": {
+    "value": "Native API \u2014 reviewed",
+    "source_url": "https://docs.x.ai/developers/pricing",
+    "comment": "SDK availability is separate from native provider capability. Each native feature cell carries its own checked date and evidence."
+  },
   "sdk_support": {
     "value": "Comparison only \u2014 no adapter",
     "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
-    "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+    "comment": "SDK adapter availability only. See Capability basis for the feature rows; native features do not imply an SDK adapter."
   },
   "pricing_per_1k": {
     "value": "Web Search $5 / 1K tool calls + model tokens",
     "source_url": "https://docs.x.ai/developers/pricing",
     "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+    "primary_price": {
+      "amount_usd_per_1k": 5,
+      "billing_unit": "web_search tool calls",
+      "basis": "Model tokens extra; X Search separate",
+      "source_url": "https://docs.x.ai/developers/pricing",
+      "checked_at": "2026-10-21"
+    },
     "links": {
       "Official source 1": "https://docs.x.ai/developers/tools/web-search"
     }

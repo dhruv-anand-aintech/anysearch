@@ -87,6 +87,13 @@
     "value": "No library API fee; hosting/proxy/upstream costs separate",
     "source_url": "https://github.com/deedy5/ddgs",
     "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+    "primary_price": {
+      "amount_usd_per_1k": 0,
+      "billing_unit": "library API fee",
+      "basis": "Self-managed; hosting/upstream/proxy costs extra",
+      "source_url": "https://github.com/deedy5/ddgs",
+      "checked_at": "2026-10-21"
+    },
     "links": {}
   },
   "free_tier_limits": {
@@ -130,10 +137,15 @@
     "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
     "links": {}
   },
+  "capability_basis": {
+    "value": "Existing SDK mappings",
+    "source_url": "https://github.com/deedy5/ddgs",
+    "comment": "SDK availability is separate from native provider capability. Each native feature cell carries its own checked date and evidence."
+  },
   "sdk_support": {
     "value": "Python + TypeScript adapters",
     "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
-    "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+    "comment": "SDK adapter availability only. See Capability basis for the feature rows; native features do not imply an SDK adapter."
   },
   "evidence": {
     "checked_at": "2026-10-21",

@@ -15,6 +15,9 @@ def cell(value, url, comment=""):
 
 def apply_research():
     audit = json.loads(RESEARCH.read_text())
+    categorical = json.loads((MATRIX / "categorical-research.json").read_text())[
+        "providers"
+    ]
     existing = {
         p.stem: json.loads(p.read_text()) for p in (MATRIX / "data").glob("*.json")
     }
@@ -41,25 +44,13 @@ def apply_research():
                 "notes": "Comparison only; no anysearch SDK adapter is claimed.",
                 "comparison_only": True,
             }
-            for key in [
-                "requires_key",
-                "snippet",
-                "domains",
-                "country",
-                "language",
-                "date",
-                "safe_search",
-                "answer",
-                "content",
-                "summary",
-                "highlights",
-                "news",
-            ]:
-                out[key] = {
-                    "support": "unknown",
-                    "source_url": url,
-                    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported.",
-                }
+            if slug not in categorical:
+                raise ValueError(f"Missing categorical research for {slug}")
+            for key, native_cell in categorical[slug]["cells"].items():
+                out[key] = {k: v for k, v in native_cell.items() if k != "prior_value"}
+            out["mode"] = {
+                k: v for k, v in categorical[slug]["mode"].items() if k != "prior_value"
+            }
             existing[slug] = out
     for slug, out in existing.items():
         base = "serpapi" if slug.startswith("serpapi_") else slug
@@ -78,6 +69,13 @@ def apply_research():
             "Official public documentation reviewed; no paid API or benchmark run. "
             + caveat,
         )
+        out["capability_basis"] = cell(
+            "Native API — reviewed"
+            if out.get("comparison_only")
+            else "Existing SDK mappings",
+            url,
+            "SDK availability is separate from native provider capability. Each native feature cell carries its own checked date and evidence.",
+        )
         out["sdk_support"] = cell(
             "Comparison only — no adapter"
             if out.get("comparison_only")
@@ -85,7 +83,7 @@ def apply_research():
             out["links"].get(
                 "github", "https://github.com/dhruv-anand-aintech/anysearch"
             ),
-            "Feature flags below describe unified SDK mappings, not every native API feature.",
+            "SDK adapter availability only. See Capability basis for the feature rows; native features do not imply an SDK adapter.",
         )
         out["pricing_per_1k"] = cell(
             review["pricing"],
@@ -93,6 +91,7 @@ def apply_research():
             "Units and commitments differ; do not rank these as equivalent flat per-query prices. "
             + caveat,
         )
+        out["pricing_per_1k"]["primary_price"] = review["primary_price"]
         out["free_tier_limits"] = cell(
             review["free"],
             url,
@@ -116,6 +115,17 @@ def apply_research():
             "effective_date": review.get("effective_date"),
             "method": "official documentation; no new benchmarks",
         }
+        if slug in categorical:
+            sources = [c["source_url"] for c in categorical[slug]["cells"].values()]
+            sources += [
+                u
+                for c in categorical[slug]["cells"].values()
+                for u in c.get("links", {}).values()
+            ]
+            sources.append(categorical[slug]["mode"]["source_url"])
+            out["evidence"]["source_urls"] = list(
+                dict.fromkeys(out["evidence"]["source_urls"] + sources)
+            )
         if base == "google_pse" or base == "bing_legacy":
             out["deprecated"] = True
         # Keep historical benchmarks explicitly dated; a source review does not rerun them.
@@ -127,6 +137,27 @@ def apply_research():
                 + old.get("comment", "")
             )
         (MATRIX / "data" / f"{slug}.json").write_text(json.dumps(out, indent=2) + "\n")
+    lines = [
+        "# New-column categorical coverage audit",
+        "",
+        "Checked 2026-10-21. Prior production values: 84 unknown feature cells and seven empty Mode lists. These were generated placeholders caused by equating no SDK adapter with unknown vendor capability. Native documentation is now a separate basis; existing SDK mappings are unchanged.",
+        "",
+        "Legend: full = supported; partial = indirect/conditional/limited; none = not exposed by the scoped documented contract; not_applicable = retired/different output abstraction; unknown = specifically undocumented after review, not assumed unsupported.",
+        "",
+        "| Provider | Row | Prior | Researched value | Checked | Evidence and scope |",
+        "|---|---|---|---|---|---|",
+    ]
+    for slug, reviewed in categorical.items():
+        for key, c in list(reviewed["cells"].items()) + [("mode", reviewed["mode"])]:
+            value = c.get("support", ", ".join(c.get("values", [])))
+            reason = c["comment"].replace("|", " / ")
+            extra_links = " ".join(
+                f"[{label}]({url})" for label, url in c.get("links", {}).items()
+            )
+            lines.append(
+                f"| {slug} | {key} | {c['prior_value']} | {value} | {c['checked_at']} | [{reason}]({c['source_url']}) {extra_links} |"
+            )
+    (MATRIX / "categorical-coverage-audit.md").write_text("\n".join(lines) + "\n")
     return audit
 
 

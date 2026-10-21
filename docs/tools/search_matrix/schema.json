@@ -28,7 +28,8 @@
     "native_api",
     "sdk_support",
     "checked_at",
-    "rate_limits"
+    "rate_limits",
+    "capability_basis"
   ],
   "properties": {
     "name": {
@@ -65,7 +66,7 @@
           "$ref": "#/$defs/featureWithSource"
         }
       ],
-      "$comment": "About | API key required | full = credentials required; none = keyless."
+      "$comment": "About | Credentials required | API keys or other API authentication required; none = keyless."
     },
     "snippet": {
       "allOf": [
@@ -73,7 +74,7 @@
           "$ref": "#/$defs/featureWithSource"
         }
       ],
-      "$comment": "SDK Response | Snippet | Short result description in the unified response."
+      "$comment": "Response | Snippet | Short result description; model-only abstractions are distinguished."
     },
     "domains": {
       "allOf": [
@@ -81,7 +82,7 @@
           "$ref": "#/$defs/featureWithSource"
         }
       ],
-      "$comment": "SDK Request | Domain filters | include_domains / exclude_domains."
+      "$comment": "Request | Domain filters | include_domains / exclude_domains."
     },
     "country": {
       "allOf": [
@@ -89,7 +90,7 @@
           "$ref": "#/$defs/featureWithSource"
         }
       ],
-      "$comment": "SDK Request | Country | ISO 3166-1 alpha-2 region bias."
+      "$comment": "Request | Country | ISO 3166-1 alpha-2 region bias."
     },
     "language": {
       "allOf": [
@@ -97,7 +98,7 @@
           "$ref": "#/$defs/featureWithSource"
         }
       ],
-      "$comment": "SDK Request | Language | ISO 639-1 language filter."
+      "$comment": "Request | Language | ISO 639-1 language filter."
     },
     "date": {
       "allOf": [
@@ -105,7 +106,7 @@
           "$ref": "#/$defs/featureWithSource"
         }
       ],
-      "$comment": "SDK Request | Date range | start/end published date filters."
+      "$comment": "Request | Date range | start/end published date filters."
     },
     "safe_search": {
       "allOf": [
@@ -113,7 +114,7 @@
           "$ref": "#/$defs/featureWithSource"
         }
       ],
-      "$comment": "SDK Request | Safe search | off / moderate / strict."
+      "$comment": "Request | Safe search | off / moderate / strict."
     },
     "mode": {
       "allOf": [
@@ -121,7 +122,7 @@
           "$ref": "#/$defs/stringListWithSource"
         }
       ],
-      "$comment": "SDK Request | Mode | fast, balanced, and deep depth knobs supported via anysearch."
+      "$comment": "Request | Mode | fast, balanced, and deep depth knobs supported via anysearch."
     },
     "pricing_per_1k": {
       "allOf": [
@@ -129,7 +130,7 @@
           "$ref": "#/$defs/stringWithSource"
         }
       ],
-      "$comment": "SDK Request | Pricing / 1K | Approximate USD per 1,000 queries by anysearch mode."
+      "$comment": "Request | Pricing / 1K | Approximate USD per 1,000 queries by anysearch mode."
     },
     "free_tier_limits": {
       "allOf": [
@@ -137,7 +138,7 @@
           "$ref": "#/$defs/stringWithSource"
         }
       ],
-      "$comment": "SDK Request | Free tier limits | Standing free allowance, signup credit, or no-free-tier caveat."
+      "$comment": "Request | Free tier limits | Standing free allowance, signup credit, or no-free-tier caveat."
     },
     "p50_latency": {
       "allOf": [
@@ -153,7 +154,7 @@
           "$ref": "#/$defs/featureWithSource"
         }
       ],
-      "$comment": "SDK Response | AI Answer | Top-level synthesized answer on SearchResponse."
+      "$comment": "Response | AI Answer | Top-level synthesized answer; hosted model generation is labeled separately."
     },
     "content": {
       "allOf": [
@@ -161,7 +162,7 @@
           "$ref": "#/$defs/featureWithSource"
         }
       ],
-      "$comment": "SDK Response | Full text | include_content \u2192 SearchResult.text."
+      "$comment": "Response | Full text | Full linked-page content; model-only browsing and separate fetch endpoints are partial."
     },
     "summary": {
       "allOf": [
@@ -169,7 +170,7 @@
           "$ref": "#/$defs/featureWithSource"
         }
       ],
-      "$comment": "SDK Response | Summary | include_summary \u2192 SearchResult.summary."
+      "$comment": "Response | Summary | Per-result page summary; generated-answer summaries are not equivalent."
     },
     "highlights": {
       "allOf": [
@@ -177,7 +178,7 @@
           "$ref": "#/$defs/featureWithSource"
         }
       ],
-      "$comment": "SDK Response | Highlights | Query-relevant excerpts."
+      "$comment": "Response | Highlights | Query-relevant excerpts."
     },
     "news": {
       "allOf": [
@@ -185,7 +186,7 @@
           "$ref": "#/$defs/featureWithSource"
         }
       ],
-      "$comment": "SDK Request | News | search_type=news."
+      "$comment": "Request | News | Dedicated news vertical or limited general-news access; see cell evidence."
     },
     "notes": {
       "type": "string",
@@ -244,6 +245,14 @@
     },
     "evidence": {
       "type": "object"
+    },
+    "capability_basis": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/stringWithSource"
+        }
+      ],
+      "$comment": "About | Capability basis | Native provider documentation or existing SDK mapping; SDK availability is separate."
     }
   },
   "$defs": {
@@ -283,7 +292,8 @@
             "none",
             "partial",
             "full",
-            "unknown"
+            "unknown",
+            "not_applicable"
           ]
         },
         "source_url": {
@@ -291,6 +301,10 @@
         },
         "comment": {
           "type": "string"
+        },
+        "checked_at": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
         }
       }
     },
@@ -315,6 +329,41 @@
           "type": "object",
           "additionalProperties": {
             "type": "string"
+          }
+        },
+        "primary_price": {
+          "type": "object",
+          "required": [
+            "amount_usd_per_1k",
+            "billing_unit",
+            "basis",
+            "source_url",
+            "checked_at"
+          ],
+          "properties": {
+            "amount_usd_per_1k": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0
+            },
+            "billing_unit": {
+              "type": "string",
+              "minLength": 1
+            },
+            "basis": {
+              "type": "string",
+              "minLength": 1
+            },
+            "source_url": {
+              "type": "string",
+              "pattern": "^https://"
+            },
+            "checked_at": {
+              "type": "string",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+            }
           }
         }
       }

@@ -16,9 +16,14 @@
     "comment": ""
   },
   "mode": {
-    "values": [],
+    "values": [
+      "Standard queue",
+      "Priority queue",
+      "Live"
+    ],
+    "comment": "Delivery/priority options, not a unified SDK search quality mode. Queued and live rates differ.",
     "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
-    "comment": "No unified SDK mode mapping."
+    "checked_at": "2026-10-21"
   },
   "p50_latency": {
     "value": "No current comparable measurement verified",
@@ -28,64 +33,88 @@
   "notes": "Comparison only; no anysearch SDK adapter is claimed.",
   "comparison_only": true,
   "requires_key": {
-    "support": "unknown",
-    "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
-    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    "support": "full",
+    "comment": "HTTP Basic authentication with API login/password; credentials are required, although not a bearer API key.",
+    "source_url": "https://docs.dataforseo.com/v3/auth/",
+    "checked_at": "2026-10-21",
+    "basis": "native API documentation"
   },
   "snippet": {
-    "support": "unknown",
-    "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
-    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    "support": "full",
+    "comment": "Organic items expose description as the search-result description.",
+    "source_url": "https://docs.dataforseo.com/v3/serp-se-type-live-advanced/",
+    "checked_at": "2026-10-21",
+    "basis": "native API documentation"
   },
   "domains": {
-    "support": "unknown",
-    "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
-    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    "support": "partial",
+    "comment": "keyword accepts site: operators; provider documents a 5x task charge for advanced operators. This is query syntax, not include/exclude domain arrays.",
+    "source_url": "https://docs.dataforseo.com/v3/serp-se-type-live-advanced/",
+    "checked_at": "2026-10-21",
+    "basis": "native API documentation"
   },
   "country": {
-    "support": "unknown",
-    "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
-    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    "support": "full",
+    "comment": "location_code or location_name select search geography; country locations are documented.",
+    "source_url": "https://docs.dataforseo.com/v3/serp-se-type-live-advanced/",
+    "checked_at": "2026-10-21",
+    "basis": "native API documentation"
   },
   "language": {
-    "support": "unknown",
-    "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
-    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    "support": "full",
+    "comment": "language_code or language_name select search engine language; lr is explicitly stripped.",
+    "source_url": "https://docs.dataforseo.com/v3/serp-se-type-live-advanced/",
+    "checked_at": "2026-10-21",
+    "basis": "native API documentation"
   },
   "date": {
-    "support": "unknown",
-    "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
-    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    "support": "partial",
+    "comment": "search_param forwards supported Google tbs time filters; this is engine date filtering, not guaranteed publication metadata. as_qdr is explicitly stripped.",
+    "source_url": "https://dataforseo.com/help-center/google-search-engine-parameters-and-how-to-use-them",
+    "checked_at": "2026-10-21",
+    "basis": "native API documentation"
   },
   "safe_search": {
-    "support": "unknown",
-    "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
-    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    "support": "partial",
+    "comment": "Supported search_param safe=active filters explicit results; engine-specific parameter behavior, not a unified safe_search enum.",
+    "source_url": "https://dataforseo.com/help-center/google-search-engine-parameters-and-how-to-use-them",
+    "checked_at": "2026-10-21",
+    "basis": "native API documentation"
   },
   "answer": {
-    "support": "unknown",
-    "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
-    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    "support": "partial",
+    "comment": "Advanced response can contain search-engine ai_overview/answer_box; not an always-generated DataForSEO answer. Async overview retrieval is separately charged.",
+    "source_url": "https://docs.dataforseo.com/v3/serp-se-type-live-advanced/",
+    "checked_at": "2026-10-21",
+    "basis": "native API documentation"
   },
   "content": {
-    "support": "unknown",
-    "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
-    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    "support": "none",
+    "comment": "This SERP contract returns result elements and descriptions; the HTML variant returns search-engine SERP HTML, not full text from linked result pages.",
+    "source_url": "https://docs.dataforseo.com/v3/serp-se-type-live-advanced/",
+    "checked_at": "2026-10-21",
+    "basis": "native API documentation"
   },
   "summary": {
-    "support": "unknown",
-    "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
-    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    "support": "none",
+    "comment": "Organic result description is an engine snippet; the complete organic item schema has no generated per-result page-summary output. Separate AI Summary products are outside this column.",
+    "source_url": "https://docs.dataforseo.com/v3/serp-se-type-live-advanced/",
+    "checked_at": "2026-10-21",
+    "basis": "native API documentation"
   },
   "highlights": {
-    "support": "unknown",
-    "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
-    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    "support": "partial",
+    "comment": "highlighted contains bold terms within engine results, not an independently generated excerpt/highlights service.",
+    "source_url": "https://docs.dataforseo.com/v3/serp-se-type-live-advanced/",
+    "checked_at": "2026-10-21",
+    "basis": "native API documentation"
   },
   "news": {
-    "support": "unknown",
-    "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
-    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    "support": "full",
+    "comment": "Dedicated Google News SERP endpoint documented. Separate news request/engine variant, no anysearch adapter.",
+    "source_url": "https://docs.dataforseo.com/v3/serp/google/news/live/html/",
+    "checked_at": "2026-10-21",
+    "basis": "native API documentation"
   },
   "api_category": {
     "value": "Third-party SERP service",
@@ -116,15 +145,27 @@
     "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
     "links": {}
   },
+  "capability_basis": {
+    "value": "Native API \u2014 reviewed",
+    "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+    "comment": "SDK availability is separate from native provider capability. Each native feature cell carries its own checked date and evidence."
+  },
   "sdk_support": {
     "value": "Comparison only \u2014 no adapter",
     "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
-    "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+    "comment": "SDK adapter availability only. See Capability basis for the feature rows; native features do not imply an SDK adapter."
   },
   "pricing_per_1k": {
     "value": "Standard queue $0.60; Priority $1.20; Live $2 / 1K SERP pages (\u226410 organic results/page)",
     "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
     "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+    "primary_price": {
+      "amount_usd_per_1k": 0.6,
+      "billing_unit": "Standard-queue SERP pages",
+      "basis": "\u226410 results/page; queued, not Live; $50 prepaid minimum",
+      "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+      "checked_at": "2026-10-21"
+    },
     "links": {}
   },
   "free_tier_limits": {
@@ -136,7 +177,11 @@
   "evidence": {
     "checked_at": "2026-10-21",
     "source_urls": [
-      "https://dataforseo.com/pricing/google-serp/google-organic-serp-api"
+      "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+      "https://docs.dataforseo.com/v3/auth/",
+      "https://docs.dataforseo.com/v3/serp-se-type-live-advanced/",
+      "https://dataforseo.com/help-center/google-search-engine-parameters-and-how-to-use-them",
+      "https://docs.dataforseo.com/v3/serp/google/news/live/html/"
     ],
     "effective_date": null,
     "method": "official documentation; no new benchmarks"

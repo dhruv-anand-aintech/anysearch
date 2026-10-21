@@ -32,6 +32,16 @@ def validate_research(audit, today=None, max_age=45):
                 errors.append(f"{slug}: missing {key}")
         if not row.get("source_url", "").startswith("https://"):
             errors.append(f"{slug}: missing HTTPS source")
+        primary = row.get("primary_price", {})
+        amount = primary.get("amount_usd_per_1k")
+        if not primary or not primary.get("billing_unit") or not primary.get("basis"):
+            errors.append(f"{slug}: primary pricing basis missing")
+        if amount is not None and (
+            isinstance(amount, bool)
+            or not isinstance(amount, (int, float))
+            or amount < 0
+        ):
+            errors.append(f"{slug}: invalid primary price")
     return errors
 
 

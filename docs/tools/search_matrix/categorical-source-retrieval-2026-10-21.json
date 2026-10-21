@@ -1,0 +1,124 @@
+{
+  "method": "Direct public documentation GET; no authenticated API calls. Availability/hash retrieval evidence, not a benchmark.",
+  "sources": [
+    {
+      "url": "https://api-docs.deepseek.com/guides/search/",
+      "status": 200,
+      "bytes": 57235,
+      "sha256": "93595abed4ca25a8ee51a99bfb1462422015fe567e4e1de6d04910096eca8e97",
+      "fetched_at": "2026-10-21T16:38:48.169636+00:00"
+    },
+    {
+      "url": "https://dataforseo.com/help-center/google-search-engine-parameters-and-how-to-use-them",
+      "status": 200,
+      "bytes": 659090,
+      "sha256": "78c2733842b47c24a3054527eec6c07d91d1e9847974bd6339c960de66daa7be",
+      "fetched_at": "2026-10-21T16:38:48.993191+00:00"
+    },
+    {
+      "url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+      "status": 200,
+      "bytes": 483041,
+      "sha256": "be1ddc8f3354fcb31f5b4c6a4ea6dc6657e00ad78f5d30207b3e77e7353b3c01",
+      "fetched_at": "2026-10-21T16:38:47.759847+00:00"
+    },
+    {
+      "url": "https://developers.google.com/search/docs/monitor-debug/search-operators/all-search-site",
+      "status": 200,
+      "bytes": 175523,
+      "sha256": "6bef2ba3bcde3175c765234f15a1b56dd60268a70d193d4b6059e7ef8d476263",
+      "fetched_at": "2026-10-21T16:38:48.367537+00:00"
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/guides/tools-web-search",
+      "status": 200,
+      "bytes": 864151,
+      "sha256": "324112eda29ee9514359ccbcc0a70d587b1ad194ffa689e189eefa84718872a9",
+      "fetched_at": "2026-10-21T16:38:49.262478+00:00"
+    },
+    {
+      "url": "https://docs.brightdata.com/api-reference/rest-api/serp/serp-api",
+      "status": 200,
+      "bytes": 564898,
+      "sha256": "145f258ff4864c9ddffc2e247d88ec2a874808d409a60b3d5115dd6aee5423fa",
+      "fetched_at": "2026-10-21T16:38:48.627002+00:00"
+    },
+    {
+      "url": "https://docs.brightdata.com/products/serp-api/fast-serp/quickstart",
+      "status": 200,
+      "bytes": 373452,
+      "sha256": "369d5db857c8af8344a3fb61db11d2838a293725459cc6dbc51db1dbfcd7a356",
+      "fetched_at": "2026-10-21T16:38:50.205000+00:00"
+    },
+    {
+      "url": "https://docs.brightdata.com/products/serp-api/parsed-json-results",
+      "status": 200,
+      "bytes": 1168373,
+      "sha256": "44d0248675642bd4bbc281a5510aca5c5f5c9362edba544c9e540c41bd4fae6c",
+      "fetched_at": "2026-10-21T16:38:51.548652+00:00"
+    },
+    {
+      "url": "https://docs.brightdata.com/products/serp-api/query-parameters/google",
+      "status": 200,
+      "bytes": 1664102,
+      "sha256": "b7f9e1dcb6d53c43951422de44ea26f7d70a1ab8d39481a192def1b20cf236ee",
+      "fetched_at": "2026-10-21T16:38:51.639219+00:00"
+    },
+    {
+      "url": "https://docs.dataforseo.com/v3/auth/",
+      "status": 200,
+      "bytes": 275591,
+      "sha256": "d323fd055c4df3d0e300d9c5cb03f3196f1fa034b81601bdd6b26728b9a690f5",
+      "fetched_at": "2026-10-21T16:38:51.555205+00:00"
+    },
+    {
+      "url": "https://docs.dataforseo.com/v3/serp-se-type-live-advanced/",
+      "status": 200,
+      "bytes": 1094870,
+      "sha256": "310808c1191d76bb0c5920d70f52ac3362de68643800b6d0b737f3e54d41f554",
+      "fetched_at": "2026-10-21T16:38:51.870305+00:00"
+    },
+    {
+      "url": "https://docs.dataforseo.com/v3/serp/google/news/live/html/",
+      "status": 200,
+      "bytes": 296121,
+      "sha256": "de295bc124227ca7af10c4ee7b1e320ff26b19eab6704edf269eb432905833af",
+      "fetched_at": "2026-10-21T16:38:51.885051+00:00"
+    },
+    {
+      "url": "https://docs.x.ai/developers/tools/web-search",
+      "status": 200,
+      "bytes": 552356,
+      "sha256": "4c10d89c93f77cb0951eb9dca8e970304f2e0ce3e58c6e2a146847e6c078ce37",
+      "fetched_at": "2026-10-21T16:38:52.356962+00:00"
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+      "status": 200,
+      "bytes": 47368,
+      "sha256": "417f796050bbf63b1309e606ca67b8dc7fa93304eb708edc02ee78708b38a1d2",
+      "fetched_at": "2026-10-21T16:38:52.684613+00:00"
+    },
+    {
+      "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-fetch-tool",
+      "status": 200,
+      "bytes": 815482,
+      "sha256": "bf93569478b3f76bfbe7901c8309cdd4b6a4c3f239769833437860a98399d3d8",
+      "fetched_at": "2026-10-21T16:38:53.584608+00:00"
+    },
+    {
+      "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+      "status": 200,
+      "bytes": 650071,
+      "sha256": "2d65cdef937e600354dd074894157bfb921344320e22d658275fb8fbf369b164",
+      "fetched_at": "2026-10-21T16:38:53.383785+00:00"
+    },
+    {
+      "url": "https://platform.claude.com/docs/en/api/overview",
+      "status": 200,
+      "bytes": 446601,
+      "sha256": "fcf965425ad908aaa6578290656e029c17ad2cff259059401f343bdfa1675e1e",
+      "fetched_at": "2026-10-21T16:38:53.351414+00:00"
+    }
+  ]
+}

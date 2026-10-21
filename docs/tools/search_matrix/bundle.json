@@ -17,9 +17,13 @@
       "comment": ""
     },
     "mode": {
-      "values": [],
+      "values": [
+        "Basic web search",
+        "Dynamic filtering"
+      ],
+      "comment": "Tool versions 20250305, 20260209 and 20260318 provide basic search, dynamic filtering and response-inclusion controls; model availability varies.",
       "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
-      "comment": "No unified SDK mode mapping."
+      "checked_at": "2026-10-21"
     },
     "p50_latency": {
       "value": "No current comparable measurement verified",
@@ -29,64 +33,88 @@
     "notes": "Comparison only; no anysearch SDK adapter is claimed.",
     "comparison_only": true,
     "requires_key": {
-      "support": "unknown",
-      "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "support": "full",
+      "comment": "Claude API authentication is required; web_search is a server tool in an authenticated Messages request.",
+      "source_url": "https://platform.claude.com/docs/en/api/overview",
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "snippet": {
-      "support": "unknown",
+      "support": "partial",
+      "comment": "Search result blocks expose encrypted_content rather than plaintext snippets; citations may return cited_text up to 150 characters.",
       "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "domains": {
-      "support": "unknown",
+      "support": "full",
+      "comment": "allowed_domains or blocked_domains restrict searches; mutually exclusive in one tool configuration.",
       "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "country": {
-      "support": "unknown",
+      "support": "full",
+      "comment": "user_location.country is ISO 3166-1 alpha-2; approximate localization supported.",
       "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "language": {
       "support": "unknown",
+      "comment": "No result-language filter is documented in the reviewed web_search parameter guide. Multilingual model output is not retrieval-language enforcement.",
       "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "date": {
       "support": "unknown",
+      "comment": "page_age is response metadata; the reviewed request controls do not establish an enforced publication-date-range filter.",
       "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "safe_search": {
       "support": "unknown",
+      "comment": "No configurable SafeSearch switch is documented in the reviewed server-tool guide. Safety policy and retrieval filter are distinct.",
       "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "answer": {
-      "support": "unknown",
+      "support": "full",
+      "comment": "Claude returns a final answer with citations after tool searches.",
       "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "content": {
-      "support": "unknown",
-      "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "support": "partial",
+      "comment": "Search content is encrypted for continuation; plaintext page/document fetching is a separate web_fetch tool, not included raw search output.",
+      "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-fetch-tool",
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "summary": {
-      "support": "unknown",
+      "support": "not_applicable",
+      "comment": "Cited answer generation is not a per-result page-summary API; search result blocks have URL/title/page_age/encrypted_content.",
       "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "highlights": {
-      "support": "unknown",
+      "support": "partial",
+      "comment": "Citation cited_text contains up to 150 characters of cited source content; limited citation excerpts, not arbitrary full-page highlighting.",
       "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "news": {
-      "support": "unknown",
+      "support": "partial",
+      "comment": "Official documentation lists recent news as a web-search use case; no news-only vertical control is documented.",
       "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "api_category": {
       "value": "Model-hosted grounding",
@@ -117,15 +145,27 @@
       "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
       "links": {}
     },
+    "capability_basis": {
+      "value": "Native API \u2014 reviewed",
+      "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+      "comment": "SDK availability is separate from native provider capability. Each native feature cell carries its own checked date and evidence."
+    },
     "sdk_support": {
       "value": "Comparison only \u2014 no adapter",
       "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
-      "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+      "comment": "SDK adapter availability only. See Capability basis for the feature rows; native features do not imply an SDK adapter."
     },
     "pricing_per_1k": {
       "value": "$10 / 1K searches + model token charges",
       "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
       "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "primary_price": {
+        "amount_usd_per_1k": 10,
+        "billing_unit": "web searches",
+        "basis": "Model tokens extra",
+        "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+        "checked_at": "2026-10-21"
+      },
       "links": {}
     },
     "free_tier_limits": {
@@ -137,7 +177,9 @@
     "evidence": {
       "checked_at": "2026-10-21",
       "source_urls": [
-        "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool"
+        "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+        "https://platform.claude.com/docs/en/api/overview",
+        "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-fetch-tool"
       ],
       "effective_date": null,
       "method": "official documentation; no new benchmarks"
@@ -232,6 +274,13 @@
       "value": "$25/month for 1K; $75/5K; $150/15K; $275/30K searches",
       "source_url": "https://serpapi.com/pricing",
       "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "primary_price": {
+        "amount_usd_per_1k": 25,
+        "billing_unit": "starter searches",
+        "basis": "$25 monthly plan; larger plans differ",
+        "source_url": "https://serpapi.com/pricing",
+        "checked_at": "2026-10-21"
+      },
       "links": {}
     },
     "free_tier_limits": {
@@ -279,10 +328,15 @@
       "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
       "links": {}
     },
+    "capability_basis": {
+      "value": "Existing SDK mappings",
+      "source_url": "https://serpapi.com/pricing",
+      "comment": "SDK availability is separate from native provider capability. Each native feature cell carries its own checked date and evidence."
+    },
     "sdk_support": {
       "value": "Python + TypeScript adapters",
       "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
-      "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+      "comment": "SDK adapter availability only. See Capability basis for the feature rows; native features do not imply an SDK adapter."
     },
     "evidence": {
       "checked_at": "2026-10-21",
@@ -311,9 +365,12 @@
       "comment": ""
     },
     "mode": {
-      "values": [],
+      "values": [
+        "N/A (retired)"
+      ],
+      "comment": "Retired service has no current usable search modes.",
       "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
-      "comment": "No unified SDK mode mapping."
+      "checked_at": "2026-10-21"
     },
     "p50_latency": {
       "value": "No current comparable measurement verified",
@@ -323,64 +380,88 @@
     "notes": "Comparison only; no anysearch SDK adapter is claimed.",
     "comparison_only": true,
     "requires_key": {
-      "support": "unknown",
+      "support": "not_applicable",
+      "comment": "Retired August 11, 2025; all direct Bing Search API instances decommissioned. Current capability is N/A, not an assertion about historical features or SerpApi Bing.",
       "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "snippet": {
-      "support": "unknown",
+      "support": "not_applicable",
+      "comment": "Retired August 11, 2025; all direct Bing Search API instances decommissioned. Current capability is N/A, not an assertion about historical features or SerpApi Bing.",
       "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "domains": {
-      "support": "unknown",
+      "support": "not_applicable",
+      "comment": "Retired August 11, 2025; all direct Bing Search API instances decommissioned. Current capability is N/A, not an assertion about historical features or SerpApi Bing.",
       "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "country": {
-      "support": "unknown",
+      "support": "not_applicable",
+      "comment": "Retired August 11, 2025; all direct Bing Search API instances decommissioned. Current capability is N/A, not an assertion about historical features or SerpApi Bing.",
       "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "language": {
-      "support": "unknown",
+      "support": "not_applicable",
+      "comment": "Retired August 11, 2025; all direct Bing Search API instances decommissioned. Current capability is N/A, not an assertion about historical features or SerpApi Bing.",
       "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "date": {
-      "support": "unknown",
+      "support": "not_applicable",
+      "comment": "Retired August 11, 2025; all direct Bing Search API instances decommissioned. Current capability is N/A, not an assertion about historical features or SerpApi Bing.",
       "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "safe_search": {
-      "support": "unknown",
+      "support": "not_applicable",
+      "comment": "Retired August 11, 2025; all direct Bing Search API instances decommissioned. Current capability is N/A, not an assertion about historical features or SerpApi Bing.",
       "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "answer": {
-      "support": "unknown",
+      "support": "not_applicable",
+      "comment": "Retired August 11, 2025; all direct Bing Search API instances decommissioned. Current capability is N/A, not an assertion about historical features or SerpApi Bing.",
       "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "content": {
-      "support": "unknown",
+      "support": "not_applicable",
+      "comment": "Retired August 11, 2025; all direct Bing Search API instances decommissioned. Current capability is N/A, not an assertion about historical features or SerpApi Bing.",
       "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "summary": {
-      "support": "unknown",
+      "support": "not_applicable",
+      "comment": "Retired August 11, 2025; all direct Bing Search API instances decommissioned. Current capability is N/A, not an assertion about historical features or SerpApi Bing.",
       "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "highlights": {
-      "support": "unknown",
+      "support": "not_applicable",
+      "comment": "Retired August 11, 2025; all direct Bing Search API instances decommissioned. Current capability is N/A, not an assertion about historical features or SerpApi Bing.",
       "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "news": {
-      "support": "unknown",
+      "support": "not_applicable",
+      "comment": "Retired August 11, 2025; all direct Bing Search API instances decommissioned. Current capability is N/A, not an assertion about historical features or SerpApi Bing.",
       "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "api_category": {
       "value": "Legacy search API",
@@ -411,15 +492,27 @@
       "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
       "links": {}
     },
+    "capability_basis": {
+      "value": "Native API \u2014 reviewed",
+      "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+      "comment": "SDK availability is separate from native provider capability. Each native feature cell carries its own checked date and evidence."
+    },
     "sdk_support": {
       "value": "Comparison only \u2014 no adapter",
       "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
-      "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+      "comment": "SDK adapter availability only. See Capability basis for the feature rows; native features do not imply an SDK adapter."
     },
     "pricing_per_1k": {
       "value": "Retired; current direct API pricing not applicable",
       "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
       "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "primary_price": {
+        "amount_usd_per_1k": null,
+        "billing_unit": "retired",
+        "basis": "Unavailable; no current price",
+        "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+        "checked_at": "2026-10-21"
+      },
       "links": {}
     },
     "free_tier_limits": {
@@ -527,6 +620,13 @@
       "value": "$25/month for 1K; $75/5K; $150/15K; $275/30K searches",
       "source_url": "https://serpapi.com/pricing",
       "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "primary_price": {
+        "amount_usd_per_1k": 25,
+        "billing_unit": "starter searches",
+        "basis": "$25 monthly plan; larger plans differ",
+        "source_url": "https://serpapi.com/pricing",
+        "checked_at": "2026-10-21"
+      },
       "links": {}
     },
     "free_tier_limits": {
@@ -574,10 +674,15 @@
       "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
       "links": {}
     },
+    "capability_basis": {
+      "value": "Existing SDK mappings",
+      "source_url": "https://serpapi.com/pricing",
+      "comment": "SDK availability is separate from native provider capability. Each native feature cell carries its own checked date and evidence."
+    },
     "sdk_support": {
       "value": "Python + TypeScript adapters",
       "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
-      "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+      "comment": "SDK adapter availability only. See Capability basis for the feature rows; native features do not imply an SDK adapter."
     },
     "evidence": {
       "checked_at": "2026-10-21",
@@ -678,6 +783,13 @@
       "value": "Search $5 / 1K requests; Answers $4 / 1K + $5/M input and output tokens",
       "source_url": "https://api-dashboard.search.brave.com/documentation/pricing",
       "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "primary_price": {
+        "amount_usd_per_1k": 5,
+        "billing_unit": "Search requests",
+        "basis": "Answers and model tokens separate",
+        "source_url": "https://api-dashboard.search.brave.com/documentation/pricing",
+        "checked_at": "2026-10-21"
+      },
       "links": {
         "Official source 1": "https://brave.com/blog/most-powerful-search-api-for-ai/"
       }
@@ -737,10 +849,15 @@
         "Official source 1": "https://brave.com/blog/most-powerful-search-api-for-ai/"
       }
     },
+    "capability_basis": {
+      "value": "Existing SDK mappings",
+      "source_url": "https://api-dashboard.search.brave.com/documentation/pricing",
+      "comment": "SDK availability is separate from native provider capability. Each native feature cell carries its own checked date and evidence."
+    },
     "sdk_support": {
       "value": "Python + TypeScript adapters",
       "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
-      "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+      "comment": "SDK adapter availability only. See Capability basis for the feature rows; native features do not imply an SDK adapter."
     },
     "evidence": {
       "checked_at": "2026-10-21",
@@ -770,9 +887,13 @@
       "comment": ""
     },
     "mode": {
-      "values": [],
-      "source_url": "https://brightdata.com/pricing/serp",
-      "comment": "No unified SDK mode mapping."
+      "values": [
+        "SERP",
+        "Fast SERP"
+      ],
+      "comment": "Fast SERP has separate access requirements; no anysearch fast/balanced/deep mapping.",
+      "source_url": "https://docs.brightdata.com/products/serp-api/fast-serp/quickstart",
+      "checked_at": "2026-10-21"
     },
     "p50_latency": {
       "value": "No current comparable measurement verified",
@@ -782,64 +903,91 @@
     "notes": "Comparison only; no anysearch SDK adapter is claimed.",
     "comparison_only": true,
     "requires_key": {
-      "support": "unknown",
-      "source_url": "https://brightdata.com/pricing/serp",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "support": "full",
+      "comment": "REST request API requires bearer API key; proxy interface uses zone credentials.",
+      "source_url": "https://docs.brightdata.com/api-reference/rest-api/serp/serp-api",
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "snippet": {
-      "support": "unknown",
-      "source_url": "https://brightdata.com/pricing/serp",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "support": "full",
+      "comment": "Parsed organic results expose description (search snippet).",
+      "source_url": "https://docs.brightdata.com/products/serp-api/parsed-json-results",
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "domains": {
-      "support": "unknown",
-      "source_url": "https://brightdata.com/pricing/serp",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "support": "partial",
+      "comment": "Indirect engine query operator: provider forwards q in a Google search URL, and Google documents site:. This documented composition is not a typed domain allow/deny guarantee.",
+      "source_url": "https://docs.brightdata.com/products/serp-api/query-parameters/google",
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation",
+      "links": {
+        "Google site: operator": "https://developers.google.com/search/docs/monitor-debug/search-operators/all-search-site"
+      }
     },
     "country": {
-      "support": "unknown",
-      "source_url": "https://brightdata.com/pricing/serp",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "support": "full",
+      "comment": "gl selects two-letter search country; localization is documented.",
+      "source_url": "https://docs.brightdata.com/products/serp-api/query-parameters/google",
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "language": {
-      "support": "unknown",
-      "source_url": "https://brightdata.com/pricing/serp",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "support": "full",
+      "comment": "hl sets page/interface language; engine-supported language semantics, not a guarantee every result has that language.",
+      "source_url": "https://docs.brightdata.com/products/serp-api/query-parameters/google",
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "date": {
-      "support": "unknown",
-      "source_url": "https://brightdata.com/pricing/serp",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "support": "partial",
+      "comment": "tbs filters publication time by engine-supported ranges; engine-specific date syntax rather than typed start/end fields.",
+      "source_url": "https://docs.brightdata.com/products/serp-api/query-parameters/google",
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "safe_search": {
-      "support": "unknown",
-      "source_url": "https://brightdata.com/pricing/serp",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "support": "full",
+      "comment": "safe=active or safe=off enables/disables Google SafeSearch.",
+      "source_url": "https://docs.brightdata.com/products/serp-api/query-parameters/google",
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "answer": {
-      "support": "unknown",
-      "source_url": "https://brightdata.com/pricing/serp",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "support": "partial",
+      "comment": "Parsed Google ai_overview is available when the upstream SERP includes it; no guaranteed independent synthesized answer.",
+      "source_url": "https://docs.brightdata.com/products/serp-api/query-parameters/google",
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "content": {
-      "support": "unknown",
-      "source_url": "https://brightdata.com/pricing/serp",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "support": "none",
+      "comment": "Parsed JSON/HTML/Markdown formats describe the SERP response, not fetched full text of linked result pages. Separate scraper products are outside this column.",
+      "source_url": "https://docs.brightdata.com/products/serp-api/parsed-json-results",
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "summary": {
-      "support": "unknown",
-      "source_url": "https://brightdata.com/pricing/serp",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "support": "none",
+      "comment": "The documented organic response has description snippets, not generated per-result page summaries. Upstream AI Overview is a separate SERP element.",
+      "source_url": "https://docs.brightdata.com/products/serp-api/parsed-json-results",
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "highlights": {
-      "support": "unknown",
-      "source_url": "https://brightdata.com/pricing/serp",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "support": "partial",
+      "comment": "snippet_highlighted_words exposes engine-highlighted terms, not a standalone excerpt generation service.",
+      "source_url": "https://docs.brightdata.com/products/serp-api/parsed-json-results",
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "news": {
-      "support": "unknown",
-      "source_url": "https://brightdata.com/pricing/serp",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "support": "full",
+      "comment": "tbm=nws selects Google News results; dedicated Fast SERP News also documented.",
+      "source_url": "https://docs.brightdata.com/products/serp-api/query-parameters/google",
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "api_category": {
       "value": "Third-party SERP service",
@@ -870,15 +1018,27 @@
       "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
       "links": {}
     },
+    "capability_basis": {
+      "value": "Native API \u2014 reviewed",
+      "source_url": "https://brightdata.com/pricing/serp",
+      "comment": "SDK availability is separate from native provider capability. Each native feature cell carries its own checked date and evidence."
+    },
     "sdk_support": {
       "value": "Comparison only \u2014 no adapter",
       "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
-      "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+      "comment": "SDK adapter availability only. See Capability basis for the feature rows; native features do not imply an SDK adapter."
     },
     "pricing_per_1k": {
       "value": "PAYG $1.50 / 1K successful requests; Scale $499/month includes 380K then $1.30 / 1K",
       "source_url": "https://brightdata.com/pricing/serp",
       "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "primary_price": {
+        "amount_usd_per_1k": 1.5,
+        "billing_unit": "successful PAYG SERP requests",
+        "basis": "Other plans differ",
+        "source_url": "https://brightdata.com/pricing/serp",
+        "checked_at": "2026-10-21"
+      },
       "links": {}
     },
     "free_tier_limits": {
@@ -890,7 +1050,12 @@
     "evidence": {
       "checked_at": "2026-10-21",
       "source_urls": [
-        "https://brightdata.com/pricing/serp"
+        "https://brightdata.com/pricing/serp",
+        "https://docs.brightdata.com/api-reference/rest-api/serp/serp-api",
+        "https://docs.brightdata.com/products/serp-api/parsed-json-results",
+        "https://docs.brightdata.com/products/serp-api/query-parameters/google",
+        "https://developers.google.com/search/docs/monitor-debug/search-operators/all-search-site",
+        "https://docs.brightdata.com/products/serp-api/fast-serp/quickstart"
       ],
       "effective_date": null,
       "method": "official documentation; no new benchmarks"
@@ -914,9 +1079,14 @@
       "comment": ""
     },
     "mode": {
-      "values": [],
+      "values": [
+        "Standard queue",
+        "Priority queue",
+        "Live"
+      ],
+      "comment": "Delivery/priority options, not a unified SDK search quality mode. Queued and live rates differ.",
       "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
-      "comment": "No unified SDK mode mapping."
+      "checked_at": "2026-10-21"
     },
     "p50_latency": {
       "value": "No current comparable measurement verified",
@@ -926,64 +1096,88 @@
     "notes": "Comparison only; no anysearch SDK adapter is claimed.",
     "comparison_only": true,
     "requires_key": {
-      "support": "unknown",
-      "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "support": "full",
+      "comment": "HTTP Basic authentication with API login/password; credentials are required, although not a bearer API key.",
+      "source_url": "https://docs.dataforseo.com/v3/auth/",
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "snippet": {
-      "support": "unknown",
-      "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "support": "full",
+      "comment": "Organic items expose description as the search-result description.",
+      "source_url": "https://docs.dataforseo.com/v3/serp-se-type-live-advanced/",
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "domains": {
-      "support": "unknown",
-      "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "support": "partial",
+      "comment": "keyword accepts site: operators; provider documents a 5x task charge for advanced operators. This is query syntax, not include/exclude domain arrays.",
+      "source_url": "https://docs.dataforseo.com/v3/serp-se-type-live-advanced/",
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "country": {
-      "support": "unknown",
-      "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "support": "full",
+      "comment": "location_code or location_name select search geography; country locations are documented.",
+      "source_url": "https://docs.dataforseo.com/v3/serp-se-type-live-advanced/",
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "language": {
-      "support": "unknown",
-      "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "support": "full",
+      "comment": "language_code or language_name select search engine language; lr is explicitly stripped.",
+      "source_url": "https://docs.dataforseo.com/v3/serp-se-type-live-advanced/",
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "date": {
-      "support": "unknown",
-      "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "support": "partial",
+      "comment": "search_param forwards supported Google tbs time filters; this is engine date filtering, not guaranteed publication metadata. as_qdr is explicitly stripped.",
+      "source_url": "https://dataforseo.com/help-center/google-search-engine-parameters-and-how-to-use-them",
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "safe_search": {
-      "support": "unknown",
-      "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "support": "partial",
+      "comment": "Supported search_param safe=active filters explicit results; engine-specific parameter behavior, not a unified safe_search enum.",
+      "source_url": "https://dataforseo.com/help-center/google-search-engine-parameters-and-how-to-use-them",
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "answer": {
-      "support": "unknown",
-      "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "support": "partial",
+      "comment": "Advanced response can contain search-engine ai_overview/answer_box; not an always-generated DataForSEO answer. Async overview retrieval is separately charged.",
+      "source_url": "https://docs.dataforseo.com/v3/serp-se-type-live-advanced/",
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "content": {
-      "support": "unknown",
-      "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "support": "none",
+      "comment": "This SERP contract returns result elements and descriptions; the HTML variant returns search-engine SERP HTML, not full text from linked result pages.",
+      "source_url": "https://docs.dataforseo.com/v3/serp-se-type-live-advanced/",
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "summary": {
-      "support": "unknown",
-      "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "support": "none",
+      "comment": "Organic result description is an engine snippet; the complete organic item schema has no generated per-result page-summary output. Separate AI Summary products are outside this column.",
+      "source_url": "https://docs.dataforseo.com/v3/serp-se-type-live-advanced/",
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "highlights": {
-      "support": "unknown",
-      "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "support": "partial",
+      "comment": "highlighted contains bold terms within engine results, not an independently generated excerpt/highlights service.",
+      "source_url": "https://docs.dataforseo.com/v3/serp-se-type-live-advanced/",
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "news": {
-      "support": "unknown",
-      "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "support": "full",
+      "comment": "Dedicated Google News SERP endpoint documented. Separate news request/engine variant, no anysearch adapter.",
+      "source_url": "https://docs.dataforseo.com/v3/serp/google/news/live/html/",
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "api_category": {
       "value": "Third-party SERP service",
@@ -1014,15 +1208,27 @@
       "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
       "links": {}
     },
+    "capability_basis": {
+      "value": "Native API \u2014 reviewed",
+      "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+      "comment": "SDK availability is separate from native provider capability. Each native feature cell carries its own checked date and evidence."
+    },
     "sdk_support": {
       "value": "Comparison only \u2014 no adapter",
       "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
-      "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+      "comment": "SDK adapter availability only. See Capability basis for the feature rows; native features do not imply an SDK adapter."
     },
     "pricing_per_1k": {
       "value": "Standard queue $0.60; Priority $1.20; Live $2 / 1K SERP pages (\u226410 organic results/page)",
       "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
       "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "primary_price": {
+        "amount_usd_per_1k": 0.6,
+        "billing_unit": "Standard-queue SERP pages",
+        "basis": "\u226410 results/page; queued, not Live; $50 prepaid minimum",
+        "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+        "checked_at": "2026-10-21"
+      },
       "links": {}
     },
     "free_tier_limits": {
@@ -1034,7 +1240,11 @@
     "evidence": {
       "checked_at": "2026-10-21",
       "source_urls": [
-        "https://dataforseo.com/pricing/google-serp/google-organic-serp-api"
+        "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+        "https://docs.dataforseo.com/v3/auth/",
+        "https://docs.dataforseo.com/v3/serp-se-type-live-advanced/",
+        "https://dataforseo.com/help-center/google-search-engine-parameters-and-how-to-use-them",
+        "https://docs.dataforseo.com/v3/serp/google/news/live/html/"
       ],
       "effective_date": null,
       "method": "official documentation; no new benchmarks"
@@ -1058,9 +1268,12 @@
       "comment": ""
     },
     "mode": {
-      "values": [],
+      "values": [
+        "Search (single endpoint)"
+      ],
+      "comment": "One raw Search endpoint; count and need_content configure results, not named fast/deep tiers.",
       "source_url": "https://api-docs.deepseek.com/guides/search/",
-      "comment": "No unified SDK mode mapping."
+      "checked_at": "2026-10-21"
     },
     "p50_latency": {
       "value": "No current comparable measurement verified",
@@ -1070,64 +1283,88 @@
     "notes": "Comparison only; no anysearch SDK adapter is claimed.",
     "comparison_only": true,
     "requires_key": {
-      "support": "unknown",
+      "support": "full",
+      "comment": "Bearer DeepSeek API key required for both raw JSON tools.",
       "source_url": "https://api-docs.deepseek.com/guides/search/",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "snippet": {
-      "support": "unknown",
+      "support": "full",
+      "comment": "Each Search result has a short query-related snippet string.",
       "source_url": "https://api-docs.deepseek.com/guides/search/",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "domains": {
-      "support": "unknown",
+      "support": "partial",
+      "comment": "site: and -site: query operators, including OR alternatives; query syntax rather than typed domain arrays.",
       "source_url": "https://api-docs.deepseek.com/guides/search/",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "country": {
-      "support": "unknown",
+      "support": "partial",
+      "comment": "localization accepts an IP address; region localization is indirect, not an ISO country selector.",
       "source_url": "https://api-docs.deepseek.com/guides/search/",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "language": {
-      "support": "unknown",
+      "support": "partial",
+      "comment": "lang: query operator accepts comma-separated language codes; no typed language field.",
       "source_url": "https://api-docs.deepseek.com/guides/search/",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "date": {
-      "support": "unknown",
+      "support": "partial",
+      "comment": "after: and before: query operators restrict publication dates; no typed date fields.",
       "source_url": "https://api-docs.deepseek.com/guides/search/",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "safe_search": {
       "support": "unknown",
+      "comment": "Reviewed request table and operator list document no explicit safe-search setting. Filtering policy or unsupported status is not established.",
       "source_url": "https://api-docs.deepseek.com/guides/search/",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "answer": {
-      "support": "unknown",
+      "support": "none",
+      "comment": "The documented Search response is results only; per-result summaries are not a top-level synthesized answer. Chat model generation is separate.",
       "source_url": "https://api-docs.deepseek.com/guides/search/",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "content": {
-      "support": "unknown",
+      "support": "full",
+      "comment": "need_content=true returns page content when available; separate Fetch returns Markdown. No success/content guarantee for every page.",
       "source_url": "https://api-docs.deepseek.com/guides/search/",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "summary": {
-      "support": "unknown",
+      "support": "partial",
+      "comment": "Per-result summary is documented as a longer query-related summary; whether it is AI-generated is not specified.",
       "source_url": "https://api-docs.deepseek.com/guides/search/",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "highlights": {
-      "support": "unknown",
+      "support": "partial",
+      "comment": "Query-related snippet/summary excerpts are returned; no separate highlighted-span array in the complete response schema.",
       "source_url": "https://api-docs.deepseek.com/guides/search/",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "news": {
-      "support": "unknown",
+      "support": "none",
+      "comment": "The complete Search request contract has no news vertical selector; general search can retrieve news, which is not a dedicated News API.",
       "source_url": "https://api-docs.deepseek.com/guides/search/",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "api_category": {
       "value": "Standalone search API",
@@ -1158,15 +1395,27 @@
       "comment": "Official public documentation reviewed; no paid API or benchmark run. Direct live guide rechecked October 21: Search 100 QPS and Fetch 25 QPS. Earlier indexed 5/5 snapshot is superseded. Direct API billing is separate from temporarily free server-side integrations, billed from October 31 16:00 UTC.",
       "links": {}
     },
+    "capability_basis": {
+      "value": "Native API \u2014 reviewed",
+      "source_url": "https://api-docs.deepseek.com/guides/search/",
+      "comment": "SDK availability is separate from native provider capability. Each native feature cell carries its own checked date and evidence."
+    },
     "sdk_support": {
       "value": "Comparison only \u2014 no adapter",
       "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
-      "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+      "comment": "SDK adapter availability only. See Capability basis for the feature rows; native features do not imply an SDK adapter."
     },
     "pricing_per_1k": {
       "value": "$0.75 / 1K successful nonempty Search requests; Fetch separately $0.75 / 1K",
       "source_url": "https://api-docs.deepseek.com/guides/search/",
       "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. Direct live guide rechecked October 21: Search 100 QPS and Fetch 25 QPS. Earlier indexed 5/5 snapshot is superseded. Direct API billing is separate from temporarily free server-side integrations, billed from October 31 16:00 UTC.",
+      "primary_price": {
+        "amount_usd_per_1k": 0.75,
+        "billing_unit": "successful nonempty requests",
+        "basis": "Search; Fetch separately billed",
+        "source_url": "https://api-docs.deepseek.com/guides/search/",
+        "checked_at": "2026-10-21"
+      },
       "links": {}
     },
     "free_tier_limits": {
@@ -1273,6 +1522,13 @@
       "value": "No library API fee; hosting/proxy/upstream costs separate",
       "source_url": "https://github.com/deedy5/ddgs",
       "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "primary_price": {
+        "amount_usd_per_1k": 0,
+        "billing_unit": "library API fee",
+        "basis": "Self-managed; hosting/upstream/proxy costs extra",
+        "source_url": "https://github.com/deedy5/ddgs",
+        "checked_at": "2026-10-21"
+      },
       "links": {}
     },
     "free_tier_limits": {
@@ -1316,10 +1572,15 @@
       "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
       "links": {}
     },
+    "capability_basis": {
+      "value": "Existing SDK mappings",
+      "source_url": "https://github.com/deedy5/ddgs",
+      "comment": "SDK availability is separate from native provider capability. Each native feature cell carries its own checked date and evidence."
+    },
     "sdk_support": {
       "value": "Python + TypeScript adapters",
       "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
-      "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+      "comment": "SDK adapter availability only. See Capability basis for the feature rows; native features do not imply an SDK adapter."
     },
     "evidence": {
       "checked_at": "2026-10-21",
@@ -1419,6 +1680,13 @@
       "value": "$25/month for 1K; $75/5K; $150/15K; $275/30K searches",
       "source_url": "https://serpapi.com/pricing",
       "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "primary_price": {
+        "amount_usd_per_1k": 25,
+        "billing_unit": "starter searches",
+        "basis": "$25 monthly plan; larger plans differ",
+        "source_url": "https://serpapi.com/pricing",
+        "checked_at": "2026-10-21"
+      },
       "links": {}
     },
     "free_tier_limits": {
@@ -1466,10 +1734,15 @@
       "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
       "links": {}
     },
+    "capability_basis": {
+      "value": "Existing SDK mappings",
+      "source_url": "https://serpapi.com/pricing",
+      "comment": "SDK availability is separate from native provider capability. Each native feature cell carries its own checked date and evidence."
+    },
     "sdk_support": {
       "value": "Python + TypeScript adapters",
       "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
-      "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+      "comment": "SDK adapter availability only. See Capability basis for the feature rows; native features do not imply an SDK adapter."
     },
     "evidence": {
       "checked_at": "2026-10-21",
@@ -1571,6 +1844,13 @@
       "value": "Lite $4; Auto $7; Deep $12 / 1K requests (\u226410 results); extra results $1 / 1K each",
       "source_url": "https://exa.ai/pricing",
       "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "primary_price": {
+        "amount_usd_per_1k": 4,
+        "billing_unit": "Lite requests",
+        "basis": "\u226410 results; Auto/Deep and content add-ons differ",
+        "source_url": "https://exa.ai/pricing",
+        "checked_at": "2026-10-21"
+      },
       "links": {
         "Official source 1": "https://exa.ai/blog/exa-3",
         "Official source 2": "https://exa.ai/docs/reference/search"
@@ -1636,10 +1916,15 @@
         "Official source 2": "https://exa.ai/docs/reference/search"
       }
     },
+    "capability_basis": {
+      "value": "Existing SDK mappings",
+      "source_url": "https://exa.ai/pricing",
+      "comment": "SDK availability is separate from native provider capability. Each native feature cell carries its own checked date and evidence."
+    },
     "sdk_support": {
       "value": "Python + TypeScript adapters",
       "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
-      "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+      "comment": "SDK adapter availability only. See Capability basis for the feature rows; native features do not imply an SDK adapter."
     },
     "evidence": {
       "checked_at": "2026-10-21",
@@ -1741,6 +2026,13 @@
       "value": "2 credits / 10 search results; scraping add-ons separate; Hobby $19/month for 5K credits",
       "source_url": "https://www.firecrawl.dev/pricing",
       "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "primary_price": {
+        "amount_usd_per_1k": null,
+        "billing_unit": "credits",
+        "basis": "Credit-based; no flat cash rate ranked",
+        "source_url": "https://www.firecrawl.dev/pricing",
+        "checked_at": "2026-10-21"
+      },
       "links": {
         "Official source 1": "https://docs.firecrawl.dev/features/search"
       }
@@ -1801,10 +2093,15 @@
         "Official source 1": "https://docs.firecrawl.dev/features/search"
       }
     },
+    "capability_basis": {
+      "value": "Existing SDK mappings",
+      "source_url": "https://www.firecrawl.dev/pricing",
+      "comment": "SDK availability is separate from native provider capability. Each native feature cell carries its own checked date and evidence."
+    },
     "sdk_support": {
       "value": "Python + TypeScript adapters",
       "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
-      "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+      "comment": "SDK adapter availability only. See Capability basis for the feature rows; native features do not imply an SDK adapter."
     },
     "evidence": {
       "checked_at": "2026-10-21",
@@ -1905,6 +2202,13 @@
       "value": "Gemini 3+: $14 / 1K individual search queries + model charges",
       "source_url": "https://ai.google.dev/gemini-api/docs/pricing",
       "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "primary_price": {
+        "amount_usd_per_1k": 14,
+        "billing_unit": "Gemini 3+ search queries",
+        "basis": "Model tokens extra; older model rules differ",
+        "source_url": "https://ai.google.dev/gemini-api/docs/pricing",
+        "checked_at": "2026-10-21"
+      },
       "links": {
         "Official source 1": "https://ai.google.dev/gemini-api/docs/google-search/"
       }
@@ -1960,10 +2264,15 @@
         "Official source 1": "https://ai.google.dev/gemini-api/docs/google-search/"
       }
     },
+    "capability_basis": {
+      "value": "Existing SDK mappings",
+      "source_url": "https://ai.google.dev/gemini-api/docs/pricing",
+      "comment": "SDK availability is separate from native provider capability. Each native feature cell carries its own checked date and evidence."
+    },
     "sdk_support": {
       "value": "Python + TypeScript adapters",
       "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
-      "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+      "comment": "SDK adapter availability only. See Capability basis for the feature rows; native features do not imply an SDK adapter."
     },
     "evidence": {
       "checked_at": "2026-10-21",
@@ -2064,6 +2373,13 @@
       "value": "Existing users: $5 / 1K above free quota; up to 10K/day",
       "source_url": "https://developers.google.com/custom-search/v1/overview",
       "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "primary_price": {
+        "amount_usd_per_1k": null,
+        "billing_unit": "legacy queries",
+        "basis": "Closed to new customers; not ranked as currently available",
+        "source_url": "https://developers.google.com/custom-search/v1/overview",
+        "checked_at": "2026-10-21"
+      },
       "links": {}
     },
     "free_tier_limits": {
@@ -2107,10 +2423,15 @@
       "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
       "links": {}
     },
+    "capability_basis": {
+      "value": "Existing SDK mappings",
+      "source_url": "https://developers.google.com/custom-search/v1/overview",
+      "comment": "SDK availability is separate from native provider capability. Each native feature cell carries its own checked date and evidence."
+    },
     "sdk_support": {
       "value": "Python + TypeScript adapters",
       "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
-      "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+      "comment": "SDK adapter availability only. See Capability basis for the feature rows; native features do not imply an SDK adapter."
     },
     "evidence": {
       "checked_at": "2026-10-21",
@@ -2211,6 +2532,13 @@
       "value": "$25/month for 1K; $75/5K; $150/15K; $275/30K searches",
       "source_url": "https://serpapi.com/pricing",
       "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "primary_price": {
+        "amount_usd_per_1k": 25,
+        "billing_unit": "starter searches",
+        "basis": "$25 monthly plan; larger plans differ",
+        "source_url": "https://serpapi.com/pricing",
+        "checked_at": "2026-10-21"
+      },
       "links": {}
     },
     "free_tier_limits": {
@@ -2258,10 +2586,15 @@
       "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
       "links": {}
     },
+    "capability_basis": {
+      "value": "Existing SDK mappings",
+      "source_url": "https://serpapi.com/pricing",
+      "comment": "SDK availability is separate from native provider capability. Each native feature cell carries its own checked date and evidence."
+    },
     "sdk_support": {
       "value": "Python + TypeScript adapters",
       "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
-      "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+      "comment": "SDK adapter availability only. See Capability basis for the feature rows; native features do not imply an SDK adapter."
     },
     "evidence": {
       "checked_at": "2026-10-21",
@@ -2361,6 +2694,13 @@
       "value": "Token-priced: \u226510K tokens/request; $50/1B tokens implies \u2265$0.50 / 1K, not flat CPM",
       "source_url": "https://jina.ai/api-dashboard/pricing/",
       "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "primary_price": {
+        "amount_usd_per_1k": null,
+        "billing_unit": "tokens",
+        "basis": "Token-priced; lower-bound request estimate is not a flat price",
+        "source_url": "https://jina.ai/api-dashboard/pricing/",
+        "checked_at": "2026-10-21"
+      },
       "links": {}
     },
     "free_tier_limits": {
@@ -2408,10 +2748,15 @@
       "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
       "links": {}
     },
+    "capability_basis": {
+      "value": "Existing SDK mappings",
+      "source_url": "https://jina.ai/api-dashboard/pricing/",
+      "comment": "SDK availability is separate from native provider capability. Each native feature cell carries its own checked date and evidence."
+    },
     "sdk_support": {
       "value": "Python + TypeScript adapters",
       "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
-      "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+      "comment": "SDK adapter availability only. See Capability basis for the feature rows; native features do not imply an SDK adapter."
     },
     "evidence": {
       "checked_at": "2026-10-21",
@@ -2511,6 +2856,13 @@
       "value": "Search $12 / 1K requests; Extract $4 / 1K pages",
       "source_url": "https://kagi.com/api/pricing",
       "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "primary_price": {
+        "amount_usd_per_1k": 12,
+        "billing_unit": "Search requests",
+        "basis": "Extract separately billed",
+        "source_url": "https://kagi.com/api/pricing",
+        "checked_at": "2026-10-21"
+      },
       "links": {
         "Official source 1": "https://help.kagi.com/kagi/api/search.html",
         "Official source 2": "https://kagi.com/api/docs"
@@ -2572,10 +2924,15 @@
         "Official source 2": "https://kagi.com/api/docs"
       }
     },
+    "capability_basis": {
+      "value": "Existing SDK mappings",
+      "source_url": "https://kagi.com/api/pricing",
+      "comment": "SDK availability is separate from native provider capability. Each native feature cell carries its own checked date and evidence."
+    },
     "sdk_support": {
       "value": "Python + TypeScript adapters",
       "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
-      "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+      "comment": "SDK adapter availability only. See Capability basis for the feature rows; native features do not imply an SDK adapter."
     },
     "evidence": {
       "checked_at": "2026-10-21",
@@ -2679,6 +3036,13 @@
       "value": "Conflicting official pricing: Keiro lite from $0.10 / 1K; browserfoundry $0.25 / 1K",
       "source_url": "https://keirolabs.cloud/pricing",
       "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "primary_price": {
+        "amount_usd_per_1k": null,
+        "billing_unit": "conflicting official prices",
+        "basis": "No unambiguous primary price ranked",
+        "source_url": "https://keirolabs.cloud/pricing",
+        "checked_at": "2026-10-21"
+      },
       "links": {
         "Official source 1": "https://keirolabs.cloud/",
         "Official source 2": "https://www.browserfoundry.cloud/pricing"
@@ -2743,10 +3107,15 @@
         "Official source 2": "https://www.browserfoundry.cloud/pricing"
       }
     },
+    "capability_basis": {
+      "value": "Existing SDK mappings",
+      "source_url": "https://keirolabs.cloud/pricing",
+      "comment": "SDK availability is separate from native provider capability. Each native feature cell carries its own checked date and evidence."
+    },
     "sdk_support": {
       "value": "Python + TypeScript adapters",
       "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
-      "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+      "comment": "SDK adapter availability only. See Capability basis for the feature rows; native features do not imply an SDK adapter."
     },
     "evidence": {
       "checked_at": "2026-10-21",
@@ -2850,6 +3219,13 @@
       "value": "Flash/Fast/Standard raw $5; sourced/structured $6; Deep raw $50 or synthesized $55 / 1K",
       "source_url": "https://docs.linkup.so/pages/documentation/platform/pricing",
       "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "primary_price": {
+        "amount_usd_per_1k": 5,
+        "billing_unit": "raw standard requests",
+        "basis": "Answers/Deep cost more",
+        "source_url": "https://docs.linkup.so/pages/documentation/platform/pricing",
+        "checked_at": "2026-10-21"
+      },
       "links": {}
     },
     "free_tier_limits": {
@@ -2897,10 +3273,15 @@
       "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
       "links": {}
     },
+    "capability_basis": {
+      "value": "Existing SDK mappings",
+      "source_url": "https://docs.linkup.so/pages/documentation/platform/pricing",
+      "comment": "SDK availability is separate from native provider capability. Each native feature cell carries its own checked date and evidence."
+    },
     "sdk_support": {
       "value": "Python + TypeScript adapters",
       "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
-      "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+      "comment": "SDK adapter availability only. See Capability basis for the feature rows; native features do not imply an SDK adapter."
     },
     "evidence": {
       "checked_at": "2026-10-21",
@@ -3000,6 +3381,13 @@
       "value": "Promotional Web Search $1 / 1K (normally $5), includes 10 full-content results; +$0.50 / 1K extra results",
       "source_url": "https://octen.ai/pricing",
       "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "primary_price": {
+        "amount_usd_per_1k": 1,
+        "billing_unit": "promotional Search requests",
+        "basis": "Normally $5; ten full-content results included; expansion extra",
+        "source_url": "https://octen.ai/pricing",
+        "checked_at": "2026-10-21"
+      },
       "links": {
         "Official source 1": "https://docs.octen.ai/capabilities/web-search",
         "Official source 2": "https://docs.octen.ai/api-reference/search"
@@ -3065,10 +3453,15 @@
         "Official source 2": "https://docs.octen.ai/api-reference/search"
       }
     },
+    "capability_basis": {
+      "value": "Existing SDK mappings",
+      "source_url": "https://octen.ai/pricing",
+      "comment": "SDK availability is separate from native provider capability. Each native feature cell carries its own checked date and evidence."
+    },
     "sdk_support": {
       "value": "Python + TypeScript adapters",
       "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
-      "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+      "comment": "SDK adapter availability only. See Capability basis for the feature rows; native features do not imply an SDK adapter."
     },
     "evidence": {
       "checked_at": "2026-10-21",
@@ -3099,9 +3492,14 @@
       "comment": ""
     },
     "mode": {
-      "values": [],
-      "source_url": "https://developers.openai.com/api/docs/pricing",
-      "comment": "No unified SDK mode mapping."
+      "values": [
+        "Non-reasoning",
+        "Reasoning",
+        "Deep research"
+      ],
+      "comment": "Official guide describes three search patterns by model; model-mediated generation, not raw SDK modes.",
+      "source_url": "https://developers.openai.com/api/docs/guides/tools-web-search",
+      "checked_at": "2026-10-21"
     },
     "p50_latency": {
       "value": "No current comparable measurement verified",
@@ -3111,64 +3509,88 @@
     "notes": "Comparison only; no anysearch SDK adapter is claimed.",
     "comparison_only": true,
     "requires_key": {
-      "support": "unknown",
-      "source_url": "https://developers.openai.com/api/docs/pricing",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "support": "full",
+      "comment": "Authenticated Responses API calls use an OpenAI API key.",
+      "source_url": "https://developers.openai.com/api/docs/guides/tools-web-search",
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "snippet": {
-      "support": "unknown",
-      "source_url": "https://developers.openai.com/api/docs/pricing",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "support": "not_applicable",
+      "comment": "Model-mediated cited answers and source metadata are returned, not a contracted raw ranked-result snippet field.",
+      "source_url": "https://developers.openai.com/api/docs/guides/tools-web-search",
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "domains": {
-      "support": "unknown",
-      "source_url": "https://developers.openai.com/api/docs/pricing",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "support": "full",
+      "comment": "Responses web_search filters allow up to 100 allowed_domains or blocked_domains; legacy Chat Completions search does not have this control.",
+      "source_url": "https://developers.openai.com/api/docs/guides/tools-web-search",
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "country": {
-      "support": "unknown",
-      "source_url": "https://developers.openai.com/api/docs/pricing",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "support": "full",
+      "comment": "user_location.country accepts a two-letter ISO country code; approximate user location biases search.",
+      "source_url": "https://developers.openai.com/api/docs/guides/tools-web-search",
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "language": {
       "support": "unknown",
-      "source_url": "https://developers.openai.com/api/docs/pricing",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "comment": "Reviewed web_search control guide documents no dedicated result-language filter. Prompt language is not equivalent to enforced retrieval language.",
+      "source_url": "https://developers.openai.com/api/docs/guides/tools-web-search",
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "date": {
       "support": "unknown",
-      "source_url": "https://developers.openai.com/api/docs/pricing",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "comment": "No typed publication-date range control is documented in the reviewed web_search guide; prompt instructions do not prove enforced filtering.",
+      "source_url": "https://developers.openai.com/api/docs/guides/tools-web-search",
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "safe_search": {
       "support": "unknown",
-      "source_url": "https://developers.openai.com/api/docs/pricing",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "comment": "No developer-configurable SafeSearch switch is documented in the reviewed tool guide; model safety behavior is not a search filter.",
+      "source_url": "https://developers.openai.com/api/docs/guides/tools-web-search",
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "answer": {
-      "support": "unknown",
-      "source_url": "https://developers.openai.com/api/docs/pricing",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "support": "full",
+      "comment": "The model produces a sourced answer with URL citations after web_search.",
+      "source_url": "https://developers.openai.com/api/docs/guides/tools-web-search",
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "content": {
-      "support": "unknown",
-      "source_url": "https://developers.openai.com/api/docs/pricing",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "support": "partial",
+      "comment": "Reasoning tools can open pages and find content for the model; this is not a guaranteed raw full-page export API.",
+      "source_url": "https://developers.openai.com/api/docs/guides/tools-web-search",
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "summary": {
-      "support": "unknown",
-      "source_url": "https://developers.openai.com/api/docs/pricing",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "support": "not_applicable",
+      "comment": "The contracted output is a cited model response, not a per-result summary array. An answer summary must not be confused with page summaries.",
+      "source_url": "https://developers.openai.com/api/docs/guides/tools-web-search",
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "highlights": {
-      "support": "unknown",
-      "source_url": "https://developers.openai.com/api/docs/pricing",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "support": "not_applicable",
+      "comment": "Citation offsets identify spans in generated answer text, not query-relevant source-page highlight excerpts.",
+      "source_url": "https://developers.openai.com/api/docs/guides/tools-web-search",
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "news": {
-      "support": "unknown",
-      "source_url": "https://developers.openai.com/api/docs/pricing",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "support": "partial",
+      "comment": "Official examples search current news via general web_search; no dedicated news-only vertical selector is documented.",
+      "source_url": "https://developers.openai.com/api/docs/guides/tools-web-search",
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "api_category": {
       "value": "Model-hosted grounding",
@@ -3207,15 +3629,27 @@
         "Official source 1": "https://developers.openai.com/api/docs/guides/tools-web-search"
       }
     },
+    "capability_basis": {
+      "value": "Native API \u2014 reviewed",
+      "source_url": "https://developers.openai.com/api/docs/pricing",
+      "comment": "SDK availability is separate from native provider capability. Each native feature cell carries its own checked date and evidence."
+    },
     "sdk_support": {
       "value": "Comparison only \u2014 no adapter",
       "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
-      "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+      "comment": "SDK adapter availability only. See Capability basis for the feature rows; native features do not imply an SDK adapter."
     },
     "pricing_per_1k": {
       "value": "web_search $10 / 1K tool calls + search-content tokens at model rates",
       "source_url": "https://developers.openai.com/api/docs/pricing",
       "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "primary_price": {
+        "amount_usd_per_1k": 10,
+        "billing_unit": "web_search tool calls",
+        "basis": "Model/search-content tokens extra",
+        "source_url": "https://developers.openai.com/api/docs/pricing",
+        "checked_at": "2026-10-21"
+      },
       "links": {
         "Official source 1": "https://developers.openai.com/api/docs/guides/tools-web-search"
       }
@@ -3329,6 +3763,13 @@
       "value": "Turbo/Fast $1; Basic/Advanced $5 / 1K (10 results); +$1 / 1K additional results",
       "source_url": "https://docs.parallel.ai/getting-started/pricing",
       "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "primary_price": {
+        "amount_usd_per_1k": 1,
+        "billing_unit": "Turbo/Fast requests",
+        "basis": "Basic/Advanced $5; extra results billed",
+        "source_url": "https://docs.parallel.ai/getting-started/pricing",
+        "checked_at": "2026-10-21"
+      },
       "links": {
         "Official source 1": "https://parallel.ai/pricing",
         "Official source 2": "https://parallel.ai/blog/free-tier-parallel",
@@ -3401,10 +3842,15 @@
         "Official source 3": "https://docs.parallel.ai/resources/faqs"
       }
     },
+    "capability_basis": {
+      "value": "Existing SDK mappings",
+      "source_url": "https://docs.parallel.ai/getting-started/pricing",
+      "comment": "SDK availability is separate from native provider capability. Each native feature cell carries its own checked date and evidence."
+    },
     "sdk_support": {
       "value": "Python + TypeScript adapters",
       "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
-      "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+      "comment": "SDK adapter availability only. See Capability basis for the feature rows; native features do not imply an SDK adapter."
     },
     "evidence": {
       "checked_at": "2026-10-21",
@@ -3508,6 +3954,13 @@
       "value": "Fast $1; Standard $5 / 1K requests (up to 5 queries/request); no raw Search model tokens",
       "source_url": "https://docs.perplexity.ai/docs/getting-started/pricing",
       "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "primary_price": {
+        "amount_usd_per_1k": 1,
+        "billing_unit": "Fast Search requests",
+        "basis": "Standard $5; up to five queries per request",
+        "source_url": "https://docs.perplexity.ai/docs/getting-started/pricing",
+        "checked_at": "2026-10-21"
+      },
       "links": {
         "Official source 1": "https://docs.perplexity.ai/docs/search/quickstart"
       }
@@ -3567,10 +4020,15 @@
         "Official source 1": "https://docs.perplexity.ai/docs/search/quickstart"
       }
     },
+    "capability_basis": {
+      "value": "Existing SDK mappings",
+      "source_url": "https://docs.perplexity.ai/docs/getting-started/pricing",
+      "comment": "SDK availability is separate from native provider capability. Each native feature cell carries its own checked date and evidence."
+    },
     "sdk_support": {
       "value": "Python + TypeScript adapters",
       "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
-      "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+      "comment": "SDK adapter availability only. See Capability basis for the feature rows; native features do not imply an SDK adapter."
     },
     "evidence": {
       "checked_at": "2026-10-21",
@@ -3671,6 +4129,13 @@
       "value": "Self-hosted software; infrastructure/proxy costs separate",
       "source_url": "https://docs.searxng.org/dev/search_api.html",
       "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "primary_price": {
+        "amount_usd_per_1k": 0,
+        "billing_unit": "software API fee",
+        "basis": "Self-hosted; infrastructure/upstream costs extra",
+        "source_url": "https://docs.searxng.org/dev/search_api.html",
+        "checked_at": "2026-10-21"
+      },
       "links": {}
     },
     "free_tier_limits": {
@@ -3714,10 +4179,15 @@
       "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
       "links": {}
     },
+    "capability_basis": {
+      "value": "Existing SDK mappings",
+      "source_url": "https://docs.searxng.org/dev/search_api.html",
+      "comment": "SDK availability is separate from native provider capability. Each native feature cell carries its own checked date and evidence."
+    },
     "sdk_support": {
       "value": "Python + TypeScript adapters",
       "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
-      "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+      "comment": "SDK adapter availability only. See Capability basis for the feature rows; native features do not imply an SDK adapter."
     },
     "evidence": {
       "checked_at": "2026-10-21",
@@ -3817,6 +4287,13 @@
       "value": "$40/month/10K; $100/35K; $250/100K; $500/250K standard-speed requests",
       "source_url": "https://www.searchapi.io/pricing",
       "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "primary_price": {
+        "amount_usd_per_1k": 4,
+        "billing_unit": "standard starter requests",
+        "basis": "$40/month for 10K requests",
+        "source_url": "https://www.searchapi.io/pricing",
+        "checked_at": "2026-10-21"
+      },
       "links": {}
     },
     "free_tier_limits": {
@@ -3863,10 +4340,15 @@
       "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
       "links": {}
     },
+    "capability_basis": {
+      "value": "Existing SDK mappings",
+      "source_url": "https://www.searchapi.io/pricing",
+      "comment": "SDK availability is separate from native provider capability. Each native feature cell carries its own checked date and evidence."
+    },
     "sdk_support": {
       "value": "Python + TypeScript adapters",
       "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
-      "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+      "comment": "SDK adapter availability only. See Capability basis for the feature rows; native features do not imply an SDK adapter."
     },
     "evidence": {
       "checked_at": "2026-10-21",
@@ -3966,6 +4448,13 @@
       "value": "$50/50K prepaid ($1 / 1K); bulk $0.75/$0.50/$0.30 with larger purchases",
       "source_url": "https://serper.dev/",
       "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "primary_price": {
+        "amount_usd_per_1k": 1,
+        "billing_unit": "prepaid starter searches",
+        "basis": "$50 minimum purchase; bulk commitments differ",
+        "source_url": "https://serper.dev/",
+        "checked_at": "2026-10-21"
+      },
       "links": {}
     },
     "free_tier_limits": {
@@ -4012,10 +4501,15 @@
       "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
       "links": {}
     },
+    "capability_basis": {
+      "value": "Existing SDK mappings",
+      "source_url": "https://serper.dev/",
+      "comment": "SDK availability is separate from native provider capability. Each native feature cell carries its own checked date and evidence."
+    },
     "sdk_support": {
       "value": "Python + TypeScript adapters",
       "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
-      "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+      "comment": "SDK adapter availability only. See Capability basis for the feature rows; native features do not imply an SDK adapter."
     },
     "evidence": {
       "checked_at": "2026-10-21",
@@ -4117,6 +4611,13 @@
       "value": "PAYG $8 / 1K basic; $16 / 1K advanced (1/2 credits); subscriptions differ",
       "source_url": "https://docs.tavily.com/documentation/api-credits",
       "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "primary_price": {
+        "amount_usd_per_1k": 8,
+        "billing_unit": "basic PAYG searches",
+        "basis": "Advanced uses two credits; subscription commitments differ",
+        "source_url": "https://docs.tavily.com/documentation/api-credits",
+        "checked_at": "2026-10-21"
+      },
       "links": {
         "Official source 1": "https://docs.tavily.com/documentation/rate-limits",
         "Official source 2": "https://docs.tavily.com/documentation/api-reference/endpoint/search"
@@ -4182,10 +4683,15 @@
         "Official source 2": "https://docs.tavily.com/documentation/api-reference/endpoint/search"
       }
     },
+    "capability_basis": {
+      "value": "Existing SDK mappings",
+      "source_url": "https://docs.tavily.com/documentation/api-credits",
+      "comment": "SDK availability is separate from native provider capability. Each native feature cell carries its own checked date and evidence."
+    },
     "sdk_support": {
       "value": "Python + TypeScript adapters",
       "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
-      "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+      "comment": "SDK adapter availability only. See Capability basis for the feature rows; native features do not imply an SDK adapter."
     },
     "evidence": {
       "checked_at": "2026-10-21",
@@ -4287,6 +4793,13 @@
       "value": "$25/month for 1K; $75/5K; $150/15K; $275/30K searches",
       "source_url": "https://serpapi.com/pricing",
       "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "primary_price": {
+        "amount_usd_per_1k": 25,
+        "billing_unit": "starter searches",
+        "basis": "$25 monthly plan; larger plans differ",
+        "source_url": "https://serpapi.com/pricing",
+        "checked_at": "2026-10-21"
+      },
       "links": {}
     },
     "free_tier_limits": {
@@ -4334,10 +4847,15 @@
       "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
       "links": {}
     },
+    "capability_basis": {
+      "value": "Existing SDK mappings",
+      "source_url": "https://serpapi.com/pricing",
+      "comment": "SDK availability is separate from native provider capability. Each native feature cell carries its own checked date and evidence."
+    },
     "sdk_support": {
       "value": "Python + TypeScript adapters",
       "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
-      "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+      "comment": "SDK adapter availability only. See Capability basis for the feature rows; native features do not imply an SDK adapter."
     },
     "evidence": {
       "checked_at": "2026-10-21",
@@ -4437,6 +4955,13 @@
       "value": "$25/month for 1K; $75/5K; $150/15K; $275/30K searches",
       "source_url": "https://serpapi.com/pricing",
       "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "primary_price": {
+        "amount_usd_per_1k": 25,
+        "billing_unit": "starter searches",
+        "basis": "$25 monthly plan; larger plans differ",
+        "source_url": "https://serpapi.com/pricing",
+        "checked_at": "2026-10-21"
+      },
       "links": {}
     },
     "free_tier_limits": {
@@ -4484,10 +5009,15 @@
       "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
       "links": {}
     },
+    "capability_basis": {
+      "value": "Existing SDK mappings",
+      "source_url": "https://serpapi.com/pricing",
+      "comment": "SDK availability is separate from native provider capability. Each native feature cell carries its own checked date and evidence."
+    },
     "sdk_support": {
       "value": "Python + TypeScript adapters",
       "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
-      "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+      "comment": "SDK adapter availability only. See Capability basis for the feature rows; native features do not imply an SDK adapter."
     },
     "evidence": {
       "checked_at": "2026-10-21",
@@ -4589,6 +5119,13 @@
       "value": "Search $5 / 1K calls; live extraction +$1 / 1K pages; cached extraction no surcharge",
       "source_url": "https://you.com/docs/administration/billing",
       "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "primary_price": {
+        "amount_usd_per_1k": 5,
+        "billing_unit": "Search calls",
+        "basis": "Live page extraction extra",
+        "source_url": "https://you.com/docs/administration/billing",
+        "checked_at": "2026-10-21"
+      },
       "links": {
         "Official source 1": "https://you.com/pricing"
       }
@@ -4649,10 +5186,15 @@
         "Official source 1": "https://you.com/pricing"
       }
     },
+    "capability_basis": {
+      "value": "Existing SDK mappings",
+      "source_url": "https://you.com/docs/administration/billing",
+      "comment": "SDK availability is separate from native provider capability. Each native feature cell carries its own checked date and evidence."
+    },
     "sdk_support": {
       "value": "Python + TypeScript adapters",
       "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
-      "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+      "comment": "SDK adapter availability only. See Capability basis for the feature rows; native features do not imply an SDK adapter."
     },
     "evidence": {
       "checked_at": "2026-10-21",
@@ -4682,9 +5224,12 @@
       "comment": ""
     },
     "mode": {
-      "values": [],
-      "source_url": "https://docs.x.ai/developers/pricing",
-      "comment": "No unified SDK mode mapping."
+      "values": [
+        "Model-mediated web search"
+      ],
+      "comment": "One server-side Web Search tool; separate X Search and image controls are not fast/deep search tiers.",
+      "source_url": "https://docs.x.ai/developers/tools/web-search",
+      "checked_at": "2026-10-21"
     },
     "p50_latency": {
       "value": "No current comparable measurement verified",
@@ -4694,64 +5239,88 @@
     "notes": "Comparison only; no anysearch SDK adapter is claimed.",
     "comparison_only": true,
     "requires_key": {
-      "support": "unknown",
-      "source_url": "https://docs.x.ai/developers/pricing",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "support": "full",
+      "comment": "Authenticated Responses API request uses bearer XAI_API_KEY.",
+      "source_url": "https://docs.x.ai/developers/tools/web-search",
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "snippet": {
-      "support": "unknown",
-      "source_url": "https://docs.x.ai/developers/pricing",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "support": "not_applicable",
+      "comment": "Documented web_search produces model answers/citations, not a raw ranked-result snippet contract.",
+      "source_url": "https://docs.x.ai/developers/tools/web-search",
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "domains": {
-      "support": "unknown",
-      "source_url": "https://docs.x.ai/developers/pricing",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "support": "full",
+      "comment": "allowed_domains or excluded_domains (up to five) restrict search/browsing; cannot use both together.",
+      "source_url": "https://docs.x.ai/developers/tools/web-search",
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "country": {
       "support": "unknown",
-      "source_url": "https://docs.x.ai/developers/pricing",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "comment": "The web_search parameter table lists domain and image controls but no country bias. Do not transfer X Search settings to Web Search.",
+      "source_url": "https://docs.x.ai/developers/tools/web-search",
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "language": {
       "support": "unknown",
-      "source_url": "https://docs.x.ai/developers/pricing",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "comment": "No result-language filter is documented in the web_search tool parameter table; model language capability is separate.",
+      "source_url": "https://docs.x.ai/developers/tools/web-search",
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "date": {
       "support": "unknown",
-      "source_url": "https://docs.x.ai/developers/pricing",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "comment": "No publication-date range control documented for web_search. X Search from_date/to_date options are a different tool.",
+      "source_url": "https://docs.x.ai/developers/tools/web-search",
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "safe_search": {
       "support": "unknown",
-      "source_url": "https://docs.x.ai/developers/pricing",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "comment": "No configurable SafeSearch setting documented for this tool; model safety is not an equivalent parameter.",
+      "source_url": "https://docs.x.ai/developers/tools/web-search",
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "answer": {
-      "support": "unknown",
-      "source_url": "https://docs.x.ai/developers/pricing",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "support": "full",
+      "comment": "Grok searches/browses then produces a model answer with citations.",
+      "source_url": "https://docs.x.ai/developers/tools/web-search",
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "content": {
-      "support": "unknown",
-      "source_url": "https://docs.x.ai/developers/pricing",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "support": "partial",
+      "comment": "Tool accesses/browses pages for the model; no guarantee of a raw full-page content export in the web_search response.",
+      "source_url": "https://docs.x.ai/developers/tools/web-search",
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "summary": {
-      "support": "unknown",
-      "source_url": "https://docs.x.ai/developers/pricing",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "support": "not_applicable",
+      "comment": "Generated answer/citations are not per-result page-summary objects.",
+      "source_url": "https://docs.x.ai/developers/tools/web-search",
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "highlights": {
-      "support": "unknown",
-      "source_url": "https://docs.x.ai/developers/pricing",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "support": "not_applicable",
+      "comment": "Citations identify sources; the reviewed web_search contract does not expose per-page highlighted excerpts.",
+      "source_url": "https://docs.x.ai/developers/tools/web-search",
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "news": {
-      "support": "unknown",
-      "source_url": "https://docs.x.ai/developers/pricing",
-      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+      "support": "partial",
+      "comment": "General current-web retrieval can answer news queries; X Search is separate and is not a dedicated web-news vertical.",
+      "source_url": "https://docs.x.ai/developers/tools/web-search",
+      "checked_at": "2026-10-21",
+      "basis": "native API documentation"
     },
     "api_category": {
       "value": "Model-hosted grounding",
@@ -4790,15 +5359,27 @@
         "Official source 1": "https://docs.x.ai/developers/tools/web-search"
       }
     },
+    "capability_basis": {
+      "value": "Native API \u2014 reviewed",
+      "source_url": "https://docs.x.ai/developers/pricing",
+      "comment": "SDK availability is separate from native provider capability. Each native feature cell carries its own checked date and evidence."
+    },
     "sdk_support": {
       "value": "Comparison only \u2014 no adapter",
       "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
-      "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+      "comment": "SDK adapter availability only. See Capability basis for the feature rows; native features do not imply an SDK adapter."
     },
     "pricing_per_1k": {
       "value": "Web Search $5 / 1K tool calls + model tokens",
       "source_url": "https://docs.x.ai/developers/pricing",
       "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "primary_price": {
+        "amount_usd_per_1k": 5,
+        "billing_unit": "web_search tool calls",
+        "basis": "Model tokens extra; X Search separate",
+        "source_url": "https://docs.x.ai/developers/pricing",
+        "checked_at": "2026-10-21"
+      },
       "links": {
         "Official source 1": "https://docs.x.ai/developers/tools/web-search"
       }

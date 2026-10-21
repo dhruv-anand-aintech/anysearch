@@ -87,6 +87,13 @@
     "value": "Promotional Web Search $1 / 1K (normally $5), includes 10 full-content results; +$0.50 / 1K extra results",
     "source_url": "https://octen.ai/pricing",
     "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+    "primary_price": {
+      "amount_usd_per_1k": 1,
+      "billing_unit": "promotional Search requests",
+      "basis": "Normally $5; ten full-content results included; expansion extra",
+      "source_url": "https://octen.ai/pricing",
+      "checked_at": "2026-10-21"
+    },
     "links": {
       "Official source 1": "https://docs.octen.ai/capabilities/web-search",
       "Official source 2": "https://docs.octen.ai/api-reference/search"
@@ -152,10 +159,15 @@
       "Official source 2": "https://docs.octen.ai/api-reference/search"
     }
   },
+  "capability_basis": {
+    "value": "Existing SDK mappings",
+    "source_url": "https://octen.ai/pricing",
+    "comment": "SDK availability is separate from native provider capability. Each native feature cell carries its own checked date and evidence."
+  },
   "sdk_support": {
     "value": "Python + TypeScript adapters",
     "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
-    "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+    "comment": "SDK adapter availability only. See Capability basis for the feature rows; native features do not imply an SDK adapter."
   },
   "evidence": {
     "checked_at": "2026-10-21",

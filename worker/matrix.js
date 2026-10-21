@@ -4,9 +4,18 @@ import schema from "../docs/tools/search_matrix/schema.json";
 import updatedMeta from "../docs/tools/search_matrix/updated.json";
 import changelog from "../docs/tools/search_matrix/changelog.json";
 
+export function comparePrimaryPriceCells(a, b, direction = "asc") {
+  const av = a?.primary_price?.amount_usd_per_1k;
+  const bv = b?.primary_price?.amount_usd_per_1k;
+  const aMissing = typeof av !== "number" || !Number.isFinite(av) || av < 0;
+  const bMissing = typeof bv !== "number" || !Number.isFinite(bv) || bv < 0;
+  if (aMissing || bMissing) return aMissing === bMissing ? 0 : aMissing ? 1 : -1;
+  return (av - bv) * (direction === "desc" ? -1 : 1);
+}
+
 const CANONICAL_ORIGIN = "https://compare-anysearch.ainorthstar.tech";
 const GITHUB_REPO = "https://github.com/dhruv-anand-aintech/anysearch";
-const DEPLOYMENT_MARKER = "official-review-2026-10-21";
+const DEPLOYMENT_MARKER = "categorical-pricing-2026-10-21";
 const PWA = {
   name: "Anysearch Compare",
   shortName: "Anysearch",
@@ -169,6 +178,9 @@ a { color: inherit; text-decoration: none; }
 .feedback-btn:hover { background: #e8f1ee; }
 .hero { padding: 10px 14px 8px; border-bottom: 1px solid var(--line); background: var(--panel); }
 .hero p { margin: 0; color: var(--muted); font-size: 12px; }
+.price-sort-basis { display:block; margin-top:5px; color:var(--accent); font-size:10px; }
+.comparison-legend { margin-top:6px !important; }
+.support.not_applicable .dot, .support.unknown .dot { width:auto; min-width:18px; padding:0 3px; border-radius:3px; font-size:9px; }
 .meta-row { margin-top: 6px; display: flex; gap: 6px; flex-wrap: wrap; }
 .pill { border: 1px solid var(--line); padding: 3px 7px; background: #fff; font-size: 11px; color: var(--muted); }
 .view-panel[hidden] { display: none !important; }
@@ -374,7 +386,8 @@ td.value .cell-value {
 </header>
 <main id="matrixView" class="view-panel matrix-view">
 <section class="hero">
-  <p>Compare ${htmlEscape(matrix.length)} search offerings by category, availability and pricing. Feature flags describe unified <strong>anysearch SDK mappings</strong>; comparison-only offerings have no adapter. <strong>Name or icon</strong> opens the provider site; <strong>⊙</strong> hides or shows a column; drag headers to reorder; use the <strong>API docs</strong> row for official references.</p>
+  <p>Compare ${htmlEscape(matrix.length)} search offerings by category, availability and pricing. Feature rows use the stated <strong>Capability basis</strong>: existing SDK mappings or reviewed native APIs. SDK availability is separate. <strong>Name or icon</strong> opens the provider site; <strong>⊙</strong> hides or shows a column; drag headers to reorder; use the <strong>API docs</strong> row for official references.</p>
+  <p class="comparison-legend">✓ supported · ◎ limited/conditional · ✕ not exposed by scoped contract · N/A not applicable · Undoc. specifically undocumented. Click Pricing / 1K for numeric ↑ / ↓ / reset using the displayed primary USD price per 1K billable units. Units and token/hosting surcharges differ: this is not a total-cost ranking. Token-, credit-, conflicting and unavailable prices remain last.</p>
   <div class="meta-row">
     <span class="pill">${htmlEscape(matrix.length)} offerings</span>
     <span class="pill"><a href="${GITHUB_REPO}">anysearch SDK</a></span>
@@ -453,9 +466,9 @@ function refreshUpdatedPill() {
 refreshUpdatedPill();
 setInterval(refreshUpdatedPill, 60000);
 // String/metadata rows in About; feature-shaped rows (e.g. requires_key) stay in featureCols.
-const metaCols = new Set(['name','env_keys','python_extra','notes','api_category','api_status','native_api','sdk_support','checked_at','rate_limits']);
+const metaCols = new Set(['name','env_keys','python_extra','notes','api_category','api_status','native_api','capability_basis','sdk_support','checked_at','rate_limits','capability_basis']);
 const featureCols = columns.filter(c => !metaCols.has(c.key));
-const ABOUT_ORDER = ['api_category','api_status','native_api','sdk_support','checked_at','rate_limits','env_keys','python_extra'];
+const ABOUT_ORDER = ['api_category','api_status','native_api','capability_basis','sdk_support','checked_at','rate_limits','env_keys','python_extra'];
 const aboutCols = ABOUT_ORDER.map(key => columns.find(c => c.key === key)).filter(Boolean);
 const DATE_SORT_ROWS = new Set([]);
 const MONTH_MAP = {Jan:1,Feb:2,Mar:3,Apr:4,May:5,Jun:6,Jul:7,Aug:8,Sep:9,Oct:10,Nov:11,Dec:12};
@@ -465,7 +478,8 @@ let colOrder = [];
 let rowOrder = [];
 let hidden = new Set();
 let rowSort = [];
-const SORT_ORDER = { full:0, partial:1, none:2, unknown:3, "":4 };
+const SORT_ORDER = { full:0, partial:1, none:2, not_applicable:3, unknown:4, "":5 };
+const comparePrimaryPriceCells = (${comparePrimaryPriceCells.toString()});
 const FORM_FACTOR_ORDER = ['CLI','IDE','Extension','SDK','Web','Mac App'];
 const MODE_ORDER = ['fast','balanced','deep'];
 const MULTI_VALUE_COLS = new Set(['form_factor','mode']);
@@ -506,7 +520,7 @@ function sortableLabelHtml(label, key) {
   var sortEntry = rowSort.find(function(s){ return s.key === key; });
   var isSort = !!sortEntry;
   var active = isSort ? ' filter-active' : '';
-  var arrow = isSort ? sortPriorityNumber(sortEntry) : '&#9654;';
+  var arrow = isSort ? (key === 'pricing_per_1k' ? (sortEntry.direction === 'desc' ? '↓' : '↑') : sortPriorityNumber(sortEntry)) : '&#9654;';
   return '<td class="row-label'+active+'" data-rowkey="'+key+'" onclick="cycleSort('+"'"+key+"'"+')" title="Sort columns by this date"><span class="row-label-tip">'+esc(label)+'</span><span class="arrow">'+arrow+'</span>'+esc(label)+'</td>';
 }
 
@@ -624,12 +638,18 @@ function favimg(agent, idx) {
 function cell(agent, col) {
   var v = agent[col.key];
   var idAttr = ' id="'+cellId(agent, col.key)+'"';
+  if (v && v.support) idAttr += ' data-support="'+esc(v.support)+'"';
+  if (v && v.checked_at) idAttr += ' data-checked-at="'+esc(v.checked_at)+'"';
+  if (col.key === 'pricing_per_1k') {
+    var sortAmount = v && v.primary_price && v.primary_price.amount_usd_per_1k;
+    idAttr += ' data-primary-price="'+(typeof sortAmount === 'number' && Number.isFinite(sortAmount) ? esc(sortAmount) : '')+'"';
+  }
   if (!v) return '<td'+idAttr+'>&mdash;</td>';
   if (MULTI_VALUE_COLS.has(col.key)) {
     var sortFn = col.key === 'mode' ? sortModes : sortFormFactors;
     var tags = sortFn((v.values||[v.value]).filter(Boolean));
     var links = v.links || {};
-    var tip = cellTipHtml(v.comment, v.source_url, links);
+    var tip = cellTipHtml((v.comment || '') + (v.checked_at ? ' Reviewed ' + v.checked_at + '.' : ''), v.source_url, links);
     if (!tags.length) return '<td'+idAttr+' class="cell-wrap value"><span class="cell-value">&mdash;</span>'+tip+'</td>';
     var tagHtml = tags.map(function(x){
       var href = links[x];
@@ -639,18 +659,27 @@ function cell(agent, col) {
     if (agent.deprecated) tagHtml += '<span class="form-tag deprecated-tag">deprecated</span>';
     return '<td'+idAttr+' class="cell-wrap"><div class="form-tags">'+tagHtml+'</div>'+tip+'</td>';
   }
-  var tip = cellTipHtml(v.comment, v.source_url, v.links || {});
+  var tip = cellTipHtml((v.comment || '') + (v.checked_at ? ' Reviewed ' + v.checked_at + '.' : ''), v.source_url, v.links || {});
   var hasSrc = !!v.source_url;
   var link = hasSrc ? '<a class="cell-link" href="'+esc(v.source_url)+'" target="_blank" rel="noreferrer" title="Open source" aria-label="Open source"></a>' : '';
   var mark = hasSrc ? '<span class="source-mark" aria-hidden="true"></span>' : '';
   var wrapCls = 'cell-wrap'+(hasSrc?' has-source':'');
-  if (v.value !== undefined) return '<td'+idAttr+' class="'+wrapCls+' value"><span class="cell-value">'+esc(v.value)+'</span>'+link+mark+tip+'</td>';
+  if (v.value !== undefined) {
+    var primary = v.primary_price;
+    var priceBasis = '';
+    if (col.key === 'pricing_per_1k' && primary) {
+      var amount = primary.amount_usd_per_1k;
+      var ranked = typeof amount === 'number' && Number.isFinite(amount) && amount >= 0;
+      priceBasis = '<small class="price-sort-basis">'+(ranked ? 'Sort: $'+esc(amount)+' / 1K '+esc(primary.billing_unit) : 'Not ranked: '+esc(primary.billing_unit))+' · '+esc(primary.basis)+'</small>';
+    }
+    return '<td'+idAttr+' class="'+wrapCls+' value"><span class="cell-value">'+esc(v.value)+'</span>'+priceBasis+link+mark+tip+'</td>';
+  }
   if (featureCols.some(function(c){ return c.key===col.key; })) {
-    var g = {full:'&#10003;',partial:'&#9678;',none:'&#10005;',unknown:'?','':'—'};
+    var g = {full:'&#10003;',partial:'&#9678;',none:'&#10005;',not_applicable:'N/A',unknown:'Undoc.','':'—'};
     return '<td'+idAttr+' class="'+wrapCls+'">'+link+'<span class="support '+(v.support||'')+'"><span class="dot">'+(g[v.support||'']||'?')+'</span></span>'+mark+tip+'</td>';
   }
   if (v.support !== undefined) {
-    var g = {full:'&#10003;',partial:'&#9678;',none:'&#10005;',unknown:'?','':'—'};
+    var g = {full:'&#10003;',partial:'&#9678;',none:'&#10005;',not_applicable:'N/A',unknown:'Undoc.','':'—'};
     return '<td'+idAttr+' class="'+wrapCls+'">'+link+'<span class="support '+(v.support||'')+'"><span class="dot">'+(g[v.support||'']||'?')+'</span></span>'+mark+tip+'</td>';
   }
   return '<td'+idAttr+'>&mdash;</td>';
@@ -719,6 +748,11 @@ function sortVisibleColumnIndices(indices) {
   return indices.slice().sort(function(a,b){
     for (var p=0; p<priority.length; p++) {
       var key = priority[p].key;
+      if (key === 'pricing_per_1k') {
+        var priceResult = comparePrimaryPriceCells(matrix[a][key], matrix[b][key], priority[p].direction);
+        if (priceResult !== 0) return priceResult;
+        continue;
+      }
       var va = SORT_ORDER[(matrix[a][key]||{}).support||''];
       var vb = SORT_ORDER[(matrix[b][key]||{}).support||''];
       if (va === undefined) va = 4;
@@ -764,7 +798,7 @@ function renderBody() {
     var sortEntry = rowSort.find(function(s){ return s.key===key; });
     var isSort = !!sortEntry;
     var active = isSort?' filter-active':'';
-    var arrow = isSort ? sortPriorityNumber(sortEntry) : '&#9654;';
+    var arrow = isSort ? (key === 'pricing_per_1k' ? (sortEntry.direction === 'desc' ? '↓' : '↑') : sortPriorityNumber(sortEntry)) : '&#9654;';
     var labelHtml = '<td class="row-label'+active+'" draggable="true" data-rowkey="'+key+'" onclick="cycleSort('+"'"+key+"'"+')" title="Sort columns by this feature"><span class="row-label-tip">'+esc(col.label)+'</span><span class="arrow">'+arrow+'</span>'+esc(col.label)+'</td>';
     var cells = cols.map(function(i){
       return colCell(i, col, function(){ return cell(matrix[i], col); });
@@ -779,7 +813,11 @@ function toggleCol(i) { hidden.has(i)?hidden.delete(i):hidden.add(i); renderHead
 function cycleSort(key) {
   if (DATE_SORT_ROWS.has(key)) return;
   var idx = rowSort.findIndex(function(s){ return s.key === key; });
-  if (idx !== -1) rowSort.splice(idx, 1);
+  if (key === 'pricing_per_1k') {
+    if (idx === -1) rowSort.push({key:key, direction:'asc'});
+    else if (rowSort[idx].direction === 'asc') rowSort[idx].direction = 'desc';
+    else rowSort.splice(idx, 1);
+  } else if (idx !== -1) rowSort.splice(idx, 1);
   else rowSort.push({key:key});
   renderHeader();
   renderBody();

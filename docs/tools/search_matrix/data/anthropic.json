@@ -16,9 +16,13 @@
     "comment": ""
   },
   "mode": {
-    "values": [],
+    "values": [
+      "Basic web search",
+      "Dynamic filtering"
+    ],
+    "comment": "Tool versions 20250305, 20260209 and 20260318 provide basic search, dynamic filtering and response-inclusion controls; model availability varies.",
     "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
-    "comment": "No unified SDK mode mapping."
+    "checked_at": "2026-10-21"
   },
   "p50_latency": {
     "value": "No current comparable measurement verified",
@@ -28,64 +32,88 @@
   "notes": "Comparison only; no anysearch SDK adapter is claimed.",
   "comparison_only": true,
   "requires_key": {
-    "support": "unknown",
-    "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
-    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    "support": "full",
+    "comment": "Claude API authentication is required; web_search is a server tool in an authenticated Messages request.",
+    "source_url": "https://platform.claude.com/docs/en/api/overview",
+    "checked_at": "2026-10-21",
+    "basis": "native API documentation"
   },
   "snippet": {
-    "support": "unknown",
+    "support": "partial",
+    "comment": "Search result blocks expose encrypted_content rather than plaintext snippets; citations may return cited_text up to 150 characters.",
     "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
-    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    "checked_at": "2026-10-21",
+    "basis": "native API documentation"
   },
   "domains": {
-    "support": "unknown",
+    "support": "full",
+    "comment": "allowed_domains or blocked_domains restrict searches; mutually exclusive in one tool configuration.",
     "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
-    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    "checked_at": "2026-10-21",
+    "basis": "native API documentation"
   },
   "country": {
-    "support": "unknown",
+    "support": "full",
+    "comment": "user_location.country is ISO 3166-1 alpha-2; approximate localization supported.",
     "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
-    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    "checked_at": "2026-10-21",
+    "basis": "native API documentation"
   },
   "language": {
     "support": "unknown",
+    "comment": "No result-language filter is documented in the reviewed web_search parameter guide. Multilingual model output is not retrieval-language enforcement.",
     "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
-    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    "checked_at": "2026-10-21",
+    "basis": "native API documentation"
   },
   "date": {
     "support": "unknown",
+    "comment": "page_age is response metadata; the reviewed request controls do not establish an enforced publication-date-range filter.",
     "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
-    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    "checked_at": "2026-10-21",
+    "basis": "native API documentation"
   },
   "safe_search": {
     "support": "unknown",
+    "comment": "No configurable SafeSearch switch is documented in the reviewed server-tool guide. Safety policy and retrieval filter are distinct.",
     "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
-    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    "checked_at": "2026-10-21",
+    "basis": "native API documentation"
   },
   "answer": {
-    "support": "unknown",
+    "support": "full",
+    "comment": "Claude returns a final answer with citations after tool searches.",
     "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
-    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    "checked_at": "2026-10-21",
+    "basis": "native API documentation"
   },
   "content": {
-    "support": "unknown",
-    "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
-    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    "support": "partial",
+    "comment": "Search content is encrypted for continuation; plaintext page/document fetching is a separate web_fetch tool, not included raw search output.",
+    "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-fetch-tool",
+    "checked_at": "2026-10-21",
+    "basis": "native API documentation"
   },
   "summary": {
-    "support": "unknown",
+    "support": "not_applicable",
+    "comment": "Cited answer generation is not a per-result page-summary API; search result blocks have URL/title/page_age/encrypted_content.",
     "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
-    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    "checked_at": "2026-10-21",
+    "basis": "native API documentation"
   },
   "highlights": {
-    "support": "unknown",
+    "support": "partial",
+    "comment": "Citation cited_text contains up to 150 characters of cited source content; limited citation excerpts, not arbitrary full-page highlighting.",
     "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
-    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    "checked_at": "2026-10-21",
+    "basis": "native API documentation"
   },
   "news": {
-    "support": "unknown",
+    "support": "partial",
+    "comment": "Official documentation lists recent news as a web-search use case; no news-only vertical control is documented.",
     "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
-    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    "checked_at": "2026-10-21",
+    "basis": "native API documentation"
   },
   "api_category": {
     "value": "Model-hosted grounding",
@@ -116,15 +144,27 @@
     "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
     "links": {}
   },
+  "capability_basis": {
+    "value": "Native API \u2014 reviewed",
+    "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+    "comment": "SDK availability is separate from native provider capability. Each native feature cell carries its own checked date and evidence."
+  },
   "sdk_support": {
     "value": "Comparison only \u2014 no adapter",
     "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
-    "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+    "comment": "SDK adapter availability only. See Capability basis for the feature rows; native features do not imply an SDK adapter."
   },
   "pricing_per_1k": {
     "value": "$10 / 1K searches + model token charges",
     "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
     "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+    "primary_price": {
+      "amount_usd_per_1k": 10,
+      "billing_unit": "web searches",
+      "basis": "Model tokens extra",
+      "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+      "checked_at": "2026-10-21"
+    },
     "links": {}
   },
   "free_tier_limits": {
@@ -136,7 +176,9 @@
   "evidence": {
     "checked_at": "2026-10-21",
     "source_urls": [
-      "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool"
+      "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+      "https://platform.claude.com/docs/en/api/overview",
+      "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-fetch-tool"
     ],
     "effective_date": null,
     "method": "official documentation; no new benchmarks"

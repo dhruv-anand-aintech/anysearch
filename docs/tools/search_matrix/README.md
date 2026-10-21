@@ -95,3 +95,30 @@ Back after Changelog → Compare left `#changelog` showing Compare. Missing pops
 hashchange handling caused that reproducible navigation failure. A general current
 homepage outage was not reproduced. Unknown JSON routes previously fell through to
 HTML, and the old smoke test checked rendering without navigating tabs/history.
+
+## New-column categorical evidence and price sorting
+
+The follow-up audit found that all 84 feature cells in the seven new columns had
+been set to unknown solely because there was no SDK adapter. That confused adapter
+availability with provider capability. `categorical-research.json` now contains a
+separate, dated native-API assessment for each feature plus Mode. The generated
+`categorical-coverage-audit.md` lists all 91 prior/new values, exact official sources
+and scope explanations. The visible Capability basis row distinguishes native
+research for the new columns from existing SDK mappings for older columns.
+
+Supported, limited/conditional, not exposed by the scoped contract, not applicable,
+and specifically undocumented are distinct. N/A covers retired Bing and mismatched
+model/raw-output abstractions; Undoc. retains specific documentation gaps after
+review. This does not claim a missing SDK adapter or a silent doc page proves an API
+capability unsupported. Anysearch adapter availability remains unchanged.
+
+Pricing uses explicit `primary_price.amount_usd_per_1k`, never numbers parsed from
+display text. Click Pricing / 1K to cycle ascending, descending and original order.
+The primary price is the first documented priced offering shown in that column;
+plan commitments, promotions, model-token charges and billing units remain visible.
+For example, DataForSEO's $0.60 queued SERP page is not equivalent to a live request,
+and hosted model tool fees exclude token charges. This is a numeric primary-price
+ordering, not a normalized total-cost ranking. Credit-priced Firecrawl, token-priced
+Jina, conflicting Keiro, retired Bing and closed-to-new-users Google PSE are unranked
+and stay last in both directions. Zero software/library API fees sort as zero while
+hosting, proxy and upstream costs remain explicit.

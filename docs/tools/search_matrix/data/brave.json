@@ -88,6 +88,13 @@
     "value": "Search $5 / 1K requests; Answers $4 / 1K + $5/M input and output tokens",
     "source_url": "https://api-dashboard.search.brave.com/documentation/pricing",
     "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+    "primary_price": {
+      "amount_usd_per_1k": 5,
+      "billing_unit": "Search requests",
+      "basis": "Answers and model tokens separate",
+      "source_url": "https://api-dashboard.search.brave.com/documentation/pricing",
+      "checked_at": "2026-10-21"
+    },
     "links": {
       "Official source 1": "https://brave.com/blog/most-powerful-search-api-for-ai/"
     }
@@ -147,10 +154,15 @@
       "Official source 1": "https://brave.com/blog/most-powerful-search-api-for-ai/"
     }
   },
+  "capability_basis": {
+    "value": "Existing SDK mappings",
+    "source_url": "https://api-dashboard.search.brave.com/documentation/pricing",
+    "comment": "SDK availability is separate from native provider capability. Each native feature cell carries its own checked date and evidence."
+  },
   "sdk_support": {
     "value": "Python + TypeScript adapters",
     "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
-    "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+    "comment": "SDK adapter availability only. See Capability basis for the feature rows; native features do not imply an SDK adapter."
   },
   "evidence": {
     "checked_at": "2026-10-21",

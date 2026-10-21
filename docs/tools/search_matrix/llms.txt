@@ -5,26 +5,27 @@ Offerings: 31. Native API facts and existing anysearch SDK mappings; comparison-
 ## Anthropic Web Search
 - Docs: https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool
 - Env: Not integrated
-- Domain filters: unknown
-- Country: unknown
+- Domain filters: full
+- Country: full
 - Language: unknown
 - Date range: unknown
 - Safe search: unknown
-- Mode: none
+- Mode: Basic web search, Dynamic filtering
 - Pricing / 1K: $10 / 1K searches + model token charges
 - Free tier limits: No recurring free allowance verified
 - Latency by tier: No current comparable measurement verified
-- AI Answer: unknown
-- Full text: unknown
-- Summary: unknown
-- Highlights: unknown
-- News: unknown
+- AI Answer: full
+- Full text: partial
+- Summary: not_applicable
+- Highlights: partial
+- News: partial
 - Product category: Model-hosted grounding
 - Availability: Available
 - Native API overview: Claude server-side web search tool; not standalone raw search. Generated answers and search-result processing add model costs.
 - anysearch SDK: Comparison only — no adapter
 - Evidence checked: 2026-10-21
 - Limits / billing caveats: Model/tool limits vary; tool use requires compatible model
+- Capability basis: Native API — reviewed
 
 ## Baidu · SerpApi
 - Docs: https://serpapi.com/baidu-search-api
@@ -49,30 +50,32 @@ Offerings: 31. Native API facts and existing anysearch SDK mappings; comparison-
 - anysearch SDK: Python + TypeScript adapters
 - Evidence checked: 2026-10-21
 - Limits / billing caveats: Starter 200/hour; Developer 1,000/hour
+- Capability basis: Existing SDK mappings
 
 ## Bing Search (retired)
 - Docs: https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement
 - Env: Not integrated
-- Domain filters: unknown
-- Country: unknown
-- Language: unknown
-- Date range: unknown
-- Safe search: unknown
-- Mode: none
+- Domain filters: not_applicable
+- Country: not_applicable
+- Language: not_applicable
+- Date range: not_applicable
+- Safe search: not_applicable
+- Mode: N/A (retired)
 - Pricing / 1K: Retired; current direct API pricing not applicable
 - Free tier limits: Unavailable
 - Latency by tier: No current comparable measurement verified
-- AI Answer: unknown
-- Full text: unknown
-- Summary: unknown
-- Highlights: unknown
-- News: unknown
+- AI Answer: not_applicable
+- Full text: not_applicable
+- Summary: not_applicable
+- Highlights: not_applicable
+- News: not_applicable
 - Product category: Legacy search API
 - Availability: Retired August 11, 2025
 - Native API overview: Azure Grounding with Bing is a separate hosted service; Bing via SerpApi is a third-party wrapper.
 - anysearch SDK: Comparison only — no adapter
 - Evidence checked: 2026-10-21
 - Limits / billing caveats: All instances decommissioned August 11, 2025
+- Capability basis: Native API — reviewed
 
 ## Bing · SerpApi
 - Docs: https://serpapi.com/bing-search-api
@@ -97,6 +100,7 @@ Offerings: 31. Native API facts and existing anysearch SDK mappings; comparison-
 - anysearch SDK: Python + TypeScript adapters
 - Evidence checked: 2026-10-21
 - Limits / billing caveats: Starter 200/hour; Developer 1,000/hour
+- Capability basis: Existing SDK mappings
 
 ## Brave
 - Docs: https://api-dashboard.search.brave.com/app/documentation/web-search/get-started
@@ -121,78 +125,82 @@ Offerings: 31. Native API facts and existing anysearch SDK mappings; comparison-
 - anysearch SDK: Python + TypeScript adapters
 - Evidence checked: 2026-10-21
 - Limits / billing caveats: Search 50 RPS; Answers 2 RPS
+- Capability basis: Existing SDK mappings
 
 ## Bright Data
 - Docs: https://brightdata.com/pricing/serp
 - Env: Not integrated
-- Domain filters: unknown
-- Country: unknown
-- Language: unknown
-- Date range: unknown
-- Safe search: unknown
-- Mode: none
+- Domain filters: partial
+- Country: full
+- Language: full
+- Date range: partial
+- Safe search: full
+- Mode: SERP, Fast SERP
 - Pricing / 1K: PAYG $1.50 / 1K successful requests; Scale $499/month includes 380K then $1.30 / 1K
 - Free tier limits: 5,000 requests/month free; no card
 - Latency by tier: No current comparable measurement verified
-- AI Answer: unknown
-- Full text: unknown
-- Summary: unknown
-- Highlights: unknown
-- News: unknown
+- AI Answer: partial
+- Full text: none
+- Summary: none
+- Highlights: partial
+- News: full
 - Product category: Third-party SERP service
 - Availability: Available
 - Native API overview: SERP proxy; requests are not individual organic links; async collection not another billed request.
 - anysearch SDK: Comparison only — no adapter
 - Evidence checked: 2026-10-21
 - Limits / billing caveats: PAYG deposit minimum not verified
+- Capability basis: Native API — reviewed
 
 ## DataForSEO
 - Docs: https://dataforseo.com/pricing/google-serp/google-organic-serp-api
 - Env: Not integrated
-- Domain filters: unknown
-- Country: unknown
-- Language: unknown
-- Date range: unknown
-- Safe search: unknown
-- Mode: none
+- Domain filters: partial
+- Country: full
+- Language: full
+- Date range: partial
+- Safe search: partial
+- Mode: Standard queue, Priority queue, Live
 - Pricing / 1K: Standard queue $0.60; Priority $1.20; Live $2 / 1K SERP pages (≤10 organic results/page)
 - Free tier limits: $1 trial; sample-only sandbox separate
 - Latency by tier: No current comparable measurement verified
-- AI Answer: unknown
-- Full text: unknown
-- Summary: unknown
-- Highlights: unknown
-- News: unknown
+- AI Answer: partial
+- Full text: none
+- Summary: none
+- Highlights: partial
+- News: full
 - Product category: Third-party SERP service
 - Availability: Available
 - Native API overview: Depth, operators and extras alter cost; queued jobs are not comparable to Live latency.
 - anysearch SDK: Comparison only — no adapter
 - Evidence checked: 2026-10-21
 - Limits / billing caveats: $50 minimum prepaid; no subscription/expiry; Standard average ~5min, target 45min
+- Capability basis: Native API — reviewed
 
 ## DeepSeek
 - Docs: https://api-docs.deepseek.com/guides/search/
 - Env: Not integrated
-- Domain filters: unknown
-- Country: unknown
-- Language: unknown
-- Date range: unknown
+- Domain filters: partial
+- Country: partial
+- Language: partial
+- Date range: partial
 - Safe search: unknown
-- Mode: none
+- Mode: Search (single endpoint)
 - Pricing / 1K: $0.75 / 1K successful nonempty Search requests; Fetch separately $0.75 / 1K
 - Free tier limits: No recurring direct API allowance verified; server-side tool promotion is separate
 - Latency by tier: No current comparable measurement verified
-- AI Answer: unknown
-- Full text: unknown
-- Summary: unknown
-- Highlights: unknown
-- News: unknown
+- AI Answer: none
+- Full text: full
+- Summary: partial
+- Highlights: partial
+- News: none
 - Product category: Standalone search API
 - Availability: Available
 - Native API overview: Raw JSON POST /v1/tools/search; 1–50 results, optional content, summaries; site/lang/date query operators. Separate Markdown Fetch API.
 - anysearch SDK: Comparison only — no adapter
 - Evidence checked: 2026-10-21
 - Limits / billing caveats: Search 100 QPS/account; Fetch 25 QPS/account; Fetch also per-domain throttled
+- Capability basis: Native API — reviewed
 
 ## DuckDuckGo
 - Docs: https://pypi.org/project/ddgs/
@@ -217,6 +225,7 @@ Offerings: 31. Native API facts and existing anysearch SDK mappings; comparison-
 - anysearch SDK: Python + TypeScript adapters
 - Evidence checked: 2026-10-21
 - Limits / billing caveats: Upstream throttling; library/version and deployment dependent
+- Capability basis: Existing SDK mappings
 
 ## DuckDuckGo · SerpApi
 - Docs: https://serpapi.com/duckduckgo-search-api
@@ -241,6 +250,7 @@ Offerings: 31. Native API facts and existing anysearch SDK mappings; comparison-
 - anysearch SDK: Python + TypeScript adapters
 - Evidence checked: 2026-10-21
 - Limits / billing caveats: Starter 200/hour; Developer 1,000/hour
+- Capability basis: Existing SDK mappings
 
 ## Exa
 - Docs: https://exa.ai/docs/reference/search
@@ -265,6 +275,7 @@ Offerings: 31. Native API facts and existing anysearch SDK mappings; comparison-
 - anysearch SDK: Python + TypeScript adapters
 - Evidence checked: 2026-10-21
 - Limits / billing caveats: Free 10 QPS; PAYG up to 25 QPS
+- Capability basis: Existing SDK mappings
 
 ## Firecrawl
 - Docs: https://docs.firecrawl.dev/api-reference/endpoint/search
@@ -289,6 +300,7 @@ Offerings: 31. Native API facts and existing anysearch SDK mappings; comparison-
 - anysearch SDK: Python + TypeScript adapters
 - Evidence checked: 2026-10-21
 - Limits / billing caveats: Search: free 10 RPM; Hobby 100 RPM
+- Capability basis: Existing SDK mappings
 
 ## Gemini
 - Docs: https://ai.google.dev/gemini-api/docs/google-search
@@ -313,6 +325,7 @@ Offerings: 31. Native API facts and existing anysearch SDK mappings; comparison-
 - anysearch SDK: Python + TypeScript adapters
 - Evidence checked: 2026-10-21
 - Limits / billing caveats: One prompt may generate several billable queries; older model rules differ
+- Capability basis: Existing SDK mappings
 
 ## Google PSE
 - Docs: https://developers.google.com/custom-search/v1/reference/rest/v1/cse/list
@@ -337,6 +350,7 @@ Offerings: 31. Native API facts and existing anysearch SDK mappings; comparison-
 - anysearch SDK: Python + TypeScript adapters
 - Evidence checked: 2026-10-21
 - Limits / billing caveats: Closed to new customers; transition by January 1, 2027
+- Capability basis: Existing SDK mappings
 
 ## Google · SerpApi
 - Docs: https://serpapi.com/search-api
@@ -361,6 +375,7 @@ Offerings: 31. Native API facts and existing anysearch SDK mappings; comparison-
 - anysearch SDK: Python + TypeScript adapters
 - Evidence checked: 2026-10-21
 - Limits / billing caveats: Starter 200/hour; Developer 1,000/hour
+- Capability basis: Existing SDK mappings
 
 ## Jina
 - Docs: https://jina.ai/reader/
@@ -385,6 +400,7 @@ Offerings: 31. Native API facts and existing anysearch SDK mappings; comparison-
 - anysearch SDK: Python + TypeScript adapters
 - Evidence checked: 2026-10-21
 - Limits / billing caveats: Search 100 RPM free/paid; 1,000 RPM premium
+- Capability basis: Existing SDK mappings
 
 ## Kagi
 - Docs: https://help.kagi.com/kagi/api/search.html
@@ -409,6 +425,7 @@ Offerings: 31. Native API facts and existing anysearch SDK mappings; comparison-
 - anysearch SDK: Python + TypeScript adapters
 - Evidence checked: 2026-10-21
 - Limits / billing caveats: Usage invoiced every 30 days or at $100; Extract up to 10 URLs/request
+- Capability basis: Existing SDK mappings
 
 ## Keiro
 - Docs: https://keirolabs.cloud/
@@ -433,6 +450,7 @@ Offerings: 31. Native API facts and existing anysearch SDK mappings; comparison-
 - anysearch SDK: Python + TypeScript adapters
 - Evidence checked: 2026-10-21
 - Limits / billing caveats: Conflict: 15 vs 30 RPM; paid starts $29.99 vs $30
+- Capability basis: Existing SDK mappings
 
 ## Linkup
 - Docs: https://docs.linkup.so/pages/documentation/endpoints/search/overview
@@ -457,6 +475,7 @@ Offerings: 31. Native API facts and existing anysearch SDK mappings; comparison-
 - anysearch SDK: Python + TypeScript adapters
 - Evidence checked: 2026-10-21
 - Limits / billing caveats: Prepaid PAYG; x402 minimum $0.01/request differs
+- Capability basis: Existing SDK mappings
 
 ## Octen
 - Docs: https://docs.octen.ai/api-reference/search
@@ -481,30 +500,32 @@ Offerings: 31. Native API facts and existing anysearch SDK mappings; comparison-
 - anysearch SDK: Python + TypeScript adapters
 - Evidence checked: 2026-10-21
 - Limits / billing caveats: $5 minimum top-up; 10 QPS free, up to 20 after top-up; QPS subscription excludes usage
+- Capability basis: Existing SDK mappings
 
 ## OpenAI Web Search
 - Docs: https://developers.openai.com/api/docs/pricing
 - Env: Not integrated
-- Domain filters: unknown
-- Country: unknown
+- Domain filters: full
+- Country: full
 - Language: unknown
 - Date range: unknown
 - Safe search: unknown
-- Mode: none
+- Mode: Non-reasoning, Reasoning, Deep research
 - Pricing / 1K: web_search $10 / 1K tool calls + search-content tokens at model rates
 - Free tier limits: No recurring free allowance verified
 - Latency by tier: No current comparable measurement verified
-- AI Answer: unknown
-- Full text: unknown
-- Summary: unknown
-- Highlights: unknown
-- News: unknown
+- AI Answer: full
+- Full text: partial
+- Summary: not_applicable
+- Highlights: not_applicable
+- News: partial
 - Product category: Model-hosted grounding
 - Availability: Available
 - Native API overview: Model-hosted web_search; tool cost is not total answer cost or raw search price.
 - anysearch SDK: Comparison only — no adapter
 - Evidence checked: 2026-10-21
 - Limits / billing caveats: Legacy preview rules differ; model availability and limits vary
+- Capability basis: Native API — reviewed
 
 ## Parallel
 - Docs: https://docs.parallel.ai/search/modes
@@ -529,6 +550,7 @@ Offerings: 31. Native API facts and existing anysearch SDK mappings; comparison-
 - anysearch SDK: Python + TypeScript adapters
 - Evidence checked: 2026-10-21
 - Limits / billing caveats: Extract $1 / 1K URLs; account limits per plan
+- Capability basis: Existing SDK mappings
 
 ## Perplexity
 - Docs: https://docs.perplexity.ai/api-reference/search-post
@@ -553,6 +575,7 @@ Offerings: 31. Native API facts and existing anysearch SDK mappings; comparison-
 - anysearch SDK: Python + TypeScript adapters
 - Evidence checked: 2026-10-21
 - Limits / billing caveats: 1–20 results; other account limits per docs
+- Capability basis: Existing SDK mappings
 
 ## SearXNG
 - Docs: https://docs.searxng.org/dev/search_api.html
@@ -577,6 +600,7 @@ Offerings: 31. Native API facts and existing anysearch SDK mappings; comparison-
 - anysearch SDK: Python + TypeScript adapters
 - Evidence checked: 2026-10-21
 - Limits / billing caveats: JSON/CSV/RSS must be enabled; public instances may return 403
+- Capability basis: Existing SDK mappings
 
 ## Searchapi
 - Docs: https://www.searchapi.io/docs/google
@@ -601,6 +625,7 @@ Offerings: 31. Native API facts and existing anysearch SDK mappings; comparison-
 - anysearch SDK: Python + TypeScript adapters
 - Evidence checked: 2026-10-21
 - Limits / billing caveats: Entry plan $40/month; enhanced speed may differ
+- Capability basis: Existing SDK mappings
 
 ## Serper
 - Docs: https://serper.dev/docs
@@ -625,6 +650,7 @@ Offerings: 31. Native API facts and existing anysearch SDK mappings; comparison-
 - anysearch SDK: Python + TypeScript adapters
 - Evidence checked: 2026-10-21
 - Limits / billing caveats: Starter 50 QPS; larger tiers 100/200/300 QPS; credits expire after 6 months
+- Capability basis: Existing SDK mappings
 
 ## Tavily
 - Docs: https://docs.tavily.com/documentation/api-reference/endpoint/search
@@ -649,6 +675,7 @@ Offerings: 31. Native API facts and existing anysearch SDK mappings; comparison-
 - anysearch SDK: Python + TypeScript adapters
 - Evidence checked: 2026-10-21
 - Limits / billing caveats: Development 100 RPM; paid production 1,000 RPM
+- Capability basis: Existing SDK mappings
 
 ## Yahoo · SerpApi
 - Docs: https://serpapi.com/yahoo-search-api
@@ -673,6 +700,7 @@ Offerings: 31. Native API facts and existing anysearch SDK mappings; comparison-
 - anysearch SDK: Python + TypeScript adapters
 - Evidence checked: 2026-10-21
 - Limits / billing caveats: Starter 200/hour; Developer 1,000/hour
+- Capability basis: Existing SDK mappings
 
 ## Yandex · SerpApi
 - Docs: https://serpapi.com/yandex-search-api
@@ -697,6 +725,7 @@ Offerings: 31. Native API facts and existing anysearch SDK mappings; comparison-
 - anysearch SDK: Python + TypeScript adapters
 - Evidence checked: 2026-10-21
 - Limits / billing caveats: Starter 200/hour; Developer 1,000/hour
+- Capability basis: Existing SDK mappings
 
 ## You
 - Docs: https://you.com/docs/search/overview
@@ -721,27 +750,29 @@ Offerings: 31. Native API facts and existing anysearch SDK mappings; comparison-
 - anysearch SDK: Python + TypeScript adapters
 - Evidence checked: 2026-10-21
 - Limits / billing caveats: Up to 100 results; PAYG no minimum
+- Capability basis: Existing SDK mappings
 
 ## xAI Web Search
 - Docs: https://docs.x.ai/developers/pricing
 - Env: Not integrated
-- Domain filters: unknown
+- Domain filters: full
 - Country: unknown
 - Language: unknown
 - Date range: unknown
 - Safe search: unknown
-- Mode: none
+- Mode: Model-mediated web search
 - Pricing / 1K: Web Search $5 / 1K tool calls + model tokens
 - Free tier limits: No recurring free allowance verified
 - Latency by tier: No current comparable measurement verified
-- AI Answer: unknown
-- Full text: unknown
-- Summary: unknown
-- Highlights: unknown
-- News: unknown
+- AI Answer: full
+- Full text: partial
+- Summary: not_applicable
+- Highlights: not_applicable
+- News: partial
 - Product category: Model-hosted grounding
 - Availability: Available
 - Native API overview: Model-hosted web_search; X Search is distinct and is not public web search.
 - anysearch SDK: Comparison only — no adapter
 - Evidence checked: 2026-10-21
 - Limits / billing caveats: X Search billed separately: posts/profiles use different units
+- Capability basis: Native API — reviewed

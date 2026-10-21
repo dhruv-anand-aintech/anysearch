@@ -16,9 +16,12 @@
     "comment": ""
   },
   "mode": {
-    "values": [],
+    "values": [
+      "N/A (retired)"
+    ],
+    "comment": "Retired service has no current usable search modes.",
     "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
-    "comment": "No unified SDK mode mapping."
+    "checked_at": "2026-10-21"
   },
   "p50_latency": {
     "value": "No current comparable measurement verified",
@@ -28,64 +31,88 @@
   "notes": "Comparison only; no anysearch SDK adapter is claimed.",
   "comparison_only": true,
   "requires_key": {
-    "support": "unknown",
+    "support": "not_applicable",
+    "comment": "Retired August 11, 2025; all direct Bing Search API instances decommissioned. Current capability is N/A, not an assertion about historical features or SerpApi Bing.",
     "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
-    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    "checked_at": "2026-10-21",
+    "basis": "native API documentation"
   },
   "snippet": {
-    "support": "unknown",
+    "support": "not_applicable",
+    "comment": "Retired August 11, 2025; all direct Bing Search API instances decommissioned. Current capability is N/A, not an assertion about historical features or SerpApi Bing.",
     "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
-    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    "checked_at": "2026-10-21",
+    "basis": "native API documentation"
   },
   "domains": {
-    "support": "unknown",
+    "support": "not_applicable",
+    "comment": "Retired August 11, 2025; all direct Bing Search API instances decommissioned. Current capability is N/A, not an assertion about historical features or SerpApi Bing.",
     "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
-    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    "checked_at": "2026-10-21",
+    "basis": "native API documentation"
   },
   "country": {
-    "support": "unknown",
+    "support": "not_applicable",
+    "comment": "Retired August 11, 2025; all direct Bing Search API instances decommissioned. Current capability is N/A, not an assertion about historical features or SerpApi Bing.",
     "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
-    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    "checked_at": "2026-10-21",
+    "basis": "native API documentation"
   },
   "language": {
-    "support": "unknown",
+    "support": "not_applicable",
+    "comment": "Retired August 11, 2025; all direct Bing Search API instances decommissioned. Current capability is N/A, not an assertion about historical features or SerpApi Bing.",
     "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
-    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    "checked_at": "2026-10-21",
+    "basis": "native API documentation"
   },
   "date": {
-    "support": "unknown",
+    "support": "not_applicable",
+    "comment": "Retired August 11, 2025; all direct Bing Search API instances decommissioned. Current capability is N/A, not an assertion about historical features or SerpApi Bing.",
     "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
-    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    "checked_at": "2026-10-21",
+    "basis": "native API documentation"
   },
   "safe_search": {
-    "support": "unknown",
+    "support": "not_applicable",
+    "comment": "Retired August 11, 2025; all direct Bing Search API instances decommissioned. Current capability is N/A, not an assertion about historical features or SerpApi Bing.",
     "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
-    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    "checked_at": "2026-10-21",
+    "basis": "native API documentation"
   },
   "answer": {
-    "support": "unknown",
+    "support": "not_applicable",
+    "comment": "Retired August 11, 2025; all direct Bing Search API instances decommissioned. Current capability is N/A, not an assertion about historical features or SerpApi Bing.",
     "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
-    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    "checked_at": "2026-10-21",
+    "basis": "native API documentation"
   },
   "content": {
-    "support": "unknown",
+    "support": "not_applicable",
+    "comment": "Retired August 11, 2025; all direct Bing Search API instances decommissioned. Current capability is N/A, not an assertion about historical features or SerpApi Bing.",
     "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
-    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    "checked_at": "2026-10-21",
+    "basis": "native API documentation"
   },
   "summary": {
-    "support": "unknown",
+    "support": "not_applicable",
+    "comment": "Retired August 11, 2025; all direct Bing Search API instances decommissioned. Current capability is N/A, not an assertion about historical features or SerpApi Bing.",
     "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
-    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    "checked_at": "2026-10-21",
+    "basis": "native API documentation"
   },
   "highlights": {
-    "support": "unknown",
+    "support": "not_applicable",
+    "comment": "Retired August 11, 2025; all direct Bing Search API instances decommissioned. Current capability is N/A, not an assertion about historical features or SerpApi Bing.",
     "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
-    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    "checked_at": "2026-10-21",
+    "basis": "native API documentation"
   },
   "news": {
-    "support": "unknown",
+    "support": "not_applicable",
+    "comment": "Retired August 11, 2025; all direct Bing Search API instances decommissioned. Current capability is N/A, not an assertion about historical features or SerpApi Bing.",
     "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
-    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    "checked_at": "2026-10-21",
+    "basis": "native API documentation"
   },
   "api_category": {
     "value": "Legacy search API",
@@ -116,15 +143,27 @@
     "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
     "links": {}
   },
+  "capability_basis": {
+    "value": "Native API \u2014 reviewed",
+    "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+    "comment": "SDK availability is separate from native provider capability. Each native feature cell carries its own checked date and evidence."
+  },
   "sdk_support": {
     "value": "Comparison only \u2014 no adapter",
     "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
-    "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+    "comment": "SDK adapter availability only. See Capability basis for the feature rows; native features do not imply an SDK adapter."
   },
   "pricing_per_1k": {
     "value": "Retired; current direct API pricing not applicable",
     "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
     "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+    "primary_price": {
+      "amount_usd_per_1k": null,
+      "billing_unit": "retired",
+      "basis": "Unavailable; no current price",
+      "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+      "checked_at": "2026-10-21"
+    },
     "links": {}
   },
   "free_tier_limits": {

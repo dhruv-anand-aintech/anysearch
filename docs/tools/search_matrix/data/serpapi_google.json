@@ -87,6 +87,13 @@
     "value": "$25/month for 1K; $75/5K; $150/15K; $275/30K searches",
     "source_url": "https://serpapi.com/pricing",
     "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+    "primary_price": {
+      "amount_usd_per_1k": 25,
+      "billing_unit": "starter searches",
+      "basis": "$25 monthly plan; larger plans differ",
+      "source_url": "https://serpapi.com/pricing",
+      "checked_at": "2026-10-21"
+    },
     "links": {}
   },
   "free_tier_limits": {
@@ -134,10 +141,15 @@
     "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
     "links": {}
   },
+  "capability_basis": {
+    "value": "Existing SDK mappings",
+    "source_url": "https://serpapi.com/pricing",
+    "comment": "SDK availability is separate from native provider capability. Each native feature cell carries its own checked date and evidence."
+  },
   "sdk_support": {
     "value": "Python + TypeScript adapters",
     "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
-    "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+    "comment": "SDK adapter availability only. See Capability basis for the feature rows; native features do not imply an SDK adapter."
   },
   "evidence": {
     "checked_at": "2026-10-21",
