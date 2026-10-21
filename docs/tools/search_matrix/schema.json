@@ -251,7 +251,6 @@
       "type": "object",
       "required": [
         "docs",
-        "github",
         "website",
         "slug"
       ],

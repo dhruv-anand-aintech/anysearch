@@ -100,7 +100,11 @@ class PipelineTests(unittest.TestCase):
         self.assertTrue(
             any(r["links"]["slug"] == "deepseek" and r["comparison_only"] for r in rows)
         )
+        required_links = json.loads(
+            (ROOT / "docs/tools/search_matrix/schema.json").read_text()
+        )["$defs"]["links"]["required"]
         for row in rows:
+            self.assertTrue(set(required_links).issubset(row["links"]))
             self.assertRegex(row["checked_at"]["value"], r"^\d{4}-\d{2}-\d{2}$")
             self.assertTrue(row["evidence"]["source_urls"])
         self.assertEqual(
