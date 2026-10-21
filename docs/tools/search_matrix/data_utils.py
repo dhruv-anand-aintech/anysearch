@@ -140,7 +140,7 @@ def llms_txt() -> None:
     lines = [
         "# anysearch Search API Provider Matrix",
         "",
-        f"Providers: {len(rows)}. Unified parameters and response fields supported via anysearch.",
+        f"Offerings: {len(rows)}. Native API facts and existing anysearch SDK mappings; comparison-only entries have no adapter.",
         "",
     ]
     for row in rows:

@@ -1,6 +1,6 @@
 # anysearch Search API Provider Matrix
 
-Providers: 31. Unified parameters and response fields supported via anysearch.
+Offerings: 31. Native API facts and existing anysearch SDK mappings; comparison-only entries have no adapter.
 
 ## Anthropic Web Search
 - Docs: https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool
