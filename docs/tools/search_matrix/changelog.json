@@ -1,6 +1,905 @@
 {
-  "entry_count": 465,
+  "entry_count": 688,
   "entries": [
+    {
+      "date": "2026-10-21",
+      "commit": "48178db",
+      "title": "fix(matrix): repair navigation and refresh official search API research",
+      "items": [
+        {
+          "summary": "Anthropic Web Search added to the comparison",
+          "target": "cell-anthropic-requires-key"
+        },
+        {
+          "summary": "Bing Search (retired) added to the comparison",
+          "target": "cell-bing-legacy-requires-key"
+        },
+        {
+          "summary": "Brave: Product category updated to Standalone search API",
+          "target": "cell-brave-api-category"
+        },
+        {
+          "summary": "Brave: Availability updated to Available",
+          "target": "cell-brave-api-status"
+        },
+        {
+          "summary": "Brave: Evidence checked updated to 2026-10-21",
+          "target": "cell-brave-checked-at"
+        },
+        {
+          "summary": "Brave: Free tier limits updated to $5 monthly credit; attribution conditions apply",
+          "target": "cell-brave-free-tier-limits"
+        },
+        {
+          "summary": "Brave: Native API overview updated to Web, news, images, videos and LLM context; Answers is a separate genera…",
+          "target": "cell-brave-native-api"
+        },
+        {
+          "summary": "Brave: Latency by tier updated to Historical July 2026: Web: 0.77s p50 / 1.19s p95; Answers/research: not…",
+          "target": "cell-brave-p50-latency"
+        },
+        {
+          "summary": "Brave: Pricing / 1K updated to Search $5 / 1K requests; Answers $4 / 1K + $5/M input and output tokens",
+          "target": "cell-brave-pricing-per-1k"
+        },
+        {
+          "summary": "Brave: Limits / billing caveats updated to Search 50 RPS; Answers 2 RPS",
+          "target": "cell-brave-rate-limits"
+        },
+        {
+          "summary": "Brave: anysearch SDK updated to Python + TypeScript adapters",
+          "target": "cell-brave-sdk-support"
+        },
+        {
+          "summary": "Bright Data added to the comparison",
+          "target": "cell-brightdata-requires-key"
+        },
+        {
+          "summary": "DataForSEO added to the comparison",
+          "target": "cell-dataforseo-requires-key"
+        },
+        {
+          "summary": "DeepSeek added to the comparison",
+          "target": "cell-deepseek-requires-key"
+        },
+        {
+          "summary": "DuckDuckGo: Product category updated to Unofficial metasearch library",
+          "target": "cell-duckduckgo-api-category"
+        },
+        {
+          "summary": "DuckDuckGo: Availability updated to Self-managed; upstream dependent",
+          "target": "cell-duckduckgo-api-status"
+        },
+        {
+          "summary": "DuckDuckGo: Evidence checked updated to 2026-10-21",
+          "target": "cell-duckduckgo-checked-at"
+        },
+        {
+          "summary": "DuckDuckGo: Free tier limits updated to No contracted quota or SLA established",
+          "target": "cell-duckduckgo-free-tier-limits"
+        },
+        {
+          "summary": "DuckDuckGo: Native API overview updated to Unofficial DDGS/Dux Distributed Global Search metasearch library; no ve…",
+          "target": "cell-duckduckgo-native-api"
+        },
+        {
+          "summary": "DuckDuckGo: Latency by tier updated to Historical July 2026: No contracted API latency distribution for the DD…",
+          "target": "cell-duckduckgo-p50-latency"
+        },
+        {
+          "summary": "DuckDuckGo: Pricing / 1K updated to No library API fee; hosting/proxy/upstream costs separate",
+          "target": "cell-duckduckgo-pricing-per-1k"
+        },
+        {
+          "summary": "DuckDuckGo: Limits / billing caveats updated to Upstream throttling; library/version and deployment dependent",
+          "target": "cell-duckduckgo-rate-limits"
+        },
+        {
+          "summary": "DuckDuckGo: anysearch SDK updated to Python + TypeScript adapters",
+          "target": "cell-duckduckgo-sdk-support"
+        },
+        {
+          "summary": "Exa: Product category updated to Standalone search API",
+          "target": "cell-exa-api-category"
+        },
+        {
+          "summary": "Exa: Availability updated to Available",
+          "target": "cell-exa-api-status"
+        },
+        {
+          "summary": "Exa: Evidence checked updated to 2026-10-21",
+          "target": "cell-exa-checked-at"
+        },
+        {
+          "summary": "Exa: Free tier limits updated to $10 monthly + $10 onboarding credit",
+          "target": "cell-exa-free-tier-limits"
+        },
+        {
+          "summary": "Exa: Native API overview updated to Exa 3.0 released October 19; Lite and Auto; Dynamic Highlights GA. Cont…",
+          "target": "cell-exa-native-api"
+        },
+        {
+          "summary": "Exa: Latency by tier updated to Historical July 2026: instant: 0.36s p50 / 0.52s p95; fast: 0.67s / 1.3…",
+          "target": "cell-exa-p50-latency"
+        },
+        {
+          "summary": "Exa: Pricing / 1K updated to Lite $4; Auto $7; Deep $12 / 1K requests (≤10 results); extra results $…",
+          "target": "cell-exa-pricing-per-1k"
+        },
+        {
+          "summary": "Exa: Limits / billing caveats updated to Free 10 QPS; PAYG up to 25 QPS",
+          "target": "cell-exa-rate-limits"
+        },
+        {
+          "summary": "Exa: anysearch SDK updated to Python + TypeScript adapters",
+          "target": "cell-exa-sdk-support"
+        },
+        {
+          "summary": "Firecrawl: Product category updated to Standalone search API",
+          "target": "cell-firecrawl-api-category"
+        },
+        {
+          "summary": "Firecrawl: Availability updated to Available",
+          "target": "cell-firecrawl-api-status"
+        },
+        {
+          "summary": "Firecrawl: Evidence checked updated to 2026-10-21",
+          "target": "cell-firecrawl-checked-at"
+        },
+        {
+          "summary": "Firecrawl: Free tier limits updated to 1,000 credits/month; no card",
+          "target": "cell-firecrawl-free-tier-limits"
+        },
+        {
+          "summary": "Firecrawl: Native API overview updated to Search with optional page scraping; annual Hobby $16/month billed annua…",
+          "target": "cell-firecrawl-native-api"
+        },
+        {
+          "summary": "Firecrawl: Latency by tier updated to Historical July 2026: Search: <2s avg cited workload; search + scrape:…",
+          "target": "cell-firecrawl-p50-latency"
+        },
+        {
+          "summary": "Firecrawl: Pricing / 1K updated to 2 credits / 10 search results; scraping add-ons separate; Hobby $19/mon…",
+          "target": "cell-firecrawl-pricing-per-1k"
+        },
+        {
+          "summary": "Firecrawl: Limits / billing caveats updated to Search: free 10 RPM; Hobby 100 RPM",
+          "target": "cell-firecrawl-rate-limits"
+        },
+        {
+          "summary": "Firecrawl: anysearch SDK updated to Python + TypeScript adapters",
+          "target": "cell-firecrawl-sdk-support"
+        },
+        {
+          "summary": "Gemini: Product category updated to Model-hosted grounding",
+          "target": "cell-gemini-api-category"
+        },
+        {
+          "summary": "Gemini: Availability updated to Available",
+          "target": "cell-gemini-api-status"
+        },
+        {
+          "summary": "Gemini: Evidence checked updated to 2026-10-21",
+          "target": "cell-gemini-checked-at"
+        },
+        {
+          "summary": "Gemini: Free tier limits updated to Gemini 3+: 5,000 search queries/month shared free",
+          "target": "cell-gemini-free-tier-limits"
+        },
+        {
+          "summary": "Gemini: Native API overview updated to Google Search grounding inside Gemini generation, not standalone raw ra…",
+          "target": "cell-gemini-native-api"
+        },
+        {
+          "summary": "Gemini: Latency by tier updated to Historical July 2026: No published Google Search grounding latency dist…",
+          "target": "cell-gemini-p50-latency"
+        },
+        {
+          "summary": "Gemini: Pricing / 1K updated to Gemini 3+: $14 / 1K individual search queries + model charges",
+          "target": "cell-gemini-pricing-per-1k"
+        },
+        {
+          "summary": "Gemini: Limits / billing caveats updated to One prompt may generate several billable queries; older model rules dif…",
+          "target": "cell-gemini-rate-limits"
+        },
+        {
+          "summary": "Gemini: anysearch SDK updated to Python + TypeScript adapters",
+          "target": "cell-gemini-sdk-support"
+        },
+        {
+          "summary": "Google PSE: Product category updated to Legacy search API",
+          "target": "cell-google-pse-api-category"
+        },
+        {
+          "summary": "Google PSE: Availability updated to Closed to new customers; discontinued January 1, 2027",
+          "target": "cell-google-pse-api-status"
+        },
+        {
+          "summary": "Google PSE: Evidence checked updated to 2026-10-21",
+          "target": "cell-google-pse-checked-at"
+        },
+        {
+          "summary": "Google PSE: Free tier limits updated to Existing users only: 100 queries/day",
+          "target": "cell-google-pse-free-tier-limits"
+        },
+        {
+          "summary": "Google PSE: Native API overview updated to Configured Programmable Search Engine + key required; Vertex AI domain…",
+          "target": "cell-google-pse-native-api"
+        },
+        {
+          "summary": "Google PSE: Latency by tier updated to Historical July 2026: No published distribution; each response includes…",
+          "target": "cell-google-pse-p50-latency"
+        },
+        {
+          "summary": "Google PSE: Pricing / 1K updated to Existing users: $5 / 1K above free quota; up to 10K/day",
+          "target": "cell-google-pse-pricing-per-1k"
+        },
+        {
+          "summary": "Google PSE: Limits / billing caveats updated to Closed to new customers; transition by January 1, 2027",
+          "target": "cell-google-pse-rate-limits"
+        },
+        {
+          "summary": "Google PSE: anysearch SDK updated to Python + TypeScript adapters",
+          "target": "cell-google-pse-sdk-support"
+        },
+        {
+          "summary": "Jina: Product category updated to Standalone search API",
+          "target": "cell-jina-api-category"
+        },
+        {
+          "summary": "Jina: Availability updated to Available",
+          "target": "cell-jina-api-status"
+        },
+        {
+          "summary": "Jina: Evidence checked updated to 2026-10-21",
+          "target": "cell-jina-checked-at"
+        },
+        {
+          "summary": "Jina: Free tier limits updated to 10M free tokens listed with noncommercial CC-BY-NC condition; recurrenc…",
+          "target": "cell-jina-free-tier-limits"
+        },
+        {
+          "summary": "Jina: Native API overview updated to s.jina.ai requires key; r.jina.ai URL reader uses separate output-token…",
+          "target": "cell-jina-native-api"
+        },
+        {
+          "summary": "Jina: Latency by tier updated to Historical July 2026: Search: 0.75s p50 / 1.32s p95 independent; 2.5s p…",
+          "target": "cell-jina-p50-latency"
+        },
+        {
+          "summary": "Jina: Pricing / 1K updated to Token-priced: ≥10K tokens/request; $50/1B tokens implies ≥$0.50 / 1K, n…",
+          "target": "cell-jina-pricing-per-1k"
+        },
+        {
+          "summary": "Jina: Limits / billing caveats updated to Search 100 RPM free/paid; 1,000 RPM premium",
+          "target": "cell-jina-rate-limits"
+        },
+        {
+          "summary": "Jina: anysearch SDK updated to Python + TypeScript adapters",
+          "target": "cell-jina-sdk-support"
+        },
+        {
+          "summary": "Kagi: Product category updated to Standalone search API",
+          "target": "cell-kagi-api-category"
+        },
+        {
+          "summary": "Kagi: Availability updated to Available",
+          "target": "cell-kagi-api-status"
+        },
+        {
+          "summary": "Kagi: Evidence checked updated to 2026-10-21",
+          "target": "cell-kagi-checked-at"
+        },
+        {
+          "summary": "Kagi: Free tier limits updated to No free Search API quota stated",
+          "target": "cell-kagi-free-tier-limits"
+        },
+        {
+          "summary": "Kagi: Native API overview updated to Current GET /api/v1/search uses Authorization: Bot; web/images/news/vid…",
+          "target": "cell-kagi-native-api"
+        },
+        {
+          "summary": "Kagi: Latency by tier updated to Historical July 2026: No published Search API latency distribution",
+          "target": "cell-kagi-p50-latency"
+        },
+        {
+          "summary": "Kagi: Pricing / 1K updated to Search $12 / 1K requests; Extract $4 / 1K pages",
+          "target": "cell-kagi-pricing-per-1k"
+        },
+        {
+          "summary": "Kagi: Limits / billing caveats updated to Usage invoiced every 30 days or at $100; Extract up to 10 URLs/request",
+          "target": "cell-kagi-rate-limits"
+        },
+        {
+          "summary": "Kagi: anysearch SDK updated to Python + TypeScript adapters",
+          "target": "cell-kagi-sdk-support"
+        },
+        {
+          "summary": "Keiro: Product category updated to Standalone search API",
+          "target": "cell-keiro-api-category"
+        },
+        {
+          "summary": "Keiro: Availability updated to Available; official pricing conflict",
+          "target": "cell-keiro-api-status"
+        },
+        {
+          "summary": "Keiro: Evidence checked updated to 2026-10-21",
+          "target": "cell-keiro-checked-at"
+        },
+        {
+          "summary": "Keiro: Free tier limits updated to Conflict: Keiro 750 credits/month; browserfoundry 1,250; free/paid conv…",
+          "target": "cell-keiro-free-tier-limits"
+        },
+        {
+          "summary": "Keiro: Native API overview updated to Rebranded browserfoundry; claims existing keys/endpoints continue. Fast…",
+          "target": "cell-keiro-native-api"
+        },
+        {
+          "summary": "Keiro: Latency by tier updated to Historical July 2026: Flash: 0.312s p50 / 1.1s p99; indexed: 0.487s p50…",
+          "target": "cell-keiro-p50-latency"
+        },
+        {
+          "summary": "Keiro: Pricing / 1K updated to Conflicting official pricing: Keiro lite from $0.10 / 1K; browserfoundr…",
+          "target": "cell-keiro-pricing-per-1k"
+        },
+        {
+          "summary": "Keiro: Limits / billing caveats updated to Conflict: 15 vs 30 RPM; paid starts $29.99 vs $30",
+          "target": "cell-keiro-rate-limits"
+        },
+        {
+          "summary": "Keiro: anysearch SDK updated to Python + TypeScript adapters",
+          "target": "cell-keiro-sdk-support"
+        },
+        {
+          "summary": "Linkup: Product category updated to Standalone search API",
+          "target": "cell-linkup-api-category"
+        },
+        {
+          "summary": "Linkup: Availability updated to Available",
+          "target": "cell-linkup-api-status"
+        },
+        {
+          "summary": "Linkup: Evidence checked updated to 2026-10-21",
+          "target": "cell-linkup-checked-at"
+        },
+        {
+          "summary": "Linkup: Free tier limits updated to Eligible professional-email accounts topped back up to $20 monthly",
+          "target": "cell-linkup-free-tier-limits"
+        },
+        {
+          "summary": "Linkup: Native API overview updated to Raw searchResults, sourcedAnswer and structured output use distinct pri…",
+          "target": "cell-linkup-native-api"
+        },
+        {
+          "summary": "Linkup: Latency by tier updated to Historical July 2026: fast: <1s; standard: 1–3s; deep: 5–30s; independe…",
+          "target": "cell-linkup-p50-latency"
+        },
+        {
+          "summary": "Linkup: Pricing / 1K updated to Flash/Fast/Standard raw $5; sourced/structured $6; Deep raw $50 or synt…",
+          "target": "cell-linkup-pricing-per-1k"
+        },
+        {
+          "summary": "Linkup: Limits / billing caveats updated to Prepaid PAYG; x402 minimum $0.01/request differs",
+          "target": "cell-linkup-rate-limits"
+        },
+        {
+          "summary": "Linkup: anysearch SDK updated to Python + TypeScript adapters",
+          "target": "cell-linkup-sdk-support"
+        },
+        {
+          "summary": "Octen: Product category updated to Standalone search API",
+          "target": "cell-octen-api-category"
+        },
+        {
+          "summary": "Octen: Availability updated to Available",
+          "target": "cell-octen-api-status"
+        },
+        {
+          "summary": "Octen: Evidence checked updated to 2026-10-21",
+          "target": "cell-octen-checked-at"
+        },
+        {
+          "summary": "Octen: Free tier limits updated to One-time $5 signup credit; no card",
+          "target": "cell-octen-free-tier-limits"
+        },
+        {
+          "summary": "Octen: Native API overview updated to Search 1–100 results; domain/language/date/safe-search, content/highlig…",
+          "target": "cell-octen-native-api"
+        },
+        {
+          "summary": "Octen: Latency by tier updated to Historical July 2026: Web Search: 62 ms p50; 68 ms p90",
+          "target": "cell-octen-p50-latency"
+        },
+        {
+          "summary": "Octen: Pricing / 1K updated to Promotional Web Search $1 / 1K (normally $5), includes 10 full-content…",
+          "target": "cell-octen-pricing-per-1k"
+        },
+        {
+          "summary": "Octen: Limits / billing caveats updated to $5 minimum top-up; 10 QPS free, up to 20 after top-up; QPS subscription…",
+          "target": "cell-octen-rate-limits"
+        },
+        {
+          "summary": "Octen: anysearch SDK updated to Python + TypeScript adapters",
+          "target": "cell-octen-sdk-support"
+        },
+        {
+          "summary": "OpenAI Web Search added to the comparison",
+          "target": "cell-openai-requires-key"
+        },
+        {
+          "summary": "Parallel: Product category updated to Standalone search API",
+          "target": "cell-parallel-api-category"
+        },
+        {
+          "summary": "Parallel: Availability updated to Available",
+          "target": "cell-parallel-api-status"
+        },
+        {
+          "summary": "Parallel: Evidence checked updated to 2026-10-21",
+          "target": "cell-parallel-checked-at"
+        },
+        {
+          "summary": "Parallel: Free tier limits updated to Up to $80 signup; eligible card-backed organizations $5 monthly credit",
+          "target": "cell-parallel-free-tier-limits"
+        },
+        {
+          "summary": "Parallel: Native API overview updated to Search and Extract differ from Task processors. Spending limits are not…",
+          "target": "cell-parallel-native-api"
+        },
+        {
+          "summary": "Parallel: Latency by tier updated to Historical July 2026: Search turbo: 0.216s p50; basic: 1.3s; advanced:…",
+          "target": "cell-parallel-p50-latency"
+        },
+        {
+          "summary": "Parallel: Pricing / 1K updated to Turbo/Fast $1; Basic/Advanced $5 / 1K (10 results); +$1 / 1K additional…",
+          "target": "cell-parallel-pricing-per-1k"
+        },
+        {
+          "summary": "Parallel: Limits / billing caveats updated to Extract $1 / 1K URLs; account limits per plan",
+          "target": "cell-parallel-rate-limits"
+        },
+        {
+          "summary": "Parallel: anysearch SDK updated to Python + TypeScript adapters",
+          "target": "cell-parallel-sdk-support"
+        },
+        {
+          "summary": "Perplexity: Product category updated to Standalone search API",
+          "target": "cell-perplexity-api-category"
+        },
+        {
+          "summary": "Perplexity: Availability updated to Available",
+          "target": "cell-perplexity-api-status"
+        },
+        {
+          "summary": "Perplexity: Evidence checked updated to 2026-10-21",
+          "target": "cell-perplexity-checked-at"
+        },
+        {
+          "summary": "Perplexity: Free tier limits updated to No general free API allowance verified",
+          "target": "cell-perplexity-free-tier-limits"
+        },
+        {
+          "summary": "Perplexity: Native API overview updated to Ranked Search results and extracted text; Sonar, Agent and Research are…",
+          "target": "cell-perplexity-native-api"
+        },
+        {
+          "summary": "Perplexity: Latency by tier updated to Historical July 2026: Search: 0.35s p50 / 0.47s p95 independent; 0.358s…",
+          "target": "cell-perplexity-p50-latency"
+        },
+        {
+          "summary": "Perplexity: Pricing / 1K updated to Fast $1; Standard $5 / 1K requests (up to 5 queries/request); no raw Se…",
+          "target": "cell-perplexity-pricing-per-1k"
+        },
+        {
+          "summary": "Perplexity: Limits / billing caveats updated to 1–20 results; other account limits per docs",
+          "target": "cell-perplexity-rate-limits"
+        },
+        {
+          "summary": "Perplexity: anysearch SDK updated to Python + TypeScript adapters",
+          "target": "cell-perplexity-sdk-support"
+        },
+        {
+          "summary": "Searchapi: Product category updated to Third-party SERP service",
+          "target": "cell-searchapi-api-category"
+        },
+        {
+          "summary": "Searchapi: Availability updated to Available",
+          "target": "cell-searchapi-api-status"
+        },
+        {
+          "summary": "Searchapi: Evidence checked updated to 2026-10-21",
+          "target": "cell-searchapi-checked-at"
+        },
+        {
+          "summary": "Searchapi: Free tier limits updated to 100 one-time signup requests; no card",
+          "target": "cell-searchapi-free-tier-limits"
+        },
+        {
+          "summary": "Searchapi: Native API overview updated to Third-party SERP service; only HTTP-200 success billed; $100/35K equals…",
+          "target": "cell-searchapi-native-api"
+        },
+        {
+          "summary": "Searchapi: Latency by tier updated to Historical July 2026: Light API: 1.07s p50 / 2.23s p95; standard API: n…",
+          "target": "cell-searchapi-p50-latency"
+        },
+        {
+          "summary": "Searchapi: Pricing / 1K updated to $40/month/10K; $100/35K; $250/100K; $500/250K standard-speed requests",
+          "target": "cell-searchapi-pricing-per-1k"
+        },
+        {
+          "summary": "Searchapi: Limits / billing caveats updated to Entry plan $40/month; enhanced speed may differ",
+          "target": "cell-searchapi-rate-limits"
+        },
+        {
+          "summary": "Searchapi: anysearch SDK updated to Python + TypeScript adapters",
+          "target": "cell-searchapi-sdk-support"
+        },
+        {
+          "summary": "SearXNG: Product category updated to Self-hosted metasearch",
+          "target": "cell-searxng-api-category"
+        },
+        {
+          "summary": "SearXNG: Availability updated to Self-hosted; instance dependent",
+          "target": "cell-searxng-api-status"
+        },
+        {
+          "summary": "SearXNG: Evidence checked updated to 2026-10-21",
+          "target": "cell-searxng-checked-at"
+        },
+        {
+          "summary": "SearXNG: Free tier limits updated to No hosted free allowance; self-hosted instance limits apply",
+          "target": "cell-searxng-free-tier-limits"
+        },
+        {
+          "summary": "SearXNG: Native API overview updated to GET/POST / or /search; language/time/safe-search and query operators de…",
+          "target": "cell-searxng-native-api"
+        },
+        {
+          "summary": "SearXNG: Latency by tier updated to Historical July 2026: Deployment-dependent; no portable p50/p90/p95",
+          "target": "cell-searxng-p50-latency"
+        },
+        {
+          "summary": "SearXNG: Pricing / 1K updated to Self-hosted software; infrastructure/proxy costs separate",
+          "target": "cell-searxng-pricing-per-1k"
+        },
+        {
+          "summary": "SearXNG: Limits / billing caveats updated to JSON/CSV/RSS must be enabled; public instances may return 403",
+          "target": "cell-searxng-rate-limits"
+        },
+        {
+          "summary": "SearXNG: anysearch SDK updated to Python + TypeScript adapters",
+          "target": "cell-searxng-sdk-support"
+        },
+        {
+          "summary": "Baidu · SerpApi: Product category updated to Third-party SERP service",
+          "target": "cell-serpapi-baidu-api-category"
+        },
+        {
+          "summary": "Baidu · SerpApi: Availability updated to Available",
+          "target": "cell-serpapi-baidu-api-status"
+        },
+        {
+          "summary": "Baidu · SerpApi: Evidence checked updated to 2026-10-21",
+          "target": "cell-serpapi-baidu-checked-at"
+        },
+        {
+          "summary": "Baidu · SerpApi: Free tier limits evidence refreshed",
+          "target": "cell-serpapi-baidu-free-tier-limits"
+        },
+        {
+          "summary": "Baidu · SerpApi: Native API overview updated to Third-party SERP access to multiple engines; not official Google/Bing d…",
+          "target": "cell-serpapi-baidu-native-api"
+        },
+        {
+          "summary": "Baidu · SerpApi: Latency by tier updated to Historical July 2026: Light API: 1.28s p50 independent; fastest Google…",
+          "target": "cell-serpapi-baidu-p50-latency"
+        },
+        {
+          "summary": "Baidu · SerpApi: Pricing / 1K updated to $25/month for 1K; $75/5K; $150/15K; $275/30K searches",
+          "target": "cell-serpapi-baidu-pricing-per-1k"
+        },
+        {
+          "summary": "Baidu · SerpApi: Limits / billing caveats updated to Starter 200/hour; Developer 1,000/hour",
+          "target": "cell-serpapi-baidu-rate-limits"
+        },
+        {
+          "summary": "Baidu · SerpApi: anysearch SDK updated to Python + TypeScript adapters",
+          "target": "cell-serpapi-baidu-sdk-support"
+        },
+        {
+          "summary": "Bing · SerpApi: Product category updated to Third-party SERP service",
+          "target": "cell-serpapi-bing-api-category"
+        },
+        {
+          "summary": "Bing · SerpApi: Availability updated to Available",
+          "target": "cell-serpapi-bing-api-status"
+        },
+        {
+          "summary": "Bing · SerpApi: Evidence checked updated to 2026-10-21",
+          "target": "cell-serpapi-bing-checked-at"
+        },
+        {
+          "summary": "Bing · SerpApi: Free tier limits evidence refreshed",
+          "target": "cell-serpapi-bing-free-tier-limits"
+        },
+        {
+          "summary": "Bing · SerpApi: Native API overview updated to Third-party SERP access to multiple engines; not official Google/Bing d…",
+          "target": "cell-serpapi-bing-native-api"
+        },
+        {
+          "summary": "Bing · SerpApi: Latency by tier updated to Historical July 2026: Light API: 1.28s p50 independent; fastest Google…",
+          "target": "cell-serpapi-bing-p50-latency"
+        },
+        {
+          "summary": "Bing · SerpApi: Pricing / 1K updated to $25/month for 1K; $75/5K; $150/15K; $275/30K searches",
+          "target": "cell-serpapi-bing-pricing-per-1k"
+        },
+        {
+          "summary": "Bing · SerpApi: Limits / billing caveats updated to Starter 200/hour; Developer 1,000/hour",
+          "target": "cell-serpapi-bing-rate-limits"
+        },
+        {
+          "summary": "Bing · SerpApi: anysearch SDK updated to Python + TypeScript adapters",
+          "target": "cell-serpapi-bing-sdk-support"
+        },
+        {
+          "summary": "DuckDuckGo · SerpApi: Product category updated to Third-party SERP service",
+          "target": "cell-serpapi-duckduckgo-api-category"
+        },
+        {
+          "summary": "DuckDuckGo · SerpApi: Availability updated to Available",
+          "target": "cell-serpapi-duckduckgo-api-status"
+        },
+        {
+          "summary": "DuckDuckGo · SerpApi: Evidence checked updated to 2026-10-21",
+          "target": "cell-serpapi-duckduckgo-checked-at"
+        },
+        {
+          "summary": "DuckDuckGo · SerpApi: Free tier limits evidence refreshed",
+          "target": "cell-serpapi-duckduckgo-free-tier-limits"
+        },
+        {
+          "summary": "DuckDuckGo · SerpApi: Native API overview updated to Third-party SERP access to multiple engines; not official Google/Bing d…",
+          "target": "cell-serpapi-duckduckgo-native-api"
+        },
+        {
+          "summary": "DuckDuckGo · SerpApi: Latency by tier updated to Historical July 2026: Light API: 1.28s p50 independent; fastest Google…",
+          "target": "cell-serpapi-duckduckgo-p50-latency"
+        },
+        {
+          "summary": "DuckDuckGo · SerpApi: Pricing / 1K updated to $25/month for 1K; $75/5K; $150/15K; $275/30K searches",
+          "target": "cell-serpapi-duckduckgo-pricing-per-1k"
+        },
+        {
+          "summary": "DuckDuckGo · SerpApi: Limits / billing caveats updated to Starter 200/hour; Developer 1,000/hour",
+          "target": "cell-serpapi-duckduckgo-rate-limits"
+        },
+        {
+          "summary": "DuckDuckGo · SerpApi: anysearch SDK updated to Python + TypeScript adapters",
+          "target": "cell-serpapi-duckduckgo-sdk-support"
+        },
+        {
+          "summary": "Google · SerpApi: Product category updated to Third-party SERP service",
+          "target": "cell-serpapi-google-api-category"
+        },
+        {
+          "summary": "Google · SerpApi: Availability updated to Available",
+          "target": "cell-serpapi-google-api-status"
+        },
+        {
+          "summary": "Google · SerpApi: Evidence checked updated to 2026-10-21",
+          "target": "cell-serpapi-google-checked-at"
+        },
+        {
+          "summary": "Google · SerpApi: Free tier limits evidence refreshed",
+          "target": "cell-serpapi-google-free-tier-limits"
+        },
+        {
+          "summary": "Google · SerpApi: Native API overview updated to Third-party SERP access to multiple engines; not official Google/Bing d…",
+          "target": "cell-serpapi-google-native-api"
+        },
+        {
+          "summary": "Google · SerpApi: Latency by tier updated to Historical July 2026: Light API: 1.28s p50 independent; fastest Google…",
+          "target": "cell-serpapi-google-p50-latency"
+        },
+        {
+          "summary": "Google · SerpApi: Pricing / 1K updated to $25/month for 1K; $75/5K; $150/15K; $275/30K searches",
+          "target": "cell-serpapi-google-pricing-per-1k"
+        },
+        {
+          "summary": "Google · SerpApi: Limits / billing caveats updated to Starter 200/hour; Developer 1,000/hour",
+          "target": "cell-serpapi-google-rate-limits"
+        },
+        {
+          "summary": "Google · SerpApi: anysearch SDK updated to Python + TypeScript adapters",
+          "target": "cell-serpapi-google-sdk-support"
+        },
+        {
+          "summary": "Yahoo · SerpApi: Product category updated to Third-party SERP service",
+          "target": "cell-serpapi-yahoo-api-category"
+        },
+        {
+          "summary": "Yahoo · SerpApi: Availability updated to Available",
+          "target": "cell-serpapi-yahoo-api-status"
+        },
+        {
+          "summary": "Yahoo · SerpApi: Evidence checked updated to 2026-10-21",
+          "target": "cell-serpapi-yahoo-checked-at"
+        },
+        {
+          "summary": "Yahoo · SerpApi: Free tier limits evidence refreshed",
+          "target": "cell-serpapi-yahoo-free-tier-limits"
+        },
+        {
+          "summary": "Yahoo · SerpApi: Native API overview updated to Third-party SERP access to multiple engines; not official Google/Bing d…",
+          "target": "cell-serpapi-yahoo-native-api"
+        },
+        {
+          "summary": "Yahoo · SerpApi: Latency by tier updated to Historical July 2026: Light API: 1.28s p50 independent; fastest Google…",
+          "target": "cell-serpapi-yahoo-p50-latency"
+        },
+        {
+          "summary": "Yahoo · SerpApi: Pricing / 1K updated to $25/month for 1K; $75/5K; $150/15K; $275/30K searches",
+          "target": "cell-serpapi-yahoo-pricing-per-1k"
+        },
+        {
+          "summary": "Yahoo · SerpApi: Limits / billing caveats updated to Starter 200/hour; Developer 1,000/hour",
+          "target": "cell-serpapi-yahoo-rate-limits"
+        },
+        {
+          "summary": "Yahoo · SerpApi: anysearch SDK updated to Python + TypeScript adapters",
+          "target": "cell-serpapi-yahoo-sdk-support"
+        },
+        {
+          "summary": "Yandex · SerpApi: Product category updated to Third-party SERP service",
+          "target": "cell-serpapi-yandex-api-category"
+        },
+        {
+          "summary": "Yandex · SerpApi: Availability updated to Available",
+          "target": "cell-serpapi-yandex-api-status"
+        },
+        {
+          "summary": "Yandex · SerpApi: Evidence checked updated to 2026-10-21",
+          "target": "cell-serpapi-yandex-checked-at"
+        },
+        {
+          "summary": "Yandex · SerpApi: Free tier limits evidence refreshed",
+          "target": "cell-serpapi-yandex-free-tier-limits"
+        },
+        {
+          "summary": "Yandex · SerpApi: Native API overview updated to Third-party SERP access to multiple engines; not official Google/Bing d…",
+          "target": "cell-serpapi-yandex-native-api"
+        },
+        {
+          "summary": "Yandex · SerpApi: Latency by tier updated to Historical July 2026: Light API: 1.28s p50 independent; fastest Google…",
+          "target": "cell-serpapi-yandex-p50-latency"
+        },
+        {
+          "summary": "Yandex · SerpApi: Pricing / 1K updated to $25/month for 1K; $75/5K; $150/15K; $275/30K searches",
+          "target": "cell-serpapi-yandex-pricing-per-1k"
+        },
+        {
+          "summary": "Yandex · SerpApi: Limits / billing caveats updated to Starter 200/hour; Developer 1,000/hour",
+          "target": "cell-serpapi-yandex-rate-limits"
+        },
+        {
+          "summary": "Yandex · SerpApi: anysearch SDK updated to Python + TypeScript adapters",
+          "target": "cell-serpapi-yandex-sdk-support"
+        },
+        {
+          "summary": "Serper: Product category updated to Third-party SERP service",
+          "target": "cell-serper-api-category"
+        },
+        {
+          "summary": "Serper: Availability updated to Available",
+          "target": "cell-serper-api-status"
+        },
+        {
+          "summary": "Serper: Evidence checked updated to 2026-10-21",
+          "target": "cell-serper-checked-at"
+        },
+        {
+          "summary": "Serper: Free tier limits updated to 2,500 one-time trial queries; no card",
+          "target": "cell-serper-free-tier-limits"
+        },
+        {
+          "summary": "Serper: Native API overview updated to Third-party Google SERP service; successful responses billed; tax exclu…",
+          "target": "cell-serper-native-api"
+        },
+        {
+          "summary": "Serper: Latency by tier updated to Historical July 2026: Search: 0.69s p50 / 1.15s p95",
+          "target": "cell-serper-p50-latency"
+        },
+        {
+          "summary": "Serper: Pricing / 1K updated to $50/50K prepaid ($1 / 1K); bulk $0.75/$0.50/$0.30 with larger purchases",
+          "target": "cell-serper-pricing-per-1k"
+        },
+        {
+          "summary": "Serper: Limits / billing caveats updated to Starter 50 QPS; larger tiers 100/200/300 QPS; credits expire after 6 mo…",
+          "target": "cell-serper-rate-limits"
+        },
+        {
+          "summary": "Serper: anysearch SDK updated to Python + TypeScript adapters",
+          "target": "cell-serper-sdk-support"
+        },
+        {
+          "summary": "Tavily: Product category updated to Standalone search API",
+          "target": "cell-tavily-api-category"
+        },
+        {
+          "summary": "Tavily: Availability updated to Available",
+          "target": "cell-tavily-api-status"
+        },
+        {
+          "summary": "Tavily: Evidence checked updated to 2026-10-21",
+          "target": "cell-tavily-checked-at"
+        },
+        {
+          "summary": "Tavily: Free tier limits updated to 1,000 credits/month; no card",
+          "target": "cell-tavily-free-tier-limits"
+        },
+        {
+          "summary": "Tavily: Native API overview updated to Search, extract, crawl and research are separate credit rules; do not p…",
+          "target": "cell-tavily-native-api"
+        },
+        {
+          "summary": "Tavily: Latency by tier updated to Historical July 2026: ultra-fast: 0.37s p50 / 0.46s p95; fast/basic/adv…",
+          "target": "cell-tavily-p50-latency"
+        },
+        {
+          "summary": "Tavily: Pricing / 1K updated to PAYG $8 / 1K basic; $16 / 1K advanced (1/2 credits); subscriptions diff…",
+          "target": "cell-tavily-pricing-per-1k"
+        },
+        {
+          "summary": "Tavily: Limits / billing caveats updated to Development 100 RPM; paid production 1,000 RPM",
+          "target": "cell-tavily-rate-limits"
+        },
+        {
+          "summary": "Tavily: anysearch SDK updated to Python + TypeScript adapters",
+          "target": "cell-tavily-sdk-support"
+        },
+        {
+          "summary": "xAI Web Search added to the comparison",
+          "target": "cell-xai-requires-key"
+        },
+        {
+          "summary": "You: Product category updated to Standalone search API",
+          "target": "cell-you-api-category"
+        },
+        {
+          "summary": "You: Availability updated to Available",
+          "target": "cell-you-api-status"
+        },
+        {
+          "summary": "You: Evidence checked updated to 2026-10-21",
+          "target": "cell-you-checked-at"
+        },
+        {
+          "summary": "You: Free tier limits updated to $10 signup advertised on canonical pricing; keyless MCP 100 searches/day",
+          "target": "cell-you-free-tier-limits"
+        },
+        {
+          "summary": "You: Native API overview updated to Web and news search; Research has separate pricing. Legacy marketing sa…",
+          "target": "cell-you-native-api"
+        },
+        {
+          "summary": "You: Latency by tier updated to Historical July 2026: Search: 0.73s p50 / 1.22s p95 independent; 0.445s…",
+          "target": "cell-you-p50-latency"
+        },
+        {
+          "summary": "You: Pricing / 1K updated to Search $5 / 1K calls; live extraction +$1 / 1K pages; cached extraction…",
+          "target": "cell-you-pricing-per-1k"
+        },
+        {
+          "summary": "You: Limits / billing caveats updated to Up to 100 results; PAYG no minimum",
+          "target": "cell-you-rate-limits"
+        },
+        {
+          "summary": "You: anysearch SDK updated to Python + TypeScript adapters",
+          "target": "cell-you-sdk-support"
+        }
+      ]
+    },
     {
       "date": "2026-07-28",
       "commit": "95e4eeb",
