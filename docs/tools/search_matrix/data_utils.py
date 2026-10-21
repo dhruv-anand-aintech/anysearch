@@ -6,9 +6,7 @@ from __future__ import annotations
 import argparse
 import glob
 import json
-import sys
 from collections import OrderedDict
-from datetime import datetime, timezone
 from pathlib import Path
 
 MATRIX_DIR = Path(__file__).resolve().parent
@@ -116,8 +114,14 @@ def bundle() -> None:
     # A build is not a source review. Use the oldest reviewed provider date.
     oldest = min(checked) if checked and all(checked) else ""
     UPDATED_PATH.write_text(
-        json.dumps({"updated_at": oldest + "T00:00:00Z" if oldest else None,
-                    "meaning": "oldest official documentation review date"}, indent=2) + "\n",
+        json.dumps(
+            {
+                "updated_at": oldest + "T00:00:00Z" if oldest else None,
+                "meaning": "oldest official documentation review date",
+            },
+            indent=2,
+        )
+        + "\n",
         encoding="utf-8",
     )
     print(f"bundle: wrote {len(rows)} providers to {BUNDLE_PATH}")
@@ -128,8 +132,8 @@ def llms_txt() -> None:
     rows = json.loads(BUNDLE_PATH.read_text(encoding="utf-8"))
     cols = _schema_columns(schema)
     feature_cols = [
-        (k, g, l)
-        for k, g, l in cols
+        (k, g, label)
+        for k, g, label in cols
         if k not in ("name", "env_keys", "python_extra", "requires_key", "snippet")
     ]
 
