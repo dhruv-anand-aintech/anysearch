@@ -1,6 +1,749 @@
 {
-  "entry_count": 688,
+  "entry_count": 872,
   "entries": [
+    {
+      "date": "2026-10-21",
+      "commit": "ebd23bb",
+      "title": "fix(matrix): research categorical capabilities and sort primary prices numerically",
+      "items": [
+        {
+          "summary": "Anthropic Web Search: AI Answer now supported",
+          "target": "cell-anthropic-answer"
+        },
+        {
+          "summary": "Anthropic Web Search: Capability basis updated to Native API — reviewed",
+          "target": "cell-anthropic-capability-basis"
+        },
+        {
+          "summary": "Anthropic Web Search: Full text now partially supported",
+          "target": "cell-anthropic-content"
+        },
+        {
+          "summary": "Anthropic Web Search: Country now supported",
+          "target": "cell-anthropic-country"
+        },
+        {
+          "summary": "Anthropic Web Search: Date range evidence refreshed",
+          "target": "cell-anthropic-date"
+        },
+        {
+          "summary": "Anthropic Web Search: Domain filters now supported",
+          "target": "cell-anthropic-domains"
+        },
+        {
+          "summary": "Anthropic Web Search: Highlights now partially supported",
+          "target": "cell-anthropic-highlights"
+        },
+        {
+          "summary": "Anthropic Web Search: Language evidence refreshed",
+          "target": "cell-anthropic-language"
+        },
+        {
+          "summary": "Anthropic Web Search: Mode updated to Basic web search, Dynamic filtering",
+          "target": "cell-anthropic-mode"
+        },
+        {
+          "summary": "Anthropic Web Search: News now partially supported",
+          "target": "cell-anthropic-news"
+        },
+        {
+          "summary": "Anthropic Web Search: Pricing / 1K evidence refreshed",
+          "target": "cell-anthropic-pricing-per-1k"
+        },
+        {
+          "summary": "Anthropic Web Search: Credentials required now supported",
+          "target": "cell-anthropic-requires-key"
+        },
+        {
+          "summary": "Anthropic Web Search: Safe search evidence refreshed",
+          "target": "cell-anthropic-safe-search"
+        },
+        {
+          "summary": "Anthropic Web Search: anysearch SDK evidence refreshed",
+          "target": "cell-anthropic-sdk-support"
+        },
+        {
+          "summary": "Anthropic Web Search: Snippet now partially supported",
+          "target": "cell-anthropic-snippet"
+        },
+        {
+          "summary": "Anthropic Web Search: Summary set to not_applicable",
+          "target": "cell-anthropic-summary"
+        },
+        {
+          "summary": "Bing Search (retired): AI Answer set to not_applicable",
+          "target": "cell-bing-legacy-answer"
+        },
+        {
+          "summary": "Bing Search (retired): Capability basis updated to Native API — reviewed",
+          "target": "cell-bing-legacy-capability-basis"
+        },
+        {
+          "summary": "Bing Search (retired): Full text set to not_applicable",
+          "target": "cell-bing-legacy-content"
+        },
+        {
+          "summary": "Bing Search (retired): Country set to not_applicable",
+          "target": "cell-bing-legacy-country"
+        },
+        {
+          "summary": "Bing Search (retired): Date range set to not_applicable",
+          "target": "cell-bing-legacy-date"
+        },
+        {
+          "summary": "Bing Search (retired): Domain filters set to not_applicable",
+          "target": "cell-bing-legacy-domains"
+        },
+        {
+          "summary": "Bing Search (retired): Highlights set to not_applicable",
+          "target": "cell-bing-legacy-highlights"
+        },
+        {
+          "summary": "Bing Search (retired): Language set to not_applicable",
+          "target": "cell-bing-legacy-language"
+        },
+        {
+          "summary": "Bing Search (retired): Mode updated to N/A (retired)",
+          "target": "cell-bing-legacy-mode"
+        },
+        {
+          "summary": "Bing Search (retired): News set to not_applicable",
+          "target": "cell-bing-legacy-news"
+        },
+        {
+          "summary": "Bing Search (retired): Pricing / 1K evidence refreshed",
+          "target": "cell-bing-legacy-pricing-per-1k"
+        },
+        {
+          "summary": "Bing Search (retired): Credentials required set to not_applicable",
+          "target": "cell-bing-legacy-requires-key"
+        },
+        {
+          "summary": "Bing Search (retired): Safe search set to not_applicable",
+          "target": "cell-bing-legacy-safe-search"
+        },
+        {
+          "summary": "Bing Search (retired): anysearch SDK evidence refreshed",
+          "target": "cell-bing-legacy-sdk-support"
+        },
+        {
+          "summary": "Bing Search (retired): Snippet set to not_applicable",
+          "target": "cell-bing-legacy-snippet"
+        },
+        {
+          "summary": "Bing Search (retired): Summary set to not_applicable",
+          "target": "cell-bing-legacy-summary"
+        },
+        {
+          "summary": "Brave: Capability basis updated to Existing SDK mappings",
+          "target": "cell-brave-capability-basis"
+        },
+        {
+          "summary": "Brave: Pricing / 1K evidence refreshed",
+          "target": "cell-brave-pricing-per-1k"
+        },
+        {
+          "summary": "Brave: anysearch SDK evidence refreshed",
+          "target": "cell-brave-sdk-support"
+        },
+        {
+          "summary": "Bright Data: AI Answer now partially supported",
+          "target": "cell-brightdata-answer"
+        },
+        {
+          "summary": "Bright Data: Capability basis updated to Native API — reviewed",
+          "target": "cell-brightdata-capability-basis"
+        },
+        {
+          "summary": "Bright Data: Full text now marked unsupported",
+          "target": "cell-brightdata-content"
+        },
+        {
+          "summary": "Bright Data: Country now supported",
+          "target": "cell-brightdata-country"
+        },
+        {
+          "summary": "Bright Data: Date range now partially supported",
+          "target": "cell-brightdata-date"
+        },
+        {
+          "summary": "Bright Data: Domain filters now partially supported",
+          "target": "cell-brightdata-domains"
+        },
+        {
+          "summary": "Bright Data: Highlights now partially supported",
+          "target": "cell-brightdata-highlights"
+        },
+        {
+          "summary": "Bright Data: Language now supported",
+          "target": "cell-brightdata-language"
+        },
+        {
+          "summary": "Bright Data: Mode updated to SERP, Fast SERP",
+          "target": "cell-brightdata-mode"
+        },
+        {
+          "summary": "Bright Data: News now supported",
+          "target": "cell-brightdata-news"
+        },
+        {
+          "summary": "Bright Data: Pricing / 1K evidence refreshed",
+          "target": "cell-brightdata-pricing-per-1k"
+        },
+        {
+          "summary": "Bright Data: Credentials required now supported",
+          "target": "cell-brightdata-requires-key"
+        },
+        {
+          "summary": "Bright Data: Safe search now supported",
+          "target": "cell-brightdata-safe-search"
+        },
+        {
+          "summary": "Bright Data: anysearch SDK evidence refreshed",
+          "target": "cell-brightdata-sdk-support"
+        },
+        {
+          "summary": "Bright Data: Snippet now supported",
+          "target": "cell-brightdata-snippet"
+        },
+        {
+          "summary": "Bright Data: Summary now marked unsupported",
+          "target": "cell-brightdata-summary"
+        },
+        {
+          "summary": "DataForSEO: AI Answer now partially supported",
+          "target": "cell-dataforseo-answer"
+        },
+        {
+          "summary": "DataForSEO: Capability basis updated to Native API — reviewed",
+          "target": "cell-dataforseo-capability-basis"
+        },
+        {
+          "summary": "DataForSEO: Full text now marked unsupported",
+          "target": "cell-dataforseo-content"
+        },
+        {
+          "summary": "DataForSEO: Country now supported",
+          "target": "cell-dataforseo-country"
+        },
+        {
+          "summary": "DataForSEO: Date range now partially supported",
+          "target": "cell-dataforseo-date"
+        },
+        {
+          "summary": "DataForSEO: Domain filters now partially supported",
+          "target": "cell-dataforseo-domains"
+        },
+        {
+          "summary": "DataForSEO: Highlights now partially supported",
+          "target": "cell-dataforseo-highlights"
+        },
+        {
+          "summary": "DataForSEO: Language now supported",
+          "target": "cell-dataforseo-language"
+        },
+        {
+          "summary": "DataForSEO: Mode updated to Standard queue, Priority queue, Live",
+          "target": "cell-dataforseo-mode"
+        },
+        {
+          "summary": "DataForSEO: News now supported",
+          "target": "cell-dataforseo-news"
+        },
+        {
+          "summary": "DataForSEO: Pricing / 1K evidence refreshed",
+          "target": "cell-dataforseo-pricing-per-1k"
+        },
+        {
+          "summary": "DataForSEO: Credentials required now supported",
+          "target": "cell-dataforseo-requires-key"
+        },
+        {
+          "summary": "DataForSEO: Safe search now partially supported",
+          "target": "cell-dataforseo-safe-search"
+        },
+        {
+          "summary": "DataForSEO: anysearch SDK evidence refreshed",
+          "target": "cell-dataforseo-sdk-support"
+        },
+        {
+          "summary": "DataForSEO: Snippet now supported",
+          "target": "cell-dataforseo-snippet"
+        },
+        {
+          "summary": "DataForSEO: Summary now marked unsupported",
+          "target": "cell-dataforseo-summary"
+        },
+        {
+          "summary": "DeepSeek: AI Answer now marked unsupported",
+          "target": "cell-deepseek-answer"
+        },
+        {
+          "summary": "DeepSeek: Capability basis updated to Native API — reviewed",
+          "target": "cell-deepseek-capability-basis"
+        },
+        {
+          "summary": "DeepSeek: Full text now supported",
+          "target": "cell-deepseek-content"
+        },
+        {
+          "summary": "DeepSeek: Country now partially supported",
+          "target": "cell-deepseek-country"
+        },
+        {
+          "summary": "DeepSeek: Date range now partially supported",
+          "target": "cell-deepseek-date"
+        },
+        {
+          "summary": "DeepSeek: Domain filters now partially supported",
+          "target": "cell-deepseek-domains"
+        },
+        {
+          "summary": "DeepSeek: Highlights now partially supported",
+          "target": "cell-deepseek-highlights"
+        },
+        {
+          "summary": "DeepSeek: Language now partially supported",
+          "target": "cell-deepseek-language"
+        },
+        {
+          "summary": "DeepSeek: Mode updated to Search (single endpoint)",
+          "target": "cell-deepseek-mode"
+        },
+        {
+          "summary": "DeepSeek: News now marked unsupported",
+          "target": "cell-deepseek-news"
+        },
+        {
+          "summary": "DeepSeek: Pricing / 1K evidence refreshed",
+          "target": "cell-deepseek-pricing-per-1k"
+        },
+        {
+          "summary": "DeepSeek: Credentials required now supported",
+          "target": "cell-deepseek-requires-key"
+        },
+        {
+          "summary": "DeepSeek: Safe search evidence refreshed",
+          "target": "cell-deepseek-safe-search"
+        },
+        {
+          "summary": "DeepSeek: anysearch SDK evidence refreshed",
+          "target": "cell-deepseek-sdk-support"
+        },
+        {
+          "summary": "DeepSeek: Snippet now supported",
+          "target": "cell-deepseek-snippet"
+        },
+        {
+          "summary": "DeepSeek: Summary now partially supported",
+          "target": "cell-deepseek-summary"
+        },
+        {
+          "summary": "DuckDuckGo: Capability basis updated to Existing SDK mappings",
+          "target": "cell-duckduckgo-capability-basis"
+        },
+        {
+          "summary": "DuckDuckGo: Pricing / 1K evidence refreshed",
+          "target": "cell-duckduckgo-pricing-per-1k"
+        },
+        {
+          "summary": "DuckDuckGo: anysearch SDK evidence refreshed",
+          "target": "cell-duckduckgo-sdk-support"
+        },
+        {
+          "summary": "Exa: Capability basis updated to Existing SDK mappings",
+          "target": "cell-exa-capability-basis"
+        },
+        {
+          "summary": "Exa: Pricing / 1K evidence refreshed",
+          "target": "cell-exa-pricing-per-1k"
+        },
+        {
+          "summary": "Exa: anysearch SDK evidence refreshed",
+          "target": "cell-exa-sdk-support"
+        },
+        {
+          "summary": "Firecrawl: Capability basis updated to Existing SDK mappings",
+          "target": "cell-firecrawl-capability-basis"
+        },
+        {
+          "summary": "Firecrawl: Pricing / 1K evidence refreshed",
+          "target": "cell-firecrawl-pricing-per-1k"
+        },
+        {
+          "summary": "Firecrawl: anysearch SDK evidence refreshed",
+          "target": "cell-firecrawl-sdk-support"
+        },
+        {
+          "summary": "Gemini: Capability basis updated to Existing SDK mappings",
+          "target": "cell-gemini-capability-basis"
+        },
+        {
+          "summary": "Gemini: Pricing / 1K evidence refreshed",
+          "target": "cell-gemini-pricing-per-1k"
+        },
+        {
+          "summary": "Gemini: anysearch SDK evidence refreshed",
+          "target": "cell-gemini-sdk-support"
+        },
+        {
+          "summary": "Google PSE: Capability basis updated to Existing SDK mappings",
+          "target": "cell-google-pse-capability-basis"
+        },
+        {
+          "summary": "Google PSE: Pricing / 1K evidence refreshed",
+          "target": "cell-google-pse-pricing-per-1k"
+        },
+        {
+          "summary": "Google PSE: anysearch SDK evidence refreshed",
+          "target": "cell-google-pse-sdk-support"
+        },
+        {
+          "summary": "Jina: Capability basis updated to Existing SDK mappings",
+          "target": "cell-jina-capability-basis"
+        },
+        {
+          "summary": "Jina: Pricing / 1K evidence refreshed",
+          "target": "cell-jina-pricing-per-1k"
+        },
+        {
+          "summary": "Jina: anysearch SDK evidence refreshed",
+          "target": "cell-jina-sdk-support"
+        },
+        {
+          "summary": "Kagi: Capability basis updated to Existing SDK mappings",
+          "target": "cell-kagi-capability-basis"
+        },
+        {
+          "summary": "Kagi: Pricing / 1K evidence refreshed",
+          "target": "cell-kagi-pricing-per-1k"
+        },
+        {
+          "summary": "Kagi: anysearch SDK evidence refreshed",
+          "target": "cell-kagi-sdk-support"
+        },
+        {
+          "summary": "Keiro: Capability basis updated to Existing SDK mappings",
+          "target": "cell-keiro-capability-basis"
+        },
+        {
+          "summary": "Keiro: Pricing / 1K evidence refreshed",
+          "target": "cell-keiro-pricing-per-1k"
+        },
+        {
+          "summary": "Keiro: anysearch SDK evidence refreshed",
+          "target": "cell-keiro-sdk-support"
+        },
+        {
+          "summary": "Linkup: Capability basis updated to Existing SDK mappings",
+          "target": "cell-linkup-capability-basis"
+        },
+        {
+          "summary": "Linkup: Pricing / 1K evidence refreshed",
+          "target": "cell-linkup-pricing-per-1k"
+        },
+        {
+          "summary": "Linkup: anysearch SDK evidence refreshed",
+          "target": "cell-linkup-sdk-support"
+        },
+        {
+          "summary": "Octen: Capability basis updated to Existing SDK mappings",
+          "target": "cell-octen-capability-basis"
+        },
+        {
+          "summary": "Octen: Pricing / 1K evidence refreshed",
+          "target": "cell-octen-pricing-per-1k"
+        },
+        {
+          "summary": "Octen: anysearch SDK evidence refreshed",
+          "target": "cell-octen-sdk-support"
+        },
+        {
+          "summary": "OpenAI Web Search: AI Answer now supported",
+          "target": "cell-openai-answer"
+        },
+        {
+          "summary": "OpenAI Web Search: Capability basis updated to Native API — reviewed",
+          "target": "cell-openai-capability-basis"
+        },
+        {
+          "summary": "OpenAI Web Search: Full text now partially supported",
+          "target": "cell-openai-content"
+        },
+        {
+          "summary": "OpenAI Web Search: Country now supported",
+          "target": "cell-openai-country"
+        },
+        {
+          "summary": "OpenAI Web Search: Date range evidence refreshed",
+          "target": "cell-openai-date"
+        },
+        {
+          "summary": "OpenAI Web Search: Domain filters now supported",
+          "target": "cell-openai-domains"
+        },
+        {
+          "summary": "OpenAI Web Search: Highlights set to not_applicable",
+          "target": "cell-openai-highlights"
+        },
+        {
+          "summary": "OpenAI Web Search: Language evidence refreshed",
+          "target": "cell-openai-language"
+        },
+        {
+          "summary": "OpenAI Web Search: Mode updated to Non-reasoning, Reasoning, Deep research",
+          "target": "cell-openai-mode"
+        },
+        {
+          "summary": "OpenAI Web Search: News now partially supported",
+          "target": "cell-openai-news"
+        },
+        {
+          "summary": "OpenAI Web Search: Pricing / 1K evidence refreshed",
+          "target": "cell-openai-pricing-per-1k"
+        },
+        {
+          "summary": "OpenAI Web Search: Credentials required now supported",
+          "target": "cell-openai-requires-key"
+        },
+        {
+          "summary": "OpenAI Web Search: Safe search evidence refreshed",
+          "target": "cell-openai-safe-search"
+        },
+        {
+          "summary": "OpenAI Web Search: anysearch SDK evidence refreshed",
+          "target": "cell-openai-sdk-support"
+        },
+        {
+          "summary": "OpenAI Web Search: Snippet set to not_applicable",
+          "target": "cell-openai-snippet"
+        },
+        {
+          "summary": "OpenAI Web Search: Summary set to not_applicable",
+          "target": "cell-openai-summary"
+        },
+        {
+          "summary": "Parallel: Capability basis updated to Existing SDK mappings",
+          "target": "cell-parallel-capability-basis"
+        },
+        {
+          "summary": "Parallel: Pricing / 1K evidence refreshed",
+          "target": "cell-parallel-pricing-per-1k"
+        },
+        {
+          "summary": "Parallel: anysearch SDK evidence refreshed",
+          "target": "cell-parallel-sdk-support"
+        },
+        {
+          "summary": "Perplexity: Capability basis updated to Existing SDK mappings",
+          "target": "cell-perplexity-capability-basis"
+        },
+        {
+          "summary": "Perplexity: Pricing / 1K evidence refreshed",
+          "target": "cell-perplexity-pricing-per-1k"
+        },
+        {
+          "summary": "Perplexity: anysearch SDK evidence refreshed",
+          "target": "cell-perplexity-sdk-support"
+        },
+        {
+          "summary": "Searchapi: Capability basis updated to Existing SDK mappings",
+          "target": "cell-searchapi-capability-basis"
+        },
+        {
+          "summary": "Searchapi: Pricing / 1K evidence refreshed",
+          "target": "cell-searchapi-pricing-per-1k"
+        },
+        {
+          "summary": "Searchapi: anysearch SDK evidence refreshed",
+          "target": "cell-searchapi-sdk-support"
+        },
+        {
+          "summary": "SearXNG: Capability basis updated to Existing SDK mappings",
+          "target": "cell-searxng-capability-basis"
+        },
+        {
+          "summary": "SearXNG: Pricing / 1K evidence refreshed",
+          "target": "cell-searxng-pricing-per-1k"
+        },
+        {
+          "summary": "SearXNG: anysearch SDK evidence refreshed",
+          "target": "cell-searxng-sdk-support"
+        },
+        {
+          "summary": "Baidu · SerpApi: Capability basis updated to Existing SDK mappings",
+          "target": "cell-serpapi-baidu-capability-basis"
+        },
+        {
+          "summary": "Baidu · SerpApi: Pricing / 1K evidence refreshed",
+          "target": "cell-serpapi-baidu-pricing-per-1k"
+        },
+        {
+          "summary": "Baidu · SerpApi: anysearch SDK evidence refreshed",
+          "target": "cell-serpapi-baidu-sdk-support"
+        },
+        {
+          "summary": "Bing · SerpApi: Capability basis updated to Existing SDK mappings",
+          "target": "cell-serpapi-bing-capability-basis"
+        },
+        {
+          "summary": "Bing · SerpApi: Pricing / 1K evidence refreshed",
+          "target": "cell-serpapi-bing-pricing-per-1k"
+        },
+        {
+          "summary": "Bing · SerpApi: anysearch SDK evidence refreshed",
+          "target": "cell-serpapi-bing-sdk-support"
+        },
+        {
+          "summary": "DuckDuckGo · SerpApi: Capability basis updated to Existing SDK mappings",
+          "target": "cell-serpapi-duckduckgo-capability-basis"
+        },
+        {
+          "summary": "DuckDuckGo · SerpApi: Pricing / 1K evidence refreshed",
+          "target": "cell-serpapi-duckduckgo-pricing-per-1k"
+        },
+        {
+          "summary": "DuckDuckGo · SerpApi: anysearch SDK evidence refreshed",
+          "target": "cell-serpapi-duckduckgo-sdk-support"
+        },
+        {
+          "summary": "Google · SerpApi: Capability basis updated to Existing SDK mappings",
+          "target": "cell-serpapi-google-capability-basis"
+        },
+        {
+          "summary": "Google · SerpApi: Pricing / 1K evidence refreshed",
+          "target": "cell-serpapi-google-pricing-per-1k"
+        },
+        {
+          "summary": "Google · SerpApi: anysearch SDK evidence refreshed",
+          "target": "cell-serpapi-google-sdk-support"
+        },
+        {
+          "summary": "Yahoo · SerpApi: Capability basis updated to Existing SDK mappings",
+          "target": "cell-serpapi-yahoo-capability-basis"
+        },
+        {
+          "summary": "Yahoo · SerpApi: Pricing / 1K evidence refreshed",
+          "target": "cell-serpapi-yahoo-pricing-per-1k"
+        },
+        {
+          "summary": "Yahoo · SerpApi: anysearch SDK evidence refreshed",
+          "target": "cell-serpapi-yahoo-sdk-support"
+        },
+        {
+          "summary": "Yandex · SerpApi: Capability basis updated to Existing SDK mappings",
+          "target": "cell-serpapi-yandex-capability-basis"
+        },
+        {
+          "summary": "Yandex · SerpApi: Pricing / 1K evidence refreshed",
+          "target": "cell-serpapi-yandex-pricing-per-1k"
+        },
+        {
+          "summary": "Yandex · SerpApi: anysearch SDK evidence refreshed",
+          "target": "cell-serpapi-yandex-sdk-support"
+        },
+        {
+          "summary": "Serper: Capability basis updated to Existing SDK mappings",
+          "target": "cell-serper-capability-basis"
+        },
+        {
+          "summary": "Serper: Pricing / 1K evidence refreshed",
+          "target": "cell-serper-pricing-per-1k"
+        },
+        {
+          "summary": "Serper: anysearch SDK evidence refreshed",
+          "target": "cell-serper-sdk-support"
+        },
+        {
+          "summary": "Tavily: Capability basis updated to Existing SDK mappings",
+          "target": "cell-tavily-capability-basis"
+        },
+        {
+          "summary": "Tavily: Pricing / 1K evidence refreshed",
+          "target": "cell-tavily-pricing-per-1k"
+        },
+        {
+          "summary": "Tavily: anysearch SDK evidence refreshed",
+          "target": "cell-tavily-sdk-support"
+        },
+        {
+          "summary": "xAI Web Search: AI Answer now supported",
+          "target": "cell-xai-answer"
+        },
+        {
+          "summary": "xAI Web Search: Capability basis updated to Native API — reviewed",
+          "target": "cell-xai-capability-basis"
+        },
+        {
+          "summary": "xAI Web Search: Full text now partially supported",
+          "target": "cell-xai-content"
+        },
+        {
+          "summary": "xAI Web Search: Country evidence refreshed",
+          "target": "cell-xai-country"
+        },
+        {
+          "summary": "xAI Web Search: Date range evidence refreshed",
+          "target": "cell-xai-date"
+        },
+        {
+          "summary": "xAI Web Search: Domain filters now supported",
+          "target": "cell-xai-domains"
+        },
+        {
+          "summary": "xAI Web Search: Highlights set to not_applicable",
+          "target": "cell-xai-highlights"
+        },
+        {
+          "summary": "xAI Web Search: Language evidence refreshed",
+          "target": "cell-xai-language"
+        },
+        {
+          "summary": "xAI Web Search: Mode updated to Model-mediated web search",
+          "target": "cell-xai-mode"
+        },
+        {
+          "summary": "xAI Web Search: News now partially supported",
+          "target": "cell-xai-news"
+        },
+        {
+          "summary": "xAI Web Search: Pricing / 1K evidence refreshed",
+          "target": "cell-xai-pricing-per-1k"
+        },
+        {
+          "summary": "xAI Web Search: Credentials required now supported",
+          "target": "cell-xai-requires-key"
+        },
+        {
+          "summary": "xAI Web Search: Safe search evidence refreshed",
+          "target": "cell-xai-safe-search"
+        },
+        {
+          "summary": "xAI Web Search: anysearch SDK evidence refreshed",
+          "target": "cell-xai-sdk-support"
+        },
+        {
+          "summary": "xAI Web Search: Snippet set to not_applicable",
+          "target": "cell-xai-snippet"
+        },
+        {
+          "summary": "xAI Web Search: Summary set to not_applicable",
+          "target": "cell-xai-summary"
+        },
+        {
+          "summary": "You: Capability basis updated to Existing SDK mappings",
+          "target": "cell-you-capability-basis"
+        },
+        {
+          "summary": "You: Pricing / 1K evidence refreshed",
+          "target": "cell-you-pricing-per-1k"
+        },
+        {
+          "summary": "You: anysearch SDK evidence refreshed",
+          "target": "cell-you-sdk-support"
+        }
+      ]
+    },
     {
       "date": "2026-10-21",
       "commit": "48178db",
@@ -1326,7 +2069,7 @@
           "target": "cell-keiro-python-extra"
         },
         {
-          "summary": "Keiro: API key required evidence refreshed",
+          "summary": "Keiro: Credentials required evidence refreshed",
           "target": "cell-keiro-requires-key"
         },
         {
@@ -1750,7 +2493,7 @@
           "target": "cell-serpapi-baidu-mode"
         },
         {
-          "summary": "Baidu · SerpApi: API key required evidence refreshed",
+          "summary": "Baidu · SerpApi: Credentials required evidence refreshed",
           "target": "cell-serpapi-baidu-requires-key"
         },
         {
@@ -1782,7 +2525,7 @@
           "target": "cell-serpapi-bing-mode"
         },
         {
-          "summary": "Bing · SerpApi: API key required evidence refreshed",
+          "summary": "Bing · SerpApi: Credentials required evidence refreshed",
           "target": "cell-serpapi-bing-requires-key"
         },
         {
@@ -1810,7 +2553,7 @@
           "target": "cell-serpapi-duckduckgo-mode"
         },
         {
-          "summary": "DuckDuckGo · SerpApi: API key required evidence refreshed",
+          "summary": "DuckDuckGo · SerpApi: Credentials required evidence refreshed",
           "target": "cell-serpapi-duckduckgo-requires-key"
         },
         {
@@ -1838,7 +2581,7 @@
           "target": "cell-serpapi-google-mode"
         },
         {
-          "summary": "Google · SerpApi: API key required evidence refreshed",
+          "summary": "Google · SerpApi: Credentials required evidence refreshed",
           "target": "cell-serpapi-google-requires-key"
         },
         {
@@ -1874,7 +2617,7 @@
           "target": "cell-serpapi-yahoo-mode"
         },
         {
-          "summary": "Yahoo · SerpApi: API key required evidence refreshed",
+          "summary": "Yahoo · SerpApi: Credentials required evidence refreshed",
           "target": "cell-serpapi-yahoo-requires-key"
         },
         {
@@ -1902,7 +2645,7 @@
           "target": "cell-serpapi-yandex-mode"
         },
         {
-          "summary": "Yandex · SerpApi: API key required evidence refreshed",
+          "summary": "Yandex · SerpApi: Credentials required evidence refreshed",
           "target": "cell-serpapi-yandex-requires-key"
         },
         {
@@ -1988,7 +2731,7 @@
           "target": "cell-brave-python-extra"
         },
         {
-          "summary": "Brave: API key required evidence refreshed",
+          "summary": "Brave: Credentials required evidence refreshed",
           "target": "cell-brave-requires-key"
         },
         {
@@ -2020,7 +2763,7 @@
           "target": "cell-duckduckgo-python-extra"
         },
         {
-          "summary": "DuckDuckGo: API key required evidence refreshed",
+          "summary": "DuckDuckGo: Credentials required evidence refreshed",
           "target": "cell-duckduckgo-requires-key"
         },
         {
@@ -2076,7 +2819,7 @@
           "target": "cell-exa-python-extra"
         },
         {
-          "summary": "Exa: API key required evidence refreshed",
+          "summary": "Exa: Credentials required evidence refreshed",
           "target": "cell-exa-requires-key"
         },
         {
@@ -2136,7 +2879,7 @@
           "target": "cell-firecrawl-python-extra"
         },
         {
-          "summary": "Firecrawl: API key required evidence refreshed",
+          "summary": "Firecrawl: Credentials required evidence refreshed",
           "target": "cell-firecrawl-requires-key"
         },
         {
@@ -2196,7 +2939,7 @@
           "target": "cell-google-pse-python-extra"
         },
         {
-          "summary": "Google PSE: API key required evidence refreshed",
+          "summary": "Google PSE: Credentials required evidence refreshed",
           "target": "cell-google-pse-requires-key"
         },
         {
@@ -2256,7 +2999,7 @@
           "target": "cell-jina-python-extra"
         },
         {
-          "summary": "Jina: API key required evidence refreshed",
+          "summary": "Jina: Credentials required evidence refreshed",
           "target": "cell-jina-requires-key"
         },
         {
@@ -2288,7 +3031,7 @@
           "target": "cell-kagi-python-extra"
         },
         {
-          "summary": "Kagi: API key required evidence refreshed",
+          "summary": "Kagi: Credentials required evidence refreshed",
           "target": "cell-kagi-requires-key"
         },
         {
@@ -2340,7 +3083,7 @@
           "target": "cell-linkup-python-extra"
         },
         {
-          "summary": "Linkup: API key required evidence refreshed",
+          "summary": "Linkup: Credentials required evidence refreshed",
           "target": "cell-linkup-requires-key"
         },
         {
@@ -2400,7 +3143,7 @@
           "target": "cell-parallel-python-extra"
         },
         {
-          "summary": "Parallel: API key required evidence refreshed",
+          "summary": "Parallel: Credentials required evidence refreshed",
           "target": "cell-parallel-requires-key"
         },
         {
@@ -2460,7 +3203,7 @@
           "target": "cell-perplexity-python-extra"
         },
         {
-          "summary": "Perplexity: API key required evidence refreshed",
+          "summary": "Perplexity: Credentials required evidence refreshed",
           "target": "cell-perplexity-requires-key"
         },
         {
@@ -2504,7 +3247,7 @@
           "target": "cell-searchapi-python-extra"
         },
         {
-          "summary": "Searchapi: API key required evidence refreshed",
+          "summary": "Searchapi: Credentials required evidence refreshed",
           "target": "cell-searchapi-requires-key"
         },
         {
@@ -2532,7 +3275,7 @@
           "target": "cell-searxng-python-extra"
         },
         {
-          "summary": "SearXNG: API key required evidence refreshed",
+          "summary": "SearXNG: Credentials required evidence refreshed",
           "target": "cell-searxng-requires-key"
         },
         {
@@ -2572,7 +3315,7 @@
           "target": "cell-serper-python-extra"
         },
         {
-          "summary": "Serper: API key required evidence refreshed",
+          "summary": "Serper: Credentials required evidence refreshed",
           "target": "cell-serper-requires-key"
         },
         {
@@ -2616,7 +3359,7 @@
           "target": "cell-tavily-python-extra"
         },
         {
-          "summary": "Tavily: API key required evidence refreshed",
+          "summary": "Tavily: Credentials required evidence refreshed",
           "target": "cell-tavily-requires-key"
         },
         {
@@ -2668,7 +3411,7 @@
           "target": "cell-you-python-extra"
         },
         {
-          "summary": "You: API key required evidence refreshed",
+          "summary": "You: Credentials required evidence refreshed",
           "target": "cell-you-requires-key"
         },
         {
