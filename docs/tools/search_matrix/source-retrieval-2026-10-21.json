@@ -1,0 +1,327 @@
+{
+  "method": "Direct public HTTPS GET; content hash is retrieval evidence, not claim validation. Failed fetches retain parent official-source review and are not marked unavailable APIs.",
+  "sources": [
+    {
+      "url": "https://ai.google.dev/gemini-api/docs/google-search/",
+      "status": 200,
+      "sha256": "276d1610243df1bce9ecbfcfd32998ef44c6a8d05a2ac82ce28d528b5f4f93bc",
+      "bytes": 184755,
+      "fetched_at": "2026-10-21T06:44:25.462895+00:00"
+    },
+    {
+      "url": "https://ai.google.dev/gemini-api/docs/pricing",
+      "status": 200,
+      "sha256": "d95fddc33822c69d437f343b5f4aab504de4e978cc8b1949ffd2d2ecdfe5bb23",
+      "bytes": 258519,
+      "fetched_at": "2026-10-21T06:44:25.857549+00:00"
+    },
+    {
+      "url": "https://api-dashboard.search.brave.com/documentation/pricing",
+      "status": 200,
+      "sha256": "e1008daf04c49c32bf10ccde629fabc36ee4b5de14f1e6d81c5da52be01d7ee5",
+      "bytes": 54776,
+      "fetched_at": "2026-10-21T06:44:25.496304+00:00"
+    },
+    {
+      "url": "https://api-docs.deepseek.com/guides/search/",
+      "status": 200,
+      "sha256": "93595abed4ca25a8ee51a99bfb1462422015fe567e4e1de6d04910096eca8e97",
+      "bytes": 57235,
+      "fetched_at": "2026-10-21T06:44:25.447814+00:00"
+    },
+    {
+      "url": "https://brave.com/blog/most-powerful-search-api-for-ai/",
+      "status": 200,
+      "sha256": "2287f974753c1a5207f1224028aaae2139bf5d988b5333903a5bf87aee5fff6e",
+      "bytes": 105795,
+      "fetched_at": "2026-10-21T06:44:25.421243+00:00"
+    },
+    {
+      "url": "https://brightdata.com/pricing/serp",
+      "status": 200,
+      "sha256": "51292b5a8567c57f7422174f37859ecf32191cdd3e0621ac8c395f535f17df8a",
+      "bytes": 261943,
+      "fetched_at": "2026-10-21T06:44:25.304389+00:00"
+    },
+    {
+      "url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+      "status": 200,
+      "sha256": "756eee83462a54f08686cf86f445ccb9e4900c6e19cba2f844fbe485e2820f31",
+      "bytes": 483041,
+      "fetched_at": "2026-10-21T06:44:25.326178+00:00"
+    },
+    {
+      "url": "https://developers.google.com/custom-search/v1/overview",
+      "status": 200,
+      "sha256": "125502aac8b009693bb45a92935b8eb46eaf9a2bc74fc2d0933cf609b03104c8",
+      "bytes": 65396,
+      "fetched_at": "2026-10-21T06:44:25.471208+00:00"
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/guides/tools-web-search",
+      "status": 200,
+      "sha256": "eef4031863cbec2ade6771740696c79fa310bdc51ea4313a8e0daff5e3940b8e",
+      "bytes": 864151,
+      "fetched_at": "2026-10-21T06:44:25.858256+00:00"
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/pricing",
+      "status": 200,
+      "sha256": "158f56f71504545e7ed58f3e2a9a328e85f5c2972823658c32dfaf18cd0097a1",
+      "bytes": 576451,
+      "fetched_at": "2026-10-21T06:44:25.787277+00:00"
+    },
+    {
+      "url": "https://docs.firecrawl.dev/features/search",
+      "status": 200,
+      "sha256": "90a419fd8b59bfd64cc24bd11ee1d0c204e33442c03d6ae6cd63b2771c0738dc",
+      "bytes": 959878,
+      "fetched_at": "2026-10-21T06:44:25.963414+00:00"
+    },
+    {
+      "url": "https://docs.linkup.so/pages/documentation/platform/pricing",
+      "status": 200,
+      "sha256": "6ae2ac44408468e76ec295e522f2278b2c9ff4f65324b7341d0b092a90cad994",
+      "bytes": 361117,
+      "fetched_at": "2026-10-21T06:44:26.310771+00:00"
+    },
+    {
+      "url": "https://docs.octen.ai/api-reference/search",
+      "status": 200,
+      "sha256": "f47e3279a87a407f91864bf3ea33d58ab447d987c542115265bf11c73ba0c7e4",
+      "bytes": 288198,
+      "fetched_at": "2026-10-21T06:44:26.266201+00:00"
+    },
+    {
+      "url": "https://docs.octen.ai/capabilities/web-search",
+      "status": 200,
+      "sha256": "432da93397352858765e57d9f6b0394dacbdc750d711ceda46cf9cf999eaefbc",
+      "bytes": 187300,
+      "fetched_at": "2026-10-21T06:44:25.922778+00:00"
+    },
+    {
+      "url": "https://docs.parallel.ai/getting-started/pricing",
+      "status": 200,
+      "sha256": "0a6005f59bc28ff3fd5ffdb2d022918f6d609173877f0613112ffac1a4b8a1ae",
+      "bytes": 464204,
+      "fetched_at": "2026-10-21T06:44:26.027982+00:00"
+    },
+    {
+      "url": "https://docs.parallel.ai/resources/faqs",
+      "status": 200,
+      "sha256": "eb4df63ac1fd2a5967fe637b4455b58945198197724e0bfd94ced96bec1b9237",
+      "bytes": 439512,
+      "fetched_at": "2026-10-21T06:44:26.294116+00:00"
+    },
+    {
+      "url": "https://docs.perplexity.ai/docs/getting-started/pricing",
+      "status": 200,
+      "sha256": "c3b3ead984f6b59ae3959076fc64670de41b4c3ee1c619a3e80361406f710c6b",
+      "bytes": 658060,
+      "fetched_at": "2026-10-21T06:44:26.338792+00:00"
+    },
+    {
+      "url": "https://docs.perplexity.ai/docs/search/quickstart",
+      "status": 200,
+      "sha256": "2e6f30c3c58e189d8eed59905968d3ed8f9bdb9227fe9e739319401293db7a74",
+      "bytes": 1393840,
+      "fetched_at": "2026-10-21T06:44:26.381932+00:00"
+    },
+    {
+      "url": "https://docs.searxng.org/dev/search_api.html",
+      "status": 200,
+      "sha256": "cbcfae9b57f92250ec070f51f07b00786bcb64192a6fda9d0f58d0e4e9fcacc4",
+      "bytes": 46464,
+      "fetched_at": "2026-10-21T06:44:26.541556+00:00"
+    },
+    {
+      "url": "https://docs.tavily.com/documentation/api-credits",
+      "status": 200,
+      "sha256": "3dc1b87611e866599a90343d1a5333b8e3e769cbd7d9f0970ca4b07757f58784",
+      "bytes": 361110,
+      "fetched_at": "2026-10-21T06:44:26.495764+00:00"
+    },
+    {
+      "url": "https://docs.tavily.com/documentation/api-reference/endpoint/search",
+      "status": 200,
+      "sha256": "bbf0055e4866e2e00091d13fa1163fedd557b94aafa1c09fd5193a5e451a64e8",
+      "bytes": 619825,
+      "fetched_at": "2026-10-21T06:44:26.501420+00:00"
+    },
+    {
+      "url": "https://docs.tavily.com/documentation/rate-limits",
+      "status": 200,
+      "sha256": "59cd1e2f3d5bd38c2d360e9117632fe8cbc8795c83d1f3506db03de79c2d7927",
+      "bytes": 360860,
+      "fetched_at": "2026-10-21T06:44:26.568502+00:00"
+    },
+    {
+      "url": "https://docs.x.ai/developers/pricing",
+      "status": 200,
+      "sha256": "d9decb760f66d481162ac0e11c3a0493c4bed33b7a73918ab26a64fda71bdd7d",
+      "bytes": 475566,
+      "fetched_at": "2026-10-21T06:44:26.770788+00:00"
+    },
+    {
+      "url": "https://docs.x.ai/developers/tools/web-search",
+      "status": 200,
+      "sha256": "8464ab8c63040d3dbf28f4cfe53ff63757e2b7eb85bc80b17cada931fe0aa5eb",
+      "bytes": 552267,
+      "fetched_at": "2026-10-21T06:44:26.786645+00:00"
+    },
+    {
+      "url": "https://exa.ai/blog/exa-3",
+      "status": 200,
+      "sha256": "ee3d2c11f0ee2739aa34d77fb5adbcd977efaea7688b03de9eccbee14e847306",
+      "bytes": 87291,
+      "fetched_at": "2026-10-21T06:44:26.730898+00:00"
+    },
+    {
+      "url": "https://exa.ai/docs/reference/search",
+      "status": 200,
+      "sha256": "30b6e4c831c7a2607a8bbbdf31a8145b662543bc5dd6263e1df0aaa65d0ad38e",
+      "bytes": 1215668,
+      "fetched_at": "2026-10-21T06:44:26.941993+00:00"
+    },
+    {
+      "url": "https://exa.ai/pricing",
+      "status": 200,
+      "sha256": "939d3510852659cc5ca055ce8ee124adc09d766b4d6cd7b8de9e11192d00066a",
+      "bytes": 144597,
+      "fetched_at": "2026-10-21T06:44:26.836220+00:00"
+    },
+    {
+      "url": "https://github.com/deedy5/ddgs",
+      "status": 200,
+      "sha256": "46ad22b1f54138a24bed8b410cf1e0b71c00d8e1754459167aa159f166d88c97",
+      "bytes": 439825,
+      "fetched_at": "2026-10-21T06:44:27.451050+00:00"
+    },
+    {
+      "url": "https://help.kagi.com/kagi/api/search.html",
+      "status": 200,
+      "sha256": "c4139fe4b17c45aa9f86ac25e27f1493c838892a934b93927b17694c84d0e5d0",
+      "bytes": 99743,
+      "fetched_at": "2026-10-21T06:44:26.919144+00:00"
+    },
+    {
+      "url": "https://jina.ai/api-dashboard/pricing/",
+      "status": 200,
+      "sha256": "e7fa444216fc14523d32fd4fde66b79ff2ca70cb23a8ce720108da1e32caa96c",
+      "bytes": 83428,
+      "fetched_at": "2026-10-21T06:44:26.986525+00:00"
+    },
+    {
+      "url": "https://kagi.com/api/docs",
+      "status": 200,
+      "sha256": "4f8494e4d7a2cf8e6890a641330070d0c64e44daab5188e5413164dda5d6dbc4",
+      "bytes": 220500,
+      "fetched_at": "2026-10-21T06:44:27.371917+00:00"
+    },
+    {
+      "url": "https://kagi.com/api/pricing",
+      "status": 200,
+      "sha256": "2e695169038cc01520ac1b84b2de70a624f8b09ee8ed2d2d6984e0cf874b5cb5",
+      "bytes": 86501,
+      "fetched_at": "2026-10-21T06:44:27.060601+00:00"
+    },
+    {
+      "url": "https://keirolabs.cloud/",
+      "status": 200,
+      "sha256": "b2e97e3ca705ca9fa332f9a4c3df524853e5b22728350ae40b5238d98c96d300",
+      "bytes": 51149,
+      "fetched_at": "2026-10-21T06:44:27.206555+00:00"
+    },
+    {
+      "url": "https://keirolabs.cloud/pricing",
+      "status": 200,
+      "sha256": "72a775c4a1bee47e281adbc13d88fac4d31b0cf3d8d44c1683f2f5c5fd293746",
+      "bytes": 76318,
+      "fetched_at": "2026-10-21T06:44:27.210443+00:00"
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+      "status": 200,
+      "sha256": "9c6a12e8c956b3f4982570a130b55641cec452e4520530f2d0ea22581622359b",
+      "bytes": 47368,
+      "fetched_at": "2026-10-21T06:44:27.320578+00:00"
+    },
+    {
+      "url": "https://octen.ai/pricing",
+      "status": 200,
+      "sha256": "cbedce335c8f9cf2e742d5703f884a1b04ec1c85c1028453f7afd142c0acdfc2",
+      "bytes": 207627,
+      "fetched_at": "2026-10-21T06:44:28.112720+00:00"
+    },
+    {
+      "url": "https://parallel.ai/blog/free-tier-parallel",
+      "status": 200,
+      "sha256": "18f30677fe0fd7b6fd3ba9969a69949cb344f37b6ed37993852e7d1c55633859",
+      "bytes": 784089,
+      "fetched_at": "2026-10-21T06:44:27.572102+00:00"
+    },
+    {
+      "url": "https://parallel.ai/pricing",
+      "status": 200,
+      "sha256": "dcc11c418fe7e3fcbb9183759fcb67189014e28ec7f2f327d14b4330171b474c",
+      "bytes": 452377,
+      "fetched_at": "2026-10-21T06:44:27.452644+00:00"
+    },
+    {
+      "url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+      "status": 200,
+      "sha256": "7a2f957b134dced8d8870071d8e44323e7c885c867f52073db47426eb61d871e",
+      "bytes": 867876,
+      "fetched_at": "2026-10-21T06:44:27.893347+00:00"
+    },
+    {
+      "url": "https://serpapi.com/pricing",
+      "status": 200,
+      "sha256": "1cf842fa53baad86219590f69a033c0f96fd1e6de8dede2ad79cb75e05ee0bc7",
+      "bytes": 181123,
+      "fetched_at": "2026-10-21T06:44:27.525730+00:00"
+    },
+    {
+      "url": "https://serper.dev/",
+      "status": 200,
+      "sha256": "7dce523a62d18b473e0edc262d7027b601fbc7b4c92887661580d0348a1325de",
+      "bytes": 1044299,
+      "fetched_at": "2026-10-21T06:44:27.855756+00:00"
+    },
+    {
+      "url": "https://www.browserfoundry.cloud/pricing",
+      "status": 200,
+      "sha256": "bd4e0dd40547eb4199570f2f8646f291463e6ab19383631d9602d3d988a18c4b",
+      "bytes": 38050,
+      "fetched_at": "2026-10-21T06:44:28.058046+00:00"
+    },
+    {
+      "url": "https://www.firecrawl.dev/pricing",
+      "status": 200,
+      "sha256": "198ca494320581978fededbdeb2ae59c82f0323ffd972dfc195c9783554a2702",
+      "bytes": 800709,
+      "fetched_at": "2026-10-21T06:44:27.960019+00:00"
+    },
+    {
+      "url": "https://www.searchapi.io/pricing",
+      "status": 200,
+      "sha256": "334466677f9e123f0337611399c5306bce34e8761dcebb5afaa8c9915223502f",
+      "bytes": 243219,
+      "fetched_at": "2026-10-21T06:44:28.042538+00:00"
+    },
+    {
+      "url": "https://you.com/docs/administration/billing",
+      "status": 200,
+      "sha256": "39c1500f69f00c2d8b9b0131858c5c50e74f53674bc31fe2bfea8a7874bf7412",
+      "bytes": 218448,
+      "fetched_at": "2026-10-21T06:44:28.340977+00:00"
+    },
+    {
+      "url": "https://you.com/pricing",
+      "status": 200,
+      "sha256": "640edfbf12e1b2b20f09fbfcd974164f72cc5f5b28d82e7438545aabc211a646",
+      "bytes": 543547,
+      "fetched_at": "2026-10-21T06:44:27.983009+00:00"
+    }
+  ]
+}

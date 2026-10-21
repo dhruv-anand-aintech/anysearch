@@ -84,19 +84,63 @@
     "comment": "Meta-search JSON API: result richness depends on configured engines, not a global depth flag. Matrix `balanced` = default instance search."
   },
   "pricing_per_1k": {
-    "value": "$0 API fee if self-hosted; infra/proxy costs separate",
-    "source_url": "https://docs.searxng.org/",
-    "comment": "Open-source self-hosted metasearch; operating costs depend on deployment."
+    "value": "Self-hosted software; infrastructure/proxy costs separate",
+    "source_url": "https://docs.searxng.org/dev/search_api.html",
+    "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+    "links": {}
   },
   "free_tier_limits": {
-    "value": "No software quota when self-hosted; instance limits apply",
+    "value": "No hosted free allowance; self-hosted instance limits apply",
     "source_url": "https://docs.searxng.org/dev/search_api.html",
-    "comment": "SearXNG has no vendor billing tier; capacity and upstream-engine limits depend on the deployment."
+    "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
+    "links": {}
   },
   "p50_latency": {
-    "value": "Deployment-dependent; no portable p50/p90/p95",
+    "value": "Historical July 2026: Deployment-dependent; no portable p50/p90/p95",
     "source_url": "https://docs.searxng.org/admin/settings/settings_search/",
-    "comment": "Latency depends on the self-hosted instance, enabled upstream engines, and timeout configuration, so a provider-wide number would be misleading."
+    "comment": "Historical evidence retained from July 2026; not remeasured or claimed current. Latency depends on the self-hosted instance, enabled upstream engines, and timeout configuration, so a provider-wide number would be misleading."
   },
-  "notes": "No API key required (keyless fallback)."
+  "notes": "No API key required (keyless fallback).",
+  "api_category": {
+    "value": "Self-hosted metasearch",
+    "source_url": "https://docs.searxng.org/dev/search_api.html",
+    "comment": ""
+  },
+  "api_status": {
+    "value": "Self-hosted; instance dependent",
+    "source_url": "https://docs.searxng.org/dev/search_api.html",
+    "comment": "",
+    "links": {}
+  },
+  "native_api": {
+    "value": "GET/POST / or /search; language/time/safe-search and query operators depend on upstream engines.",
+    "source_url": "https://docs.searxng.org/dev/search_api.html",
+    "comment": "",
+    "links": {}
+  },
+  "rate_limits": {
+    "value": "JSON/CSV/RSS must be enabled; public instances may return 403",
+    "source_url": "https://docs.searxng.org/dev/search_api.html",
+    "comment": "",
+    "links": {}
+  },
+  "checked_at": {
+    "value": "2026-10-21",
+    "source_url": "https://docs.searxng.org/dev/search_api.html",
+    "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
+    "links": {}
+  },
+  "sdk_support": {
+    "value": "Python + TypeScript adapters",
+    "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
+    "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+  },
+  "evidence": {
+    "checked_at": "2026-10-21",
+    "source_urls": [
+      "https://docs.searxng.org/dev/search_api.html"
+    ],
+    "effective_date": null,
+    "method": "official documentation; no new benchmarks"
+  }
 }

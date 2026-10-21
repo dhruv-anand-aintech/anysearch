@@ -84,19 +84,76 @@
     "comment": "`generateContent` with `tools: [{google_search: {}}]` \u2014 model decides when to search and returns synthesized text plus `groundingMetadata` sources (use `answer=true` in anysearch). Default model `gemini-2.5-flash` via `provider_config.gemini.model`."
   },
   "pricing_per_1k": {
-    "value": "balanced grounding: $35 + model tokens",
-    "source_url": "https://cloud.google.com/generative-ai-app-builder/pricing",
-    "comment": "Grounding with Google Search is billed per 1K grounded requests plus Gemini model token charges."
+    "value": "Gemini 3+: $14 / 1K individual search queries + model charges",
+    "source_url": "https://ai.google.dev/gemini-api/docs/pricing",
+    "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+    "links": {
+      "Official source 1": "https://ai.google.dev/gemini-api/docs/google-search/"
+    }
   },
   "free_tier_limits": {
-    "value": "500 grounded prompts/day on eligible Flash models",
+    "value": "Gemini 3+: 5,000 search queries/month shared free",
     "source_url": "https://ai.google.dev/gemini-api/docs/pricing",
-    "comment": "Free-tier Google Search grounding is shared across eligible Flash and Flash-Lite models; model availability varies."
+    "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
+    "links": {
+      "Official source 1": "https://ai.google.dev/gemini-api/docs/google-search/"
+    }
   },
   "p50_latency": {
-    "value": "No published Google Search grounding latency distribution",
+    "value": "Historical July 2026: No published Google Search grounding latency distribution",
     "source_url": "https://ai.google.dev/gemini-api/docs/google-search",
-    "comment": "Grounding may issue one or multiple searches and includes model generation time. No comparable public latency percentile or tier range was found."
+    "comment": "Historical evidence retained from July 2026; not remeasured or claimed current. Grounding may issue one or multiple searches and includes model generation time. No comparable public latency percentile or tier range was found."
   },
-  "notes": "Native SDK package: google-genai."
+  "notes": "Native SDK package: google-genai.",
+  "api_category": {
+    "value": "Model-hosted grounding",
+    "source_url": "https://ai.google.dev/gemini-api/docs/pricing",
+    "comment": ""
+  },
+  "api_status": {
+    "value": "Available",
+    "source_url": "https://ai.google.dev/gemini-api/docs/pricing",
+    "comment": "",
+    "links": {
+      "Official source 1": "https://ai.google.dev/gemini-api/docs/google-search/"
+    }
+  },
+  "native_api": {
+    "value": "Google Search grounding inside Gemini generation, not standalone raw ranked search.",
+    "source_url": "https://ai.google.dev/gemini-api/docs/pricing",
+    "comment": "",
+    "links": {
+      "Official source 1": "https://ai.google.dev/gemini-api/docs/google-search/"
+    }
+  },
+  "rate_limits": {
+    "value": "One prompt may generate several billable queries; older model rules differ",
+    "source_url": "https://ai.google.dev/gemini-api/docs/pricing",
+    "comment": "",
+    "links": {
+      "Official source 1": "https://ai.google.dev/gemini-api/docs/google-search/"
+    }
+  },
+  "checked_at": {
+    "value": "2026-10-21",
+    "source_url": "https://ai.google.dev/gemini-api/docs/pricing",
+    "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
+    "links": {
+      "Official source 1": "https://ai.google.dev/gemini-api/docs/google-search/"
+    }
+  },
+  "sdk_support": {
+    "value": "Python + TypeScript adapters",
+    "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
+    "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+  },
+  "evidence": {
+    "checked_at": "2026-10-21",
+    "source_urls": [
+      "https://ai.google.dev/gemini-api/docs/pricing",
+      "https://ai.google.dev/gemini-api/docs/google-search/"
+    ],
+    "effective_date": null,
+    "method": "official documentation; no new benchmarks"
+  }
 }

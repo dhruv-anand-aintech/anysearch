@@ -84,19 +84,83 @@
     "comment": "No request `mode`; snippet length comes from account Settings \u2192 Search."
   },
   "pricing_per_1k": {
-    "value": "not publicly itemized per 1K for Search API",
-    "source_url": "https://help.kagi.com/kagi/api/overview.html",
-    "comment": "Kagi documents pay-per-use API portal billing but not a stable public Search API CPM in docs."
+    "value": "Search $12 / 1K requests; Extract $4 / 1K pages",
+    "source_url": "https://kagi.com/api/pricing",
+    "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+    "links": {
+      "Official source 1": "https://help.kagi.com/kagi/api/search.html",
+      "Official source 2": "https://kagi.com/api/docs"
+    }
   },
   "free_tier_limits": {
-    "value": "No free Search API allowance documented",
-    "source_url": "https://help.kagi.com/kagi/api/quick-start.html",
-    "comment": "API billing is separate from Kagi's consumer trial and requires a payment method or prepaid API credit."
+    "value": "No free Search API quota stated",
+    "source_url": "https://kagi.com/api/pricing",
+    "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
+    "links": {
+      "Official source 1": "https://help.kagi.com/kagi/api/search.html",
+      "Official source 2": "https://kagi.com/api/docs"
+    }
   },
   "p50_latency": {
-    "value": "No published Search API latency distribution",
+    "value": "Historical July 2026: No published Search API latency distribution",
     "source_url": "https://help.kagi.com/kagi/api/search.html",
-    "comment": "Kagi publishes browser-page speed measurements, but those are not API response latency and are intentionally excluded."
+    "comment": "Historical evidence retained from July 2026; not remeasured or claimed current. Kagi publishes browser-page speed measurements, but those are not API response latency and are intentionally excluded."
   },
-  "notes": ""
+  "notes": "",
+  "api_category": {
+    "value": "Standalone search API",
+    "source_url": "https://kagi.com/api/pricing",
+    "comment": ""
+  },
+  "api_status": {
+    "value": "Available",
+    "source_url": "https://kagi.com/api/pricing",
+    "comment": "",
+    "links": {
+      "Official source 1": "https://help.kagi.com/kagi/api/search.html",
+      "Official source 2": "https://kagi.com/api/docs"
+    }
+  },
+  "native_api": {
+    "value": "Current GET /api/v1/search uses Authorization: Bot; web/images/news/videos/podcasts, lenses and locale controls. v0 is legacy; existing anysearch adapter uses v0.",
+    "source_url": "https://kagi.com/api/pricing",
+    "comment": "",
+    "links": {
+      "Official source 1": "https://help.kagi.com/kagi/api/search.html",
+      "Official source 2": "https://kagi.com/api/docs"
+    }
+  },
+  "rate_limits": {
+    "value": "Usage invoiced every 30 days or at $100; Extract up to 10 URLs/request",
+    "source_url": "https://kagi.com/api/pricing",
+    "comment": "",
+    "links": {
+      "Official source 1": "https://help.kagi.com/kagi/api/search.html",
+      "Official source 2": "https://kagi.com/api/docs"
+    }
+  },
+  "checked_at": {
+    "value": "2026-10-21",
+    "source_url": "https://kagi.com/api/pricing",
+    "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
+    "links": {
+      "Official source 1": "https://help.kagi.com/kagi/api/search.html",
+      "Official source 2": "https://kagi.com/api/docs"
+    }
+  },
+  "sdk_support": {
+    "value": "Python + TypeScript adapters",
+    "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
+    "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+  },
+  "evidence": {
+    "checked_at": "2026-10-21",
+    "source_urls": [
+      "https://kagi.com/api/pricing",
+      "https://help.kagi.com/kagi/api/search.html",
+      "https://kagi.com/api/docs"
+    ],
+    "effective_date": null,
+    "method": "official documentation; no new benchmarks"
+  }
 }

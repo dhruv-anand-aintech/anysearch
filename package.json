@@ -11,7 +11,9 @@
     "matrix:llms-txt": "python3 docs/tools/search_matrix/data_utils.py llms-txt",
     "matrix:sync": "npm run matrix:generate && npm run matrix:validate && npm run matrix:bundle && npm run matrix:llms-txt && npm run matrix:changelog",
     "matrix:verify-page": "node scripts/verify_matrix_page.mjs",
-    "deploy:matrix": "npm run matrix:sync && npm run matrix:verify-page && wrangler deploy --config wrangler.toml"
+    "deploy:matrix": "npm run matrix:sync && npm run matrix:research-check && npm run matrix:test && node node_modules/wrangler/bin/wrangler.js deploy --config wrangler.toml",
+    "matrix:test": "python3 -m unittest discover -s scripts/tests -p \"test_*.py\" && node scripts/verify_matrix_page.mjs",
+    "matrix:research-check": "python3 scripts/check_search_research.py"
   },
   "devDependencies": {
     "wrangler": "^4.98.0"

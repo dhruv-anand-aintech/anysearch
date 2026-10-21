@@ -1,0 +1,157 @@
+{
+  "name": "xAI Web Search",
+  "links": {
+    "slug": "xai",
+    "docs": "https://docs.x.ai/developers/pricing",
+    "website": "https://x.ai"
+  },
+  "env_keys": {
+    "value": "Not integrated",
+    "source_url": "https://docs.x.ai/developers/pricing",
+    "comment": "Comparison only; anysearch does not read a key for this provider."
+  },
+  "python_extra": {
+    "value": "Not integrated",
+    "source_url": "https://docs.x.ai/developers/pricing",
+    "comment": ""
+  },
+  "mode": {
+    "values": [],
+    "source_url": "https://docs.x.ai/developers/pricing",
+    "comment": "No unified SDK mode mapping."
+  },
+  "p50_latency": {
+    "value": "No current comparable measurement verified",
+    "source_url": "https://docs.x.ai/developers/pricing",
+    "comment": ""
+  },
+  "notes": "Comparison only; no anysearch SDK adapter is claimed.",
+  "comparison_only": true,
+  "requires_key": {
+    "support": "unknown",
+    "source_url": "https://docs.x.ai/developers/pricing",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "snippet": {
+    "support": "unknown",
+    "source_url": "https://docs.x.ai/developers/pricing",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "domains": {
+    "support": "unknown",
+    "source_url": "https://docs.x.ai/developers/pricing",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "country": {
+    "support": "unknown",
+    "source_url": "https://docs.x.ai/developers/pricing",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "language": {
+    "support": "unknown",
+    "source_url": "https://docs.x.ai/developers/pricing",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "date": {
+    "support": "unknown",
+    "source_url": "https://docs.x.ai/developers/pricing",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "safe_search": {
+    "support": "unknown",
+    "source_url": "https://docs.x.ai/developers/pricing",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "answer": {
+    "support": "unknown",
+    "source_url": "https://docs.x.ai/developers/pricing",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "content": {
+    "support": "unknown",
+    "source_url": "https://docs.x.ai/developers/pricing",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "summary": {
+    "support": "unknown",
+    "source_url": "https://docs.x.ai/developers/pricing",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "highlights": {
+    "support": "unknown",
+    "source_url": "https://docs.x.ai/developers/pricing",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "news": {
+    "support": "unknown",
+    "source_url": "https://docs.x.ai/developers/pricing",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "api_category": {
+    "value": "Model-hosted grounding",
+    "source_url": "https://docs.x.ai/developers/pricing",
+    "comment": ""
+  },
+  "api_status": {
+    "value": "Available",
+    "source_url": "https://docs.x.ai/developers/pricing",
+    "comment": "",
+    "links": {
+      "Official source 1": "https://docs.x.ai/developers/tools/web-search"
+    }
+  },
+  "native_api": {
+    "value": "Model-hosted web_search; X Search is distinct and is not public web search.",
+    "source_url": "https://docs.x.ai/developers/pricing",
+    "comment": "",
+    "links": {
+      "Official source 1": "https://docs.x.ai/developers/tools/web-search"
+    }
+  },
+  "rate_limits": {
+    "value": "X Search billed separately: posts/profiles use different units",
+    "source_url": "https://docs.x.ai/developers/pricing",
+    "comment": "",
+    "links": {
+      "Official source 1": "https://docs.x.ai/developers/tools/web-search"
+    }
+  },
+  "checked_at": {
+    "value": "2026-10-21",
+    "source_url": "https://docs.x.ai/developers/pricing",
+    "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
+    "links": {
+      "Official source 1": "https://docs.x.ai/developers/tools/web-search"
+    }
+  },
+  "sdk_support": {
+    "value": "Comparison only \u2014 no adapter",
+    "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
+    "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+  },
+  "pricing_per_1k": {
+    "value": "Web Search $5 / 1K tool calls + model tokens",
+    "source_url": "https://docs.x.ai/developers/pricing",
+    "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+    "links": {
+      "Official source 1": "https://docs.x.ai/developers/tools/web-search"
+    }
+  },
+  "free_tier_limits": {
+    "value": "No recurring free allowance verified",
+    "source_url": "https://docs.x.ai/developers/pricing",
+    "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
+    "links": {
+      "Official source 1": "https://docs.x.ai/developers/tools/web-search"
+    }
+  },
+  "evidence": {
+    "checked_at": "2026-10-21",
+    "source_urls": [
+      "https://docs.x.ai/developers/pricing",
+      "https://docs.x.ai/developers/tools/web-search"
+    ],
+    "effective_date": null,
+    "method": "official documentation; no new benchmarks"
+  }
+}

@@ -86,23 +86,87 @@
     "comment": "**Search API** `search_depth`: `ultra-fast`/`fast`\u2192fast, `basic`\u2192balanced (`include_answer` is a short blurb, not deep research). **Research API** (`POST /research`) `model`: `mini`/`auto`\u2192balanced, `pro`\u2192deep (multi-agent cited report). Same `TAVILY_API_KEY`."
   },
   "pricing_per_1k": {
-    "value": "fast/basic: ~$8; balanced/advanced: ~$16; deep/research: plan/model dependent",
-    "source_url": "https://help.tavily.com/articles/8816424538-pricing",
-    "comment": "Uses API credits; pay-as-you-go credits are listed at $0.008/credit, with higher-depth calls consuming more credits."
+    "value": "PAYG $8 / 1K basic; $16 / 1K advanced (1/2 credits); subscriptions differ",
+    "source_url": "https://docs.tavily.com/documentation/api-credits",
+    "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+    "links": {
+      "Official source 1": "https://docs.tavily.com/documentation/rate-limits",
+      "Official source 2": "https://docs.tavily.com/documentation/api-reference/endpoint/search"
+    }
   },
   "free_tier_limits": {
-    "value": "1,000 basic or 500 advanced searches/month; no card",
-    "source_url": "https://help.tavily.com/articles/8816424538-pricing",
-    "comment": "Researcher plan includes 1,000 credits monthly; basic search costs one and advanced costs two credits."
+    "value": "1,000 credits/month; no card",
+    "source_url": "https://docs.tavily.com/documentation/api-credits",
+    "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
+    "links": {
+      "Official source 1": "https://docs.tavily.com/documentation/rate-limits",
+      "Official source 2": "https://docs.tavily.com/documentation/api-reference/endpoint/search"
+    }
   },
   "p50_latency": {
-    "value": "ultra-fast: 0.37s p50 / 0.46s p95; fast/basic/advanced/research: not published",
+    "value": "Historical July 2026: ultra-fast: 0.37s p50 / 0.46s p95; fast/basic/advanced/research: not published",
     "source_url": "https://proxyway.com/research/search-apis-2026-report",
-    "comment": "Ultra-fast is independently measured across three 2,000-query runs from the US East Coast. Tavily documents its other depth tiers but not percentile latency.",
+    "comment": "Historical evidence retained from July 2026; not remeasured or claimed current. Ultra-fast is independently measured across three 2,000-query runs from the US East Coast. Tavily documents its other depth tiers but not percentile latency.",
     "links": {
       "Independent benchmark": "https://proxyway.com/research/search-apis-2026-report",
       "Depth documentation": "https://docs.tavily.com/api-reference/endpoint/search"
     }
   },
-  "notes": "Native SDK package: tavily-python. Search API is in the anysearch SDK; Research API (`POST /research`) is documented in the matrix (use `tavily-python` `research()` / `get_research()`)."
+  "notes": "Native SDK package: tavily-python. Search API is in the anysearch SDK; Research API (`POST /research`) is documented in the matrix (use `tavily-python` `research()` / `get_research()`).",
+  "api_category": {
+    "value": "Standalone search API",
+    "source_url": "https://docs.tavily.com/documentation/api-credits",
+    "comment": ""
+  },
+  "api_status": {
+    "value": "Available",
+    "source_url": "https://docs.tavily.com/documentation/api-credits",
+    "comment": "",
+    "links": {
+      "Official source 1": "https://docs.tavily.com/documentation/rate-limits",
+      "Official source 2": "https://docs.tavily.com/documentation/api-reference/endpoint/search"
+    }
+  },
+  "native_api": {
+    "value": "Search, extract, crawl and research are separate credit rules; do not price research as basic search.",
+    "source_url": "https://docs.tavily.com/documentation/api-credits",
+    "comment": "",
+    "links": {
+      "Official source 1": "https://docs.tavily.com/documentation/rate-limits",
+      "Official source 2": "https://docs.tavily.com/documentation/api-reference/endpoint/search"
+    }
+  },
+  "rate_limits": {
+    "value": "Development 100 RPM; paid production 1,000 RPM",
+    "source_url": "https://docs.tavily.com/documentation/api-credits",
+    "comment": "",
+    "links": {
+      "Official source 1": "https://docs.tavily.com/documentation/rate-limits",
+      "Official source 2": "https://docs.tavily.com/documentation/api-reference/endpoint/search"
+    }
+  },
+  "checked_at": {
+    "value": "2026-10-21",
+    "source_url": "https://docs.tavily.com/documentation/api-credits",
+    "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
+    "links": {
+      "Official source 1": "https://docs.tavily.com/documentation/rate-limits",
+      "Official source 2": "https://docs.tavily.com/documentation/api-reference/endpoint/search"
+    }
+  },
+  "sdk_support": {
+    "value": "Python + TypeScript adapters",
+    "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
+    "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+  },
+  "evidence": {
+    "checked_at": "2026-10-21",
+    "source_urls": [
+      "https://docs.tavily.com/documentation/api-credits",
+      "https://docs.tavily.com/documentation/rate-limits",
+      "https://docs.tavily.com/documentation/api-reference/endpoint/search"
+    ],
+    "effective_date": null,
+    "method": "official documentation; no new benchmarks"
+  }
 }

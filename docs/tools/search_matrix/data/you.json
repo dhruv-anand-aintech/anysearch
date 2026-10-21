@@ -86,24 +86,81 @@
     "comment": "**Search API** (`POST /v1/search`) \u2192 matrix `balanced` (ranked snippets, SDK). **Research API** (`POST /v1/research`) \u2192 `research_effort`: `lite`\u2192fast, `standard`\u2192balanced, `deep` / `exhaustive`\u2192deep (cited synthesis). Same `YDC_API_KEY`."
   },
   "pricing_per_1k": {
-    "value": "search: $5; research: $12/$50/$100/$450 by effort",
+    "value": "Search $5 / 1K calls; live extraction +$1 / 1K pages; cached extraction no surcharge",
     "source_url": "https://you.com/docs/administration/billing",
-    "comment": "Research prices map to lite, standard, deep, and exhaustive effort tiers."
+    "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+    "links": {
+      "Official source 1": "https://you.com/pricing"
+    }
   },
   "free_tier_limits": {
-    "value": "$100 signup (~20,000 searches); keyless MCP: 100/day",
-    "source_url": "https://you.com/docs/welcome",
-    "comment": "Signup credit covers roughly 20,000 base Search calls; the no-signup MCP profile has a separate daily limit."
+    "value": "$10 signup advertised on canonical pricing; keyless MCP 100 searches/day",
+    "source_url": "https://you.com/docs/administration/billing",
+    "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
+    "links": {
+      "Official source 1": "https://you.com/pricing"
+    }
   },
   "p50_latency": {
-    "value": "Search: 0.73s p50 / 1.22s p95 independent; 0.445s p50 provider; Research: 5\u201360s by effort",
+    "value": "Historical July 2026: Search: 0.73s p50 / 1.22s p95 independent; 0.445s p50 provider; Research: 5\u201360s by effort",
     "source_url": "https://proxyway.com/research/search-apis-2026-report",
-    "comment": "Search percentiles are independent three-run results; You separately reports 445 ms p50. Research's provider range spans effort levels but is not broken out into lite, standard, deep, exhaustive, and frontier percentiles.",
+    "comment": "Historical evidence retained from July 2026; not remeasured or claimed current. Search percentiles are independent three-run results; You separately reports 445 ms p50. Research's provider range spans effort levels but is not broken out into lite, standard, deep, exhaustive, and frontier percentiles.",
     "links": {
       "Independent benchmark": "https://proxyway.com/research/search-apis-2026-report",
       "Provider p50": "https://you.com/resources/api-latency",
       "Research range": "https://you.com/resources/building-with-the-research-api"
     }
   },
-  "notes": "Search API (`POST /v1/search`) is in the anysearch SDK; Research API (`POST /v1/research`) is documented in the matrix but not wired in the SDK yet."
+  "notes": "Search API (`POST /v1/search`) is in the anysearch SDK; Research API (`POST /v1/research`) is documented in the matrix but not wired in the SDK yet.",
+  "api_category": {
+    "value": "Standalone search API",
+    "source_url": "https://you.com/docs/administration/billing",
+    "comment": ""
+  },
+  "api_status": {
+    "value": "Available",
+    "source_url": "https://you.com/docs/administration/billing",
+    "comment": "",
+    "links": {
+      "Official source 1": "https://you.com/pricing"
+    }
+  },
+  "native_api": {
+    "value": "Web and news search; Research has separate pricing. Legacy marketing says $100 signup; current canonical page says $10.",
+    "source_url": "https://you.com/docs/administration/billing",
+    "comment": "",
+    "links": {
+      "Official source 1": "https://you.com/pricing"
+    }
+  },
+  "rate_limits": {
+    "value": "Up to 100 results; PAYG no minimum",
+    "source_url": "https://you.com/docs/administration/billing",
+    "comment": "",
+    "links": {
+      "Official source 1": "https://you.com/pricing"
+    }
+  },
+  "checked_at": {
+    "value": "2026-10-21",
+    "source_url": "https://you.com/docs/administration/billing",
+    "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
+    "links": {
+      "Official source 1": "https://you.com/pricing"
+    }
+  },
+  "sdk_support": {
+    "value": "Python + TypeScript adapters",
+    "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
+    "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+  },
+  "evidence": {
+    "checked_at": "2026-10-21",
+    "source_urls": [
+      "https://you.com/docs/administration/billing",
+      "https://you.com/pricing"
+    ],
+    "effective_date": null,
+    "method": "official documentation; no new benchmarks"
+  }
 }

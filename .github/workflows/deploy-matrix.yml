@@ -8,6 +8,10 @@ on:
       - "docs/tools/search_matrix/**"
       - "scripts/generate_matrix_changelog.py"
       - "scripts/generate_search_matrix_data.py"
+      - "scripts/apply_search_research.py"
+      - "scripts/check_search_research.py"
+      - "scripts/tests/**"
+      - "scripts/search_matrix_provider_meta.py"
       - "scripts/verify_matrix_page.mjs"
       - "scripts/matrix_import_hooks.mjs"
       - "python/src/anysearch/providers/**"
@@ -15,6 +19,8 @@ on:
       - "wrangler.toml"
       - "package.json"
       - "package-lock.json"
+  schedule:
+    - cron: "17 8 * * 1"
   workflow_dispatch:
 
 jobs:
@@ -45,10 +51,22 @@ jobs:
 
       - name: Verify matrix page renders
         run: |
-          npm run matrix:verify-page
+          npm run matrix:research-check
+          npm run matrix:test
           git diff --exit-code -- docs/tools/search_matrix/changelog.json
 
+      - name: Check official public source availability (scheduled audit only)
+        if: github.event_name == 'schedule'
+        run: python3 scripts/check_search_research.py --check-links
+
+      - uses: actions/upload-artifact@v4
+        if: always() && github.event_name == 'schedule'
+        with:
+          name: official-source-availability
+          path: source-check-report.json
+
   deploy:
+    if: github.event_name != 'schedule'
     needs: sync
     runs-on: ubuntu-latest
     permissions:
@@ -77,7 +95,8 @@ jobs:
         run: |
           pip install -e ./python
           npm run matrix:sync
-          npm run matrix:verify-page
+          npm run matrix:research-check
+          npm run matrix:test
           git diff --exit-code -- docs/tools/search_matrix/changelog.json
 
       - name: Deploy to Cloudflare Workers
@@ -89,4 +108,4 @@ jobs:
             echo "Skipping deploy: add CLOUDFLARE_API_TOKEN to repo Actions secrets (see docs/tools/search_matrix/README.md)."
             exit 0
           fi
-          npx wrangler deploy --config wrangler.toml
+          node node_modules/wrangler/bin/wrangler.js deploy --config wrangler.toml

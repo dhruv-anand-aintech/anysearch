@@ -26,7 +26,7 @@ def _load_json(path: Path) -> OrderedDict:
 def _schema_columns(schema: dict) -> list[tuple[str, str, str]]:
     out = []
     for key, spec in schema.get("properties", {}).items():
-        if key in ("links", "notes"):
+        if key in ("links", "notes", "comparison_only", "evidence"):
             continue
         parts = (spec.get("$comment") or key).split("|")
         parts = [p.strip() for p in parts]
@@ -112,8 +112,12 @@ def bundle() -> None:
     rows = [_load_json(Path(f)) for f in sorted(glob.glob(DATA_GLOB))]
     rows.sort(key=lambda r: r.get("name", ""))
     BUNDLE_PATH.write_text(json.dumps(rows, indent=2) + "\n", encoding="utf-8")
+    checked = [r.get("checked_at", {}).get("value", "") for r in rows]
+    # A build is not a source review. Use the oldest reviewed provider date.
+    oldest = min(checked) if checked and all(checked) else ""
     UPDATED_PATH.write_text(
-        json.dumps({"updated_at": datetime.now(timezone.utc).isoformat()}, indent=2) + "\n",
+        json.dumps({"updated_at": oldest + "T00:00:00Z" if oldest else None,
+                    "meaning": "oldest official documentation review date"}, indent=2) + "\n",
         encoding="utf-8",
     )
     print(f"bundle: wrote {len(rows)} providers to {BUNDLE_PATH}")

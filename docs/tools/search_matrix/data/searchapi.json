@@ -84,22 +84,66 @@
     "comment": "Google engine wrapper: single SERP depth per request (no native fast/deep tier)."
   },
   "pricing_per_1k": {
-    "value": "balanced: $4 starter; $1-$3 volume",
+    "value": "$40/month/10K; $100/35K; $250/100K; $500/250K standard-speed requests",
     "source_url": "https://www.searchapi.io/pricing",
-    "comment": "Pricing is plan/volume based; verify current SearchApi.io plan before budgeting."
+    "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+    "links": {}
   },
   "free_tier_limits": {
-    "value": "100 one-time requests; no card",
+    "value": "100 one-time signup requests; no card",
     "source_url": "https://www.searchapi.io/pricing",
-    "comment": "Complimentary requests are for newly registered accounts and do not renew monthly."
+    "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
+    "links": {}
   },
   "p50_latency": {
-    "value": "Light API: 1.07s p50 / 2.23s p95; standard API: not published",
+    "value": "Historical July 2026: Light API: 1.07s p50 / 2.23s p95; standard API: not published",
     "source_url": "https://proxyway.com/research/search-apis-2026-report",
-    "comment": "Independent three-run benchmark. The figure is for SearchAPI Light; the standard Google endpoint used by anysearch was not separately reported.",
+    "comment": "Historical evidence retained from July 2026; not remeasured or claimed current. Independent three-run benchmark. The figure is for SearchAPI Light; the standard Google endpoint used by anysearch was not separately reported.",
     "links": {
       "Independent benchmark": "https://proxyway.com/research/search-apis-2026-report"
     }
   },
-  "notes": ""
+  "notes": "",
+  "api_category": {
+    "value": "Third-party SERP service",
+    "source_url": "https://www.searchapi.io/pricing",
+    "comment": ""
+  },
+  "api_status": {
+    "value": "Available",
+    "source_url": "https://www.searchapi.io/pricing",
+    "comment": "",
+    "links": {}
+  },
+  "native_api": {
+    "value": "Third-party SERP service; only HTTP-200 success billed; $100/35K equals ~$2.86 / 1K.",
+    "source_url": "https://www.searchapi.io/pricing",
+    "comment": "",
+    "links": {}
+  },
+  "rate_limits": {
+    "value": "Entry plan $40/month; enhanced speed may differ",
+    "source_url": "https://www.searchapi.io/pricing",
+    "comment": "",
+    "links": {}
+  },
+  "checked_at": {
+    "value": "2026-10-21",
+    "source_url": "https://www.searchapi.io/pricing",
+    "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
+    "links": {}
+  },
+  "sdk_support": {
+    "value": "Python + TypeScript adapters",
+    "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
+    "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+  },
+  "evidence": {
+    "checked_at": "2026-10-21",
+    "source_urls": [
+      "https://www.searchapi.io/pricing"
+    ],
+    "effective_date": null,
+    "method": "official documentation; no new benchmarks"
+  }
 }

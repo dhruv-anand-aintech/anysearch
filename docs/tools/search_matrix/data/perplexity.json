@@ -85,23 +85,80 @@
     "comment": "**Search API** (`POST /search`) \u2192 matrix `balanced`: raw ranked `results[]` (anysearch SDK). **Sonar** (`POST /chat/completions`) \u2192 model `sonar`\u2192balanced (grounded answer + citations), `sonar-pro`\u2192deep (multi-source research synthesis). Same `PERPLEXITY_API_KEY`."
   },
   "pricing_per_1k": {
-    "value": "search: $5; fast/sonar low: $5; balanced: $8-$10; deep/high/pro: $12-$22 + tokens",
-    "source_url": "https://docs.perplexity.ai/getting-started/pricing",
-    "comment": "Search API is request-only; Sonar tiers add token charges and request fees by context size/search type."
+    "value": "Fast $1; Standard $5 / 1K requests (up to 5 queries/request); no raw Search model tokens",
+    "source_url": "https://docs.perplexity.ai/docs/getting-started/pricing",
+    "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+    "links": {
+      "Official source 1": "https://docs.perplexity.ai/docs/search/quickstart"
+    }
   },
   "free_tier_limits": {
-    "value": "No standing free API credits documented",
-    "source_url": "https://docs.perplexity.ai/docs/getting-started/api-groups",
-    "comment": "Tier 0 is a rate-limit tier, not a published free-credit allowance; API usage draws from prepaid credits."
+    "value": "No general free API allowance verified",
+    "source_url": "https://docs.perplexity.ai/docs/getting-started/pricing",
+    "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
+    "links": {
+      "Official source 1": "https://docs.perplexity.ai/docs/search/quickstart"
+    }
   },
   "p50_latency": {
-    "value": "Search: 0.35s p50 / 0.47s p95 independent; 0.358s p50 / 0.763s p95 provider; Sonar/deep: not published",
+    "value": "Historical July 2026: Search: 0.35s p50 / 0.47s p95 independent; 0.358s p50 / 0.763s p95 provider; Sonar/deep: not published",
     "source_url": "https://proxyway.com/research/search-apis-2026-report",
-    "comment": "Independent figures use three 2,000-query runs from the US East Coast. Perplexity's reproducible 2025 vendor benchmark ran from AWS us-east-1.",
+    "comment": "Historical evidence retained from July 2026; not remeasured or claimed current. Independent figures use three 2,000-query runs from the US East Coast. Perplexity's reproducible 2025 vendor benchmark ran from AWS us-east-1.",
     "links": {
       "Independent benchmark": "https://proxyway.com/research/search-apis-2026-report",
       "Provider benchmark": "https://research.perplexity.ai/articles/architecting-and-evaluating-an-ai-first-search-api"
     }
   },
-  "notes": "Native SDK package: perplexityai. Search API (`POST /search`) is in the anysearch SDK; Sonar (`POST /chat/completions`) is documented in the matrix but not wired in the SDK yet."
+  "notes": "Native SDK package: perplexityai. Search API (`POST /search`) is in the anysearch SDK; Sonar (`POST /chat/completions`) is documented in the matrix but not wired in the SDK yet.",
+  "api_category": {
+    "value": "Standalone search API",
+    "source_url": "https://docs.perplexity.ai/docs/getting-started/pricing",
+    "comment": ""
+  },
+  "api_status": {
+    "value": "Available",
+    "source_url": "https://docs.perplexity.ai/docs/getting-started/pricing",
+    "comment": "",
+    "links": {
+      "Official source 1": "https://docs.perplexity.ai/docs/search/quickstart"
+    }
+  },
+  "native_api": {
+    "value": "Ranked Search results and extracted text; Sonar, Agent and Research are separate model-mediated products. Empty HTTP-200 responses are billable.",
+    "source_url": "https://docs.perplexity.ai/docs/getting-started/pricing",
+    "comment": "",
+    "links": {
+      "Official source 1": "https://docs.perplexity.ai/docs/search/quickstart"
+    }
+  },
+  "rate_limits": {
+    "value": "1\u201320 results; other account limits per docs",
+    "source_url": "https://docs.perplexity.ai/docs/getting-started/pricing",
+    "comment": "",
+    "links": {
+      "Official source 1": "https://docs.perplexity.ai/docs/search/quickstart"
+    }
+  },
+  "checked_at": {
+    "value": "2026-10-21",
+    "source_url": "https://docs.perplexity.ai/docs/getting-started/pricing",
+    "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
+    "links": {
+      "Official source 1": "https://docs.perplexity.ai/docs/search/quickstart"
+    }
+  },
+  "sdk_support": {
+    "value": "Python + TypeScript adapters",
+    "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
+    "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+  },
+  "evidence": {
+    "checked_at": "2026-10-21",
+    "source_urls": [
+      "https://docs.perplexity.ai/docs/getting-started/pricing",
+      "https://docs.perplexity.ai/docs/search/quickstart"
+    ],
+    "effective_date": null,
+    "method": "official documentation; no new benchmarks"
+  }
 }

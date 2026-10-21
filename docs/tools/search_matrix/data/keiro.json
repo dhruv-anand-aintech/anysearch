@@ -86,22 +86,86 @@
     "comment": "v2 Search `mode`: `light`\u2192fast, `ai`\u2192balanced, `deep`\u2192deep. anysearch uses `/api/v2/search/flash` for fast mode, `/api/v2/keiro` by default, and `/api/v2/search/content` for full-text content."
   },
   "pricing_per_1k": {
-    "value": "fast/balanced: ~$0.50; content: ~$1.50; batch: ~$0.50",
-    "source_url": "https://keirolabs.cloud/",
-    "comment": "Keiro docs list credit costs per v2 endpoint and headline cost per 1,000 searches."
+    "value": "Conflicting official pricing: Keiro lite from $0.10 / 1K; browserfoundry $0.25 / 1K",
+    "source_url": "https://keirolabs.cloud/pricing",
+    "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+    "links": {
+      "Official source 1": "https://keirolabs.cloud/",
+      "Official source 2": "https://www.browserfoundry.cloud/pricing"
+    }
   },
   "free_tier_limits": {
-    "value": "500 searches/month; 30 req/min; no card",
-    "source_url": "https://keirolabs.cloud/",
-    "comment": "Explorer is a hard-capped free plan with no overage and no batch endpoint."
+    "value": "Conflict: Keiro 750 credits/month; browserfoundry 1,250; free/paid conversion differs",
+    "source_url": "https://keirolabs.cloud/pricing",
+    "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
+    "links": {
+      "Official source 1": "https://keirolabs.cloud/",
+      "Official source 2": "https://www.browserfoundry.cloud/pricing"
+    }
   },
   "p50_latency": {
-    "value": "Flash: 0.312s p50 / 1.1s p99; indexed: 0.487s p50; balanced/deep: not published",
+    "value": "Historical July 2026: Flash: 0.312s p50 / 1.1s p99; indexed: 0.487s p50; balanced/deep: not published",
     "source_url": "https://keirolabs.cloud/blogs/ai-agents/ai-agent-search-benchmarks-keiro-vs-competitors/",
-    "comment": "Provider-run May 2026 benchmark of 1,000 agent queries. No independent rerun or latency distribution for Keiro's balanced and deep paths was found.",
+    "comment": "Historical evidence retained from July 2026; not remeasured or claimed current. Provider-run May 2026 benchmark of 1,000 agent queries. No independent rerun or latency distribution for Keiro's balanced and deep paths was found.",
     "links": {
       "Provider benchmark": "https://keirolabs.cloud/blogs/ai-agents/ai-agent-search-benchmarks-keiro-vs-competitors/"
     }
   },
-  "notes": "SDK maps default v2 search to `/api/v2/keiro`, `mode=fast` to `/api/v2/search/flash`, and `include_content=true` to `/api/v2/search/content`."
+  "notes": "SDK maps default v2 search to `/api/v2/keiro`, `mode=fast` to `/api/v2/search/flash`, and `include_content=true` to `/api/v2/search/content`.",
+  "api_category": {
+    "value": "Standalone search API",
+    "source_url": "https://keirolabs.cloud/pricing",
+    "comment": ""
+  },
+  "api_status": {
+    "value": "Available; official pricing conflict",
+    "source_url": "https://keirolabs.cloud/pricing",
+    "comment": "",
+    "links": {
+      "Official source 1": "https://keirolabs.cloud/",
+      "Official source 2": "https://www.browserfoundry.cloud/pricing"
+    }
+  },
+  "native_api": {
+    "value": "Rebranded browserfoundry; claims existing keys/endpoints continue. Fast proxy-backed search; Content, Answer and Agentic are separate. Do not assume paid credit conversion for free tier.",
+    "source_url": "https://keirolabs.cloud/pricing",
+    "comment": "",
+    "links": {
+      "Official source 1": "https://keirolabs.cloud/",
+      "Official source 2": "https://www.browserfoundry.cloud/pricing"
+    }
+  },
+  "rate_limits": {
+    "value": "Conflict: 15 vs 30 RPM; paid starts $29.99 vs $30",
+    "source_url": "https://keirolabs.cloud/pricing",
+    "comment": "",
+    "links": {
+      "Official source 1": "https://keirolabs.cloud/",
+      "Official source 2": "https://www.browserfoundry.cloud/pricing"
+    }
+  },
+  "checked_at": {
+    "value": "2026-10-21",
+    "source_url": "https://keirolabs.cloud/pricing",
+    "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
+    "links": {
+      "Official source 1": "https://keirolabs.cloud/",
+      "Official source 2": "https://www.browserfoundry.cloud/pricing"
+    }
+  },
+  "sdk_support": {
+    "value": "Python + TypeScript adapters",
+    "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
+    "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+  },
+  "evidence": {
+    "checked_at": "2026-10-21",
+    "source_urls": [
+      "https://keirolabs.cloud/pricing",
+      "https://keirolabs.cloud/",
+      "https://www.browserfoundry.cloud/pricing"
+    ],
+    "effective_date": null,
+    "method": "official documentation; no new benchmarks"
+  }
 }

@@ -386,7 +386,9 @@ def main() -> None:
         print("wrote", path.name)
         written += 1
 
-    print(f"Generated {written} provider files in {DATA_DIR}")
+    from apply_search_research import apply_research
+    apply_research()
+    print(f"Generated SDK providers and applied reviewed comparison research in {DATA_DIR}")
 
 
 if __name__ == "__main__":

@@ -35,8 +35,9 @@ def test_aliases_resolve():
 def test_matrix_providers_and_python_sdk_providers_stay_in_parity():
     matrix_dir = Path(__file__).resolve().parents[2] / "docs/tools/search_matrix/data"
     slugs = {
-        json.loads(path.read_text())["links"]["slug"]
+        row["links"]["slug"]
         for path in matrix_dir.glob("*.json")
+        if not (row := json.loads(path.read_text())).get("comparison_only")
     }
     matrix_providers = {
         "serpapi" if slug.startswith("serpapi_") else slug

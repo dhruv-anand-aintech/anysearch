@@ -1,0 +1,144 @@
+{
+  "name": "Anthropic Web Search",
+  "links": {
+    "slug": "anthropic",
+    "docs": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+    "website": "https://anthropic.com"
+  },
+  "env_keys": {
+    "value": "Not integrated",
+    "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+    "comment": "Comparison only; anysearch does not read a key for this provider."
+  },
+  "python_extra": {
+    "value": "Not integrated",
+    "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+    "comment": ""
+  },
+  "mode": {
+    "values": [],
+    "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+    "comment": "No unified SDK mode mapping."
+  },
+  "p50_latency": {
+    "value": "No current comparable measurement verified",
+    "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+    "comment": ""
+  },
+  "notes": "Comparison only; no anysearch SDK adapter is claimed.",
+  "comparison_only": true,
+  "requires_key": {
+    "support": "unknown",
+    "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "snippet": {
+    "support": "unknown",
+    "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "domains": {
+    "support": "unknown",
+    "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "country": {
+    "support": "unknown",
+    "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "language": {
+    "support": "unknown",
+    "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "date": {
+    "support": "unknown",
+    "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "safe_search": {
+    "support": "unknown",
+    "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "answer": {
+    "support": "unknown",
+    "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "content": {
+    "support": "unknown",
+    "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "summary": {
+    "support": "unknown",
+    "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "highlights": {
+    "support": "unknown",
+    "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "news": {
+    "support": "unknown",
+    "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "api_category": {
+    "value": "Model-hosted grounding",
+    "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+    "comment": ""
+  },
+  "api_status": {
+    "value": "Available",
+    "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+    "comment": "",
+    "links": {}
+  },
+  "native_api": {
+    "value": "Claude server-side web search tool; not standalone raw search. Generated answers and search-result processing add model costs.",
+    "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+    "comment": "",
+    "links": {}
+  },
+  "rate_limits": {
+    "value": "Model/tool limits vary; tool use requires compatible model",
+    "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+    "comment": "",
+    "links": {}
+  },
+  "checked_at": {
+    "value": "2026-10-21",
+    "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+    "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
+    "links": {}
+  },
+  "sdk_support": {
+    "value": "Comparison only \u2014 no adapter",
+    "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
+    "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+  },
+  "pricing_per_1k": {
+    "value": "$10 / 1K searches + model token charges",
+    "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+    "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+    "links": {}
+  },
+  "free_tier_limits": {
+    "value": "No recurring free allowance verified",
+    "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+    "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
+    "links": {}
+  },
+  "evidence": {
+    "checked_at": "2026-10-21",
+    "source_urls": [
+      "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool"
+    ],
+    "effective_date": null,
+    "method": "official documentation; no new benchmarks"
+  }
+}

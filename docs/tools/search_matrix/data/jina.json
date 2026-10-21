@@ -84,23 +84,67 @@
     "comment": "Reader Search has no vendor fast/synthesis mode knob. Default returns SERP + optional page markdown; `X-Respond-With: no-content` is a fetch shortcut, not a latency tier."
   },
   "pricing_per_1k": {
-    "value": "token-based; no fixed per-query CPM",
-    "source_url": "https://jina.ai/reader/",
-    "comment": "Reader/Search usage is priced by tokens/usage tiers rather than a fixed per-1K query price."
+    "value": "Token-priced: \u226510K tokens/request; $50/1B tokens implies \u2265$0.50 / 1K, not flat CPM",
+    "source_url": "https://jina.ai/api-dashboard/pricing/",
+    "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+    "links": {}
   },
   "free_tier_limits": {
-    "value": "10M tokens for new users; 500 RPM / 1M TPM",
-    "source_url": "https://api.jina.ai/docs",
-    "comment": "Free Search Foundation tier also limits concurrency to five requests."
+    "value": "10M free tokens listed with noncommercial CC-BY-NC condition; recurrence unverified",
+    "source_url": "https://jina.ai/api-dashboard/pricing/",
+    "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
+    "links": {}
   },
   "p50_latency": {
-    "value": "Search: 0.75s p50 / 1.32s p95 independent; 2.5s provider-reported average",
+    "value": "Historical July 2026: Search: 0.75s p50 / 1.32s p95 independent; 2.5s provider-reported average",
     "source_url": "https://proxyway.com/research/search-apis-2026-report",
-    "comment": "Independent percentiles use three 2,000-query runs from the US East Coast. Jina's current rate-limit table reports a 2.5-second average for s.jina.ai.",
+    "comment": "Historical evidence retained from July 2026; not remeasured or claimed current. Independent percentiles use three 2,000-query runs from the US East Coast. Jina's current rate-limit table reports a 2.5-second average for s.jina.ai.",
     "links": {
       "Independent benchmark": "https://proxyway.com/research/search-apis-2026-report",
       "Provider average": "https://jina.ai/deepsearch/"
     }
   },
-  "notes": ""
+  "notes": "",
+  "api_category": {
+    "value": "Standalone search API",
+    "source_url": "https://jina.ai/api-dashboard/pricing/",
+    "comment": ""
+  },
+  "api_status": {
+    "value": "Available",
+    "source_url": "https://jina.ai/api-dashboard/pricing/",
+    "comment": "",
+    "links": {}
+  },
+  "native_api": {
+    "value": "s.jina.ai requires key; r.jina.ai URL reader uses separate output-token billing.",
+    "source_url": "https://jina.ai/api-dashboard/pricing/",
+    "comment": "",
+    "links": {}
+  },
+  "rate_limits": {
+    "value": "Search 100 RPM free/paid; 1,000 RPM premium",
+    "source_url": "https://jina.ai/api-dashboard/pricing/",
+    "comment": "",
+    "links": {}
+  },
+  "checked_at": {
+    "value": "2026-10-21",
+    "source_url": "https://jina.ai/api-dashboard/pricing/",
+    "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
+    "links": {}
+  },
+  "sdk_support": {
+    "value": "Python + TypeScript adapters",
+    "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
+    "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+  },
+  "evidence": {
+    "checked_at": "2026-10-21",
+    "source_urls": [
+      "https://jina.ai/api-dashboard/pricing/"
+    ],
+    "effective_date": null,
+    "method": "official documentation; no new benchmarks"
+  }
 }

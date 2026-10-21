@@ -1,5 +1,149 @@
 [
   {
+    "name": "Anthropic Web Search",
+    "links": {
+      "slug": "anthropic",
+      "docs": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+      "website": "https://anthropic.com"
+    },
+    "env_keys": {
+      "value": "Not integrated",
+      "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+      "comment": "Comparison only; anysearch does not read a key for this provider."
+    },
+    "python_extra": {
+      "value": "Not integrated",
+      "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+      "comment": ""
+    },
+    "mode": {
+      "values": [],
+      "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+      "comment": "No unified SDK mode mapping."
+    },
+    "p50_latency": {
+      "value": "No current comparable measurement verified",
+      "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+      "comment": ""
+    },
+    "notes": "Comparison only; no anysearch SDK adapter is claimed.",
+    "comparison_only": true,
+    "requires_key": {
+      "support": "unknown",
+      "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "snippet": {
+      "support": "unknown",
+      "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "domains": {
+      "support": "unknown",
+      "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "country": {
+      "support": "unknown",
+      "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "language": {
+      "support": "unknown",
+      "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "date": {
+      "support": "unknown",
+      "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "safe_search": {
+      "support": "unknown",
+      "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "answer": {
+      "support": "unknown",
+      "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "content": {
+      "support": "unknown",
+      "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "summary": {
+      "support": "unknown",
+      "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "highlights": {
+      "support": "unknown",
+      "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "news": {
+      "support": "unknown",
+      "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "api_category": {
+      "value": "Model-hosted grounding",
+      "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+      "comment": ""
+    },
+    "api_status": {
+      "value": "Available",
+      "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+      "comment": "",
+      "links": {}
+    },
+    "native_api": {
+      "value": "Claude server-side web search tool; not standalone raw search. Generated answers and search-result processing add model costs.",
+      "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+      "comment": "",
+      "links": {}
+    },
+    "rate_limits": {
+      "value": "Model/tool limits vary; tool use requires compatible model",
+      "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+      "comment": "",
+      "links": {}
+    },
+    "checked_at": {
+      "value": "2026-10-21",
+      "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+      "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
+      "links": {}
+    },
+    "sdk_support": {
+      "value": "Comparison only \u2014 no adapter",
+      "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
+      "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+    },
+    "pricing_per_1k": {
+      "value": "$10 / 1K searches + model token charges",
+      "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+      "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "links": {}
+    },
+    "free_tier_limits": {
+      "value": "No recurring free allowance verified",
+      "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+      "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
+      "links": {}
+    },
+    "evidence": {
+      "checked_at": "2026-10-21",
+      "source_urls": [
+        "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool"
+      ],
+      "effective_date": null,
+      "method": "official documentation; no new benchmarks"
+    }
+  },
+  {
     "name": "Baidu \u00b7 SerpApi",
     "links": {
       "docs": "https://serpapi.com/baidu-search-api",
@@ -85,25 +229,214 @@
       "comment": "Fixed SerpApi backend `engine=baidu` (set via anysearch `engine=\"baidu\"` with `provider=\"serpapi\"`). No separate fast/deep tier on this engine."
     },
     "pricing_per_1k": {
-      "value": "balanced: $25 starter; ~$3.75-$15 volume",
+      "value": "$25/month for 1K; $75/5K; $150/15K; $275/30K searches",
       "source_url": "https://serpapi.com/pricing",
-      "comment": "Monthly plan price divided by included searches; applies to all SerpApi engine rows."
+      "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "links": {}
     },
     "free_tier_limits": {
       "value": "250 searches/month; 50/hour",
       "source_url": "https://serpapi.com/pricing",
-      "comment": "Free plan applies across SerpApi engines; only successful uncached searches consume quota."
+      "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
+      "links": {}
     },
     "p50_latency": {
-      "value": "Light API: 1.28s p50 independent; fastest Google API: 0.73s avg / 1.45s p99 vendor-run",
+      "value": "Historical July 2026: Light API: 1.28s p50 independent; fastest Google API: 0.73s avg / 1.45s p99 vendor-run",
       "source_url": "https://proxyway.com/research/search-apis-2026-report",
-      "comment": "Independent p50 is for SerpApi Light, not a specific engine. SerpApi's own 100-plus-query comparison reports average and p99 for its fastest Google API; anysearch engine-specific latency remains unreported.",
+      "comment": "Historical evidence retained from July 2026; not remeasured or claimed current. Independent p50 is for SerpApi Light, not a specific engine. SerpApi's own 100-plus-query comparison reports average and p99 for its fastest Google API; anysearch engine-specific latency remains unreported.",
       "links": {
         "Independent benchmark": "https://proxyway.com/research/search-apis-2026-report",
         "Provider benchmark": "https://serpapi.com/blog/who-has-the-fastest-google-search-api/"
       }
     },
-    "notes": "SerpApi proxy to Baidu (`engine=baidu`). Native SDK package: google-search-results."
+    "notes": "SerpApi proxy to Baidu (`engine=baidu`). Native SDK package: google-search-results.",
+    "api_category": {
+      "value": "Third-party SERP service",
+      "source_url": "https://serpapi.com/pricing",
+      "comment": ""
+    },
+    "api_status": {
+      "value": "Available",
+      "source_url": "https://serpapi.com/pricing",
+      "comment": "",
+      "links": {}
+    },
+    "native_api": {
+      "value": "Third-party SERP access to multiple engines; not official Google/Bing developer API.",
+      "source_url": "https://serpapi.com/pricing",
+      "comment": "",
+      "links": {}
+    },
+    "rate_limits": {
+      "value": "Starter 200/hour; Developer 1,000/hour",
+      "source_url": "https://serpapi.com/pricing",
+      "comment": "",
+      "links": {}
+    },
+    "checked_at": {
+      "value": "2026-10-21",
+      "source_url": "https://serpapi.com/pricing",
+      "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
+      "links": {}
+    },
+    "sdk_support": {
+      "value": "Python + TypeScript adapters",
+      "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
+      "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+    },
+    "evidence": {
+      "checked_at": "2026-10-21",
+      "source_urls": [
+        "https://serpapi.com/pricing"
+      ],
+      "effective_date": null,
+      "method": "official documentation; no new benchmarks"
+    }
+  },
+  {
+    "name": "Bing Search (retired)",
+    "links": {
+      "slug": "bing_legacy",
+      "docs": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+      "website": "https://www.microsoft.com/bing"
+    },
+    "env_keys": {
+      "value": "Not integrated",
+      "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+      "comment": "Comparison only; anysearch does not read a key for this provider."
+    },
+    "python_extra": {
+      "value": "Not integrated",
+      "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+      "comment": ""
+    },
+    "mode": {
+      "values": [],
+      "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+      "comment": "No unified SDK mode mapping."
+    },
+    "p50_latency": {
+      "value": "No current comparable measurement verified",
+      "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+      "comment": ""
+    },
+    "notes": "Comparison only; no anysearch SDK adapter is claimed.",
+    "comparison_only": true,
+    "requires_key": {
+      "support": "unknown",
+      "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "snippet": {
+      "support": "unknown",
+      "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "domains": {
+      "support": "unknown",
+      "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "country": {
+      "support": "unknown",
+      "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "language": {
+      "support": "unknown",
+      "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "date": {
+      "support": "unknown",
+      "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "safe_search": {
+      "support": "unknown",
+      "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "answer": {
+      "support": "unknown",
+      "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "content": {
+      "support": "unknown",
+      "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "summary": {
+      "support": "unknown",
+      "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "highlights": {
+      "support": "unknown",
+      "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "news": {
+      "support": "unknown",
+      "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "api_category": {
+      "value": "Legacy search API",
+      "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+      "comment": ""
+    },
+    "api_status": {
+      "value": "Retired August 11, 2025",
+      "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+      "comment": "",
+      "links": {}
+    },
+    "native_api": {
+      "value": "Azure Grounding with Bing is a separate hosted service; Bing via SerpApi is a third-party wrapper.",
+      "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+      "comment": "",
+      "links": {}
+    },
+    "rate_limits": {
+      "value": "All instances decommissioned August 11, 2025",
+      "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+      "comment": "",
+      "links": {}
+    },
+    "checked_at": {
+      "value": "2026-10-21",
+      "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+      "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
+      "links": {}
+    },
+    "sdk_support": {
+      "value": "Comparison only \u2014 no adapter",
+      "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
+      "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+    },
+    "pricing_per_1k": {
+      "value": "Retired; current direct API pricing not applicable",
+      "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+      "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "links": {}
+    },
+    "free_tier_limits": {
+      "value": "Unavailable",
+      "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+      "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
+      "links": {}
+    },
+    "evidence": {
+      "checked_at": "2026-10-21",
+      "source_urls": [
+        "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement"
+      ],
+      "effective_date": null,
+      "method": "official documentation; no new benchmarks"
+    },
+    "deprecated": true
   },
   {
     "name": "Bing \u00b7 SerpApi",
@@ -191,25 +524,69 @@
       "comment": "Fixed SerpApi backend `engine=bing` (set via anysearch `engine=\"bing\"` with `provider=\"serpapi\"`). No separate fast/deep tier on this engine."
     },
     "pricing_per_1k": {
-      "value": "balanced: $25 starter; ~$3.75-$15 volume",
+      "value": "$25/month for 1K; $75/5K; $150/15K; $275/30K searches",
       "source_url": "https://serpapi.com/pricing",
-      "comment": "Monthly plan price divided by included searches; applies to all SerpApi engine rows."
+      "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "links": {}
     },
     "free_tier_limits": {
       "value": "250 searches/month; 50/hour",
       "source_url": "https://serpapi.com/pricing",
-      "comment": "Free plan applies across SerpApi engines; only successful uncached searches consume quota."
+      "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
+      "links": {}
     },
     "p50_latency": {
-      "value": "Light API: 1.28s p50 independent; fastest Google API: 0.73s avg / 1.45s p99 vendor-run",
+      "value": "Historical July 2026: Light API: 1.28s p50 independent; fastest Google API: 0.73s avg / 1.45s p99 vendor-run",
       "source_url": "https://proxyway.com/research/search-apis-2026-report",
-      "comment": "Independent p50 is for SerpApi Light, not a specific engine. SerpApi's own 100-plus-query comparison reports average and p99 for its fastest Google API; anysearch engine-specific latency remains unreported.",
+      "comment": "Historical evidence retained from July 2026; not remeasured or claimed current. Independent p50 is for SerpApi Light, not a specific engine. SerpApi's own 100-plus-query comparison reports average and p99 for its fastest Google API; anysearch engine-specific latency remains unreported.",
       "links": {
         "Independent benchmark": "https://proxyway.com/research/search-apis-2026-report",
         "Provider benchmark": "https://serpapi.com/blog/who-has-the-fastest-google-search-api/"
       }
     },
-    "notes": "SerpApi proxy to Bing (`engine=bing`). Native SDK package: google-search-results."
+    "notes": "SerpApi proxy to Bing (`engine=bing`). Native SDK package: google-search-results.",
+    "api_category": {
+      "value": "Third-party SERP service",
+      "source_url": "https://serpapi.com/pricing",
+      "comment": ""
+    },
+    "api_status": {
+      "value": "Available",
+      "source_url": "https://serpapi.com/pricing",
+      "comment": "",
+      "links": {}
+    },
+    "native_api": {
+      "value": "Third-party SERP access to multiple engines; not official Google/Bing developer API.",
+      "source_url": "https://serpapi.com/pricing",
+      "comment": "",
+      "links": {}
+    },
+    "rate_limits": {
+      "value": "Starter 200/hour; Developer 1,000/hour",
+      "source_url": "https://serpapi.com/pricing",
+      "comment": "",
+      "links": {}
+    },
+    "checked_at": {
+      "value": "2026-10-21",
+      "source_url": "https://serpapi.com/pricing",
+      "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
+      "links": {}
+    },
+    "sdk_support": {
+      "value": "Python + TypeScript adapters",
+      "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
+      "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+    },
+    "evidence": {
+      "checked_at": "2026-10-21",
+      "source_urls": [
+        "https://serpapi.com/pricing"
+      ],
+      "effective_date": null,
+      "method": "official documentation; no new benchmarks"
+    }
   },
   {
     "name": "Brave",
@@ -298,25 +675,514 @@
       "comment": "**Web/news SERP** (`/res/v1/web/search`) \u2192 matrix `balanced`. **Answers API** (`POST /res/v1/chat/completions`, `model=brave`) \u2192 balanced (single-pass grounded answer); `enable_research=true` (streaming)\u2192deep. Same `BRAVE_API_KEY`."
     },
     "pricing_per_1k": {
-      "value": "balanced/search: $5; deep/answers: $4 + tokens",
-      "source_url": "https://brave.com/search/api/",
-      "comment": "Search is $5/1K requests; Answers is $4/1K plus input/output token charges."
+      "value": "Search $5 / 1K requests; Answers $4 / 1K + $5/M input and output tokens",
+      "source_url": "https://api-dashboard.search.brave.com/documentation/pricing",
+      "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "links": {
+        "Official source 1": "https://brave.com/blog/most-powerful-search-api-for-ai/"
+      }
     },
     "free_tier_limits": {
-      "value": "$5 credits/month (~1,000 Search requests)",
-      "source_url": "https://brave.com/search/api/",
-      "comment": "Credits are applied automatically each month to Search or Answers usage."
+      "value": "$5 monthly credit; attribution conditions apply",
+      "source_url": "https://api-dashboard.search.brave.com/documentation/pricing",
+      "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
+      "links": {
+        "Official source 1": "https://brave.com/blog/most-powerful-search-api-for-ai/"
+      }
     },
     "p50_latency": {
-      "value": "Web: 0.77s p50 / 1.19s p95; Answers/research: not published",
+      "value": "Historical July 2026: Web: 0.77s p50 / 1.19s p95; Answers/research: not published",
       "source_url": "https://proxyway.com/research/search-apis-2026-report",
-      "comment": "Web Search is independently measured across three 2,000-query runs from the US East Coast. Brave publishes no percentile latency for Answers or research mode.",
+      "comment": "Historical evidence retained from July 2026; not remeasured or claimed current. Web Search is independently measured across three 2,000-query runs from the US East Coast. Brave publishes no percentile latency for Answers or research mode.",
       "links": {
         "Independent benchmark": "https://proxyway.com/research/search-apis-2026-report",
         "Provider API": "https://brave.com/search/api/"
       }
     },
-    "notes": "Web/news Search API is in the anysearch SDK; Answers API (`/res/v1/chat/completions`) is documented in the matrix but not wired in the SDK yet."
+    "notes": "Web/news Search API is in the anysearch SDK; Answers API (`/res/v1/chat/completions`) is documented in the matrix but not wired in the SDK yet.",
+    "api_category": {
+      "value": "Standalone search API",
+      "source_url": "https://api-dashboard.search.brave.com/documentation/pricing",
+      "comment": ""
+    },
+    "api_status": {
+      "value": "Available",
+      "source_url": "https://api-dashboard.search.brave.com/documentation/pricing",
+      "comment": "",
+      "links": {
+        "Official source 1": "https://brave.com/blog/most-powerful-search-api-for-ai/"
+      }
+    },
+    "native_api": {
+      "value": "Web, news, images, videos and LLM context; Answers is a separate generated-answer product.",
+      "source_url": "https://api-dashboard.search.brave.com/documentation/pricing",
+      "comment": "",
+      "links": {
+        "Official source 1": "https://brave.com/blog/most-powerful-search-api-for-ai/"
+      }
+    },
+    "rate_limits": {
+      "value": "Search 50 RPS; Answers 2 RPS",
+      "source_url": "https://api-dashboard.search.brave.com/documentation/pricing",
+      "comment": "",
+      "links": {
+        "Official source 1": "https://brave.com/blog/most-powerful-search-api-for-ai/"
+      }
+    },
+    "checked_at": {
+      "value": "2026-10-21",
+      "source_url": "https://api-dashboard.search.brave.com/documentation/pricing",
+      "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
+      "links": {
+        "Official source 1": "https://brave.com/blog/most-powerful-search-api-for-ai/"
+      }
+    },
+    "sdk_support": {
+      "value": "Python + TypeScript adapters",
+      "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
+      "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+    },
+    "evidence": {
+      "checked_at": "2026-10-21",
+      "source_urls": [
+        "https://api-dashboard.search.brave.com/documentation/pricing",
+        "https://brave.com/blog/most-powerful-search-api-for-ai/"
+      ],
+      "effective_date": null,
+      "method": "official documentation; no new benchmarks"
+    }
+  },
+  {
+    "name": "Bright Data",
+    "links": {
+      "slug": "brightdata",
+      "docs": "https://brightdata.com/pricing/serp",
+      "website": "https://brightdata.com"
+    },
+    "env_keys": {
+      "value": "Not integrated",
+      "source_url": "https://brightdata.com/pricing/serp",
+      "comment": "Comparison only; anysearch does not read a key for this provider."
+    },
+    "python_extra": {
+      "value": "Not integrated",
+      "source_url": "https://brightdata.com/pricing/serp",
+      "comment": ""
+    },
+    "mode": {
+      "values": [],
+      "source_url": "https://brightdata.com/pricing/serp",
+      "comment": "No unified SDK mode mapping."
+    },
+    "p50_latency": {
+      "value": "No current comparable measurement verified",
+      "source_url": "https://brightdata.com/pricing/serp",
+      "comment": ""
+    },
+    "notes": "Comparison only; no anysearch SDK adapter is claimed.",
+    "comparison_only": true,
+    "requires_key": {
+      "support": "unknown",
+      "source_url": "https://brightdata.com/pricing/serp",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "snippet": {
+      "support": "unknown",
+      "source_url": "https://brightdata.com/pricing/serp",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "domains": {
+      "support": "unknown",
+      "source_url": "https://brightdata.com/pricing/serp",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "country": {
+      "support": "unknown",
+      "source_url": "https://brightdata.com/pricing/serp",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "language": {
+      "support": "unknown",
+      "source_url": "https://brightdata.com/pricing/serp",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "date": {
+      "support": "unknown",
+      "source_url": "https://brightdata.com/pricing/serp",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "safe_search": {
+      "support": "unknown",
+      "source_url": "https://brightdata.com/pricing/serp",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "answer": {
+      "support": "unknown",
+      "source_url": "https://brightdata.com/pricing/serp",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "content": {
+      "support": "unknown",
+      "source_url": "https://brightdata.com/pricing/serp",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "summary": {
+      "support": "unknown",
+      "source_url": "https://brightdata.com/pricing/serp",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "highlights": {
+      "support": "unknown",
+      "source_url": "https://brightdata.com/pricing/serp",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "news": {
+      "support": "unknown",
+      "source_url": "https://brightdata.com/pricing/serp",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "api_category": {
+      "value": "Third-party SERP service",
+      "source_url": "https://brightdata.com/pricing/serp",
+      "comment": ""
+    },
+    "api_status": {
+      "value": "Available",
+      "source_url": "https://brightdata.com/pricing/serp",
+      "comment": "",
+      "links": {}
+    },
+    "native_api": {
+      "value": "SERP proxy; requests are not individual organic links; async collection not another billed request.",
+      "source_url": "https://brightdata.com/pricing/serp",
+      "comment": "",
+      "links": {}
+    },
+    "rate_limits": {
+      "value": "PAYG deposit minimum not verified",
+      "source_url": "https://brightdata.com/pricing/serp",
+      "comment": "",
+      "links": {}
+    },
+    "checked_at": {
+      "value": "2026-10-21",
+      "source_url": "https://brightdata.com/pricing/serp",
+      "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
+      "links": {}
+    },
+    "sdk_support": {
+      "value": "Comparison only \u2014 no adapter",
+      "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
+      "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+    },
+    "pricing_per_1k": {
+      "value": "PAYG $1.50 / 1K successful requests; Scale $499/month includes 380K then $1.30 / 1K",
+      "source_url": "https://brightdata.com/pricing/serp",
+      "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "links": {}
+    },
+    "free_tier_limits": {
+      "value": "5,000 requests/month free; no card",
+      "source_url": "https://brightdata.com/pricing/serp",
+      "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
+      "links": {}
+    },
+    "evidence": {
+      "checked_at": "2026-10-21",
+      "source_urls": [
+        "https://brightdata.com/pricing/serp"
+      ],
+      "effective_date": null,
+      "method": "official documentation; no new benchmarks"
+    }
+  },
+  {
+    "name": "DataForSEO",
+    "links": {
+      "slug": "dataforseo",
+      "docs": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+      "website": "https://dataforseo.com"
+    },
+    "env_keys": {
+      "value": "Not integrated",
+      "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+      "comment": "Comparison only; anysearch does not read a key for this provider."
+    },
+    "python_extra": {
+      "value": "Not integrated",
+      "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+      "comment": ""
+    },
+    "mode": {
+      "values": [],
+      "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+      "comment": "No unified SDK mode mapping."
+    },
+    "p50_latency": {
+      "value": "No current comparable measurement verified",
+      "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+      "comment": ""
+    },
+    "notes": "Comparison only; no anysearch SDK adapter is claimed.",
+    "comparison_only": true,
+    "requires_key": {
+      "support": "unknown",
+      "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "snippet": {
+      "support": "unknown",
+      "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "domains": {
+      "support": "unknown",
+      "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "country": {
+      "support": "unknown",
+      "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "language": {
+      "support": "unknown",
+      "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "date": {
+      "support": "unknown",
+      "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "safe_search": {
+      "support": "unknown",
+      "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "answer": {
+      "support": "unknown",
+      "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "content": {
+      "support": "unknown",
+      "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "summary": {
+      "support": "unknown",
+      "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "highlights": {
+      "support": "unknown",
+      "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "news": {
+      "support": "unknown",
+      "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "api_category": {
+      "value": "Third-party SERP service",
+      "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+      "comment": ""
+    },
+    "api_status": {
+      "value": "Available",
+      "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+      "comment": "",
+      "links": {}
+    },
+    "native_api": {
+      "value": "Depth, operators and extras alter cost; queued jobs are not comparable to Live latency.",
+      "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+      "comment": "",
+      "links": {}
+    },
+    "rate_limits": {
+      "value": "$50 minimum prepaid; no subscription/expiry; Standard average ~5min, target 45min",
+      "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+      "comment": "",
+      "links": {}
+    },
+    "checked_at": {
+      "value": "2026-10-21",
+      "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+      "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
+      "links": {}
+    },
+    "sdk_support": {
+      "value": "Comparison only \u2014 no adapter",
+      "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
+      "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+    },
+    "pricing_per_1k": {
+      "value": "Standard queue $0.60; Priority $1.20; Live $2 / 1K SERP pages (\u226410 organic results/page)",
+      "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+      "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "links": {}
+    },
+    "free_tier_limits": {
+      "value": "$1 trial; sample-only sandbox separate",
+      "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+      "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
+      "links": {}
+    },
+    "evidence": {
+      "checked_at": "2026-10-21",
+      "source_urls": [
+        "https://dataforseo.com/pricing/google-serp/google-organic-serp-api"
+      ],
+      "effective_date": null,
+      "method": "official documentation; no new benchmarks"
+    }
+  },
+  {
+    "name": "DeepSeek",
+    "links": {
+      "slug": "deepseek",
+      "docs": "https://api-docs.deepseek.com/guides/search/",
+      "website": "https://www.deepseek.com"
+    },
+    "env_keys": {
+      "value": "Not integrated",
+      "source_url": "https://api-docs.deepseek.com/guides/search/",
+      "comment": "Comparison only; anysearch does not read a key for this provider."
+    },
+    "python_extra": {
+      "value": "Not integrated",
+      "source_url": "https://api-docs.deepseek.com/guides/search/",
+      "comment": ""
+    },
+    "mode": {
+      "values": [],
+      "source_url": "https://api-docs.deepseek.com/guides/search/",
+      "comment": "No unified SDK mode mapping."
+    },
+    "p50_latency": {
+      "value": "No current comparable measurement verified",
+      "source_url": "https://api-docs.deepseek.com/guides/search/",
+      "comment": ""
+    },
+    "notes": "Comparison only; no anysearch SDK adapter is claimed.",
+    "comparison_only": true,
+    "requires_key": {
+      "support": "unknown",
+      "source_url": "https://api-docs.deepseek.com/guides/search/",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "snippet": {
+      "support": "unknown",
+      "source_url": "https://api-docs.deepseek.com/guides/search/",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "domains": {
+      "support": "unknown",
+      "source_url": "https://api-docs.deepseek.com/guides/search/",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "country": {
+      "support": "unknown",
+      "source_url": "https://api-docs.deepseek.com/guides/search/",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "language": {
+      "support": "unknown",
+      "source_url": "https://api-docs.deepseek.com/guides/search/",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "date": {
+      "support": "unknown",
+      "source_url": "https://api-docs.deepseek.com/guides/search/",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "safe_search": {
+      "support": "unknown",
+      "source_url": "https://api-docs.deepseek.com/guides/search/",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "answer": {
+      "support": "unknown",
+      "source_url": "https://api-docs.deepseek.com/guides/search/",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "content": {
+      "support": "unknown",
+      "source_url": "https://api-docs.deepseek.com/guides/search/",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "summary": {
+      "support": "unknown",
+      "source_url": "https://api-docs.deepseek.com/guides/search/",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "highlights": {
+      "support": "unknown",
+      "source_url": "https://api-docs.deepseek.com/guides/search/",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "news": {
+      "support": "unknown",
+      "source_url": "https://api-docs.deepseek.com/guides/search/",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "api_category": {
+      "value": "Standalone search API",
+      "source_url": "https://api-docs.deepseek.com/guides/search/",
+      "comment": ""
+    },
+    "api_status": {
+      "value": "Available",
+      "source_url": "https://api-docs.deepseek.com/guides/search/",
+      "comment": "Direct live guide rechecked October 21: Search 100 QPS and Fetch 25 QPS. Earlier indexed 5/5 snapshot is superseded. Direct API billing is separate from temporarily free server-side integrations, billed from October 31 16:00 UTC.",
+      "links": {}
+    },
+    "native_api": {
+      "value": "Raw JSON POST /v1/tools/search; 1\u201350 results, optional content, summaries; site/lang/date query operators. Separate Markdown Fetch API.",
+      "source_url": "https://api-docs.deepseek.com/guides/search/",
+      "comment": "Direct live guide rechecked October 21: Search 100 QPS and Fetch 25 QPS. Earlier indexed 5/5 snapshot is superseded. Direct API billing is separate from temporarily free server-side integrations, billed from October 31 16:00 UTC.",
+      "links": {}
+    },
+    "rate_limits": {
+      "value": "Search 100 QPS/account; Fetch 25 QPS/account; Fetch also per-domain throttled",
+      "source_url": "https://api-docs.deepseek.com/guides/search/",
+      "comment": "Direct live guide rechecked October 21: Search 100 QPS and Fetch 25 QPS. Earlier indexed 5/5 snapshot is superseded. Direct API billing is separate from temporarily free server-side integrations, billed from October 31 16:00 UTC.",
+      "links": {}
+    },
+    "checked_at": {
+      "value": "2026-10-21",
+      "source_url": "https://api-docs.deepseek.com/guides/search/",
+      "comment": "Official public documentation reviewed; no paid API or benchmark run. Direct live guide rechecked October 21: Search 100 QPS and Fetch 25 QPS. Earlier indexed 5/5 snapshot is superseded. Direct API billing is separate from temporarily free server-side integrations, billed from October 31 16:00 UTC.",
+      "links": {}
+    },
+    "sdk_support": {
+      "value": "Comparison only \u2014 no adapter",
+      "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
+      "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+    },
+    "pricing_per_1k": {
+      "value": "$0.75 / 1K successful nonempty Search requests; Fetch separately $0.75 / 1K",
+      "source_url": "https://api-docs.deepseek.com/guides/search/",
+      "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. Direct live guide rechecked October 21: Search 100 QPS and Fetch 25 QPS. Earlier indexed 5/5 snapshot is superseded. Direct API billing is separate from temporarily free server-side integrations, billed from October 31 16:00 UTC.",
+      "links": {}
+    },
+    "free_tier_limits": {
+      "value": "No recurring direct API allowance verified; server-side tool promotion is separate",
+      "source_url": "https://api-docs.deepseek.com/guides/search/",
+      "comment": "Trial, monthly credits and model-tool promotions are distinct. Direct live guide rechecked October 21: Search 100 QPS and Fetch 25 QPS. Earlier indexed 5/5 snapshot is superseded. Direct API billing is separate from temporarily free server-side integrations, billed from October 31 16:00 UTC.",
+      "links": {}
+    },
+    "evidence": {
+      "checked_at": "2026-10-21",
+      "source_urls": [
+        "https://api-docs.deepseek.com/guides/search/"
+      ],
+      "effective_date": "2026-10-17",
+      "method": "official documentation; no new benchmarks"
+    }
   },
   {
     "name": "DuckDuckGo",
@@ -404,21 +1270,65 @@
       "comment": "Keyless DDGS client: instant web results without a depth parameter. Matrix `balanced` = default `text()` search."
     },
     "pricing_per_1k": {
-      "value": "$0 API fee via keyless DDGS client; unofficial/fragile",
-      "source_url": "https://pypi.org/project/ddgs/",
-      "comment": "No paid official web search API is used by anysearch's keyless fallback."
+      "value": "No library API fee; hosting/proxy/upstream costs separate",
+      "source_url": "https://github.com/deedy5/ddgs",
+      "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "links": {}
     },
     "free_tier_limits": {
-      "value": "No fixed quota or API fee; upstream rate limits apply",
-      "source_url": "https://pypi.org/project/ddgs/",
-      "comment": "DDGS is a keyless metasearch client rather than a contracted DuckDuckGo API service."
+      "value": "No contracted quota or SLA established",
+      "source_url": "https://github.com/deedy5/ddgs",
+      "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
+      "links": {}
     },
     "p50_latency": {
-      "value": "No contracted API latency distribution for the DDGS fallback",
+      "value": "Historical July 2026: No contracted API latency distribution for the DDGS fallback",
       "source_url": "https://pypi.org/project/ddgs/",
-      "comment": "anysearch uses the keyless DDGS metasearch client rather than an official DuckDuckGo Search API with a published latency SLA."
+      "comment": "Historical evidence retained from July 2026; not remeasured or claimed current. anysearch uses the keyless DDGS metasearch client rather than an official DuckDuckGo Search API with a published latency SLA."
     },
-    "notes": "No API key required (keyless fallback). Native SDK package: ddgs."
+    "notes": "No API key required (keyless fallback). Native SDK package: ddgs.",
+    "api_category": {
+      "value": "Unofficial metasearch library",
+      "source_url": "https://github.com/deedy5/ddgs",
+      "comment": ""
+    },
+    "api_status": {
+      "value": "Self-managed; upstream dependent",
+      "source_url": "https://github.com/deedy5/ddgs",
+      "comment": "",
+      "links": {}
+    },
+    "native_api": {
+      "value": "Unofficial DDGS/Dux Distributed Global Search metasearch library; no verified DuckDuckGo affiliation or unlimited commercial service.",
+      "source_url": "https://github.com/deedy5/ddgs",
+      "comment": "",
+      "links": {}
+    },
+    "rate_limits": {
+      "value": "Upstream throttling; library/version and deployment dependent",
+      "source_url": "https://github.com/deedy5/ddgs",
+      "comment": "",
+      "links": {}
+    },
+    "checked_at": {
+      "value": "2026-10-21",
+      "source_url": "https://github.com/deedy5/ddgs",
+      "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
+      "links": {}
+    },
+    "sdk_support": {
+      "value": "Python + TypeScript adapters",
+      "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
+      "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+    },
+    "evidence": {
+      "checked_at": "2026-10-21",
+      "source_urls": [
+        "https://github.com/deedy5/ddgs"
+      ],
+      "effective_date": null,
+      "method": "official documentation; no new benchmarks"
+    }
   },
   {
     "name": "DuckDuckGo \u00b7 SerpApi",
@@ -506,25 +1416,69 @@
       "comment": "Fixed SerpApi backend `engine=duckduckgo` (set via anysearch `engine=\"duckduckgo\"` with `provider=\"serpapi\"`). No separate fast/deep tier on this engine."
     },
     "pricing_per_1k": {
-      "value": "balanced: $25 starter; ~$3.75-$15 volume",
+      "value": "$25/month for 1K; $75/5K; $150/15K; $275/30K searches",
       "source_url": "https://serpapi.com/pricing",
-      "comment": "Monthly plan price divided by included searches; applies to all SerpApi engine rows."
+      "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "links": {}
     },
     "free_tier_limits": {
       "value": "250 searches/month; 50/hour",
       "source_url": "https://serpapi.com/pricing",
-      "comment": "Free plan applies across SerpApi engines; only successful uncached searches consume quota."
+      "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
+      "links": {}
     },
     "p50_latency": {
-      "value": "Light API: 1.28s p50 independent; fastest Google API: 0.73s avg / 1.45s p99 vendor-run",
+      "value": "Historical July 2026: Light API: 1.28s p50 independent; fastest Google API: 0.73s avg / 1.45s p99 vendor-run",
       "source_url": "https://proxyway.com/research/search-apis-2026-report",
-      "comment": "Independent p50 is for SerpApi Light, not a specific engine. SerpApi's own 100-plus-query comparison reports average and p99 for its fastest Google API; anysearch engine-specific latency remains unreported.",
+      "comment": "Historical evidence retained from July 2026; not remeasured or claimed current. Independent p50 is for SerpApi Light, not a specific engine. SerpApi's own 100-plus-query comparison reports average and p99 for its fastest Google API; anysearch engine-specific latency remains unreported.",
       "links": {
         "Independent benchmark": "https://proxyway.com/research/search-apis-2026-report",
         "Provider benchmark": "https://serpapi.com/blog/who-has-the-fastest-google-search-api/"
       }
     },
-    "notes": "SerpApi proxy to DuckDuckGo (`engine=duckduckgo`). Native SDK package: google-search-results."
+    "notes": "SerpApi proxy to DuckDuckGo (`engine=duckduckgo`). Native SDK package: google-search-results.",
+    "api_category": {
+      "value": "Third-party SERP service",
+      "source_url": "https://serpapi.com/pricing",
+      "comment": ""
+    },
+    "api_status": {
+      "value": "Available",
+      "source_url": "https://serpapi.com/pricing",
+      "comment": "",
+      "links": {}
+    },
+    "native_api": {
+      "value": "Third-party SERP access to multiple engines; not official Google/Bing developer API.",
+      "source_url": "https://serpapi.com/pricing",
+      "comment": "",
+      "links": {}
+    },
+    "rate_limits": {
+      "value": "Starter 200/hour; Developer 1,000/hour",
+      "source_url": "https://serpapi.com/pricing",
+      "comment": "",
+      "links": {}
+    },
+    "checked_at": {
+      "value": "2026-10-21",
+      "source_url": "https://serpapi.com/pricing",
+      "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
+      "links": {}
+    },
+    "sdk_support": {
+      "value": "Python + TypeScript adapters",
+      "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
+      "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+    },
+    "evidence": {
+      "checked_at": "2026-10-21",
+      "source_urls": [
+        "https://serpapi.com/pricing"
+      ],
+      "effective_date": null,
+      "method": "official documentation; no new benchmarks"
+    }
   },
   {
     "name": "Exa",
@@ -614,25 +1568,89 @@
       "comment": "POST /search `type`: `instant`/`fast` (latency), `auto` (balanced), `deep` / `deep-lite` / `deep-reasoning` (agentic multi-source synthesis; optional `output_schema`). anysearch: fast\u2192fast, balanced\u2192auto, deep\u2192deep."
     },
     "pricing_per_1k": {
-      "value": "fast/balanced: $7; deep: $12; deep reasoning: $15",
+      "value": "Lite $4; Auto $7; Deep $12 / 1K requests (\u226410 results); extra results $1 / 1K each",
       "source_url": "https://exa.ai/pricing",
-      "comment": "Per 1K requests with up to 10 results; summaries and additional results are billed separately."
+      "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "links": {
+        "Official source 1": "https://exa.ai/blog/exa-3",
+        "Official source 2": "https://exa.ai/docs/reference/search"
+      }
     },
     "free_tier_limits": {
-      "value": "$10/month (~1,428 base searches) + $20 signup (~2,857)",
+      "value": "$10 monthly + $10 onboarding credit",
       "source_url": "https://exa.ai/pricing",
-      "comment": "Calculated from $10 recurring and $20 signup credits at the published $7 per 1K base-search rate."
+      "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
+      "links": {
+        "Official source 1": "https://exa.ai/blog/exa-3",
+        "Official source 2": "https://exa.ai/docs/reference/search"
+      }
     },
     "p50_latency": {
-      "value": "instant: 0.36s p50 / 0.52s p95; fast: 0.67s / 1.34s; auto: ~1.2s; deep: 4.3s avg",
+      "value": "Historical July 2026: instant: 0.36s p50 / 0.52s p95; fast: 0.67s / 1.34s; auto: ~1.2s; deep: 4.3s avg",
       "source_url": "https://proxyway.com/research/search-apis-2026-report",
-      "comment": "Instant and fast percentiles are independent: three runs of 2,000 queries from the US East Coast. Auto and deep are current provider-reported benchmark figures.",
+      "comment": "Historical evidence retained from July 2026; not remeasured or claimed current. Instant and fast percentiles are independent: three runs of 2,000 queries from the US East Coast. Auto and deep are current provider-reported benchmark figures.",
       "links": {
         "Independent benchmark": "https://proxyway.com/research/search-apis-2026-report",
         "Provider tiers": "https://exa.ai/products/search"
       }
     },
-    "notes": "Native SDK package: exa-py."
+    "notes": "Native SDK package: exa-py.",
+    "api_category": {
+      "value": "Standalone search API",
+      "source_url": "https://exa.ai/pricing",
+      "comment": ""
+    },
+    "api_status": {
+      "value": "Available",
+      "source_url": "https://exa.ai/pricing",
+      "comment": "",
+      "links": {
+        "Official source 1": "https://exa.ai/blog/exa-3",
+        "Official source 2": "https://exa.ai/docs/reference/search"
+      }
+    },
+    "native_api": {
+      "value": "Exa 3.0 released October 19; Lite and Auto; Dynamic Highlights GA. Contents $1 / 1K pages per content type; summaries separately priced.",
+      "source_url": "https://exa.ai/pricing",
+      "comment": "",
+      "links": {
+        "Official source 1": "https://exa.ai/blog/exa-3",
+        "Official source 2": "https://exa.ai/docs/reference/search"
+      }
+    },
+    "rate_limits": {
+      "value": "Free 10 QPS; PAYG up to 25 QPS",
+      "source_url": "https://exa.ai/pricing",
+      "comment": "",
+      "links": {
+        "Official source 1": "https://exa.ai/blog/exa-3",
+        "Official source 2": "https://exa.ai/docs/reference/search"
+      }
+    },
+    "checked_at": {
+      "value": "2026-10-21",
+      "source_url": "https://exa.ai/pricing",
+      "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
+      "links": {
+        "Official source 1": "https://exa.ai/blog/exa-3",
+        "Official source 2": "https://exa.ai/docs/reference/search"
+      }
+    },
+    "sdk_support": {
+      "value": "Python + TypeScript adapters",
+      "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
+      "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+    },
+    "evidence": {
+      "checked_at": "2026-10-21",
+      "source_urls": [
+        "https://exa.ai/pricing",
+        "https://exa.ai/blog/exa-3",
+        "https://exa.ai/docs/reference/search"
+      ],
+      "effective_date": "2026-10-19",
+      "method": "official documentation; no new benchmarks"
+    }
   },
   {
     "name": "Firecrawl",
@@ -720,26 +1738,83 @@
       "comment": "Single search tier (title, URL, description). `scrapeOptions` fetches page bodies but is not an AI synthesis `mode`."
     },
     "pricing_per_1k": {
-      "value": "balanced/search: 2 credits per 10 results",
+      "value": "2 credits / 10 search results; scraping add-ons separate; Hobby $19/month for 5K credits",
       "source_url": "https://www.firecrawl.dev/pricing",
-      "comment": "Convert credits to dollars from your Firecrawl plan; advanced formats and extraction add credits."
+      "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "links": {
+        "Official source 1": "https://docs.firecrawl.dev/features/search"
+      }
     },
     "free_tier_limits": {
-      "value": "1,000 credits/month (~500 searches at 10 results)",
+      "value": "1,000 credits/month; no card",
       "source_url": "https://www.firecrawl.dev/pricing",
-      "comment": "Search costs two credits per ten results; advanced features consume additional credits."
+      "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
+      "links": {
+        "Official source 1": "https://docs.firecrawl.dev/features/search"
+      }
     },
     "p50_latency": {
-      "value": "Search: <2s avg cited workload; search + scrape: ~4\u20135s; 3.4s p95 overall",
+      "value": "Historical July 2026: Search: <2s avg cited workload; search + scrape: ~4\u20135s; 3.4s p95 overall",
       "source_url": "https://www.firecrawl.dev/glossary/web-search-apis/search-latency-ai-agents",
-      "comment": "Provider-reported figures with different scopes: a cited Stanford workload averaged under two seconds per search, search plus scrape is about 4\u20135 seconds, and Firecrawl advertises 3.4 seconds p95 across millions of pages.",
+      "comment": "Historical evidence retained from July 2026; not remeasured or claimed current. Provider-reported figures with different scopes: a cited Stanford workload averaged under two seconds per search, search plus scrape is about 4\u20135 seconds, and Firecrawl advertises 3.4 seconds p95 across millions of pages.",
       "links": {
         "Search workload": "https://www.firecrawl.dev/glossary/web-search-apis/search-latency-ai-agents",
         "Search plus scrape": "https://www.firecrawl.dev/blog/llm-grounding",
         "Overall p95": "https://github.com/firecrawl/firecrawl"
       }
     },
-    "notes": "Native SDK package: firecrawl-py."
+    "notes": "Native SDK package: firecrawl-py.",
+    "api_category": {
+      "value": "Standalone search API",
+      "source_url": "https://www.firecrawl.dev/pricing",
+      "comment": ""
+    },
+    "api_status": {
+      "value": "Available",
+      "source_url": "https://www.firecrawl.dev/pricing",
+      "comment": "",
+      "links": {
+        "Official source 1": "https://docs.firecrawl.dev/features/search"
+      }
+    },
+    "native_api": {
+      "value": "Search with optional page scraping; annual Hobby $16/month billed annually differs from monthly plan.",
+      "source_url": "https://www.firecrawl.dev/pricing",
+      "comment": "",
+      "links": {
+        "Official source 1": "https://docs.firecrawl.dev/features/search"
+      }
+    },
+    "rate_limits": {
+      "value": "Search: free 10 RPM; Hobby 100 RPM",
+      "source_url": "https://www.firecrawl.dev/pricing",
+      "comment": "",
+      "links": {
+        "Official source 1": "https://docs.firecrawl.dev/features/search"
+      }
+    },
+    "checked_at": {
+      "value": "2026-10-21",
+      "source_url": "https://www.firecrawl.dev/pricing",
+      "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
+      "links": {
+        "Official source 1": "https://docs.firecrawl.dev/features/search"
+      }
+    },
+    "sdk_support": {
+      "value": "Python + TypeScript adapters",
+      "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
+      "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+    },
+    "evidence": {
+      "checked_at": "2026-10-21",
+      "source_urls": [
+        "https://www.firecrawl.dev/pricing",
+        "https://docs.firecrawl.dev/features/search"
+      ],
+      "effective_date": null,
+      "method": "official documentation; no new benchmarks"
+    }
   },
   {
     "name": "Gemini",
@@ -827,21 +1902,78 @@
       "comment": "`generateContent` with `tools: [{google_search: {}}]` \u2014 model decides when to search and returns synthesized text plus `groundingMetadata` sources (use `answer=true` in anysearch). Default model `gemini-2.5-flash` via `provider_config.gemini.model`."
     },
     "pricing_per_1k": {
-      "value": "balanced grounding: $35 + model tokens",
-      "source_url": "https://cloud.google.com/generative-ai-app-builder/pricing",
-      "comment": "Grounding with Google Search is billed per 1K grounded requests plus Gemini model token charges."
+      "value": "Gemini 3+: $14 / 1K individual search queries + model charges",
+      "source_url": "https://ai.google.dev/gemini-api/docs/pricing",
+      "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "links": {
+        "Official source 1": "https://ai.google.dev/gemini-api/docs/google-search/"
+      }
     },
     "free_tier_limits": {
-      "value": "500 grounded prompts/day on eligible Flash models",
+      "value": "Gemini 3+: 5,000 search queries/month shared free",
       "source_url": "https://ai.google.dev/gemini-api/docs/pricing",
-      "comment": "Free-tier Google Search grounding is shared across eligible Flash and Flash-Lite models; model availability varies."
+      "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
+      "links": {
+        "Official source 1": "https://ai.google.dev/gemini-api/docs/google-search/"
+      }
     },
     "p50_latency": {
-      "value": "No published Google Search grounding latency distribution",
+      "value": "Historical July 2026: No published Google Search grounding latency distribution",
       "source_url": "https://ai.google.dev/gemini-api/docs/google-search",
-      "comment": "Grounding may issue one or multiple searches and includes model generation time. No comparable public latency percentile or tier range was found."
+      "comment": "Historical evidence retained from July 2026; not remeasured or claimed current. Grounding may issue one or multiple searches and includes model generation time. No comparable public latency percentile or tier range was found."
     },
-    "notes": "Native SDK package: google-genai."
+    "notes": "Native SDK package: google-genai.",
+    "api_category": {
+      "value": "Model-hosted grounding",
+      "source_url": "https://ai.google.dev/gemini-api/docs/pricing",
+      "comment": ""
+    },
+    "api_status": {
+      "value": "Available",
+      "source_url": "https://ai.google.dev/gemini-api/docs/pricing",
+      "comment": "",
+      "links": {
+        "Official source 1": "https://ai.google.dev/gemini-api/docs/google-search/"
+      }
+    },
+    "native_api": {
+      "value": "Google Search grounding inside Gemini generation, not standalone raw ranked search.",
+      "source_url": "https://ai.google.dev/gemini-api/docs/pricing",
+      "comment": "",
+      "links": {
+        "Official source 1": "https://ai.google.dev/gemini-api/docs/google-search/"
+      }
+    },
+    "rate_limits": {
+      "value": "One prompt may generate several billable queries; older model rules differ",
+      "source_url": "https://ai.google.dev/gemini-api/docs/pricing",
+      "comment": "",
+      "links": {
+        "Official source 1": "https://ai.google.dev/gemini-api/docs/google-search/"
+      }
+    },
+    "checked_at": {
+      "value": "2026-10-21",
+      "source_url": "https://ai.google.dev/gemini-api/docs/pricing",
+      "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
+      "links": {
+        "Official source 1": "https://ai.google.dev/gemini-api/docs/google-search/"
+      }
+    },
+    "sdk_support": {
+      "value": "Python + TypeScript adapters",
+      "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
+      "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+    },
+    "evidence": {
+      "checked_at": "2026-10-21",
+      "source_urls": [
+        "https://ai.google.dev/gemini-api/docs/pricing",
+        "https://ai.google.dev/gemini-api/docs/google-search/"
+      ],
+      "effective_date": null,
+      "method": "official documentation; no new benchmarks"
+    }
   },
   {
     "name": "Google PSE",
@@ -929,21 +2061,66 @@
       "comment": "Custom Search JSON API: no search-depth or speed preset\u2014only `num`, `sort`, and `siteSearch` filters. Matrix `balanced` = default `cse.list` behavior."
     },
     "pricing_per_1k": {
-      "value": "balanced: $5",
-      "source_url": "https://support.google.com/programmable-search/answer/9069107",
-      "comment": "Custom Search JSON API and Programmable Search Element paid API are listed at $5/1K queries."
+      "value": "Existing users: $5 / 1K above free quota; up to 10K/day",
+      "source_url": "https://developers.google.com/custom-search/v1/overview",
+      "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "links": {}
     },
     "free_tier_limits": {
-      "value": "100 queries/day; existing customers only",
+      "value": "Existing users only: 100 queries/day",
       "source_url": "https://developers.google.com/custom-search/v1/overview",
-      "comment": "Custom Search JSON API is closed to new customers; existing customers must migrate by January 1, 2027."
+      "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
+      "links": {}
     },
     "p50_latency": {
-      "value": "No published distribution; each response includes server searchTime",
+      "value": "Historical July 2026: No published distribution; each response includes server searchTime",
       "source_url": "https://developers.google.com/custom-search/v1/reference/rest/v1/Search",
-      "comment": "Google exposes per-request server search time in searchInformation, but publishes no aggregate p50/p90/p95 latency for Custom Search JSON API."
+      "comment": "Historical evidence retained from July 2026; not remeasured or claimed current. Google exposes per-request server search time in searchInformation, but publishes no aggregate p50/p90/p95 latency for Custom Search JSON API."
     },
-    "notes": ""
+    "notes": "",
+    "api_category": {
+      "value": "Legacy search API",
+      "source_url": "https://developers.google.com/custom-search/v1/overview",
+      "comment": ""
+    },
+    "api_status": {
+      "value": "Closed to new customers; discontinued January 1, 2027",
+      "source_url": "https://developers.google.com/custom-search/v1/overview",
+      "comment": "",
+      "links": {}
+    },
+    "native_api": {
+      "value": "Configured Programmable Search Engine + key required; Vertex AI domain search is not unrestricted web search.",
+      "source_url": "https://developers.google.com/custom-search/v1/overview",
+      "comment": "",
+      "links": {}
+    },
+    "rate_limits": {
+      "value": "Closed to new customers; transition by January 1, 2027",
+      "source_url": "https://developers.google.com/custom-search/v1/overview",
+      "comment": "",
+      "links": {}
+    },
+    "checked_at": {
+      "value": "2026-10-21",
+      "source_url": "https://developers.google.com/custom-search/v1/overview",
+      "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
+      "links": {}
+    },
+    "sdk_support": {
+      "value": "Python + TypeScript adapters",
+      "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
+      "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+    },
+    "evidence": {
+      "checked_at": "2026-10-21",
+      "source_urls": [
+        "https://developers.google.com/custom-search/v1/overview"
+      ],
+      "effective_date": null,
+      "method": "official documentation; no new benchmarks"
+    },
+    "deprecated": true
   },
   {
     "name": "Google \u00b7 SerpApi",
@@ -1031,25 +2208,69 @@
       "comment": "Fixed SerpApi backend `engine=google` (set via anysearch `engine=\"google\"` with `provider=\"serpapi\"`). No separate fast/deep tier on this engine."
     },
     "pricing_per_1k": {
-      "value": "balanced: $25 starter; ~$3.75-$15 volume",
+      "value": "$25/month for 1K; $75/5K; $150/15K; $275/30K searches",
       "source_url": "https://serpapi.com/pricing",
-      "comment": "Monthly plan price divided by included searches; applies to all SerpApi engine rows."
+      "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "links": {}
     },
     "free_tier_limits": {
       "value": "250 searches/month; 50/hour",
       "source_url": "https://serpapi.com/pricing",
-      "comment": "Free plan applies across SerpApi engines; only successful uncached searches consume quota."
+      "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
+      "links": {}
     },
     "p50_latency": {
-      "value": "Light API: 1.28s p50 independent; fastest Google API: 0.73s avg / 1.45s p99 vendor-run",
+      "value": "Historical July 2026: Light API: 1.28s p50 independent; fastest Google API: 0.73s avg / 1.45s p99 vendor-run",
       "source_url": "https://proxyway.com/research/search-apis-2026-report",
-      "comment": "Independent p50 is for SerpApi Light, not a specific engine. SerpApi's own 100-plus-query comparison reports average and p99 for its fastest Google API; anysearch engine-specific latency remains unreported.",
+      "comment": "Historical evidence retained from July 2026; not remeasured or claimed current. Independent p50 is for SerpApi Light, not a specific engine. SerpApi's own 100-plus-query comparison reports average and p99 for its fastest Google API; anysearch engine-specific latency remains unreported.",
       "links": {
         "Independent benchmark": "https://proxyway.com/research/search-apis-2026-report",
         "Provider benchmark": "https://serpapi.com/blog/who-has-the-fastest-google-search-api/"
       }
     },
-    "notes": "SerpApi proxy to Google (`engine=google`). Native SDK package: google-search-results."
+    "notes": "SerpApi proxy to Google (`engine=google`). Native SDK package: google-search-results.",
+    "api_category": {
+      "value": "Third-party SERP service",
+      "source_url": "https://serpapi.com/pricing",
+      "comment": ""
+    },
+    "api_status": {
+      "value": "Available",
+      "source_url": "https://serpapi.com/pricing",
+      "comment": "",
+      "links": {}
+    },
+    "native_api": {
+      "value": "Third-party SERP access to multiple engines; not official Google/Bing developer API.",
+      "source_url": "https://serpapi.com/pricing",
+      "comment": "",
+      "links": {}
+    },
+    "rate_limits": {
+      "value": "Starter 200/hour; Developer 1,000/hour",
+      "source_url": "https://serpapi.com/pricing",
+      "comment": "",
+      "links": {}
+    },
+    "checked_at": {
+      "value": "2026-10-21",
+      "source_url": "https://serpapi.com/pricing",
+      "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
+      "links": {}
+    },
+    "sdk_support": {
+      "value": "Python + TypeScript adapters",
+      "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
+      "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+    },
+    "evidence": {
+      "checked_at": "2026-10-21",
+      "source_urls": [
+        "https://serpapi.com/pricing"
+      ],
+      "effective_date": null,
+      "method": "official documentation; no new benchmarks"
+    }
   },
   {
     "name": "Jina",
@@ -1137,25 +2358,69 @@
       "comment": "Reader Search has no vendor fast/synthesis mode knob. Default returns SERP + optional page markdown; `X-Respond-With: no-content` is a fetch shortcut, not a latency tier."
     },
     "pricing_per_1k": {
-      "value": "token-based; no fixed per-query CPM",
-      "source_url": "https://jina.ai/reader/",
-      "comment": "Reader/Search usage is priced by tokens/usage tiers rather than a fixed per-1K query price."
+      "value": "Token-priced: \u226510K tokens/request; $50/1B tokens implies \u2265$0.50 / 1K, not flat CPM",
+      "source_url": "https://jina.ai/api-dashboard/pricing/",
+      "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "links": {}
     },
     "free_tier_limits": {
-      "value": "10M tokens for new users; 500 RPM / 1M TPM",
-      "source_url": "https://api.jina.ai/docs",
-      "comment": "Free Search Foundation tier also limits concurrency to five requests."
+      "value": "10M free tokens listed with noncommercial CC-BY-NC condition; recurrence unverified",
+      "source_url": "https://jina.ai/api-dashboard/pricing/",
+      "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
+      "links": {}
     },
     "p50_latency": {
-      "value": "Search: 0.75s p50 / 1.32s p95 independent; 2.5s provider-reported average",
+      "value": "Historical July 2026: Search: 0.75s p50 / 1.32s p95 independent; 2.5s provider-reported average",
       "source_url": "https://proxyway.com/research/search-apis-2026-report",
-      "comment": "Independent percentiles use three 2,000-query runs from the US East Coast. Jina's current rate-limit table reports a 2.5-second average for s.jina.ai.",
+      "comment": "Historical evidence retained from July 2026; not remeasured or claimed current. Independent percentiles use three 2,000-query runs from the US East Coast. Jina's current rate-limit table reports a 2.5-second average for s.jina.ai.",
       "links": {
         "Independent benchmark": "https://proxyway.com/research/search-apis-2026-report",
         "Provider average": "https://jina.ai/deepsearch/"
       }
     },
-    "notes": ""
+    "notes": "",
+    "api_category": {
+      "value": "Standalone search API",
+      "source_url": "https://jina.ai/api-dashboard/pricing/",
+      "comment": ""
+    },
+    "api_status": {
+      "value": "Available",
+      "source_url": "https://jina.ai/api-dashboard/pricing/",
+      "comment": "",
+      "links": {}
+    },
+    "native_api": {
+      "value": "s.jina.ai requires key; r.jina.ai URL reader uses separate output-token billing.",
+      "source_url": "https://jina.ai/api-dashboard/pricing/",
+      "comment": "",
+      "links": {}
+    },
+    "rate_limits": {
+      "value": "Search 100 RPM free/paid; 1,000 RPM premium",
+      "source_url": "https://jina.ai/api-dashboard/pricing/",
+      "comment": "",
+      "links": {}
+    },
+    "checked_at": {
+      "value": "2026-10-21",
+      "source_url": "https://jina.ai/api-dashboard/pricing/",
+      "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
+      "links": {}
+    },
+    "sdk_support": {
+      "value": "Python + TypeScript adapters",
+      "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
+      "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+    },
+    "evidence": {
+      "checked_at": "2026-10-21",
+      "source_urls": [
+        "https://jina.ai/api-dashboard/pricing/"
+      ],
+      "effective_date": null,
+      "method": "official documentation; no new benchmarks"
+    }
   },
   {
     "name": "Kagi",
@@ -1243,21 +2508,85 @@
       "comment": "No request `mode`; snippet length comes from account Settings \u2192 Search."
     },
     "pricing_per_1k": {
-      "value": "not publicly itemized per 1K for Search API",
-      "source_url": "https://help.kagi.com/kagi/api/overview.html",
-      "comment": "Kagi documents pay-per-use API portal billing but not a stable public Search API CPM in docs."
+      "value": "Search $12 / 1K requests; Extract $4 / 1K pages",
+      "source_url": "https://kagi.com/api/pricing",
+      "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "links": {
+        "Official source 1": "https://help.kagi.com/kagi/api/search.html",
+        "Official source 2": "https://kagi.com/api/docs"
+      }
     },
     "free_tier_limits": {
-      "value": "No free Search API allowance documented",
-      "source_url": "https://help.kagi.com/kagi/api/quick-start.html",
-      "comment": "API billing is separate from Kagi's consumer trial and requires a payment method or prepaid API credit."
+      "value": "No free Search API quota stated",
+      "source_url": "https://kagi.com/api/pricing",
+      "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
+      "links": {
+        "Official source 1": "https://help.kagi.com/kagi/api/search.html",
+        "Official source 2": "https://kagi.com/api/docs"
+      }
     },
     "p50_latency": {
-      "value": "No published Search API latency distribution",
+      "value": "Historical July 2026: No published Search API latency distribution",
       "source_url": "https://help.kagi.com/kagi/api/search.html",
-      "comment": "Kagi publishes browser-page speed measurements, but those are not API response latency and are intentionally excluded."
+      "comment": "Historical evidence retained from July 2026; not remeasured or claimed current. Kagi publishes browser-page speed measurements, but those are not API response latency and are intentionally excluded."
     },
-    "notes": ""
+    "notes": "",
+    "api_category": {
+      "value": "Standalone search API",
+      "source_url": "https://kagi.com/api/pricing",
+      "comment": ""
+    },
+    "api_status": {
+      "value": "Available",
+      "source_url": "https://kagi.com/api/pricing",
+      "comment": "",
+      "links": {
+        "Official source 1": "https://help.kagi.com/kagi/api/search.html",
+        "Official source 2": "https://kagi.com/api/docs"
+      }
+    },
+    "native_api": {
+      "value": "Current GET /api/v1/search uses Authorization: Bot; web/images/news/videos/podcasts, lenses and locale controls. v0 is legacy; existing anysearch adapter uses v0.",
+      "source_url": "https://kagi.com/api/pricing",
+      "comment": "",
+      "links": {
+        "Official source 1": "https://help.kagi.com/kagi/api/search.html",
+        "Official source 2": "https://kagi.com/api/docs"
+      }
+    },
+    "rate_limits": {
+      "value": "Usage invoiced every 30 days or at $100; Extract up to 10 URLs/request",
+      "source_url": "https://kagi.com/api/pricing",
+      "comment": "",
+      "links": {
+        "Official source 1": "https://help.kagi.com/kagi/api/search.html",
+        "Official source 2": "https://kagi.com/api/docs"
+      }
+    },
+    "checked_at": {
+      "value": "2026-10-21",
+      "source_url": "https://kagi.com/api/pricing",
+      "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
+      "links": {
+        "Official source 1": "https://help.kagi.com/kagi/api/search.html",
+        "Official source 2": "https://kagi.com/api/docs"
+      }
+    },
+    "sdk_support": {
+      "value": "Python + TypeScript adapters",
+      "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
+      "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+    },
+    "evidence": {
+      "checked_at": "2026-10-21",
+      "source_urls": [
+        "https://kagi.com/api/pricing",
+        "https://help.kagi.com/kagi/api/search.html",
+        "https://kagi.com/api/docs"
+      ],
+      "effective_date": null,
+      "method": "official documentation; no new benchmarks"
+    }
   },
   {
     "name": "Keiro",
@@ -1347,24 +2676,88 @@
       "comment": "v2 Search `mode`: `light`\u2192fast, `ai`\u2192balanced, `deep`\u2192deep. anysearch uses `/api/v2/search/flash` for fast mode, `/api/v2/keiro` by default, and `/api/v2/search/content` for full-text content."
     },
     "pricing_per_1k": {
-      "value": "fast/balanced: ~$0.50; content: ~$1.50; batch: ~$0.50",
-      "source_url": "https://keirolabs.cloud/",
-      "comment": "Keiro docs list credit costs per v2 endpoint and headline cost per 1,000 searches."
+      "value": "Conflicting official pricing: Keiro lite from $0.10 / 1K; browserfoundry $0.25 / 1K",
+      "source_url": "https://keirolabs.cloud/pricing",
+      "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "links": {
+        "Official source 1": "https://keirolabs.cloud/",
+        "Official source 2": "https://www.browserfoundry.cloud/pricing"
+      }
     },
     "free_tier_limits": {
-      "value": "500 searches/month; 30 req/min; no card",
-      "source_url": "https://keirolabs.cloud/",
-      "comment": "Explorer is a hard-capped free plan with no overage and no batch endpoint."
+      "value": "Conflict: Keiro 750 credits/month; browserfoundry 1,250; free/paid conversion differs",
+      "source_url": "https://keirolabs.cloud/pricing",
+      "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
+      "links": {
+        "Official source 1": "https://keirolabs.cloud/",
+        "Official source 2": "https://www.browserfoundry.cloud/pricing"
+      }
     },
     "p50_latency": {
-      "value": "Flash: 0.312s p50 / 1.1s p99; indexed: 0.487s p50; balanced/deep: not published",
+      "value": "Historical July 2026: Flash: 0.312s p50 / 1.1s p99; indexed: 0.487s p50; balanced/deep: not published",
       "source_url": "https://keirolabs.cloud/blogs/ai-agents/ai-agent-search-benchmarks-keiro-vs-competitors/",
-      "comment": "Provider-run May 2026 benchmark of 1,000 agent queries. No independent rerun or latency distribution for Keiro's balanced and deep paths was found.",
+      "comment": "Historical evidence retained from July 2026; not remeasured or claimed current. Provider-run May 2026 benchmark of 1,000 agent queries. No independent rerun or latency distribution for Keiro's balanced and deep paths was found.",
       "links": {
         "Provider benchmark": "https://keirolabs.cloud/blogs/ai-agents/ai-agent-search-benchmarks-keiro-vs-competitors/"
       }
     },
-    "notes": "SDK maps default v2 search to `/api/v2/keiro`, `mode=fast` to `/api/v2/search/flash`, and `include_content=true` to `/api/v2/search/content`."
+    "notes": "SDK maps default v2 search to `/api/v2/keiro`, `mode=fast` to `/api/v2/search/flash`, and `include_content=true` to `/api/v2/search/content`.",
+    "api_category": {
+      "value": "Standalone search API",
+      "source_url": "https://keirolabs.cloud/pricing",
+      "comment": ""
+    },
+    "api_status": {
+      "value": "Available; official pricing conflict",
+      "source_url": "https://keirolabs.cloud/pricing",
+      "comment": "",
+      "links": {
+        "Official source 1": "https://keirolabs.cloud/",
+        "Official source 2": "https://www.browserfoundry.cloud/pricing"
+      }
+    },
+    "native_api": {
+      "value": "Rebranded browserfoundry; claims existing keys/endpoints continue. Fast proxy-backed search; Content, Answer and Agentic are separate. Do not assume paid credit conversion for free tier.",
+      "source_url": "https://keirolabs.cloud/pricing",
+      "comment": "",
+      "links": {
+        "Official source 1": "https://keirolabs.cloud/",
+        "Official source 2": "https://www.browserfoundry.cloud/pricing"
+      }
+    },
+    "rate_limits": {
+      "value": "Conflict: 15 vs 30 RPM; paid starts $29.99 vs $30",
+      "source_url": "https://keirolabs.cloud/pricing",
+      "comment": "",
+      "links": {
+        "Official source 1": "https://keirolabs.cloud/",
+        "Official source 2": "https://www.browserfoundry.cloud/pricing"
+      }
+    },
+    "checked_at": {
+      "value": "2026-10-21",
+      "source_url": "https://keirolabs.cloud/pricing",
+      "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
+      "links": {
+        "Official source 1": "https://keirolabs.cloud/",
+        "Official source 2": "https://www.browserfoundry.cloud/pricing"
+      }
+    },
+    "sdk_support": {
+      "value": "Python + TypeScript adapters",
+      "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
+      "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+    },
+    "evidence": {
+      "checked_at": "2026-10-21",
+      "source_urls": [
+        "https://keirolabs.cloud/pricing",
+        "https://keirolabs.cloud/",
+        "https://www.browserfoundry.cloud/pricing"
+      ],
+      "effective_date": null,
+      "method": "official documentation; no new benchmarks"
+    }
   },
   {
     "name": "Linkup",
@@ -1454,25 +2847,69 @@
       "comment": "Native `depth`: `fast`, `standard` (balanced), or `deep` (multi-iteration agentic search-and-scrape). Cited synthesis uses `outputType=sourcedAnswer` (`answer=true` in anysearch), including at `deep` depth. anysearch: fast/balanced/deep\u2192matching depth."
     },
     "pricing_per_1k": {
-      "value": "fast/standard: $5-$6; deep: $50-$55",
+      "value": "Flash/Fast/Standard raw $5; sourced/structured $6; Deep raw $50 or synthesized $55 / 1K",
       "source_url": "https://docs.linkup.so/pages/documentation/platform/pricing",
-      "comment": "Raw search results cost $5/$50 per 1K; sourced answers and structured output cost $6/$55."
+      "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "links": {}
     },
     "free_tier_limits": {
-      "value": "$20/month (~4,000 standard or 400 deep searches; eligible)",
+      "value": "Eligible professional-email accounts topped back up to $20 monthly",
       "source_url": "https://docs.linkup.so/pages/documentation/platform/pricing",
-      "comment": "At raw-search rates this covers about 4,000 standard or 400 deep calls; eligibility is provider-controlled."
+      "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
+      "links": {}
     },
     "p50_latency": {
-      "value": "fast: <1s; standard: 1\u20133s; deep: 5\u201330s; independent unspecified mode: 1.55s p50 / 2.36s p95",
+      "value": "Historical July 2026: fast: <1s; standard: 1\u20133s; deep: 5\u201330s; independent unspecified mode: 1.55s p50 / 2.36s p95",
       "source_url": "https://docs.linkup.so/pages/documentation/endpoints/search/overview",
-      "comment": "Tier ranges are provider documentation. The independent January 2026 benchmark predates Linkup fast's February beta and did not name the tested depth.",
+      "comment": "Historical evidence retained from July 2026; not remeasured or claimed current. Tier ranges are provider documentation. The independent January 2026 benchmark predates Linkup fast's February beta and did not name the tested depth.",
       "links": {
         "Tier ranges": "https://docs.linkup.so/pages/documentation/endpoints/search/overview",
         "Independent benchmark": "https://proxyway.com/research/search-apis-2026-report"
       }
     },
-    "notes": "Native SDK package: linkup-sdk."
+    "notes": "Native SDK package: linkup-sdk.",
+    "api_category": {
+      "value": "Standalone search API",
+      "source_url": "https://docs.linkup.so/pages/documentation/platform/pricing",
+      "comment": ""
+    },
+    "api_status": {
+      "value": "Available",
+      "source_url": "https://docs.linkup.so/pages/documentation/platform/pricing",
+      "comment": "",
+      "links": {}
+    },
+    "native_api": {
+      "value": "Raw searchResults, sourcedAnswer and structured output use distinct prices; errors/empty no-relevant-result calls not billed.",
+      "source_url": "https://docs.linkup.so/pages/documentation/platform/pricing",
+      "comment": "",
+      "links": {}
+    },
+    "rate_limits": {
+      "value": "Prepaid PAYG; x402 minimum $0.01/request differs",
+      "source_url": "https://docs.linkup.so/pages/documentation/platform/pricing",
+      "comment": "",
+      "links": {}
+    },
+    "checked_at": {
+      "value": "2026-10-21",
+      "source_url": "https://docs.linkup.so/pages/documentation/platform/pricing",
+      "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
+      "links": {}
+    },
+    "sdk_support": {
+      "value": "Python + TypeScript adapters",
+      "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
+      "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+    },
+    "evidence": {
+      "checked_at": "2026-10-21",
+      "source_urls": [
+        "https://docs.linkup.so/pages/documentation/platform/pricing"
+      ],
+      "effective_date": null,
+      "method": "official documentation; no new benchmarks"
+    }
   },
   {
     "name": "Octen",
@@ -1560,25 +2997,246 @@
       "comment": "POST `/search` exposes one Web Search tier. Octen's separate Broad Search and Deep Research endpoints are not mapped to the unified `mode` parameter."
     },
     "pricing_per_1k": {
-      "value": "balanced/search: $1",
-      "source_url": "https://docs.octen.ai/overview/pricing",
-      "comment": "Current promotional Web Search price per 1,000 API calls; full content is billed separately by tokens."
+      "value": "Promotional Web Search $1 / 1K (normally $5), includes 10 full-content results; +$0.50 / 1K extra results",
+      "source_url": "https://octen.ai/pricing",
+      "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "links": {
+        "Official source 1": "https://docs.octen.ai/capabilities/web-search",
+        "Official source 2": "https://docs.octen.ai/api-reference/search"
+      }
     },
     "free_tier_limits": {
-      "value": "$5 initial credit (~5,000 searches); 10 QPS free plan",
-      "source_url": "https://docs.octen.ai/overview/pricing",
-      "comment": "The $5 balance is granted after adding a payment method; the free plan's 10 QPS is a throughput limit, not a recurring call allowance."
+      "value": "One-time $5 signup credit; no card",
+      "source_url": "https://octen.ai/pricing",
+      "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
+      "links": {
+        "Official source 1": "https://docs.octen.ai/capabilities/web-search",
+        "Official source 2": "https://docs.octen.ai/api-reference/search"
+      }
     },
     "p50_latency": {
-      "value": "Web Search: 62 ms p50; 68 ms p90",
+      "value": "Historical July 2026: Web Search: 62 ms p50; 68 ms p90",
       "source_url": "https://octen.ai/blog/1",
-      "comment": "Provider-reported March 2026 result. Octen publishes 62 ms p50; the 68 ms p90 comes from an archived screenshot/OCR record. No independent API rerun was found.",
+      "comment": "Historical evidence retained from July 2026; not remeasured or claimed current. Provider-reported March 2026 result. Octen publishes 62 ms p50; the 68 ms p90 comes from an archived screenshot/OCR record. No independent API rerun was found.",
       "links": {
         "Provider claim": "https://octen.ai/blog/1",
         "Screenshot record": "https://krabarena.com/claims/octen-s-screenshot-reports-a-62-ms-p50-web-search-win"
       }
     },
-    "notes": "Native SDK package: octen. Web Search (`POST /search`) is wired in both anysearch SDKs. The published 62 ms p50 is a provider claim, not an independently reproduced benchmark."
+    "notes": "Native SDK package: octen. Web Search (`POST /search`) is wired in both anysearch SDKs. The published 62 ms p50 is a provider claim, not an independently reproduced benchmark.",
+    "api_category": {
+      "value": "Standalone search API",
+      "source_url": "https://octen.ai/pricing",
+      "comment": ""
+    },
+    "api_status": {
+      "value": "Available",
+      "source_url": "https://octen.ai/pricing",
+      "comment": "",
+      "links": {
+        "Official source 1": "https://docs.octen.ai/capabilities/web-search",
+        "Official source 2": "https://docs.octen.ai/api-reference/search"
+      }
+    },
+    "native_api": {
+      "value": "Search 1\u2013100 results; domain/language/date/safe-search, content/highlights. Broad mode bills per generated subquery. 62ms p50 is a vendor claim, not a guarantee.",
+      "source_url": "https://octen.ai/pricing",
+      "comment": "",
+      "links": {
+        "Official source 1": "https://docs.octen.ai/capabilities/web-search",
+        "Official source 2": "https://docs.octen.ai/api-reference/search"
+      }
+    },
+    "rate_limits": {
+      "value": "$5 minimum top-up; 10 QPS free, up to 20 after top-up; QPS subscription excludes usage",
+      "source_url": "https://octen.ai/pricing",
+      "comment": "",
+      "links": {
+        "Official source 1": "https://docs.octen.ai/capabilities/web-search",
+        "Official source 2": "https://docs.octen.ai/api-reference/search"
+      }
+    },
+    "checked_at": {
+      "value": "2026-10-21",
+      "source_url": "https://octen.ai/pricing",
+      "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
+      "links": {
+        "Official source 1": "https://docs.octen.ai/capabilities/web-search",
+        "Official source 2": "https://docs.octen.ai/api-reference/search"
+      }
+    },
+    "sdk_support": {
+      "value": "Python + TypeScript adapters",
+      "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
+      "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+    },
+    "evidence": {
+      "checked_at": "2026-10-21",
+      "source_urls": [
+        "https://octen.ai/pricing",
+        "https://docs.octen.ai/capabilities/web-search",
+        "https://docs.octen.ai/api-reference/search"
+      ],
+      "effective_date": null,
+      "method": "official documentation; no new benchmarks"
+    }
+  },
+  {
+    "name": "OpenAI Web Search",
+    "links": {
+      "slug": "openai",
+      "docs": "https://developers.openai.com/api/docs/pricing",
+      "website": "https://openai.com"
+    },
+    "env_keys": {
+      "value": "Not integrated",
+      "source_url": "https://developers.openai.com/api/docs/pricing",
+      "comment": "Comparison only; anysearch does not read a key for this provider."
+    },
+    "python_extra": {
+      "value": "Not integrated",
+      "source_url": "https://developers.openai.com/api/docs/pricing",
+      "comment": ""
+    },
+    "mode": {
+      "values": [],
+      "source_url": "https://developers.openai.com/api/docs/pricing",
+      "comment": "No unified SDK mode mapping."
+    },
+    "p50_latency": {
+      "value": "No current comparable measurement verified",
+      "source_url": "https://developers.openai.com/api/docs/pricing",
+      "comment": ""
+    },
+    "notes": "Comparison only; no anysearch SDK adapter is claimed.",
+    "comparison_only": true,
+    "requires_key": {
+      "support": "unknown",
+      "source_url": "https://developers.openai.com/api/docs/pricing",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "snippet": {
+      "support": "unknown",
+      "source_url": "https://developers.openai.com/api/docs/pricing",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "domains": {
+      "support": "unknown",
+      "source_url": "https://developers.openai.com/api/docs/pricing",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "country": {
+      "support": "unknown",
+      "source_url": "https://developers.openai.com/api/docs/pricing",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "language": {
+      "support": "unknown",
+      "source_url": "https://developers.openai.com/api/docs/pricing",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "date": {
+      "support": "unknown",
+      "source_url": "https://developers.openai.com/api/docs/pricing",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "safe_search": {
+      "support": "unknown",
+      "source_url": "https://developers.openai.com/api/docs/pricing",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "answer": {
+      "support": "unknown",
+      "source_url": "https://developers.openai.com/api/docs/pricing",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "content": {
+      "support": "unknown",
+      "source_url": "https://developers.openai.com/api/docs/pricing",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "summary": {
+      "support": "unknown",
+      "source_url": "https://developers.openai.com/api/docs/pricing",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "highlights": {
+      "support": "unknown",
+      "source_url": "https://developers.openai.com/api/docs/pricing",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "news": {
+      "support": "unknown",
+      "source_url": "https://developers.openai.com/api/docs/pricing",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "api_category": {
+      "value": "Model-hosted grounding",
+      "source_url": "https://developers.openai.com/api/docs/pricing",
+      "comment": ""
+    },
+    "api_status": {
+      "value": "Available",
+      "source_url": "https://developers.openai.com/api/docs/pricing",
+      "comment": "",
+      "links": {
+        "Official source 1": "https://developers.openai.com/api/docs/guides/tools-web-search"
+      }
+    },
+    "native_api": {
+      "value": "Model-hosted web_search; tool cost is not total answer cost or raw search price.",
+      "source_url": "https://developers.openai.com/api/docs/pricing",
+      "comment": "",
+      "links": {
+        "Official source 1": "https://developers.openai.com/api/docs/guides/tools-web-search"
+      }
+    },
+    "rate_limits": {
+      "value": "Legacy preview rules differ; model availability and limits vary",
+      "source_url": "https://developers.openai.com/api/docs/pricing",
+      "comment": "",
+      "links": {
+        "Official source 1": "https://developers.openai.com/api/docs/guides/tools-web-search"
+      }
+    },
+    "checked_at": {
+      "value": "2026-10-21",
+      "source_url": "https://developers.openai.com/api/docs/pricing",
+      "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
+      "links": {
+        "Official source 1": "https://developers.openai.com/api/docs/guides/tools-web-search"
+      }
+    },
+    "sdk_support": {
+      "value": "Comparison only \u2014 no adapter",
+      "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
+      "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+    },
+    "pricing_per_1k": {
+      "value": "web_search $10 / 1K tool calls + search-content tokens at model rates",
+      "source_url": "https://developers.openai.com/api/docs/pricing",
+      "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "links": {
+        "Official source 1": "https://developers.openai.com/api/docs/guides/tools-web-search"
+      }
+    },
+    "free_tier_limits": {
+      "value": "No recurring free allowance verified",
+      "source_url": "https://developers.openai.com/api/docs/pricing",
+      "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
+      "links": {
+        "Official source 1": "https://developers.openai.com/api/docs/guides/tools-web-search"
+      }
+    },
+    "evidence": {
+      "checked_at": "2026-10-21",
+      "source_urls": [
+        "https://developers.openai.com/api/docs/pricing",
+        "https://developers.openai.com/api/docs/guides/tools-web-search"
+      ],
+      "effective_date": null,
+      "method": "official documentation; no new benchmarks"
+    }
   },
   {
     "name": "Parallel",
@@ -1668,26 +3326,97 @@
       "comment": "**Search API** `mode`: `basic`\u2192fast, `advanced`\u2192balanced (richer retrieval, not synthesis). **Task API** (`POST /v1/tasks/runs`) `processor`: Lite/Base\u2192fast, Core\u2192balanced, Pro/Ultra\u2192deep (structured output with citations). Same `PARALLEL_API_KEY`."
     },
     "pricing_per_1k": {
-      "value": "search: $1-$5; task: $5-$2,400",
-      "source_url": "https://parallel.ai/pricing",
-      "comment": "Search varies by mode; Task processors range from Lite through Ultra8x per 1K requests."
+      "value": "Turbo/Fast $1; Basic/Advanced $5 / 1K (10 results); +$1 / 1K additional results",
+      "source_url": "https://docs.parallel.ai/getting-started/pricing",
+      "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "links": {
+        "Official source 1": "https://parallel.ai/pricing",
+        "Official source 2": "https://parallel.ai/blog/free-tier-parallel",
+        "Official source 3": "https://docs.parallel.ai/resources/faqs"
+      }
     },
     "free_tier_limits": {
-      "value": "1,000 requests/month; up to $80 signup + $5/month",
-      "source_url": "https://parallel.ai/pricing",
-      "comment": "Parallel publishes a monthly free request allowance plus promotional signup and recurring credits."
+      "value": "Up to $80 signup; eligible card-backed organizations $5 monthly credit",
+      "source_url": "https://docs.parallel.ai/getting-started/pricing",
+      "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
+      "links": {
+        "Official source 1": "https://parallel.ai/pricing",
+        "Official source 2": "https://parallel.ai/blog/free-tier-parallel",
+        "Official source 3": "https://docs.parallel.ai/resources/faqs"
+      }
     },
     "p50_latency": {
-      "value": "Search turbo: 0.216s p50; basic: 1.3s; advanced: 2.7s; Task: 10s\u20132h by processor",
+      "value": "Historical July 2026: Search turbo: 0.216s p50; basic: 1.3s; advanced: 2.7s; Task: 10s\u20132h by processor",
       "source_url": "https://parallel.ai/benchmarks",
-      "comment": "Turbo is Parallel's vendor-run July 2026 p50 from us-central. Basic and advanced are competitor-run figures published by Exa. Task API ranges are provider docs and vary from lite-fast (10\u201320s) through ultra8x (5m\u20132h).",
+      "comment": "Historical evidence retained from July 2026; not remeasured or claimed current. Turbo is Parallel's vendor-run July 2026 p50 from us-central. Basic and advanced are competitor-run figures published by Exa. Task API ranges are provider docs and vary from lite-fast (10\u201320s) through ultra8x (5m\u20132h).",
       "links": {
         "Turbo benchmark": "https://parallel.ai/benchmarks",
         "Basic and advanced": "https://exa.ai/products/search",
         "Task processors": "https://docs.parallel.ai/task-api/guides/choose-a-processor"
       }
     },
-    "notes": "Native SDK package: parallel-web. Search API is in the anysearch SDK; Task API (`POST /v1/tasks/runs`) is documented in the matrix but not wired in the SDK yet."
+    "notes": "Native SDK package: parallel-web. Search API is in the anysearch SDK; Task API (`POST /v1/tasks/runs`) is documented in the matrix but not wired in the SDK yet.",
+    "api_category": {
+      "value": "Standalone search API",
+      "source_url": "https://docs.parallel.ai/getting-started/pricing",
+      "comment": ""
+    },
+    "api_status": {
+      "value": "Available",
+      "source_url": "https://docs.parallel.ai/getting-started/pricing",
+      "comment": "",
+      "links": {
+        "Official source 1": "https://parallel.ai/pricing",
+        "Official source 2": "https://parallel.ai/blog/free-tier-parallel",
+        "Official source 3": "https://docs.parallel.ai/resources/faqs"
+      }
+    },
+    "native_api": {
+      "value": "Search and Extract differ from Task processors. Spending limits are notification-only, not hard blocks.",
+      "source_url": "https://docs.parallel.ai/getting-started/pricing",
+      "comment": "",
+      "links": {
+        "Official source 1": "https://parallel.ai/pricing",
+        "Official source 2": "https://parallel.ai/blog/free-tier-parallel",
+        "Official source 3": "https://docs.parallel.ai/resources/faqs"
+      }
+    },
+    "rate_limits": {
+      "value": "Extract $1 / 1K URLs; account limits per plan",
+      "source_url": "https://docs.parallel.ai/getting-started/pricing",
+      "comment": "",
+      "links": {
+        "Official source 1": "https://parallel.ai/pricing",
+        "Official source 2": "https://parallel.ai/blog/free-tier-parallel",
+        "Official source 3": "https://docs.parallel.ai/resources/faqs"
+      }
+    },
+    "checked_at": {
+      "value": "2026-10-21",
+      "source_url": "https://docs.parallel.ai/getting-started/pricing",
+      "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
+      "links": {
+        "Official source 1": "https://parallel.ai/pricing",
+        "Official source 2": "https://parallel.ai/blog/free-tier-parallel",
+        "Official source 3": "https://docs.parallel.ai/resources/faqs"
+      }
+    },
+    "sdk_support": {
+      "value": "Python + TypeScript adapters",
+      "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
+      "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+    },
+    "evidence": {
+      "checked_at": "2026-10-21",
+      "source_urls": [
+        "https://docs.parallel.ai/getting-started/pricing",
+        "https://parallel.ai/pricing",
+        "https://parallel.ai/blog/free-tier-parallel",
+        "https://docs.parallel.ai/resources/faqs"
+      ],
+      "effective_date": null,
+      "method": "official documentation; no new benchmarks"
+    }
   },
   {
     "name": "Perplexity",
@@ -1776,25 +3505,82 @@
       "comment": "**Search API** (`POST /search`) \u2192 matrix `balanced`: raw ranked `results[]` (anysearch SDK). **Sonar** (`POST /chat/completions`) \u2192 model `sonar`\u2192balanced (grounded answer + citations), `sonar-pro`\u2192deep (multi-source research synthesis). Same `PERPLEXITY_API_KEY`."
     },
     "pricing_per_1k": {
-      "value": "search: $5; fast/sonar low: $5; balanced: $8-$10; deep/high/pro: $12-$22 + tokens",
-      "source_url": "https://docs.perplexity.ai/getting-started/pricing",
-      "comment": "Search API is request-only; Sonar tiers add token charges and request fees by context size/search type."
+      "value": "Fast $1; Standard $5 / 1K requests (up to 5 queries/request); no raw Search model tokens",
+      "source_url": "https://docs.perplexity.ai/docs/getting-started/pricing",
+      "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "links": {
+        "Official source 1": "https://docs.perplexity.ai/docs/search/quickstart"
+      }
     },
     "free_tier_limits": {
-      "value": "No standing free API credits documented",
-      "source_url": "https://docs.perplexity.ai/docs/getting-started/api-groups",
-      "comment": "Tier 0 is a rate-limit tier, not a published free-credit allowance; API usage draws from prepaid credits."
+      "value": "No general free API allowance verified",
+      "source_url": "https://docs.perplexity.ai/docs/getting-started/pricing",
+      "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
+      "links": {
+        "Official source 1": "https://docs.perplexity.ai/docs/search/quickstart"
+      }
     },
     "p50_latency": {
-      "value": "Search: 0.35s p50 / 0.47s p95 independent; 0.358s p50 / 0.763s p95 provider; Sonar/deep: not published",
+      "value": "Historical July 2026: Search: 0.35s p50 / 0.47s p95 independent; 0.358s p50 / 0.763s p95 provider; Sonar/deep: not published",
       "source_url": "https://proxyway.com/research/search-apis-2026-report",
-      "comment": "Independent figures use three 2,000-query runs from the US East Coast. Perplexity's reproducible 2025 vendor benchmark ran from AWS us-east-1.",
+      "comment": "Historical evidence retained from July 2026; not remeasured or claimed current. Independent figures use three 2,000-query runs from the US East Coast. Perplexity's reproducible 2025 vendor benchmark ran from AWS us-east-1.",
       "links": {
         "Independent benchmark": "https://proxyway.com/research/search-apis-2026-report",
         "Provider benchmark": "https://research.perplexity.ai/articles/architecting-and-evaluating-an-ai-first-search-api"
       }
     },
-    "notes": "Native SDK package: perplexityai. Search API (`POST /search`) is in the anysearch SDK; Sonar (`POST /chat/completions`) is documented in the matrix but not wired in the SDK yet."
+    "notes": "Native SDK package: perplexityai. Search API (`POST /search`) is in the anysearch SDK; Sonar (`POST /chat/completions`) is documented in the matrix but not wired in the SDK yet.",
+    "api_category": {
+      "value": "Standalone search API",
+      "source_url": "https://docs.perplexity.ai/docs/getting-started/pricing",
+      "comment": ""
+    },
+    "api_status": {
+      "value": "Available",
+      "source_url": "https://docs.perplexity.ai/docs/getting-started/pricing",
+      "comment": "",
+      "links": {
+        "Official source 1": "https://docs.perplexity.ai/docs/search/quickstart"
+      }
+    },
+    "native_api": {
+      "value": "Ranked Search results and extracted text; Sonar, Agent and Research are separate model-mediated products. Empty HTTP-200 responses are billable.",
+      "source_url": "https://docs.perplexity.ai/docs/getting-started/pricing",
+      "comment": "",
+      "links": {
+        "Official source 1": "https://docs.perplexity.ai/docs/search/quickstart"
+      }
+    },
+    "rate_limits": {
+      "value": "1\u201320 results; other account limits per docs",
+      "source_url": "https://docs.perplexity.ai/docs/getting-started/pricing",
+      "comment": "",
+      "links": {
+        "Official source 1": "https://docs.perplexity.ai/docs/search/quickstart"
+      }
+    },
+    "checked_at": {
+      "value": "2026-10-21",
+      "source_url": "https://docs.perplexity.ai/docs/getting-started/pricing",
+      "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
+      "links": {
+        "Official source 1": "https://docs.perplexity.ai/docs/search/quickstart"
+      }
+    },
+    "sdk_support": {
+      "value": "Python + TypeScript adapters",
+      "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
+      "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+    },
+    "evidence": {
+      "checked_at": "2026-10-21",
+      "source_urls": [
+        "https://docs.perplexity.ai/docs/getting-started/pricing",
+        "https://docs.perplexity.ai/docs/search/quickstart"
+      ],
+      "effective_date": null,
+      "method": "official documentation; no new benchmarks"
+    }
   },
   {
     "name": "SearXNG",
@@ -1882,21 +3668,65 @@
       "comment": "Meta-search JSON API: result richness depends on configured engines, not a global depth flag. Matrix `balanced` = default instance search."
     },
     "pricing_per_1k": {
-      "value": "$0 API fee if self-hosted; infra/proxy costs separate",
-      "source_url": "https://docs.searxng.org/",
-      "comment": "Open-source self-hosted metasearch; operating costs depend on deployment."
+      "value": "Self-hosted software; infrastructure/proxy costs separate",
+      "source_url": "https://docs.searxng.org/dev/search_api.html",
+      "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "links": {}
     },
     "free_tier_limits": {
-      "value": "No software quota when self-hosted; instance limits apply",
+      "value": "No hosted free allowance; self-hosted instance limits apply",
       "source_url": "https://docs.searxng.org/dev/search_api.html",
-      "comment": "SearXNG has no vendor billing tier; capacity and upstream-engine limits depend on the deployment."
+      "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
+      "links": {}
     },
     "p50_latency": {
-      "value": "Deployment-dependent; no portable p50/p90/p95",
+      "value": "Historical July 2026: Deployment-dependent; no portable p50/p90/p95",
       "source_url": "https://docs.searxng.org/admin/settings/settings_search/",
-      "comment": "Latency depends on the self-hosted instance, enabled upstream engines, and timeout configuration, so a provider-wide number would be misleading."
+      "comment": "Historical evidence retained from July 2026; not remeasured or claimed current. Latency depends on the self-hosted instance, enabled upstream engines, and timeout configuration, so a provider-wide number would be misleading."
     },
-    "notes": "No API key required (keyless fallback)."
+    "notes": "No API key required (keyless fallback).",
+    "api_category": {
+      "value": "Self-hosted metasearch",
+      "source_url": "https://docs.searxng.org/dev/search_api.html",
+      "comment": ""
+    },
+    "api_status": {
+      "value": "Self-hosted; instance dependent",
+      "source_url": "https://docs.searxng.org/dev/search_api.html",
+      "comment": "",
+      "links": {}
+    },
+    "native_api": {
+      "value": "GET/POST / or /search; language/time/safe-search and query operators depend on upstream engines.",
+      "source_url": "https://docs.searxng.org/dev/search_api.html",
+      "comment": "",
+      "links": {}
+    },
+    "rate_limits": {
+      "value": "JSON/CSV/RSS must be enabled; public instances may return 403",
+      "source_url": "https://docs.searxng.org/dev/search_api.html",
+      "comment": "",
+      "links": {}
+    },
+    "checked_at": {
+      "value": "2026-10-21",
+      "source_url": "https://docs.searxng.org/dev/search_api.html",
+      "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
+      "links": {}
+    },
+    "sdk_support": {
+      "value": "Python + TypeScript adapters",
+      "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
+      "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+    },
+    "evidence": {
+      "checked_at": "2026-10-21",
+      "source_urls": [
+        "https://docs.searxng.org/dev/search_api.html"
+      ],
+      "effective_date": null,
+      "method": "official documentation; no new benchmarks"
+    }
   },
   {
     "name": "Searchapi",
@@ -1984,24 +3814,68 @@
       "comment": "Google engine wrapper: single SERP depth per request (no native fast/deep tier)."
     },
     "pricing_per_1k": {
-      "value": "balanced: $4 starter; $1-$3 volume",
+      "value": "$40/month/10K; $100/35K; $250/100K; $500/250K standard-speed requests",
       "source_url": "https://www.searchapi.io/pricing",
-      "comment": "Pricing is plan/volume based; verify current SearchApi.io plan before budgeting."
+      "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "links": {}
     },
     "free_tier_limits": {
-      "value": "100 one-time requests; no card",
+      "value": "100 one-time signup requests; no card",
       "source_url": "https://www.searchapi.io/pricing",
-      "comment": "Complimentary requests are for newly registered accounts and do not renew monthly."
+      "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
+      "links": {}
     },
     "p50_latency": {
-      "value": "Light API: 1.07s p50 / 2.23s p95; standard API: not published",
+      "value": "Historical July 2026: Light API: 1.07s p50 / 2.23s p95; standard API: not published",
       "source_url": "https://proxyway.com/research/search-apis-2026-report",
-      "comment": "Independent three-run benchmark. The figure is for SearchAPI Light; the standard Google endpoint used by anysearch was not separately reported.",
+      "comment": "Historical evidence retained from July 2026; not remeasured or claimed current. Independent three-run benchmark. The figure is for SearchAPI Light; the standard Google endpoint used by anysearch was not separately reported.",
       "links": {
         "Independent benchmark": "https://proxyway.com/research/search-apis-2026-report"
       }
     },
-    "notes": ""
+    "notes": "",
+    "api_category": {
+      "value": "Third-party SERP service",
+      "source_url": "https://www.searchapi.io/pricing",
+      "comment": ""
+    },
+    "api_status": {
+      "value": "Available",
+      "source_url": "https://www.searchapi.io/pricing",
+      "comment": "",
+      "links": {}
+    },
+    "native_api": {
+      "value": "Third-party SERP service; only HTTP-200 success billed; $100/35K equals ~$2.86 / 1K.",
+      "source_url": "https://www.searchapi.io/pricing",
+      "comment": "",
+      "links": {}
+    },
+    "rate_limits": {
+      "value": "Entry plan $40/month; enhanced speed may differ",
+      "source_url": "https://www.searchapi.io/pricing",
+      "comment": "",
+      "links": {}
+    },
+    "checked_at": {
+      "value": "2026-10-21",
+      "source_url": "https://www.searchapi.io/pricing",
+      "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
+      "links": {}
+    },
+    "sdk_support": {
+      "value": "Python + TypeScript adapters",
+      "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
+      "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+    },
+    "evidence": {
+      "checked_at": "2026-10-21",
+      "source_urls": [
+        "https://www.searchapi.io/pricing"
+      ],
+      "effective_date": null,
+      "method": "official documentation; no new benchmarks"
+    }
   },
   {
     "name": "Serper",
@@ -2089,24 +3963,68 @@
       "comment": "Google SERP proxy: one ranked result style per call (no fast/deep API knob). Matrix `balanced` = standard /search or /news endpoint."
     },
     "pricing_per_1k": {
-      "value": "balanced: $1.00 starter; $0.30-$0.75 volume",
+      "value": "$50/50K prepaid ($1 / 1K); bulk $0.75/$0.50/$0.30 with larger purchases",
       "source_url": "https://serper.dev/",
-      "comment": "Top-up credit pricing; exact per-1K rate decreases with larger credit packs."
+      "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "links": {}
     },
     "free_tier_limits": {
-      "value": "2,500 one-time queries; no card",
+      "value": "2,500 one-time trial queries; no card",
       "source_url": "https://serper.dev/",
-      "comment": "Complimentary signup queries do not renew monthly."
+      "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
+      "links": {}
     },
     "p50_latency": {
-      "value": "Search: 0.69s p50 / 1.15s p95",
+      "value": "Historical July 2026: Search: 0.69s p50 / 1.15s p95",
       "source_url": "https://proxyway.com/research/search-apis-2026-report",
-      "comment": "Independent result from three runs of 2,000 randomly generated queries from a US East Coast server.",
+      "comment": "Historical evidence retained from July 2026; not remeasured or claimed current. Independent result from three runs of 2,000 randomly generated queries from a US East Coast server.",
       "links": {
         "Independent benchmark": "https://proxyway.com/research/search-apis-2026-report"
       }
     },
-    "notes": ""
+    "notes": "",
+    "api_category": {
+      "value": "Third-party SERP service",
+      "source_url": "https://serper.dev/",
+      "comment": ""
+    },
+    "api_status": {
+      "value": "Available",
+      "source_url": "https://serper.dev/",
+      "comment": "",
+      "links": {}
+    },
+    "native_api": {
+      "value": "Third-party Google SERP service; successful responses billed; tax excluded. Lowest rate requires $3,750 prepaid.",
+      "source_url": "https://serper.dev/",
+      "comment": "",
+      "links": {}
+    },
+    "rate_limits": {
+      "value": "Starter 50 QPS; larger tiers 100/200/300 QPS; credits expire after 6 months",
+      "source_url": "https://serper.dev/",
+      "comment": "",
+      "links": {}
+    },
+    "checked_at": {
+      "value": "2026-10-21",
+      "source_url": "https://serper.dev/",
+      "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
+      "links": {}
+    },
+    "sdk_support": {
+      "value": "Python + TypeScript adapters",
+      "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
+      "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+    },
+    "evidence": {
+      "checked_at": "2026-10-21",
+      "source_urls": [
+        "https://serper.dev/"
+      ],
+      "effective_date": null,
+      "method": "official documentation; no new benchmarks"
+    }
   },
   {
     "name": "Tavily",
@@ -2196,25 +4114,89 @@
       "comment": "**Search API** `search_depth`: `ultra-fast`/`fast`\u2192fast, `basic`\u2192balanced (`include_answer` is a short blurb, not deep research). **Research API** (`POST /research`) `model`: `mini`/`auto`\u2192balanced, `pro`\u2192deep (multi-agent cited report). Same `TAVILY_API_KEY`."
     },
     "pricing_per_1k": {
-      "value": "fast/basic: ~$8; balanced/advanced: ~$16; deep/research: plan/model dependent",
-      "source_url": "https://help.tavily.com/articles/8816424538-pricing",
-      "comment": "Uses API credits; pay-as-you-go credits are listed at $0.008/credit, with higher-depth calls consuming more credits."
+      "value": "PAYG $8 / 1K basic; $16 / 1K advanced (1/2 credits); subscriptions differ",
+      "source_url": "https://docs.tavily.com/documentation/api-credits",
+      "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "links": {
+        "Official source 1": "https://docs.tavily.com/documentation/rate-limits",
+        "Official source 2": "https://docs.tavily.com/documentation/api-reference/endpoint/search"
+      }
     },
     "free_tier_limits": {
-      "value": "1,000 basic or 500 advanced searches/month; no card",
-      "source_url": "https://help.tavily.com/articles/8816424538-pricing",
-      "comment": "Researcher plan includes 1,000 credits monthly; basic search costs one and advanced costs two credits."
+      "value": "1,000 credits/month; no card",
+      "source_url": "https://docs.tavily.com/documentation/api-credits",
+      "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
+      "links": {
+        "Official source 1": "https://docs.tavily.com/documentation/rate-limits",
+        "Official source 2": "https://docs.tavily.com/documentation/api-reference/endpoint/search"
+      }
     },
     "p50_latency": {
-      "value": "ultra-fast: 0.37s p50 / 0.46s p95; fast/basic/advanced/research: not published",
+      "value": "Historical July 2026: ultra-fast: 0.37s p50 / 0.46s p95; fast/basic/advanced/research: not published",
       "source_url": "https://proxyway.com/research/search-apis-2026-report",
-      "comment": "Ultra-fast is independently measured across three 2,000-query runs from the US East Coast. Tavily documents its other depth tiers but not percentile latency.",
+      "comment": "Historical evidence retained from July 2026; not remeasured or claimed current. Ultra-fast is independently measured across three 2,000-query runs from the US East Coast. Tavily documents its other depth tiers but not percentile latency.",
       "links": {
         "Independent benchmark": "https://proxyway.com/research/search-apis-2026-report",
         "Depth documentation": "https://docs.tavily.com/api-reference/endpoint/search"
       }
     },
-    "notes": "Native SDK package: tavily-python. Search API is in the anysearch SDK; Research API (`POST /research`) is documented in the matrix (use `tavily-python` `research()` / `get_research()`)."
+    "notes": "Native SDK package: tavily-python. Search API is in the anysearch SDK; Research API (`POST /research`) is documented in the matrix (use `tavily-python` `research()` / `get_research()`).",
+    "api_category": {
+      "value": "Standalone search API",
+      "source_url": "https://docs.tavily.com/documentation/api-credits",
+      "comment": ""
+    },
+    "api_status": {
+      "value": "Available",
+      "source_url": "https://docs.tavily.com/documentation/api-credits",
+      "comment": "",
+      "links": {
+        "Official source 1": "https://docs.tavily.com/documentation/rate-limits",
+        "Official source 2": "https://docs.tavily.com/documentation/api-reference/endpoint/search"
+      }
+    },
+    "native_api": {
+      "value": "Search, extract, crawl and research are separate credit rules; do not price research as basic search.",
+      "source_url": "https://docs.tavily.com/documentation/api-credits",
+      "comment": "",
+      "links": {
+        "Official source 1": "https://docs.tavily.com/documentation/rate-limits",
+        "Official source 2": "https://docs.tavily.com/documentation/api-reference/endpoint/search"
+      }
+    },
+    "rate_limits": {
+      "value": "Development 100 RPM; paid production 1,000 RPM",
+      "source_url": "https://docs.tavily.com/documentation/api-credits",
+      "comment": "",
+      "links": {
+        "Official source 1": "https://docs.tavily.com/documentation/rate-limits",
+        "Official source 2": "https://docs.tavily.com/documentation/api-reference/endpoint/search"
+      }
+    },
+    "checked_at": {
+      "value": "2026-10-21",
+      "source_url": "https://docs.tavily.com/documentation/api-credits",
+      "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
+      "links": {
+        "Official source 1": "https://docs.tavily.com/documentation/rate-limits",
+        "Official source 2": "https://docs.tavily.com/documentation/api-reference/endpoint/search"
+      }
+    },
+    "sdk_support": {
+      "value": "Python + TypeScript adapters",
+      "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
+      "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+    },
+    "evidence": {
+      "checked_at": "2026-10-21",
+      "source_urls": [
+        "https://docs.tavily.com/documentation/api-credits",
+        "https://docs.tavily.com/documentation/rate-limits",
+        "https://docs.tavily.com/documentation/api-reference/endpoint/search"
+      ],
+      "effective_date": null,
+      "method": "official documentation; no new benchmarks"
+    }
   },
   {
     "name": "Yahoo \u00b7 SerpApi",
@@ -2302,25 +4284,69 @@
       "comment": "Fixed SerpApi backend `engine=yahoo` (set via anysearch `engine=\"yahoo\"` with `provider=\"serpapi\"`). No separate fast/deep tier on this engine."
     },
     "pricing_per_1k": {
-      "value": "balanced: $25 starter; ~$3.75-$15 volume",
+      "value": "$25/month for 1K; $75/5K; $150/15K; $275/30K searches",
       "source_url": "https://serpapi.com/pricing",
-      "comment": "Monthly plan price divided by included searches; applies to all SerpApi engine rows."
+      "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "links": {}
     },
     "free_tier_limits": {
       "value": "250 searches/month; 50/hour",
       "source_url": "https://serpapi.com/pricing",
-      "comment": "Free plan applies across SerpApi engines; only successful uncached searches consume quota."
+      "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
+      "links": {}
     },
     "p50_latency": {
-      "value": "Light API: 1.28s p50 independent; fastest Google API: 0.73s avg / 1.45s p99 vendor-run",
+      "value": "Historical July 2026: Light API: 1.28s p50 independent; fastest Google API: 0.73s avg / 1.45s p99 vendor-run",
       "source_url": "https://proxyway.com/research/search-apis-2026-report",
-      "comment": "Independent p50 is for SerpApi Light, not a specific engine. SerpApi's own 100-plus-query comparison reports average and p99 for its fastest Google API; anysearch engine-specific latency remains unreported.",
+      "comment": "Historical evidence retained from July 2026; not remeasured or claimed current. Independent p50 is for SerpApi Light, not a specific engine. SerpApi's own 100-plus-query comparison reports average and p99 for its fastest Google API; anysearch engine-specific latency remains unreported.",
       "links": {
         "Independent benchmark": "https://proxyway.com/research/search-apis-2026-report",
         "Provider benchmark": "https://serpapi.com/blog/who-has-the-fastest-google-search-api/"
       }
     },
-    "notes": "SerpApi proxy to Yahoo (`engine=yahoo`). Native SDK package: google-search-results."
+    "notes": "SerpApi proxy to Yahoo (`engine=yahoo`). Native SDK package: google-search-results.",
+    "api_category": {
+      "value": "Third-party SERP service",
+      "source_url": "https://serpapi.com/pricing",
+      "comment": ""
+    },
+    "api_status": {
+      "value": "Available",
+      "source_url": "https://serpapi.com/pricing",
+      "comment": "",
+      "links": {}
+    },
+    "native_api": {
+      "value": "Third-party SERP access to multiple engines; not official Google/Bing developer API.",
+      "source_url": "https://serpapi.com/pricing",
+      "comment": "",
+      "links": {}
+    },
+    "rate_limits": {
+      "value": "Starter 200/hour; Developer 1,000/hour",
+      "source_url": "https://serpapi.com/pricing",
+      "comment": "",
+      "links": {}
+    },
+    "checked_at": {
+      "value": "2026-10-21",
+      "source_url": "https://serpapi.com/pricing",
+      "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
+      "links": {}
+    },
+    "sdk_support": {
+      "value": "Python + TypeScript adapters",
+      "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
+      "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+    },
+    "evidence": {
+      "checked_at": "2026-10-21",
+      "source_urls": [
+        "https://serpapi.com/pricing"
+      ],
+      "effective_date": null,
+      "method": "official documentation; no new benchmarks"
+    }
   },
   {
     "name": "Yandex \u00b7 SerpApi",
@@ -2408,25 +4434,69 @@
       "comment": "Fixed SerpApi backend `engine=yandex` (set via anysearch `engine=\"yandex\"` with `provider=\"serpapi\"`). No separate fast/deep tier on this engine."
     },
     "pricing_per_1k": {
-      "value": "balanced: $25 starter; ~$3.75-$15 volume",
+      "value": "$25/month for 1K; $75/5K; $150/15K; $275/30K searches",
       "source_url": "https://serpapi.com/pricing",
-      "comment": "Monthly plan price divided by included searches; applies to all SerpApi engine rows."
+      "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "links": {}
     },
     "free_tier_limits": {
       "value": "250 searches/month; 50/hour",
       "source_url": "https://serpapi.com/pricing",
-      "comment": "Free plan applies across SerpApi engines; only successful uncached searches consume quota."
+      "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
+      "links": {}
     },
     "p50_latency": {
-      "value": "Light API: 1.28s p50 independent; fastest Google API: 0.73s avg / 1.45s p99 vendor-run",
+      "value": "Historical July 2026: Light API: 1.28s p50 independent; fastest Google API: 0.73s avg / 1.45s p99 vendor-run",
       "source_url": "https://proxyway.com/research/search-apis-2026-report",
-      "comment": "Independent p50 is for SerpApi Light, not a specific engine. SerpApi's own 100-plus-query comparison reports average and p99 for its fastest Google API; anysearch engine-specific latency remains unreported.",
+      "comment": "Historical evidence retained from July 2026; not remeasured or claimed current. Independent p50 is for SerpApi Light, not a specific engine. SerpApi's own 100-plus-query comparison reports average and p99 for its fastest Google API; anysearch engine-specific latency remains unreported.",
       "links": {
         "Independent benchmark": "https://proxyway.com/research/search-apis-2026-report",
         "Provider benchmark": "https://serpapi.com/blog/who-has-the-fastest-google-search-api/"
       }
     },
-    "notes": "SerpApi proxy to Yandex (`engine=yandex`). Native SDK package: google-search-results."
+    "notes": "SerpApi proxy to Yandex (`engine=yandex`). Native SDK package: google-search-results.",
+    "api_category": {
+      "value": "Third-party SERP service",
+      "source_url": "https://serpapi.com/pricing",
+      "comment": ""
+    },
+    "api_status": {
+      "value": "Available",
+      "source_url": "https://serpapi.com/pricing",
+      "comment": "",
+      "links": {}
+    },
+    "native_api": {
+      "value": "Third-party SERP access to multiple engines; not official Google/Bing developer API.",
+      "source_url": "https://serpapi.com/pricing",
+      "comment": "",
+      "links": {}
+    },
+    "rate_limits": {
+      "value": "Starter 200/hour; Developer 1,000/hour",
+      "source_url": "https://serpapi.com/pricing",
+      "comment": "",
+      "links": {}
+    },
+    "checked_at": {
+      "value": "2026-10-21",
+      "source_url": "https://serpapi.com/pricing",
+      "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
+      "links": {}
+    },
+    "sdk_support": {
+      "value": "Python + TypeScript adapters",
+      "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
+      "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+    },
+    "evidence": {
+      "checked_at": "2026-10-21",
+      "source_urls": [
+        "https://serpapi.com/pricing"
+      ],
+      "effective_date": null,
+      "method": "official documentation; no new benchmarks"
+    }
   },
   {
     "name": "You",
@@ -2516,25 +4586,239 @@
       "comment": "**Search API** (`POST /v1/search`) \u2192 matrix `balanced` (ranked snippets, SDK). **Research API** (`POST /v1/research`) \u2192 `research_effort`: `lite`\u2192fast, `standard`\u2192balanced, `deep` / `exhaustive`\u2192deep (cited synthesis). Same `YDC_API_KEY`."
     },
     "pricing_per_1k": {
-      "value": "search: $5; research: $12/$50/$100/$450 by effort",
+      "value": "Search $5 / 1K calls; live extraction +$1 / 1K pages; cached extraction no surcharge",
       "source_url": "https://you.com/docs/administration/billing",
-      "comment": "Research prices map to lite, standard, deep, and exhaustive effort tiers."
+      "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "links": {
+        "Official source 1": "https://you.com/pricing"
+      }
     },
     "free_tier_limits": {
-      "value": "$100 signup (~20,000 searches); keyless MCP: 100/day",
-      "source_url": "https://you.com/docs/welcome",
-      "comment": "Signup credit covers roughly 20,000 base Search calls; the no-signup MCP profile has a separate daily limit."
+      "value": "$10 signup advertised on canonical pricing; keyless MCP 100 searches/day",
+      "source_url": "https://you.com/docs/administration/billing",
+      "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
+      "links": {
+        "Official source 1": "https://you.com/pricing"
+      }
     },
     "p50_latency": {
-      "value": "Search: 0.73s p50 / 1.22s p95 independent; 0.445s p50 provider; Research: 5\u201360s by effort",
+      "value": "Historical July 2026: Search: 0.73s p50 / 1.22s p95 independent; 0.445s p50 provider; Research: 5\u201360s by effort",
       "source_url": "https://proxyway.com/research/search-apis-2026-report",
-      "comment": "Search percentiles are independent three-run results; You separately reports 445 ms p50. Research's provider range spans effort levels but is not broken out into lite, standard, deep, exhaustive, and frontier percentiles.",
+      "comment": "Historical evidence retained from July 2026; not remeasured or claimed current. Search percentiles are independent three-run results; You separately reports 445 ms p50. Research's provider range spans effort levels but is not broken out into lite, standard, deep, exhaustive, and frontier percentiles.",
       "links": {
         "Independent benchmark": "https://proxyway.com/research/search-apis-2026-report",
         "Provider p50": "https://you.com/resources/api-latency",
         "Research range": "https://you.com/resources/building-with-the-research-api"
       }
     },
-    "notes": "Search API (`POST /v1/search`) is in the anysearch SDK; Research API (`POST /v1/research`) is documented in the matrix but not wired in the SDK yet."
+    "notes": "Search API (`POST /v1/search`) is in the anysearch SDK; Research API (`POST /v1/research`) is documented in the matrix but not wired in the SDK yet.",
+    "api_category": {
+      "value": "Standalone search API",
+      "source_url": "https://you.com/docs/administration/billing",
+      "comment": ""
+    },
+    "api_status": {
+      "value": "Available",
+      "source_url": "https://you.com/docs/administration/billing",
+      "comment": "",
+      "links": {
+        "Official source 1": "https://you.com/pricing"
+      }
+    },
+    "native_api": {
+      "value": "Web and news search; Research has separate pricing. Legacy marketing says $100 signup; current canonical page says $10.",
+      "source_url": "https://you.com/docs/administration/billing",
+      "comment": "",
+      "links": {
+        "Official source 1": "https://you.com/pricing"
+      }
+    },
+    "rate_limits": {
+      "value": "Up to 100 results; PAYG no minimum",
+      "source_url": "https://you.com/docs/administration/billing",
+      "comment": "",
+      "links": {
+        "Official source 1": "https://you.com/pricing"
+      }
+    },
+    "checked_at": {
+      "value": "2026-10-21",
+      "source_url": "https://you.com/docs/administration/billing",
+      "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
+      "links": {
+        "Official source 1": "https://you.com/pricing"
+      }
+    },
+    "sdk_support": {
+      "value": "Python + TypeScript adapters",
+      "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
+      "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+    },
+    "evidence": {
+      "checked_at": "2026-10-21",
+      "source_urls": [
+        "https://you.com/docs/administration/billing",
+        "https://you.com/pricing"
+      ],
+      "effective_date": null,
+      "method": "official documentation; no new benchmarks"
+    }
+  },
+  {
+    "name": "xAI Web Search",
+    "links": {
+      "slug": "xai",
+      "docs": "https://docs.x.ai/developers/pricing",
+      "website": "https://x.ai"
+    },
+    "env_keys": {
+      "value": "Not integrated",
+      "source_url": "https://docs.x.ai/developers/pricing",
+      "comment": "Comparison only; anysearch does not read a key for this provider."
+    },
+    "python_extra": {
+      "value": "Not integrated",
+      "source_url": "https://docs.x.ai/developers/pricing",
+      "comment": ""
+    },
+    "mode": {
+      "values": [],
+      "source_url": "https://docs.x.ai/developers/pricing",
+      "comment": "No unified SDK mode mapping."
+    },
+    "p50_latency": {
+      "value": "No current comparable measurement verified",
+      "source_url": "https://docs.x.ai/developers/pricing",
+      "comment": ""
+    },
+    "notes": "Comparison only; no anysearch SDK adapter is claimed.",
+    "comparison_only": true,
+    "requires_key": {
+      "support": "unknown",
+      "source_url": "https://docs.x.ai/developers/pricing",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "snippet": {
+      "support": "unknown",
+      "source_url": "https://docs.x.ai/developers/pricing",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "domains": {
+      "support": "unknown",
+      "source_url": "https://docs.x.ai/developers/pricing",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "country": {
+      "support": "unknown",
+      "source_url": "https://docs.x.ai/developers/pricing",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "language": {
+      "support": "unknown",
+      "source_url": "https://docs.x.ai/developers/pricing",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "date": {
+      "support": "unknown",
+      "source_url": "https://docs.x.ai/developers/pricing",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "safe_search": {
+      "support": "unknown",
+      "source_url": "https://docs.x.ai/developers/pricing",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "answer": {
+      "support": "unknown",
+      "source_url": "https://docs.x.ai/developers/pricing",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "content": {
+      "support": "unknown",
+      "source_url": "https://docs.x.ai/developers/pricing",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "summary": {
+      "support": "unknown",
+      "source_url": "https://docs.x.ai/developers/pricing",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "highlights": {
+      "support": "unknown",
+      "source_url": "https://docs.x.ai/developers/pricing",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "news": {
+      "support": "unknown",
+      "source_url": "https://docs.x.ai/developers/pricing",
+      "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+    },
+    "api_category": {
+      "value": "Model-hosted grounding",
+      "source_url": "https://docs.x.ai/developers/pricing",
+      "comment": ""
+    },
+    "api_status": {
+      "value": "Available",
+      "source_url": "https://docs.x.ai/developers/pricing",
+      "comment": "",
+      "links": {
+        "Official source 1": "https://docs.x.ai/developers/tools/web-search"
+      }
+    },
+    "native_api": {
+      "value": "Model-hosted web_search; X Search is distinct and is not public web search.",
+      "source_url": "https://docs.x.ai/developers/pricing",
+      "comment": "",
+      "links": {
+        "Official source 1": "https://docs.x.ai/developers/tools/web-search"
+      }
+    },
+    "rate_limits": {
+      "value": "X Search billed separately: posts/profiles use different units",
+      "source_url": "https://docs.x.ai/developers/pricing",
+      "comment": "",
+      "links": {
+        "Official source 1": "https://docs.x.ai/developers/tools/web-search"
+      }
+    },
+    "checked_at": {
+      "value": "2026-10-21",
+      "source_url": "https://docs.x.ai/developers/pricing",
+      "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
+      "links": {
+        "Official source 1": "https://docs.x.ai/developers/tools/web-search"
+      }
+    },
+    "sdk_support": {
+      "value": "Comparison only \u2014 no adapter",
+      "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
+      "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+    },
+    "pricing_per_1k": {
+      "value": "Web Search $5 / 1K tool calls + model tokens",
+      "source_url": "https://docs.x.ai/developers/pricing",
+      "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "links": {
+        "Official source 1": "https://docs.x.ai/developers/tools/web-search"
+      }
+    },
+    "free_tier_limits": {
+      "value": "No recurring free allowance verified",
+      "source_url": "https://docs.x.ai/developers/pricing",
+      "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
+      "links": {
+        "Official source 1": "https://docs.x.ai/developers/tools/web-search"
+      }
+    },
+    "evidence": {
+      "checked_at": "2026-10-21",
+      "source_urls": [
+        "https://docs.x.ai/developers/pricing",
+        "https://docs.x.ai/developers/tools/web-search"
+      ],
+      "effective_date": null,
+      "method": "official documentation; no new benchmarks"
+    }
   }
 ]

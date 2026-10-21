@@ -1,0 +1,144 @@
+{
+  "name": "DataForSEO",
+  "links": {
+    "slug": "dataforseo",
+    "docs": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+    "website": "https://dataforseo.com"
+  },
+  "env_keys": {
+    "value": "Not integrated",
+    "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+    "comment": "Comparison only; anysearch does not read a key for this provider."
+  },
+  "python_extra": {
+    "value": "Not integrated",
+    "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+    "comment": ""
+  },
+  "mode": {
+    "values": [],
+    "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+    "comment": "No unified SDK mode mapping."
+  },
+  "p50_latency": {
+    "value": "No current comparable measurement verified",
+    "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+    "comment": ""
+  },
+  "notes": "Comparison only; no anysearch SDK adapter is claimed.",
+  "comparison_only": true,
+  "requires_key": {
+    "support": "unknown",
+    "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "snippet": {
+    "support": "unknown",
+    "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "domains": {
+    "support": "unknown",
+    "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "country": {
+    "support": "unknown",
+    "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "language": {
+    "support": "unknown",
+    "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "date": {
+    "support": "unknown",
+    "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "safe_search": {
+    "support": "unknown",
+    "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "answer": {
+    "support": "unknown",
+    "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "content": {
+    "support": "unknown",
+    "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "summary": {
+    "support": "unknown",
+    "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "highlights": {
+    "support": "unknown",
+    "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "news": {
+    "support": "unknown",
+    "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "api_category": {
+    "value": "Third-party SERP service",
+    "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+    "comment": ""
+  },
+  "api_status": {
+    "value": "Available",
+    "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+    "comment": "",
+    "links": {}
+  },
+  "native_api": {
+    "value": "Depth, operators and extras alter cost; queued jobs are not comparable to Live latency.",
+    "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+    "comment": "",
+    "links": {}
+  },
+  "rate_limits": {
+    "value": "$50 minimum prepaid; no subscription/expiry; Standard average ~5min, target 45min",
+    "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+    "comment": "",
+    "links": {}
+  },
+  "checked_at": {
+    "value": "2026-10-21",
+    "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+    "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
+    "links": {}
+  },
+  "sdk_support": {
+    "value": "Comparison only \u2014 no adapter",
+    "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
+    "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+  },
+  "pricing_per_1k": {
+    "value": "Standard queue $0.60; Priority $1.20; Live $2 / 1K SERP pages (\u226410 organic results/page)",
+    "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+    "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+    "links": {}
+  },
+  "free_tier_limits": {
+    "value": "$1 trial; sample-only sandbox separate",
+    "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+    "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
+    "links": {}
+  },
+  "evidence": {
+    "checked_at": "2026-10-21",
+    "source_urls": [
+      "https://dataforseo.com/pricing/google-serp/google-organic-serp-api"
+    ],
+    "effective_date": null,
+    "method": "official documentation; no new benchmarks"
+  }
+}

@@ -1,0 +1,144 @@
+{
+  "name": "DeepSeek",
+  "links": {
+    "slug": "deepseek",
+    "docs": "https://api-docs.deepseek.com/guides/search/",
+    "website": "https://www.deepseek.com"
+  },
+  "env_keys": {
+    "value": "Not integrated",
+    "source_url": "https://api-docs.deepseek.com/guides/search/",
+    "comment": "Comparison only; anysearch does not read a key for this provider."
+  },
+  "python_extra": {
+    "value": "Not integrated",
+    "source_url": "https://api-docs.deepseek.com/guides/search/",
+    "comment": ""
+  },
+  "mode": {
+    "values": [],
+    "source_url": "https://api-docs.deepseek.com/guides/search/",
+    "comment": "No unified SDK mode mapping."
+  },
+  "p50_latency": {
+    "value": "No current comparable measurement verified",
+    "source_url": "https://api-docs.deepseek.com/guides/search/",
+    "comment": ""
+  },
+  "notes": "Comparison only; no anysearch SDK adapter is claimed.",
+  "comparison_only": true,
+  "requires_key": {
+    "support": "unknown",
+    "source_url": "https://api-docs.deepseek.com/guides/search/",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "snippet": {
+    "support": "unknown",
+    "source_url": "https://api-docs.deepseek.com/guides/search/",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "domains": {
+    "support": "unknown",
+    "source_url": "https://api-docs.deepseek.com/guides/search/",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "country": {
+    "support": "unknown",
+    "source_url": "https://api-docs.deepseek.com/guides/search/",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "language": {
+    "support": "unknown",
+    "source_url": "https://api-docs.deepseek.com/guides/search/",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "date": {
+    "support": "unknown",
+    "source_url": "https://api-docs.deepseek.com/guides/search/",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "safe_search": {
+    "support": "unknown",
+    "source_url": "https://api-docs.deepseek.com/guides/search/",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "answer": {
+    "support": "unknown",
+    "source_url": "https://api-docs.deepseek.com/guides/search/",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "content": {
+    "support": "unknown",
+    "source_url": "https://api-docs.deepseek.com/guides/search/",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "summary": {
+    "support": "unknown",
+    "source_url": "https://api-docs.deepseek.com/guides/search/",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "highlights": {
+    "support": "unknown",
+    "source_url": "https://api-docs.deepseek.com/guides/search/",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "news": {
+    "support": "unknown",
+    "source_url": "https://api-docs.deepseek.com/guides/search/",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "api_category": {
+    "value": "Standalone search API",
+    "source_url": "https://api-docs.deepseek.com/guides/search/",
+    "comment": ""
+  },
+  "api_status": {
+    "value": "Available",
+    "source_url": "https://api-docs.deepseek.com/guides/search/",
+    "comment": "Direct live guide rechecked October 21: Search 100 QPS and Fetch 25 QPS. Earlier indexed 5/5 snapshot is superseded. Direct API billing is separate from temporarily free server-side integrations, billed from October 31 16:00 UTC.",
+    "links": {}
+  },
+  "native_api": {
+    "value": "Raw JSON POST /v1/tools/search; 1\u201350 results, optional content, summaries; site/lang/date query operators. Separate Markdown Fetch API.",
+    "source_url": "https://api-docs.deepseek.com/guides/search/",
+    "comment": "Direct live guide rechecked October 21: Search 100 QPS and Fetch 25 QPS. Earlier indexed 5/5 snapshot is superseded. Direct API billing is separate from temporarily free server-side integrations, billed from October 31 16:00 UTC.",
+    "links": {}
+  },
+  "rate_limits": {
+    "value": "Search 100 QPS/account; Fetch 25 QPS/account; Fetch also per-domain throttled",
+    "source_url": "https://api-docs.deepseek.com/guides/search/",
+    "comment": "Direct live guide rechecked October 21: Search 100 QPS and Fetch 25 QPS. Earlier indexed 5/5 snapshot is superseded. Direct API billing is separate from temporarily free server-side integrations, billed from October 31 16:00 UTC.",
+    "links": {}
+  },
+  "checked_at": {
+    "value": "2026-10-21",
+    "source_url": "https://api-docs.deepseek.com/guides/search/",
+    "comment": "Official public documentation reviewed; no paid API or benchmark run. Direct live guide rechecked October 21: Search 100 QPS and Fetch 25 QPS. Earlier indexed 5/5 snapshot is superseded. Direct API billing is separate from temporarily free server-side integrations, billed from October 31 16:00 UTC.",
+    "links": {}
+  },
+  "sdk_support": {
+    "value": "Comparison only \u2014 no adapter",
+    "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
+    "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+  },
+  "pricing_per_1k": {
+    "value": "$0.75 / 1K successful nonempty Search requests; Fetch separately $0.75 / 1K",
+    "source_url": "https://api-docs.deepseek.com/guides/search/",
+    "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. Direct live guide rechecked October 21: Search 100 QPS and Fetch 25 QPS. Earlier indexed 5/5 snapshot is superseded. Direct API billing is separate from temporarily free server-side integrations, billed from October 31 16:00 UTC.",
+    "links": {}
+  },
+  "free_tier_limits": {
+    "value": "No recurring direct API allowance verified; server-side tool promotion is separate",
+    "source_url": "https://api-docs.deepseek.com/guides/search/",
+    "comment": "Trial, monthly credits and model-tool promotions are distinct. Direct live guide rechecked October 21: Search 100 QPS and Fetch 25 QPS. Earlier indexed 5/5 snapshot is superseded. Direct API billing is separate from temporarily free server-side integrations, billed from October 31 16:00 UTC.",
+    "links": {}
+  },
+  "evidence": {
+    "checked_at": "2026-10-21",
+    "source_urls": [
+      "https://api-docs.deepseek.com/guides/search/"
+    ],
+    "effective_date": "2026-10-17",
+    "method": "official documentation; no new benchmarks"
+  }
+}

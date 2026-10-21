@@ -6,7 +6,7 @@ import changelog from "../docs/tools/search_matrix/changelog.json";
 
 const CANONICAL_ORIGIN = "https://compare-anysearch.ainorthstar.tech";
 const GITHUB_REPO = "https://github.com/dhruv-anand-aintech/anysearch";
-const DEPLOYMENT_MARKER = "tiered-latency-2026-07-28";
+const DEPLOYMENT_MARKER = "official-review-2026-10-21";
 const PWA = {
   name: "Anysearch Compare",
   shortName: "Anysearch",
@@ -16,7 +16,7 @@ const PWA = {
 };
 
 const columns = Object.entries(schema.properties)
-  .filter(([key]) => !["links", "notes"].includes(key))
+  .filter(([key]) => !["links", "notes", "comparison_only", "evidence"].includes(key))
   .map(([key, value]) => {
     const parts = (value.$comment || "").split("|").map(p => p.trim());
     return { key, group: parts[0] || "Other", label: parts[1] || key, description: parts[2] || "" };
@@ -34,7 +34,7 @@ function agentDomain(agent) {
 const FAVICON_OVERRIDES = {};
 
 function metaTags() {
-  const desc = `Compare ${matrix.length} web search APIs for AI agents by features, pricing, SDK support, search modes, and provider capabilities.`;
+  const desc = `Compare ${matrix.length} search offerings for AI agents by features, pricing, SDK support, search modes, and provider capabilities.`;
   return `
     <meta name="description" content="${htmlEscape(desc)}">
     <meta name="robots" content="index, follow">
@@ -77,27 +77,28 @@ function feedbackIssueUrl() {
 }
 
 function formatUpdatedLabel(iso) {
+  if (iso) return `Evidence checked ${String(iso).slice(0, 10)}`;
   const then = Date.parse(iso);
-  if (!then) return "Updated recently";
+  if (!then) return "Review date unavailable";
   const diff = Math.max(0, Date.now() - then);
   const minute = 60 * 1000;
   const hour = 60 * minute;
   const day = 24 * hour;
-  if (diff < minute) return "Updated now";
-  if (diff < hour) return `Updated ${Math.floor(diff / minute)} min ago`;
+  if (diff < minute) return "Evidence checked now";
+  if (diff < hour) return `Evidence checked ${Math.floor(diff / minute)} min ago`;
   if (diff < day) {
     const hours = Math.floor(diff / hour);
-    return `Updated ${hours} ${hours === 1 ? "hour" : "hours"} ago`;
+    return `Evidence checked ${hours} ${hours === 1 ? "hour" : "hours"} ago`;
   }
   if (diff < 60 * day) {
     const days = Math.floor(diff / day);
-    return `Updated ${days} ${days === 1 ? "day" : "days"} ago`;
+    return `Evidence checked ${days} ${days === 1 ? "day" : "days"} ago`;
   }
   if (diff < 183 * day) {
     const months = Math.max(2, Math.floor(diff / (30 * day)));
-    return `Updated ${months} months ago`;
+    return `Evidence checked ${months} months ago`;
   }
-  return `Updated ${new Intl.DateTimeFormat("en-US", { month: "long", day: "numeric", year: "numeric" }).format(new Date(then))}`;
+  return `Evidence checked ${new Intl.DateTimeFormat("en-US", { month: "long", day: "numeric", year: "numeric" }).format(new Date(then))}`;
 }
 
 function renderChangelog() {
@@ -120,7 +121,7 @@ function renderChangelog() {
 
 function render() {
   const payload = JSON.stringify({ matrix, columns, groups, faviconOverrides: FAVICON_OVERRIDES }).replaceAll("</", "<\\/");
-  const updatedAt = updatedMeta.updated_at || new Date().toISOString();
+  const updatedAt = updatedMeta.updated_at || "";
   return `<!doctype html>
 <html lang="en">
 <head>
@@ -203,7 +204,7 @@ th {
 }
 th.corner { position: sticky; left: 0; z-index: 25; background: #e8decc; min-width: 156px; width: 156px; }
 th.agent-col {
-  width: var(--agent-col-w, 88px); min-width: var(--agent-col-w, 88px); max-width: var(--agent-col-w, 88px);
+  width: var(--agent-col-w, 180px); min-width: var(--agent-col-w, 180px); max-width: var(--agent-col-w, 180px);
   min-height: 64px; height: auto; cursor: grab; transition: opacity .15s;
   padding: 5px 6px 7px; vertical-align: bottom;
 }
@@ -322,7 +323,7 @@ td.cell-wrap .dot {
 .cell-tip-link { white-space: nowrap; }
 td.value {
   font-size: 9px; color: var(--muted); line-height: 1.35; text-align: left; vertical-align: top;
-  width: var(--agent-col-w, 88px); max-width: var(--agent-col-w, 88px); min-width: var(--agent-col-w, 88px);
+  width: var(--agent-col-w, 180px); max-width: var(--agent-col-w, 180px); min-width: var(--agent-col-w, 180px);
   white-space: normal; overflow-wrap: anywhere; word-break: break-word; hyphens: auto;
 }
 td.value .cell-value {
@@ -373,9 +374,9 @@ td.value .cell-value {
 </header>
 <main id="matrixView" class="view-panel matrix-view">
 <section class="hero">
-  <p>Compare ${htmlEscape(matrix.length)} web search API providers for AI agents by features, pricing, SDK support, search modes, and unified <strong>anysearch</strong> parameters. <strong>Name or icon</strong> opens the provider site; <strong>⊙</strong> hides or shows a column; drag headers to reorder; use the <strong>API docs</strong> row for official references.</p>
+  <p>Compare ${htmlEscape(matrix.length)} search offerings by category, availability and pricing. Feature flags describe unified <strong>anysearch SDK mappings</strong>; comparison-only offerings have no adapter. <strong>Name or icon</strong> opens the provider site; <strong>⊙</strong> hides or shows a column; drag headers to reorder; use the <strong>API docs</strong> row for official references.</p>
   <div class="meta-row">
-    <span class="pill">${htmlEscape(matrix.length)} providers</span>
+    <span class="pill">${htmlEscape(matrix.length)} offerings</span>
     <span class="pill"><a href="${GITHUB_REPO}">anysearch SDK</a></span>
     <span class="pill" id="updatedPill" data-updated-at="${htmlEscape(updatedAt)}">${htmlEscape(formatUpdatedLabel(updatedAt))}</span>
   </div>
@@ -390,8 +391,8 @@ td.value .cell-value {
 <main id="changelogView" class="view-panel changelog-view" hidden>
   <div class="changelog-shell">
     <header class="changelog-head">
-      <h1>Changelog</h1>
-      <span>${htmlEscape(changelog.entry_count)} tracked changes</span>
+      <h1>Changelog</h1><p>Changes to this comparison, derived from repository history. Evidence reviews are not provider launch dates.</p>
+      <span>${htmlEscape(changelog.entry_count)} tracked website/data changes</span>
     </header>
     ${renderChangelog()}
   </div>
@@ -421,28 +422,29 @@ function providerDocsCell(agent) {
 }
 const { matrix, columns, groups, faviconOverrides } = JSON.parse(document.getElementById('payload').textContent);
 function formatUpdatedLabelClient(iso) {
+  if (iso) return 'Evidence checked ' + String(iso).slice(0,10);
   var then = Date.parse(iso);
-  if (!then) return 'Updated recently';
+  if (!then) return 'Review date unavailable';
   var diff = Math.max(0, Date.now() - then);
   var minute = 60 * 1000, hour = 60 * minute, day = 24 * hour;
-  if (diff < minute) return 'Updated now';
+  if (diff < minute) return 'Evidence checked now';
   if (diff < hour) {
     var mins = Math.floor(diff / minute);
-    return 'Updated ' + mins + ' min ago';
+    return 'Evidence checked ' + mins + ' min ago';
   }
   if (diff < day) {
     var hours = Math.floor(diff / hour);
-    return 'Updated ' + hours + ' ' + (hours === 1 ? 'hour' : 'hours') + ' ago';
+    return 'Evidence checked ' + hours + ' ' + (hours === 1 ? 'hour' : 'hours') + ' ago';
   }
   if (diff < 60 * day) {
     var days = Math.floor(diff / day);
-    return 'Updated ' + days + ' ' + (days === 1 ? 'day' : 'days') + ' ago';
+    return 'Evidence checked ' + days + ' ' + (days === 1 ? 'day' : 'days') + ' ago';
   }
   if (diff < 183 * day) {
     var months = Math.max(2, Math.floor(diff / (30 * day)));
-    return 'Updated ' + months + ' months ago';
+    return 'Evidence checked ' + months + ' months ago';
   }
-  return 'Updated ' + new Intl.DateTimeFormat('en-US', {month:'long', day:'numeric', year:'numeric'}).format(new Date(then));
+  return 'Evidence checked ' + new Intl.DateTimeFormat('en-US', {month:'long', day:'numeric', year:'numeric'}).format(new Date(then));
 }
 function refreshUpdatedPill() {
   var pill = document.getElementById('updatedPill');
@@ -451,9 +453,10 @@ function refreshUpdatedPill() {
 refreshUpdatedPill();
 setInterval(refreshUpdatedPill, 60000);
 // String/metadata rows in About; feature-shaped rows (e.g. requires_key) stay in featureCols.
-const metaCols = new Set(['name','env_keys','python_extra','notes']);
+const metaCols = new Set(['name','env_keys','python_extra','notes','api_category','api_status','native_api','sdk_support','checked_at','rate_limits']);
 const featureCols = columns.filter(c => !metaCols.has(c.key));
-const aboutCols = columns.filter(c => metaCols.has(c.key) && c.key !== 'name' && c.key !== 'notes');
+const ABOUT_ORDER = ['api_category','api_status','native_api','sdk_support','checked_at','rate_limits','env_keys','python_extra'];
+const aboutCols = ABOUT_ORDER.map(key => columns.find(c => c.key === key)).filter(Boolean);
 const DATE_SORT_ROWS = new Set([]);
 const MONTH_MAP = {Jan:1,Feb:2,Mar:3,Apr:4,May:5,Jun:6,Jul:7,Aug:8,Sep:9,Oct:10,Nov:11,Dec:12};
 
@@ -509,7 +512,7 @@ function sortableLabelHtml(label, key) {
 
 // Pinned agents (always at top), then rest sorted by full-feature count
 const PINNED = [
-  'Octen','Exa','Tavily','Brave','Parallel','Perplexity','Gemini',
+  'DeepSeek','Octen','Exa','Tavily','Brave','Parallel','Perplexity','Gemini',
   'You','Linkup',
   'Google · SerpApi','Bing · SerpApi','Baidu · SerpApi','Yandex · SerpApi',
   'DuckDuckGo · SerpApi','Yahoo · SerpApi',
@@ -539,8 +542,8 @@ function loadState() {
   try {
     var c = document.cookie.split('; ').find(r => r.startsWith(COOKIE+'='));
     if (c) { var p = JSON.parse(decodeURIComponent(c.split('=')[1]));
-      if (Array.isArray(p.cols) && p.cols.length===matrix.length) def.cols = p.cols;
-      if (Array.isArray(p.rows) && p.rows.length===featureCols.length) def.rows = p.rows;
+      if (Array.isArray(p.cols) && p.cols.length===matrix.length && new Set(p.cols).size===matrix.length && p.cols.every(i => Number.isInteger(i) && i>=0 && i<matrix.length)) def.cols = p.cols;
+      if (Array.isArray(p.rows) && p.rows.length===featureCols.length && new Set(p.rows).size===featureCols.length && p.rows.every(k => featureCols.some(c => c.key===k))) def.rows = p.rows;
     }
   } catch(e) {}
   return def;
@@ -655,7 +658,7 @@ function cell(agent, col) {
 function updateColWidths() {
   var wrap = document.querySelector('.table-wrap');
   var corner = 156;
-  var minVisible = 80;
+  var minVisible = 180;
   var minHidden = 36;
   var hiddenCount = 0;
   colOrder.forEach(function(i){ if (hidden.has(i)) hiddenCount++; });
@@ -872,11 +875,11 @@ function showView(view, updateHash) {
   if (compareTab) compareTab.setAttribute('aria-selected', String(!isChangelog));
   if (changelogTab) changelogTab.setAttribute('aria-selected', String(isChangelog));
   if (updateHash !== false && window.history && window.location) {
-    var next = isChangelog ? '#changelog' : window.location.pathname + window.location.search;
+    var next = isChangelog ? '#changelog' : '/' + window.location.search;
     window.history.pushState(null, '', next);
   }
 }
-function revealCell(targetId) {
+function revealCell(targetId, updateHash) {
   var matrixIndex = -1;
   for (var i=0; i<matrix.length; i++) {
     for (var j=0; j<columns.length; j++) {
@@ -897,7 +900,7 @@ function revealCell(targetId) {
   document.querySelectorAll('.cell-anchor-flash').forEach(function(el){el.classList.remove('cell-anchor-flash')});
   target.scrollIntoView({behavior:'smooth', block:'center', inline:'center'});
   target.classList.add('cell-anchor-flash');
-  if (window.history) window.history.replaceState(null, '', '#'+targetId);
+  if (updateHash !== false && window.history) window.history.pushState(null, '', '#'+targetId);
 }
 function setupChangelogLinks() {
   document.querySelectorAll('.changelog-cell-link').forEach(function(link){
@@ -910,11 +913,19 @@ function setupChangelogLinks() {
 var state = loadState(); colOrder = state.cols; rowOrder = state.rows;
 renderHeader(); renderBody();
 setupChangelogLinks();
-if (window.location && window.location.hash === '#changelog') showView('changelog', false);
-else showView('matrix', false);
-if (window.location && window.location.hash.indexOf('#cell-') === 0) {
-  setTimeout(function(){ revealCell(window.location.hash.slice(1)); }, 0);
+function syncViewFromLocation() {
+  if (!window.location) return;
+  if (window.location.hash === '#changelog' || (window.location.pathname === '/changelog' && !window.location.hash)) showView('changelog', false);
+  else {
+    showView('matrix', false);
+    if (window.location.hash.indexOf('#cell-') === 0) {
+      setTimeout(function(){ revealCell(window.location.hash.slice(1), false); }, 0);
+    }
+  }
 }
+syncViewFromLocation();
+window.addEventListener('popstate', syncViewFromLocation);
+window.addEventListener('hashchange', syncViewFromLocation);
 window.addEventListener('resize', function(){ updateColWidths(); scheduleFitAgentHeaderNames(); });
 </script>
 ${pwaScript()}
@@ -980,10 +991,13 @@ export default {
       if (asset.status !== 404) return asset;
     }
     if (url.pathname === "/llms.txt") return new Response(llmsTxt, {headers: {"content-type":"text/plain; charset=utf-8","cache-control":"public, max-age=300"}});
-    if (url.pathname === "/deployment-info") return Response.json({
+    if (url.pathname === "/changelog.json" || url.pathname === "/api/changelog") return Response.json(changelog, {headers: {"cache-control":"no-cache"}});
+    if (url.pathname === "/updated.json") return Response.json(updatedMeta, {headers: {"cache-control":"no-cache"}});
+    if (url.pathname === "/deployment-info" || url.pathname === "/api/deployment-info") return Response.json({
       service: "anysearch-matrix",
       buildMarker: DEPLOYMENT_MARKER,
       providerCount: matrix.length,
+      checkedAt: updatedMeta.updated_at,
     }, {headers: {"cache-control":"no-store"}});
     if (url.pathname === "/robots.txt") return new Response(renderRobots(), {headers: {"content-type":"text/plain; charset=utf-8","cache-control":"public, max-age=86400"}});
     if (url.pathname === "/sitemap.xml") return new Response(renderSitemap(), {headers: {"content-type":"application/xml; charset=utf-8","cache-control":"public, max-age=3600"}});

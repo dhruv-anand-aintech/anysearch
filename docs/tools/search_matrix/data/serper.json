@@ -84,22 +84,66 @@
     "comment": "Google SERP proxy: one ranked result style per call (no fast/deep API knob). Matrix `balanced` = standard /search or /news endpoint."
   },
   "pricing_per_1k": {
-    "value": "balanced: $1.00 starter; $0.30-$0.75 volume",
+    "value": "$50/50K prepaid ($1 / 1K); bulk $0.75/$0.50/$0.30 with larger purchases",
     "source_url": "https://serper.dev/",
-    "comment": "Top-up credit pricing; exact per-1K rate decreases with larger credit packs."
+    "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+    "links": {}
   },
   "free_tier_limits": {
-    "value": "2,500 one-time queries; no card",
+    "value": "2,500 one-time trial queries; no card",
     "source_url": "https://serper.dev/",
-    "comment": "Complimentary signup queries do not renew monthly."
+    "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
+    "links": {}
   },
   "p50_latency": {
-    "value": "Search: 0.69s p50 / 1.15s p95",
+    "value": "Historical July 2026: Search: 0.69s p50 / 1.15s p95",
     "source_url": "https://proxyway.com/research/search-apis-2026-report",
-    "comment": "Independent result from three runs of 2,000 randomly generated queries from a US East Coast server.",
+    "comment": "Historical evidence retained from July 2026; not remeasured or claimed current. Independent result from three runs of 2,000 randomly generated queries from a US East Coast server.",
     "links": {
       "Independent benchmark": "https://proxyway.com/research/search-apis-2026-report"
     }
   },
-  "notes": ""
+  "notes": "",
+  "api_category": {
+    "value": "Third-party SERP service",
+    "source_url": "https://serper.dev/",
+    "comment": ""
+  },
+  "api_status": {
+    "value": "Available",
+    "source_url": "https://serper.dev/",
+    "comment": "",
+    "links": {}
+  },
+  "native_api": {
+    "value": "Third-party Google SERP service; successful responses billed; tax excluded. Lowest rate requires $3,750 prepaid.",
+    "source_url": "https://serper.dev/",
+    "comment": "",
+    "links": {}
+  },
+  "rate_limits": {
+    "value": "Starter 50 QPS; larger tiers 100/200/300 QPS; credits expire after 6 months",
+    "source_url": "https://serper.dev/",
+    "comment": "",
+    "links": {}
+  },
+  "checked_at": {
+    "value": "2026-10-21",
+    "source_url": "https://serper.dev/",
+    "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
+    "links": {}
+  },
+  "sdk_support": {
+    "value": "Python + TypeScript adapters",
+    "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
+    "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+  },
+  "evidence": {
+    "checked_at": "2026-10-21",
+    "source_urls": [
+      "https://serper.dev/"
+    ],
+    "effective_date": null,
+    "method": "official documentation; no new benchmarks"
+  }
 }

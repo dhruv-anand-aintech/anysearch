@@ -13,7 +13,7 @@ from typing import Any
 
 
 ROOT = Path(__file__).resolve().parents[1]
-IGNORED_KEYS = {"name", "links", "notes", "deprecated"}
+IGNORED_KEYS = {"name", "links", "notes", "deprecated", "comparison_only", "evidence"}
 
 
 def git(*args: str, check: bool = True) -> str:
@@ -204,7 +204,7 @@ def main() -> None:
                 {"date": commit_date, "commit": commit[:7], "title": title, "items": items}
             )
 
-    dirty_paths = git("diff", "--name-only", "HEAD", "--", data_rel).splitlines()
+    dirty_paths = sorted(set(git("diff", "--name-only", "HEAD", "--", data_rel).splitlines()) | set(git("ls-files", "--others", "--exclude-standard", "--", data_rel).splitlines()))
     dirty_items: list[dict[str, str]] = []
     for path in dirty_paths:
         current_row = current.get(path)

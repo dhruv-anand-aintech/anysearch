@@ -84,23 +84,87 @@
     "comment": "POST `/search` exposes one Web Search tier. Octen's separate Broad Search and Deep Research endpoints are not mapped to the unified `mode` parameter."
   },
   "pricing_per_1k": {
-    "value": "balanced/search: $1",
-    "source_url": "https://docs.octen.ai/overview/pricing",
-    "comment": "Current promotional Web Search price per 1,000 API calls; full content is billed separately by tokens."
+    "value": "Promotional Web Search $1 / 1K (normally $5), includes 10 full-content results; +$0.50 / 1K extra results",
+    "source_url": "https://octen.ai/pricing",
+    "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+    "links": {
+      "Official source 1": "https://docs.octen.ai/capabilities/web-search",
+      "Official source 2": "https://docs.octen.ai/api-reference/search"
+    }
   },
   "free_tier_limits": {
-    "value": "$5 initial credit (~5,000 searches); 10 QPS free plan",
-    "source_url": "https://docs.octen.ai/overview/pricing",
-    "comment": "The $5 balance is granted after adding a payment method; the free plan's 10 QPS is a throughput limit, not a recurring call allowance."
+    "value": "One-time $5 signup credit; no card",
+    "source_url": "https://octen.ai/pricing",
+    "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
+    "links": {
+      "Official source 1": "https://docs.octen.ai/capabilities/web-search",
+      "Official source 2": "https://docs.octen.ai/api-reference/search"
+    }
   },
   "p50_latency": {
-    "value": "Web Search: 62 ms p50; 68 ms p90",
+    "value": "Historical July 2026: Web Search: 62 ms p50; 68 ms p90",
     "source_url": "https://octen.ai/blog/1",
-    "comment": "Provider-reported March 2026 result. Octen publishes 62 ms p50; the 68 ms p90 comes from an archived screenshot/OCR record. No independent API rerun was found.",
+    "comment": "Historical evidence retained from July 2026; not remeasured or claimed current. Provider-reported March 2026 result. Octen publishes 62 ms p50; the 68 ms p90 comes from an archived screenshot/OCR record. No independent API rerun was found.",
     "links": {
       "Provider claim": "https://octen.ai/blog/1",
       "Screenshot record": "https://krabarena.com/claims/octen-s-screenshot-reports-a-62-ms-p50-web-search-win"
     }
   },
-  "notes": "Native SDK package: octen. Web Search (`POST /search`) is wired in both anysearch SDKs. The published 62 ms p50 is a provider claim, not an independently reproduced benchmark."
+  "notes": "Native SDK package: octen. Web Search (`POST /search`) is wired in both anysearch SDKs. The published 62 ms p50 is a provider claim, not an independently reproduced benchmark.",
+  "api_category": {
+    "value": "Standalone search API",
+    "source_url": "https://octen.ai/pricing",
+    "comment": ""
+  },
+  "api_status": {
+    "value": "Available",
+    "source_url": "https://octen.ai/pricing",
+    "comment": "",
+    "links": {
+      "Official source 1": "https://docs.octen.ai/capabilities/web-search",
+      "Official source 2": "https://docs.octen.ai/api-reference/search"
+    }
+  },
+  "native_api": {
+    "value": "Search 1\u2013100 results; domain/language/date/safe-search, content/highlights. Broad mode bills per generated subquery. 62ms p50 is a vendor claim, not a guarantee.",
+    "source_url": "https://octen.ai/pricing",
+    "comment": "",
+    "links": {
+      "Official source 1": "https://docs.octen.ai/capabilities/web-search",
+      "Official source 2": "https://docs.octen.ai/api-reference/search"
+    }
+  },
+  "rate_limits": {
+    "value": "$5 minimum top-up; 10 QPS free, up to 20 after top-up; QPS subscription excludes usage",
+    "source_url": "https://octen.ai/pricing",
+    "comment": "",
+    "links": {
+      "Official source 1": "https://docs.octen.ai/capabilities/web-search",
+      "Official source 2": "https://docs.octen.ai/api-reference/search"
+    }
+  },
+  "checked_at": {
+    "value": "2026-10-21",
+    "source_url": "https://octen.ai/pricing",
+    "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
+    "links": {
+      "Official source 1": "https://docs.octen.ai/capabilities/web-search",
+      "Official source 2": "https://docs.octen.ai/api-reference/search"
+    }
+  },
+  "sdk_support": {
+    "value": "Python + TypeScript adapters",
+    "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
+    "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+  },
+  "evidence": {
+    "checked_at": "2026-10-21",
+    "source_urls": [
+      "https://octen.ai/pricing",
+      "https://docs.octen.ai/capabilities/web-search",
+      "https://docs.octen.ai/api-reference/search"
+    ],
+    "effective_date": null,
+    "method": "official documentation; no new benchmarks"
+  }
 }

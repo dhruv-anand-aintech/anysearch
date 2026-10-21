@@ -29,3 +29,8 @@ pnpm-debug.log*
 .idea/
 .vscode/
 *.swp
+
+# Local release state and availability reports
+.wrangler/
+source-check-report.json
+node_modules

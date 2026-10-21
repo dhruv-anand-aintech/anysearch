@@ -84,19 +84,63 @@
     "comment": "Keyless DDGS client: instant web results without a depth parameter. Matrix `balanced` = default `text()` search."
   },
   "pricing_per_1k": {
-    "value": "$0 API fee via keyless DDGS client; unofficial/fragile",
-    "source_url": "https://pypi.org/project/ddgs/",
-    "comment": "No paid official web search API is used by anysearch's keyless fallback."
+    "value": "No library API fee; hosting/proxy/upstream costs separate",
+    "source_url": "https://github.com/deedy5/ddgs",
+    "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+    "links": {}
   },
   "free_tier_limits": {
-    "value": "No fixed quota or API fee; upstream rate limits apply",
-    "source_url": "https://pypi.org/project/ddgs/",
-    "comment": "DDGS is a keyless metasearch client rather than a contracted DuckDuckGo API service."
+    "value": "No contracted quota or SLA established",
+    "source_url": "https://github.com/deedy5/ddgs",
+    "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
+    "links": {}
   },
   "p50_latency": {
-    "value": "No contracted API latency distribution for the DDGS fallback",
+    "value": "Historical July 2026: No contracted API latency distribution for the DDGS fallback",
     "source_url": "https://pypi.org/project/ddgs/",
-    "comment": "anysearch uses the keyless DDGS metasearch client rather than an official DuckDuckGo Search API with a published latency SLA."
+    "comment": "Historical evidence retained from July 2026; not remeasured or claimed current. anysearch uses the keyless DDGS metasearch client rather than an official DuckDuckGo Search API with a published latency SLA."
   },
-  "notes": "No API key required (keyless fallback). Native SDK package: ddgs."
+  "notes": "No API key required (keyless fallback). Native SDK package: ddgs.",
+  "api_category": {
+    "value": "Unofficial metasearch library",
+    "source_url": "https://github.com/deedy5/ddgs",
+    "comment": ""
+  },
+  "api_status": {
+    "value": "Self-managed; upstream dependent",
+    "source_url": "https://github.com/deedy5/ddgs",
+    "comment": "",
+    "links": {}
+  },
+  "native_api": {
+    "value": "Unofficial DDGS/Dux Distributed Global Search metasearch library; no verified DuckDuckGo affiliation or unlimited commercial service.",
+    "source_url": "https://github.com/deedy5/ddgs",
+    "comment": "",
+    "links": {}
+  },
+  "rate_limits": {
+    "value": "Upstream throttling; library/version and deployment dependent",
+    "source_url": "https://github.com/deedy5/ddgs",
+    "comment": "",
+    "links": {}
+  },
+  "checked_at": {
+    "value": "2026-10-21",
+    "source_url": "https://github.com/deedy5/ddgs",
+    "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
+    "links": {}
+  },
+  "sdk_support": {
+    "value": "Python + TypeScript adapters",
+    "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
+    "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+  },
+  "evidence": {
+    "checked_at": "2026-10-21",
+    "source_urls": [
+      "https://github.com/deedy5/ddgs"
+    ],
+    "effective_date": null,
+    "method": "official documentation; no new benchmarks"
+  }
 }

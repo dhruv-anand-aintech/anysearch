@@ -84,24 +84,81 @@
     "comment": "Single search tier (title, URL, description). `scrapeOptions` fetches page bodies but is not an AI synthesis `mode`."
   },
   "pricing_per_1k": {
-    "value": "balanced/search: 2 credits per 10 results",
+    "value": "2 credits / 10 search results; scraping add-ons separate; Hobby $19/month for 5K credits",
     "source_url": "https://www.firecrawl.dev/pricing",
-    "comment": "Convert credits to dollars from your Firecrawl plan; advanced formats and extraction add credits."
+    "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+    "links": {
+      "Official source 1": "https://docs.firecrawl.dev/features/search"
+    }
   },
   "free_tier_limits": {
-    "value": "1,000 credits/month (~500 searches at 10 results)",
+    "value": "1,000 credits/month; no card",
     "source_url": "https://www.firecrawl.dev/pricing",
-    "comment": "Search costs two credits per ten results; advanced features consume additional credits."
+    "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
+    "links": {
+      "Official source 1": "https://docs.firecrawl.dev/features/search"
+    }
   },
   "p50_latency": {
-    "value": "Search: <2s avg cited workload; search + scrape: ~4\u20135s; 3.4s p95 overall",
+    "value": "Historical July 2026: Search: <2s avg cited workload; search + scrape: ~4\u20135s; 3.4s p95 overall",
     "source_url": "https://www.firecrawl.dev/glossary/web-search-apis/search-latency-ai-agents",
-    "comment": "Provider-reported figures with different scopes: a cited Stanford workload averaged under two seconds per search, search plus scrape is about 4\u20135 seconds, and Firecrawl advertises 3.4 seconds p95 across millions of pages.",
+    "comment": "Historical evidence retained from July 2026; not remeasured or claimed current. Provider-reported figures with different scopes: a cited Stanford workload averaged under two seconds per search, search plus scrape is about 4\u20135 seconds, and Firecrawl advertises 3.4 seconds p95 across millions of pages.",
     "links": {
       "Search workload": "https://www.firecrawl.dev/glossary/web-search-apis/search-latency-ai-agents",
       "Search plus scrape": "https://www.firecrawl.dev/blog/llm-grounding",
       "Overall p95": "https://github.com/firecrawl/firecrawl"
     }
   },
-  "notes": "Native SDK package: firecrawl-py."
+  "notes": "Native SDK package: firecrawl-py.",
+  "api_category": {
+    "value": "Standalone search API",
+    "source_url": "https://www.firecrawl.dev/pricing",
+    "comment": ""
+  },
+  "api_status": {
+    "value": "Available",
+    "source_url": "https://www.firecrawl.dev/pricing",
+    "comment": "",
+    "links": {
+      "Official source 1": "https://docs.firecrawl.dev/features/search"
+    }
+  },
+  "native_api": {
+    "value": "Search with optional page scraping; annual Hobby $16/month billed annually differs from monthly plan.",
+    "source_url": "https://www.firecrawl.dev/pricing",
+    "comment": "",
+    "links": {
+      "Official source 1": "https://docs.firecrawl.dev/features/search"
+    }
+  },
+  "rate_limits": {
+    "value": "Search: free 10 RPM; Hobby 100 RPM",
+    "source_url": "https://www.firecrawl.dev/pricing",
+    "comment": "",
+    "links": {
+      "Official source 1": "https://docs.firecrawl.dev/features/search"
+    }
+  },
+  "checked_at": {
+    "value": "2026-10-21",
+    "source_url": "https://www.firecrawl.dev/pricing",
+    "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
+    "links": {
+      "Official source 1": "https://docs.firecrawl.dev/features/search"
+    }
+  },
+  "sdk_support": {
+    "value": "Python + TypeScript adapters",
+    "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
+    "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+  },
+  "evidence": {
+    "checked_at": "2026-10-21",
+    "source_urls": [
+      "https://www.firecrawl.dev/pricing",
+      "https://docs.firecrawl.dev/features/search"
+    ],
+    "effective_date": null,
+    "method": "official documentation; no new benchmarks"
+  }
 }

@@ -1,0 +1,144 @@
+{
+  "name": "Bright Data",
+  "links": {
+    "slug": "brightdata",
+    "docs": "https://brightdata.com/pricing/serp",
+    "website": "https://brightdata.com"
+  },
+  "env_keys": {
+    "value": "Not integrated",
+    "source_url": "https://brightdata.com/pricing/serp",
+    "comment": "Comparison only; anysearch does not read a key for this provider."
+  },
+  "python_extra": {
+    "value": "Not integrated",
+    "source_url": "https://brightdata.com/pricing/serp",
+    "comment": ""
+  },
+  "mode": {
+    "values": [],
+    "source_url": "https://brightdata.com/pricing/serp",
+    "comment": "No unified SDK mode mapping."
+  },
+  "p50_latency": {
+    "value": "No current comparable measurement verified",
+    "source_url": "https://brightdata.com/pricing/serp",
+    "comment": ""
+  },
+  "notes": "Comparison only; no anysearch SDK adapter is claimed.",
+  "comparison_only": true,
+  "requires_key": {
+    "support": "unknown",
+    "source_url": "https://brightdata.com/pricing/serp",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "snippet": {
+    "support": "unknown",
+    "source_url": "https://brightdata.com/pricing/serp",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "domains": {
+    "support": "unknown",
+    "source_url": "https://brightdata.com/pricing/serp",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "country": {
+    "support": "unknown",
+    "source_url": "https://brightdata.com/pricing/serp",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "language": {
+    "support": "unknown",
+    "source_url": "https://brightdata.com/pricing/serp",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "date": {
+    "support": "unknown",
+    "source_url": "https://brightdata.com/pricing/serp",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "safe_search": {
+    "support": "unknown",
+    "source_url": "https://brightdata.com/pricing/serp",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "answer": {
+    "support": "unknown",
+    "source_url": "https://brightdata.com/pricing/serp",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "content": {
+    "support": "unknown",
+    "source_url": "https://brightdata.com/pricing/serp",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "summary": {
+    "support": "unknown",
+    "source_url": "https://brightdata.com/pricing/serp",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "highlights": {
+    "support": "unknown",
+    "source_url": "https://brightdata.com/pricing/serp",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "news": {
+    "support": "unknown",
+    "source_url": "https://brightdata.com/pricing/serp",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "api_category": {
+    "value": "Third-party SERP service",
+    "source_url": "https://brightdata.com/pricing/serp",
+    "comment": ""
+  },
+  "api_status": {
+    "value": "Available",
+    "source_url": "https://brightdata.com/pricing/serp",
+    "comment": "",
+    "links": {}
+  },
+  "native_api": {
+    "value": "SERP proxy; requests are not individual organic links; async collection not another billed request.",
+    "source_url": "https://brightdata.com/pricing/serp",
+    "comment": "",
+    "links": {}
+  },
+  "rate_limits": {
+    "value": "PAYG deposit minimum not verified",
+    "source_url": "https://brightdata.com/pricing/serp",
+    "comment": "",
+    "links": {}
+  },
+  "checked_at": {
+    "value": "2026-10-21",
+    "source_url": "https://brightdata.com/pricing/serp",
+    "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
+    "links": {}
+  },
+  "sdk_support": {
+    "value": "Comparison only \u2014 no adapter",
+    "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
+    "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+  },
+  "pricing_per_1k": {
+    "value": "PAYG $1.50 / 1K successful requests; Scale $499/month includes 380K then $1.30 / 1K",
+    "source_url": "https://brightdata.com/pricing/serp",
+    "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+    "links": {}
+  },
+  "free_tier_limits": {
+    "value": "5,000 requests/month free; no card",
+    "source_url": "https://brightdata.com/pricing/serp",
+    "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
+    "links": {}
+  },
+  "evidence": {
+    "checked_at": "2026-10-21",
+    "source_urls": [
+      "https://brightdata.com/pricing/serp"
+    ],
+    "effective_date": null,
+    "method": "official documentation; no new benchmarks"
+  }
+}

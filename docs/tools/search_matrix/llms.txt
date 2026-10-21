@@ -1,6 +1,30 @@
 # anysearch Search API Provider Matrix
 
-Providers: 24. Unified parameters and response fields supported via anysearch.
+Providers: 31. Unified parameters and response fields supported via anysearch.
+
+## Anthropic Web Search
+- Docs: https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool
+- Env: Not integrated
+- Domain filters: unknown
+- Country: unknown
+- Language: unknown
+- Date range: unknown
+- Safe search: unknown
+- Mode: none
+- Pricing / 1K: $10 / 1K searches + model token charges
+- Free tier limits: No recurring free allowance verified
+- Latency by tier: No current comparable measurement verified
+- AI Answer: unknown
+- Full text: unknown
+- Summary: unknown
+- Highlights: unknown
+- News: unknown
+- Product category: Model-hosted grounding
+- Availability: Available
+- Native API overview: Claude server-side web search tool; not standalone raw search. Generated answers and search-result processing add model costs.
+- anysearch SDK: Comparison only — no adapter
+- Evidence checked: 2026-10-21
+- Limits / billing caveats: Model/tool limits vary; tool use requires compatible model
 
 ## Baidu · SerpApi
 - Docs: https://serpapi.com/baidu-search-api
@@ -11,14 +35,44 @@ Providers: 24. Unified parameters and response fields supported via anysearch.
 - Date range: none
 - Safe search: full
 - Mode: balanced
-- Pricing / 1K: balanced: $25 starter; ~$3.75-$15 volume
+- Pricing / 1K: $25/month for 1K; $75/5K; $150/15K; $275/30K searches
 - Free tier limits: 250 searches/month; 50/hour
-- Latency by tier: Light API: 1.28s p50 independent; fastest Google API: 0.73s avg / 1.45s p99 vendor-run
+- Latency by tier: Historical July 2026: Light API: 1.28s p50 independent; fastest Google API: 0.73s avg / 1.45s p99 vendor-run
 - AI Answer: partial
 - Full text: none
 - Summary: none
 - Highlights: none
 - News: full
+- Product category: Third-party SERP service
+- Availability: Available
+- Native API overview: Third-party SERP access to multiple engines; not official Google/Bing developer API.
+- anysearch SDK: Python + TypeScript adapters
+- Evidence checked: 2026-10-21
+- Limits / billing caveats: Starter 200/hour; Developer 1,000/hour
+
+## Bing Search (retired)
+- Docs: https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement
+- Env: Not integrated
+- Domain filters: unknown
+- Country: unknown
+- Language: unknown
+- Date range: unknown
+- Safe search: unknown
+- Mode: none
+- Pricing / 1K: Retired; current direct API pricing not applicable
+- Free tier limits: Unavailable
+- Latency by tier: No current comparable measurement verified
+- AI Answer: unknown
+- Full text: unknown
+- Summary: unknown
+- Highlights: unknown
+- News: unknown
+- Product category: Legacy search API
+- Availability: Retired August 11, 2025
+- Native API overview: Azure Grounding with Bing is a separate hosted service; Bing via SerpApi is a third-party wrapper.
+- anysearch SDK: Comparison only — no adapter
+- Evidence checked: 2026-10-21
+- Limits / billing caveats: All instances decommissioned August 11, 2025
 
 ## Bing · SerpApi
 - Docs: https://serpapi.com/bing-search-api
@@ -29,14 +83,20 @@ Providers: 24. Unified parameters and response fields supported via anysearch.
 - Date range: none
 - Safe search: full
 - Mode: balanced
-- Pricing / 1K: balanced: $25 starter; ~$3.75-$15 volume
+- Pricing / 1K: $25/month for 1K; $75/5K; $150/15K; $275/30K searches
 - Free tier limits: 250 searches/month; 50/hour
-- Latency by tier: Light API: 1.28s p50 independent; fastest Google API: 0.73s avg / 1.45s p99 vendor-run
+- Latency by tier: Historical July 2026: Light API: 1.28s p50 independent; fastest Google API: 0.73s avg / 1.45s p99 vendor-run
 - AI Answer: partial
 - Full text: none
 - Summary: none
 - Highlights: none
 - News: full
+- Product category: Third-party SERP service
+- Availability: Available
+- Native API overview: Third-party SERP access to multiple engines; not official Google/Bing developer API.
+- anysearch SDK: Python + TypeScript adapters
+- Evidence checked: 2026-10-21
+- Limits / billing caveats: Starter 200/hour; Developer 1,000/hour
 
 ## Brave
 - Docs: https://api-dashboard.search.brave.com/app/documentation/web-search/get-started
@@ -47,14 +107,92 @@ Providers: 24. Unified parameters and response fields supported via anysearch.
 - Date range: full
 - Safe search: full
 - Mode: balanced, deep
-- Pricing / 1K: balanced/search: $5; deep/answers: $4 + tokens
-- Free tier limits: $5 credits/month (~1,000 Search requests)
-- Latency by tier: Web: 0.77s p50 / 1.19s p95; Answers/research: not published
+- Pricing / 1K: Search $5 / 1K requests; Answers $4 / 1K + $5/M input and output tokens
+- Free tier limits: $5 monthly credit; attribution conditions apply
+- Latency by tier: Historical July 2026: Web: 0.77s p50 / 1.19s p95; Answers/research: not published
 - AI Answer: full
 - Full text: partial
 - Summary: none
 - Highlights: full
 - News: full
+- Product category: Standalone search API
+- Availability: Available
+- Native API overview: Web, news, images, videos and LLM context; Answers is a separate generated-answer product.
+- anysearch SDK: Python + TypeScript adapters
+- Evidence checked: 2026-10-21
+- Limits / billing caveats: Search 50 RPS; Answers 2 RPS
+
+## Bright Data
+- Docs: https://brightdata.com/pricing/serp
+- Env: Not integrated
+- Domain filters: unknown
+- Country: unknown
+- Language: unknown
+- Date range: unknown
+- Safe search: unknown
+- Mode: none
+- Pricing / 1K: PAYG $1.50 / 1K successful requests; Scale $499/month includes 380K then $1.30 / 1K
+- Free tier limits: 5,000 requests/month free; no card
+- Latency by tier: No current comparable measurement verified
+- AI Answer: unknown
+- Full text: unknown
+- Summary: unknown
+- Highlights: unknown
+- News: unknown
+- Product category: Third-party SERP service
+- Availability: Available
+- Native API overview: SERP proxy; requests are not individual organic links; async collection not another billed request.
+- anysearch SDK: Comparison only — no adapter
+- Evidence checked: 2026-10-21
+- Limits / billing caveats: PAYG deposit minimum not verified
+
+## DataForSEO
+- Docs: https://dataforseo.com/pricing/google-serp/google-organic-serp-api
+- Env: Not integrated
+- Domain filters: unknown
+- Country: unknown
+- Language: unknown
+- Date range: unknown
+- Safe search: unknown
+- Mode: none
+- Pricing / 1K: Standard queue $0.60; Priority $1.20; Live $2 / 1K SERP pages (≤10 organic results/page)
+- Free tier limits: $1 trial; sample-only sandbox separate
+- Latency by tier: No current comparable measurement verified
+- AI Answer: unknown
+- Full text: unknown
+- Summary: unknown
+- Highlights: unknown
+- News: unknown
+- Product category: Third-party SERP service
+- Availability: Available
+- Native API overview: Depth, operators and extras alter cost; queued jobs are not comparable to Live latency.
+- anysearch SDK: Comparison only — no adapter
+- Evidence checked: 2026-10-21
+- Limits / billing caveats: $50 minimum prepaid; no subscription/expiry; Standard average ~5min, target 45min
+
+## DeepSeek
+- Docs: https://api-docs.deepseek.com/guides/search/
+- Env: Not integrated
+- Domain filters: unknown
+- Country: unknown
+- Language: unknown
+- Date range: unknown
+- Safe search: unknown
+- Mode: none
+- Pricing / 1K: $0.75 / 1K successful nonempty Search requests; Fetch separately $0.75 / 1K
+- Free tier limits: No recurring direct API allowance verified; server-side tool promotion is separate
+- Latency by tier: No current comparable measurement verified
+- AI Answer: unknown
+- Full text: unknown
+- Summary: unknown
+- Highlights: unknown
+- News: unknown
+- Product category: Standalone search API
+- Availability: Available
+- Native API overview: Raw JSON POST /v1/tools/search; 1–50 results, optional content, summaries; site/lang/date query operators. Separate Markdown Fetch API.
+- anysearch SDK: Comparison only — no adapter
+- Evidence checked: 2026-10-21
+- Limits / billing caveats: Search 100 QPS/account; Fetch 25 QPS/account; Fetch also per-domain throttled
 
 ## DuckDuckGo
 - Docs: https://pypi.org/project/ddgs/
@@ -65,14 +203,20 @@ Providers: 24. Unified parameters and response fields supported via anysearch.
 - Date range: none
 - Safe search: full
 - Mode: balanced
-- Pricing / 1K: $0 API fee via keyless DDGS client; unofficial/fragile
-- Free tier limits: No fixed quota or API fee; upstream rate limits apply
-- Latency by tier: No contracted API latency distribution for the DDGS fallback
+- Pricing / 1K: No library API fee; hosting/proxy/upstream costs separate
+- Free tier limits: No contracted quota or SLA established
+- Latency by tier: Historical July 2026: No contracted API latency distribution for the DDGS fallback
 - AI Answer: none
 - Full text: none
 - Summary: none
 - Highlights: none
 - News: none
+- Product category: Unofficial metasearch library
+- Availability: Self-managed; upstream dependent
+- Native API overview: Unofficial DDGS/Dux Distributed Global Search metasearch library; no verified DuckDuckGo affiliation or unlimited commercial service.
+- anysearch SDK: Python + TypeScript adapters
+- Evidence checked: 2026-10-21
+- Limits / billing caveats: Upstream throttling; library/version and deployment dependent
 
 ## DuckDuckGo · SerpApi
 - Docs: https://serpapi.com/duckduckgo-search-api
@@ -83,14 +227,20 @@ Providers: 24. Unified parameters and response fields supported via anysearch.
 - Date range: none
 - Safe search: full
 - Mode: balanced
-- Pricing / 1K: balanced: $25 starter; ~$3.75-$15 volume
+- Pricing / 1K: $25/month for 1K; $75/5K; $150/15K; $275/30K searches
 - Free tier limits: 250 searches/month; 50/hour
-- Latency by tier: Light API: 1.28s p50 independent; fastest Google API: 0.73s avg / 1.45s p99 vendor-run
+- Latency by tier: Historical July 2026: Light API: 1.28s p50 independent; fastest Google API: 0.73s avg / 1.45s p99 vendor-run
 - AI Answer: partial
 - Full text: none
 - Summary: none
 - Highlights: none
 - News: full
+- Product category: Third-party SERP service
+- Availability: Available
+- Native API overview: Third-party SERP access to multiple engines; not official Google/Bing developer API.
+- anysearch SDK: Python + TypeScript adapters
+- Evidence checked: 2026-10-21
+- Limits / billing caveats: Starter 200/hour; Developer 1,000/hour
 
 ## Exa
 - Docs: https://exa.ai/docs/reference/search
@@ -101,14 +251,20 @@ Providers: 24. Unified parameters and response fields supported via anysearch.
 - Date range: full
 - Safe search: full
 - Mode: fast, balanced, deep
-- Pricing / 1K: fast/balanced: $7; deep: $12; deep reasoning: $15
-- Free tier limits: $10/month (~1,428 base searches) + $20 signup (~2,857)
-- Latency by tier: instant: 0.36s p50 / 0.52s p95; fast: 0.67s / 1.34s; auto: ~1.2s; deep: 4.3s avg
+- Pricing / 1K: Lite $4; Auto $7; Deep $12 / 1K requests (≤10 results); extra results $1 / 1K each
+- Free tier limits: $10 monthly + $10 onboarding credit
+- Latency by tier: Historical July 2026: instant: 0.36s p50 / 0.52s p95; fast: 0.67s / 1.34s; auto: ~1.2s; deep: 4.3s avg
 - AI Answer: none
 - Full text: full
 - Summary: full
 - Highlights: full
 - News: full
+- Product category: Standalone search API
+- Availability: Available
+- Native API overview: Exa 3.0 released October 19; Lite and Auto; Dynamic Highlights GA. Contents $1 / 1K pages per content type; summaries separately priced.
+- anysearch SDK: Python + TypeScript adapters
+- Evidence checked: 2026-10-21
+- Limits / billing caveats: Free 10 QPS; PAYG up to 25 QPS
 
 ## Firecrawl
 - Docs: https://docs.firecrawl.dev/api-reference/endpoint/search
@@ -119,14 +275,20 @@ Providers: 24. Unified parameters and response fields supported via anysearch.
 - Date range: none
 - Safe search: none
 - Mode: balanced
-- Pricing / 1K: balanced/search: 2 credits per 10 results
-- Free tier limits: 1,000 credits/month (~500 searches at 10 results)
-- Latency by tier: Search: <2s avg cited workload; search + scrape: ~4–5s; 3.4s p95 overall
+- Pricing / 1K: 2 credits / 10 search results; scraping add-ons separate; Hobby $19/month for 5K credits
+- Free tier limits: 1,000 credits/month; no card
+- Latency by tier: Historical July 2026: Search: <2s avg cited workload; search + scrape: ~4–5s; 3.4s p95 overall
 - AI Answer: none
 - Full text: full
 - Summary: none
 - Highlights: none
 - News: full
+- Product category: Standalone search API
+- Availability: Available
+- Native API overview: Search with optional page scraping; annual Hobby $16/month billed annually differs from monthly plan.
+- anysearch SDK: Python + TypeScript adapters
+- Evidence checked: 2026-10-21
+- Limits / billing caveats: Search: free 10 RPM; Hobby 100 RPM
 
 ## Gemini
 - Docs: https://ai.google.dev/gemini-api/docs/google-search
@@ -137,14 +299,20 @@ Providers: 24. Unified parameters and response fields supported via anysearch.
 - Date range: none
 - Safe search: none
 - Mode: balanced
-- Pricing / 1K: balanced grounding: $35 + model tokens
-- Free tier limits: 500 grounded prompts/day on eligible Flash models
-- Latency by tier: No published Google Search grounding latency distribution
+- Pricing / 1K: Gemini 3+: $14 / 1K individual search queries + model charges
+- Free tier limits: Gemini 3+: 5,000 search queries/month shared free
+- Latency by tier: Historical July 2026: No published Google Search grounding latency distribution
 - AI Answer: full
 - Full text: none
 - Summary: none
 - Highlights: none
 - News: none
+- Product category: Model-hosted grounding
+- Availability: Available
+- Native API overview: Google Search grounding inside Gemini generation, not standalone raw ranked search.
+- anysearch SDK: Python + TypeScript adapters
+- Evidence checked: 2026-10-21
+- Limits / billing caveats: One prompt may generate several billable queries; older model rules differ
 
 ## Google PSE
 - Docs: https://developers.google.com/custom-search/v1/reference/rest/v1/cse/list
@@ -155,14 +323,20 @@ Providers: 24. Unified parameters and response fields supported via anysearch.
 - Date range: partial
 - Safe search: full
 - Mode: balanced
-- Pricing / 1K: balanced: $5
-- Free tier limits: 100 queries/day; existing customers only
-- Latency by tier: No published distribution; each response includes server searchTime
+- Pricing / 1K: Existing users: $5 / 1K above free quota; up to 10K/day
+- Free tier limits: Existing users only: 100 queries/day
+- Latency by tier: Historical July 2026: No published distribution; each response includes server searchTime
 - AI Answer: none
 - Full text: none
 - Summary: none
 - Highlights: none
 - News: none
+- Product category: Legacy search API
+- Availability: Closed to new customers; discontinued January 1, 2027
+- Native API overview: Configured Programmable Search Engine + key required; Vertex AI domain search is not unrestricted web search.
+- anysearch SDK: Python + TypeScript adapters
+- Evidence checked: 2026-10-21
+- Limits / billing caveats: Closed to new customers; transition by January 1, 2027
 
 ## Google · SerpApi
 - Docs: https://serpapi.com/search-api
@@ -173,14 +347,20 @@ Providers: 24. Unified parameters and response fields supported via anysearch.
 - Date range: none
 - Safe search: full
 - Mode: balanced
-- Pricing / 1K: balanced: $25 starter; ~$3.75-$15 volume
+- Pricing / 1K: $25/month for 1K; $75/5K; $150/15K; $275/30K searches
 - Free tier limits: 250 searches/month; 50/hour
-- Latency by tier: Light API: 1.28s p50 independent; fastest Google API: 0.73s avg / 1.45s p99 vendor-run
+- Latency by tier: Historical July 2026: Light API: 1.28s p50 independent; fastest Google API: 0.73s avg / 1.45s p99 vendor-run
 - AI Answer: partial
 - Full text: none
 - Summary: none
 - Highlights: none
 - News: full
+- Product category: Third-party SERP service
+- Availability: Available
+- Native API overview: Third-party SERP access to multiple engines; not official Google/Bing developer API.
+- anysearch SDK: Python + TypeScript adapters
+- Evidence checked: 2026-10-21
+- Limits / billing caveats: Starter 200/hour; Developer 1,000/hour
 
 ## Jina
 - Docs: https://jina.ai/reader/
@@ -191,14 +371,20 @@ Providers: 24. Unified parameters and response fields supported via anysearch.
 - Date range: none
 - Safe search: none
 - Mode: balanced
-- Pricing / 1K: token-based; no fixed per-query CPM
-- Free tier limits: 10M tokens for new users; 500 RPM / 1M TPM
-- Latency by tier: Search: 0.75s p50 / 1.32s p95 independent; 2.5s provider-reported average
+- Pricing / 1K: Token-priced: ≥10K tokens/request; $50/1B tokens implies ≥$0.50 / 1K, not flat CPM
+- Free tier limits: 10M free tokens listed with noncommercial CC-BY-NC condition; recurrence unverified
+- Latency by tier: Historical July 2026: Search: 0.75s p50 / 1.32s p95 independent; 2.5s provider-reported average
 - AI Answer: none
 - Full text: full
 - Summary: none
 - Highlights: none
 - News: none
+- Product category: Standalone search API
+- Availability: Available
+- Native API overview: s.jina.ai requires key; r.jina.ai URL reader uses separate output-token billing.
+- anysearch SDK: Python + TypeScript adapters
+- Evidence checked: 2026-10-21
+- Limits / billing caveats: Search 100 RPM free/paid; 1,000 RPM premium
 
 ## Kagi
 - Docs: https://help.kagi.com/kagi/api/search.html
@@ -209,14 +395,20 @@ Providers: 24. Unified parameters and response fields supported via anysearch.
 - Date range: none
 - Safe search: none
 - Mode: balanced
-- Pricing / 1K: not publicly itemized per 1K for Search API
-- Free tier limits: No free Search API allowance documented
-- Latency by tier: No published Search API latency distribution
+- Pricing / 1K: Search $12 / 1K requests; Extract $4 / 1K pages
+- Free tier limits: No free Search API quota stated
+- Latency by tier: Historical July 2026: No published Search API latency distribution
 - AI Answer: none
 - Full text: none
 - Summary: none
 - Highlights: none
 - News: none
+- Product category: Standalone search API
+- Availability: Available
+- Native API overview: Current GET /api/v1/search uses Authorization: Bot; web/images/news/videos/podcasts, lenses and locale controls. v0 is legacy; existing anysearch adapter uses v0.
+- anysearch SDK: Python + TypeScript adapters
+- Evidence checked: 2026-10-21
+- Limits / billing caveats: Usage invoiced every 30 days or at $100; Extract up to 10 URLs/request
 
 ## Keiro
 - Docs: https://keirolabs.cloud/
@@ -227,14 +419,20 @@ Providers: 24. Unified parameters and response fields supported via anysearch.
 - Date range: none
 - Safe search: none
 - Mode: fast, balanced, deep
-- Pricing / 1K: fast/balanced: ~$0.50; content: ~$1.50; batch: ~$0.50
-- Free tier limits: 500 searches/month; 30 req/min; no card
-- Latency by tier: Flash: 0.312s p50 / 1.1s p99; indexed: 0.487s p50; balanced/deep: not published
+- Pricing / 1K: Conflicting official pricing: Keiro lite from $0.10 / 1K; browserfoundry $0.25 / 1K
+- Free tier limits: Conflict: Keiro 750 credits/month; browserfoundry 1,250; free/paid conversion differs
+- Latency by tier: Historical July 2026: Flash: 0.312s p50 / 1.1s p99; indexed: 0.487s p50; balanced/deep: not published
 - AI Answer: none
 - Full text: full
 - Summary: none
 - Highlights: none
 - News: none
+- Product category: Standalone search API
+- Availability: Available; official pricing conflict
+- Native API overview: Rebranded browserfoundry; claims existing keys/endpoints continue. Fast proxy-backed search; Content, Answer and Agentic are separate. Do not assume paid credit conversion for free tier.
+- anysearch SDK: Python + TypeScript adapters
+- Evidence checked: 2026-10-21
+- Limits / billing caveats: Conflict: 15 vs 30 RPM; paid starts $29.99 vs $30
 
 ## Linkup
 - Docs: https://docs.linkup.so/pages/documentation/endpoints/search/overview
@@ -245,14 +443,20 @@ Providers: 24. Unified parameters and response fields supported via anysearch.
 - Date range: full
 - Safe search: none
 - Mode: fast, balanced, deep
-- Pricing / 1K: fast/standard: $5-$6; deep: $50-$55
-- Free tier limits: $20/month (~4,000 standard or 400 deep searches; eligible)
-- Latency by tier: fast: <1s; standard: 1–3s; deep: 5–30s; independent unspecified mode: 1.55s p50 / 2.36s p95
+- Pricing / 1K: Flash/Fast/Standard raw $5; sourced/structured $6; Deep raw $50 or synthesized $55 / 1K
+- Free tier limits: Eligible professional-email accounts topped back up to $20 monthly
+- Latency by tier: Historical July 2026: fast: <1s; standard: 1–3s; deep: 5–30s; independent unspecified mode: 1.55s p50 / 2.36s p95
 - AI Answer: full
 - Full text: full
 - Summary: none
 - Highlights: none
 - News: none
+- Product category: Standalone search API
+- Availability: Available
+- Native API overview: Raw searchResults, sourcedAnswer and structured output use distinct prices; errors/empty no-relevant-result calls not billed.
+- anysearch SDK: Python + TypeScript adapters
+- Evidence checked: 2026-10-21
+- Limits / billing caveats: Prepaid PAYG; x402 minimum $0.01/request differs
 
 ## Octen
 - Docs: https://docs.octen.ai/api-reference/search
@@ -263,14 +467,44 @@ Providers: 24. Unified parameters and response fields supported via anysearch.
 - Date range: full
 - Safe search: full
 - Mode: balanced
-- Pricing / 1K: balanced/search: $1
-- Free tier limits: $5 initial credit (~5,000 searches); 10 QPS free plan
-- Latency by tier: Web Search: 62 ms p50; 68 ms p90
+- Pricing / 1K: Promotional Web Search $1 / 1K (normally $5), includes 10 full-content results; +$0.50 / 1K extra results
+- Free tier limits: One-time $5 signup credit; no card
+- Latency by tier: Historical July 2026: Web Search: 62 ms p50; 68 ms p90
 - AI Answer: none
 - Full text: full
 - Summary: none
 - Highlights: full
 - News: full
+- Product category: Standalone search API
+- Availability: Available
+- Native API overview: Search 1–100 results; domain/language/date/safe-search, content/highlights. Broad mode bills per generated subquery. 62ms p50 is a vendor claim, not a guarantee.
+- anysearch SDK: Python + TypeScript adapters
+- Evidence checked: 2026-10-21
+- Limits / billing caveats: $5 minimum top-up; 10 QPS free, up to 20 after top-up; QPS subscription excludes usage
+
+## OpenAI Web Search
+- Docs: https://developers.openai.com/api/docs/pricing
+- Env: Not integrated
+- Domain filters: unknown
+- Country: unknown
+- Language: unknown
+- Date range: unknown
+- Safe search: unknown
+- Mode: none
+- Pricing / 1K: web_search $10 / 1K tool calls + search-content tokens at model rates
+- Free tier limits: No recurring free allowance verified
+- Latency by tier: No current comparable measurement verified
+- AI Answer: unknown
+- Full text: unknown
+- Summary: unknown
+- Highlights: unknown
+- News: unknown
+- Product category: Model-hosted grounding
+- Availability: Available
+- Native API overview: Model-hosted web_search; tool cost is not total answer cost or raw search price.
+- anysearch SDK: Comparison only — no adapter
+- Evidence checked: 2026-10-21
+- Limits / billing caveats: Legacy preview rules differ; model availability and limits vary
 
 ## Parallel
 - Docs: https://docs.parallel.ai/search/modes
@@ -281,14 +515,20 @@ Providers: 24. Unified parameters and response fields supported via anysearch.
 - Date range: full
 - Safe search: none
 - Mode: fast, balanced, deep
-- Pricing / 1K: search: $1-$5; task: $5-$2,400
-- Free tier limits: 1,000 requests/month; up to $80 signup + $5/month
-- Latency by tier: Search turbo: 0.216s p50; basic: 1.3s; advanced: 2.7s; Task: 10s–2h by processor
+- Pricing / 1K: Turbo/Fast $1; Basic/Advanced $5 / 1K (10 results); +$1 / 1K additional results
+- Free tier limits: Up to $80 signup; eligible card-backed organizations $5 monthly credit
+- Latency by tier: Historical July 2026: Search turbo: 0.216s p50; basic: 1.3s; advanced: 2.7s; Task: 10s–2h by processor
 - AI Answer: full
 - Full text: full
 - Summary: none
 - Highlights: full
 - News: none
+- Product category: Standalone search API
+- Availability: Available
+- Native API overview: Search and Extract differ from Task processors. Spending limits are notification-only, not hard blocks.
+- anysearch SDK: Python + TypeScript adapters
+- Evidence checked: 2026-10-21
+- Limits / billing caveats: Extract $1 / 1K URLs; account limits per plan
 
 ## Perplexity
 - Docs: https://docs.perplexity.ai/api-reference/search-post
@@ -299,14 +539,20 @@ Providers: 24. Unified parameters and response fields supported via anysearch.
 - Date range: none
 - Safe search: none
 - Mode: balanced, deep
-- Pricing / 1K: search: $5; fast/sonar low: $5; balanced: $8-$10; deep/high/pro: $12-$22 + tokens
-- Free tier limits: No standing free API credits documented
-- Latency by tier: Search: 0.35s p50 / 0.47s p95 independent; 0.358s p50 / 0.763s p95 provider; Sonar/deep: not published
+- Pricing / 1K: Fast $1; Standard $5 / 1K requests (up to 5 queries/request); no raw Search model tokens
+- Free tier limits: No general free API allowance verified
+- Latency by tier: Historical July 2026: Search: 0.35s p50 / 0.47s p95 independent; 0.358s p50 / 0.763s p95 provider; Sonar/deep: not published
 - AI Answer: full
 - Full text: full
 - Summary: none
 - Highlights: none
 - News: none
+- Product category: Standalone search API
+- Availability: Available
+- Native API overview: Ranked Search results and extracted text; Sonar, Agent and Research are separate model-mediated products. Empty HTTP-200 responses are billable.
+- anysearch SDK: Python + TypeScript adapters
+- Evidence checked: 2026-10-21
+- Limits / billing caveats: 1–20 results; other account limits per docs
 
 ## SearXNG
 - Docs: https://docs.searxng.org/dev/search_api.html
@@ -317,14 +563,20 @@ Providers: 24. Unified parameters and response fields supported via anysearch.
 - Date range: none
 - Safe search: full
 - Mode: balanced
-- Pricing / 1K: $0 API fee if self-hosted; infra/proxy costs separate
-- Free tier limits: No software quota when self-hosted; instance limits apply
-- Latency by tier: Deployment-dependent; no portable p50/p90/p95
+- Pricing / 1K: Self-hosted software; infrastructure/proxy costs separate
+- Free tier limits: No hosted free allowance; self-hosted instance limits apply
+- Latency by tier: Historical July 2026: Deployment-dependent; no portable p50/p90/p95
 - AI Answer: full
 - Full text: none
 - Summary: none
 - Highlights: none
 - News: none
+- Product category: Self-hosted metasearch
+- Availability: Self-hosted; instance dependent
+- Native API overview: GET/POST / or /search; language/time/safe-search and query operators depend on upstream engines.
+- anysearch SDK: Python + TypeScript adapters
+- Evidence checked: 2026-10-21
+- Limits / billing caveats: JSON/CSV/RSS must be enabled; public instances may return 403
 
 ## Searchapi
 - Docs: https://www.searchapi.io/docs/google
@@ -335,14 +587,20 @@ Providers: 24. Unified parameters and response fields supported via anysearch.
 - Date range: none
 - Safe search: none
 - Mode: balanced
-- Pricing / 1K: balanced: $4 starter; $1-$3 volume
-- Free tier limits: 100 one-time requests; no card
-- Latency by tier: Light API: 1.07s p50 / 2.23s p95; standard API: not published
+- Pricing / 1K: $40/month/10K; $100/35K; $250/100K; $500/250K standard-speed requests
+- Free tier limits: 100 one-time signup requests; no card
+- Latency by tier: Historical July 2026: Light API: 1.07s p50 / 2.23s p95; standard API: not published
 - AI Answer: partial
 - Full text: none
 - Summary: none
 - Highlights: none
 - News: full
+- Product category: Third-party SERP service
+- Availability: Available
+- Native API overview: Third-party SERP service; only HTTP-200 success billed; $100/35K equals ~$2.86 / 1K.
+- anysearch SDK: Python + TypeScript adapters
+- Evidence checked: 2026-10-21
+- Limits / billing caveats: Entry plan $40/month; enhanced speed may differ
 
 ## Serper
 - Docs: https://serper.dev/docs
@@ -353,14 +611,20 @@ Providers: 24. Unified parameters and response fields supported via anysearch.
 - Date range: none
 - Safe search: none
 - Mode: balanced
-- Pricing / 1K: balanced: $1.00 starter; $0.30-$0.75 volume
-- Free tier limits: 2,500 one-time queries; no card
-- Latency by tier: Search: 0.69s p50 / 1.15s p95
+- Pricing / 1K: $50/50K prepaid ($1 / 1K); bulk $0.75/$0.50/$0.30 with larger purchases
+- Free tier limits: 2,500 one-time trial queries; no card
+- Latency by tier: Historical July 2026: Search: 0.69s p50 / 1.15s p95
 - AI Answer: partial
 - Full text: none
 - Summary: none
 - Highlights: none
 - News: full
+- Product category: Third-party SERP service
+- Availability: Available
+- Native API overview: Third-party Google SERP service; successful responses billed; tax excluded. Lowest rate requires $3,750 prepaid.
+- anysearch SDK: Python + TypeScript adapters
+- Evidence checked: 2026-10-21
+- Limits / billing caveats: Starter 50 QPS; larger tiers 100/200/300 QPS; credits expire after 6 months
 
 ## Tavily
 - Docs: https://docs.tavily.com/documentation/api-reference/endpoint/search
@@ -371,14 +635,20 @@ Providers: 24. Unified parameters and response fields supported via anysearch.
 - Date range: full
 - Safe search: none
 - Mode: fast, balanced, deep
-- Pricing / 1K: fast/basic: ~$8; balanced/advanced: ~$16; deep/research: plan/model dependent
-- Free tier limits: 1,000 basic or 500 advanced searches/month; no card
-- Latency by tier: ultra-fast: 0.37s p50 / 0.46s p95; fast/basic/advanced/research: not published
+- Pricing / 1K: PAYG $8 / 1K basic; $16 / 1K advanced (1/2 credits); subscriptions differ
+- Free tier limits: 1,000 credits/month; no card
+- Latency by tier: Historical July 2026: ultra-fast: 0.37s p50 / 0.46s p95; fast/basic/advanced/research: not published
 - AI Answer: full
 - Full text: partial
 - Summary: none
 - Highlights: none
 - News: full
+- Product category: Standalone search API
+- Availability: Available
+- Native API overview: Search, extract, crawl and research are separate credit rules; do not price research as basic search.
+- anysearch SDK: Python + TypeScript adapters
+- Evidence checked: 2026-10-21
+- Limits / billing caveats: Development 100 RPM; paid production 1,000 RPM
 
 ## Yahoo · SerpApi
 - Docs: https://serpapi.com/yahoo-search-api
@@ -389,14 +659,20 @@ Providers: 24. Unified parameters and response fields supported via anysearch.
 - Date range: none
 - Safe search: full
 - Mode: balanced
-- Pricing / 1K: balanced: $25 starter; ~$3.75-$15 volume
+- Pricing / 1K: $25/month for 1K; $75/5K; $150/15K; $275/30K searches
 - Free tier limits: 250 searches/month; 50/hour
-- Latency by tier: Light API: 1.28s p50 independent; fastest Google API: 0.73s avg / 1.45s p99 vendor-run
+- Latency by tier: Historical July 2026: Light API: 1.28s p50 independent; fastest Google API: 0.73s avg / 1.45s p99 vendor-run
 - AI Answer: partial
 - Full text: none
 - Summary: none
 - Highlights: none
 - News: full
+- Product category: Third-party SERP service
+- Availability: Available
+- Native API overview: Third-party SERP access to multiple engines; not official Google/Bing developer API.
+- anysearch SDK: Python + TypeScript adapters
+- Evidence checked: 2026-10-21
+- Limits / billing caveats: Starter 200/hour; Developer 1,000/hour
 
 ## Yandex · SerpApi
 - Docs: https://serpapi.com/yandex-search-api
@@ -407,14 +683,20 @@ Providers: 24. Unified parameters and response fields supported via anysearch.
 - Date range: none
 - Safe search: full
 - Mode: balanced
-- Pricing / 1K: balanced: $25 starter; ~$3.75-$15 volume
+- Pricing / 1K: $25/month for 1K; $75/5K; $150/15K; $275/30K searches
 - Free tier limits: 250 searches/month; 50/hour
-- Latency by tier: Light API: 1.28s p50 independent; fastest Google API: 0.73s avg / 1.45s p99 vendor-run
+- Latency by tier: Historical July 2026: Light API: 1.28s p50 independent; fastest Google API: 0.73s avg / 1.45s p99 vendor-run
 - AI Answer: partial
 - Full text: none
 - Summary: none
 - Highlights: none
 - News: none
+- Product category: Third-party SERP service
+- Availability: Available
+- Native API overview: Third-party SERP access to multiple engines; not official Google/Bing developer API.
+- anysearch SDK: Python + TypeScript adapters
+- Evidence checked: 2026-10-21
+- Limits / billing caveats: Starter 200/hour; Developer 1,000/hour
 
 ## You
 - Docs: https://you.com/docs/search/overview
@@ -425,11 +707,41 @@ Providers: 24. Unified parameters and response fields supported via anysearch.
 - Date range: partial
 - Safe search: none
 - Mode: fast, balanced, deep
-- Pricing / 1K: search: $5; research: $12/$50/$100/$450 by effort
-- Free tier limits: $100 signup (~20,000 searches); keyless MCP: 100/day
-- Latency by tier: Search: 0.73s p50 / 1.22s p95 independent; 0.445s p50 provider; Research: 5–60s by effort
+- Pricing / 1K: Search $5 / 1K calls; live extraction +$1 / 1K pages; cached extraction no surcharge
+- Free tier limits: $10 signup advertised on canonical pricing; keyless MCP 100 searches/day
+- Latency by tier: Historical July 2026: Search: 0.73s p50 / 1.22s p95 independent; 0.445s p50 provider; Research: 5–60s by effort
 - AI Answer: full
 - Full text: partial
 - Summary: none
 - Highlights: full
 - News: none
+- Product category: Standalone search API
+- Availability: Available
+- Native API overview: Web and news search; Research has separate pricing. Legacy marketing says $100 signup; current canonical page says $10.
+- anysearch SDK: Python + TypeScript adapters
+- Evidence checked: 2026-10-21
+- Limits / billing caveats: Up to 100 results; PAYG no minimum
+
+## xAI Web Search
+- Docs: https://docs.x.ai/developers/pricing
+- Env: Not integrated
+- Domain filters: unknown
+- Country: unknown
+- Language: unknown
+- Date range: unknown
+- Safe search: unknown
+- Mode: none
+- Pricing / 1K: Web Search $5 / 1K tool calls + model tokens
+- Free tier limits: No recurring free allowance verified
+- Latency by tier: No current comparable measurement verified
+- AI Answer: unknown
+- Full text: unknown
+- Summary: unknown
+- Highlights: unknown
+- News: unknown
+- Product category: Model-hosted grounding
+- Availability: Available
+- Native API overview: Model-hosted web_search; X Search is distinct and is not public web search.
+- anysearch SDK: Comparison only — no adapter
+- Evidence checked: 2026-10-21
+- Limits / billing caveats: X Search billed separately: posts/profiles use different units

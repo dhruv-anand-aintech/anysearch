@@ -33,17 +33,20 @@ function extractClientScript(html) {
   return client;
 }
 
-function runClientScriptSmoke(clientScript, payload) {
+function runClientScriptSmoke(clientScript, payload, cookie = "") {
   const headerEl = { innerHTML: "" };
   const bodyEl = { innerHTML: "" };
   const pillEl = { textContent: "", dataset: { updatedAt: new Date().toISOString() } };
   const payloadJson = JSON.stringify(payload);
 
   const tableWrap = { clientWidth: 1200 };
+  const events = {};
+  const elements = Object.fromEntries(['matrixView','changelogView','compareTab','changelogTab'].map(id => [id, {hidden: id === 'changelogView', setAttribute(key,value) {this[key]=value;}}]));
   const document = {
-    cookie: "",
+    cookie,
     documentElement: { style: { setProperty() {} } },
     getElementById(id) {
+      if (elements[id]) return elements[id];
       if (id === "headerRow") return headerEl;
       if (id === "tbody") return bodyEl;
       if (id === "updatedPill") return pillEl;
@@ -63,7 +66,9 @@ function runClientScriptSmoke(clientScript, payload) {
 
   const window = {
     innerWidth: 1200,
-    addEventListener() {},
+    location: {hash: '', pathname: '/', search: ''},
+    history: {pushState(_s,_t,url) { window.location.hash = url.startsWith('#') ? url : ''; }},
+    addEventListener(name,fn) { events[name]=fn; },
     requestAnimationFrame(fn) {
       if (typeof fn === "function") fn();
       return 0;
@@ -90,6 +95,16 @@ function runClientScriptSmoke(clientScript, payload) {
   };
 
   vm.runInNewContext(clientScript, sandbox, { timeout: 10_000 });
+
+  vm.runInNewContext("showView('changelog')", sandbox);
+  if (elements.changelogView.hidden || !elements.matrixView.hidden) throw new Error('Changelog tab did not activate');
+  vm.runInNewContext("showView('matrix')", sandbox);
+  window.location.hash = '#changelog';
+  if (!events.popstate || !events.hashchange) throw new Error('History/hash navigation handlers missing');
+  events.popstate();
+  if (elements.changelogView.hidden) throw new Error('Browser Back did not restore changelog');
+  window.location.hash = ''; events.hashchange();
+  if (elements.matrixView.hidden) throw new Error('Hash navigation did not restore matrix');
 
   if (!headerEl.innerHTML.trim()) {
     throw new Error("renderHeader() produced empty #headerRow");
@@ -164,6 +179,13 @@ async function main() {
 
   const clientScript = extractClientScript(html);
   runClientScriptSmoke(clientScript, payload);
+  const corrupt = {cols: Array(matrix.length).fill(9999), rows: Array(columns.length - 1).fill('invalid')};
+  runClientScriptSmoke(clientScript, payload, 'asmat_state=' + encodeURIComponent(JSON.stringify(corrupt)));
+  for (const route of ['/bundle.json','/llms.txt','/changelog.json','/updated.json','/deployment-info','/api/deployment-info']) {
+    const response = await worker.default.fetch(new Request('https://matrix.test'+route), {});
+    if (!response.ok) throw new Error(route+' failed');
+    if (route.endsWith('.json')) await response.json();
+  }
 
   console.log(
     `matrix page verify: ok (${matrix.length} providers, header and body rendered)`

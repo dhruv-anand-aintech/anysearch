@@ -86,23 +86,67 @@
     "comment": "Native `depth`: `fast`, `standard` (balanced), or `deep` (multi-iteration agentic search-and-scrape). Cited synthesis uses `outputType=sourcedAnswer` (`answer=true` in anysearch), including at `deep` depth. anysearch: fast/balanced/deep\u2192matching depth."
   },
   "pricing_per_1k": {
-    "value": "fast/standard: $5-$6; deep: $50-$55",
+    "value": "Flash/Fast/Standard raw $5; sourced/structured $6; Deep raw $50 or synthesized $55 / 1K",
     "source_url": "https://docs.linkup.so/pages/documentation/platform/pricing",
-    "comment": "Raw search results cost $5/$50 per 1K; sourced answers and structured output cost $6/$55."
+    "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+    "links": {}
   },
   "free_tier_limits": {
-    "value": "$20/month (~4,000 standard or 400 deep searches; eligible)",
+    "value": "Eligible professional-email accounts topped back up to $20 monthly",
     "source_url": "https://docs.linkup.so/pages/documentation/platform/pricing",
-    "comment": "At raw-search rates this covers about 4,000 standard or 400 deep calls; eligibility is provider-controlled."
+    "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
+    "links": {}
   },
   "p50_latency": {
-    "value": "fast: <1s; standard: 1\u20133s; deep: 5\u201330s; independent unspecified mode: 1.55s p50 / 2.36s p95",
+    "value": "Historical July 2026: fast: <1s; standard: 1\u20133s; deep: 5\u201330s; independent unspecified mode: 1.55s p50 / 2.36s p95",
     "source_url": "https://docs.linkup.so/pages/documentation/endpoints/search/overview",
-    "comment": "Tier ranges are provider documentation. The independent January 2026 benchmark predates Linkup fast's February beta and did not name the tested depth.",
+    "comment": "Historical evidence retained from July 2026; not remeasured or claimed current. Tier ranges are provider documentation. The independent January 2026 benchmark predates Linkup fast's February beta and did not name the tested depth.",
     "links": {
       "Tier ranges": "https://docs.linkup.so/pages/documentation/endpoints/search/overview",
       "Independent benchmark": "https://proxyway.com/research/search-apis-2026-report"
     }
   },
-  "notes": "Native SDK package: linkup-sdk."
+  "notes": "Native SDK package: linkup-sdk.",
+  "api_category": {
+    "value": "Standalone search API",
+    "source_url": "https://docs.linkup.so/pages/documentation/platform/pricing",
+    "comment": ""
+  },
+  "api_status": {
+    "value": "Available",
+    "source_url": "https://docs.linkup.so/pages/documentation/platform/pricing",
+    "comment": "",
+    "links": {}
+  },
+  "native_api": {
+    "value": "Raw searchResults, sourcedAnswer and structured output use distinct prices; errors/empty no-relevant-result calls not billed.",
+    "source_url": "https://docs.linkup.so/pages/documentation/platform/pricing",
+    "comment": "",
+    "links": {}
+  },
+  "rate_limits": {
+    "value": "Prepaid PAYG; x402 minimum $0.01/request differs",
+    "source_url": "https://docs.linkup.so/pages/documentation/platform/pricing",
+    "comment": "",
+    "links": {}
+  },
+  "checked_at": {
+    "value": "2026-10-21",
+    "source_url": "https://docs.linkup.so/pages/documentation/platform/pricing",
+    "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
+    "links": {}
+  },
+  "sdk_support": {
+    "value": "Python + TypeScript adapters",
+    "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
+    "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+  },
+  "evidence": {
+    "checked_at": "2026-10-21",
+    "source_urls": [
+      "https://docs.linkup.so/pages/documentation/platform/pricing"
+    ],
+    "effective_date": null,
+    "method": "official documentation; no new benchmarks"
+  }
 }

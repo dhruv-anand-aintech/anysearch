@@ -84,19 +84,64 @@
     "comment": "Custom Search JSON API: no search-depth or speed preset\u2014only `num`, `sort`, and `siteSearch` filters. Matrix `balanced` = default `cse.list` behavior."
   },
   "pricing_per_1k": {
-    "value": "balanced: $5",
-    "source_url": "https://support.google.com/programmable-search/answer/9069107",
-    "comment": "Custom Search JSON API and Programmable Search Element paid API are listed at $5/1K queries."
+    "value": "Existing users: $5 / 1K above free quota; up to 10K/day",
+    "source_url": "https://developers.google.com/custom-search/v1/overview",
+    "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+    "links": {}
   },
   "free_tier_limits": {
-    "value": "100 queries/day; existing customers only",
+    "value": "Existing users only: 100 queries/day",
     "source_url": "https://developers.google.com/custom-search/v1/overview",
-    "comment": "Custom Search JSON API is closed to new customers; existing customers must migrate by January 1, 2027."
+    "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
+    "links": {}
   },
   "p50_latency": {
-    "value": "No published distribution; each response includes server searchTime",
+    "value": "Historical July 2026: No published distribution; each response includes server searchTime",
     "source_url": "https://developers.google.com/custom-search/v1/reference/rest/v1/Search",
-    "comment": "Google exposes per-request server search time in searchInformation, but publishes no aggregate p50/p90/p95 latency for Custom Search JSON API."
+    "comment": "Historical evidence retained from July 2026; not remeasured or claimed current. Google exposes per-request server search time in searchInformation, but publishes no aggregate p50/p90/p95 latency for Custom Search JSON API."
   },
-  "notes": ""
+  "notes": "",
+  "api_category": {
+    "value": "Legacy search API",
+    "source_url": "https://developers.google.com/custom-search/v1/overview",
+    "comment": ""
+  },
+  "api_status": {
+    "value": "Closed to new customers; discontinued January 1, 2027",
+    "source_url": "https://developers.google.com/custom-search/v1/overview",
+    "comment": "",
+    "links": {}
+  },
+  "native_api": {
+    "value": "Configured Programmable Search Engine + key required; Vertex AI domain search is not unrestricted web search.",
+    "source_url": "https://developers.google.com/custom-search/v1/overview",
+    "comment": "",
+    "links": {}
+  },
+  "rate_limits": {
+    "value": "Closed to new customers; transition by January 1, 2027",
+    "source_url": "https://developers.google.com/custom-search/v1/overview",
+    "comment": "",
+    "links": {}
+  },
+  "checked_at": {
+    "value": "2026-10-21",
+    "source_url": "https://developers.google.com/custom-search/v1/overview",
+    "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
+    "links": {}
+  },
+  "sdk_support": {
+    "value": "Python + TypeScript adapters",
+    "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
+    "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+  },
+  "evidence": {
+    "checked_at": "2026-10-21",
+    "source_urls": [
+      "https://developers.google.com/custom-search/v1/overview"
+    ],
+    "effective_date": null,
+    "method": "official documentation; no new benchmarks"
+  },
+  "deprecated": true
 }

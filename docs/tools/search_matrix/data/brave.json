@@ -85,23 +85,80 @@
     "comment": "**Web/news SERP** (`/res/v1/web/search`) \u2192 matrix `balanced`. **Answers API** (`POST /res/v1/chat/completions`, `model=brave`) \u2192 balanced (single-pass grounded answer); `enable_research=true` (streaming)\u2192deep. Same `BRAVE_API_KEY`."
   },
   "pricing_per_1k": {
-    "value": "balanced/search: $5; deep/answers: $4 + tokens",
-    "source_url": "https://brave.com/search/api/",
-    "comment": "Search is $5/1K requests; Answers is $4/1K plus input/output token charges."
+    "value": "Search $5 / 1K requests; Answers $4 / 1K + $5/M input and output tokens",
+    "source_url": "https://api-dashboard.search.brave.com/documentation/pricing",
+    "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+    "links": {
+      "Official source 1": "https://brave.com/blog/most-powerful-search-api-for-ai/"
+    }
   },
   "free_tier_limits": {
-    "value": "$5 credits/month (~1,000 Search requests)",
-    "source_url": "https://brave.com/search/api/",
-    "comment": "Credits are applied automatically each month to Search or Answers usage."
+    "value": "$5 monthly credit; attribution conditions apply",
+    "source_url": "https://api-dashboard.search.brave.com/documentation/pricing",
+    "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
+    "links": {
+      "Official source 1": "https://brave.com/blog/most-powerful-search-api-for-ai/"
+    }
   },
   "p50_latency": {
-    "value": "Web: 0.77s p50 / 1.19s p95; Answers/research: not published",
+    "value": "Historical July 2026: Web: 0.77s p50 / 1.19s p95; Answers/research: not published",
     "source_url": "https://proxyway.com/research/search-apis-2026-report",
-    "comment": "Web Search is independently measured across three 2,000-query runs from the US East Coast. Brave publishes no percentile latency for Answers or research mode.",
+    "comment": "Historical evidence retained from July 2026; not remeasured or claimed current. Web Search is independently measured across three 2,000-query runs from the US East Coast. Brave publishes no percentile latency for Answers or research mode.",
     "links": {
       "Independent benchmark": "https://proxyway.com/research/search-apis-2026-report",
       "Provider API": "https://brave.com/search/api/"
     }
   },
-  "notes": "Web/news Search API is in the anysearch SDK; Answers API (`/res/v1/chat/completions`) is documented in the matrix but not wired in the SDK yet."
+  "notes": "Web/news Search API is in the anysearch SDK; Answers API (`/res/v1/chat/completions`) is documented in the matrix but not wired in the SDK yet.",
+  "api_category": {
+    "value": "Standalone search API",
+    "source_url": "https://api-dashboard.search.brave.com/documentation/pricing",
+    "comment": ""
+  },
+  "api_status": {
+    "value": "Available",
+    "source_url": "https://api-dashboard.search.brave.com/documentation/pricing",
+    "comment": "",
+    "links": {
+      "Official source 1": "https://brave.com/blog/most-powerful-search-api-for-ai/"
+    }
+  },
+  "native_api": {
+    "value": "Web, news, images, videos and LLM context; Answers is a separate generated-answer product.",
+    "source_url": "https://api-dashboard.search.brave.com/documentation/pricing",
+    "comment": "",
+    "links": {
+      "Official source 1": "https://brave.com/blog/most-powerful-search-api-for-ai/"
+    }
+  },
+  "rate_limits": {
+    "value": "Search 50 RPS; Answers 2 RPS",
+    "source_url": "https://api-dashboard.search.brave.com/documentation/pricing",
+    "comment": "",
+    "links": {
+      "Official source 1": "https://brave.com/blog/most-powerful-search-api-for-ai/"
+    }
+  },
+  "checked_at": {
+    "value": "2026-10-21",
+    "source_url": "https://api-dashboard.search.brave.com/documentation/pricing",
+    "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
+    "links": {
+      "Official source 1": "https://brave.com/blog/most-powerful-search-api-for-ai/"
+    }
+  },
+  "sdk_support": {
+    "value": "Python + TypeScript adapters",
+    "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
+    "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+  },
+  "evidence": {
+    "checked_at": "2026-10-21",
+    "source_urls": [
+      "https://api-dashboard.search.brave.com/documentation/pricing",
+      "https://brave.com/blog/most-powerful-search-api-for-ai/"
+    ],
+    "effective_date": null,
+    "method": "official documentation; no new benchmarks"
+  }
 }

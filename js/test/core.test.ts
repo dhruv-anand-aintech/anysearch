@@ -53,7 +53,9 @@ test("matrix providers and TypeScript SDK providers stay in parity", () => {
   const matrixProviders = new Set(
     fs.readdirSync(matrixDir)
       .filter((name) => name.endsWith(".json"))
-      .map((name) => JSON.parse(fs.readFileSync(new URL(name, matrixDir), "utf8")).links.slug)
+      .map((name) => JSON.parse(fs.readFileSync(new URL(name, matrixDir), "utf8")))
+      .filter((row) => !row.comparison_only)
+      .map((row) => row.links.slug)
       .map((slug: string) => slug.startsWith("serpapi_") ? "serpapi" : slug),
   );
   assert.deepEqual([...matrixProviders].sort(), [...listProviderNames()].sort());

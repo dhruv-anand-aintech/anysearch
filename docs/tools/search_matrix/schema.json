@@ -22,71 +22,324 @@
     "content",
     "summary",
     "highlights",
-    "news"
+    "news",
+    "api_category",
+    "api_status",
+    "native_api",
+    "sdk_support",
+    "checked_at",
+    "rate_limits"
   ],
   "properties": {
-    "name": { "type": "string", "$comment": "About | Name | Search API provider." },
-    "links": { "allOf": [{ "$ref": "#/$defs/links" }], "$comment": "About | Links | Docs, site, and slug." },
-    "env_keys": { "allOf": [{ "$ref": "#/$defs/stringWithSource" }], "$comment": "About | Env vars | API keys anysearch reads from the environment." },
-    "python_extra": { "allOf": [{ "$ref": "#/$defs/stringWithSource" }], "$comment": "About | pip extra | Optional anysearch-sdk extra that installs the native SDK." },
-    "requires_key": { "allOf": [{ "$ref": "#/$defs/featureWithSource" }], "$comment": "About | API key required | full = credentials required; none = keyless." },
-    "snippet": { "allOf": [{ "$ref": "#/$defs/featureWithSource" }], "$comment": "Response | Snippet | Short result description in the unified response." },
-    "domains": { "allOf": [{ "$ref": "#/$defs/featureWithSource" }], "$comment": "Request | Domain filters | include_domains / exclude_domains." },
-    "country": { "allOf": [{ "$ref": "#/$defs/featureWithSource" }], "$comment": "Request | Country | ISO 3166-1 alpha-2 region bias." },
-    "language": { "allOf": [{ "$ref": "#/$defs/featureWithSource" }], "$comment": "Request | Language | ISO 639-1 language filter." },
-    "date": { "allOf": [{ "$ref": "#/$defs/featureWithSource" }], "$comment": "Request | Date range | start/end published date filters." },
-    "safe_search": { "allOf": [{ "$ref": "#/$defs/featureWithSource" }], "$comment": "Request | Safe search | off / moderate / strict." },
-    "mode": { "allOf": [{ "$ref": "#/$defs/stringListWithSource" }], "$comment": "Request | Mode | fast, balanced, and deep depth knobs supported via anysearch." },
-    "pricing_per_1k": { "allOf": [{ "$ref": "#/$defs/stringWithSource" }], "$comment": "Request | Pricing / 1K | Approximate USD per 1,000 queries by anysearch mode." },
-    "free_tier_limits": { "allOf": [{ "$ref": "#/$defs/stringWithSource" }], "$comment": "Request | Free tier limits | Standing free allowance, signup credit, or no-free-tier caveat." },
-    "p50_latency": { "allOf": [{ "$ref": "#/$defs/stringWithSource" }], "$comment": "Performance | Latency by tier | Public p50/p90/p95, averages, or documented ranges with provenance." },
-    "answer": { "allOf": [{ "$ref": "#/$defs/featureWithSource" }], "$comment": "Response | AI Answer | Top-level synthesized answer on SearchResponse." },
-    "content": { "allOf": [{ "$ref": "#/$defs/featureWithSource" }], "$comment": "Response | Full text | include_content → SearchResult.text." },
-    "summary": { "allOf": [{ "$ref": "#/$defs/featureWithSource" }], "$comment": "Response | Summary | include_summary → SearchResult.summary." },
-    "highlights": { "allOf": [{ "$ref": "#/$defs/featureWithSource" }], "$comment": "Response | Highlights | Query-relevant excerpts." },
-    "news": { "allOf": [{ "$ref": "#/$defs/featureWithSource" }], "$comment": "Request | News | search_type=news." },
-    "notes": { "type": "string", "$comment": "About | Notes | Caveats for this row." }
+    "name": {
+      "type": "string",
+      "$comment": "About | Name | Search API provider."
+    },
+    "links": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/links"
+        }
+      ],
+      "$comment": "About | Links | Docs, site, and slug."
+    },
+    "env_keys": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/stringWithSource"
+        }
+      ],
+      "$comment": "About | Env vars | API keys anysearch reads from the environment."
+    },
+    "python_extra": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/stringWithSource"
+        }
+      ],
+      "$comment": "About | pip extra | Optional anysearch-sdk extra that installs the native SDK."
+    },
+    "requires_key": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/featureWithSource"
+        }
+      ],
+      "$comment": "About | API key required | full = credentials required; none = keyless."
+    },
+    "snippet": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/featureWithSource"
+        }
+      ],
+      "$comment": "SDK Response | Snippet | Short result description in the unified response."
+    },
+    "domains": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/featureWithSource"
+        }
+      ],
+      "$comment": "SDK Request | Domain filters | include_domains / exclude_domains."
+    },
+    "country": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/featureWithSource"
+        }
+      ],
+      "$comment": "SDK Request | Country | ISO 3166-1 alpha-2 region bias."
+    },
+    "language": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/featureWithSource"
+        }
+      ],
+      "$comment": "SDK Request | Language | ISO 639-1 language filter."
+    },
+    "date": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/featureWithSource"
+        }
+      ],
+      "$comment": "SDK Request | Date range | start/end published date filters."
+    },
+    "safe_search": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/featureWithSource"
+        }
+      ],
+      "$comment": "SDK Request | Safe search | off / moderate / strict."
+    },
+    "mode": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/stringListWithSource"
+        }
+      ],
+      "$comment": "SDK Request | Mode | fast, balanced, and deep depth knobs supported via anysearch."
+    },
+    "pricing_per_1k": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/stringWithSource"
+        }
+      ],
+      "$comment": "SDK Request | Pricing / 1K | Approximate USD per 1,000 queries by anysearch mode."
+    },
+    "free_tier_limits": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/stringWithSource"
+        }
+      ],
+      "$comment": "SDK Request | Free tier limits | Standing free allowance, signup credit, or no-free-tier caveat."
+    },
+    "p50_latency": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/stringWithSource"
+        }
+      ],
+      "$comment": "Performance | Latency by tier | Public p50/p90/p95, averages, or documented ranges with provenance."
+    },
+    "answer": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/featureWithSource"
+        }
+      ],
+      "$comment": "SDK Response | AI Answer | Top-level synthesized answer on SearchResponse."
+    },
+    "content": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/featureWithSource"
+        }
+      ],
+      "$comment": "SDK Response | Full text | include_content \u2192 SearchResult.text."
+    },
+    "summary": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/featureWithSource"
+        }
+      ],
+      "$comment": "SDK Response | Summary | include_summary \u2192 SearchResult.summary."
+    },
+    "highlights": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/featureWithSource"
+        }
+      ],
+      "$comment": "SDK Response | Highlights | Query-relevant excerpts."
+    },
+    "news": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/featureWithSource"
+        }
+      ],
+      "$comment": "SDK Request | News | search_type=news."
+    },
+    "notes": {
+      "type": "string",
+      "$comment": "About | Notes | Caveats for this row."
+    },
+    "api_category": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/stringWithSource"
+        }
+      ],
+      "$comment": "About | Product category | Standalone, third-party SERP, model grounding, or legacy."
+    },
+    "api_status": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/stringWithSource"
+        }
+      ],
+      "$comment": "About | Availability | Current availability and retirement conditions."
+    },
+    "native_api": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/stringWithSource"
+        }
+      ],
+      "$comment": "About | Native API overview | Official product features; separate from SDK mappings below."
+    },
+    "sdk_support": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/stringWithSource"
+        }
+      ],
+      "$comment": "About | anysearch SDK | Whether a unified SDK adapter is available."
+    },
+    "checked_at": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/stringWithSource"
+        }
+      ],
+      "$comment": "About | Evidence checked | Date of official documentation review, not a benchmark run."
+    },
+    "rate_limits": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/stringWithSource"
+        }
+      ],
+      "$comment": "About | Limits / billing caveats | Units, plan limits and conditions are not interchangeable."
+    },
+    "comparison_only": {
+      "type": "boolean"
+    },
+    "evidence": {
+      "type": "object"
+    }
   },
   "$defs": {
     "links": {
       "type": "object",
-      "required": ["docs", "github", "website", "slug"],
+      "required": [
+        "docs",
+        "github",
+        "website",
+        "slug"
+      ],
       "properties": {
-        "docs": { "type": "string" },
-        "github": { "type": "string" },
-        "website": { "type": "string" },
-        "slug": { "type": "string" }
+        "docs": {
+          "type": "string"
+        },
+        "github": {
+          "type": "string"
+        },
+        "website": {
+          "type": "string"
+        },
+        "slug": {
+          "type": "string"
+        }
       }
     },
     "featureWithSource": {
       "type": "object",
-      "required": ["support", "source_url", "comment"],
+      "required": [
+        "support",
+        "source_url",
+        "comment"
+      ],
       "properties": {
-        "support": { "enum": ["", "none", "partial", "full", "unknown"] },
-        "source_url": { "type": "string" },
-        "comment": { "type": "string" }
+        "support": {
+          "enum": [
+            "",
+            "none",
+            "partial",
+            "full",
+            "unknown"
+          ]
+        },
+        "source_url": {
+          "type": "string"
+        },
+        "comment": {
+          "type": "string"
+        }
       }
     },
     "stringWithSource": {
       "type": "object",
-      "required": ["value", "source_url", "comment"],
+      "required": [
+        "value",
+        "source_url",
+        "comment"
+      ],
       "properties": {
-        "value": { "type": "string" },
-        "source_url": { "type": "string" },
-        "comment": { "type": "string" },
+        "value": {
+          "type": "string"
+        },
+        "source_url": {
+          "type": "string"
+        },
+        "comment": {
+          "type": "string"
+        },
         "links": {
           "type": "object",
-          "additionalProperties": { "type": "string" }
+          "additionalProperties": {
+            "type": "string"
+          }
         }
       }
     },
     "stringListWithSource": {
       "type": "object",
-      "required": ["values", "source_url", "comment"],
+      "required": [
+        "values",
+        "source_url",
+        "comment"
+      ],
       "properties": {
-        "values": { "type": "array", "items": { "type": "string" } },
-        "source_url": { "type": "string" },
-        "comment": { "type": "string" }
+        "values": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "source_url": {
+          "type": "string"
+        },
+        "comment": {
+          "type": "string"
+        }
       }
     }
   }

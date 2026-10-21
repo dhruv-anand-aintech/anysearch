@@ -1,0 +1,145 @@
+{
+  "name": "Bing Search (retired)",
+  "links": {
+    "slug": "bing_legacy",
+    "docs": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+    "website": "https://www.microsoft.com/bing"
+  },
+  "env_keys": {
+    "value": "Not integrated",
+    "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+    "comment": "Comparison only; anysearch does not read a key for this provider."
+  },
+  "python_extra": {
+    "value": "Not integrated",
+    "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+    "comment": ""
+  },
+  "mode": {
+    "values": [],
+    "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+    "comment": "No unified SDK mode mapping."
+  },
+  "p50_latency": {
+    "value": "No current comparable measurement verified",
+    "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+    "comment": ""
+  },
+  "notes": "Comparison only; no anysearch SDK adapter is claimed.",
+  "comparison_only": true,
+  "requires_key": {
+    "support": "unknown",
+    "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "snippet": {
+    "support": "unknown",
+    "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "domains": {
+    "support": "unknown",
+    "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "country": {
+    "support": "unknown",
+    "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "language": {
+    "support": "unknown",
+    "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "date": {
+    "support": "unknown",
+    "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "safe_search": {
+    "support": "unknown",
+    "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "answer": {
+    "support": "unknown",
+    "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "content": {
+    "support": "unknown",
+    "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "summary": {
+    "support": "unknown",
+    "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "highlights": {
+    "support": "unknown",
+    "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "news": {
+    "support": "unknown",
+    "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+    "comment": "No anysearch adapter; see native API overview. Unknown is not unsupported."
+  },
+  "api_category": {
+    "value": "Legacy search API",
+    "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+    "comment": ""
+  },
+  "api_status": {
+    "value": "Retired August 11, 2025",
+    "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+    "comment": "",
+    "links": {}
+  },
+  "native_api": {
+    "value": "Azure Grounding with Bing is a separate hosted service; Bing via SerpApi is a third-party wrapper.",
+    "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+    "comment": "",
+    "links": {}
+  },
+  "rate_limits": {
+    "value": "All instances decommissioned August 11, 2025",
+    "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+    "comment": "",
+    "links": {}
+  },
+  "checked_at": {
+    "value": "2026-10-21",
+    "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+    "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
+    "links": {}
+  },
+  "sdk_support": {
+    "value": "Comparison only \u2014 no adapter",
+    "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
+    "comment": "Feature flags below describe unified SDK mappings, not every native API feature."
+  },
+  "pricing_per_1k": {
+    "value": "Retired; current direct API pricing not applicable",
+    "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+    "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+    "links": {}
+  },
+  "free_tier_limits": {
+    "value": "Unavailable",
+    "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+    "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
+    "links": {}
+  },
+  "evidence": {
+    "checked_at": "2026-10-21",
+    "source_urls": [
+      "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement"
+    ],
+    "effective_date": null,
+    "method": "official documentation; no new benchmarks"
+  },
+  "deprecated": true
+}
