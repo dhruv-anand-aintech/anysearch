@@ -2,6 +2,14 @@ import type { HttpResponse } from "../http.js";
 import type { SearchRequest, SearchResponse } from "../types.js";
 import { finalize, result, type ProviderContext, type ProviderSpec } from "./base.js";
 
+function isPerplexityHost(baseUrl: string): boolean {
+  try {
+    return new URL(baseUrl).hostname === "api.perplexity.ai";
+  } catch {
+    return false;
+  }
+}
+
 export const perplexity: ProviderSpec = {
   name: "perplexity",
   aliases: ["pplx"],
@@ -21,10 +29,15 @@ export const perplexity: ProviderSpec = {
       body.max_tokens_per_page = 8192;
     }
     Object.assign(body, req.extra);
+    const headers: Record<string, string> = {
+      Authorization: `Bearer ${ctx.apiKey ?? ""}`,
+      "Content-Type": "application/json",
+    };
+    if (isPerplexityHost(ctx.baseUrl)) headers["X-Pplx-Integration"] = "anysearch";
     return {
       method: "POST",
       url: `${ctx.baseUrl}/search`,
-      headers: { Authorization: `Bearer ${ctx.apiKey ?? ""}`, "Content-Type": "application/json" },
+      headers,
       json: body,
     };
   },

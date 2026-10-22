@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from urllib.parse import urlparse
+
 import httpx
 
 from .._http import PreparedRequest
@@ -35,10 +37,13 @@ class PerplexityProvider(BaseProvider):
             body["snippet_mode"] = "high"
             body.setdefault("max_tokens_per_page", 8192)
         body.update(req.extra)
+        headers = {"Authorization": f"Bearer {self.api_key}", "Content-Type": "application/json"}
+        if urlparse(self.base_url).hostname == "api.perplexity.ai":
+            headers["X-Pplx-Integration"] = "anysearch"
         return PreparedRequest(
             method="POST",
             url=f"{self.base_url}/search",
-            headers={"Authorization": f"Bearer {self.api_key}", "Content-Type": "application/json"},
+            headers=headers,
             json=body,
         )
 
