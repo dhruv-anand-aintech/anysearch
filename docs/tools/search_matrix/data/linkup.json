@@ -96,6 +96,13 @@
       "source_url": "https://docs.linkup.so/pages/documentation/platform/pricing",
       "checked_at": "2026-10-21"
     },
+    "lowest_price": {
+      "amount_usd_per_1k": 5,
+      "billing_unit": "raw standard requests",
+      "basis": "Flash/Fast/Standard raw $5; sourced/structured $6; Deep $50 / 1K",
+      "source_url": "https://docs.linkup.so/pages/documentation/platform/pricing",
+      "checked_at": "2026-10-21"
+    },
     "links": {}
   },
   "free_tier_limits": {

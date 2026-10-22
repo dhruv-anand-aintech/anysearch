@@ -1,6 +1,6 @@
 # anysearch Search API Provider Matrix
 
-Offerings: 31. Native API facts and existing anysearch SDK mappings; comparison-only entries have no adapter.
+Offerings: 32. Native API facts and existing anysearch SDK mappings; comparison-only entries have no adapter.
 
 ## Anthropic Web Search
 - Docs: https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool
@@ -436,8 +436,8 @@ Offerings: 31. Native API facts and existing anysearch SDK mappings; comparison-
 - Date range: none
 - Safe search: none
 - Mode: fast, balanced, deep
-- Pricing / 1K: Conflicting official pricing: Keiro lite from $0.10 / 1K; browserfoundry $0.25 / 1K
-- Free tier limits: Conflict: Keiro 750 credits/month; browserfoundry 1,250; free/paid conversion differs
+- Pricing / 1K: search/lite $0.10 / 1K on Essential, $0.06 Pro, $0.03 Startup (annual); plans from $29.99/mo; 750 free credits/mo
+- Free tier limits: 750 credits/month free (about 750 lite searches); no credit card required
 - Latency by tier: Historical July 2026: Flash: 0.312s p50 / 1.1s p99; indexed: 0.487s p50; balanced/deep: not published
 - AI Answer: none
 - Full text: full
@@ -445,11 +445,11 @@ Offerings: 31. Native API facts and existing anysearch SDK mappings; comparison-
 - Highlights: none
 - News: none
 - Product category: Standalone search API
-- Availability: Available; official pricing conflict
-- Native API overview: Rebranded browserfoundry; claims existing keys/endpoints continue. Fast proxy-backed search; Content, Answer and Agentic are separate. Do not assume paid credit conversion for free tier.
+- Availability: Available
+- Native API overview: Rebranded browserfoundry; existing keys and endpoints continue. Lite, Fast, Content, Answer, Extract, Deep and Agentic endpoints share one credit balance; paid plans halve most non-lite credit costs.
 - anysearch SDK: Python + TypeScript adapters
 - Evidence checked: 2026-10-21
-- Limits / billing caveats: Conflict: 15 vs 30 RPM; paid starts $29.99 vs $30
+- Limits / billing caveats: Lite search 15 req/min free, 60 Essential, 300 Pro, 600 Startup; batch 0.5 credit per query
 - Capability basis: Existing SDK mappings
 
 ## Linkup
@@ -676,6 +676,31 @@ Offerings: 31. Native API facts and existing anysearch SDK mappings; comparison-
 - Evidence checked: 2026-10-21
 - Limits / billing caveats: Development 100 RPM; paid production 1,000 RPM
 - Capability basis: Existing SDK mappings
+
+## TinyFish
+- Docs: https://docs.tinyfish.ai/search-api/reference
+- Env: Not integrated
+- Domain filters: full
+- Country: full
+- Language: full
+- Date range: full
+- Safe search: none
+- Mode: none
+- Pricing / 1K: Search $0.00 per request; free up to 12,000 requests/day at 30 req/min, then a positive wallet balance is required
+- Free tier limits: Search free within 30 requests/min and 12,000 requests/day (resets 00:00 UTC); Fetch free to 1,000 URLs/day; no card required
+- Latency by tier: No current comparable measurement verified
+- AI Answer: none
+- Full text: partial
+- Summary: none
+- Highlights: none
+- News: full
+- Product category: Standalone search API
+- Availability: Available
+- Native API overview: GET https://api.search.tinyfish.ai returns ranked web, news or research-paper results with title, snippet, URL, site name and news date. Supports include/exclude domains, location, language, recency and date bounds, an optional purpose hint, and pages 0-10. Separate Fetch, Agent, Research and Browser products share the same key.
+- anysearch SDK: Comparison only — no adapter
+- Evidence checked: 2026-10-21
+- Limits / billing caveats: 30 requests/min per API key by default (500 requests/hour on the pricing page); 12,000 free searches/day; HTTP 402 above the allowance when the wallet balance is zero
+- Capability basis: Native API — reviewed
 
 ## Yahoo · SerpApi
 - Docs: https://serpapi.com/yahoo-search-api

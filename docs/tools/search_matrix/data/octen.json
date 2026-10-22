@@ -94,6 +94,13 @@
       "source_url": "https://octen.ai/pricing",
       "checked_at": "2026-10-21"
     },
+    "lowest_price": {
+      "amount_usd_per_1k": 1,
+      "billing_unit": "promotional Web Search requests",
+      "basis": "Current promotional $1 / 1K; reverts to the $5 / 1K list price",
+      "source_url": "https://octen.ai/pricing",
+      "checked_at": "2026-10-21"
+    },
     "links": {
       "Official source 1": "https://docs.octen.ai/capabilities/web-search",
       "Official source 2": "https://docs.octen.ai/api-reference/search"

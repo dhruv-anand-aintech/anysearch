@@ -94,6 +94,13 @@
       "source_url": "https://www.firecrawl.dev/pricing",
       "checked_at": "2026-10-21"
     },
+    "lowest_price": {
+      "amount_usd_per_1k": null,
+      "billing_unit": "credits",
+      "basis": "Credit-priced: 2 credits / 10 search results; credits bundled by plan, so no published per-1K search rate",
+      "source_url": "https://www.firecrawl.dev/pricing",
+      "checked_at": "2026-10-21"
+    },
     "links": {
       "Official source 1": "https://docs.firecrawl.dev/features/search"
     }

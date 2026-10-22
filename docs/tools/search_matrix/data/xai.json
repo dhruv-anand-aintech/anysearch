@@ -172,6 +172,13 @@
       "source_url": "https://docs.x.ai/developers/pricing",
       "checked_at": "2026-10-21"
     },
+    "lowest_price": {
+      "amount_usd_per_1k": 5,
+      "billing_unit": "web_search tool calls",
+      "basis": "Tool calls only; model tokens billed separately",
+      "source_url": "https://docs.x.ai/developers/pricing",
+      "checked_at": "2026-10-21"
+    },
     "links": {
       "Official source 1": "https://docs.x.ai/developers/tools/web-search"
     }

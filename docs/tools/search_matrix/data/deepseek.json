@@ -164,6 +164,13 @@
       "source_url": "https://api-docs.deepseek.com/guides/search/",
       "checked_at": "2026-10-21"
     },
+    "lowest_price": {
+      "amount_usd_per_1k": 0.75,
+      "billing_unit": "successful nonempty Search requests",
+      "basis": "Single documented Search rate; Fetch also $0.75 / 1K",
+      "source_url": "https://api-docs.deepseek.com/guides/search/",
+      "checked_at": "2026-10-21"
+    },
     "links": {}
   },
   "free_tier_limits": {

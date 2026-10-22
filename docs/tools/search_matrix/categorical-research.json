@@ -787,6 +787,113 @@
         "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
         "checked_at": "2026-10-21"
       }
+    },
+    "tinyfish": {
+      "mode": {
+        "prior_value": [],
+        "values": [],
+        "comment": "No named fast/balanced/deep search tiers; the single Search endpoint is configured by result count, domain_type and date filters.",
+        "source_url": "https://docs.tinyfish.ai/search-api/reference",
+        "checked_at": "2026-10-21"
+      },
+      "cells": {
+        "requires_key": {
+          "prior_value": "unknown",
+          "support": "full",
+          "comment": "All Search requests require the X-API-Key header.",
+          "source_url": "https://docs.tinyfish.ai/search-api/reference",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "snippet": {
+          "prior_value": "unknown",
+          "support": "full",
+          "comment": "Every result exposes a snippet string alongside title, url and site_name.",
+          "source_url": "https://docs.tinyfish.ai/search-api/reference",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "domains": {
+          "prior_value": "unknown",
+          "support": "full",
+          "comment": "include_domains and exclude_domains accept comma-separated domain lists; site: operators are deprecated in favour of these parameters.",
+          "source_url": "https://docs.tinyfish.ai/search-api/reference",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "country": {
+          "prior_value": "unknown",
+          "support": "full",
+          "comment": "location takes a two-letter country code such as US or GB, defaults to US when omitted, and is resolved from language when only that is set.",
+          "source_url": "https://docs.tinyfish.ai/search-api/reference",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "language": {
+          "prior_value": "unknown",
+          "support": "full",
+          "comment": "language takes a language code such as en or fr, defaults to en when omitted, and is resolved from location when only that is set.",
+          "source_url": "https://docs.tinyfish.ai/search-api/reference",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "date": {
+          "prior_value": "unknown",
+          "support": "full",
+          "comment": "after_date and before_date accept YYYY-MM-DD and recency_minutes sets a freshness window; research-paper results use pub_year_min and pub_year_max instead.",
+          "source_url": "https://docs.tinyfish.ai/search-api/reference",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "safe_search": {
+          "prior_value": "unknown",
+          "support": "none",
+          "comment": "No safe-search or adult-content parameter appears in the Search API reference; a 403 only reports an upstream policy rejection.",
+          "source_url": "https://docs.tinyfish.ai/search-api/reference",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "answer": {
+          "prior_value": "unknown",
+          "support": "none",
+          "comment": "The Search response contains ranked links and snippets only; synthesized answers are not part of this scoped contract, and Agent and Research are separate products.",
+          "source_url": "https://docs.tinyfish.ai/search-api/reference",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "content": {
+          "prior_value": "unknown",
+          "support": "partial",
+          "comment": "Search returns snippets rather than page bodies; page content comes from the separate Fetch API at api.fetch.tinyfish.ai.",
+          "source_url": "https://docs.tinyfish.ai/search-api",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "summary": {
+          "prior_value": "unknown",
+          "support": "none",
+          "comment": "The documented Search response has no per-result or query-level summary field.",
+          "source_url": "https://docs.tinyfish.ai/search-api/reference",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "highlights": {
+          "prior_value": "unknown",
+          "support": "none",
+          "comment": "Results expose plain snippet text with no highlight offsets or marked terms.",
+          "source_url": "https://docs.tinyfish.ai/search-api/reference",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        },
+        "news": {
+          "prior_value": "unknown",
+          "support": "full",
+          "comment": "domain_type=news returns news articles with publisher and date fields.",
+          "source_url": "https://docs.tinyfish.ai/search-api/reference",
+          "checked_at": "2026-10-21",
+          "basis": "native API documentation"
+        }
+      }
     }
   }
 }

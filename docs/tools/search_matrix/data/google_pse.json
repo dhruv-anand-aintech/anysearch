@@ -94,6 +94,13 @@
       "source_url": "https://developers.google.com/custom-search/v1/overview",
       "checked_at": "2026-10-21"
     },
+    "lowest_price": {
+      "amount_usd_per_1k": null,
+      "billing_unit": "legacy queries",
+      "basis": "Closed to new customers; the $5 / 1K rate applies only to existing users",
+      "source_url": "https://developers.google.com/custom-search/v1/overview",
+      "checked_at": "2026-10-21"
+    },
     "links": {}
   },
   "free_tier_limits": {

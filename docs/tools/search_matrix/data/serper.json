@@ -94,6 +94,13 @@
       "source_url": "https://serper.dev/",
       "checked_at": "2026-10-21"
     },
+    "lowest_price": {
+      "amount_usd_per_1k": 0.3,
+      "billing_unit": "bulk prepaid searches",
+      "basis": "Largest documented bulk tier $0.30 / 1K; $1 / 1K at the $50 starter purchase",
+      "source_url": "https://serper.dev/",
+      "checked_at": "2026-10-21"
+    },
     "links": {}
   },
   "free_tier_limits": {

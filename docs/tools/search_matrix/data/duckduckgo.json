@@ -94,6 +94,13 @@
       "source_url": "https://github.com/deedy5/ddgs",
       "checked_at": "2026-10-21"
     },
+    "lowest_price": {
+      "amount_usd_per_1k": null,
+      "billing_unit": "library API fee",
+      "basis": "$0 is an open library, not a hosted per-1K API price, so it stays unranked",
+      "source_url": "https://github.com/deedy5/ddgs",
+      "checked_at": "2026-10-21"
+    },
     "links": {}
   },
   "free_tier_limits": {

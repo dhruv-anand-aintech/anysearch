@@ -94,6 +94,13 @@
       "source_url": "https://kagi.com/api/pricing",
       "checked_at": "2026-10-21"
     },
+    "lowest_price": {
+      "amount_usd_per_1k": 12,
+      "billing_unit": "Search requests",
+      "basis": "Search $12 / 1K; Extract $4 / 1K pages is a separate extraction product",
+      "source_url": "https://kagi.com/api/pricing",
+      "checked_at": "2026-10-21"
+    },
     "links": {
       "Official source 1": "https://help.kagi.com/kagi/api/search.html",
       "Official source 2": "https://kagi.com/api/docs"

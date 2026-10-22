@@ -94,6 +94,13 @@
       "source_url": "https://serpapi.com/pricing",
       "checked_at": "2026-10-21"
     },
+    "lowest_price": {
+      "amount_usd_per_1k": 9.17,
+      "billing_unit": "searches at 30K/month",
+      "basis": "$275/month for 30K searches (about $9.17 / 1K); $25 / 1K at the 1K starter tier",
+      "source_url": "https://serpapi.com/pricing",
+      "checked_at": "2026-10-21"
+    },
     "links": {}
   },
   "free_tier_limits": {

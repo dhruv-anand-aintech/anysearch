@@ -95,6 +95,13 @@
       "source_url": "https://docs.perplexity.ai/docs/getting-started/pricing",
       "checked_at": "2026-10-21"
     },
+    "lowest_price": {
+      "amount_usd_per_1k": 1,
+      "billing_unit": "Fast Search requests",
+      "basis": "Fast $1; Standard $5 / 1K requests",
+      "source_url": "https://docs.perplexity.ai/docs/getting-started/pricing",
+      "checked_at": "2026-10-21"
+    },
     "links": {
       "Official source 1": "https://docs.perplexity.ai/docs/search/quickstart"
     }

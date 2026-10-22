@@ -165,6 +165,13 @@
       "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
       "checked_at": "2026-10-21"
     },
+    "lowest_price": {
+      "amount_usd_per_1k": 10,
+      "billing_unit": "web searches",
+      "basis": "Search calls only; model tokens billed separately",
+      "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+      "checked_at": "2026-10-21"
+    },
     "links": {}
   },
   "free_tier_limits": {

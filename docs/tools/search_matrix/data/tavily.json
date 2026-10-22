@@ -96,6 +96,13 @@
       "source_url": "https://docs.tavily.com/documentation/api-credits",
       "checked_at": "2026-10-21"
     },
+    "lowest_price": {
+      "amount_usd_per_1k": 8,
+      "billing_unit": "basic PAYG searches",
+      "basis": "PAYG basic $8 / 1K; advanced $16 / 1K; subscription commitment tiers differ",
+      "source_url": "https://docs.tavily.com/documentation/api-credits",
+      "checked_at": "2026-10-21"
+    },
     "links": {
       "Official source 1": "https://docs.tavily.com/documentation/rate-limits",
       "Official source 2": "https://docs.tavily.com/documentation/api-reference/endpoint/search"

@@ -164,6 +164,13 @@
       "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
       "checked_at": "2026-10-21"
     },
+    "lowest_price": {
+      "amount_usd_per_1k": null,
+      "billing_unit": "retired",
+      "basis": "Retired service; no current per-1K API price",
+      "source_url": "https://learn.microsoft.com/en-us/lifecycle/announcements/bing-search-api-retirement",
+      "checked_at": "2026-10-21"
+    },
     "links": {}
   },
   "free_tier_limits": {

@@ -86,28 +86,35 @@
     "comment": "v2 Search `mode`: `light`\u2192fast, `ai`\u2192balanced, `deep`\u2192deep. anysearch uses `/api/v2/search/flash` for fast mode, `/api/v2/keiro` by default, and `/api/v2/search/content` for full-text content."
   },
   "pricing_per_1k": {
-    "value": "Conflicting official pricing: Keiro lite from $0.10 / 1K; browserfoundry $0.25 / 1K",
+    "value": "search/lite $0.10 / 1K on Essential, $0.06 Pro, $0.03 Startup (annual); plans from $29.99/mo; 750 free credits/mo",
     "source_url": "https://keirolabs.cloud/pricing",
     "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
     "primary_price": {
-      "amount_usd_per_1k": null,
-      "billing_unit": "conflicting official prices",
-      "basis": "No unambiguous primary price ranked",
+      "amount_usd_per_1k": 0.1,
+      "billing_unit": "search/lite requests (Essential)",
+      "basis": "Essential plan list rate; cheaper on Pro and Startup",
+      "source_url": "https://keirolabs.cloud/pricing",
+      "checked_at": "2026-10-21"
+    },
+    "lowest_price": {
+      "amount_usd_per_1k": 0.03,
+      "billing_unit": "search/lite requests at Startup",
+      "basis": "Startup plan billed annually lists $0.03 / 1K for the same lite search; Essential $0.10 and Pro $0.06 / 1K",
       "source_url": "https://keirolabs.cloud/pricing",
       "checked_at": "2026-10-21"
     },
     "links": {
-      "Official source 1": "https://keirolabs.cloud/",
-      "Official source 2": "https://www.browserfoundry.cloud/pricing"
+      "Official source 1": "https://keirolabs.cloud/pricing.md",
+      "Official source 2": "https://platform.keirolabs.cloud/docs"
     }
   },
   "free_tier_limits": {
-    "value": "Conflict: Keiro 750 credits/month; browserfoundry 1,250; free/paid conversion differs",
+    "value": "750 credits/month free (about 750 lite searches); no credit card required",
     "source_url": "https://keirolabs.cloud/pricing",
     "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
     "links": {
-      "Official source 1": "https://keirolabs.cloud/",
-      "Official source 2": "https://www.browserfoundry.cloud/pricing"
+      "Official source 1": "https://keirolabs.cloud/pricing.md",
+      "Official source 2": "https://platform.keirolabs.cloud/docs"
     }
   },
   "p50_latency": {
@@ -125,30 +132,30 @@
     "comment": ""
   },
   "api_status": {
-    "value": "Available; official pricing conflict",
+    "value": "Available",
     "source_url": "https://keirolabs.cloud/pricing",
     "comment": "",
     "links": {
-      "Official source 1": "https://keirolabs.cloud/",
-      "Official source 2": "https://www.browserfoundry.cloud/pricing"
+      "Official source 1": "https://keirolabs.cloud/pricing.md",
+      "Official source 2": "https://platform.keirolabs.cloud/docs"
     }
   },
   "native_api": {
-    "value": "Rebranded browserfoundry; claims existing keys/endpoints continue. Fast proxy-backed search; Content, Answer and Agentic are separate. Do not assume paid credit conversion for free tier.",
+    "value": "Rebranded browserfoundry; existing keys and endpoints continue. Lite, Fast, Content, Answer, Extract, Deep and Agentic endpoints share one credit balance; paid plans halve most non-lite credit costs.",
     "source_url": "https://keirolabs.cloud/pricing",
     "comment": "",
     "links": {
-      "Official source 1": "https://keirolabs.cloud/",
-      "Official source 2": "https://www.browserfoundry.cloud/pricing"
+      "Official source 1": "https://keirolabs.cloud/pricing.md",
+      "Official source 2": "https://platform.keirolabs.cloud/docs"
     }
   },
   "rate_limits": {
-    "value": "Conflict: 15 vs 30 RPM; paid starts $29.99 vs $30",
+    "value": "Lite search 15 req/min free, 60 Essential, 300 Pro, 600 Startup; batch 0.5 credit per query",
     "source_url": "https://keirolabs.cloud/pricing",
     "comment": "",
     "links": {
-      "Official source 1": "https://keirolabs.cloud/",
-      "Official source 2": "https://www.browserfoundry.cloud/pricing"
+      "Official source 1": "https://keirolabs.cloud/pricing.md",
+      "Official source 2": "https://platform.keirolabs.cloud/docs"
     }
   },
   "checked_at": {
@@ -156,8 +163,8 @@
     "source_url": "https://keirolabs.cloud/pricing",
     "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
     "links": {
-      "Official source 1": "https://keirolabs.cloud/",
-      "Official source 2": "https://www.browserfoundry.cloud/pricing"
+      "Official source 1": "https://keirolabs.cloud/pricing.md",
+      "Official source 2": "https://platform.keirolabs.cloud/docs"
     }
   },
   "capability_basis": {
@@ -174,8 +181,8 @@
     "checked_at": "2026-10-21",
     "source_urls": [
       "https://keirolabs.cloud/pricing",
-      "https://keirolabs.cloud/",
-      "https://www.browserfoundry.cloud/pricing"
+      "https://keirolabs.cloud/pricing.md",
+      "https://platform.keirolabs.cloud/docs"
     ],
     "effective_date": null,
     "method": "official documentation; no new benchmarks"

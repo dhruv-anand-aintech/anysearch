@@ -94,6 +94,13 @@
       "source_url": "https://www.searchapi.io/pricing",
       "checked_at": "2026-10-21"
     },
+    "lowest_price": {
+      "amount_usd_per_1k": 2.0,
+      "billing_unit": "standard requests at 250K/month",
+      "basis": "$500/month for 250K standard requests ($2 / 1K); $4 / 1K at the 10K starter tier",
+      "source_url": "https://www.searchapi.io/pricing",
+      "checked_at": "2026-10-21"
+    },
     "links": {}
   },
   "free_tier_limits": {

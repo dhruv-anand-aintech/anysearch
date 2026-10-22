@@ -365,6 +365,42 @@
               "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
             }
           }
+        },
+        "lowest_price": {
+          "description": "Lowest documented per-1K price for the provider's own search product; null when no comparable hosted rate exists.",
+          "type": "object",
+          "required": [
+            "amount_usd_per_1k",
+            "billing_unit",
+            "basis",
+            "source_url",
+            "checked_at"
+          ],
+          "properties": {
+            "amount_usd_per_1k": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0
+            },
+            "billing_unit": {
+              "type": "string",
+              "minLength": 1
+            },
+            "basis": {
+              "type": "string",
+              "minLength": 1
+            },
+            "source_url": {
+              "type": "string",
+              "pattern": "^https://"
+            },
+            "checked_at": {
+              "type": "string",
+              "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+            }
+          }
         }
       }
     },

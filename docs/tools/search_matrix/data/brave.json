@@ -95,6 +95,13 @@
       "source_url": "https://api-dashboard.search.brave.com/documentation/pricing",
       "checked_at": "2026-10-21"
     },
+    "lowest_price": {
+      "amount_usd_per_1k": 5,
+      "billing_unit": "Search requests",
+      "basis": "Search is the cheapest documented search product; Answers $4 / 1K adds model token charges",
+      "source_url": "https://api-dashboard.search.brave.com/documentation/pricing",
+      "checked_at": "2026-10-21"
+    },
     "links": {
       "Official source 1": "https://brave.com/blog/most-powerful-search-api-for-ai/"
     }

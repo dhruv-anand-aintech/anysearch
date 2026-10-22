@@ -96,6 +96,13 @@
       "source_url": "https://exa.ai/pricing",
       "checked_at": "2026-10-21"
     },
+    "lowest_price": {
+      "amount_usd_per_1k": 4,
+      "billing_unit": "Lite requests",
+      "basis": "Lite is the cheapest search tier; Auto $7 and Deep $12 / 1K",
+      "source_url": "https://exa.ai/pricing",
+      "checked_at": "2026-10-21"
+    },
     "links": {
       "Official source 1": "https://exa.ai/blog/exa-3",
       "Official source 2": "https://exa.ai/docs/reference/search"

@@ -94,6 +94,13 @@
       "source_url": "https://jina.ai/api-dashboard/pricing/",
       "checked_at": "2026-10-21"
     },
+    "lowest_price": {
+      "amount_usd_per_1k": null,
+      "billing_unit": "tokens",
+      "basis": "Token-priced: at least 10K tokens per request, so no published per-1K request rate",
+      "source_url": "https://jina.ai/api-dashboard/pricing/",
+      "checked_at": "2026-10-21"
+    },
     "links": {}
   },
   "free_tier_limits": {

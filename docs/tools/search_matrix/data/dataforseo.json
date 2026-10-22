@@ -166,6 +166,13 @@
       "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
       "checked_at": "2026-10-21"
     },
+    "lowest_price": {
+      "amount_usd_per_1k": 0.6,
+      "billing_unit": "standard-queue SERP pages",
+      "basis": "Standard queue is the cheapest tier; priority $1.20 and live $2 / 1K",
+      "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+      "checked_at": "2026-10-21"
+    },
     "links": {}
   },
   "free_tier_limits": {

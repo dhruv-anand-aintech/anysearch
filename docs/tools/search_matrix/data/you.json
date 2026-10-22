@@ -96,6 +96,13 @@
       "source_url": "https://you.com/docs/administration/billing",
       "checked_at": "2026-10-21"
     },
+    "lowest_price": {
+      "amount_usd_per_1k": 5,
+      "billing_unit": "Search calls",
+      "basis": "Search $5 / 1K; live extraction is an add-on, cached extraction is free",
+      "source_url": "https://you.com/docs/administration/billing",
+      "checked_at": "2026-10-21"
+    },
     "links": {
       "Official source 1": "https://you.com/pricing"
     }

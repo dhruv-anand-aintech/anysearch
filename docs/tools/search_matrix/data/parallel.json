@@ -96,6 +96,13 @@
       "source_url": "https://docs.parallel.ai/getting-started/pricing",
       "checked_at": "2026-10-21"
     },
+    "lowest_price": {
+      "amount_usd_per_1k": 1,
+      "billing_unit": "Turbo/Fast requests",
+      "basis": "Turbo/Fast $1; Basic/Advanced $5 / 1K plus per-result fees",
+      "source_url": "https://docs.parallel.ai/getting-started/pricing",
+      "checked_at": "2026-10-21"
+    },
     "links": {
       "Official source 1": "https://parallel.ai/pricing",
       "Official source 2": "https://parallel.ai/blog/free-tier-parallel",

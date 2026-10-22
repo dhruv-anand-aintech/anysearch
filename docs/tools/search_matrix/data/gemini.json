@@ -94,6 +94,13 @@
       "source_url": "https://ai.google.dev/gemini-api/docs/pricing",
       "checked_at": "2026-10-21"
     },
+    "lowest_price": {
+      "amount_usd_per_1k": 14,
+      "billing_unit": "Gemini 3+ search queries",
+      "basis": "Search queries only; model tokens billed separately",
+      "source_url": "https://ai.google.dev/gemini-api/docs/pricing",
+      "checked_at": "2026-10-21"
+    },
     "links": {
       "Official source 1": "https://ai.google.dev/gemini-api/docs/google-search/"
     }

@@ -168,6 +168,13 @@
       "source_url": "https://brightdata.com/pricing/serp",
       "checked_at": "2026-10-21"
     },
+    "lowest_price": {
+      "amount_usd_per_1k": 1.3,
+      "billing_unit": "successful SERP requests on Scale",
+      "basis": "Scale $499/month includes 380K requests, then $1.30 / 1K; PAYG $1.50 / 1K",
+      "source_url": "https://brightdata.com/pricing/serp",
+      "checked_at": "2026-10-21"
+    },
     "links": {}
   },
   "free_tier_limits": {

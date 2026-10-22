@@ -94,6 +94,13 @@
       "source_url": "https://docs.searxng.org/dev/search_api.html",
       "checked_at": "2026-10-21"
     },
+    "lowest_price": {
+      "amount_usd_per_1k": null,
+      "billing_unit": "self-hosted software",
+      "basis": "$0 is self-hosted software, not a hosted per-1K API price, so it stays unranked",
+      "source_url": "https://docs.searxng.org/dev/search_api.html",
+      "checked_at": "2026-10-21"
+    },
     "links": {}
   },
   "free_tier_limits": {
