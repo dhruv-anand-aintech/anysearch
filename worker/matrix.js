@@ -22,7 +22,7 @@ export function compareLowestPriceCells(a, b, direction = "asc") {
 
 const CANONICAL_ORIGIN = "https://compare-anysearch.ainorthstar.tech";
 const GITHUB_REPO = "https://github.com/dhruv-anand-aintech/anysearch";
-const DEPLOYMENT_MARKER = "keenable-search-2026-10-22";
+const DEPLOYMENT_MARKER = "matrix-search-key-2026-10-22";
 const PWA = {
   name: "Anysearch Compare",
   shortName: "Anysearch",
@@ -251,6 +251,9 @@ a { color: inherit; text-decoration: none; }
 .search-clear:hover { color: var(--ink); background: #f0eeeb; }
 .search-box.has-query .search-clear { display: inline-block; }
 .search-empty { padding: 16px 18px !important; text-align: left !important; font-size: 12px; color: var(--muted); }
+th.filler, td.filler { padding: 0 !important; border-right: 0; }
+th.filler { background: #eee7d8; border-bottom: 1px solid var(--line-strong); }
+td.filler { background: var(--panel); border-bottom: 1px solid var(--line); }
 .search-empty strong { color: var(--ink); }
 .link-button {
   border: 0; background: transparent; color: var(--accent); font: inherit; font-size: 12px;
@@ -889,7 +892,8 @@ function updateColWidths() {
   var visibleCount = visibleCols().length || 1;
   var avail = Math.max(0, (wrap ? wrap.clientWidth : window.innerWidth) - corner);
   var hiddenW = hiddenCount * minHidden;
-  var w = Math.max(minVisible, Math.floor((avail - hiddenW) / visibleCount));
+  var raw = Math.floor((avail - hiddenW) / visibleCount);
+  var w = searchActive() ? Math.min(320, Math.max(minVisible, raw)) : Math.max(minVisible, raw);
   document.documentElement.style.setProperty('--agent-col-w', w + 'px');
   document.documentElement.style.setProperty('--agent-col-hidden-w', minHidden + 'px');
 }
@@ -915,7 +919,7 @@ function renderHeader() {
       agentBrandHeadHtml(agent, i)+
       '<button type="button" class="eye" onclick="toggleCol('+i+'); event.stopPropagation();" title="'+esc(eyeTitle)+'" aria-label="'+esc(eyeTitle)+'">'+
       (manuallyHidden?'&#8855;':'&#9679;')+'</button></th>';
-  }).join(''); setupColDrag(); updateColWidths(); scheduleFitAgentHeaderNames();
+  }).join(''); setupColDrag(); updateColWidths(); scheduleFitAgentHeaderNames(); appendSearchFiller();
 }
 function visibleCols() {
   return searchActive()
@@ -973,6 +977,16 @@ function applySearchHighlights() {
     if (text.toLowerCase().indexOf(q) !== -1) td.classList.add('search-hit');
   });
 }
+function appendSearchFiller() {
+  if (!searchActive() || !searchMatches.size) return;
+  var header = document.getElementById('headerRow');
+  if (header && !header.querySelector('th.filler')) {
+    header.insertAdjacentHTML('beforeend', '<th class="filler" aria-hidden="true"></th>');
+  }
+  document.querySelectorAll('#tbody tr').forEach(function(tr){
+    tr.insertAdjacentHTML('beforeend', '<td class="filler" aria-hidden="true"></td>');
+  });
+}
 function renderBody() {
   var cols = displayColOrder();
   if (searchActive() && !cols.length) {
@@ -1011,6 +1025,7 @@ function renderBody() {
   applySearchHighlights();
   setupRowDrag();
   setupCellTips();
+  appendSearchFiller();
 }
 function toggleCol(i) {
   if (searchActive()) { resetSearchState(); }
