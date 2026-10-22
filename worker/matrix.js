@@ -22,7 +22,7 @@ export function compareLowestPriceCells(a, b, direction = "asc") {
 
 const CANONICAL_ORIGIN = "https://compare-anysearch.ainorthstar.tech";
 const GITHUB_REPO = "https://github.com/dhruv-anand-aintech/anysearch";
-const DEPLOYMENT_MARKER = "lowest-price-sort-2026-10-21";
+const DEPLOYMENT_MARKER = "keenable-search-2026-10-22";
 const PWA = {
   name: "Anysearch Compare",
   shortName: "Anysearch",

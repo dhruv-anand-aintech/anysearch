@@ -28,7 +28,7 @@ class PipelineTests(unittest.TestCase):
         audit = json.loads(
             (ROOT / "docs/tools/search_matrix/research.json").read_text()
         )
-        self.assertEqual(check.validate_research(audit, today=date(2026, 10, 21)), [])
+        self.assertEqual(check.validate_research(audit, today=date(2026, 10, 22)), [])
         self.assertTrue(check.validate_research(audit, today=date(2027, 1, 1)))
         self.assertTrue(check.validate_research(audit, today=date(2026, 1, 1)))
 
@@ -39,15 +39,21 @@ class PipelineTests(unittest.TestCase):
         self.assertEqual(sum(len(p["cells"]) for p in review["providers"].values()), 96)
         for slug, native in review["providers"].items():
             row = json.loads((folder / "data" / (slug + ".json")).read_text())
-            self.assertTrue(row["comparison_only"])
-            self.assertEqual(row["mode"]["values"], native["mode"]["values"])
-            for key, source in native["cells"].items():
-                self.assertEqual(row[key]["support"], source["support"])
-                self.assertEqual(row[key]["source_url"], source["source_url"])
-                self.assertEqual(row[key]["checked_at"], source["checked_at"])
-                self.assertGreater(len(source["comment"]), 40)
-                self.assertNotIn(
-                    "No anysearch adapter; see native", row[key]["comment"]
+            if slug == "bing_legacy":
+                self.assertTrue(row["comparison_only"])
+                self.assertEqual(row["mode"]["values"], native["mode"]["values"])
+                for key, source in native["cells"].items():
+                    self.assertEqual(row[key]["support"], source["support"])
+                    self.assertEqual(row[key]["source_url"], source["source_url"])
+                    self.assertEqual(row[key]["checked_at"], source["checked_at"])
+                    self.assertGreater(len(source["comment"]), 40)
+                    self.assertNotIn(
+                        "No anysearch adapter; see native", row[key]["comment"]
+                    )
+            else:
+                self.assertNotIn("comparison_only", row)
+                self.assertEqual(
+                    row["sdk_support"]["value"], "Python + TypeScript adapters"
                 )
         self.assertEqual(
             review["providers"]["bing_legacy"]["cells"]["snippet"]["support"],
@@ -213,8 +219,15 @@ class PipelineTests(unittest.TestCase):
 
     def test_generated_coverage_and_comparison_only(self):
         rows = json.loads((ROOT / "docs/tools/search_matrix/bundle.json").read_text())
+        by_slug = {r["links"]["slug"]: r for r in rows}
+        self.assertNotIn("comparison_only", by_slug["deepseek"])
+        self.assertTrue(by_slug["bing_legacy"]["comparison_only"])
         self.assertTrue(
-            any(r["links"]["slug"] == "deepseek" and r["comparison_only"] for r in rows)
+            all(
+                "comparison_only" in row
+                for row in rows
+                if row["links"]["slug"] == "bing_legacy"
+            )
         )
         required_links = json.loads(
             (ROOT / "docs/tools/search_matrix/schema.json").read_text()
