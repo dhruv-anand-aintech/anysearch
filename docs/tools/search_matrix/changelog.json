@@ -4,8 +4,8 @@
   "entries": [
     {
       "date": "2026-10-22",
-      "commit": "",
-      "title": "Unreleased matrix update",
+      "commit": "b092209",
+      "title": "feat(matrix): add Keenable and align all active columns with SDK adapters",
       "items": [
         {
           "summary": "Anthropic Web Search: AI Answer evidence refreshed",
