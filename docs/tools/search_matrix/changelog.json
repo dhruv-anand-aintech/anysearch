@@ -1,7 +1,523 @@
 {
-  "version": "1.7.0",
-  "entry_count": 909,
+  "version": "1.8.0",
+  "entry_count": 1036,
   "entries": [
+    {
+      "date": "2026-10-22",
+      "commit": "",
+      "title": "Unreleased matrix update",
+      "items": [
+        {
+          "summary": "Anthropic Web Search: AI Answer evidence refreshed",
+          "target": "cell-anthropic-answer"
+        },
+        {
+          "summary": "Anthropic Web Search: Capability basis updated to Existing SDK mappings",
+          "target": "cell-anthropic-capability-basis"
+        },
+        {
+          "summary": "Anthropic Web Search: Full text now marked unsupported",
+          "target": "cell-anthropic-content"
+        },
+        {
+          "summary": "Anthropic Web Search: Country now marked unsupported",
+          "target": "cell-anthropic-country"
+        },
+        {
+          "summary": "Anthropic Web Search: Date range now marked unsupported",
+          "target": "cell-anthropic-date"
+        },
+        {
+          "summary": "Anthropic Web Search: Domain filters evidence refreshed",
+          "target": "cell-anthropic-domains"
+        },
+        {
+          "summary": "Anthropic Web Search: Env vars updated to ANTHROPIC_API_KEY, CLAUDE_API_KEY",
+          "target": "cell-anthropic-env-keys"
+        },
+        {
+          "summary": "Anthropic Web Search: Highlights now marked unsupported",
+          "target": "cell-anthropic-highlights"
+        },
+        {
+          "summary": "Anthropic Web Search: Language now marked unsupported",
+          "target": "cell-anthropic-language"
+        },
+        {
+          "summary": "Anthropic Web Search: Mode updated to balanced",
+          "target": "cell-anthropic-mode"
+        },
+        {
+          "summary": "Anthropic Web Search: News now marked unsupported",
+          "target": "cell-anthropic-news"
+        },
+        {
+          "summary": "Anthropic Web Search: Latency by tier updated to Historical July 2026: No published search-tool latency distribution",
+          "target": "cell-anthropic-p50-latency"
+        },
+        {
+          "summary": "Anthropic Web Search: pip extra updated to — (REST only)",
+          "target": "cell-anthropic-python-extra"
+        },
+        {
+          "summary": "Anthropic Web Search: Credentials required evidence refreshed",
+          "target": "cell-anthropic-requires-key"
+        },
+        {
+          "summary": "Anthropic Web Search: Safe search now marked unsupported",
+          "target": "cell-anthropic-safe-search"
+        },
+        {
+          "summary": "Anthropic Web Search: anysearch SDK updated to Python + TypeScript adapters",
+          "target": "cell-anthropic-sdk-support"
+        },
+        {
+          "summary": "Anthropic Web Search: Snippet now supported",
+          "target": "cell-anthropic-snippet"
+        },
+        {
+          "summary": "Anthropic Web Search: Summary now marked unsupported",
+          "target": "cell-anthropic-summary"
+        },
+        {
+          "summary": "Bright Data: AI Answer now marked unsupported",
+          "target": "cell-brightdata-answer"
+        },
+        {
+          "summary": "Bright Data: Capability basis updated to Existing SDK mappings",
+          "target": "cell-brightdata-capability-basis"
+        },
+        {
+          "summary": "Bright Data: Full text evidence refreshed",
+          "target": "cell-brightdata-content"
+        },
+        {
+          "summary": "Bright Data: Country evidence refreshed",
+          "target": "cell-brightdata-country"
+        },
+        {
+          "summary": "Bright Data: Date range now supported",
+          "target": "cell-brightdata-date"
+        },
+        {
+          "summary": "Bright Data: Domain filters now supported",
+          "target": "cell-brightdata-domains"
+        },
+        {
+          "summary": "Bright Data: Env vars updated to BRIGHTDATA_API_KEY, BRIGHT_DATA_API_KEY, BRIGHTDATA_ZONE",
+          "target": "cell-brightdata-env-keys"
+        },
+        {
+          "summary": "Bright Data: Highlights now marked unsupported",
+          "target": "cell-brightdata-highlights"
+        },
+        {
+          "summary": "Bright Data: Language evidence refreshed",
+          "target": "cell-brightdata-language"
+        },
+        {
+          "summary": "Bright Data: Mode updated to balanced",
+          "target": "cell-brightdata-mode"
+        },
+        {
+          "summary": "Bright Data: News evidence refreshed",
+          "target": "cell-brightdata-news"
+        },
+        {
+          "summary": "Bright Data: Latency by tier updated to Historical July 2026: Under 1 second per request claimed; no percentile…",
+          "target": "cell-brightdata-p50-latency"
+        },
+        {
+          "summary": "Bright Data: pip extra updated to — (REST only)",
+          "target": "cell-brightdata-python-extra"
+        },
+        {
+          "summary": "Bright Data: Credentials required evidence refreshed",
+          "target": "cell-brightdata-requires-key"
+        },
+        {
+          "summary": "Bright Data: Safe search now partially supported",
+          "target": "cell-brightdata-safe-search"
+        },
+        {
+          "summary": "Bright Data: anysearch SDK updated to Python + TypeScript adapters",
+          "target": "cell-brightdata-sdk-support"
+        },
+        {
+          "summary": "Bright Data: Snippet evidence refreshed",
+          "target": "cell-brightdata-snippet"
+        },
+        {
+          "summary": "Bright Data: Summary evidence refreshed",
+          "target": "cell-brightdata-summary"
+        },
+        {
+          "summary": "DataForSEO: AI Answer now marked unsupported",
+          "target": "cell-dataforseo-answer"
+        },
+        {
+          "summary": "DataForSEO: Capability basis updated to Existing SDK mappings",
+          "target": "cell-dataforseo-capability-basis"
+        },
+        {
+          "summary": "DataForSEO: Full text evidence refreshed",
+          "target": "cell-dataforseo-content"
+        },
+        {
+          "summary": "DataForSEO: Country now marked unsupported",
+          "target": "cell-dataforseo-country"
+        },
+        {
+          "summary": "DataForSEO: Date range now marked unsupported",
+          "target": "cell-dataforseo-date"
+        },
+        {
+          "summary": "DataForSEO: Domain filters evidence refreshed",
+          "target": "cell-dataforseo-domains"
+        },
+        {
+          "summary": "DataForSEO: Env vars updated to DATAFORSEO_LOGIN, DATAFORSEO_API_LOGIN, DATAFORSEO_PASSWORD",
+          "target": "cell-dataforseo-env-keys"
+        },
+        {
+          "summary": "DataForSEO: Highlights now marked unsupported",
+          "target": "cell-dataforseo-highlights"
+        },
+        {
+          "summary": "DataForSEO: Language evidence refreshed",
+          "target": "cell-dataforseo-language"
+        },
+        {
+          "summary": "DataForSEO: Mode updated to balanced",
+          "target": "cell-dataforseo-mode"
+        },
+        {
+          "summary": "DataForSEO: News now marked unsupported",
+          "target": "cell-dataforseo-news"
+        },
+        {
+          "summary": "DataForSEO: Latency by tier updated to Historical July 2026: Live endpoint: no published percentile; queued St…",
+          "target": "cell-dataforseo-p50-latency"
+        },
+        {
+          "summary": "DataForSEO: pip extra updated to — (REST only)",
+          "target": "cell-dataforseo-python-extra"
+        },
+        {
+          "summary": "DataForSEO: Credentials required evidence refreshed",
+          "target": "cell-dataforseo-requires-key"
+        },
+        {
+          "summary": "DataForSEO: Safe search now marked unsupported",
+          "target": "cell-dataforseo-safe-search"
+        },
+        {
+          "summary": "DataForSEO: anysearch SDK updated to Python + TypeScript adapters",
+          "target": "cell-dataforseo-sdk-support"
+        },
+        {
+          "summary": "DataForSEO: Snippet evidence refreshed",
+          "target": "cell-dataforseo-snippet"
+        },
+        {
+          "summary": "DataForSEO: Summary evidence refreshed",
+          "target": "cell-dataforseo-summary"
+        },
+        {
+          "summary": "DeepSeek: AI Answer evidence refreshed",
+          "target": "cell-deepseek-answer"
+        },
+        {
+          "summary": "DeepSeek: Capability basis updated to Existing SDK mappings",
+          "target": "cell-deepseek-capability-basis"
+        },
+        {
+          "summary": "DeepSeek: Full text evidence refreshed",
+          "target": "cell-deepseek-content"
+        },
+        {
+          "summary": "DeepSeek: Country now marked unsupported",
+          "target": "cell-deepseek-country"
+        },
+        {
+          "summary": "DeepSeek: Date range now supported",
+          "target": "cell-deepseek-date"
+        },
+        {
+          "summary": "DeepSeek: Domain filters now supported",
+          "target": "cell-deepseek-domains"
+        },
+        {
+          "summary": "DeepSeek: Env vars updated to DEEPSEEK_API_KEY, DEEPSEEK_SEARCH_API_KEY",
+          "target": "cell-deepseek-env-keys"
+        },
+        {
+          "summary": "DeepSeek: Highlights now marked unsupported",
+          "target": "cell-deepseek-highlights"
+        },
+        {
+          "summary": "DeepSeek: Language now supported",
+          "target": "cell-deepseek-language"
+        },
+        {
+          "summary": "DeepSeek: Mode updated to ",
+          "target": "cell-deepseek-mode"
+        },
+        {
+          "summary": "DeepSeek: News evidence refreshed",
+          "target": "cell-deepseek-news"
+        },
+        {
+          "summary": "DeepSeek: Latency by tier updated to Historical July 2026: No published p50/p90/p95 Search latency",
+          "target": "cell-deepseek-p50-latency"
+        },
+        {
+          "summary": "DeepSeek: pip extra updated to — (REST only)",
+          "target": "cell-deepseek-python-extra"
+        },
+        {
+          "summary": "DeepSeek: Credentials required evidence refreshed",
+          "target": "cell-deepseek-requires-key"
+        },
+        {
+          "summary": "DeepSeek: Safe search now marked unsupported",
+          "target": "cell-deepseek-safe-search"
+        },
+        {
+          "summary": "DeepSeek: anysearch SDK updated to Python + TypeScript adapters",
+          "target": "cell-deepseek-sdk-support"
+        },
+        {
+          "summary": "DeepSeek: Snippet evidence refreshed",
+          "target": "cell-deepseek-snippet"
+        },
+        {
+          "summary": "DeepSeek: Summary now supported",
+          "target": "cell-deepseek-summary"
+        },
+        {
+          "summary": "Keenable added to the comparison",
+          "target": "cell-keenable-requires-key"
+        },
+        {
+          "summary": "OpenAI Web Search: AI Answer evidence refreshed",
+          "target": "cell-openai-answer"
+        },
+        {
+          "summary": "OpenAI Web Search: Capability basis updated to Existing SDK mappings",
+          "target": "cell-openai-capability-basis"
+        },
+        {
+          "summary": "OpenAI Web Search: Full text now marked unsupported",
+          "target": "cell-openai-content"
+        },
+        {
+          "summary": "OpenAI Web Search: Country now marked unsupported",
+          "target": "cell-openai-country"
+        },
+        {
+          "summary": "OpenAI Web Search: Date range now marked unsupported",
+          "target": "cell-openai-date"
+        },
+        {
+          "summary": "OpenAI Web Search: Domain filters now partially supported",
+          "target": "cell-openai-domains"
+        },
+        {
+          "summary": "OpenAI Web Search: Env vars updated to OPENAI_API_KEY",
+          "target": "cell-openai-env-keys"
+        },
+        {
+          "summary": "OpenAI Web Search: Highlights now marked unsupported",
+          "target": "cell-openai-highlights"
+        },
+        {
+          "summary": "OpenAI Web Search: Language now marked unsupported",
+          "target": "cell-openai-language"
+        },
+        {
+          "summary": "OpenAI Web Search: Mode updated to fast, balanced, deep",
+          "target": "cell-openai-mode"
+        },
+        {
+          "summary": "OpenAI Web Search: News now marked unsupported",
+          "target": "cell-openai-news"
+        },
+        {
+          "summary": "OpenAI Web Search: Latency by tier updated to Historical July 2026: No published search-tool latency distribution",
+          "target": "cell-openai-p50-latency"
+        },
+        {
+          "summary": "OpenAI Web Search: pip extra updated to — (REST only)",
+          "target": "cell-openai-python-extra"
+        },
+        {
+          "summary": "OpenAI Web Search: Credentials required evidence refreshed",
+          "target": "cell-openai-requires-key"
+        },
+        {
+          "summary": "OpenAI Web Search: Safe search now marked unsupported",
+          "target": "cell-openai-safe-search"
+        },
+        {
+          "summary": "OpenAI Web Search: anysearch SDK updated to Python + TypeScript adapters",
+          "target": "cell-openai-sdk-support"
+        },
+        {
+          "summary": "OpenAI Web Search: Snippet now supported",
+          "target": "cell-openai-snippet"
+        },
+        {
+          "summary": "OpenAI Web Search: Summary now marked unsupported",
+          "target": "cell-openai-summary"
+        },
+        {
+          "summary": "TinyFish: AI Answer evidence refreshed",
+          "target": "cell-tinyfish-answer"
+        },
+        {
+          "summary": "TinyFish: Capability basis updated to Existing SDK mappings",
+          "target": "cell-tinyfish-capability-basis"
+        },
+        {
+          "summary": "TinyFish: Full text now marked unsupported",
+          "target": "cell-tinyfish-content"
+        },
+        {
+          "summary": "TinyFish: Country evidence refreshed",
+          "target": "cell-tinyfish-country"
+        },
+        {
+          "summary": "TinyFish: Date range evidence refreshed",
+          "target": "cell-tinyfish-date"
+        },
+        {
+          "summary": "TinyFish: Domain filters evidence refreshed",
+          "target": "cell-tinyfish-domains"
+        },
+        {
+          "summary": "TinyFish: Env vars updated to TINYFISH_API_KEY",
+          "target": "cell-tinyfish-env-keys"
+        },
+        {
+          "summary": "TinyFish: Highlights evidence refreshed",
+          "target": "cell-tinyfish-highlights"
+        },
+        {
+          "summary": "TinyFish: Language evidence refreshed",
+          "target": "cell-tinyfish-language"
+        },
+        {
+          "summary": "TinyFish: Mode evidence refreshed",
+          "target": "cell-tinyfish-mode"
+        },
+        {
+          "summary": "TinyFish: News evidence refreshed",
+          "target": "cell-tinyfish-news"
+        },
+        {
+          "summary": "TinyFish: Latency by tier updated to Historical July 2026: No published p50/p90/p95 API latency",
+          "target": "cell-tinyfish-p50-latency"
+        },
+        {
+          "summary": "TinyFish: pip extra updated to — (REST only)",
+          "target": "cell-tinyfish-python-extra"
+        },
+        {
+          "summary": "TinyFish: Credentials required evidence refreshed",
+          "target": "cell-tinyfish-requires-key"
+        },
+        {
+          "summary": "TinyFish: Safe search evidence refreshed",
+          "target": "cell-tinyfish-safe-search"
+        },
+        {
+          "summary": "TinyFish: anysearch SDK updated to Python + TypeScript adapters",
+          "target": "cell-tinyfish-sdk-support"
+        },
+        {
+          "summary": "TinyFish: Snippet evidence refreshed",
+          "target": "cell-tinyfish-snippet"
+        },
+        {
+          "summary": "TinyFish: Summary evidence refreshed",
+          "target": "cell-tinyfish-summary"
+        },
+        {
+          "summary": "xAI Web Search: AI Answer evidence refreshed",
+          "target": "cell-xai-answer"
+        },
+        {
+          "summary": "xAI Web Search: Capability basis updated to Existing SDK mappings",
+          "target": "cell-xai-capability-basis"
+        },
+        {
+          "summary": "xAI Web Search: Full text now marked unsupported",
+          "target": "cell-xai-content"
+        },
+        {
+          "summary": "xAI Web Search: Country now marked unsupported",
+          "target": "cell-xai-country"
+        },
+        {
+          "summary": "xAI Web Search: Date range now marked unsupported",
+          "target": "cell-xai-date"
+        },
+        {
+          "summary": "xAI Web Search: Domain filters now partially supported",
+          "target": "cell-xai-domains"
+        },
+        {
+          "summary": "xAI Web Search: Env vars updated to XAI_API_KEY",
+          "target": "cell-xai-env-keys"
+        },
+        {
+          "summary": "xAI Web Search: Highlights now marked unsupported",
+          "target": "cell-xai-highlights"
+        },
+        {
+          "summary": "xAI Web Search: Language now marked unsupported",
+          "target": "cell-xai-language"
+        },
+        {
+          "summary": "xAI Web Search: Mode updated to balanced",
+          "target": "cell-xai-mode"
+        },
+        {
+          "summary": "xAI Web Search: News now marked unsupported",
+          "target": "cell-xai-news"
+        },
+        {
+          "summary": "xAI Web Search: Latency by tier updated to Historical July 2026: No published search-tool latency distribution",
+          "target": "cell-xai-p50-latency"
+        },
+        {
+          "summary": "xAI Web Search: pip extra updated to — (REST only)",
+          "target": "cell-xai-python-extra"
+        },
+        {
+          "summary": "xAI Web Search: Credentials required evidence refreshed",
+          "target": "cell-xai-requires-key"
+        },
+        {
+          "summary": "xAI Web Search: Safe search now marked unsupported",
+          "target": "cell-xai-safe-search"
+        },
+        {
+          "summary": "xAI Web Search: anysearch SDK updated to Python + TypeScript adapters",
+          "target": "cell-xai-sdk-support"
+        },
+        {
+          "summary": "xAI Web Search: Snippet now supported",
+          "target": "cell-xai-snippet"
+        },
+        {
+          "summary": "xAI Web Search: Summary now marked unsupported",
+          "target": "cell-xai-summary"
+        }
+      ],
+      "version": "1.8.0"
+    },
     {
       "date": "2026-10-21",
       "commit": "92f1a13",

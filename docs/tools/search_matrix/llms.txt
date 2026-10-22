@@ -1,31 +1,31 @@
 # anysearch Search API Provider Matrix
 
-Offerings: 32. Native API facts and existing anysearch SDK mappings; comparison-only entries have no adapter.
+Offerings: 33. Native API facts and existing anysearch SDK mappings; comparison-only entries have no adapter.
 
 ## Anthropic Web Search
 - Docs: https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool
-- Env: Not integrated
+- Env: ANTHROPIC_API_KEY, CLAUDE_API_KEY
 - Domain filters: full
-- Country: full
-- Language: unknown
-- Date range: unknown
-- Safe search: unknown
-- Mode: Basic web search, Dynamic filtering
+- Country: none
+- Language: none
+- Date range: none
+- Safe search: none
+- Mode: balanced
 - Pricing / 1K: $10 / 1K searches + model token charges
 - Free tier limits: No recurring free allowance verified
-- Latency by tier: No current comparable measurement verified
+- Latency by tier: Historical July 2026: No published search-tool latency distribution
 - AI Answer: full
-- Full text: partial
-- Summary: not_applicable
-- Highlights: partial
-- News: partial
+- Full text: none
+- Summary: none
+- Highlights: none
+- News: none
 - Product category: Model-hosted grounding
 - Availability: Available
 - Native API overview: Claude server-side web search tool; not standalone raw search. Generated answers and search-result processing add model costs.
-- anysearch SDK: Comparison only — no adapter
+- anysearch SDK: Python + TypeScript adapters
 - Evidence checked: 2026-10-21
 - Limits / billing caveats: Model/tool limits vary; tool use requires compatible model
-- Capability basis: Native API — reviewed
+- Capability basis: Existing SDK mappings
 
 ## Baidu · SerpApi
 - Docs: https://serpapi.com/baidu-search-api
@@ -128,79 +128,79 @@ Offerings: 32. Native API facts and existing anysearch SDK mappings; comparison-
 - Capability basis: Existing SDK mappings
 
 ## Bright Data
-- Docs: https://brightdata.com/pricing/serp
-- Env: Not integrated
-- Domain filters: partial
+- Docs: https://docs.brightdata.com/scraping-automation/serp-api/introduction
+- Env: BRIGHTDATA_API_KEY, BRIGHT_DATA_API_KEY, BRIGHTDATA_ZONE
+- Domain filters: full
 - Country: full
 - Language: full
-- Date range: partial
-- Safe search: full
-- Mode: SERP, Fast SERP
+- Date range: full
+- Safe search: partial
+- Mode: balanced
 - Pricing / 1K: PAYG $1.50 / 1K successful requests; Scale $499/month includes 380K then $1.30 / 1K
 - Free tier limits: 5,000 requests/month free; no card
-- Latency by tier: No current comparable measurement verified
-- AI Answer: partial
+- Latency by tier: Historical July 2026: Under 1 second per request claimed; no percentile distribution
+- AI Answer: none
 - Full text: none
 - Summary: none
-- Highlights: partial
+- Highlights: none
 - News: full
 - Product category: Third-party SERP service
 - Availability: Available
 - Native API overview: SERP proxy; requests are not individual organic links; async collection not another billed request.
-- anysearch SDK: Comparison only — no adapter
+- anysearch SDK: Python + TypeScript adapters
 - Evidence checked: 2026-10-21
 - Limits / billing caveats: PAYG deposit minimum not verified
-- Capability basis: Native API — reviewed
+- Capability basis: Existing SDK mappings
 
 ## DataForSEO
-- Docs: https://dataforseo.com/pricing/google-serp/google-organic-serp-api
-- Env: Not integrated
+- Docs: https://docs.dataforseo.com/v3/serp/google/organic/live/advanced/
+- Env: DATAFORSEO_LOGIN, DATAFORSEO_API_LOGIN, DATAFORSEO_PASSWORD
 - Domain filters: partial
-- Country: full
+- Country: none
 - Language: full
-- Date range: partial
-- Safe search: partial
-- Mode: Standard queue, Priority queue, Live
+- Date range: none
+- Safe search: none
+- Mode: balanced
 - Pricing / 1K: Standard queue $0.60; Priority $1.20; Live $2 / 1K SERP pages (≤10 organic results/page)
 - Free tier limits: $1 trial; sample-only sandbox separate
-- Latency by tier: No current comparable measurement verified
-- AI Answer: partial
+- Latency by tier: Historical July 2026: Live endpoint: no published percentile; queued Standard averages ~5 min
+- AI Answer: none
 - Full text: none
 - Summary: none
-- Highlights: partial
-- News: full
+- Highlights: none
+- News: none
 - Product category: Third-party SERP service
 - Availability: Available
 - Native API overview: Depth, operators and extras alter cost; queued jobs are not comparable to Live latency.
-- anysearch SDK: Comparison only — no adapter
+- anysearch SDK: Python + TypeScript adapters
 - Evidence checked: 2026-10-21
 - Limits / billing caveats: $50 minimum prepaid; no subscription/expiry; Standard average ~5min, target 45min
-- Capability basis: Native API — reviewed
+- Capability basis: Existing SDK mappings
 
 ## DeepSeek
 - Docs: https://api-docs.deepseek.com/guides/search/
-- Env: Not integrated
-- Domain filters: partial
-- Country: partial
-- Language: partial
-- Date range: partial
-- Safe search: unknown
-- Mode: Search (single endpoint)
+- Env: DEEPSEEK_API_KEY, DEEPSEEK_SEARCH_API_KEY
+- Domain filters: full
+- Country: none
+- Language: full
+- Date range: full
+- Safe search: none
+- Mode: none
 - Pricing / 1K: $0.75 / 1K successful nonempty Search requests; Fetch separately $0.75 / 1K
 - Free tier limits: No recurring direct API allowance verified; server-side tool promotion is separate
-- Latency by tier: No current comparable measurement verified
+- Latency by tier: Historical July 2026: No published p50/p90/p95 Search latency
 - AI Answer: none
 - Full text: full
-- Summary: partial
-- Highlights: partial
+- Summary: full
+- Highlights: none
 - News: none
 - Product category: Standalone search API
 - Availability: Available
 - Native API overview: Raw JSON POST /v1/tools/search; 1–50 results, optional content, summaries; site/lang/date query operators. Separate Markdown Fetch API.
-- anysearch SDK: Comparison only — no adapter
+- anysearch SDK: Python + TypeScript adapters
 - Evidence checked: 2026-10-21
 - Limits / billing caveats: Search 100 QPS/account; Fetch 25 QPS/account; Fetch also per-domain throttled
-- Capability basis: Native API — reviewed
+- Capability basis: Existing SDK mappings
 
 ## DuckDuckGo
 - Docs: https://pypi.org/project/ddgs/
@@ -427,6 +427,31 @@ Offerings: 32. Native API facts and existing anysearch SDK mappings; comparison-
 - Limits / billing caveats: Usage invoiced every 30 days or at $100; Extract up to 10 URLs/request
 - Capability basis: Existing SDK mappings
 
+## Keenable
+- Docs: https://docs.keenable.ai/api-reference/search
+- Env: KEENABLE_API_KEY
+- Domain filters: partial
+- Country: none
+- Language: none
+- Date range: full
+- Safe search: none
+- Mode: fast, balanced
+- Pricing / 1K: $4 / 1K pay-as-you-go; $1 / 1K at 100 RPS+ dedicated; 100,000 requests/month free
+- Free tier limits: 100,000 requests/month free; resets monthly; no card
+- Latency by tier: Historical July 2026: No published p50/p90/p95 API latency
+- AI Answer: none
+- Full text: partial
+- Summary: none
+- Highlights: partial
+- News: none
+- Product category: Standalone search API
+- Availability: Available
+- Native API overview: POST /v1/search returns ranked title, URL, description, snippet, published_at and acquired_at fields. `mode` selects pro (deeper retrieval, default) or realtime; supports a single `site`, published and acquired date bounds, point-in-time `query_time`, max_results 1-50 and snippet length. Separate /v1/fetch returns page markdown.
+- anysearch SDK: Python + TypeScript adapters
+- Evidence checked: 2026-10-22
+- Limits / billing caveats: 10 requests/s authenticated per organization; keyless 1,000/hour and 10/s per IP; HTTP 402 when the monthly allowance and purchased credits are exhausted
+- Capability basis: Existing SDK mappings
+
 ## Keiro
 - Docs: https://keirolabs.cloud/
 - Env: KEIRO_API_KEY
@@ -503,29 +528,29 @@ Offerings: 32. Native API facts and existing anysearch SDK mappings; comparison-
 - Capability basis: Existing SDK mappings
 
 ## OpenAI Web Search
-- Docs: https://developers.openai.com/api/docs/pricing
-- Env: Not integrated
-- Domain filters: full
-- Country: full
-- Language: unknown
-- Date range: unknown
-- Safe search: unknown
-- Mode: Non-reasoning, Reasoning, Deep research
+- Docs: https://platform.openai.com/docs/guides/tools-web-search
+- Env: OPENAI_API_KEY
+- Domain filters: partial
+- Country: none
+- Language: none
+- Date range: none
+- Safe search: none
+- Mode: fast, balanced, deep
 - Pricing / 1K: web_search $10 / 1K tool calls + search-content tokens at model rates
 - Free tier limits: No recurring free allowance verified
-- Latency by tier: No current comparable measurement verified
+- Latency by tier: Historical July 2026: No published search-tool latency distribution
 - AI Answer: full
-- Full text: partial
-- Summary: not_applicable
-- Highlights: not_applicable
-- News: partial
+- Full text: none
+- Summary: none
+- Highlights: none
+- News: none
 - Product category: Model-hosted grounding
 - Availability: Available
 - Native API overview: Model-hosted web_search; tool cost is not total answer cost or raw search price.
-- anysearch SDK: Comparison only — no adapter
+- anysearch SDK: Python + TypeScript adapters
 - Evidence checked: 2026-10-21
 - Limits / billing caveats: Legacy preview rules differ; model availability and limits vary
-- Capability basis: Native API — reviewed
+- Capability basis: Existing SDK mappings
 
 ## Parallel
 - Docs: https://docs.parallel.ai/search/modes
@@ -679,7 +704,7 @@ Offerings: 32. Native API facts and existing anysearch SDK mappings; comparison-
 
 ## TinyFish
 - Docs: https://docs.tinyfish.ai/search-api/reference
-- Env: Not integrated
+- Env: TINYFISH_API_KEY
 - Domain filters: full
 - Country: full
 - Language: full
@@ -688,19 +713,19 @@ Offerings: 32. Native API facts and existing anysearch SDK mappings; comparison-
 - Mode: none
 - Pricing / 1K: Search $0.00 per request; free up to 12,000 requests/day at 30 req/min, then a positive wallet balance is required
 - Free tier limits: Search free within 30 requests/min and 12,000 requests/day (resets 00:00 UTC); Fetch free to 1,000 URLs/day; no card required
-- Latency by tier: No current comparable measurement verified
+- Latency by tier: Historical July 2026: No published p50/p90/p95 API latency
 - AI Answer: none
-- Full text: partial
+- Full text: none
 - Summary: none
 - Highlights: none
 - News: full
 - Product category: Standalone search API
 - Availability: Available
 - Native API overview: GET https://api.search.tinyfish.ai returns ranked web, news or research-paper results with title, snippet, URL, site name and news date. Supports include/exclude domains, location, language, recency and date bounds, an optional purpose hint, and pages 0-10. Separate Fetch, Agent, Research and Browser products share the same key.
-- anysearch SDK: Comparison only — no adapter
+- anysearch SDK: Python + TypeScript adapters
 - Evidence checked: 2026-10-21
 - Limits / billing caveats: 30 requests/min per API key by default (500 requests/hour on the pricing page); 12,000 free searches/day; HTTP 402 above the allowance when the wallet balance is zero
-- Capability basis: Native API — reviewed
+- Capability basis: Existing SDK mappings
 
 ## Yahoo · SerpApi
 - Docs: https://serpapi.com/yahoo-search-api
@@ -778,26 +803,26 @@ Offerings: 32. Native API facts and existing anysearch SDK mappings; comparison-
 - Capability basis: Existing SDK mappings
 
 ## xAI Web Search
-- Docs: https://docs.x.ai/developers/pricing
-- Env: Not integrated
-- Domain filters: full
-- Country: unknown
-- Language: unknown
-- Date range: unknown
-- Safe search: unknown
-- Mode: Model-mediated web search
+- Docs: https://docs.x.ai/docs/guides/live-search
+- Env: XAI_API_KEY
+- Domain filters: partial
+- Country: none
+- Language: none
+- Date range: none
+- Safe search: none
+- Mode: balanced
 - Pricing / 1K: Web Search $5 / 1K tool calls + model tokens
 - Free tier limits: No recurring free allowance verified
-- Latency by tier: No current comparable measurement verified
+- Latency by tier: Historical July 2026: No published search-tool latency distribution
 - AI Answer: full
-- Full text: partial
-- Summary: not_applicable
-- Highlights: not_applicable
-- News: partial
+- Full text: none
+- Summary: none
+- Highlights: none
+- News: none
 - Product category: Model-hosted grounding
 - Availability: Available
 - Native API overview: Model-hosted web_search; X Search is distinct and is not public web search.
-- anysearch SDK: Comparison only — no adapter
+- anysearch SDK: Python + TypeScript adapters
 - Evidence checked: 2026-10-21
 - Limits / billing caveats: X Search billed separately: posts/profiles use different units
-- Capability basis: Native API — reviewed
+- Capability basis: Existing SDK mappings

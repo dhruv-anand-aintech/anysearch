@@ -1,119 +1,124 @@
 {
   "name": "xAI Web Search",
   "links": {
-    "slug": "xai",
-    "docs": "https://docs.x.ai/developers/pricing",
-    "website": "https://x.ai"
+    "docs": "https://docs.x.ai/docs/guides/live-search",
+    "github": "https://github.com/dhruv-anand-aintech/anysearch",
+    "website": "https://x.ai",
+    "slug": "xai"
   },
   "env_keys": {
-    "value": "Not integrated",
-    "source_url": "https://docs.x.ai/developers/pricing",
-    "comment": "Comparison only; anysearch does not read a key for this provider."
+    "value": "XAI_API_KEY",
+    "source_url": "https://docs.x.ai/docs/guides/live-search",
+    "comment": "API keys and configuration variables documented by the provider."
   },
   "python_extra": {
-    "value": "Not integrated",
-    "source_url": "https://docs.x.ai/developers/pricing",
-    "comment": ""
+    "value": "\u2014 (REST only)",
+    "source_url": "https://docs.x.ai/docs/guides/live-search",
+    "comment": "HTTP API only; no required vendor Python SDK."
   },
-  "mode": {
-    "values": [
-      "Model-mediated web search"
-    ],
-    "comment": "One server-side Web Search tool; separate X Search and image controls are not fast/deep search tiers.",
-    "source_url": "https://docs.x.ai/developers/tools/web-search",
-    "checked_at": "2026-10-21"
-  },
-  "p50_latency": {
-    "value": "No current comparable measurement verified",
-    "source_url": "https://docs.x.ai/developers/pricing",
-    "comment": ""
-  },
-  "notes": "Comparison only; no anysearch SDK adapter is claimed.",
-  "comparison_only": true,
   "requires_key": {
     "support": "full",
-    "comment": "Authenticated Responses API request uses bearer XAI_API_KEY.",
-    "source_url": "https://docs.x.ai/developers/tools/web-search",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "source_url": "https://docs.x.ai/docs/guides/live-search",
+    "comment": "Valid API key required for every request."
   },
   "snippet": {
-    "support": "not_applicable",
-    "comment": "Documented web_search produces model answers/citations, not a raw ranked-result snippet contract.",
-    "source_url": "https://docs.x.ai/developers/tools/web-search",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "support": "full",
+    "source_url": "https://docs.x.ai/docs/guides/live-search",
+    "comment": "Short description field returned with each result."
   },
   "domains": {
-    "support": "full",
-    "comment": "allowed_domains or excluded_domains (up to five) restrict search/browsing; cannot use both together.",
-    "source_url": "https://docs.x.ai/developers/tools/web-search",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "support": "partial",
+    "source_url": "https://docs.x.ai/docs/guides/live-search",
+    "comment": "Tool `filters.allowed_domains` / `filters.excluded_domains`."
   },
   "country": {
-    "support": "unknown",
-    "comment": "The web_search parameter table lists domain and image controls but no country bias. Do not transfer X Search settings to Web Search.",
-    "source_url": "https://docs.x.ai/developers/tools/web-search",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "support": "none",
+    "source_url": "https://docs.x.ai/docs/guides/live-search",
+    "comment": "Country (gl)"
   },
   "language": {
-    "support": "unknown",
-    "comment": "No result-language filter is documented in the web_search tool parameter table; model language capability is separate.",
-    "source_url": "https://docs.x.ai/developers/tools/web-search",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "support": "none",
+    "source_url": "https://docs.x.ai/docs/guides/live-search",
+    "comment": "Language"
   },
   "date": {
-    "support": "unknown",
-    "comment": "No publication-date range control documented for web_search. X Search from_date/to_date options are a different tool.",
-    "source_url": "https://docs.x.ai/developers/tools/web-search",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "support": "none",
+    "source_url": "https://docs.x.ai/docs/guides/live-search",
+    "comment": "Published date range"
   },
   "safe_search": {
-    "support": "unknown",
-    "comment": "No configurable SafeSearch setting documented for this tool; model safety is not an equivalent parameter.",
-    "source_url": "https://docs.x.ai/developers/tools/web-search",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "support": "none",
+    "source_url": "https://docs.x.ai/docs/guides/live-search",
+    "comment": "Safe search"
   },
   "answer": {
     "support": "full",
-    "comment": "Grok searches/browses then produces a model answer with citations.",
-    "source_url": "https://docs.x.ai/developers/tools/web-search",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "source_url": "https://docs.x.ai/docs/guides/live-search",
+    "comment": "The model's `output_text` is returned in `answer` with URL citations."
   },
   "content": {
-    "support": "partial",
-    "comment": "Tool accesses/browses pages for the model; no guarantee of a raw full-page content export in the web_search response.",
-    "source_url": "https://docs.x.ai/developers/tools/web-search",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "support": "none",
+    "source_url": "https://docs.x.ai/docs/guides/live-search",
+    "comment": "Full page text"
   },
   "summary": {
-    "support": "not_applicable",
-    "comment": "Generated answer/citations are not per-result page-summary objects.",
-    "source_url": "https://docs.x.ai/developers/tools/web-search",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "support": "none",
+    "source_url": "https://docs.x.ai/docs/guides/live-search",
+    "comment": "AI per-result summary"
   },
   "highlights": {
-    "support": "not_applicable",
-    "comment": "Citations identify sources; the reviewed web_search contract does not expose per-page highlighted excerpts.",
-    "source_url": "https://docs.x.ai/developers/tools/web-search",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "support": "none",
+    "source_url": "https://docs.x.ai/docs/guides/live-search",
+    "comment": "Query highlights"
   },
   "news": {
-    "support": "partial",
-    "comment": "General current-web retrieval can answer news queries; X Search is separate and is not a dedicated web-news vertical.",
-    "source_url": "https://docs.x.ai/developers/tools/web-search",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "support": "none",
+    "source_url": "https://docs.x.ai/docs/guides/live-search",
+    "comment": "News search type"
   },
+  "mode": {
+    "values": [
+      "balanced"
+    ],
+    "source_url": "https://docs.x.ai/docs/guides/live-search",
+    "comment": "One hosted web_search tool; search depth is model-mediated rather than a named fast/deep API parameter."
+  },
+  "pricing_per_1k": {
+    "value": "Web Search $5 / 1K tool calls + model tokens",
+    "source_url": "https://docs.x.ai/developers/pricing",
+    "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+    "primary_price": {
+      "amount_usd_per_1k": 5,
+      "billing_unit": "web_search tool calls",
+      "basis": "Model tokens extra; X Search separate",
+      "source_url": "https://docs.x.ai/developers/pricing",
+      "checked_at": "2026-10-21"
+    },
+    "lowest_price": {
+      "amount_usd_per_1k": 5,
+      "billing_unit": "web_search tool calls",
+      "basis": "Tool calls only; model tokens billed separately",
+      "source_url": "https://docs.x.ai/developers/pricing",
+      "checked_at": "2026-10-21"
+    },
+    "links": {
+      "Official source 1": "https://docs.x.ai/developers/tools/web-search"
+    }
+  },
+  "free_tier_limits": {
+    "value": "No recurring free allowance verified",
+    "source_url": "https://docs.x.ai/developers/pricing",
+    "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
+    "links": {
+      "Official source 1": "https://docs.x.ai/developers/tools/web-search"
+    }
+  },
+  "p50_latency": {
+    "value": "Historical July 2026: No published search-tool latency distribution",
+    "source_url": "https://docs.x.ai/docs/guides/live-search",
+    "comment": "Historical evidence retained from July 2026; not remeasured or claimed current. Latency is model-mediated and not reported as an API percentile."
+  },
+  "notes": "The xAI `web_search` tool in the Responses API is in both SDKs. Results come from `url_citation` annotations or the top-level `citations` list; generated text is returned in `answer`.",
   "api_category": {
     "value": "Model-hosted grounding",
     "source_url": "https://docs.x.ai/developers/pricing",
@@ -152,44 +157,14 @@
     }
   },
   "capability_basis": {
-    "value": "Native API \u2014 reviewed",
+    "value": "Existing SDK mappings",
     "source_url": "https://docs.x.ai/developers/pricing",
     "comment": "SDK availability is separate from native provider capability. Each native feature cell carries its own checked date and evidence."
   },
   "sdk_support": {
-    "value": "Comparison only \u2014 no adapter",
+    "value": "Python + TypeScript adapters",
     "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
     "comment": "SDK adapter availability only. See Capability basis for the feature rows; native features do not imply an SDK adapter."
-  },
-  "pricing_per_1k": {
-    "value": "Web Search $5 / 1K tool calls + model tokens",
-    "source_url": "https://docs.x.ai/developers/pricing",
-    "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
-    "primary_price": {
-      "amount_usd_per_1k": 5,
-      "billing_unit": "web_search tool calls",
-      "basis": "Model tokens extra; X Search separate",
-      "source_url": "https://docs.x.ai/developers/pricing",
-      "checked_at": "2026-10-21"
-    },
-    "lowest_price": {
-      "amount_usd_per_1k": 5,
-      "billing_unit": "web_search tool calls",
-      "basis": "Tool calls only; model tokens billed separately",
-      "source_url": "https://docs.x.ai/developers/pricing",
-      "checked_at": "2026-10-21"
-    },
-    "links": {
-      "Official source 1": "https://docs.x.ai/developers/tools/web-search"
-    }
-  },
-  "free_tier_limits": {
-    "value": "No recurring free allowance verified",
-    "source_url": "https://docs.x.ai/developers/pricing",
-    "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
-    "links": {
-      "Official source 1": "https://docs.x.ai/developers/tools/web-search"
-    }
   },
   "evidence": {
     "checked_at": "2026-10-21",

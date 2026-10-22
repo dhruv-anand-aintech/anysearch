@@ -1,121 +1,120 @@
 {
   "name": "DataForSEO",
   "links": {
-    "slug": "dataforseo",
-    "docs": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
-    "website": "https://dataforseo.com"
+    "docs": "https://docs.dataforseo.com/v3/serp/google/organic/live/advanced/",
+    "github": "https://github.com/dhruv-anand-aintech/anysearch",
+    "website": "https://dataforseo.com",
+    "slug": "dataforseo"
   },
   "env_keys": {
-    "value": "Not integrated",
-    "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
-    "comment": "Comparison only; anysearch does not read a key for this provider."
+    "value": "DATAFORSEO_LOGIN, DATAFORSEO_API_LOGIN, DATAFORSEO_PASSWORD",
+    "source_url": "https://docs.dataforseo.com/v3/auth/",
+    "comment": "API keys and configuration variables documented by the provider."
   },
   "python_extra": {
-    "value": "Not integrated",
-    "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
-    "comment": ""
+    "value": "\u2014 (REST only)",
+    "source_url": "https://docs.dataforseo.com/v3/serp/google/organic/live/advanced/",
+    "comment": "HTTP API only; no required vendor Python SDK."
   },
-  "mode": {
-    "values": [
-      "Standard queue",
-      "Priority queue",
-      "Live"
-    ],
-    "comment": "Delivery/priority options, not a unified SDK search quality mode. Queued and live rates differ.",
-    "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
-    "checked_at": "2026-10-21"
-  },
-  "p50_latency": {
-    "value": "No current comparable measurement verified",
-    "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
-    "comment": ""
-  },
-  "notes": "Comparison only; no anysearch SDK adapter is claimed.",
-  "comparison_only": true,
   "requires_key": {
     "support": "full",
-    "comment": "HTTP Basic authentication with API login/password; credentials are required, although not a bearer API key.",
     "source_url": "https://docs.dataforseo.com/v3/auth/",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "comment": "Valid API key required for every request."
   },
   "snippet": {
     "support": "full",
-    "comment": "Organic items expose description as the search-result description.",
-    "source_url": "https://docs.dataforseo.com/v3/serp-se-type-live-advanced/",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "source_url": "https://docs.dataforseo.com/v3/serp/google/organic/live/advanced/",
+    "comment": "Short description field returned with each result."
   },
   "domains": {
     "support": "partial",
-    "comment": "keyword accepts site: operators; provider documents a 5x task charge for advanced operators. This is query syntax, not include/exclude domain arrays.",
-    "source_url": "https://docs.dataforseo.com/v3/serp-se-type-live-advanced/",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "source_url": "https://docs.dataforseo.com/v3/serp/google/organic/live/advanced/",
+    "comment": "`site:` / `-site:` query operators; operator queries are billed at a higher rate."
   },
   "country": {
-    "support": "full",
-    "comment": "location_code or location_name select search geography; country locations are documented.",
-    "source_url": "https://docs.dataforseo.com/v3/serp-se-type-live-advanced/",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "support": "none",
+    "source_url": "https://docs.dataforseo.com/v3/serp/google/organic/live/advanced/",
+    "comment": "Country (gl)"
   },
   "language": {
     "support": "full",
-    "comment": "language_code or language_name select search engine language; lr is explicitly stripped.",
-    "source_url": "https://docs.dataforseo.com/v3/serp-se-type-live-advanced/",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "source_url": "https://docs.dataforseo.com/v3/serp/google/organic/live/advanced/",
+    "comment": "`language_code` accepts ISO language codes."
   },
   "date": {
-    "support": "partial",
-    "comment": "search_param forwards supported Google tbs time filters; this is engine date filtering, not guaranteed publication metadata. as_qdr is explicitly stripped.",
-    "source_url": "https://dataforseo.com/help-center/google-search-engine-parameters-and-how-to-use-them",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "support": "none",
+    "source_url": "https://docs.dataforseo.com/v3/serp/google/organic/live/advanced/",
+    "comment": "Published date range"
   },
   "safe_search": {
-    "support": "partial",
-    "comment": "Supported search_param safe=active filters explicit results; engine-specific parameter behavior, not a unified safe_search enum.",
-    "source_url": "https://dataforseo.com/help-center/google-search-engine-parameters-and-how-to-use-them",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "support": "none",
+    "source_url": "https://docs.dataforseo.com/v3/serp/google/organic/live/advanced/",
+    "comment": "Safe search"
   },
   "answer": {
-    "support": "partial",
-    "comment": "Advanced response can contain search-engine ai_overview/answer_box; not an always-generated DataForSEO answer. Async overview retrieval is separately charged.",
-    "source_url": "https://docs.dataforseo.com/v3/serp-se-type-live-advanced/",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "support": "none",
+    "source_url": "https://docs.dataforseo.com/v3/serp/google/organic/live/advanced/",
+    "comment": "AI answer"
   },
   "content": {
     "support": "none",
-    "comment": "This SERP contract returns result elements and descriptions; the HTML variant returns search-engine SERP HTML, not full text from linked result pages.",
-    "source_url": "https://docs.dataforseo.com/v3/serp-se-type-live-advanced/",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "source_url": "https://docs.dataforseo.com/v3/serp/google/organic/live/advanced/",
+    "comment": "Full page text"
   },
   "summary": {
     "support": "none",
-    "comment": "Organic result description is an engine snippet; the complete organic item schema has no generated per-result page-summary output. Separate AI Summary products are outside this column.",
-    "source_url": "https://docs.dataforseo.com/v3/serp-se-type-live-advanced/",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "source_url": "https://docs.dataforseo.com/v3/serp/google/organic/live/advanced/",
+    "comment": "AI per-result summary"
   },
   "highlights": {
-    "support": "partial",
-    "comment": "highlighted contains bold terms within engine results, not an independently generated excerpt/highlights service.",
-    "source_url": "https://docs.dataforseo.com/v3/serp-se-type-live-advanced/",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "support": "none",
+    "source_url": "https://docs.dataforseo.com/v3/serp/google/organic/live/advanced/",
+    "comment": "Query highlights"
   },
   "news": {
-    "support": "full",
-    "comment": "Dedicated Google News SERP endpoint documented. Separate news request/engine variant, no anysearch adapter.",
-    "source_url": "https://docs.dataforseo.com/v3/serp/google/news/live/html/",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "support": "none",
+    "source_url": "https://docs.dataforseo.com/v3/serp/google/organic/live/advanced/",
+    "comment": "News search type"
   },
+  "mode": {
+    "values": [
+      "balanced"
+    ],
+    "source_url": "https://docs.dataforseo.com/v3/serp/google/organic/live/advanced/",
+    "comment": "The adapter uses the Live Google Organic Advanced endpoint. Queued Standard and Priority delivery are separate pricing/latency options, not unified modes."
+  },
+  "pricing_per_1k": {
+    "value": "Standard queue $0.60; Priority $1.20; Live $2 / 1K SERP pages (\u226410 organic results/page)",
+    "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+    "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+    "primary_price": {
+      "amount_usd_per_1k": 0.6,
+      "billing_unit": "Standard-queue SERP pages",
+      "basis": "\u226410 results/page; queued, not Live; $50 prepaid minimum",
+      "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+      "checked_at": "2026-10-21"
+    },
+    "lowest_price": {
+      "amount_usd_per_1k": 0.6,
+      "billing_unit": "standard-queue SERP pages",
+      "basis": "Standard queue is the cheapest tier; priority $1.20 and live $2 / 1K",
+      "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+      "checked_at": "2026-10-21"
+    },
+    "links": {}
+  },
+  "free_tier_limits": {
+    "value": "$1 trial; sample-only sandbox separate",
+    "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+    "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
+    "links": {}
+  },
+  "p50_latency": {
+    "value": "Historical July 2026: Live endpoint: no published percentile; queued Standard averages ~5 min",
+    "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+    "comment": "Historical evidence retained from July 2026; not remeasured or claimed current. The adapter uses Live; queued delivery times are a different product mode."
+  },
+  "notes": "Live Google Organic Advanced (`POST /v3/serp/google/organic/live/advanced`) is in both SDKs with HTTP Basic auth. `DATAFORSEO_LOCATION_CODE` selects the market and defaults to 2840 (United States).",
   "api_category": {
     "value": "Third-party SERP service",
     "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
@@ -146,40 +145,14 @@
     "links": {}
   },
   "capability_basis": {
-    "value": "Native API \u2014 reviewed",
+    "value": "Existing SDK mappings",
     "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
     "comment": "SDK availability is separate from native provider capability. Each native feature cell carries its own checked date and evidence."
   },
   "sdk_support": {
-    "value": "Comparison only \u2014 no adapter",
+    "value": "Python + TypeScript adapters",
     "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
     "comment": "SDK adapter availability only. See Capability basis for the feature rows; native features do not imply an SDK adapter."
-  },
-  "pricing_per_1k": {
-    "value": "Standard queue $0.60; Priority $1.20; Live $2 / 1K SERP pages (\u226410 organic results/page)",
-    "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
-    "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
-    "primary_price": {
-      "amount_usd_per_1k": 0.6,
-      "billing_unit": "Standard-queue SERP pages",
-      "basis": "\u226410 results/page; queued, not Live; $50 prepaid minimum",
-      "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
-      "checked_at": "2026-10-21"
-    },
-    "lowest_price": {
-      "amount_usd_per_1k": 0.6,
-      "billing_unit": "standard-queue SERP pages",
-      "basis": "Standard queue is the cheapest tier; priority $1.20 and live $2 / 1K",
-      "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
-      "checked_at": "2026-10-21"
-    },
-    "links": {}
-  },
-  "free_tier_limits": {
-    "value": "$1 trial; sample-only sandbox separate",
-    "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
-    "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
-    "links": {}
   },
   "evidence": {
     "checked_at": "2026-10-21",

@@ -1,119 +1,118 @@
 {
   "name": "DeepSeek",
   "links": {
-    "slug": "deepseek",
     "docs": "https://api-docs.deepseek.com/guides/search/",
-    "website": "https://www.deepseek.com"
+    "github": "https://github.com/dhruv-anand-aintech/anysearch",
+    "website": "https://www.deepseek.com",
+    "slug": "deepseek"
   },
   "env_keys": {
-    "value": "Not integrated",
+    "value": "DEEPSEEK_API_KEY, DEEPSEEK_SEARCH_API_KEY",
     "source_url": "https://api-docs.deepseek.com/guides/search/",
-    "comment": "Comparison only; anysearch does not read a key for this provider."
+    "comment": "API keys and configuration variables documented by the provider."
   },
   "python_extra": {
-    "value": "Not integrated",
+    "value": "\u2014 (REST only)",
     "source_url": "https://api-docs.deepseek.com/guides/search/",
-    "comment": ""
+    "comment": "HTTP API only; no required vendor Python SDK."
   },
-  "mode": {
-    "values": [
-      "Search (single endpoint)"
-    ],
-    "comment": "One raw Search endpoint; count and need_content configure results, not named fast/deep tiers.",
-    "source_url": "https://api-docs.deepseek.com/guides/search/",
-    "checked_at": "2026-10-21"
-  },
-  "p50_latency": {
-    "value": "No current comparable measurement verified",
-    "source_url": "https://api-docs.deepseek.com/guides/search/",
-    "comment": ""
-  },
-  "notes": "Comparison only; no anysearch SDK adapter is claimed.",
-  "comparison_only": true,
   "requires_key": {
     "support": "full",
-    "comment": "Bearer DeepSeek API key required for both raw JSON tools.",
     "source_url": "https://api-docs.deepseek.com/guides/search/",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "comment": "Valid API key required for every request."
   },
   "snippet": {
     "support": "full",
-    "comment": "Each Search result has a short query-related snippet string.",
     "source_url": "https://api-docs.deepseek.com/guides/search/",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "comment": "Short description field returned with each result."
   },
   "domains": {
-    "support": "partial",
-    "comment": "site: and -site: query operators, including OR alternatives; query syntax rather than typed domain arrays.",
+    "support": "full",
     "source_url": "https://api-docs.deepseek.com/guides/search/",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "comment": "`site:` and `-site:` query operators; multiple sites are joined with OR."
   },
   "country": {
-    "support": "partial",
-    "comment": "localization accepts an IP address; region localization is indirect, not an ISO country selector.",
+    "support": "none",
     "source_url": "https://api-docs.deepseek.com/guides/search/",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "comment": "Country (gl)"
   },
   "language": {
-    "support": "partial",
-    "comment": "lang: query operator accepts comma-separated language codes; no typed language field.",
+    "support": "full",
     "source_url": "https://api-docs.deepseek.com/guides/search/",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "comment": "`lang:` query operator accepts comma-separated language codes."
   },
   "date": {
-    "support": "partial",
-    "comment": "after: and before: query operators restrict publication dates; no typed date fields.",
+    "support": "full",
     "source_url": "https://api-docs.deepseek.com/guides/search/",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "comment": "`after:` / `before:` query operators accept years or YYYY-MM-DD dates."
   },
   "safe_search": {
-    "support": "unknown",
-    "comment": "Reviewed request table and operator list document no explicit safe-search setting. Filtering policy or unsupported status is not established.",
+    "support": "none",
     "source_url": "https://api-docs.deepseek.com/guides/search/",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "comment": "Safe search"
   },
   "answer": {
     "support": "none",
-    "comment": "The documented Search response is results only; per-result summaries are not a top-level synthesized answer. Chat model generation is separate.",
     "source_url": "https://api-docs.deepseek.com/guides/search/",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "comment": "AI answer"
   },
   "content": {
     "support": "full",
-    "comment": "need_content=true returns page content when available; separate Fetch returns Markdown. No success/content guarantee for every page.",
     "source_url": "https://api-docs.deepseek.com/guides/search/",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "comment": "`need_content=true` fills the `content` field."
   },
   "summary": {
-    "support": "partial",
-    "comment": "Per-result summary is documented as a longer query-related summary; whether it is AI-generated is not specified.",
+    "support": "full",
     "source_url": "https://api-docs.deepseek.com/guides/search/",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "comment": "Each result has a long model-readable `summary` alongside the short snippet."
   },
   "highlights": {
-    "support": "partial",
-    "comment": "Query-related snippet/summary excerpts are returned; no separate highlighted-span array in the complete response schema.",
+    "support": "none",
     "source_url": "https://api-docs.deepseek.com/guides/search/",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "comment": "Query highlights"
   },
   "news": {
     "support": "none",
-    "comment": "The complete Search request contract has no news vertical selector; general search can retrieve news, which is not a dedicated News API.",
     "source_url": "https://api-docs.deepseek.com/guides/search/",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "comment": "News search type"
   },
+  "mode": {
+    "values": [],
+    "source_url": "https://api-docs.deepseek.com/guides/search/",
+    "comment": "Single raw Search endpoint. `count` and `need_content` configure the response, not a search-quality tier."
+  },
+  "pricing_per_1k": {
+    "value": "$0.75 / 1K successful nonempty Search requests; Fetch separately $0.75 / 1K",
+    "source_url": "https://api-docs.deepseek.com/guides/search/",
+    "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. Direct live guide rechecked October 21: Search 100 QPS and Fetch 25 QPS. Earlier indexed 5/5 snapshot is superseded. Direct API billing is separate from temporarily free server-side integrations, billed from October 31 16:00 UTC.",
+    "primary_price": {
+      "amount_usd_per_1k": 0.75,
+      "billing_unit": "successful nonempty requests",
+      "basis": "Search; Fetch separately billed",
+      "source_url": "https://api-docs.deepseek.com/guides/search/",
+      "checked_at": "2026-10-21"
+    },
+    "lowest_price": {
+      "amount_usd_per_1k": 0.75,
+      "billing_unit": "successful nonempty Search requests",
+      "basis": "Single documented Search rate; Fetch also $0.75 / 1K",
+      "source_url": "https://api-docs.deepseek.com/guides/search/",
+      "checked_at": "2026-10-21"
+    },
+    "links": {}
+  },
+  "free_tier_limits": {
+    "value": "No recurring direct API allowance verified; server-side tool promotion is separate",
+    "source_url": "https://api-docs.deepseek.com/guides/search/",
+    "comment": "Trial, monthly credits and model-tool promotions are distinct. Direct live guide rechecked October 21: Search 100 QPS and Fetch 25 QPS. Earlier indexed 5/5 snapshot is superseded. Direct API billing is separate from temporarily free server-side integrations, billed from October 31 16:00 UTC.",
+    "links": {}
+  },
+  "p50_latency": {
+    "value": "Historical July 2026: No published p50/p90/p95 Search latency",
+    "source_url": "https://api-docs.deepseek.com/guides/search/",
+    "comment": "Historical evidence retained from July 2026; not remeasured or claimed current. The guide publishes QPS limits and per-request pricing, not latency percentiles."
+  },
+  "notes": "Raw Search API (`POST /v1/tools/search`) is in both SDKs. Domain, language and date filters use DeepSeek's documented query operators; `need_content` maps to `include_content`.",
   "api_category": {
     "value": "Standalone search API",
     "source_url": "https://api-docs.deepseek.com/guides/search/",
@@ -144,40 +143,14 @@
     "links": {}
   },
   "capability_basis": {
-    "value": "Native API \u2014 reviewed",
+    "value": "Existing SDK mappings",
     "source_url": "https://api-docs.deepseek.com/guides/search/",
     "comment": "SDK availability is separate from native provider capability. Each native feature cell carries its own checked date and evidence."
   },
   "sdk_support": {
-    "value": "Comparison only \u2014 no adapter",
+    "value": "Python + TypeScript adapters",
     "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
     "comment": "SDK adapter availability only. See Capability basis for the feature rows; native features do not imply an SDK adapter."
-  },
-  "pricing_per_1k": {
-    "value": "$0.75 / 1K successful nonempty Search requests; Fetch separately $0.75 / 1K",
-    "source_url": "https://api-docs.deepseek.com/guides/search/",
-    "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. Direct live guide rechecked October 21: Search 100 QPS and Fetch 25 QPS. Earlier indexed 5/5 snapshot is superseded. Direct API billing is separate from temporarily free server-side integrations, billed from October 31 16:00 UTC.",
-    "primary_price": {
-      "amount_usd_per_1k": 0.75,
-      "billing_unit": "successful nonempty requests",
-      "basis": "Search; Fetch separately billed",
-      "source_url": "https://api-docs.deepseek.com/guides/search/",
-      "checked_at": "2026-10-21"
-    },
-    "lowest_price": {
-      "amount_usd_per_1k": 0.75,
-      "billing_unit": "successful nonempty Search requests",
-      "basis": "Single documented Search rate; Fetch also $0.75 / 1K",
-      "source_url": "https://api-docs.deepseek.com/guides/search/",
-      "checked_at": "2026-10-21"
-    },
-    "links": {}
-  },
-  "free_tier_limits": {
-    "value": "No recurring direct API allowance verified; server-side tool promotion is separate",
-    "source_url": "https://api-docs.deepseek.com/guides/search/",
-    "comment": "Trial, monthly credits and model-tool promotions are distinct. Direct live guide rechecked October 21: Search 100 QPS and Fetch 25 QPS. Earlier indexed 5/5 snapshot is superseded. Direct API billing is separate from temporarily free server-side integrations, billed from October 31 16:00 UTC.",
-    "links": {}
   },
   "evidence": {
     "checked_at": "2026-10-21",

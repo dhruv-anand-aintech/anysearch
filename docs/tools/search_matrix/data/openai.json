@@ -1,121 +1,126 @@
 {
   "name": "OpenAI Web Search",
   "links": {
-    "slug": "openai",
-    "docs": "https://developers.openai.com/api/docs/pricing",
-    "website": "https://openai.com"
+    "docs": "https://platform.openai.com/docs/guides/tools-web-search",
+    "github": "https://github.com/dhruv-anand-aintech/anysearch",
+    "website": "https://openai.com",
+    "slug": "openai"
   },
   "env_keys": {
-    "value": "Not integrated",
-    "source_url": "https://developers.openai.com/api/docs/pricing",
-    "comment": "Comparison only; anysearch does not read a key for this provider."
+    "value": "OPENAI_API_KEY",
+    "source_url": "https://platform.openai.com/docs/guides/tools-web-search",
+    "comment": "API keys and configuration variables documented by the provider."
   },
   "python_extra": {
-    "value": "Not integrated",
-    "source_url": "https://developers.openai.com/api/docs/pricing",
-    "comment": ""
+    "value": "\u2014 (REST only)",
+    "source_url": "https://platform.openai.com/docs/guides/tools-web-search",
+    "comment": "HTTP API only; no required vendor Python SDK."
   },
-  "mode": {
-    "values": [
-      "Non-reasoning",
-      "Reasoning",
-      "Deep research"
-    ],
-    "comment": "Official guide describes three search patterns by model; model-mediated generation, not raw SDK modes.",
-    "source_url": "https://developers.openai.com/api/docs/guides/tools-web-search",
-    "checked_at": "2026-10-21"
-  },
-  "p50_latency": {
-    "value": "No current comparable measurement verified",
-    "source_url": "https://developers.openai.com/api/docs/pricing",
-    "comment": ""
-  },
-  "notes": "Comparison only; no anysearch SDK adapter is claimed.",
-  "comparison_only": true,
   "requires_key": {
     "support": "full",
-    "comment": "Authenticated Responses API calls use an OpenAI API key.",
-    "source_url": "https://developers.openai.com/api/docs/guides/tools-web-search",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "source_url": "https://platform.openai.com/docs/guides/tools-web-search",
+    "comment": "Valid API key required for every request."
   },
   "snippet": {
-    "support": "not_applicable",
-    "comment": "Model-mediated cited answers and source metadata are returned, not a contracted raw ranked-result snippet field.",
-    "source_url": "https://developers.openai.com/api/docs/guides/tools-web-search",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "support": "full",
+    "source_url": "https://platform.openai.com/docs/guides/tools-web-search",
+    "comment": "Short description field returned with each result."
   },
   "domains": {
-    "support": "full",
-    "comment": "Responses web_search filters allow up to 100 allowed_domains or blocked_domains; legacy Chat Completions search does not have this control.",
-    "source_url": "https://developers.openai.com/api/docs/guides/tools-web-search",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "support": "partial",
+    "source_url": "https://platform.openai.com/docs/guides/tools-web-search",
+    "comment": "Tool `filters.allowed_domains` for includes; excluded domains are appended as `-site:` operators."
   },
   "country": {
-    "support": "full",
-    "comment": "user_location.country accepts a two-letter ISO country code; approximate user location biases search.",
-    "source_url": "https://developers.openai.com/api/docs/guides/tools-web-search",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "support": "none",
+    "source_url": "https://platform.openai.com/docs/guides/tools-web-search",
+    "comment": "Country (gl)"
   },
   "language": {
-    "support": "unknown",
-    "comment": "Reviewed web_search control guide documents no dedicated result-language filter. Prompt language is not equivalent to enforced retrieval language.",
-    "source_url": "https://developers.openai.com/api/docs/guides/tools-web-search",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "support": "none",
+    "source_url": "https://platform.openai.com/docs/guides/tools-web-search",
+    "comment": "Language"
   },
   "date": {
-    "support": "unknown",
-    "comment": "No typed publication-date range control is documented in the reviewed web_search guide; prompt instructions do not prove enforced filtering.",
-    "source_url": "https://developers.openai.com/api/docs/guides/tools-web-search",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "support": "none",
+    "source_url": "https://platform.openai.com/docs/guides/tools-web-search",
+    "comment": "Published date range"
   },
   "safe_search": {
-    "support": "unknown",
-    "comment": "No developer-configurable SafeSearch switch is documented in the reviewed tool guide; model safety behavior is not a search filter.",
-    "source_url": "https://developers.openai.com/api/docs/guides/tools-web-search",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "support": "none",
+    "source_url": "https://platform.openai.com/docs/guides/tools-web-search",
+    "comment": "Safe search"
   },
   "answer": {
     "support": "full",
-    "comment": "The model produces a sourced answer with URL citations after web_search.",
-    "source_url": "https://developers.openai.com/api/docs/guides/tools-web-search",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "source_url": "https://platform.openai.com/docs/guides/tools-web-search",
+    "comment": "The model's `output_text` is returned in `answer`, sourced from `url_citation` annotations."
   },
   "content": {
-    "support": "partial",
-    "comment": "Reasoning tools can open pages and find content for the model; this is not a guaranteed raw full-page export API.",
-    "source_url": "https://developers.openai.com/api/docs/guides/tools-web-search",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "support": "none",
+    "source_url": "https://platform.openai.com/docs/guides/tools-web-search",
+    "comment": "Full page text"
   },
   "summary": {
-    "support": "not_applicable",
-    "comment": "The contracted output is a cited model response, not a per-result summary array. An answer summary must not be confused with page summaries.",
-    "source_url": "https://developers.openai.com/api/docs/guides/tools-web-search",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "support": "none",
+    "source_url": "https://platform.openai.com/docs/guides/tools-web-search",
+    "comment": "AI per-result summary"
   },
   "highlights": {
-    "support": "not_applicable",
-    "comment": "Citation offsets identify spans in generated answer text, not query-relevant source-page highlight excerpts.",
-    "source_url": "https://developers.openai.com/api/docs/guides/tools-web-search",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "support": "none",
+    "source_url": "https://platform.openai.com/docs/guides/tools-web-search",
+    "comment": "Query highlights"
   },
   "news": {
-    "support": "partial",
-    "comment": "Official examples search current news via general web_search; no dedicated news-only vertical selector is documented.",
-    "source_url": "https://developers.openai.com/api/docs/guides/tools-web-search",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "support": "none",
+    "source_url": "https://platform.openai.com/docs/guides/tools-web-search",
+    "comment": "News search type"
   },
+  "mode": {
+    "values": [
+      "fast",
+      "balanced",
+      "deep"
+    ],
+    "source_url": "https://platform.openai.com/docs/guides/tools-web-search",
+    "comment": "`search_context_size` and `reasoning.effort` map fast\u2192low, balanced\u2192medium, deep\u2192high. Deep research remains a model/reasoning configuration, not a raw search tier."
+  },
+  "pricing_per_1k": {
+    "value": "web_search $10 / 1K tool calls + search-content tokens at model rates",
+    "source_url": "https://developers.openai.com/api/docs/pricing",
+    "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+    "primary_price": {
+      "amount_usd_per_1k": 10,
+      "billing_unit": "web_search tool calls",
+      "basis": "Model/search-content tokens extra",
+      "source_url": "https://developers.openai.com/api/docs/pricing",
+      "checked_at": "2026-10-21"
+    },
+    "lowest_price": {
+      "amount_usd_per_1k": 10,
+      "billing_unit": "web_search tool calls",
+      "basis": "Tool calls only; search-content tokens billed at model rates",
+      "source_url": "https://developers.openai.com/api/docs/pricing",
+      "checked_at": "2026-10-21"
+    },
+    "links": {
+      "Official source 1": "https://developers.openai.com/api/docs/guides/tools-web-search"
+    }
+  },
+  "free_tier_limits": {
+    "value": "No recurring free allowance verified",
+    "source_url": "https://developers.openai.com/api/docs/pricing",
+    "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
+    "links": {
+      "Official source 1": "https://developers.openai.com/api/docs/guides/tools-web-search"
+    }
+  },
+  "p50_latency": {
+    "value": "Historical July 2026: No published search-tool latency distribution",
+    "source_url": "https://platform.openai.com/docs/guides/tools-web-search",
+    "comment": "Historical evidence retained from July 2026; not remeasured or claimed current. Latency depends on the model, reasoning effort, search context size and number of tool calls."
+  },
+  "notes": "Model-hosted `web_search` in the Responses API is in both SDKs. Results are the response's `url_citation` annotations; the generated text is returned in `answer`.",
   "api_category": {
     "value": "Model-hosted grounding",
     "source_url": "https://developers.openai.com/api/docs/pricing",
@@ -154,44 +159,14 @@
     }
   },
   "capability_basis": {
-    "value": "Native API \u2014 reviewed",
+    "value": "Existing SDK mappings",
     "source_url": "https://developers.openai.com/api/docs/pricing",
     "comment": "SDK availability is separate from native provider capability. Each native feature cell carries its own checked date and evidence."
   },
   "sdk_support": {
-    "value": "Comparison only \u2014 no adapter",
+    "value": "Python + TypeScript adapters",
     "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
     "comment": "SDK adapter availability only. See Capability basis for the feature rows; native features do not imply an SDK adapter."
-  },
-  "pricing_per_1k": {
-    "value": "web_search $10 / 1K tool calls + search-content tokens at model rates",
-    "source_url": "https://developers.openai.com/api/docs/pricing",
-    "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
-    "primary_price": {
-      "amount_usd_per_1k": 10,
-      "billing_unit": "web_search tool calls",
-      "basis": "Model/search-content tokens extra",
-      "source_url": "https://developers.openai.com/api/docs/pricing",
-      "checked_at": "2026-10-21"
-    },
-    "lowest_price": {
-      "amount_usd_per_1k": 10,
-      "billing_unit": "web_search tool calls",
-      "basis": "Tool calls only; search-content tokens billed at model rates",
-      "source_url": "https://developers.openai.com/api/docs/pricing",
-      "checked_at": "2026-10-21"
-    },
-    "links": {
-      "Official source 1": "https://developers.openai.com/api/docs/guides/tools-web-search"
-    }
-  },
-  "free_tier_limits": {
-    "value": "No recurring free allowance verified",
-    "source_url": "https://developers.openai.com/api/docs/pricing",
-    "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
-    "links": {
-      "Official source 1": "https://developers.openai.com/api/docs/guides/tools-web-search"
-    }
   },
   "evidence": {
     "checked_at": "2026-10-21",

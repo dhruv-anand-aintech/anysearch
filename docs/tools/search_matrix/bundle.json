@@ -2,120 +2,120 @@
   {
     "name": "Anthropic Web Search",
     "links": {
-      "slug": "anthropic",
       "docs": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
-      "website": "https://anthropic.com"
+      "github": "https://github.com/dhruv-anand-aintech/anysearch",
+      "website": "https://www.anthropic.com",
+      "slug": "anthropic"
     },
     "env_keys": {
-      "value": "Not integrated",
+      "value": "ANTHROPIC_API_KEY, CLAUDE_API_KEY",
       "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
-      "comment": "Comparison only; anysearch does not read a key for this provider."
+      "comment": "API keys and configuration variables documented by the provider."
     },
     "python_extra": {
-      "value": "Not integrated",
+      "value": "\u2014 (REST only)",
       "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
-      "comment": ""
+      "comment": "HTTP API only; no required vendor Python SDK."
     },
-    "mode": {
-      "values": [
-        "Basic web search",
-        "Dynamic filtering"
-      ],
-      "comment": "Tool versions 20250305, 20260209 and 20260318 provide basic search, dynamic filtering and response-inclusion controls; model availability varies.",
-      "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
-      "checked_at": "2026-10-21"
-    },
-    "p50_latency": {
-      "value": "No current comparable measurement verified",
-      "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
-      "comment": ""
-    },
-    "notes": "Comparison only; no anysearch SDK adapter is claimed.",
-    "comparison_only": true,
     "requires_key": {
       "support": "full",
-      "comment": "Claude API authentication is required; web_search is a server tool in an authenticated Messages request.",
-      "source_url": "https://platform.claude.com/docs/en/api/overview",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+      "comment": "Valid API key required for every request."
     },
     "snippet": {
-      "support": "partial",
-      "comment": "Search result blocks expose encrypted_content rather than plaintext snippets; citations may return cited_text up to 150 characters.",
+      "support": "full",
       "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "comment": "Short description field returned with each result."
     },
     "domains": {
       "support": "full",
-      "comment": "allowed_domains or blocked_domains restrict searches; mutually exclusive in one tool configuration.",
       "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "comment": "Tool `allowed_domains` / `blocked_domains`."
     },
     "country": {
-      "support": "full",
-      "comment": "user_location.country is ISO 3166-1 alpha-2; approximate localization supported.",
+      "support": "none",
       "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "comment": "Country (gl)"
     },
     "language": {
-      "support": "unknown",
-      "comment": "No result-language filter is documented in the reviewed web_search parameter guide. Multilingual model output is not retrieval-language enforcement.",
+      "support": "none",
       "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "comment": "Language"
     },
     "date": {
-      "support": "unknown",
-      "comment": "page_age is response metadata; the reviewed request controls do not establish an enforced publication-date-range filter.",
+      "support": "none",
       "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "comment": "Published date range"
     },
     "safe_search": {
-      "support": "unknown",
-      "comment": "No configurable SafeSearch switch is documented in the reviewed server-tool guide. Safety policy and retrieval filter are distinct.",
+      "support": "none",
       "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "comment": "Safe search"
     },
     "answer": {
       "support": "full",
-      "comment": "Claude returns a final answer with citations after tool searches.",
       "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "comment": "Text blocks form the cited answer; results come from web-search result blocks and citations."
     },
     "content": {
-      "support": "partial",
-      "comment": "Search content is encrypted for continuation; plaintext page/document fetching is a separate web_fetch tool, not included raw search output.",
-      "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-fetch-tool",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "support": "none",
+      "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+      "comment": "Full page text"
     },
     "summary": {
-      "support": "not_applicable",
-      "comment": "Cited answer generation is not a per-result page-summary API; search result blocks have URL/title/page_age/encrypted_content.",
+      "support": "none",
       "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "comment": "AI per-result summary"
     },
     "highlights": {
-      "support": "partial",
-      "comment": "Citation cited_text contains up to 150 characters of cited source content; limited citation excerpts, not arbitrary full-page highlighting.",
+      "support": "none",
       "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "comment": "Query highlights"
     },
     "news": {
-      "support": "partial",
-      "comment": "Official documentation lists recent news as a web-search use case; no news-only vertical control is documented.",
+      "support": "none",
       "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "comment": "News search type"
     },
+    "mode": {
+      "values": [
+        "balanced"
+      ],
+      "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+      "comment": "The adapter uses the basic `web_search_20250305` server tool. Dynamic filtering tool versions exist but are not a fast/balanced/deep search tier."
+    },
+    "pricing_per_1k": {
+      "value": "$10 / 1K searches + model token charges",
+      "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+      "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "primary_price": {
+        "amount_usd_per_1k": 10,
+        "billing_unit": "web searches",
+        "basis": "Model tokens extra",
+        "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+        "checked_at": "2026-10-21"
+      },
+      "lowest_price": {
+        "amount_usd_per_1k": 10,
+        "billing_unit": "web searches",
+        "basis": "Search calls only; model tokens billed separately",
+        "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+        "checked_at": "2026-10-21"
+      },
+      "links": {}
+    },
+    "free_tier_limits": {
+      "value": "No recurring free allowance verified",
+      "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+      "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
+      "links": {}
+    },
+    "p50_latency": {
+      "value": "Historical July 2026: No published search-tool latency distribution",
+      "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+      "comment": "Historical evidence retained from July 2026; not remeasured or claimed current. Latency depends on the model and how many server-side searches the model runs."
+    },
+    "notes": "The Claude `web_search_20250305` server tool is in both SDKs. Results come from `web_search_tool_result` blocks and citations; generated text is returned in `answer`.",
     "api_category": {
       "value": "Model-hosted grounding",
       "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
@@ -146,40 +146,14 @@
       "links": {}
     },
     "capability_basis": {
-      "value": "Native API \u2014 reviewed",
+      "value": "Existing SDK mappings",
       "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
       "comment": "SDK availability is separate from native provider capability. Each native feature cell carries its own checked date and evidence."
     },
     "sdk_support": {
-      "value": "Comparison only \u2014 no adapter",
+      "value": "Python + TypeScript adapters",
       "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
       "comment": "SDK adapter availability only. See Capability basis for the feature rows; native features do not imply an SDK adapter."
-    },
-    "pricing_per_1k": {
-      "value": "$10 / 1K searches + model token charges",
-      "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
-      "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
-      "primary_price": {
-        "amount_usd_per_1k": 10,
-        "billing_unit": "web searches",
-        "basis": "Model tokens extra",
-        "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
-        "checked_at": "2026-10-21"
-      },
-      "lowest_price": {
-        "amount_usd_per_1k": 10,
-        "billing_unit": "web searches",
-        "basis": "Search calls only; model tokens billed separately",
-        "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
-        "checked_at": "2026-10-21"
-      },
-      "links": {}
-    },
-    "free_tier_limits": {
-      "value": "No recurring free allowance verified",
-      "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
-      "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
-      "links": {}
     },
     "evidence": {
       "checked_at": "2026-10-21",
@@ -907,123 +881,120 @@
   {
     "name": "Bright Data",
     "links": {
-      "slug": "brightdata",
-      "docs": "https://brightdata.com/pricing/serp",
-      "website": "https://brightdata.com"
+      "docs": "https://docs.brightdata.com/scraping-automation/serp-api/introduction",
+      "github": "https://github.com/dhruv-anand-aintech/anysearch",
+      "website": "https://brightdata.com",
+      "slug": "brightdata"
     },
     "env_keys": {
-      "value": "Not integrated",
-      "source_url": "https://brightdata.com/pricing/serp",
-      "comment": "Comparison only; anysearch does not read a key for this provider."
+      "value": "BRIGHTDATA_API_KEY, BRIGHT_DATA_API_KEY, BRIGHTDATA_ZONE",
+      "source_url": "https://docs.brightdata.com/api-reference/authentication",
+      "comment": "API keys and configuration variables documented by the provider."
     },
     "python_extra": {
-      "value": "Not integrated",
-      "source_url": "https://brightdata.com/pricing/serp",
-      "comment": ""
+      "value": "\u2014 (REST only)",
+      "source_url": "https://docs.brightdata.com/scraping-automation/serp-api/introduction",
+      "comment": "HTTP API only; no required vendor Python SDK."
     },
-    "mode": {
-      "values": [
-        "SERP",
-        "Fast SERP"
-      ],
-      "comment": "Fast SERP has separate access requirements; no anysearch fast/balanced/deep mapping.",
-      "source_url": "https://docs.brightdata.com/products/serp-api/fast-serp/quickstart",
-      "checked_at": "2026-10-21"
-    },
-    "p50_latency": {
-      "value": "No current comparable measurement verified",
-      "source_url": "https://brightdata.com/pricing/serp",
-      "comment": ""
-    },
-    "notes": "Comparison only; no anysearch SDK adapter is claimed.",
-    "comparison_only": true,
     "requires_key": {
       "support": "full",
-      "comment": "REST request API requires bearer API key; proxy interface uses zone credentials.",
-      "source_url": "https://docs.brightdata.com/api-reference/rest-api/serp/serp-api",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "source_url": "https://docs.brightdata.com/api-reference/authentication",
+      "comment": "Valid API key required for every request."
     },
     "snippet": {
       "support": "full",
-      "comment": "Parsed organic results expose description (search snippet).",
-      "source_url": "https://docs.brightdata.com/products/serp-api/parsed-json-results",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "source_url": "https://docs.brightdata.com/scraping-automation/serp-api/introduction",
+      "comment": "Short description field returned with each result."
     },
     "domains": {
-      "support": "partial",
-      "comment": "Indirect engine query operator: provider forwards q in a Google search URL, and Google documents site:. This documented composition is not a typed domain allow/deny guarantee.",
-      "source_url": "https://docs.brightdata.com/products/serp-api/query-parameters/google",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation",
-      "links": {
-        "Google site: operator": "https://developers.google.com/search/docs/monitor-debug/search-operators/all-search-site"
-      }
+      "support": "full",
+      "source_url": "https://docs.brightdata.com/scraping-automation/serp-api/introduction",
+      "comment": "`site:` / `-site:` operators in the proxied Google or Bing query."
     },
     "country": {
       "support": "full",
-      "comment": "gl selects two-letter search country; localization is documented.",
-      "source_url": "https://docs.brightdata.com/products/serp-api/query-parameters/google",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "source_url": "https://docs.brightdata.com/scraping-automation/serp-api/introduction",
+      "comment": "Google `gl` or Bing `cc` country parameter."
     },
     "language": {
       "support": "full",
-      "comment": "hl sets page/interface language; engine-supported language semantics, not a guarantee every result has that language.",
-      "source_url": "https://docs.brightdata.com/products/serp-api/query-parameters/google",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "source_url": "https://docs.brightdata.com/scraping-automation/serp-api/introduction",
+      "comment": "Google `hl` or Bing `setlang` language parameter."
     },
     "date": {
-      "support": "partial",
-      "comment": "tbs filters publication time by engine-supported ranges; engine-specific date syntax rather than typed start/end fields.",
-      "source_url": "https://docs.brightdata.com/products/serp-api/query-parameters/google",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "support": "full",
+      "source_url": "https://docs.brightdata.com/scraping-automation/serp-api/introduction",
+      "comment": "Google `tbs=cdr:1,cd_min:\u2026,cd_max:\u2026`; Bing date filtering is not mapped."
     },
     "safe_search": {
-      "support": "full",
-      "comment": "safe=active or safe=off enables/disables Google SafeSearch.",
-      "source_url": "https://docs.brightdata.com/products/serp-api/query-parameters/google",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "support": "partial",
+      "source_url": "https://docs.brightdata.com/scraping-automation/serp-api/introduction",
+      "comment": "Google `safe=active|off`; moderate and strict both map to active."
     },
     "answer": {
-      "support": "partial",
-      "comment": "Parsed Google ai_overview is available when the upstream SERP includes it; no guaranteed independent synthesized answer.",
-      "source_url": "https://docs.brightdata.com/products/serp-api/query-parameters/google",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "support": "none",
+      "source_url": "https://docs.brightdata.com/scraping-automation/serp-api/introduction",
+      "comment": "AI answer"
     },
     "content": {
       "support": "none",
-      "comment": "Parsed JSON/HTML/Markdown formats describe the SERP response, not fetched full text of linked result pages. Separate scraper products are outside this column.",
-      "source_url": "https://docs.brightdata.com/products/serp-api/parsed-json-results",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "source_url": "https://docs.brightdata.com/scraping-automation/serp-api/introduction",
+      "comment": "Full page text"
     },
     "summary": {
       "support": "none",
-      "comment": "The documented organic response has description snippets, not generated per-result page summaries. Upstream AI Overview is a separate SERP element.",
-      "source_url": "https://docs.brightdata.com/products/serp-api/parsed-json-results",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "source_url": "https://docs.brightdata.com/scraping-automation/serp-api/introduction",
+      "comment": "AI per-result summary"
     },
     "highlights": {
-      "support": "partial",
-      "comment": "snippet_highlighted_words exposes engine-highlighted terms, not a standalone excerpt generation service.",
-      "source_url": "https://docs.brightdata.com/products/serp-api/parsed-json-results",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "support": "none",
+      "source_url": "https://docs.brightdata.com/scraping-automation/serp-api/introduction",
+      "comment": "Query highlights"
     },
     "news": {
       "support": "full",
-      "comment": "tbm=nws selects Google News results; dedicated Fast SERP News also documented.",
-      "source_url": "https://docs.brightdata.com/products/serp-api/query-parameters/google",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "source_url": "https://docs.brightdata.com/scraping-automation/serp-api/introduction",
+      "comment": "Google `tbm=nws` news vertical through the same SERP zone."
     },
+    "mode": {
+      "values": [
+        "balanced"
+      ],
+      "source_url": "https://docs.brightdata.com/scraping-automation/serp-api/introduction",
+      "comment": "One SERP request per search. Fast SERP is a separately provisioned product and is not mapped to the unified mode parameter."
+    },
+    "pricing_per_1k": {
+      "value": "PAYG $1.50 / 1K successful requests; Scale $499/month includes 380K then $1.30 / 1K",
+      "source_url": "https://brightdata.com/pricing/serp",
+      "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "primary_price": {
+        "amount_usd_per_1k": 1.5,
+        "billing_unit": "successful PAYG SERP requests",
+        "basis": "Other plans differ",
+        "source_url": "https://brightdata.com/pricing/serp",
+        "checked_at": "2026-10-21"
+      },
+      "lowest_price": {
+        "amount_usd_per_1k": 1.3,
+        "billing_unit": "successful SERP requests on Scale",
+        "basis": "Scale $499/month includes 380K requests, then $1.30 / 1K; PAYG $1.50 / 1K",
+        "source_url": "https://brightdata.com/pricing/serp",
+        "checked_at": "2026-10-21"
+      },
+      "links": {}
+    },
+    "free_tier_limits": {
+      "value": "5,000 requests/month free; no card",
+      "source_url": "https://brightdata.com/pricing/serp",
+      "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
+      "links": {}
+    },
+    "p50_latency": {
+      "value": "Historical July 2026: Under 1 second per request claimed; no percentile distribution",
+      "source_url": "https://docs.brightdata.com/scraping-automation/serp-api/introduction",
+      "comment": "Historical evidence retained from July 2026; not remeasured or claimed current. Bright Data states sub-second SERP responses but does not publish p50/p95 figures."
+    },
+    "notes": "SERP API is in both SDKs through one configured zone. Google is the default engine and `engine=\"bing\"` switches to Bing; results come from parsed JSON organic items.",
     "api_category": {
       "value": "Third-party SERP service",
       "source_url": "https://brightdata.com/pricing/serp",
@@ -1054,40 +1025,14 @@
       "links": {}
     },
     "capability_basis": {
-      "value": "Native API \u2014 reviewed",
+      "value": "Existing SDK mappings",
       "source_url": "https://brightdata.com/pricing/serp",
       "comment": "SDK availability is separate from native provider capability. Each native feature cell carries its own checked date and evidence."
     },
     "sdk_support": {
-      "value": "Comparison only \u2014 no adapter",
+      "value": "Python + TypeScript adapters",
       "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
       "comment": "SDK adapter availability only. See Capability basis for the feature rows; native features do not imply an SDK adapter."
-    },
-    "pricing_per_1k": {
-      "value": "PAYG $1.50 / 1K successful requests; Scale $499/month includes 380K then $1.30 / 1K",
-      "source_url": "https://brightdata.com/pricing/serp",
-      "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
-      "primary_price": {
-        "amount_usd_per_1k": 1.5,
-        "billing_unit": "successful PAYG SERP requests",
-        "basis": "Other plans differ",
-        "source_url": "https://brightdata.com/pricing/serp",
-        "checked_at": "2026-10-21"
-      },
-      "lowest_price": {
-        "amount_usd_per_1k": 1.3,
-        "billing_unit": "successful SERP requests on Scale",
-        "basis": "Scale $499/month includes 380K requests, then $1.30 / 1K; PAYG $1.50 / 1K",
-        "source_url": "https://brightdata.com/pricing/serp",
-        "checked_at": "2026-10-21"
-      },
-      "links": {}
-    },
-    "free_tier_limits": {
-      "value": "5,000 requests/month free; no card",
-      "source_url": "https://brightdata.com/pricing/serp",
-      "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
-      "links": {}
     },
     "evidence": {
       "checked_at": "2026-10-21",
@@ -1106,121 +1051,120 @@
   {
     "name": "DataForSEO",
     "links": {
-      "slug": "dataforseo",
-      "docs": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
-      "website": "https://dataforseo.com"
+      "docs": "https://docs.dataforseo.com/v3/serp/google/organic/live/advanced/",
+      "github": "https://github.com/dhruv-anand-aintech/anysearch",
+      "website": "https://dataforseo.com",
+      "slug": "dataforseo"
     },
     "env_keys": {
-      "value": "Not integrated",
-      "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
-      "comment": "Comparison only; anysearch does not read a key for this provider."
+      "value": "DATAFORSEO_LOGIN, DATAFORSEO_API_LOGIN, DATAFORSEO_PASSWORD",
+      "source_url": "https://docs.dataforseo.com/v3/auth/",
+      "comment": "API keys and configuration variables documented by the provider."
     },
     "python_extra": {
-      "value": "Not integrated",
-      "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
-      "comment": ""
+      "value": "\u2014 (REST only)",
+      "source_url": "https://docs.dataforseo.com/v3/serp/google/organic/live/advanced/",
+      "comment": "HTTP API only; no required vendor Python SDK."
     },
-    "mode": {
-      "values": [
-        "Standard queue",
-        "Priority queue",
-        "Live"
-      ],
-      "comment": "Delivery/priority options, not a unified SDK search quality mode. Queued and live rates differ.",
-      "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
-      "checked_at": "2026-10-21"
-    },
-    "p50_latency": {
-      "value": "No current comparable measurement verified",
-      "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
-      "comment": ""
-    },
-    "notes": "Comparison only; no anysearch SDK adapter is claimed.",
-    "comparison_only": true,
     "requires_key": {
       "support": "full",
-      "comment": "HTTP Basic authentication with API login/password; credentials are required, although not a bearer API key.",
       "source_url": "https://docs.dataforseo.com/v3/auth/",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "comment": "Valid API key required for every request."
     },
     "snippet": {
       "support": "full",
-      "comment": "Organic items expose description as the search-result description.",
-      "source_url": "https://docs.dataforseo.com/v3/serp-se-type-live-advanced/",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "source_url": "https://docs.dataforseo.com/v3/serp/google/organic/live/advanced/",
+      "comment": "Short description field returned with each result."
     },
     "domains": {
       "support": "partial",
-      "comment": "keyword accepts site: operators; provider documents a 5x task charge for advanced operators. This is query syntax, not include/exclude domain arrays.",
-      "source_url": "https://docs.dataforseo.com/v3/serp-se-type-live-advanced/",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "source_url": "https://docs.dataforseo.com/v3/serp/google/organic/live/advanced/",
+      "comment": "`site:` / `-site:` query operators; operator queries are billed at a higher rate."
     },
     "country": {
-      "support": "full",
-      "comment": "location_code or location_name select search geography; country locations are documented.",
-      "source_url": "https://docs.dataforseo.com/v3/serp-se-type-live-advanced/",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "support": "none",
+      "source_url": "https://docs.dataforseo.com/v3/serp/google/organic/live/advanced/",
+      "comment": "Country (gl)"
     },
     "language": {
       "support": "full",
-      "comment": "language_code or language_name select search engine language; lr is explicitly stripped.",
-      "source_url": "https://docs.dataforseo.com/v3/serp-se-type-live-advanced/",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "source_url": "https://docs.dataforseo.com/v3/serp/google/organic/live/advanced/",
+      "comment": "`language_code` accepts ISO language codes."
     },
     "date": {
-      "support": "partial",
-      "comment": "search_param forwards supported Google tbs time filters; this is engine date filtering, not guaranteed publication metadata. as_qdr is explicitly stripped.",
-      "source_url": "https://dataforseo.com/help-center/google-search-engine-parameters-and-how-to-use-them",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "support": "none",
+      "source_url": "https://docs.dataforseo.com/v3/serp/google/organic/live/advanced/",
+      "comment": "Published date range"
     },
     "safe_search": {
-      "support": "partial",
-      "comment": "Supported search_param safe=active filters explicit results; engine-specific parameter behavior, not a unified safe_search enum.",
-      "source_url": "https://dataforseo.com/help-center/google-search-engine-parameters-and-how-to-use-them",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "support": "none",
+      "source_url": "https://docs.dataforseo.com/v3/serp/google/organic/live/advanced/",
+      "comment": "Safe search"
     },
     "answer": {
-      "support": "partial",
-      "comment": "Advanced response can contain search-engine ai_overview/answer_box; not an always-generated DataForSEO answer. Async overview retrieval is separately charged.",
-      "source_url": "https://docs.dataforseo.com/v3/serp-se-type-live-advanced/",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "support": "none",
+      "source_url": "https://docs.dataforseo.com/v3/serp/google/organic/live/advanced/",
+      "comment": "AI answer"
     },
     "content": {
       "support": "none",
-      "comment": "This SERP contract returns result elements and descriptions; the HTML variant returns search-engine SERP HTML, not full text from linked result pages.",
-      "source_url": "https://docs.dataforseo.com/v3/serp-se-type-live-advanced/",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "source_url": "https://docs.dataforseo.com/v3/serp/google/organic/live/advanced/",
+      "comment": "Full page text"
     },
     "summary": {
       "support": "none",
-      "comment": "Organic result description is an engine snippet; the complete organic item schema has no generated per-result page-summary output. Separate AI Summary products are outside this column.",
-      "source_url": "https://docs.dataforseo.com/v3/serp-se-type-live-advanced/",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "source_url": "https://docs.dataforseo.com/v3/serp/google/organic/live/advanced/",
+      "comment": "AI per-result summary"
     },
     "highlights": {
-      "support": "partial",
-      "comment": "highlighted contains bold terms within engine results, not an independently generated excerpt/highlights service.",
-      "source_url": "https://docs.dataforseo.com/v3/serp-se-type-live-advanced/",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "support": "none",
+      "source_url": "https://docs.dataforseo.com/v3/serp/google/organic/live/advanced/",
+      "comment": "Query highlights"
     },
     "news": {
-      "support": "full",
-      "comment": "Dedicated Google News SERP endpoint documented. Separate news request/engine variant, no anysearch adapter.",
-      "source_url": "https://docs.dataforseo.com/v3/serp/google/news/live/html/",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "support": "none",
+      "source_url": "https://docs.dataforseo.com/v3/serp/google/organic/live/advanced/",
+      "comment": "News search type"
     },
+    "mode": {
+      "values": [
+        "balanced"
+      ],
+      "source_url": "https://docs.dataforseo.com/v3/serp/google/organic/live/advanced/",
+      "comment": "The adapter uses the Live Google Organic Advanced endpoint. Queued Standard and Priority delivery are separate pricing/latency options, not unified modes."
+    },
+    "pricing_per_1k": {
+      "value": "Standard queue $0.60; Priority $1.20; Live $2 / 1K SERP pages (\u226410 organic results/page)",
+      "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+      "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "primary_price": {
+        "amount_usd_per_1k": 0.6,
+        "billing_unit": "Standard-queue SERP pages",
+        "basis": "\u226410 results/page; queued, not Live; $50 prepaid minimum",
+        "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+        "checked_at": "2026-10-21"
+      },
+      "lowest_price": {
+        "amount_usd_per_1k": 0.6,
+        "billing_unit": "standard-queue SERP pages",
+        "basis": "Standard queue is the cheapest tier; priority $1.20 and live $2 / 1K",
+        "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+        "checked_at": "2026-10-21"
+      },
+      "links": {}
+    },
+    "free_tier_limits": {
+      "value": "$1 trial; sample-only sandbox separate",
+      "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+      "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
+      "links": {}
+    },
+    "p50_latency": {
+      "value": "Historical July 2026: Live endpoint: no published percentile; queued Standard averages ~5 min",
+      "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+      "comment": "Historical evidence retained from July 2026; not remeasured or claimed current. The adapter uses Live; queued delivery times are a different product mode."
+    },
+    "notes": "Live Google Organic Advanced (`POST /v3/serp/google/organic/live/advanced`) is in both SDKs with HTTP Basic auth. `DATAFORSEO_LOCATION_CODE` selects the market and defaults to 2840 (United States).",
     "api_category": {
       "value": "Third-party SERP service",
       "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
@@ -1251,40 +1195,14 @@
       "links": {}
     },
     "capability_basis": {
-      "value": "Native API \u2014 reviewed",
+      "value": "Existing SDK mappings",
       "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
       "comment": "SDK availability is separate from native provider capability. Each native feature cell carries its own checked date and evidence."
     },
     "sdk_support": {
-      "value": "Comparison only \u2014 no adapter",
+      "value": "Python + TypeScript adapters",
       "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
       "comment": "SDK adapter availability only. See Capability basis for the feature rows; native features do not imply an SDK adapter."
-    },
-    "pricing_per_1k": {
-      "value": "Standard queue $0.60; Priority $1.20; Live $2 / 1K SERP pages (\u226410 organic results/page)",
-      "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
-      "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
-      "primary_price": {
-        "amount_usd_per_1k": 0.6,
-        "billing_unit": "Standard-queue SERP pages",
-        "basis": "\u226410 results/page; queued, not Live; $50 prepaid minimum",
-        "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
-        "checked_at": "2026-10-21"
-      },
-      "lowest_price": {
-        "amount_usd_per_1k": 0.6,
-        "billing_unit": "standard-queue SERP pages",
-        "basis": "Standard queue is the cheapest tier; priority $1.20 and live $2 / 1K",
-        "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
-        "checked_at": "2026-10-21"
-      },
-      "links": {}
-    },
-    "free_tier_limits": {
-      "value": "$1 trial; sample-only sandbox separate",
-      "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
-      "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
-      "links": {}
     },
     "evidence": {
       "checked_at": "2026-10-21",
@@ -1302,119 +1220,118 @@
   {
     "name": "DeepSeek",
     "links": {
-      "slug": "deepseek",
       "docs": "https://api-docs.deepseek.com/guides/search/",
-      "website": "https://www.deepseek.com"
+      "github": "https://github.com/dhruv-anand-aintech/anysearch",
+      "website": "https://www.deepseek.com",
+      "slug": "deepseek"
     },
     "env_keys": {
-      "value": "Not integrated",
+      "value": "DEEPSEEK_API_KEY, DEEPSEEK_SEARCH_API_KEY",
       "source_url": "https://api-docs.deepseek.com/guides/search/",
-      "comment": "Comparison only; anysearch does not read a key for this provider."
+      "comment": "API keys and configuration variables documented by the provider."
     },
     "python_extra": {
-      "value": "Not integrated",
+      "value": "\u2014 (REST only)",
       "source_url": "https://api-docs.deepseek.com/guides/search/",
-      "comment": ""
+      "comment": "HTTP API only; no required vendor Python SDK."
     },
-    "mode": {
-      "values": [
-        "Search (single endpoint)"
-      ],
-      "comment": "One raw Search endpoint; count and need_content configure results, not named fast/deep tiers.",
-      "source_url": "https://api-docs.deepseek.com/guides/search/",
-      "checked_at": "2026-10-21"
-    },
-    "p50_latency": {
-      "value": "No current comparable measurement verified",
-      "source_url": "https://api-docs.deepseek.com/guides/search/",
-      "comment": ""
-    },
-    "notes": "Comparison only; no anysearch SDK adapter is claimed.",
-    "comparison_only": true,
     "requires_key": {
       "support": "full",
-      "comment": "Bearer DeepSeek API key required for both raw JSON tools.",
       "source_url": "https://api-docs.deepseek.com/guides/search/",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "comment": "Valid API key required for every request."
     },
     "snippet": {
       "support": "full",
-      "comment": "Each Search result has a short query-related snippet string.",
       "source_url": "https://api-docs.deepseek.com/guides/search/",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "comment": "Short description field returned with each result."
     },
     "domains": {
-      "support": "partial",
-      "comment": "site: and -site: query operators, including OR alternatives; query syntax rather than typed domain arrays.",
+      "support": "full",
       "source_url": "https://api-docs.deepseek.com/guides/search/",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "comment": "`site:` and `-site:` query operators; multiple sites are joined with OR."
     },
     "country": {
-      "support": "partial",
-      "comment": "localization accepts an IP address; region localization is indirect, not an ISO country selector.",
+      "support": "none",
       "source_url": "https://api-docs.deepseek.com/guides/search/",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "comment": "Country (gl)"
     },
     "language": {
-      "support": "partial",
-      "comment": "lang: query operator accepts comma-separated language codes; no typed language field.",
+      "support": "full",
       "source_url": "https://api-docs.deepseek.com/guides/search/",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "comment": "`lang:` query operator accepts comma-separated language codes."
     },
     "date": {
-      "support": "partial",
-      "comment": "after: and before: query operators restrict publication dates; no typed date fields.",
+      "support": "full",
       "source_url": "https://api-docs.deepseek.com/guides/search/",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "comment": "`after:` / `before:` query operators accept years or YYYY-MM-DD dates."
     },
     "safe_search": {
-      "support": "unknown",
-      "comment": "Reviewed request table and operator list document no explicit safe-search setting. Filtering policy or unsupported status is not established.",
+      "support": "none",
       "source_url": "https://api-docs.deepseek.com/guides/search/",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "comment": "Safe search"
     },
     "answer": {
       "support": "none",
-      "comment": "The documented Search response is results only; per-result summaries are not a top-level synthesized answer. Chat model generation is separate.",
       "source_url": "https://api-docs.deepseek.com/guides/search/",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "comment": "AI answer"
     },
     "content": {
       "support": "full",
-      "comment": "need_content=true returns page content when available; separate Fetch returns Markdown. No success/content guarantee for every page.",
       "source_url": "https://api-docs.deepseek.com/guides/search/",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "comment": "`need_content=true` fills the `content` field."
     },
     "summary": {
-      "support": "partial",
-      "comment": "Per-result summary is documented as a longer query-related summary; whether it is AI-generated is not specified.",
+      "support": "full",
       "source_url": "https://api-docs.deepseek.com/guides/search/",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "comment": "Each result has a long model-readable `summary` alongside the short snippet."
     },
     "highlights": {
-      "support": "partial",
-      "comment": "Query-related snippet/summary excerpts are returned; no separate highlighted-span array in the complete response schema.",
+      "support": "none",
       "source_url": "https://api-docs.deepseek.com/guides/search/",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "comment": "Query highlights"
     },
     "news": {
       "support": "none",
-      "comment": "The complete Search request contract has no news vertical selector; general search can retrieve news, which is not a dedicated News API.",
       "source_url": "https://api-docs.deepseek.com/guides/search/",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "comment": "News search type"
     },
+    "mode": {
+      "values": [],
+      "source_url": "https://api-docs.deepseek.com/guides/search/",
+      "comment": "Single raw Search endpoint. `count` and `need_content` configure the response, not a search-quality tier."
+    },
+    "pricing_per_1k": {
+      "value": "$0.75 / 1K successful nonempty Search requests; Fetch separately $0.75 / 1K",
+      "source_url": "https://api-docs.deepseek.com/guides/search/",
+      "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. Direct live guide rechecked October 21: Search 100 QPS and Fetch 25 QPS. Earlier indexed 5/5 snapshot is superseded. Direct API billing is separate from temporarily free server-side integrations, billed from October 31 16:00 UTC.",
+      "primary_price": {
+        "amount_usd_per_1k": 0.75,
+        "billing_unit": "successful nonempty requests",
+        "basis": "Search; Fetch separately billed",
+        "source_url": "https://api-docs.deepseek.com/guides/search/",
+        "checked_at": "2026-10-21"
+      },
+      "lowest_price": {
+        "amount_usd_per_1k": 0.75,
+        "billing_unit": "successful nonempty Search requests",
+        "basis": "Single documented Search rate; Fetch also $0.75 / 1K",
+        "source_url": "https://api-docs.deepseek.com/guides/search/",
+        "checked_at": "2026-10-21"
+      },
+      "links": {}
+    },
+    "free_tier_limits": {
+      "value": "No recurring direct API allowance verified; server-side tool promotion is separate",
+      "source_url": "https://api-docs.deepseek.com/guides/search/",
+      "comment": "Trial, monthly credits and model-tool promotions are distinct. Direct live guide rechecked October 21: Search 100 QPS and Fetch 25 QPS. Earlier indexed 5/5 snapshot is superseded. Direct API billing is separate from temporarily free server-side integrations, billed from October 31 16:00 UTC.",
+      "links": {}
+    },
+    "p50_latency": {
+      "value": "Historical July 2026: No published p50/p90/p95 Search latency",
+      "source_url": "https://api-docs.deepseek.com/guides/search/",
+      "comment": "Historical evidence retained from July 2026; not remeasured or claimed current. The guide publishes QPS limits and per-request pricing, not latency percentiles."
+    },
+    "notes": "Raw Search API (`POST /v1/tools/search`) is in both SDKs. Domain, language and date filters use DeepSeek's documented query operators; `need_content` maps to `include_content`.",
     "api_category": {
       "value": "Standalone search API",
       "source_url": "https://api-docs.deepseek.com/guides/search/",
@@ -1445,40 +1362,14 @@
       "links": {}
     },
     "capability_basis": {
-      "value": "Native API \u2014 reviewed",
+      "value": "Existing SDK mappings",
       "source_url": "https://api-docs.deepseek.com/guides/search/",
       "comment": "SDK availability is separate from native provider capability. Each native feature cell carries its own checked date and evidence."
     },
     "sdk_support": {
-      "value": "Comparison only \u2014 no adapter",
+      "value": "Python + TypeScript adapters",
       "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
       "comment": "SDK adapter availability only. See Capability basis for the feature rows; native features do not imply an SDK adapter."
-    },
-    "pricing_per_1k": {
-      "value": "$0.75 / 1K successful nonempty Search requests; Fetch separately $0.75 / 1K",
-      "source_url": "https://api-docs.deepseek.com/guides/search/",
-      "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. Direct live guide rechecked October 21: Search 100 QPS and Fetch 25 QPS. Earlier indexed 5/5 snapshot is superseded. Direct API billing is separate from temporarily free server-side integrations, billed from October 31 16:00 UTC.",
-      "primary_price": {
-        "amount_usd_per_1k": 0.75,
-        "billing_unit": "successful nonempty requests",
-        "basis": "Search; Fetch separately billed",
-        "source_url": "https://api-docs.deepseek.com/guides/search/",
-        "checked_at": "2026-10-21"
-      },
-      "lowest_price": {
-        "amount_usd_per_1k": 0.75,
-        "billing_unit": "successful nonempty Search requests",
-        "basis": "Single documented Search rate; Fetch also $0.75 / 1K",
-        "source_url": "https://api-docs.deepseek.com/guides/search/",
-        "checked_at": "2026-10-21"
-      },
-      "links": {}
-    },
-    "free_tier_limits": {
-      "value": "No recurring direct API allowance verified; server-side tool promotion is separate",
-      "source_url": "https://api-docs.deepseek.com/guides/search/",
-      "comment": "Trial, monthly credits and model-tool promotions are distinct. Direct live guide rechecked October 21: Search 100 QPS and Fetch 25 QPS. Earlier indexed 5/5 snapshot is superseded. Direct API billing is separate from temporarily free server-side integrations, billed from October 31 16:00 UTC.",
-      "links": {}
     },
     "evidence": {
       "checked_at": "2026-10-21",
@@ -3065,6 +2956,206 @@
     }
   },
   {
+    "name": "Keenable",
+    "links": {
+      "docs": "https://docs.keenable.ai/api-reference/search",
+      "github": "https://github.com/dhruv-anand-aintech/anysearch",
+      "website": "https://keenable.ai",
+      "slug": "keenable"
+    },
+    "env_keys": {
+      "value": "KEENABLE_API_KEY",
+      "source_url": "https://docs.keenable.ai/authentication",
+      "comment": "API keys and configuration variables documented by the provider."
+    },
+    "python_extra": {
+      "value": "\u2014 (REST only)",
+      "source_url": "https://docs.keenable.ai/api-reference/search",
+      "comment": "HTTP API only; no required vendor Python SDK."
+    },
+    "requires_key": {
+      "support": "full",
+      "source_url": "https://docs.keenable.ai/authentication",
+      "comment": "Valid API key required for every request."
+    },
+    "snippet": {
+      "support": "full",
+      "source_url": "https://docs.keenable.ai/api-reference/search",
+      "comment": "`description` and `snippet` per result; `snippet_max_length` controls the snippet cap."
+    },
+    "domains": {
+      "support": "partial",
+      "source_url": "https://docs.keenable.ai/api-reference/search",
+      "comment": "`site` restricts results to one domain. There is no exclude-domain parameter."
+    },
+    "country": {
+      "support": "none",
+      "source_url": "https://docs.keenable.ai/api-reference/search",
+      "comment": "Country (gl)"
+    },
+    "language": {
+      "support": "none",
+      "source_url": "https://docs.keenable.ai/api-reference/search",
+      "comment": "Language"
+    },
+    "date": {
+      "support": "full",
+      "source_url": "https://docs.keenable.ai/api-reference/search",
+      "comment": "`published_after` / `published_before` and index-date `acquired_after` / `acquired_before`."
+    },
+    "safe_search": {
+      "support": "none",
+      "source_url": "https://docs.keenable.ai/api-reference/search",
+      "comment": "Safe search"
+    },
+    "answer": {
+      "support": "none",
+      "source_url": "https://docs.keenable.ai/api-reference/search",
+      "comment": "AI answer"
+    },
+    "content": {
+      "support": "partial",
+      "source_url": "https://docs.keenable.ai/api-reference/fetch",
+      "comment": "Search returns snippets only; full page markdown comes from the separate `/v1/fetch` endpoint."
+    },
+    "summary": {
+      "support": "none",
+      "source_url": "https://docs.keenable.ai/api-reference/search",
+      "comment": "AI per-result summary"
+    },
+    "highlights": {
+      "support": "partial",
+      "source_url": "https://docs.keenable.ai/api-reference/search",
+      "comment": "The single `snippet` string carries query-relevant highlights; there is no separate highlights array."
+    },
+    "news": {
+      "support": "none",
+      "source_url": "https://docs.keenable.ai/api-reference/search",
+      "comment": "News search type"
+    },
+    "mode": {
+      "values": [
+        "fast",
+        "balanced"
+      ],
+      "source_url": "https://docs.keenable.ai/api-reference/search",
+      "comment": "`mode=realtime` maps to fast and `mode=pro` (the default) maps to balanced. There is no separate deep tier; anysearch maps deep to pro."
+    },
+    "pricing_per_1k": {
+      "value": "$4 / 1K pay-as-you-go; $1 / 1K at 100 RPS+ dedicated; 100,000 requests/month free",
+      "source_url": "https://docs.keenable.ai/api-reference/search",
+      "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "primary_price": {
+        "amount_usd_per_1k": 4.0,
+        "billing_unit": "pay-as-you-go search requests",
+        "basis": "Published $4 per 1,000 requests; 100,000 free requests per month",
+        "source_url": "https://keenable.ai/pricing",
+        "checked_at": "2026-10-22"
+      },
+      "lowest_price": {
+        "amount_usd_per_1k": 1.0,
+        "billing_unit": "dedicated search requests at 100 RPS+",
+        "basis": "$1 per 1,000 at 100 RPS+ with cloud or on-premises; standard pay-as-you-go is $4",
+        "source_url": "https://keenable.ai/pricing",
+        "checked_at": "2026-10-22"
+      },
+      "links": {
+        "Official source 1": "https://keenable.ai/pricing",
+        "Official source 2": "https://docs.keenable.ai/credits",
+        "Official source 3": "https://docs.keenable.ai/rate-limits",
+        "Official source 4": "https://docs.keenable.ai/authentication"
+      }
+    },
+    "free_tier_limits": {
+      "value": "100,000 requests/month free; resets monthly; no card",
+      "source_url": "https://docs.keenable.ai/api-reference/search",
+      "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
+      "links": {
+        "Official source 1": "https://keenable.ai/pricing",
+        "Official source 2": "https://docs.keenable.ai/credits",
+        "Official source 3": "https://docs.keenable.ai/rate-limits",
+        "Official source 4": "https://docs.keenable.ai/authentication"
+      }
+    },
+    "p50_latency": {
+      "value": "Historical July 2026: No published p50/p90/p95 API latency",
+      "source_url": "https://docs.keenable.ai/api-reference/search",
+      "comment": "Historical evidence retained from July 2026; not remeasured or claimed current. Keenable documents modes, not percentile latency; no independent rerun was found."
+    },
+    "notes": "Search API (`POST /v1/search`) is in both SDKs. `mode=fast` uses the realtime SKU and `balanced`/`deep` use pro; only one include domain maps to `site`, and full page text requires Keenable's separate Fetch API.",
+    "api_category": {
+      "value": "Standalone search API",
+      "source_url": "https://docs.keenable.ai/api-reference/search",
+      "comment": ""
+    },
+    "api_status": {
+      "value": "Available",
+      "source_url": "https://docs.keenable.ai/api-reference/search",
+      "comment": "",
+      "links": {
+        "Official source 1": "https://keenable.ai/pricing",
+        "Official source 2": "https://docs.keenable.ai/credits",
+        "Official source 3": "https://docs.keenable.ai/rate-limits",
+        "Official source 4": "https://docs.keenable.ai/authentication"
+      }
+    },
+    "native_api": {
+      "value": "POST /v1/search returns ranked title, URL, description, snippet, published_at and acquired_at fields. `mode` selects pro (deeper retrieval, default) or realtime; supports a single `site`, published and acquired date bounds, point-in-time `query_time`, max_results 1-50 and snippet length. Separate /v1/fetch returns page markdown.",
+      "source_url": "https://docs.keenable.ai/api-reference/search",
+      "comment": "",
+      "links": {
+        "Official source 1": "https://keenable.ai/pricing",
+        "Official source 2": "https://docs.keenable.ai/credits",
+        "Official source 3": "https://docs.keenable.ai/rate-limits",
+        "Official source 4": "https://docs.keenable.ai/authentication"
+      }
+    },
+    "rate_limits": {
+      "value": "10 requests/s authenticated per organization; keyless 1,000/hour and 10/s per IP; HTTP 402 when the monthly allowance and purchased credits are exhausted",
+      "source_url": "https://docs.keenable.ai/api-reference/search",
+      "comment": "",
+      "links": {
+        "Official source 1": "https://keenable.ai/pricing",
+        "Official source 2": "https://docs.keenable.ai/credits",
+        "Official source 3": "https://docs.keenable.ai/rate-limits",
+        "Official source 4": "https://docs.keenable.ai/authentication"
+      }
+    },
+    "checked_at": {
+      "value": "2026-10-22",
+      "source_url": "https://docs.keenable.ai/api-reference/search",
+      "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
+      "links": {
+        "Official source 1": "https://keenable.ai/pricing",
+        "Official source 2": "https://docs.keenable.ai/credits",
+        "Official source 3": "https://docs.keenable.ai/rate-limits",
+        "Official source 4": "https://docs.keenable.ai/authentication"
+      }
+    },
+    "capability_basis": {
+      "value": "Existing SDK mappings",
+      "source_url": "https://docs.keenable.ai/api-reference/search",
+      "comment": "SDK availability is separate from native provider capability. Each native feature cell carries its own checked date and evidence."
+    },
+    "sdk_support": {
+      "value": "Python + TypeScript adapters",
+      "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
+      "comment": "SDK adapter availability only. See Capability basis for the feature rows; native features do not imply an SDK adapter."
+    },
+    "evidence": {
+      "checked_at": "2026-10-22",
+      "source_urls": [
+        "https://docs.keenable.ai/api-reference/search",
+        "https://keenable.ai/pricing",
+        "https://docs.keenable.ai/credits",
+        "https://docs.keenable.ai/rate-limits",
+        "https://docs.keenable.ai/authentication"
+      ],
+      "effective_date": null,
+      "method": "official documentation; no new benchmarks"
+    }
+  },
+  {
     "name": "Keiro",
     "links": {
       "docs": "https://keirolabs.cloud/",
@@ -3617,121 +3708,126 @@
   {
     "name": "OpenAI Web Search",
     "links": {
-      "slug": "openai",
-      "docs": "https://developers.openai.com/api/docs/pricing",
-      "website": "https://openai.com"
+      "docs": "https://platform.openai.com/docs/guides/tools-web-search",
+      "github": "https://github.com/dhruv-anand-aintech/anysearch",
+      "website": "https://openai.com",
+      "slug": "openai"
     },
     "env_keys": {
-      "value": "Not integrated",
-      "source_url": "https://developers.openai.com/api/docs/pricing",
-      "comment": "Comparison only; anysearch does not read a key for this provider."
+      "value": "OPENAI_API_KEY",
+      "source_url": "https://platform.openai.com/docs/guides/tools-web-search",
+      "comment": "API keys and configuration variables documented by the provider."
     },
     "python_extra": {
-      "value": "Not integrated",
-      "source_url": "https://developers.openai.com/api/docs/pricing",
-      "comment": ""
+      "value": "\u2014 (REST only)",
+      "source_url": "https://platform.openai.com/docs/guides/tools-web-search",
+      "comment": "HTTP API only; no required vendor Python SDK."
     },
-    "mode": {
-      "values": [
-        "Non-reasoning",
-        "Reasoning",
-        "Deep research"
-      ],
-      "comment": "Official guide describes three search patterns by model; model-mediated generation, not raw SDK modes.",
-      "source_url": "https://developers.openai.com/api/docs/guides/tools-web-search",
-      "checked_at": "2026-10-21"
-    },
-    "p50_latency": {
-      "value": "No current comparable measurement verified",
-      "source_url": "https://developers.openai.com/api/docs/pricing",
-      "comment": ""
-    },
-    "notes": "Comparison only; no anysearch SDK adapter is claimed.",
-    "comparison_only": true,
     "requires_key": {
       "support": "full",
-      "comment": "Authenticated Responses API calls use an OpenAI API key.",
-      "source_url": "https://developers.openai.com/api/docs/guides/tools-web-search",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "source_url": "https://platform.openai.com/docs/guides/tools-web-search",
+      "comment": "Valid API key required for every request."
     },
     "snippet": {
-      "support": "not_applicable",
-      "comment": "Model-mediated cited answers and source metadata are returned, not a contracted raw ranked-result snippet field.",
-      "source_url": "https://developers.openai.com/api/docs/guides/tools-web-search",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "support": "full",
+      "source_url": "https://platform.openai.com/docs/guides/tools-web-search",
+      "comment": "Short description field returned with each result."
     },
     "domains": {
-      "support": "full",
-      "comment": "Responses web_search filters allow up to 100 allowed_domains or blocked_domains; legacy Chat Completions search does not have this control.",
-      "source_url": "https://developers.openai.com/api/docs/guides/tools-web-search",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "support": "partial",
+      "source_url": "https://platform.openai.com/docs/guides/tools-web-search",
+      "comment": "Tool `filters.allowed_domains` for includes; excluded domains are appended as `-site:` operators."
     },
     "country": {
-      "support": "full",
-      "comment": "user_location.country accepts a two-letter ISO country code; approximate user location biases search.",
-      "source_url": "https://developers.openai.com/api/docs/guides/tools-web-search",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "support": "none",
+      "source_url": "https://platform.openai.com/docs/guides/tools-web-search",
+      "comment": "Country (gl)"
     },
     "language": {
-      "support": "unknown",
-      "comment": "Reviewed web_search control guide documents no dedicated result-language filter. Prompt language is not equivalent to enforced retrieval language.",
-      "source_url": "https://developers.openai.com/api/docs/guides/tools-web-search",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "support": "none",
+      "source_url": "https://platform.openai.com/docs/guides/tools-web-search",
+      "comment": "Language"
     },
     "date": {
-      "support": "unknown",
-      "comment": "No typed publication-date range control is documented in the reviewed web_search guide; prompt instructions do not prove enforced filtering.",
-      "source_url": "https://developers.openai.com/api/docs/guides/tools-web-search",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "support": "none",
+      "source_url": "https://platform.openai.com/docs/guides/tools-web-search",
+      "comment": "Published date range"
     },
     "safe_search": {
-      "support": "unknown",
-      "comment": "No developer-configurable SafeSearch switch is documented in the reviewed tool guide; model safety behavior is not a search filter.",
-      "source_url": "https://developers.openai.com/api/docs/guides/tools-web-search",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "support": "none",
+      "source_url": "https://platform.openai.com/docs/guides/tools-web-search",
+      "comment": "Safe search"
     },
     "answer": {
       "support": "full",
-      "comment": "The model produces a sourced answer with URL citations after web_search.",
-      "source_url": "https://developers.openai.com/api/docs/guides/tools-web-search",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "source_url": "https://platform.openai.com/docs/guides/tools-web-search",
+      "comment": "The model's `output_text` is returned in `answer`, sourced from `url_citation` annotations."
     },
     "content": {
-      "support": "partial",
-      "comment": "Reasoning tools can open pages and find content for the model; this is not a guaranteed raw full-page export API.",
-      "source_url": "https://developers.openai.com/api/docs/guides/tools-web-search",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "support": "none",
+      "source_url": "https://platform.openai.com/docs/guides/tools-web-search",
+      "comment": "Full page text"
     },
     "summary": {
-      "support": "not_applicable",
-      "comment": "The contracted output is a cited model response, not a per-result summary array. An answer summary must not be confused with page summaries.",
-      "source_url": "https://developers.openai.com/api/docs/guides/tools-web-search",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "support": "none",
+      "source_url": "https://platform.openai.com/docs/guides/tools-web-search",
+      "comment": "AI per-result summary"
     },
     "highlights": {
-      "support": "not_applicable",
-      "comment": "Citation offsets identify spans in generated answer text, not query-relevant source-page highlight excerpts.",
-      "source_url": "https://developers.openai.com/api/docs/guides/tools-web-search",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "support": "none",
+      "source_url": "https://platform.openai.com/docs/guides/tools-web-search",
+      "comment": "Query highlights"
     },
     "news": {
-      "support": "partial",
-      "comment": "Official examples search current news via general web_search; no dedicated news-only vertical selector is documented.",
-      "source_url": "https://developers.openai.com/api/docs/guides/tools-web-search",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "support": "none",
+      "source_url": "https://platform.openai.com/docs/guides/tools-web-search",
+      "comment": "News search type"
     },
+    "mode": {
+      "values": [
+        "fast",
+        "balanced",
+        "deep"
+      ],
+      "source_url": "https://platform.openai.com/docs/guides/tools-web-search",
+      "comment": "`search_context_size` and `reasoning.effort` map fast\u2192low, balanced\u2192medium, deep\u2192high. Deep research remains a model/reasoning configuration, not a raw search tier."
+    },
+    "pricing_per_1k": {
+      "value": "web_search $10 / 1K tool calls + search-content tokens at model rates",
+      "source_url": "https://developers.openai.com/api/docs/pricing",
+      "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "primary_price": {
+        "amount_usd_per_1k": 10,
+        "billing_unit": "web_search tool calls",
+        "basis": "Model/search-content tokens extra",
+        "source_url": "https://developers.openai.com/api/docs/pricing",
+        "checked_at": "2026-10-21"
+      },
+      "lowest_price": {
+        "amount_usd_per_1k": 10,
+        "billing_unit": "web_search tool calls",
+        "basis": "Tool calls only; search-content tokens billed at model rates",
+        "source_url": "https://developers.openai.com/api/docs/pricing",
+        "checked_at": "2026-10-21"
+      },
+      "links": {
+        "Official source 1": "https://developers.openai.com/api/docs/guides/tools-web-search"
+      }
+    },
+    "free_tier_limits": {
+      "value": "No recurring free allowance verified",
+      "source_url": "https://developers.openai.com/api/docs/pricing",
+      "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
+      "links": {
+        "Official source 1": "https://developers.openai.com/api/docs/guides/tools-web-search"
+      }
+    },
+    "p50_latency": {
+      "value": "Historical July 2026: No published search-tool latency distribution",
+      "source_url": "https://platform.openai.com/docs/guides/tools-web-search",
+      "comment": "Historical evidence retained from July 2026; not remeasured or claimed current. Latency depends on the model, reasoning effort, search context size and number of tool calls."
+    },
+    "notes": "Model-hosted `web_search` in the Responses API is in both SDKs. Results are the response's `url_citation` annotations; the generated text is returned in `answer`.",
     "api_category": {
       "value": "Model-hosted grounding",
       "source_url": "https://developers.openai.com/api/docs/pricing",
@@ -3770,44 +3866,14 @@
       }
     },
     "capability_basis": {
-      "value": "Native API \u2014 reviewed",
+      "value": "Existing SDK mappings",
       "source_url": "https://developers.openai.com/api/docs/pricing",
       "comment": "SDK availability is separate from native provider capability. Each native feature cell carries its own checked date and evidence."
     },
     "sdk_support": {
-      "value": "Comparison only \u2014 no adapter",
+      "value": "Python + TypeScript adapters",
       "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
       "comment": "SDK adapter availability only. See Capability basis for the feature rows; native features do not imply an SDK adapter."
-    },
-    "pricing_per_1k": {
-      "value": "web_search $10 / 1K tool calls + search-content tokens at model rates",
-      "source_url": "https://developers.openai.com/api/docs/pricing",
-      "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
-      "primary_price": {
-        "amount_usd_per_1k": 10,
-        "billing_unit": "web_search tool calls",
-        "basis": "Model/search-content tokens extra",
-        "source_url": "https://developers.openai.com/api/docs/pricing",
-        "checked_at": "2026-10-21"
-      },
-      "lowest_price": {
-        "amount_usd_per_1k": 10,
-        "billing_unit": "web_search tool calls",
-        "basis": "Tool calls only; search-content tokens billed at model rates",
-        "source_url": "https://developers.openai.com/api/docs/pricing",
-        "checked_at": "2026-10-21"
-      },
-      "links": {
-        "Official source 1": "https://developers.openai.com/api/docs/guides/tools-web-search"
-      }
-    },
-    "free_tier_limits": {
-      "value": "No recurring free allowance verified",
-      "source_url": "https://developers.openai.com/api/docs/pricing",
-      "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
-      "links": {
-        "Official source 1": "https://developers.openai.com/api/docs/guides/tools-web-search"
-      }
     },
     "evidence": {
       "checked_at": "2026-10-21",
@@ -4896,117 +4962,124 @@
   {
     "name": "TinyFish",
     "links": {
-      "slug": "tinyfish",
       "docs": "https://docs.tinyfish.ai/search-api/reference",
-      "website": "https://www.tinyfish.ai"
+      "github": "https://github.com/dhruv-anand-aintech/anysearch",
+      "website": "https://www.tinyfish.ai",
+      "slug": "tinyfish"
     },
     "env_keys": {
-      "value": "Not integrated",
+      "value": "TINYFISH_API_KEY",
       "source_url": "https://docs.tinyfish.ai/search-api/reference",
-      "comment": "Comparison only; anysearch does not read a key for this provider."
+      "comment": "API keys and configuration variables documented by the provider."
     },
     "python_extra": {
-      "value": "Not integrated",
+      "value": "\u2014 (REST only)",
       "source_url": "https://docs.tinyfish.ai/search-api/reference",
-      "comment": ""
+      "comment": "HTTP API only; no required vendor Python SDK."
     },
-    "mode": {
-      "values": [],
-      "comment": "No named fast/balanced/deep search tiers; the single Search endpoint is configured by result count, domain_type and date filters.",
-      "source_url": "https://docs.tinyfish.ai/search-api/reference",
-      "checked_at": "2026-10-21"
-    },
-    "p50_latency": {
-      "value": "No current comparable measurement verified",
-      "source_url": "https://docs.tinyfish.ai/search-api/reference",
-      "comment": ""
-    },
-    "notes": "Comparison only; no anysearch SDK adapter is claimed.",
-    "comparison_only": true,
     "requires_key": {
       "support": "full",
-      "comment": "All Search requests require the X-API-Key header.",
       "source_url": "https://docs.tinyfish.ai/search-api/reference",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "comment": "Valid API key required for every request."
     },
     "snippet": {
       "support": "full",
-      "comment": "Every result exposes a snippet string alongside title, url and site_name.",
       "source_url": "https://docs.tinyfish.ai/search-api/reference",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "comment": "Every result exposes `snippet` with title, URL, site name and date fields."
     },
     "domains": {
       "support": "full",
-      "comment": "include_domains and exclude_domains accept comma-separated domain lists; site: operators are deprecated in favour of these parameters.",
       "source_url": "https://docs.tinyfish.ai/search-api/reference",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "comment": "`include_domains` / `exclude_domains` take comma-separated domain lists."
     },
     "country": {
       "support": "full",
-      "comment": "location takes a two-letter country code such as US or GB, defaults to US when omitted, and is resolved from language when only that is set.",
       "source_url": "https://docs.tinyfish.ai/search-api/reference",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "comment": "`location` takes a two-letter country code and defaults to US."
     },
     "language": {
       "support": "full",
-      "comment": "language takes a language code such as en or fr, defaults to en when omitted, and is resolved from location when only that is set.",
       "source_url": "https://docs.tinyfish.ai/search-api/reference",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "comment": "`language` takes a language code and defaults to en."
     },
     "date": {
       "support": "full",
-      "comment": "after_date and before_date accept YYYY-MM-DD and recency_minutes sets a freshness window; research-paper results use pub_year_min and pub_year_max instead.",
       "source_url": "https://docs.tinyfish.ai/search-api/reference",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "comment": "`after_date` / `before_date` (YYYY-MM-DD) or `recency_minutes`; not combinable with research-paper mode."
     },
     "safe_search": {
       "support": "none",
-      "comment": "No safe-search or adult-content parameter appears in the Search API reference; a 403 only reports an upstream policy rejection.",
       "source_url": "https://docs.tinyfish.ai/search-api/reference",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "comment": "Safe search"
     },
     "answer": {
       "support": "none",
-      "comment": "The Search response contains ranked links and snippets only; synthesized answers are not part of this scoped contract, and Agent and Research are separate products.",
       "source_url": "https://docs.tinyfish.ai/search-api/reference",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "comment": "AI answer"
     },
     "content": {
-      "support": "partial",
-      "comment": "Search returns snippets rather than page bodies; page content comes from the separate Fetch API at api.fetch.tinyfish.ai.",
-      "source_url": "https://docs.tinyfish.ai/search-api",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "support": "none",
+      "source_url": "https://docs.tinyfish.ai/search-api/reference",
+      "comment": "Full page text"
     },
     "summary": {
       "support": "none",
-      "comment": "The documented Search response has no per-result or query-level summary field.",
       "source_url": "https://docs.tinyfish.ai/search-api/reference",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "comment": "AI per-result summary"
     },
     "highlights": {
       "support": "none",
-      "comment": "Results expose plain snippet text with no highlight offsets or marked terms.",
       "source_url": "https://docs.tinyfish.ai/search-api/reference",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "comment": "Query highlights"
     },
     "news": {
       "support": "full",
-      "comment": "domain_type=news returns news articles with publisher and date fields.",
       "source_url": "https://docs.tinyfish.ai/search-api/reference",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "comment": "`domain_type=news` returns news results with publisher and date fields."
     },
+    "mode": {
+      "values": [],
+      "source_url": "https://docs.tinyfish.ai/search-api/reference",
+      "comment": "One Search endpoint with no named fast/balanced/deep tier. Result count is fixed per page and controlled by `domain_type`, dates and pagination."
+    },
+    "pricing_per_1k": {
+      "value": "Search $0.00 per request; free up to 12,000 requests/day at 30 req/min, then a positive wallet balance is required",
+      "source_url": "https://docs.tinyfish.ai/search-api/reference",
+      "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "primary_price": {
+        "amount_usd_per_1k": null,
+        "billing_unit": "free search requests",
+        "basis": "Documented price is $0.00 per request; there is no paid per-1K search rate to rank",
+        "source_url": "https://www.tinyfish.ai/pricing",
+        "checked_at": "2026-10-21"
+      },
+      "lowest_price": {
+        "amount_usd_per_1k": null,
+        "billing_unit": "free search requests",
+        "basis": "$0 inside the 12,000 requests/day free allowance, so it stays unranked instead of sorting first",
+        "source_url": "https://www.tinyfish.ai/pricing",
+        "checked_at": "2026-10-21"
+      },
+      "links": {
+        "Official source 1": "https://www.tinyfish.ai/pricing",
+        "Official source 2": "https://docs.tinyfish.ai/search-api"
+      }
+    },
+    "free_tier_limits": {
+      "value": "Search free within 30 requests/min and 12,000 requests/day (resets 00:00 UTC); Fetch free to 1,000 URLs/day; no card required",
+      "source_url": "https://docs.tinyfish.ai/search-api/reference",
+      "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
+      "links": {
+        "Official source 1": "https://www.tinyfish.ai/pricing",
+        "Official source 2": "https://docs.tinyfish.ai/search-api"
+      }
+    },
+    "p50_latency": {
+      "value": "Historical July 2026: No published p50/p90/p95 API latency",
+      "source_url": "https://docs.tinyfish.ai/search-api/reference",
+      "comment": "Historical evidence retained from July 2026; not remeasured or claimed current. TinyFish publishes rate and billing limits, not response-time percentiles."
+    },
+    "notes": "Search API (`GET https://api.search.tinyfish.ai`) is in both SDKs. The endpoint has no result-count parameter, so results are trimmed to `max_results` client-side; page bodies come from the separate Fetch API.",
     "api_category": {
       "value": "Standalone search API",
       "source_url": "https://docs.tinyfish.ai/search-api/reference",
@@ -5049,46 +5122,14 @@
       }
     },
     "capability_basis": {
-      "value": "Native API \u2014 reviewed",
+      "value": "Existing SDK mappings",
       "source_url": "https://docs.tinyfish.ai/search-api/reference",
       "comment": "SDK availability is separate from native provider capability. Each native feature cell carries its own checked date and evidence."
     },
     "sdk_support": {
-      "value": "Comparison only \u2014 no adapter",
+      "value": "Python + TypeScript adapters",
       "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
       "comment": "SDK adapter availability only. See Capability basis for the feature rows; native features do not imply an SDK adapter."
-    },
-    "pricing_per_1k": {
-      "value": "Search $0.00 per request; free up to 12,000 requests/day at 30 req/min, then a positive wallet balance is required",
-      "source_url": "https://docs.tinyfish.ai/search-api/reference",
-      "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
-      "primary_price": {
-        "amount_usd_per_1k": null,
-        "billing_unit": "free search requests",
-        "basis": "Documented price is $0.00 per request; there is no paid per-1K search rate to rank",
-        "source_url": "https://www.tinyfish.ai/pricing",
-        "checked_at": "2026-10-21"
-      },
-      "lowest_price": {
-        "amount_usd_per_1k": null,
-        "billing_unit": "free search requests",
-        "basis": "$0 inside the 12,000 requests/day free allowance, so it stays unranked instead of sorting first",
-        "source_url": "https://www.tinyfish.ai/pricing",
-        "checked_at": "2026-10-21"
-      },
-      "links": {
-        "Official source 1": "https://www.tinyfish.ai/pricing",
-        "Official source 2": "https://docs.tinyfish.ai/search-api"
-      }
-    },
-    "free_tier_limits": {
-      "value": "Search free within 30 requests/min and 12,000 requests/day (resets 00:00 UTC); Fetch free to 1,000 URLs/day; no card required",
-      "source_url": "https://docs.tinyfish.ai/search-api/reference",
-      "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
-      "links": {
-        "Official source 1": "https://www.tinyfish.ai/pricing",
-        "Official source 2": "https://docs.tinyfish.ai/search-api"
-      }
     },
     "evidence": {
       "checked_at": "2026-10-21",
@@ -5627,119 +5668,124 @@
   {
     "name": "xAI Web Search",
     "links": {
-      "slug": "xai",
-      "docs": "https://docs.x.ai/developers/pricing",
-      "website": "https://x.ai"
+      "docs": "https://docs.x.ai/docs/guides/live-search",
+      "github": "https://github.com/dhruv-anand-aintech/anysearch",
+      "website": "https://x.ai",
+      "slug": "xai"
     },
     "env_keys": {
-      "value": "Not integrated",
-      "source_url": "https://docs.x.ai/developers/pricing",
-      "comment": "Comparison only; anysearch does not read a key for this provider."
+      "value": "XAI_API_KEY",
+      "source_url": "https://docs.x.ai/docs/guides/live-search",
+      "comment": "API keys and configuration variables documented by the provider."
     },
     "python_extra": {
-      "value": "Not integrated",
-      "source_url": "https://docs.x.ai/developers/pricing",
-      "comment": ""
+      "value": "\u2014 (REST only)",
+      "source_url": "https://docs.x.ai/docs/guides/live-search",
+      "comment": "HTTP API only; no required vendor Python SDK."
     },
-    "mode": {
-      "values": [
-        "Model-mediated web search"
-      ],
-      "comment": "One server-side Web Search tool; separate X Search and image controls are not fast/deep search tiers.",
-      "source_url": "https://docs.x.ai/developers/tools/web-search",
-      "checked_at": "2026-10-21"
-    },
-    "p50_latency": {
-      "value": "No current comparable measurement verified",
-      "source_url": "https://docs.x.ai/developers/pricing",
-      "comment": ""
-    },
-    "notes": "Comparison only; no anysearch SDK adapter is claimed.",
-    "comparison_only": true,
     "requires_key": {
       "support": "full",
-      "comment": "Authenticated Responses API request uses bearer XAI_API_KEY.",
-      "source_url": "https://docs.x.ai/developers/tools/web-search",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "source_url": "https://docs.x.ai/docs/guides/live-search",
+      "comment": "Valid API key required for every request."
     },
     "snippet": {
-      "support": "not_applicable",
-      "comment": "Documented web_search produces model answers/citations, not a raw ranked-result snippet contract.",
-      "source_url": "https://docs.x.ai/developers/tools/web-search",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "support": "full",
+      "source_url": "https://docs.x.ai/docs/guides/live-search",
+      "comment": "Short description field returned with each result."
     },
     "domains": {
-      "support": "full",
-      "comment": "allowed_domains or excluded_domains (up to five) restrict search/browsing; cannot use both together.",
-      "source_url": "https://docs.x.ai/developers/tools/web-search",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "support": "partial",
+      "source_url": "https://docs.x.ai/docs/guides/live-search",
+      "comment": "Tool `filters.allowed_domains` / `filters.excluded_domains`."
     },
     "country": {
-      "support": "unknown",
-      "comment": "The web_search parameter table lists domain and image controls but no country bias. Do not transfer X Search settings to Web Search.",
-      "source_url": "https://docs.x.ai/developers/tools/web-search",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "support": "none",
+      "source_url": "https://docs.x.ai/docs/guides/live-search",
+      "comment": "Country (gl)"
     },
     "language": {
-      "support": "unknown",
-      "comment": "No result-language filter is documented in the web_search tool parameter table; model language capability is separate.",
-      "source_url": "https://docs.x.ai/developers/tools/web-search",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "support": "none",
+      "source_url": "https://docs.x.ai/docs/guides/live-search",
+      "comment": "Language"
     },
     "date": {
-      "support": "unknown",
-      "comment": "No publication-date range control documented for web_search. X Search from_date/to_date options are a different tool.",
-      "source_url": "https://docs.x.ai/developers/tools/web-search",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "support": "none",
+      "source_url": "https://docs.x.ai/docs/guides/live-search",
+      "comment": "Published date range"
     },
     "safe_search": {
-      "support": "unknown",
-      "comment": "No configurable SafeSearch setting documented for this tool; model safety is not an equivalent parameter.",
-      "source_url": "https://docs.x.ai/developers/tools/web-search",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "support": "none",
+      "source_url": "https://docs.x.ai/docs/guides/live-search",
+      "comment": "Safe search"
     },
     "answer": {
       "support": "full",
-      "comment": "Grok searches/browses then produces a model answer with citations.",
-      "source_url": "https://docs.x.ai/developers/tools/web-search",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "source_url": "https://docs.x.ai/docs/guides/live-search",
+      "comment": "The model's `output_text` is returned in `answer` with URL citations."
     },
     "content": {
-      "support": "partial",
-      "comment": "Tool accesses/browses pages for the model; no guarantee of a raw full-page content export in the web_search response.",
-      "source_url": "https://docs.x.ai/developers/tools/web-search",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "support": "none",
+      "source_url": "https://docs.x.ai/docs/guides/live-search",
+      "comment": "Full page text"
     },
     "summary": {
-      "support": "not_applicable",
-      "comment": "Generated answer/citations are not per-result page-summary objects.",
-      "source_url": "https://docs.x.ai/developers/tools/web-search",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "support": "none",
+      "source_url": "https://docs.x.ai/docs/guides/live-search",
+      "comment": "AI per-result summary"
     },
     "highlights": {
-      "support": "not_applicable",
-      "comment": "Citations identify sources; the reviewed web_search contract does not expose per-page highlighted excerpts.",
-      "source_url": "https://docs.x.ai/developers/tools/web-search",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "support": "none",
+      "source_url": "https://docs.x.ai/docs/guides/live-search",
+      "comment": "Query highlights"
     },
     "news": {
-      "support": "partial",
-      "comment": "General current-web retrieval can answer news queries; X Search is separate and is not a dedicated web-news vertical.",
-      "source_url": "https://docs.x.ai/developers/tools/web-search",
-      "checked_at": "2026-10-21",
-      "basis": "native API documentation"
+      "support": "none",
+      "source_url": "https://docs.x.ai/docs/guides/live-search",
+      "comment": "News search type"
     },
+    "mode": {
+      "values": [
+        "balanced"
+      ],
+      "source_url": "https://docs.x.ai/docs/guides/live-search",
+      "comment": "One hosted web_search tool; search depth is model-mediated rather than a named fast/deep API parameter."
+    },
+    "pricing_per_1k": {
+      "value": "Web Search $5 / 1K tool calls + model tokens",
+      "source_url": "https://docs.x.ai/developers/pricing",
+      "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "primary_price": {
+        "amount_usd_per_1k": 5,
+        "billing_unit": "web_search tool calls",
+        "basis": "Model tokens extra; X Search separate",
+        "source_url": "https://docs.x.ai/developers/pricing",
+        "checked_at": "2026-10-21"
+      },
+      "lowest_price": {
+        "amount_usd_per_1k": 5,
+        "billing_unit": "web_search tool calls",
+        "basis": "Tool calls only; model tokens billed separately",
+        "source_url": "https://docs.x.ai/developers/pricing",
+        "checked_at": "2026-10-21"
+      },
+      "links": {
+        "Official source 1": "https://docs.x.ai/developers/tools/web-search"
+      }
+    },
+    "free_tier_limits": {
+      "value": "No recurring free allowance verified",
+      "source_url": "https://docs.x.ai/developers/pricing",
+      "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
+      "links": {
+        "Official source 1": "https://docs.x.ai/developers/tools/web-search"
+      }
+    },
+    "p50_latency": {
+      "value": "Historical July 2026: No published search-tool latency distribution",
+      "source_url": "https://docs.x.ai/docs/guides/live-search",
+      "comment": "Historical evidence retained from July 2026; not remeasured or claimed current. Latency is model-mediated and not reported as an API percentile."
+    },
+    "notes": "The xAI `web_search` tool in the Responses API is in both SDKs. Results come from `url_citation` annotations or the top-level `citations` list; generated text is returned in `answer`.",
     "api_category": {
       "value": "Model-hosted grounding",
       "source_url": "https://docs.x.ai/developers/pricing",
@@ -5778,44 +5824,14 @@
       }
     },
     "capability_basis": {
-      "value": "Native API \u2014 reviewed",
+      "value": "Existing SDK mappings",
       "source_url": "https://docs.x.ai/developers/pricing",
       "comment": "SDK availability is separate from native provider capability. Each native feature cell carries its own checked date and evidence."
     },
     "sdk_support": {
-      "value": "Comparison only \u2014 no adapter",
+      "value": "Python + TypeScript adapters",
       "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
       "comment": "SDK adapter availability only. See Capability basis for the feature rows; native features do not imply an SDK adapter."
-    },
-    "pricing_per_1k": {
-      "value": "Web Search $5 / 1K tool calls + model tokens",
-      "source_url": "https://docs.x.ai/developers/pricing",
-      "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
-      "primary_price": {
-        "amount_usd_per_1k": 5,
-        "billing_unit": "web_search tool calls",
-        "basis": "Model tokens extra; X Search separate",
-        "source_url": "https://docs.x.ai/developers/pricing",
-        "checked_at": "2026-10-21"
-      },
-      "lowest_price": {
-        "amount_usd_per_1k": 5,
-        "billing_unit": "web_search tool calls",
-        "basis": "Tool calls only; model tokens billed separately",
-        "source_url": "https://docs.x.ai/developers/pricing",
-        "checked_at": "2026-10-21"
-      },
-      "links": {
-        "Official source 1": "https://docs.x.ai/developers/tools/web-search"
-      }
-    },
-    "free_tier_limits": {
-      "value": "No recurring free allowance verified",
-      "source_url": "https://docs.x.ai/developers/pricing",
-      "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
-      "links": {
-        "Official source 1": "https://docs.x.ai/developers/tools/web-search"
-      }
     },
     "evidence": {
       "checked_at": "2026-10-21",

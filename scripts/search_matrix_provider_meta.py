@@ -71,6 +71,38 @@ LINKS: dict[str, dict[str, str]] = {
         "docs": "https://pypi.org/project/ddgs/",
         "website": "https://duckduckgo.com",
     },
+    "keenable": {
+        "docs": "https://docs.keenable.ai/api-reference/search",
+        "website": "https://keenable.ai",
+    },
+    "tinyfish": {
+        "docs": "https://docs.tinyfish.ai/search-api/reference",
+        "website": "https://www.tinyfish.ai",
+    },
+    "deepseek": {
+        "docs": "https://api-docs.deepseek.com/guides/search/",
+        "website": "https://www.deepseek.com",
+    },
+    "brightdata": {
+        "docs": "https://docs.brightdata.com/scraping-automation/serp-api/introduction",
+        "website": "https://brightdata.com",
+    },
+    "dataforseo": {
+        "docs": "https://docs.dataforseo.com/v3/serp/google/organic/live/advanced/",
+        "website": "https://dataforseo.com",
+    },
+    "openai": {
+        "docs": "https://platform.openai.com/docs/guides/tools-web-search",
+        "website": "https://openai.com",
+    },
+    "anthropic": {
+        "docs": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+        "website": "https://www.anthropic.com",
+    },
+    "xai": {
+        "docs": "https://docs.x.ai/docs/guides/live-search",
+        "website": "https://x.ai",
+    },
 }
 
 # PyPI or provider install docs for optional native SDK extras (never anysearch repo).
@@ -109,6 +141,14 @@ ENV_SOURCES: dict[str, str] = {
     "google_pse": "https://developers.google.com/custom-search/v1/using_rest",
     "searxng": "https://docs.searxng.org/admin/settings/settings_search/",
     "duckduckgo": "https://pypi.org/project/ddgs/",
+    "keenable": "https://docs.keenable.ai/authentication",
+    "tinyfish": "https://docs.tinyfish.ai/search-api/reference",
+    "deepseek": "https://api-docs.deepseek.com/guides/search/",
+    "brightdata": "https://docs.brightdata.com/api-reference/authentication",
+    "dataforseo": "https://docs.dataforseo.com/v3/auth/",
+    "openai": "https://platform.openai.com/docs/guides/tools-web-search",
+    "anthropic": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+    "xai": "https://docs.x.ai/docs/guides/live-search",
 }
 
 MODE_META: dict[str, dict] = {
@@ -271,6 +311,70 @@ MODE_META: dict[str, dict] = {
             "Matrix `balanced` = default `text()` search."
         ),
     },
+    "keenable": {
+        "values": ["fast", "balanced"],
+        "source": "https://docs.keenable.ai/api-reference/search",
+        "comment": (
+            "`mode=realtime` maps to fast and `mode=pro` (the default) maps to balanced. "
+            "There is no separate deep tier; anysearch maps deep to pro."
+        ),
+    },
+    "tinyfish": {
+        "values": [],
+        "source": "https://docs.tinyfish.ai/search-api/reference",
+        "comment": (
+            "One Search endpoint with no named fast/balanced/deep tier. Result count is "
+            "fixed per page and controlled by `domain_type`, dates and pagination."
+        ),
+    },
+    "deepseek": {
+        "values": [],
+        "source": "https://api-docs.deepseek.com/guides/search/",
+        "comment": (
+            "Single raw Search endpoint. `count` and `need_content` configure the "
+            "response, not a search-quality tier."
+        ),
+    },
+    "brightdata": {
+        "values": ["balanced"],
+        "source": "https://docs.brightdata.com/scraping-automation/serp-api/introduction",
+        "comment": (
+            "One SERP request per search. Fast SERP is a separately provisioned product "
+            "and is not mapped to the unified mode parameter."
+        ),
+    },
+    "dataforseo": {
+        "values": ["balanced"],
+        "source": "https://docs.dataforseo.com/v3/serp/google/organic/live/advanced/",
+        "comment": (
+            "The adapter uses the Live Google Organic Advanced endpoint. Queued Standard "
+            "and Priority delivery are separate pricing/latency options, not unified modes."
+        ),
+    },
+    "openai": {
+        "values": ["fast", "balanced", "deep"],
+        "source": "https://platform.openai.com/docs/guides/tools-web-search",
+        "comment": (
+            "`search_context_size` and `reasoning.effort` map fast→low, balanced→medium, "
+            "deep→high. Deep research remains a model/reasoning configuration, not a raw search tier."
+        ),
+    },
+    "anthropic": {
+        "values": ["balanced"],
+        "source": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+        "comment": (
+            "The adapter uses the basic `web_search_20250305` server tool. Dynamic filtering "
+            "tool versions exist but are not a fast/balanced/deep search tier."
+        ),
+    },
+    "xai": {
+        "values": ["balanced"],
+        "source": "https://docs.x.ai/docs/guides/live-search",
+        "comment": (
+            "One hosted web_search tool; search depth is model-mediated rather than a "
+            "named fast/deep API parameter."
+        ),
+    },
 }
 
 PRICING_META: dict[str, dict[str, str]] = {
@@ -369,6 +473,46 @@ PRICING_META: dict[str, dict[str, str]] = {
         "source_url": "https://pypi.org/project/ddgs/",
         "comment": "No paid official web search API is used by anysearch's keyless fallback.",
     },
+    "keenable": {
+        "value": "pro/realtime: $4 pay as you go; $1 at 100 RPS+ dedicated",
+        "source_url": "https://keenable.ai/pricing",
+        "comment": "100,000 requests/month free; x402 pay-per-request costs $0.01/request ($10/1K).",
+    },
+    "tinyfish": {
+        "value": "search: $0 within the free allowance; paid overage uses wallet credit",
+        "source_url": "https://www.tinyfish.ai/pricing",
+        "comment": "No published paid per-1K search rate to rank as a hosted list price.",
+    },
+    "deepseek": {
+        "value": "search: $0.75; fetch: $0.75",
+        "source_url": "https://api-docs.deepseek.com/guides/search/",
+        "comment": "Billed per successful non-empty request, independent of count and returned results.",
+    },
+    "brightdata": {
+        "value": "SERP: $1.30-$1.50",
+        "source_url": "https://brightdata.com/pricing/serp",
+        "comment": "Pay-as-you-go $1.50/1K; Scale includes 380K then $1.30/1K.",
+    },
+    "dataforseo": {
+        "value": "standard: $0.60; priority: $1.20; live: $2",
+        "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+        "comment": "Per 1K SERP pages with up to 10 organic results; depth and operators can add charges.",
+    },
+    "openai": {
+        "value": "web_search: $10 + model tokens",
+        "source_url": "https://developers.openai.com/api/docs/pricing",
+        "comment": "Tool-call fee plus search-content and generated-answer tokens at model rates.",
+    },
+    "anthropic": {
+        "value": "web_search: $10 + model tokens",
+        "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+        "comment": "Per 1K searches plus token charges for the hosted model response.",
+    },
+    "xai": {
+        "value": "web_search: $5 + model tokens",
+        "source_url": "https://docs.x.ai/developers/pricing",
+        "comment": "Per 1K tool calls plus model tokens; X Search is billed separately.",
+    },
 }
 
 FREE_TIER_META: dict[str, dict[str, str]] = {
@@ -466,6 +610,46 @@ FREE_TIER_META: dict[str, dict[str, str]] = {
         "value": "No fixed quota or API fee; upstream rate limits apply",
         "source_url": "https://pypi.org/project/ddgs/",
         "comment": "DDGS is a keyless metasearch client rather than a contracted DuckDuckGo API service.",
+    },
+    "keenable": {
+        "value": "100,000 requests/month free; resets monthly; no card",
+        "source_url": "https://docs.keenable.ai/credits",
+        "comment": "Keyless public calls are not metered against the allowance but share a 1,000/hour per-IP pool.",
+    },
+    "tinyfish": {
+        "value": "12,000 searches/day free; 30 req/min; no card",
+        "source_url": "https://www.tinyfish.ai/pricing",
+        "comment": "The daily allowance resets at 00:00 UTC; Fetch is separately free to 1,000 URLs/day.",
+    },
+    "deepseek": {
+        "value": "No recurring direct Search allowance published",
+        "source_url": "https://api-docs.deepseek.com/guides/search/",
+        "comment": "Direct Search/Fetch usage is billed; server-side tool promotions are separate.",
+    },
+    "brightdata": {
+        "value": "5,000 SERP requests/month free; no card",
+        "source_url": "https://brightdata.com/pricing/serp",
+        "comment": "The free trial is a monthly request allowance, not a paid per-query rate.",
+    },
+    "dataforseo": {
+        "value": "$1 trial credit; $50 prepaid minimum",
+        "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+        "comment": "The sandbox is sample-only and separate from live billing.",
+    },
+    "openai": {
+        "value": "No recurring free web_search allowance verified",
+        "source_url": "https://developers.openai.com/api/docs/pricing",
+        "comment": "Model usage and web-search tool calls are billed on the same API account.",
+    },
+    "anthropic": {
+        "value": "No recurring free web_search allowance verified",
+        "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+        "comment": "Web search is billed per search plus model token usage.",
+    },
+    "xai": {
+        "value": "No recurring free web_search allowance verified",
+        "source_url": "https://docs.x.ai/developers/pricing",
+        "comment": "Web search tool calls and model tokens are billed on the xAI account.",
     },
 }
 
@@ -737,6 +921,46 @@ P50_LATENCY_META: dict[str, dict] = {
             "DuckDuckGo Search API with a published latency SLA."
         ),
     },
+    "keenable": {
+        "value": "No published p50/p90/p95 API latency",
+        "source_url": "https://docs.keenable.ai/api-reference/search",
+        "comment": "Keenable documents modes, not percentile latency; no independent rerun was found.",
+    },
+    "tinyfish": {
+        "value": "No published p50/p90/p95 API latency",
+        "source_url": "https://docs.tinyfish.ai/search-api/reference",
+        "comment": "TinyFish publishes rate and billing limits, not response-time percentiles.",
+    },
+    "deepseek": {
+        "value": "No published p50/p90/p95 Search latency",
+        "source_url": "https://api-docs.deepseek.com/guides/search/",
+        "comment": "The guide publishes QPS limits and per-request pricing, not latency percentiles.",
+    },
+    "brightdata": {
+        "value": "Under 1 second per request claimed; no percentile distribution",
+        "source_url": "https://docs.brightdata.com/scraping-automation/serp-api/introduction",
+        "comment": "Bright Data states sub-second SERP responses but does not publish p50/p95 figures.",
+    },
+    "dataforseo": {
+        "value": "Live endpoint: no published percentile; queued Standard averages ~5 min",
+        "source_url": "https://dataforseo.com/pricing/google-serp/google-organic-serp-api",
+        "comment": "The adapter uses Live; queued delivery times are a different product mode.",
+    },
+    "openai": {
+        "value": "No published search-tool latency distribution",
+        "source_url": "https://platform.openai.com/docs/guides/tools-web-search",
+        "comment": "Latency depends on the model, reasoning effort, search context size and number of tool calls.",
+    },
+    "anthropic": {
+        "value": "No published search-tool latency distribution",
+        "source_url": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+        "comment": "Latency depends on the model and how many server-side searches the model runs.",
+    },
+    "xai": {
+        "value": "No published search-tool latency distribution",
+        "source_url": "https://docs.x.ai/docs/guides/live-search",
+        "comment": "Latency is model-mediated and not reported as an API percentile.",
+    },
 }
 
 # Per-feature support overrides (when code supports more/less than capabilities frozenset).
@@ -770,6 +994,23 @@ SUPPORT_OVERRIDE: dict[str, dict[str, str]] = {
     "serpapi_yandex": {
         "news": "none",
     },
+    "keenable": {
+        "domains": "partial",
+        "content": "partial",
+        "highlights": "partial",
+    },
+    "brightdata": {
+        "safe_search": "partial",
+    },
+    "dataforseo": {
+        "domains": "partial",
+    },
+    "openai": {
+        "domains": "partial",
+    },
+    "xai": {
+        "domains": "partial",
+    },
 }
 
 # Extra matrix footnotes (appended to generated provider notes).
@@ -801,6 +1042,43 @@ MATRIX_NOTES: dict[str, str] = {
     "tavily": (
         "Search API is in the anysearch SDK; Research API (`POST /research`) is documented "
         "in the matrix (use `tavily-python` `research()` / `get_research()`)."
+    ),
+    "keenable": (
+        "Search API (`POST /v1/search`) is in both SDKs. `mode=fast` uses the realtime SKU "
+        "and `balanced`/`deep` use pro; only one include domain maps to `site`, and full "
+        "page text requires Keenable's separate Fetch API."
+    ),
+    "tinyfish": (
+        "Search API (`GET https://api.search.tinyfish.ai`) is in both SDKs. The endpoint has "
+        "no result-count parameter, so results are trimmed to `max_results` client-side; "
+        "page bodies come from the separate Fetch API."
+    ),
+    "deepseek": (
+        "Raw Search API (`POST /v1/tools/search`) is in both SDKs. Domain, language and date "
+        "filters use DeepSeek's documented query operators; `need_content` maps to "
+        "`include_content`."
+    ),
+    "brightdata": (
+        "SERP API is in both SDKs through one configured zone. Google is the default engine "
+        "and `engine=\"bing\"` switches to Bing; results come from parsed JSON organic items."
+    ),
+    "dataforseo": (
+        "Live Google Organic Advanced (`POST /v3/serp/google/organic/live/advanced`) is in both "
+        "SDKs with HTTP Basic auth. `DATAFORSEO_LOCATION_CODE` selects the market and defaults "
+        "to 2840 (United States)."
+    ),
+    "openai": (
+        "Model-hosted `web_search` in the Responses API is in both SDKs. Results are the "
+        "response's `url_citation` annotations; the generated text is returned in `answer`."
+    ),
+    "anthropic": (
+        "The Claude `web_search_20250305` server tool is in both SDKs. Results come from "
+        "`web_search_tool_result` blocks and citations; generated text is returned in `answer`."
+    ),
+    "xai": (
+        "The xAI `web_search` tool in the Responses API is in both SDKs. Results come from "
+        "`url_citation` annotations or the top-level `citations` list; generated text is "
+        "returned in `answer`."
     ),
 }
 
@@ -1266,6 +1544,146 @@ FEATURE_META: dict[str, dict[str, dict[str, str]]] = {
         "news": {
             "source": "https://www.searchapi.io/docs/google-news",
             "comment": "Use the Google News engine for news results.",
+        },
+    },
+    "keenable": {
+        "snippet": {
+            "source": "https://docs.keenable.ai/api-reference/search",
+            "comment": "`description` and `snippet` per result; `snippet_max_length` controls the snippet cap.",
+        },
+        "domains": {
+            "source": "https://docs.keenable.ai/api-reference/search",
+            "comment": "`site` restricts results to one domain. There is no exclude-domain parameter.",
+        },
+        "date": {
+            "source": "https://docs.keenable.ai/api-reference/search",
+            "comment": "`published_after` / `published_before` and index-date `acquired_after` / `acquired_before`.",
+        },
+        "content": {
+            "source": "https://docs.keenable.ai/api-reference/fetch",
+            "comment": "Search returns snippets only; full page markdown comes from the separate `/v1/fetch` endpoint.",
+        },
+        "highlights": {
+            "source": "https://docs.keenable.ai/api-reference/search",
+            "comment": "The single `snippet` string carries query-relevant highlights; there is no separate highlights array.",
+        },
+    },
+    "tinyfish": {
+        "snippet": {
+            "source": "https://docs.tinyfish.ai/search-api/reference",
+            "comment": "Every result exposes `snippet` with title, URL, site name and date fields.",
+        },
+        "domains": {
+            "source": "https://docs.tinyfish.ai/search-api/reference",
+            "comment": "`include_domains` / `exclude_domains` take comma-separated domain lists.",
+        },
+        "country": {
+            "source": "https://docs.tinyfish.ai/search-api/reference",
+            "comment": "`location` takes a two-letter country code and defaults to US.",
+        },
+        "language": {
+            "source": "https://docs.tinyfish.ai/search-api/reference",
+            "comment": "`language` takes a language code and defaults to en.",
+        },
+        "date": {
+            "source": "https://docs.tinyfish.ai/search-api/reference",
+            "comment": "`after_date` / `before_date` (YYYY-MM-DD) or `recency_minutes`; not combinable with research-paper mode.",
+        },
+        "news": {
+            "source": "https://docs.tinyfish.ai/search-api/reference",
+            "comment": "`domain_type=news` returns news results with publisher and date fields.",
+        },
+    },
+    "deepseek": {
+        "domains": {
+            "source": "https://api-docs.deepseek.com/guides/search/",
+            "comment": "`site:` and `-site:` query operators; multiple sites are joined with OR.",
+        },
+        "language": {
+            "source": "https://api-docs.deepseek.com/guides/search/",
+            "comment": "`lang:` query operator accepts comma-separated language codes.",
+        },
+        "date": {
+            "source": "https://api-docs.deepseek.com/guides/search/",
+            "comment": "`after:` / `before:` query operators accept years or YYYY-MM-DD dates.",
+        },
+        "content": {
+            "source": "https://api-docs.deepseek.com/guides/search/",
+            "comment": "`need_content=true` fills the `content` field.",
+        },
+        "summary": {
+            "source": "https://api-docs.deepseek.com/guides/search/",
+            "comment": "Each result has a long model-readable `summary` alongside the short snippet.",
+        },
+    },
+    "brightdata": {
+        "domains": {
+            "source": "https://docs.brightdata.com/scraping-automation/serp-api/introduction",
+            "comment": "`site:` / `-site:` operators in the proxied Google or Bing query.",
+        },
+        "country": {
+            "source": "https://docs.brightdata.com/scraping-automation/serp-api/introduction",
+            "comment": "Google `gl` or Bing `cc` country parameter.",
+        },
+        "language": {
+            "source": "https://docs.brightdata.com/scraping-automation/serp-api/introduction",
+            "comment": "Google `hl` or Bing `setlang` language parameter.",
+        },
+        "date": {
+            "source": "https://docs.brightdata.com/scraping-automation/serp-api/introduction",
+            "comment": "Google `tbs=cdr:1,cd_min:…,cd_max:…`; Bing date filtering is not mapped.",
+        },
+        "safe_search": {
+            "source": "https://docs.brightdata.com/scraping-automation/serp-api/introduction",
+            "comment": "Google `safe=active|off`; moderate and strict both map to active.",
+        },
+        "news": {
+            "source": "https://docs.brightdata.com/scraping-automation/serp-api/introduction",
+            "comment": "Google `tbm=nws` news vertical through the same SERP zone.",
+        },
+        "engine": {
+            "source": "https://docs.brightdata.com/scraping-automation/serp-api/introduction",
+            "comment": "`engine=\"google\"` (default) or `engine=\"bing\"`.",
+        },
+    },
+    "dataforseo": {
+        "domains": {
+            "source": "https://docs.dataforseo.com/v3/serp/google/organic/live/advanced/",
+            "comment": "`site:` / `-site:` query operators; operator queries are billed at a higher rate.",
+        },
+        "language": {
+            "source": "https://docs.dataforseo.com/v3/serp/google/organic/live/advanced/",
+            "comment": "`language_code` accepts ISO language codes.",
+        },
+    },
+    "openai": {
+        "domains": {
+            "source": "https://platform.openai.com/docs/guides/tools-web-search",
+            "comment": "Tool `filters.allowed_domains` for includes; excluded domains are appended as `-site:` operators.",
+        },
+        "answer": {
+            "source": "https://platform.openai.com/docs/guides/tools-web-search",
+            "comment": "The model's `output_text` is returned in `answer`, sourced from `url_citation` annotations.",
+        },
+    },
+    "anthropic": {
+        "domains": {
+            "source": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+            "comment": "Tool `allowed_domains` / `blocked_domains`.",
+        },
+        "answer": {
+            "source": "https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool",
+            "comment": "Text blocks form the cited answer; results come from web-search result blocks and citations.",
+        },
+    },
+    "xai": {
+        "domains": {
+            "source": "https://docs.x.ai/docs/guides/live-search",
+            "comment": "Tool `filters.allowed_domains` / `filters.excluded_domains`.",
+        },
+        "answer": {
+            "source": "https://docs.x.ai/docs/guides/live-search",
+            "comment": "The model's `output_text` is returned in `answer` with URL citations.",
         },
     },
 }

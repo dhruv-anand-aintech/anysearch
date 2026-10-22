@@ -1,117 +1,124 @@
 {
   "name": "TinyFish",
   "links": {
-    "slug": "tinyfish",
     "docs": "https://docs.tinyfish.ai/search-api/reference",
-    "website": "https://www.tinyfish.ai"
+    "github": "https://github.com/dhruv-anand-aintech/anysearch",
+    "website": "https://www.tinyfish.ai",
+    "slug": "tinyfish"
   },
   "env_keys": {
-    "value": "Not integrated",
+    "value": "TINYFISH_API_KEY",
     "source_url": "https://docs.tinyfish.ai/search-api/reference",
-    "comment": "Comparison only; anysearch does not read a key for this provider."
+    "comment": "API keys and configuration variables documented by the provider."
   },
   "python_extra": {
-    "value": "Not integrated",
+    "value": "\u2014 (REST only)",
     "source_url": "https://docs.tinyfish.ai/search-api/reference",
-    "comment": ""
+    "comment": "HTTP API only; no required vendor Python SDK."
   },
-  "mode": {
-    "values": [],
-    "comment": "No named fast/balanced/deep search tiers; the single Search endpoint is configured by result count, domain_type and date filters.",
-    "source_url": "https://docs.tinyfish.ai/search-api/reference",
-    "checked_at": "2026-10-21"
-  },
-  "p50_latency": {
-    "value": "No current comparable measurement verified",
-    "source_url": "https://docs.tinyfish.ai/search-api/reference",
-    "comment": ""
-  },
-  "notes": "Comparison only; no anysearch SDK adapter is claimed.",
-  "comparison_only": true,
   "requires_key": {
     "support": "full",
-    "comment": "All Search requests require the X-API-Key header.",
     "source_url": "https://docs.tinyfish.ai/search-api/reference",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "comment": "Valid API key required for every request."
   },
   "snippet": {
     "support": "full",
-    "comment": "Every result exposes a snippet string alongside title, url and site_name.",
     "source_url": "https://docs.tinyfish.ai/search-api/reference",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "comment": "Every result exposes `snippet` with title, URL, site name and date fields."
   },
   "domains": {
     "support": "full",
-    "comment": "include_domains and exclude_domains accept comma-separated domain lists; site: operators are deprecated in favour of these parameters.",
     "source_url": "https://docs.tinyfish.ai/search-api/reference",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "comment": "`include_domains` / `exclude_domains` take comma-separated domain lists."
   },
   "country": {
     "support": "full",
-    "comment": "location takes a two-letter country code such as US or GB, defaults to US when omitted, and is resolved from language when only that is set.",
     "source_url": "https://docs.tinyfish.ai/search-api/reference",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "comment": "`location` takes a two-letter country code and defaults to US."
   },
   "language": {
     "support": "full",
-    "comment": "language takes a language code such as en or fr, defaults to en when omitted, and is resolved from location when only that is set.",
     "source_url": "https://docs.tinyfish.ai/search-api/reference",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "comment": "`language` takes a language code and defaults to en."
   },
   "date": {
     "support": "full",
-    "comment": "after_date and before_date accept YYYY-MM-DD and recency_minutes sets a freshness window; research-paper results use pub_year_min and pub_year_max instead.",
     "source_url": "https://docs.tinyfish.ai/search-api/reference",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "comment": "`after_date` / `before_date` (YYYY-MM-DD) or `recency_minutes`; not combinable with research-paper mode."
   },
   "safe_search": {
     "support": "none",
-    "comment": "No safe-search or adult-content parameter appears in the Search API reference; a 403 only reports an upstream policy rejection.",
     "source_url": "https://docs.tinyfish.ai/search-api/reference",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "comment": "Safe search"
   },
   "answer": {
     "support": "none",
-    "comment": "The Search response contains ranked links and snippets only; synthesized answers are not part of this scoped contract, and Agent and Research are separate products.",
     "source_url": "https://docs.tinyfish.ai/search-api/reference",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "comment": "AI answer"
   },
   "content": {
-    "support": "partial",
-    "comment": "Search returns snippets rather than page bodies; page content comes from the separate Fetch API at api.fetch.tinyfish.ai.",
-    "source_url": "https://docs.tinyfish.ai/search-api",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "support": "none",
+    "source_url": "https://docs.tinyfish.ai/search-api/reference",
+    "comment": "Full page text"
   },
   "summary": {
     "support": "none",
-    "comment": "The documented Search response has no per-result or query-level summary field.",
     "source_url": "https://docs.tinyfish.ai/search-api/reference",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "comment": "AI per-result summary"
   },
   "highlights": {
     "support": "none",
-    "comment": "Results expose plain snippet text with no highlight offsets or marked terms.",
     "source_url": "https://docs.tinyfish.ai/search-api/reference",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "comment": "Query highlights"
   },
   "news": {
     "support": "full",
-    "comment": "domain_type=news returns news articles with publisher and date fields.",
     "source_url": "https://docs.tinyfish.ai/search-api/reference",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "comment": "`domain_type=news` returns news results with publisher and date fields."
   },
+  "mode": {
+    "values": [],
+    "source_url": "https://docs.tinyfish.ai/search-api/reference",
+    "comment": "One Search endpoint with no named fast/balanced/deep tier. Result count is fixed per page and controlled by `domain_type`, dates and pagination."
+  },
+  "pricing_per_1k": {
+    "value": "Search $0.00 per request; free up to 12,000 requests/day at 30 req/min, then a positive wallet balance is required",
+    "source_url": "https://docs.tinyfish.ai/search-api/reference",
+    "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+    "primary_price": {
+      "amount_usd_per_1k": null,
+      "billing_unit": "free search requests",
+      "basis": "Documented price is $0.00 per request; there is no paid per-1K search rate to rank",
+      "source_url": "https://www.tinyfish.ai/pricing",
+      "checked_at": "2026-10-21"
+    },
+    "lowest_price": {
+      "amount_usd_per_1k": null,
+      "billing_unit": "free search requests",
+      "basis": "$0 inside the 12,000 requests/day free allowance, so it stays unranked instead of sorting first",
+      "source_url": "https://www.tinyfish.ai/pricing",
+      "checked_at": "2026-10-21"
+    },
+    "links": {
+      "Official source 1": "https://www.tinyfish.ai/pricing",
+      "Official source 2": "https://docs.tinyfish.ai/search-api"
+    }
+  },
+  "free_tier_limits": {
+    "value": "Search free within 30 requests/min and 12,000 requests/day (resets 00:00 UTC); Fetch free to 1,000 URLs/day; no card required",
+    "source_url": "https://docs.tinyfish.ai/search-api/reference",
+    "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
+    "links": {
+      "Official source 1": "https://www.tinyfish.ai/pricing",
+      "Official source 2": "https://docs.tinyfish.ai/search-api"
+    }
+  },
+  "p50_latency": {
+    "value": "Historical July 2026: No published p50/p90/p95 API latency",
+    "source_url": "https://docs.tinyfish.ai/search-api/reference",
+    "comment": "Historical evidence retained from July 2026; not remeasured or claimed current. TinyFish publishes rate and billing limits, not response-time percentiles."
+  },
+  "notes": "Search API (`GET https://api.search.tinyfish.ai`) is in both SDKs. The endpoint has no result-count parameter, so results are trimmed to `max_results` client-side; page bodies come from the separate Fetch API.",
   "api_category": {
     "value": "Standalone search API",
     "source_url": "https://docs.tinyfish.ai/search-api/reference",
@@ -154,46 +161,14 @@
     }
   },
   "capability_basis": {
-    "value": "Native API \u2014 reviewed",
+    "value": "Existing SDK mappings",
     "source_url": "https://docs.tinyfish.ai/search-api/reference",
     "comment": "SDK availability is separate from native provider capability. Each native feature cell carries its own checked date and evidence."
   },
   "sdk_support": {
-    "value": "Comparison only \u2014 no adapter",
+    "value": "Python + TypeScript adapters",
     "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
     "comment": "SDK adapter availability only. See Capability basis for the feature rows; native features do not imply an SDK adapter."
-  },
-  "pricing_per_1k": {
-    "value": "Search $0.00 per request; free up to 12,000 requests/day at 30 req/min, then a positive wallet balance is required",
-    "source_url": "https://docs.tinyfish.ai/search-api/reference",
-    "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
-    "primary_price": {
-      "amount_usd_per_1k": null,
-      "billing_unit": "free search requests",
-      "basis": "Documented price is $0.00 per request; there is no paid per-1K search rate to rank",
-      "source_url": "https://www.tinyfish.ai/pricing",
-      "checked_at": "2026-10-21"
-    },
-    "lowest_price": {
-      "amount_usd_per_1k": null,
-      "billing_unit": "free search requests",
-      "basis": "$0 inside the 12,000 requests/day free allowance, so it stays unranked instead of sorting first",
-      "source_url": "https://www.tinyfish.ai/pricing",
-      "checked_at": "2026-10-21"
-    },
-    "links": {
-      "Official source 1": "https://www.tinyfish.ai/pricing",
-      "Official source 2": "https://docs.tinyfish.ai/search-api"
-    }
-  },
-  "free_tier_limits": {
-    "value": "Search free within 30 requests/min and 12,000 requests/day (resets 00:00 UTC); Fetch free to 1,000 URLs/day; no card required",
-    "source_url": "https://docs.tinyfish.ai/search-api/reference",
-    "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
-    "links": {
-      "Official source 1": "https://www.tinyfish.ai/pricing",
-      "Official source 2": "https://docs.tinyfish.ai/search-api"
-    }
   },
   "evidence": {
     "checked_at": "2026-10-21",

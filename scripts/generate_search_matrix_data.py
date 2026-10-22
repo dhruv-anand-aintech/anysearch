@@ -46,6 +46,14 @@ DISPLAY_NAMES = {
     "duckduckgo": "DuckDuckGo",
     "searxng": "SearXNG",
     "serpapi": "SerpApi",
+    "keenable": "Keenable",
+    "tinyfish": "TinyFish",
+    "deepseek": "DeepSeek",
+    "brightdata": "Bright Data",
+    "dataforseo": "DataForSEO",
+    "openai": "OpenAI Web Search",
+    "anthropic": "Anthropic Web Search",
+    "xai": "xAI Web Search",
 }
 
 FEATURE_KEYS = [

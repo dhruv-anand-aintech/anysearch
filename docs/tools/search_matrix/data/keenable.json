@@ -1,0 +1,200 @@
+{
+  "name": "Keenable",
+  "links": {
+    "docs": "https://docs.keenable.ai/api-reference/search",
+    "github": "https://github.com/dhruv-anand-aintech/anysearch",
+    "website": "https://keenable.ai",
+    "slug": "keenable"
+  },
+  "env_keys": {
+    "value": "KEENABLE_API_KEY",
+    "source_url": "https://docs.keenable.ai/authentication",
+    "comment": "API keys and configuration variables documented by the provider."
+  },
+  "python_extra": {
+    "value": "\u2014 (REST only)",
+    "source_url": "https://docs.keenable.ai/api-reference/search",
+    "comment": "HTTP API only; no required vendor Python SDK."
+  },
+  "requires_key": {
+    "support": "full",
+    "source_url": "https://docs.keenable.ai/authentication",
+    "comment": "Valid API key required for every request."
+  },
+  "snippet": {
+    "support": "full",
+    "source_url": "https://docs.keenable.ai/api-reference/search",
+    "comment": "`description` and `snippet` per result; `snippet_max_length` controls the snippet cap."
+  },
+  "domains": {
+    "support": "partial",
+    "source_url": "https://docs.keenable.ai/api-reference/search",
+    "comment": "`site` restricts results to one domain. There is no exclude-domain parameter."
+  },
+  "country": {
+    "support": "none",
+    "source_url": "https://docs.keenable.ai/api-reference/search",
+    "comment": "Country (gl)"
+  },
+  "language": {
+    "support": "none",
+    "source_url": "https://docs.keenable.ai/api-reference/search",
+    "comment": "Language"
+  },
+  "date": {
+    "support": "full",
+    "source_url": "https://docs.keenable.ai/api-reference/search",
+    "comment": "`published_after` / `published_before` and index-date `acquired_after` / `acquired_before`."
+  },
+  "safe_search": {
+    "support": "none",
+    "source_url": "https://docs.keenable.ai/api-reference/search",
+    "comment": "Safe search"
+  },
+  "answer": {
+    "support": "none",
+    "source_url": "https://docs.keenable.ai/api-reference/search",
+    "comment": "AI answer"
+  },
+  "content": {
+    "support": "partial",
+    "source_url": "https://docs.keenable.ai/api-reference/fetch",
+    "comment": "Search returns snippets only; full page markdown comes from the separate `/v1/fetch` endpoint."
+  },
+  "summary": {
+    "support": "none",
+    "source_url": "https://docs.keenable.ai/api-reference/search",
+    "comment": "AI per-result summary"
+  },
+  "highlights": {
+    "support": "partial",
+    "source_url": "https://docs.keenable.ai/api-reference/search",
+    "comment": "The single `snippet` string carries query-relevant highlights; there is no separate highlights array."
+  },
+  "news": {
+    "support": "none",
+    "source_url": "https://docs.keenable.ai/api-reference/search",
+    "comment": "News search type"
+  },
+  "mode": {
+    "values": [
+      "fast",
+      "balanced"
+    ],
+    "source_url": "https://docs.keenable.ai/api-reference/search",
+    "comment": "`mode=realtime` maps to fast and `mode=pro` (the default) maps to balanced. There is no separate deep tier; anysearch maps deep to pro."
+  },
+  "pricing_per_1k": {
+    "value": "$4 / 1K pay-as-you-go; $1 / 1K at 100 RPS+ dedicated; 100,000 requests/month free",
+    "source_url": "https://docs.keenable.ai/api-reference/search",
+    "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+    "primary_price": {
+      "amount_usd_per_1k": 4.0,
+      "billing_unit": "pay-as-you-go search requests",
+      "basis": "Published $4 per 1,000 requests; 100,000 free requests per month",
+      "source_url": "https://keenable.ai/pricing",
+      "checked_at": "2026-10-22"
+    },
+    "lowest_price": {
+      "amount_usd_per_1k": 1.0,
+      "billing_unit": "dedicated search requests at 100 RPS+",
+      "basis": "$1 per 1,000 at 100 RPS+ with cloud or on-premises; standard pay-as-you-go is $4",
+      "source_url": "https://keenable.ai/pricing",
+      "checked_at": "2026-10-22"
+    },
+    "links": {
+      "Official source 1": "https://keenable.ai/pricing",
+      "Official source 2": "https://docs.keenable.ai/credits",
+      "Official source 3": "https://docs.keenable.ai/rate-limits",
+      "Official source 4": "https://docs.keenable.ai/authentication"
+    }
+  },
+  "free_tier_limits": {
+    "value": "100,000 requests/month free; resets monthly; no card",
+    "source_url": "https://docs.keenable.ai/api-reference/search",
+    "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
+    "links": {
+      "Official source 1": "https://keenable.ai/pricing",
+      "Official source 2": "https://docs.keenable.ai/credits",
+      "Official source 3": "https://docs.keenable.ai/rate-limits",
+      "Official source 4": "https://docs.keenable.ai/authentication"
+    }
+  },
+  "p50_latency": {
+    "value": "Historical July 2026: No published p50/p90/p95 API latency",
+    "source_url": "https://docs.keenable.ai/api-reference/search",
+    "comment": "Historical evidence retained from July 2026; not remeasured or claimed current. Keenable documents modes, not percentile latency; no independent rerun was found."
+  },
+  "notes": "Search API (`POST /v1/search`) is in both SDKs. `mode=fast` uses the realtime SKU and `balanced`/`deep` use pro; only one include domain maps to `site`, and full page text requires Keenable's separate Fetch API.",
+  "api_category": {
+    "value": "Standalone search API",
+    "source_url": "https://docs.keenable.ai/api-reference/search",
+    "comment": ""
+  },
+  "api_status": {
+    "value": "Available",
+    "source_url": "https://docs.keenable.ai/api-reference/search",
+    "comment": "",
+    "links": {
+      "Official source 1": "https://keenable.ai/pricing",
+      "Official source 2": "https://docs.keenable.ai/credits",
+      "Official source 3": "https://docs.keenable.ai/rate-limits",
+      "Official source 4": "https://docs.keenable.ai/authentication"
+    }
+  },
+  "native_api": {
+    "value": "POST /v1/search returns ranked title, URL, description, snippet, published_at and acquired_at fields. `mode` selects pro (deeper retrieval, default) or realtime; supports a single `site`, published and acquired date bounds, point-in-time `query_time`, max_results 1-50 and snippet length. Separate /v1/fetch returns page markdown.",
+    "source_url": "https://docs.keenable.ai/api-reference/search",
+    "comment": "",
+    "links": {
+      "Official source 1": "https://keenable.ai/pricing",
+      "Official source 2": "https://docs.keenable.ai/credits",
+      "Official source 3": "https://docs.keenable.ai/rate-limits",
+      "Official source 4": "https://docs.keenable.ai/authentication"
+    }
+  },
+  "rate_limits": {
+    "value": "10 requests/s authenticated per organization; keyless 1,000/hour and 10/s per IP; HTTP 402 when the monthly allowance and purchased credits are exhausted",
+    "source_url": "https://docs.keenable.ai/api-reference/search",
+    "comment": "",
+    "links": {
+      "Official source 1": "https://keenable.ai/pricing",
+      "Official source 2": "https://docs.keenable.ai/credits",
+      "Official source 3": "https://docs.keenable.ai/rate-limits",
+      "Official source 4": "https://docs.keenable.ai/authentication"
+    }
+  },
+  "checked_at": {
+    "value": "2026-10-22",
+    "source_url": "https://docs.keenable.ai/api-reference/search",
+    "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
+    "links": {
+      "Official source 1": "https://keenable.ai/pricing",
+      "Official source 2": "https://docs.keenable.ai/credits",
+      "Official source 3": "https://docs.keenable.ai/rate-limits",
+      "Official source 4": "https://docs.keenable.ai/authentication"
+    }
+  },
+  "capability_basis": {
+    "value": "Existing SDK mappings",
+    "source_url": "https://docs.keenable.ai/api-reference/search",
+    "comment": "SDK availability is separate from native provider capability. Each native feature cell carries its own checked date and evidence."
+  },
+  "sdk_support": {
+    "value": "Python + TypeScript adapters",
+    "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
+    "comment": "SDK adapter availability only. See Capability basis for the feature rows; native features do not imply an SDK adapter."
+  },
+  "evidence": {
+    "checked_at": "2026-10-22",
+    "source_urls": [
+      "https://docs.keenable.ai/api-reference/search",
+      "https://keenable.ai/pricing",
+      "https://docs.keenable.ai/credits",
+      "https://docs.keenable.ai/rate-limits",
+      "https://docs.keenable.ai/authentication"
+    ],
+    "effective_date": null,
+    "method": "official documentation; no new benchmarks"
+  }
+}

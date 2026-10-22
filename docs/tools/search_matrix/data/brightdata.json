@@ -1,123 +1,120 @@
 {
   "name": "Bright Data",
   "links": {
-    "slug": "brightdata",
-    "docs": "https://brightdata.com/pricing/serp",
-    "website": "https://brightdata.com"
+    "docs": "https://docs.brightdata.com/scraping-automation/serp-api/introduction",
+    "github": "https://github.com/dhruv-anand-aintech/anysearch",
+    "website": "https://brightdata.com",
+    "slug": "brightdata"
   },
   "env_keys": {
-    "value": "Not integrated",
-    "source_url": "https://brightdata.com/pricing/serp",
-    "comment": "Comparison only; anysearch does not read a key for this provider."
+    "value": "BRIGHTDATA_API_KEY, BRIGHT_DATA_API_KEY, BRIGHTDATA_ZONE",
+    "source_url": "https://docs.brightdata.com/api-reference/authentication",
+    "comment": "API keys and configuration variables documented by the provider."
   },
   "python_extra": {
-    "value": "Not integrated",
-    "source_url": "https://brightdata.com/pricing/serp",
-    "comment": ""
+    "value": "\u2014 (REST only)",
+    "source_url": "https://docs.brightdata.com/scraping-automation/serp-api/introduction",
+    "comment": "HTTP API only; no required vendor Python SDK."
   },
-  "mode": {
-    "values": [
-      "SERP",
-      "Fast SERP"
-    ],
-    "comment": "Fast SERP has separate access requirements; no anysearch fast/balanced/deep mapping.",
-    "source_url": "https://docs.brightdata.com/products/serp-api/fast-serp/quickstart",
-    "checked_at": "2026-10-21"
-  },
-  "p50_latency": {
-    "value": "No current comparable measurement verified",
-    "source_url": "https://brightdata.com/pricing/serp",
-    "comment": ""
-  },
-  "notes": "Comparison only; no anysearch SDK adapter is claimed.",
-  "comparison_only": true,
   "requires_key": {
     "support": "full",
-    "comment": "REST request API requires bearer API key; proxy interface uses zone credentials.",
-    "source_url": "https://docs.brightdata.com/api-reference/rest-api/serp/serp-api",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "source_url": "https://docs.brightdata.com/api-reference/authentication",
+    "comment": "Valid API key required for every request."
   },
   "snippet": {
     "support": "full",
-    "comment": "Parsed organic results expose description (search snippet).",
-    "source_url": "https://docs.brightdata.com/products/serp-api/parsed-json-results",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "source_url": "https://docs.brightdata.com/scraping-automation/serp-api/introduction",
+    "comment": "Short description field returned with each result."
   },
   "domains": {
-    "support": "partial",
-    "comment": "Indirect engine query operator: provider forwards q in a Google search URL, and Google documents site:. This documented composition is not a typed domain allow/deny guarantee.",
-    "source_url": "https://docs.brightdata.com/products/serp-api/query-parameters/google",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation",
-    "links": {
-      "Google site: operator": "https://developers.google.com/search/docs/monitor-debug/search-operators/all-search-site"
-    }
+    "support": "full",
+    "source_url": "https://docs.brightdata.com/scraping-automation/serp-api/introduction",
+    "comment": "`site:` / `-site:` operators in the proxied Google or Bing query."
   },
   "country": {
     "support": "full",
-    "comment": "gl selects two-letter search country; localization is documented.",
-    "source_url": "https://docs.brightdata.com/products/serp-api/query-parameters/google",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "source_url": "https://docs.brightdata.com/scraping-automation/serp-api/introduction",
+    "comment": "Google `gl` or Bing `cc` country parameter."
   },
   "language": {
     "support": "full",
-    "comment": "hl sets page/interface language; engine-supported language semantics, not a guarantee every result has that language.",
-    "source_url": "https://docs.brightdata.com/products/serp-api/query-parameters/google",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "source_url": "https://docs.brightdata.com/scraping-automation/serp-api/introduction",
+    "comment": "Google `hl` or Bing `setlang` language parameter."
   },
   "date": {
-    "support": "partial",
-    "comment": "tbs filters publication time by engine-supported ranges; engine-specific date syntax rather than typed start/end fields.",
-    "source_url": "https://docs.brightdata.com/products/serp-api/query-parameters/google",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "support": "full",
+    "source_url": "https://docs.brightdata.com/scraping-automation/serp-api/introduction",
+    "comment": "Google `tbs=cdr:1,cd_min:\u2026,cd_max:\u2026`; Bing date filtering is not mapped."
   },
   "safe_search": {
-    "support": "full",
-    "comment": "safe=active or safe=off enables/disables Google SafeSearch.",
-    "source_url": "https://docs.brightdata.com/products/serp-api/query-parameters/google",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "support": "partial",
+    "source_url": "https://docs.brightdata.com/scraping-automation/serp-api/introduction",
+    "comment": "Google `safe=active|off`; moderate and strict both map to active."
   },
   "answer": {
-    "support": "partial",
-    "comment": "Parsed Google ai_overview is available when the upstream SERP includes it; no guaranteed independent synthesized answer.",
-    "source_url": "https://docs.brightdata.com/products/serp-api/query-parameters/google",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "support": "none",
+    "source_url": "https://docs.brightdata.com/scraping-automation/serp-api/introduction",
+    "comment": "AI answer"
   },
   "content": {
     "support": "none",
-    "comment": "Parsed JSON/HTML/Markdown formats describe the SERP response, not fetched full text of linked result pages. Separate scraper products are outside this column.",
-    "source_url": "https://docs.brightdata.com/products/serp-api/parsed-json-results",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "source_url": "https://docs.brightdata.com/scraping-automation/serp-api/introduction",
+    "comment": "Full page text"
   },
   "summary": {
     "support": "none",
-    "comment": "The documented organic response has description snippets, not generated per-result page summaries. Upstream AI Overview is a separate SERP element.",
-    "source_url": "https://docs.brightdata.com/products/serp-api/parsed-json-results",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "source_url": "https://docs.brightdata.com/scraping-automation/serp-api/introduction",
+    "comment": "AI per-result summary"
   },
   "highlights": {
-    "support": "partial",
-    "comment": "snippet_highlighted_words exposes engine-highlighted terms, not a standalone excerpt generation service.",
-    "source_url": "https://docs.brightdata.com/products/serp-api/parsed-json-results",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "support": "none",
+    "source_url": "https://docs.brightdata.com/scraping-automation/serp-api/introduction",
+    "comment": "Query highlights"
   },
   "news": {
     "support": "full",
-    "comment": "tbm=nws selects Google News results; dedicated Fast SERP News also documented.",
-    "source_url": "https://docs.brightdata.com/products/serp-api/query-parameters/google",
-    "checked_at": "2026-10-21",
-    "basis": "native API documentation"
+    "source_url": "https://docs.brightdata.com/scraping-automation/serp-api/introduction",
+    "comment": "Google `tbm=nws` news vertical through the same SERP zone."
   },
+  "mode": {
+    "values": [
+      "balanced"
+    ],
+    "source_url": "https://docs.brightdata.com/scraping-automation/serp-api/introduction",
+    "comment": "One SERP request per search. Fast SERP is a separately provisioned product and is not mapped to the unified mode parameter."
+  },
+  "pricing_per_1k": {
+    "value": "PAYG $1.50 / 1K successful requests; Scale $499/month includes 380K then $1.30 / 1K",
+    "source_url": "https://brightdata.com/pricing/serp",
+    "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+    "primary_price": {
+      "amount_usd_per_1k": 1.5,
+      "billing_unit": "successful PAYG SERP requests",
+      "basis": "Other plans differ",
+      "source_url": "https://brightdata.com/pricing/serp",
+      "checked_at": "2026-10-21"
+    },
+    "lowest_price": {
+      "amount_usd_per_1k": 1.3,
+      "billing_unit": "successful SERP requests on Scale",
+      "basis": "Scale $499/month includes 380K requests, then $1.30 / 1K; PAYG $1.50 / 1K",
+      "source_url": "https://brightdata.com/pricing/serp",
+      "checked_at": "2026-10-21"
+    },
+    "links": {}
+  },
+  "free_tier_limits": {
+    "value": "5,000 requests/month free; no card",
+    "source_url": "https://brightdata.com/pricing/serp",
+    "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
+    "links": {}
+  },
+  "p50_latency": {
+    "value": "Historical July 2026: Under 1 second per request claimed; no percentile distribution",
+    "source_url": "https://docs.brightdata.com/scraping-automation/serp-api/introduction",
+    "comment": "Historical evidence retained from July 2026; not remeasured or claimed current. Bright Data states sub-second SERP responses but does not publish p50/p95 figures."
+  },
+  "notes": "SERP API is in both SDKs through one configured zone. Google is the default engine and `engine=\"bing\"` switches to Bing; results come from parsed JSON organic items.",
   "api_category": {
     "value": "Third-party SERP service",
     "source_url": "https://brightdata.com/pricing/serp",
@@ -148,40 +145,14 @@
     "links": {}
   },
   "capability_basis": {
-    "value": "Native API \u2014 reviewed",
+    "value": "Existing SDK mappings",
     "source_url": "https://brightdata.com/pricing/serp",
     "comment": "SDK availability is separate from native provider capability. Each native feature cell carries its own checked date and evidence."
   },
   "sdk_support": {
-    "value": "Comparison only \u2014 no adapter",
+    "value": "Python + TypeScript adapters",
     "source_url": "https://github.com/dhruv-anand-aintech/anysearch",
     "comment": "SDK adapter availability only. See Capability basis for the feature rows; native features do not imply an SDK adapter."
-  },
-  "pricing_per_1k": {
-    "value": "PAYG $1.50 / 1K successful requests; Scale $499/month includes 380K then $1.30 / 1K",
-    "source_url": "https://brightdata.com/pricing/serp",
-    "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
-    "primary_price": {
-      "amount_usd_per_1k": 1.5,
-      "billing_unit": "successful PAYG SERP requests",
-      "basis": "Other plans differ",
-      "source_url": "https://brightdata.com/pricing/serp",
-      "checked_at": "2026-10-21"
-    },
-    "lowest_price": {
-      "amount_usd_per_1k": 1.3,
-      "billing_unit": "successful SERP requests on Scale",
-      "basis": "Scale $499/month includes 380K requests, then $1.30 / 1K; PAYG $1.50 / 1K",
-      "source_url": "https://brightdata.com/pricing/serp",
-      "checked_at": "2026-10-21"
-    },
-    "links": {}
-  },
-  "free_tier_limits": {
-    "value": "5,000 requests/month free; no card",
-    "source_url": "https://brightdata.com/pricing/serp",
-    "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
-    "links": {}
   },
   "evidence": {
     "checked_at": "2026-10-21",

@@ -718,6 +718,38 @@
         "source_url": "https://www.tinyfish.ai/pricing",
         "checked_at": "2026-10-21"
       }
+    },
+    "keenable": {
+      "source_url": "https://docs.keenable.ai/api-reference/search",
+      "pricing": "$4 / 1K pay-as-you-go; $1 / 1K at 100 RPS+ dedicated; 100,000 requests/month free",
+      "free": "100,000 requests/month free; resets monthly; no card",
+      "limits": "10 requests/s authenticated per organization; keyless 1,000/hour and 10/s per IP; HTTP 402 when the monthly allowance and purchased credits are exhausted",
+      "overview": "POST /v1/search returns ranked title, URL, description, snippet, published_at and acquired_at fields. `mode` selects pro (deeper retrieval, default) or realtime; supports a single `site`, published and acquired date bounds, point-in-time `query_time`, max_results 1-50 and snippet length. Separate /v1/fetch returns page markdown.",
+      "category": "Standalone search API",
+      "status": "Available",
+      "checked_at": "2026-10-22",
+      "name": "Keenable",
+      "website": "https://keenable.ai",
+      "primary_price": {
+        "amount_usd_per_1k": 4.0,
+        "billing_unit": "pay-as-you-go search requests",
+        "basis": "Published $4 per 1,000 requests; 100,000 free requests per month",
+        "source_url": "https://keenable.ai/pricing",
+        "checked_at": "2026-10-22"
+      },
+      "lowest_price": {
+        "amount_usd_per_1k": 1.0,
+        "billing_unit": "dedicated search requests at 100 RPS+",
+        "basis": "$1 per 1,000 at 100 RPS+ with cloud or on-premises; standard pay-as-you-go is $4",
+        "source_url": "https://keenable.ai/pricing",
+        "checked_at": "2026-10-22"
+      },
+      "sources": [
+        "https://keenable.ai/pricing",
+        "https://docs.keenable.ai/credits",
+        "https://docs.keenable.ai/rate-limits",
+        "https://docs.keenable.ai/authentication"
+      ]
     }
   }
 }
