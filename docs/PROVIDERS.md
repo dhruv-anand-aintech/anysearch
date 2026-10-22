@@ -23,6 +23,14 @@ Legend: ✅ supported · — not supported (the param is ignored for that provid
 | **linkup** | ✅ | — | — | ✅ | — | ✅ | — | ✅ | ✅ | — | — | — |
 | **perplexity** | ✅ | — | ✅ | — | — | — | — | — | ✅ | — | — | — |
 | **gemini** | — | — | — | — | — | — | — | ✅ | — | — | — | — |
+| **openai** | ✅‡ | — | — | — | — | ✅ | — | ✅ | — | — | — | — |
+| **anthropic** | ✅ | — | — | — | — | — | — | ✅ | — | — | — | — |
+| **xai** | ✅‡ | — | — | — | — | — | — | ✅ | — | — | — | — |
+| **keenable** | ✅‡ | — | — | ✅ | — | ✅ | — | — | — | — | — | — |
+| **tinyfish** | ✅ | ✅ | ✅ | ✅ | — | — | — | — | — | — | — | ✅ |
+| **deepseek** | ✅ | — | ✅ | ✅ | — | — | — | — | ✅ | ✅ | — | — |
+| **brightdata** | ✅ | ✅ | ✅ | ✅§ | ✅ | — | ✅ | — | — | — | — | ✅ |
+| **dataforseo** | ✅¶ | — | ✅ | — | — | — | — | — | — | — | — | — |
 | **serper** | — | ✅ | ✅ | — | — | — | — | ✅* | — | — | — | ✅ |
 | **serpapi** (`engine=…`) | — | ✅† | ✅† | — | ✅† | — | ✅ | ✅* | — | — | — | ✅† |
 | **searchapi** | — | ✅ | ✅ | — | — | — | — | ✅* | — | — | — | ✅ |
@@ -40,6 +48,16 @@ box; it is not requested explicitly.
 `siteSearch`.
 § SearXNG returns instant-answer text from its `answers` field when available.
 † SerpApi: locale/safe/news params vary by `engine` (see matrix columns per backend).
+
+‡ Single include domain only (no exclude list). OpenAI maps excluded domains to
+`-site:` query operators; xAI exposes both allow and exclude lists; Keenable's `site`
+parameter accepts one domain.
+
+§ Bright Data maps date filtering for Google only; Bing supports locale, safe search and
+news but not the arbitrary date range.
+
+¶ DataForSEO uses Live Google Organic and accepts `site:` / `-site:` operators, which are
+billed at a higher rate. Set `DATAFORSEO_LOCATION_CODE` for the market (defaults to the US).
 
 ## SerpApi engines
 

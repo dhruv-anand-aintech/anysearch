@@ -4,7 +4,7 @@
 providers — inspired by [LiteLLM](https://github.com/BerriAI/litellm) (one interface for
 every LLM) and [vector-io](https://github.com/AI-Northstar-Tech/vector-io) (one interface
 for every vector DB). Call Octen, Exa, Parallel, Brave, Tavily, Keiro, SerpAPI, Perplexity,
-Linkup, Firecrawl, and 9 more through a **single function**, with **common parameters** and a
+Linkup, Firecrawl, Keenable, and 16 more through a **single function**, with **common parameters** and a
 **common response shape**, in **Python and JavaScript/TypeScript** — plus a **stdio MCP
 server** and optional **FastAPI proxy** that adapt to whatever API keys you have set.
 
@@ -38,7 +38,7 @@ glue code each time. `anysearch` normalizes all of it:
 - **One response shape**: `title, url, snippet, text, summary, highlights, score,
   published_date, author, source, raw` + a top-level `answer`.
 
-## Providers (19)
+## Providers (27)
 
 | Provider | Name / aliases | Env var(s) | Highlights of support |
 | --- | --- | --- | --- |
@@ -51,6 +51,14 @@ glue code each time. `anysearch` normalizes all of it:
 | [Linkup](https://linkup.so) | `linkup` | `LINKUP_API_KEY` | answer, content, domains, dates, mode |
 | [Perplexity](https://docs.perplexity.ai) | `perplexity`, `pplx` | `PERPLEXITY_API_KEY` | content, domains, language |
 | [Gemini](https://ai.google.dev/gemini-api/docs/google-search) | `gemini`, `google_gemini` | `GEMINI_API_KEY` | Google Search grounding, answer, source chunks |
+| [OpenAI](https://platform.openai.com/docs/guides/tools-web-search) | `openai` | `OPENAI_API_KEY` | hosted web search, answer, citations, mode |
+| [Anthropic](https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool) | `anthropic`, `claude` | `ANTHROPIC_API_KEY` | Claude web search tool, answer, citations, domains |
+| [xAI](https://docs.x.ai/docs/guides/live-search) | `xai`, `grok` | `XAI_API_KEY` | Grok web search, answer, citations, domains |
+| [Keenable](https://keenable.ai) | `keenable` | `KEENABLE_API_KEY` | pro/realtime modes, dates, site filter, snippets |
+| [TinyFish](https://www.tinyfish.ai) | `tinyfish` | `TINYFISH_API_KEY` | domains, country, language, dates, news |
+| [DeepSeek](https://api-docs.deepseek.com/guides/search/) | `deepseek` | `DEEPSEEK_API_KEY` | content, summary, domains, language, dates |
+| [Bright Data](https://brightdata.com) | `brightdata`, `bright_data` | `BRIGHTDATA_API_KEY` + `BRIGHTDATA_ZONE` | Google/Bing SERP, country, language, safe, news |
+| [DataForSEO](https://dataforseo.com) | `dataforseo`, `data_for_seo` | `DATAFORSEO_LOGIN` + `DATAFORSEO_PASSWORD` | Live Google organic SERP, language, domains |
 | [Serper](https://serper.dev) | `serper` | `SERPER_API_KEY` | answer, country, language, news |
 | [SerpApi](https://serpapi.com) | `serpapi`, `serp` | `SERPAPI_API_KEY` | engine (bing/baidu/yandex/…), country, language, safe, news, answer* |
 | [SearchApi](https://searchapi.io) | `searchapi` | `SEARCHAPI_API_KEY` | answer, country, language, news |
@@ -66,16 +74,19 @@ See [`docs/PROVIDERS.md`](docs/PROVIDERS.md) for the full capability matrix.
 
 ## Install
 
-Install from the latest **`main`** on GitHub (not published to PyPI/npm yet).
+Install the released packages from PyPI and npm, or install the latest **`main`** from GitHub.
 
 ### Python (pip / uv)
 
 ```bash
+pip install anysearch-sdk
+
+# Latest from main instead:
 pip install "git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python"
 
 # Optional: provider native SDKs via extras (for anysearch.native("exa"), etc.)
-pip install "anysearch-sdk[exa,parallel] @ git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python"
-pip install "anysearch-sdk[all] @ git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python"
+pip install "anysearch-sdk[exa,parallel]"
+pip install "anysearch-sdk[all]"
 
 uv add "anysearch-sdk @ git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python"
 uv add "anysearch-sdk[exa,tavily,brave] @ git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python"
@@ -88,6 +99,9 @@ add that provider's official SDK for the `anysearch.native("<provider>")` escape
 ### JavaScript / TypeScript (npm)
 
 ```bash
+npm install anysearch
+
+# Latest from main instead:
 npm install github:dhruv-anand-aintech/anysearch#main:js
 ```
 

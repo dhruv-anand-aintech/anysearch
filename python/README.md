@@ -2,7 +2,7 @@
 
 **One interface for every web search API.** `anysearch` is an adapter layer — think
 LiteLLM, but for search providers — that lets you call Octen, Exa, Parallel, Brave, Tavily,
-SerpAPI, Perplexity, Linkup, Firecrawl, and more through a single function with a
+SerpAPI, Perplexity, Linkup, Firecrawl, Keenable, OpenAI, and more through a single function with a
 common set of parameters and a common response shape. It also ships a dependency-free
 **stdio MCP server** and optional **FastAPI proxy server** that adapt to whatever API
 keys you have configured.
@@ -27,26 +27,30 @@ resp = anysearch.search(
 
 ## Install
 
-Install the latest version from GitHub **`main`** (not on PyPI yet):
+Install the released package from PyPI, or the latest `main` from GitHub:
 
 ```bash
+pip install anysearch-sdk
+
+# or from main
 pip install "git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python"
 # or
-uv add "anysearch-sdk @ git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python"
+uv add anysearch-sdk
 ```
 
 The base install works for **all** providers (every adapter is REST-based on `httpx`).
 Use extras to also install a provider's official SDK (for `anysearch.native(...)`):
 
 ```bash
-pip install "anysearch-sdk[exa,parallel] @ git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python"
-pip install "anysearch-sdk[all] @ git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python"
-uv add "anysearch-sdk[exa,tavily,brave] @ git+https://github.com/dhruv-anand-aintech/anysearch.git@main#subdirectory=python"
+pip install "anysearch-sdk[exa,parallel]"
+pip install "anysearch-sdk[all]"
+uv add "anysearch-sdk[exa,tavily,brave]"
 ```
 
 REST-only providers (`brave`, `serper`, `you`, `jina`, `kagi`, `searchapi`,
-`google-pse`, `searxng`) need no extra dependency — the extra name still resolves so
-the selection syntax is uniform.
+`google-pse`, `searxng`, `keenable`, `tinyfish`, `deepseek`, `brightdata`,
+`dataforseo`, `openai`, `anthropic`, `xai`) need no extra dependency — the extra name
+still resolves so the selection syntax is uniform.
 
 ## Providers
 
@@ -61,6 +65,14 @@ the selection syntax is uniform.
 | Linkup | `linkup` | `LINKUP_API_KEY` | `linkup-sdk` |
 | Perplexity | `perplexity`, `pplx` | `PERPLEXITY_API_KEY` | `perplexityai` |
 | Gemini | `gemini`, `google_gemini` | `GEMINI_API_KEY` | `google-genai` |
+| OpenAI | `openai` | `OPENAI_API_KEY` | — |
+| Anthropic | `anthropic`, `claude` | `ANTHROPIC_API_KEY` | — |
+| xAI | `xai`, `grok` | `XAI_API_KEY` | — |
+| Keenable | `keenable` | `KEENABLE_API_KEY` | — |
+| TinyFish | `tinyfish` | `TINYFISH_API_KEY` | — |
+| DeepSeek | `deepseek` | `DEEPSEEK_API_KEY` | — |
+| Bright Data | `brightdata`, `bright_data` | `BRIGHTDATA_API_KEY` + `BRIGHTDATA_ZONE` | — |
+| DataForSEO | `dataforseo`, `data_for_seo` | `DATAFORSEO_LOGIN` + `DATAFORSEO_PASSWORD` | — |
 | Serper | `serper` | `SERPER_API_KEY` | — |
 | SerpApi | `serpapi`, `serp` | `SERPAPI_API_KEY` | `google-search-results` (engine: bing, baidu, yandex, …) |
 | SearchApi | `searchapi` | `SEARCHAPI_API_KEY` | — |

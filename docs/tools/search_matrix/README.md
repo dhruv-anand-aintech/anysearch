@@ -59,11 +59,12 @@ npm run deploy:matrix
 ## Official-source review (2026-10-21)
 
 `research.json` is the reviewed source of current commercial/product facts. It covers
-26 provider families across 31 offerings (six SerpApi engine columns share one vendor).
+28 provider families across 33 offerings (six SerpApi engine columns share one vendor).
 `apply_search_research.py` applies that review after SDK metadata generation, so sync
-cannot overwrite reviewed pricing with stale SDK-era notes. New comparison-only
-entries explicitly have no anysearch adapter; the SDK parity tests still cover every
-claimed adapter. Native product features and unified SDK mappings are separate.
+cannot overwrite reviewed pricing with stale SDK-era notes. Every matrix search API has
+an anysearch adapter except the deliberately retired Bing Search API column; comparison-only
+entries explicitly have no adapter. The SDK parity tests still cover every claimed adapter.
+Native product features and unified SDK mappings are separate.
 
 Sources, review dates, effective dates where verified, conflicts and billing units
 are retained in the research file and generated evidence objects. No paid provider
@@ -71,7 +72,9 @@ calls or new quality/latency benchmarks were run. July latency evidence is visib
 historical. DeepSeek's live October 21 guide specifies Search 100 QPS and Fetch 25 QPS;
 an earlier indexed snapshot reported 5 QPS each and is superseded by the live guide.
 TinyFish's Search API is free to 12,000 requests/day at 30 req/min, so it is listed but
-deliberately unranked in the price sort.
+deliberately unranked in the price sort. Keenable was reviewed on October 22, 2026:
+100,000 free requests/month, $4 per 1,000 pay-as-you-go, and $1 per 1,000 at 100 RPS+
+dedicated capacity, with `pro` and `realtime` search modes.
 
 The visible evidence date comes from source review dates, not the build clock.
 `npm run matrix:research-check` rejects missing evidence or reviews older than 45 days.

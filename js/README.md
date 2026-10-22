@@ -2,7 +2,7 @@
 
 **One interface for every web search API.** `anysearch` is an adapter layer — think
 LiteLLM, but for search providers — that lets you call Octen, Exa, Parallel, Brave, Tavily,
-SerpAPI, Perplexity, Linkup, Firecrawl, and more through a single function with a
+SerpAPI, Perplexity, Linkup, Firecrawl, Keenable, OpenAI, and more through a single function with a
 common set of parameters and a common response shape. It also ships a dependency-free
 **stdio MCP server** that adapts to whatever API keys you have configured.
 
@@ -24,9 +24,12 @@ const exa = await search("how do transformers work", {
 
 ## Install
 
-Install the latest version from GitHub **`main`** (not on npm yet):
+Install the released package from npm, or the latest `main` from GitHub:
 
 ```bash
+npm install anysearch
+
+# or from main
 npm install github:dhruv-anand-aintech/anysearch#main:js
 ```
 
@@ -41,7 +44,8 @@ npm install @tavily/core    # then: await native("tavily")
 
 ## Providers
 
-`octen`, `exa`, `parallel`, `tavily`, `brave`, `keiro`, `linkup`, `perplexity`, `gemini`, `serper`, `serpapi`,
+`octen`, `exa`, `parallel`, `tavily`, `brave`, `keiro`, `linkup`, `perplexity`, `gemini`, `openai`, `anthropic`, `xai`,
+`keenable`, `tinyfish`, `deepseek`, `brightdata`, `dataforseo`, `serper`, `serpapi`,
 `searchapi`, `you`, `jina`, `kagi`, `firecrawl`, `google_pse`, `searxng`, `duckduckgo`
 (keyless fallback). Each reads its API key from the environment — see the
 [root README](../README.md) for the full env-var table.
