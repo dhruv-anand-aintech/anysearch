@@ -1,6 +1,163 @@
 {
-  "entry_count": 872,
+  "version": "1.7.0",
+  "entry_count": 909,
   "entries": [
+    {
+      "date": "2026-10-21",
+      "commit": "92f1a13",
+      "title": "feat(matrix): add TinyFish and record lowest documented prices",
+      "items": [
+        {
+          "summary": "Anthropic Web Search: Pricing / 1K now sorted by lowest documented price (web searches)",
+          "target": "cell-anthropic-pricing-per-1k"
+        },
+        {
+          "summary": "Bing Search (retired): Pricing / 1K now sorted by lowest documented price (retired)",
+          "target": "cell-bing-legacy-pricing-per-1k"
+        },
+        {
+          "summary": "Brave: Pricing / 1K now sorted by lowest documented price (Search requests)",
+          "target": "cell-brave-pricing-per-1k"
+        },
+        {
+          "summary": "Bright Data: Pricing / 1K now sorted by lowest documented price (successful SERP requests on Scale)",
+          "target": "cell-brightdata-pricing-per-1k"
+        },
+        {
+          "summary": "DataForSEO: Pricing / 1K now sorted by lowest documented price (standard-queue SERP pages)",
+          "target": "cell-dataforseo-pricing-per-1k"
+        },
+        {
+          "summary": "DeepSeek: Pricing / 1K now sorted by lowest documented price (successful nonempty Search requests)",
+          "target": "cell-deepseek-pricing-per-1k"
+        },
+        {
+          "summary": "DuckDuckGo: Pricing / 1K now sorted by lowest documented price (library API fee)",
+          "target": "cell-duckduckgo-pricing-per-1k"
+        },
+        {
+          "summary": "Exa: Pricing / 1K now sorted by lowest documented price (Lite requests)",
+          "target": "cell-exa-pricing-per-1k"
+        },
+        {
+          "summary": "Firecrawl: Pricing / 1K now sorted by lowest documented price (credits)",
+          "target": "cell-firecrawl-pricing-per-1k"
+        },
+        {
+          "summary": "Gemini: Pricing / 1K now sorted by lowest documented price (Gemini 3+ search queries)",
+          "target": "cell-gemini-pricing-per-1k"
+        },
+        {
+          "summary": "Google PSE: Pricing / 1K now sorted by lowest documented price (legacy queries)",
+          "target": "cell-google-pse-pricing-per-1k"
+        },
+        {
+          "summary": "Jina: Pricing / 1K now sorted by lowest documented price (tokens)",
+          "target": "cell-jina-pricing-per-1k"
+        },
+        {
+          "summary": "Kagi: Pricing / 1K now sorted by lowest documented price (Search requests)",
+          "target": "cell-kagi-pricing-per-1k"
+        },
+        {
+          "summary": "Keiro: Availability updated to Available",
+          "target": "cell-keiro-api-status"
+        },
+        {
+          "summary": "Keiro: Evidence checked evidence refreshed",
+          "target": "cell-keiro-checked-at"
+        },
+        {
+          "summary": "Keiro: Free tier limits updated to 750 credits/month free (about 750 lite searches); no credit card requir…",
+          "target": "cell-keiro-free-tier-limits"
+        },
+        {
+          "summary": "Keiro: Native API overview updated to Rebranded browserfoundry; existing keys and endpoints continue. Lite, F…",
+          "target": "cell-keiro-native-api"
+        },
+        {
+          "summary": "Keiro: Pricing / 1K updated to search/lite $0.10 / 1K on Essential, $0.06 Pro, $0.03 Startup (annual);…",
+          "target": "cell-keiro-pricing-per-1k"
+        },
+        {
+          "summary": "Keiro: Limits / billing caveats updated to Lite search 15 req/min free, 60 Essential, 300 Pro, 600 Startup; batch…",
+          "target": "cell-keiro-rate-limits"
+        },
+        {
+          "summary": "Linkup: Pricing / 1K now sorted by lowest documented price (raw standard requests)",
+          "target": "cell-linkup-pricing-per-1k"
+        },
+        {
+          "summary": "Octen: Pricing / 1K now sorted by lowest documented price (promotional Web Search requests)",
+          "target": "cell-octen-pricing-per-1k"
+        },
+        {
+          "summary": "OpenAI Web Search: Pricing / 1K now sorted by lowest documented price (web_search tool calls)",
+          "target": "cell-openai-pricing-per-1k"
+        },
+        {
+          "summary": "Parallel: Pricing / 1K now sorted by lowest documented price (Turbo/Fast requests)",
+          "target": "cell-parallel-pricing-per-1k"
+        },
+        {
+          "summary": "Perplexity: Pricing / 1K now sorted by lowest documented price (Fast Search requests)",
+          "target": "cell-perplexity-pricing-per-1k"
+        },
+        {
+          "summary": "Searchapi: Pricing / 1K now sorted by lowest documented price (standard requests at 250K/month)",
+          "target": "cell-searchapi-pricing-per-1k"
+        },
+        {
+          "summary": "SearXNG: Pricing / 1K now sorted by lowest documented price (self-hosted software)",
+          "target": "cell-searxng-pricing-per-1k"
+        },
+        {
+          "summary": "Baidu · SerpApi: Pricing / 1K now sorted by lowest documented price (searches at 30K/month)",
+          "target": "cell-serpapi-baidu-pricing-per-1k"
+        },
+        {
+          "summary": "Bing · SerpApi: Pricing / 1K now sorted by lowest documented price (searches at 30K/month)",
+          "target": "cell-serpapi-bing-pricing-per-1k"
+        },
+        {
+          "summary": "DuckDuckGo · SerpApi: Pricing / 1K now sorted by lowest documented price (searches at 30K/month)",
+          "target": "cell-serpapi-duckduckgo-pricing-per-1k"
+        },
+        {
+          "summary": "Google · SerpApi: Pricing / 1K now sorted by lowest documented price (searches at 30K/month)",
+          "target": "cell-serpapi-google-pricing-per-1k"
+        },
+        {
+          "summary": "Yahoo · SerpApi: Pricing / 1K now sorted by lowest documented price (searches at 30K/month)",
+          "target": "cell-serpapi-yahoo-pricing-per-1k"
+        },
+        {
+          "summary": "Yandex · SerpApi: Pricing / 1K now sorted by lowest documented price (searches at 30K/month)",
+          "target": "cell-serpapi-yandex-pricing-per-1k"
+        },
+        {
+          "summary": "Serper: Pricing / 1K now sorted by lowest documented price (bulk prepaid searches)",
+          "target": "cell-serper-pricing-per-1k"
+        },
+        {
+          "summary": "Tavily: Pricing / 1K now sorted by lowest documented price (basic PAYG searches)",
+          "target": "cell-tavily-pricing-per-1k"
+        },
+        {
+          "summary": "TinyFish added to the comparison",
+          "target": "cell-tinyfish-requires-key"
+        },
+        {
+          "summary": "xAI Web Search: Pricing / 1K now sorted by lowest documented price (web_search tool calls)",
+          "target": "cell-xai-pricing-per-1k"
+        },
+        {
+          "summary": "You: Pricing / 1K now sorted by lowest documented price (Search calls)",
+          "target": "cell-you-pricing-per-1k"
+        }
+      ],
+      "version": "1.7.0"
+    },
     {
       "date": "2026-10-21",
       "commit": "ebd23bb",
@@ -742,7 +899,8 @@
           "summary": "You: anysearch SDK evidence refreshed",
           "target": "cell-you-sdk-support"
         }
-      ]
+      ],
+      "version": "1.6.1"
     },
     {
       "date": "2026-10-21",
@@ -1641,7 +1799,8 @@
           "summary": "You: anysearch SDK updated to Python + TypeScript adapters",
           "target": "cell-you-sdk-support"
         }
-      ]
+      ],
+      "version": "1.6.0"
     },
     {
       "date": "2026-07-28",
@@ -1756,7 +1915,8 @@
           "summary": "You: Latency by tier updated to Search: 0.73s p50 / 1.22s p95 independent; 0.445s p50 provider; Researc…",
           "target": "cell-you-p50-latency"
         }
-      ]
+      ],
+      "version": "1.5.1"
     },
     {
       "date": "2026-07-28",
@@ -1859,7 +2019,8 @@
           "summary": "You: Latency by tier updated to Not publicly documented",
           "target": "cell-you-p50-latency"
         }
-      ]
+      ],
+      "version": "1.5.0"
     },
     {
       "date": "2026-07-23",
@@ -2006,7 +2167,8 @@
           "summary": "You: Pricing / 1K updated to search: $5; research: $12/$50/$100/$450 by effort",
           "target": "cell-you-pricing-per-1k"
         }
-      ]
+      ],
+      "version": "1.4.3"
     },
     {
       "date": "2026-07-23",
@@ -2017,7 +2179,8 @@
           "summary": "Keiro: Pricing / 1K updated to fast/balanced: ~$0.50; content: ~$1.50; batch: ~$0.50",
           "target": "cell-keiro-pricing-per-1k"
         }
-      ]
+      ],
+      "version": "1.4.2"
     },
     {
       "date": "2026-06-10",
@@ -2084,7 +2247,8 @@
           "summary": "Keiro: Summary evidence refreshed",
           "target": "cell-keiro-summary"
         }
-      ]
+      ],
+      "version": "1.4.1"
     },
     {
       "date": "2026-06-10",
@@ -2095,7 +2259,8 @@
           "summary": "Keiro added to the comparison",
           "target": "cell-keiro-requires-key"
         }
-      ]
+      ],
+      "version": "1.4.0"
     },
     {
       "date": "2026-06-06",
@@ -2194,7 +2359,8 @@
           "summary": "You: Pricing / 1K updated to search: $5; research lite: $12; deeper research: tier dependent",
           "target": "cell-you-pricing-per-1k"
         }
-      ]
+      ],
+      "version": "1.3.0"
     },
     {
       "date": "2026-06-02",
@@ -2233,7 +2399,8 @@
           "summary": "Tavily: Snippet evidence refreshed",
           "target": "cell-tavily-snippet"
         }
-      ]
+      ],
+      "version": "1.2.2"
     },
     {
       "date": "2026-06-02",
@@ -2368,7 +2535,8 @@
           "summary": "You: Snippet evidence refreshed",
           "target": "cell-you-snippet"
         }
-      ]
+      ],
+      "version": "1.2.1"
     },
     {
       "date": "2026-06-02",
@@ -2379,7 +2547,8 @@
           "summary": "Gemini added to the comparison",
           "target": "cell-gemini-requires-key"
         }
-      ]
+      ],
+      "version": "1.2.0"
     },
     {
       "date": "2026-06-02",
@@ -2414,7 +2583,8 @@
           "summary": "You: Mode evidence refreshed",
           "target": "cell-you-mode"
         }
-      ]
+      ],
+      "version": "1.1.3"
     },
     {
       "date": "2026-06-02",
@@ -2461,7 +2631,8 @@
           "summary": "You: Mode updated to balanced",
           "target": "cell-you-mode"
         }
-      ]
+      ],
+      "version": "1.1.2"
     },
     {
       "date": "2026-06-02",
@@ -2656,7 +2827,8 @@
           "summary": "Yandex · SerpApi: Summary evidence refreshed",
           "target": "cell-serpapi-yandex-summary"
         }
-      ]
+      ],
+      "version": "1.1.1"
     },
     {
       "date": "2026-06-02",
@@ -2687,7 +2859,8 @@
           "summary": "Yandex · SerpApi added to the comparison",
           "target": "cell-serpapi-yandex-requires-key"
         }
-      ]
+      ],
+      "version": "1.1.0"
     },
     {
       "date": "2026-06-02",
@@ -3426,7 +3599,8 @@
           "summary": "You: Summary evidence refreshed",
           "target": "cell-you-summary"
         }
-      ]
+      ],
+      "version": "1.0.3"
     },
     {
       "date": "2026-06-02",
@@ -3493,7 +3667,8 @@
           "summary": "You: pip extra evidence refreshed",
           "target": "cell-you-python-extra"
         }
-      ]
+      ],
+      "version": "1.0.2"
     },
     {
       "date": "2026-06-02",
@@ -3560,7 +3735,8 @@
           "summary": "You: pip extra evidence refreshed",
           "target": "cell-you-python-extra"
         }
-      ]
+      ],
+      "version": "1.0.1"
     },
     {
       "date": "2026-06-02",
@@ -3627,7 +3803,8 @@
           "summary": "You added to the comparison",
           "target": "cell-you-requires-key"
         }
-      ]
+      ],
+      "version": "1.0.0"
     }
   ]
 }
