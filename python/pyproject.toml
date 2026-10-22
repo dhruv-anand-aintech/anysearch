@@ -4,13 +4,13 @@ build-backend = "hatchling.build"
 
 [project]
 name = "anysearch-sdk"
-version = "0.1.0"
-description = "A unified adapter layer to call any web search API provider (Exa, Parallel, Brave, Tavily, SerpAPI, and more) with one interface — plus a stdio MCP server."
+version = "0.2.0"
+description = "A unified adapter layer to call any web search API provider (Exa, Parallel, Brave, Tavily, Keenable, OpenAI, and more) with one interface — plus a stdio MCP server."
 readme = "README.md"
 requires-python = ">=3.9"
 license = { text = "MIT" }
 authors = [{ name = "anysearch contributors" }]
-keywords = ["search", "search-api", "exa", "brave", "tavily", "keiro", "serpapi", "parallel", "mcp", "llm", "rag"]
+keywords = ["search", "search-api", "exa", "brave", "tavily", "keiro", "serpapi", "parallel", "keenable", "tinyfish", "deepseek", "brightdata", "dataforseo", "openai", "anthropic", "xai", "mcp", "llm", "rag"]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
@@ -51,6 +51,14 @@ kagi = []
 searchapi = []
 google-pse = []
 searxng = []
+keenable = []
+tinyfish = []
+deepseek = []
+brightdata = []
+dataforseo = []
+openai = []
+anthropic = []
+xai = []
 proxy = ["fastapi>=0.100", "uvicorn[standard]>=0.23"]
 
 # --- Aggregate extras ----------------------------------------------------
@@ -82,8 +90,8 @@ anysearch-mcp = "anysearch.mcp.server:main"
 anysearch-proxy = "anysearch.proxy.__main__:main"
 
 [project.urls]
-Homepage = "https://github.com/anysearch/anysearch"
-Repository = "https://github.com/anysearch/anysearch"
+Homepage = "https://github.com/dhruv-anand-aintech/anysearch"
+Repository = "https://github.com/dhruv-anand-aintech/anysearch"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/anysearch"]
