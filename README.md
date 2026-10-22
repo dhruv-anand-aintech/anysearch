@@ -16,7 +16,7 @@ resp = anysearch.search("who won the 2026 super bowl?", max_results=5)
 
 ```ts
 // JavaScript / TypeScript
-import { search } from "anysearch";
+import { search } from "@dhruv-anand-aintech/anysearch";
 const resp = await search("who won the 2026 super bowl?", { maxResults: 5 });
 ```
 
@@ -96,12 +96,23 @@ uv add "anysearch-sdk[proxy] @ git+https://github.com/dhruv-anand-aintech/anysea
 The base install works for **every** provider (REST via `httpx`). Per-provider extras
 add that provider's official SDK for the `anysearch.native("<provider>")` escape hatch.
 
-### JavaScript / TypeScript (npm)
+### JavaScript / TypeScript (GitHub Packages)
 
 ```bash
-npm install anysearch
+npm install @dhruv-anand-aintech/anysearch --registry=https://npm.pkg.github.com
+```
 
-# Latest from main instead:
+GitHub Packages requires a token even for public packages. Add your GitHub username
+and a token with `read:packages` to `~/.npmrc`:
+
+```ini
+@dhruv-anand-aintech:registry=https://npm.pkg.github.com
+//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
+```
+
+Or install the latest `main` from GitHub:
+
+```bash
 npm install github:dhruv-anand-aintech/anysearch#main:js
 ```
 
@@ -141,7 +152,7 @@ print(resp.answer, len(resp.results))
 ```
 
 ```ts
-import { AnySearch } from "anysearch";
+import { AnySearch } from "@dhruv-anand-aintech/anysearch";
 const client = new AnySearch({ provider: "exa", fallbacks: ["tavily", "brave"] });
 const resp = await client.search("rust async runtimes", { mode: "deep" });
 ```

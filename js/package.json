@@ -1,7 +1,7 @@
 {
-  "name": "anysearch",
-  "version": "0.2.0",
-  "description": "One interface for every web search API (Exa, Parallel, Brave, Tavily, Keenable, OpenAI, and more) \u2014 plus a stdio MCP server.",
+  "name": "@dhruv-anand-aintech/anysearch",
+  "version": "0.2.1",
+  "description": "One interface for every web search API (Exa, Parallel, Brave, Tavily, Keenable, OpenAI, and more) — plus a stdio MCP server.",
   "type": "module",
   "license": "MIT",
   "engines": {
@@ -60,5 +60,13 @@
     "@types/node": "^20.14.0",
     "tsx": "^4.16.0",
     "typescript": "^5.5.0"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dhruv-anand-aintech/anysearch.git",
+    "directory": "js"
   }
 }

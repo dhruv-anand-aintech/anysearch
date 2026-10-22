@@ -7,7 +7,7 @@ common set of parameters and a common response shape. It also ships a dependency
 **stdio MCP server** that adapts to whatever API keys you have configured.
 
 ```ts
-import { search, AnySearch } from "anysearch";
+import { search, AnySearch } from "@dhruv-anand-aintech/anysearch";
 
 // Auto-selects a provider based on which API keys are set in your environment.
 const resp = await search("best vector databases 2026", { maxResults: 5 });
@@ -24,12 +24,22 @@ const exa = await search("how do transformers work", {
 
 ## Install
 
-Install the released package from npm, or the latest `main` from GitHub:
+Install the released package from GitHub Packages, or the latest `main` from GitHub:
 
 ```bash
-npm install anysearch
+npm install @dhruv-anand-aintech/anysearch --registry=https://npm.pkg.github.com
+```
 
-# or from main
+GitHub Packages requires a token with `read:packages`. Add it to `~/.npmrc`:
+
+```ini
+@dhruv-anand-aintech:registry=https://npm.pkg.github.com
+//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
+```
+
+Or install from main:
+
+```bash
 npm install github:dhruv-anand-aintech/anysearch#main:js
 ```
 
@@ -88,7 +98,7 @@ r.publishedDate; r.author; r.source; r.raw;
 ## Client, fallbacks, async, native escape hatch
 
 ```ts
-import { AnySearch, native } from "anysearch";
+import { AnySearch, native } from "@dhruv-anand-aintech/anysearch";
 
 const client = new AnySearch({ provider: "exa", fallbacks: ["tavily", "brave"] });
 const resp = await client.search("...", { mode: "deep" });
