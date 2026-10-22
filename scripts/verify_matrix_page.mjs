@@ -46,6 +46,7 @@ function runClientScriptSmoke(clientScript, payload, cookie = "", expectedPriceO
   const document = {
     cookie,
     documentElement: { style: { setProperty() {} } },
+    addEventListener() {},
     getElementById(id) {
       if (elements[id]) return elements[id];
       if (id === "headerRow") return headerEl;

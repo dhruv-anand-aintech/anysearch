@@ -190,10 +190,74 @@ a { color: inherit; text-decoration: none; }
 .feedback-btn:hover { background: #e8f1ee; }
 .hero { padding: 10px 14px 8px; border-bottom: 1px solid var(--line); background: var(--panel); }
 .hero p { margin: 0; color: var(--muted); font-size: 12px; }
-.comparison-legend { margin-top:6px !important; }
-.support.not_applicable .dot, .support.unknown .dot { width:auto; min-width:18px; padding:0 3px; border-radius:3px; font-size:9px; }
-.meta-row { margin-top: 6px; display: flex; gap: 6px; flex-wrap: wrap; }
+.hero-head { display: flex; align-items: flex-start; gap: 12px; }
+.hero-copy { min-width: 0; flex: 1 1 auto; }
+.key-wrap { position: relative; flex: 0 0 auto; }
+.key-toggle {
+  width: 20px; height: 20px; border-radius: 50%; border: 1px solid var(--line-strong);
+  background: #fff; color: var(--muted); font: 600 11px/1 Georgia, "Times New Roman", serif;
+  display: grid; place-items: center; padding: 0; cursor: pointer; transition: background .12s, color .12s, border-color .12s;
+}
+.key-toggle:hover, .key-toggle:focus-visible, .key-toggle[aria-expanded="true"] {
+  background: var(--ink); color: var(--panel); border-color: var(--ink); outline: none;
+}
+.key-panel {
+  position: absolute; right: 0; top: calc(100% + 7px); z-index: 45;
+  width: min(560px, calc(100vw - 28px)); padding: 13px 15px 12px;
+  background: var(--panel); border: 1px solid var(--line-strong);
+  box-shadow: 0 10px 28px rgba(23, 19, 13, .2); display: none; text-align: left;
+}
+.key-wrap.open .key-panel { display: block; }
+.key-title {
+  margin: 0 0 9px !important; color: var(--ink) !important; font-size: 10px !important;
+  font-weight: 700; text-transform: uppercase; letter-spacing: .07em;
+}
+.key-grid { display: grid; grid-template-columns: 46px 1fr; gap: 8px 10px; align-items: start; }
+.key-grid .support { line-height: 1; padding-top: 1px; justify-self: start; }
+.key-grid .dot { width: 16px; height: 16px; font-size: 9px; }
+.key-grid .support.not_applicable .dot, .key-grid .support.unknown .dot {
+  background: var(--unknown); min-width: 40px; height: 16px; padding: 0 5px; font-size: 9px;
+}
+.key-label { font-size: 11.5px; line-height: 1.35; color: var(--muted); }
+.key-label strong { font-weight: 700; }
+.key-label .k-full { color: var(--accent); }
+.key-label .k-partial { color: var(--warn); }
+.key-label .k-none { color: var(--none); }
+.key-label .k-neutral { color: var(--unknown); }
+.key-note {
+  margin: 10px 0 0 !important; padding-top: 9px; border-top: 1px solid var(--line);
+  color: var(--muted) !important; font-size: 10.5px !important; line-height: 1.45;
+}
+.key-note strong { color: var(--ink); }
+.support.not_applicable .dot, .support.unknown .dot { width:auto; min-width:18px; padding:0 3px; border-radius:3px; font-size:9px; background: var(--unknown); }
+.meta-row { margin-top: 6px; display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
 .pill { border: 1px solid var(--line); padding: 3px 7px; background: #fff; font-size: 11px; color: var(--muted); }
+.search-box {
+  margin-left: auto; display: flex; align-items: center; gap: 4px;
+  border: 1px solid var(--line); background: #fff; padding: 2px 4px 2px 8px; min-width: 230px;
+}
+.search-box:focus-within { border-color: var(--line-strong); box-shadow: 0 0 0 2px rgba(23, 107, 91, .1); }
+.search-box input {
+  border: 0; outline: 0; background: transparent; font: inherit; font-size: 11px;
+  color: var(--ink); width: 200px; padding: 3px 0; min-width: 0;
+}
+.search-box input::placeholder { color: var(--muted); }
+.search-box input::-webkit-search-cancel-button { display: none; }
+.search-count { font-size: 10px; color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.search-clear {
+  display: none; border: 0; background: transparent; color: var(--muted); cursor: pointer;
+  font: inherit; font-size: 14px; line-height: 1; padding: 1px 4px; border-radius: 3px;
+}
+.search-clear:hover { color: var(--ink); background: #f0eeeb; }
+.search-box.has-query .search-clear { display: inline-block; }
+.search-empty { padding: 16px 18px !important; text-align: left !important; font-size: 12px; color: var(--muted); }
+.search-empty strong { color: var(--ink); }
+.link-button {
+  border: 0; background: transparent; color: var(--accent); font: inherit; font-size: 12px;
+  text-decoration: underline; text-underline-offset: 2px; cursor: pointer; padding: 0 2px;
+}
+.link-button:hover { text-decoration: none; }
+td.search-hit { background: #fff6d8; box-shadow: inset 0 0 0 1px #ecd58a; }
 .view-panel[hidden] { display: none !important; }
 .matrix-view { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; }
 .changelog-view { flex: 1 1 auto; min-height: 0; overflow: auto; background: var(--bg); }
@@ -253,7 +317,7 @@ td.col-hidden-slot {
 }
 .agent-head {
   display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
-  gap: 4px; min-height: 48px; width: 100%;
+  gap: 5px; min-height: 54px; width: 100%;
 }
 .agent-brand-link {
   display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
@@ -265,8 +329,8 @@ a.docs-link { font-weight: 600; color: var(--accent); text-decoration: underline
 a.docs-link:hover { text-decoration: none; }
 .agent-head:has(.agent-name-stacked) { min-height: 56px; }
 .agent-name {
-  width: 100%; box-sizing: border-box; font-weight: 700; line-height: 1.15; color: var(--ink);
-  text-align: center;
+  width: 100%; box-sizing: border-box; font-weight: 700; font-size: 11px; line-height: 1.22;
+  color: var(--ink); text-align: center; overflow-wrap: anywhere;
 }
 .agent-name-stacked {
   display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
@@ -274,7 +338,7 @@ a.docs-link:hover { text-decoration: none; }
 }
 .agent-name-line {
   display: block; width: 100%; max-width: 100%;
-  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  overflow: visible; text-overflow: clip; white-space: normal; overflow-wrap: anywhere;
 }
 .agent-name-via {
   font-weight: 600; font-size: 0.92em; color: var(--muted);
@@ -405,12 +469,39 @@ td.value .cell-value {
 </header>
 <main id="matrixView" class="view-panel matrix-view">
 <section class="hero">
-  <p>Compare ${htmlEscape(matrix.length)} search offerings by category, availability and pricing. Feature rows use the stated <strong>Capability basis</strong>: existing SDK mappings or reviewed native APIs. SDK availability is separate. <strong>Name or icon</strong> opens the provider site; <strong>⊙</strong> hides or shows a column; drag headers to reorder; use the <strong>API docs</strong> row for official references.</p>
-  <p class="comparison-legend">✓ supported · ◎ limited/conditional · ✕ not exposed by scoped contract · N/A not applicable · Undoc. specifically undocumented. Click Pricing / 1K to sort cheapest first (↑), most expensive first (↓), then reset. Ordering uses each provider's lowest documented per-1K price for its own search product, including volume tiers and annual plans; the cell keeps the full price ladder. Units and surcharges differ, so this is not a total-cost ranking. Free-only APIs, self-hosted SearXNG, open-library DuckDuckGo, credit- and token-priced, retired and unavailable prices stay last.</p>
+  <div class="hero-head">
+    <div class="hero-copy">
+      <p>Compare ${htmlEscape(matrix.length)} search offerings by category, availability and pricing. Feature rows use the stated <strong>Capability basis</strong>: existing SDK mappings or reviewed native APIs. SDK availability is separate. <strong>Name or icon</strong> opens the provider site; <strong>⊙</strong> hides or shows a column; drag headers to reorder; use the <strong>API docs</strong> row for official references.</p>
+    </div>
+    <div class="key-wrap" id="keyWrap">
+      <button type="button" class="key-toggle" id="keyToggle" aria-label="Capability and pricing key" aria-expanded="false" aria-controls="keyPanel" onclick="toggleKey(event)">i</button>
+      <div class="key-panel" id="keyPanel" role="tooltip">
+        <p class="key-title">Capability key</p>
+        <div class="key-grid">
+          <span class="support full"><span class="dot">&#10003;</span></span>
+          <span class="key-label"><strong class="k-full">Supported</strong> &mdash; documented and mapped</span>
+          <span class="support partial"><span class="dot">&#9678;</span></span>
+          <span class="key-label"><strong class="k-partial">Limited / conditional</strong> &mdash; indirect, partial or a separate endpoint</span>
+          <span class="support none"><span class="dot">&#10005;</span></span>
+          <span class="key-label"><strong class="k-none">Not exposed</strong> &mdash; not in the scoped documented contract</span>
+          <span class="support not_applicable"><span class="dot">N/A</span></span>
+          <span class="key-label"><strong class="k-neutral">Not applicable</strong> &mdash; retired or a different output abstraction</span>
+          <span class="support unknown"><span class="dot">Undoc.</span></span>
+          <span class="key-label"><strong class="k-neutral">Undocumented</strong> &mdash; specifically undocumented after review</span>
+        </div>
+        <p class="key-note"><strong>Pricing / 1K:</strong> click to sort cheapest first (&uarr;), most expensive first (&darr;), then reset. Ordering uses each provider&rsquo;s lowest documented per-1K price for its own search product, including volume tiers and annual plans; the cell keeps the full price ladder. Units and surcharges differ, so this is not a total-cost ranking. Free-only APIs, self-hosted SearXNG, open-library DuckDuckGo, credit- and token-priced, retired and unavailable prices stay last.</p>
+      </div>
+    </div>
+  </div>
   <div class="meta-row">
     <span class="pill">${htmlEscape(matrix.length)} offerings</span>
     <span class="pill"><a href="${GITHUB_REPO}">anysearch SDK</a></span>
     <span class="pill" id="updatedPill" data-updated-at="${htmlEscape(updatedAt)}">${htmlEscape(formatUpdatedLabel(updatedAt))}</span>
+    <div class="search-box" id="searchBox">
+      <input id="matrixSearch" type="search" autocomplete="off" spellcheck="false" placeholder="Search providers or any field" aria-label="Search provider names and matrix text">
+      <span class="search-count" id="searchCount" aria-live="polite" hidden></span>
+      <button type="button" class="search-clear" id="searchClear" aria-label="Clear search">&times;</button>
+    </div>
   </div>
 </section>
 <div class="table-wrap">
@@ -585,6 +676,102 @@ function loadState() {
 function saveState() {
   document.cookie = COOKIE + '=' + encodeURIComponent(JSON.stringify({cols:colOrder, rows:rowOrder})) + ';path=/;max-age=31536000';
 }
+var searchQuery = '';
+var searchMatches = new Set();
+var providerSearchText = [];
+var searchRenderTimer = null;
+function collectSearchText(value, out) {
+  if (value === null || value === undefined) return;
+  if (typeof value === 'string') { out.push(value); return; }
+  if (typeof value === 'number') { out.push(String(value)); return; }
+  if (Array.isArray(value)) { value.forEach(function(item){ collectSearchText(item, out); }); return; }
+  if (typeof value === 'object') {
+    Object.keys(value).forEach(function(key){ collectSearchText(value[key], out); });
+  }
+}
+function buildProviderSearchText() {
+  providerSearchText = matrix.map(function(agent){
+    var parts = [];
+    collectSearchText(agent, parts);
+    return parts.join(' ').toLowerCase();
+  });
+}
+function searchActive() { return searchQuery.trim().length > 0; }
+function recomputeSearch() {
+  var q = searchQuery.trim().toLowerCase();
+  searchMatches = new Set();
+  if (!q) return;
+  providerSearchText.forEach(function(text, index){
+    if (text.indexOf(q) !== -1) searchMatches.add(index);
+  });
+}
+function updateSearchUi() {
+  var box = document.getElementById('searchBox');
+  var count = document.getElementById('searchCount');
+  if (!box) return;
+  var active = searchActive();
+  box.classList.toggle('has-query', active);
+  if (count) {
+    count.hidden = !active;
+    count.textContent = active ? (searchMatches.size + ' / ' + matrix.length) : '';
+  }
+}
+function renderSearchResults() {
+  renderHeader();
+  renderBody();
+  updateColWidths();
+  updateSearchUi();
+}
+function setSearchQuery(value) {
+  searchQuery = value || '';
+  recomputeSearch();
+  renderSearchResults();
+}
+function resetSearchState() {
+  searchQuery = '';
+  recomputeSearch();
+  var input = document.getElementById('matrixSearch');
+  if (input) input.value = '';
+  updateSearchUi();
+}
+function clearSearch(focusInput) {
+  if (searchRenderTimer) { clearTimeout(searchRenderTimer); searchRenderTimer = null; }
+  resetSearchState();
+  renderSearchResults();
+  var input = document.getElementById('matrixSearch');
+  if (focusInput && input) input.focus();
+}
+function setupSearch() {
+  buildProviderSearchText();
+  var input = document.getElementById('matrixSearch');
+  var clear = document.getElementById('searchClear');
+  if (!input) return;
+  input.addEventListener('input', function(){
+    searchQuery = input.value;
+    if (searchRenderTimer) clearTimeout(searchRenderTimer);
+    searchRenderTimer = setTimeout(function(){
+      searchRenderTimer = null;
+      recomputeSearch();
+      renderSearchResults();
+    }, 90);
+  });
+  input.addEventListener('keydown', function(event){
+    if (event.key === 'Escape') {
+      event.preventDefault();
+      clearSearch(false);
+      input.blur();
+    }
+  });
+  if (clear) clear.addEventListener('click', function(){ clearSearch(true); });
+  document.addEventListener('keydown', function(event){
+    if (event.key !== '/' || event.metaKey || event.ctrlKey || event.altKey) return;
+    var tag = (document.activeElement && document.activeElement.tagName) || '';
+    if (/^(INPUT|TEXTAREA|SELECT)$/.test(tag)) return;
+    event.preventDefault();
+    input.focus();
+  });
+  updateSearchUi();
+}
 function esc(v) { return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 function slugify(v) { return String(v||'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,''); }
 function cellId(agent, key) {
@@ -698,8 +885,7 @@ function updateColWidths() {
   var corner = 156;
   var minVisible = 180;
   var minHidden = 36;
-  var hiddenCount = 0;
-  colOrder.forEach(function(i){ if (hidden.has(i)) hiddenCount++; });
+  var hiddenCount = searchActive() ? 0 : colOrder.filter(function(i){ return hidden.has(i); }).length;
   var visibleCount = visibleCols().length || 1;
   var avail = Math.max(0, (wrap ? wrap.clientWidth : window.innerWidth) - corner);
   var hiddenW = hiddenCount * minHidden;
@@ -708,29 +894,9 @@ function updateColWidths() {
   document.documentElement.style.setProperty('--agent-col-hidden-w', minHidden + 'px');
 }
 function fitAgentHeaderNames() {
+  // Provider names render at a fixed readable size and wrap instead of shrinking.
   document.querySelectorAll('th.agent-col:not(.hidden-col) .agent-name').forEach(function(el) {
     el.style.fontSize = '';
-    var box = el.closest('.agent-head');
-    if (!box) return;
-    var maxW = Math.max(0, box.clientWidth - 2);
-    var lines = el.querySelectorAll('.agent-name-line');
-    var stacked = el.classList.contains('agent-name-stacked');
-    var maxH = stacked ? 42 : 34;
-    var fs = 10;
-    el.style.fontSize = fs + 'px';
-    function overflows() {
-      if (el.scrollHeight > maxH + 1) return true;
-      for (var li = 0; li < lines.length; li++) {
-        var line = lines[li];
-        if (line.classList.contains('agent-name-via')) continue;
-        if (line.scrollWidth > maxW + 1) return true;
-      }
-      return false;
-    }
-    while (fs > 5.5 && overflows()) {
-      fs -= 0.5;
-      el.style.fontSize = fs + 'px';
-    }
   });
 }
 function scheduleFitAgentHeaderNames() {
@@ -740,15 +906,22 @@ function scheduleFitAgentHeaderNames() {
 }
 function renderHeader() {
   document.getElementById('headerRow').innerHTML = '<th class="corner"></th>'+displayColOrder().map(function(i){
-    var agent = matrix[i], hc = hidden.has(i)?' hidden-col':'', dep = agent.deprecated?' deprecated-col':'';
-    var eyeTitle = hidden.has(i) ? 'Show this provider' : 'Hide this provider';
+    var agent = matrix[i];
+    var manuallyHidden = hidden.has(i);
+    var hc = (manuallyHidden && !searchActive()) ? ' hidden-col' : '';
+    var dep = agent.deprecated ? ' deprecated-col' : '';
+    var eyeTitle = manuallyHidden ? 'Show this provider' : 'Hide this provider';
     return '<th class="agent-col'+hc+dep+'" data-idx="'+i+'" draggable="true">'+
       agentBrandHeadHtml(agent, i)+
       '<button type="button" class="eye" onclick="toggleCol('+i+'); event.stopPropagation();" title="'+esc(eyeTitle)+'" aria-label="'+esc(eyeTitle)+'">'+
-      (hidden.has(i)?'&#8855;':'&#9679;')+'</button></th>';
+      (manuallyHidden?'&#8855;':'&#9679;')+'</button></th>';
   }).join(''); setupColDrag(); updateColWidths(); scheduleFitAgentHeaderNames();
 }
-function visibleCols() { return colOrder.filter(function(i){return !hidden.has(i)}); }
+function visibleCols() {
+  return searchActive()
+    ? colOrder.filter(function(i){ return searchMatches.has(i); })
+    : colOrder.filter(function(i){ return !hidden.has(i); });
+}
 function sortVisibleColumnIndices(indices) {
   if (!rowSort.length) return indices.slice();
   var originalRank = {};
@@ -772,6 +945,10 @@ function sortVisibleColumnIndices(indices) {
   });
 }
 function displayColOrder() {
+  if (searchActive()) {
+    var matched = visibleCols();
+    return rowSort.length ? sortVisibleColumnIndices(matched) : matched;
+  }
   if (!rowSort.length) return colOrder.slice();
   var sortedVisible = sortVisibleColumnIndices(visibleCols());
   var qi = 0;
@@ -781,11 +958,27 @@ function displayColOrder() {
   });
 }
 function colCell(i, col, render) {
-  if (hidden.has(i)) return '<td class="col-hidden-slot" aria-hidden="true"></td>';
+  if (hidden.has(i) && !searchActive()) return '<td class="col-hidden-slot" aria-hidden="true"></td>';
   return render();
+}
+function applySearchHighlights() {
+  if (!searchActive()) return;
+  var q = searchQuery.trim().toLowerCase();
+  if (!q) return;
+  document.querySelectorAll('#tbody td').forEach(function(td){
+    if (td.classList.contains('col-hidden-slot')) return;
+    var clone = td.cloneNode(true);
+    clone.querySelectorAll('.cell-tip').forEach(function(tip){ tip.remove(); });
+    var text = clone.textContent || '';
+    if (text.toLowerCase().indexOf(q) !== -1) td.classList.add('search-hit');
+  });
 }
 function renderBody() {
   var cols = displayColOrder();
+  if (searchActive() && !cols.length) {
+    document.getElementById('tbody').innerHTML = '<tr>'+rowLabelCell('Search','','')+'<td class="search-empty" colspan="12">No providers match <strong>&ldquo;'+esc(searchQuery)+'&rdquo;</strong>. Search covers provider names, categories, notes, pricing and the other text fields. <button type="button" class="link-button" onclick="clearSearch(true)">Clear search</button></td></tr>';
+    return;
+  }
   var rows = [];
   rows.push('<tr class="group-head">'+rowLabelCell('About',' group-row-label','')+cols.map(function(i){
     return colCell(i, null, function(){ return '<td class="group-spacer"></td>'; });
@@ -815,10 +1008,15 @@ function renderBody() {
     rows.push('<tr>'+labelHtml+cells+'</tr>');
   });
   document.getElementById('tbody').innerHTML = rows.join('');
+  applySearchHighlights();
   setupRowDrag();
   setupCellTips();
 }
-function toggleCol(i) { hidden.has(i)?hidden.delete(i):hidden.add(i); renderHeader(); renderBody(); updateColWidths(); scheduleFitAgentHeaderNames(); }
+function toggleCol(i) {
+  if (searchActive()) { resetSearchState(); }
+  hidden.has(i)?hidden.delete(i):hidden.add(i);
+  renderHeader(); renderBody(); updateColWidths(); scheduleFitAgentHeaderNames();
+}
 function cycleSort(key) {
   if (DATE_SORT_ROWS.has(key)) return;
   var idx = rowSort.findIndex(function(s){ return s.key === key; });
@@ -910,6 +1108,41 @@ function setupCellTips() {
     tip.addEventListener('click', function(e){ e.stopPropagation(); });
   });
 }
+function setKeyOpen(open) {
+  var wrap = document.getElementById('keyWrap');
+  var btn = document.getElementById('keyToggle');
+  if (!wrap || !btn) return;
+  wrap.classList.toggle('open', !!open);
+  btn.setAttribute('aria-expanded', String(!!open));
+}
+var keyPinned = false;
+function toggleKey(event) {
+  if (event) event.stopPropagation();
+  keyPinned = !keyPinned;
+  setKeyOpen(keyPinned);
+}
+function setupKeyPanel() {
+  var wrap = document.getElementById('keyWrap');
+  var btn = document.getElementById('keyToggle');
+  if (!wrap || !btn) return;
+  wrap.addEventListener('mouseenter', function(){ setKeyOpen(true); });
+  wrap.addEventListener('mouseleave', function(){ if (!keyPinned) setKeyOpen(false); });
+  wrap.addEventListener('focusin', function(){ setKeyOpen(true); });
+  wrap.addEventListener('focusout', function(){ if (!keyPinned) setKeyOpen(false); });
+  document.addEventListener('click', function(event){
+    if (!wrap.contains(event.target)) {
+      keyPinned = false;
+      setKeyOpen(false);
+    }
+  });
+  document.addEventListener('keydown', function(event){
+    if (event.key === 'Escape') {
+      keyPinned = false;
+      setKeyOpen(false);
+      btn.blur();
+    }
+  });
+}
 function showView(view, updateHash) {
   var isChangelog = view === 'changelog';
   var matrixView = document.getElementById('matrixView');
@@ -934,12 +1167,22 @@ function revealCell(targetId, updateHash) {
     }
     if (matrixIndex !== -1) break;
   }
-  if (matrixIndex !== -1 && hidden.has(matrixIndex)) {
-    hidden.delete(matrixIndex);
-    saveState();
-    renderHeader();
-    renderBody();
-    updateColWidths();
+  if (matrixIndex !== -1) {
+    var needsRender = false;
+    if (searchActive() && !searchMatches.has(matrixIndex)) {
+      resetSearchState();
+      needsRender = true;
+    }
+    if (hidden.has(matrixIndex)) {
+      hidden.delete(matrixIndex);
+      saveState();
+      needsRender = true;
+    }
+    if (needsRender) {
+      renderHeader();
+      renderBody();
+      updateColWidths();
+    }
   }
   showView('matrix', false);
   var target = document.getElementById(targetId);
@@ -958,8 +1201,10 @@ function setupChangelogLinks() {
   });
 }
 var state = loadState(); colOrder = state.cols; rowOrder = state.rows;
+setupSearch();
 renderHeader(); renderBody();
 setupChangelogLinks();
+setupKeyPanel();
 function syncViewFromLocation() {
   if (!window.location) return;
   if (window.location.hash === '#changelog' || (window.location.pathname === '/changelog' && !window.location.hash)) showView('changelog', false);
