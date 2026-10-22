@@ -70,7 +70,7 @@ jobs:
             echo "Skipping deploy: add CLOUDFLARE_API_TOKEN to repo Actions secrets (see docs/tools/search_matrix/README.md)."
             exit 0
           fi
-          node node_modules/wrangler/bin/wrangler.js deploy --config wrangler.toml
+          npx wrangler deploy --config wrangler.toml
 
   audit:
     if: github.event_name == 'schedule'
