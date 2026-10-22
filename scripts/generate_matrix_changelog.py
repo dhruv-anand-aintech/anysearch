@@ -78,6 +78,16 @@ def support_summary(name: str, label: str, support: str) -> str:
 def change_summary(name: str, label: str, before: Any, after: Any) -> str:
     old_semantic = semantic_value(before)
     new_semantic = semantic_value(after)
+    if isinstance(before, dict) and isinstance(after, dict):
+        before_rest = {k: v for k, v in before.items() if k != "lowest_price"}
+        after_rest = {k: v for k, v in after.items() if k != "lowest_price"}
+        if (
+            before_rest == after_rest
+            and before.get("lowest_price") != after.get("lowest_price")
+        ):
+            basis = (after.get("lowest_price") or {}).get("billing_unit")
+            suffix = f" ({basis})" if basis else ""
+            return f"{name}: {label} now sorted by lowest documented price{suffix}"
     if new_semantic and new_semantic != old_semantic:
         kind, value = new_semantic
         if kind == "support":
@@ -159,6 +169,37 @@ def dedupe(items: list[dict[str, str]]) -> list[dict[str, str]]:
     return result
 
 
+VERSION_MAJOR = 1
+
+
+def is_structural(entry: dict[str, Any]) -> bool:
+    """A release that adds or removes an offering changes the matrix shape."""
+    markers = ("added to the comparison", "removed from the comparison")
+    return any(
+        marker in item["summary"] for item in entry["items"] for marker in markers
+    )
+
+
+def assign_versions(entries: list[dict[str, Any]]) -> None:
+    """Give each tracked comparison release a deterministic semantic version.
+
+    The first tracked change is 1.0.0. Adding or removing an offering is a minor
+    release; every other data change is a patch. Versions are derived from the
+    same Git history as the entries, so regenerating does not renumber old
+    releases when the working tree is clean.
+    """
+    minor = 0
+    patch = 0
+    for index, entry in enumerate(entries):
+        if index:
+            if is_structural(entry):
+                minor += 1
+                patch = 0
+            else:
+                patch += 1
+        entry["version"] = f"{VERSION_MAJOR}.{minor}.{patch}"
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--matrix-dir", required=True)
@@ -223,8 +264,10 @@ def main() -> None:
             }
         )
 
+    assign_versions(entries)
     entries.reverse()
     output = {
+        "version": entries[0]["version"] if entries else None,
         "entry_count": sum(len(entry["items"]) for entry in entries),
         "entries": entries,
     }

@@ -42,6 +42,24 @@ def validate_research(audit, today=None, max_age=45):
             or amount < 0
         ):
             errors.append(f"{slug}: invalid primary price")
+        lowest = row.get("lowest_price", {})
+        lowest_amount = lowest.get("amount_usd_per_1k")
+        if not lowest or not lowest.get("billing_unit") or not lowest.get("basis"):
+            errors.append(f"{slug}: lowest pricing basis missing")
+        if lowest_amount is not None and (
+            isinstance(lowest_amount, bool)
+            or not isinstance(lowest_amount, (int, float))
+            or lowest_amount < 0
+        ):
+            errors.append(f"{slug}: invalid lowest price")
+        if (
+            isinstance(lowest_amount, (int, float))
+            and not isinstance(lowest_amount, bool)
+            and isinstance(amount, (int, float))
+            and not isinstance(amount, bool)
+            and lowest_amount > amount
+        ):
+            errors.append(f"{slug}: lowest price exceeds primary price")
     return errors
 
 

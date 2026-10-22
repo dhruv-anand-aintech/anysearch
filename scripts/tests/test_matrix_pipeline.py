@@ -1,5 +1,6 @@
 import importlib.util
 import json
+import re
 import unittest
 import tempfile
 import subprocess
@@ -34,8 +35,8 @@ class PipelineTests(unittest.TestCase):
     def test_all_new_categorical_cells_have_individual_evidence(self):
         folder = ROOT / "docs/tools/search_matrix"
         review = json.loads((folder / "categorical-research.json").read_text())
-        self.assertEqual(len(review["providers"]), 7)
-        self.assertEqual(sum(len(p["cells"]) for p in review["providers"].values()), 84)
+        self.assertEqual(len(review["providers"]), 8)
+        self.assertEqual(sum(len(p["cells"]) for p in review["providers"].values()), 96)
         for slug, native in review["providers"].items():
             row = json.loads((folder / "data" / (slug + ".json")).read_text())
             self.assertTrue(row["comparison_only"])
@@ -55,6 +56,15 @@ class PipelineTests(unittest.TestCase):
         self.assertEqual(
             review["providers"]["deepseek"]["cells"]["snippet"]["support"], "full"
         )
+        self.assertEqual(
+            review["providers"]["tinyfish"]["cells"]["news"]["support"], "full"
+        )
+        self.assertEqual(
+            review["providers"]["tinyfish"]["cells"]["safe_search"]["support"], "none"
+        )
+        self.assertEqual(
+            review["providers"]["tinyfish"]["cells"]["content"]["support"], "partial"
+        )
 
     def test_explicit_primary_price_metadata(self):
         rows = json.loads((ROOT / "docs/tools/search_matrix/bundle.json").read_text())
@@ -64,10 +74,10 @@ class PipelineTests(unittest.TestCase):
             0.75,
         )
         self.assertEqual(
-            by_slug["searxng"]["pricing_per_1k"]["primary_price"]["amount_usd_per_1k"],
-            0,
+            by_slug["keiro"]["pricing_per_1k"]["primary_price"]["amount_usd_per_1k"],
+            0.10,
         )
-        for slug in ["jina", "firecrawl", "keiro", "bing_legacy", "google_pse"]:
+        for slug in ["jina", "firecrawl", "bing_legacy", "google_pse"]:
             self.assertIsNone(
                 by_slug[slug]["pricing_per_1k"]["primary_price"]["amount_usd_per_1k"]
             )
@@ -78,6 +88,64 @@ class PipelineTests(unittest.TestCase):
                     "https://"
                 )
             )
+
+    def test_lowest_documented_price_drives_sorting(self):
+        rows = json.loads((ROOT / "docs/tools/search_matrix/bundle.json").read_text())
+        by_slug = {r["links"]["slug"]: r for r in rows}
+        for row in rows:
+            lowest = row["pricing_per_1k"]["lowest_price"]
+            primary = row["pricing_per_1k"]["primary_price"]
+            for field in ("billing_unit", "basis", "checked_at"):
+                self.assertTrue(lowest.get(field), row["links"]["slug"] + ": " + field)
+            self.assertTrue(lowest["source_url"].startswith("https://"))
+            low, high = lowest["amount_usd_per_1k"], primary["amount_usd_per_1k"]
+            if isinstance(low, (int, float)) and isinstance(high, (int, float)):
+                self.assertLessEqual(low, high, row["links"]["slug"])
+        # $0 self-hosted software and an open library are not hosted per-1K rates.
+        for slug in ("searxng", "duckduckgo"):
+            self.assertIsNone(
+                by_slug[slug]["pricing_per_1k"]["lowest_price"]["amount_usd_per_1k"]
+            )
+            self.assertEqual(
+                by_slug[slug]["pricing_per_1k"]["primary_price"]["amount_usd_per_1k"], 0
+            )
+        # Volume and annual tiers rank by the cheapest documented rate.
+        self.assertEqual(
+            by_slug["keiro"]["pricing_per_1k"]["lowest_price"]["amount_usd_per_1k"],
+            0.03,
+        )
+        self.assertEqual(
+            by_slug["serpapi_google"]["pricing_per_1k"]["lowest_price"][
+                "amount_usd_per_1k"
+            ],
+            9.17,
+        )
+        self.assertEqual(
+            by_slug["serper"]["pricing_per_1k"]["lowest_price"]["amount_usd_per_1k"],
+            0.30,
+        )
+        self.assertEqual(
+            by_slug["searchapi"]["pricing_per_1k"]["lowest_price"]["amount_usd_per_1k"],
+            2.0,
+        )
+        ranked = [
+            row["pricing_per_1k"]["lowest_price"]["amount_usd_per_1k"] for row in rows
+        ]
+        self.assertNotIn(0, [amount for amount in ranked if amount is not None])
+
+    def test_changelog_entries_are_versioned(self):
+        history = json.loads(
+            (ROOT / "docs/tools/search_matrix/changelog.json").read_text()
+        )
+        pattern = re.compile(r"^1\.\d+\.\d+$")
+        self.assertRegex(history["version"], pattern)
+        self.assertEqual(history["version"], history["entries"][0]["version"])
+        for entry in history["entries"]:
+            self.assertRegex(entry["version"], pattern)
+        self.assertEqual(history["entries"][-1]["version"], "1.0.0")
+        versions = [tuple(map(int, e["version"].split("."))) for e in history["entries"]]
+        self.assertEqual(versions, sorted(versions, reverse=True))
+        self.assertEqual(history["version"], ".".join(map(str, versions[0])))
 
     def test_new_provider_has_cell_target(self):
         row = {

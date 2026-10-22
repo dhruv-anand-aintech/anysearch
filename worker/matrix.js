@@ -4,18 +4,25 @@ import schema from "../docs/tools/search_matrix/schema.json";
 import updatedMeta from "../docs/tools/search_matrix/updated.json";
 import changelog from "../docs/tools/search_matrix/changelog.json";
 
-export function comparePrimaryPriceCells(a, b, direction = "asc") {
-  const av = a?.primary_price?.amount_usd_per_1k;
-  const bv = b?.primary_price?.amount_usd_per_1k;
-  const aMissing = typeof av !== "number" || !Number.isFinite(av) || av < 0;
-  const bMissing = typeof bv !== "number" || !Number.isFinite(bv) || bv < 0;
-  if (aMissing || bMissing) return aMissing === bMissing ? 0 : aMissing ? 1 : -1;
+export function priceSortAmount(cell) {
+  const amount = cell?.lowest_price?.amount_usd_per_1k;
+  return typeof amount === "number" && Number.isFinite(amount) && amount >= 0
+    ? amount
+    : null;
+}
+
+export function compareLowestPriceCells(a, b, direction = "asc") {
+  const av = priceSortAmount(a);
+  const bv = priceSortAmount(b);
+  if (av === null || bv === null) {
+    return av === bv ? 0 : av === null ? 1 : -1;
+  }
   return (av - bv) * (direction === "desc" ? -1 : 1);
 }
 
 const CANONICAL_ORIGIN = "https://compare-anysearch.ainorthstar.tech";
 const GITHUB_REPO = "https://github.com/dhruv-anand-aintech/anysearch";
-const DEPLOYMENT_MARKER = "categorical-pricing-2026-10-21";
+const DEPLOYMENT_MARKER = "lowest-price-sort-2026-10-21";
 const PWA = {
   name: "Anysearch Compare",
   shortName: "Anysearch",
@@ -114,16 +121,21 @@ function renderChangelog() {
   const byDate = new Map();
   for (const entry of changelog.entries || []) {
     if (!byDate.has(entry.date)) byDate.set(entry.date, []);
-    byDate.get(entry.date).push(...entry.items);
+    byDate.get(entry.date).push(entry);
   }
-  return [...byDate].map(([date, items]) => `
+  return [...byDate].map(([date, entries]) => `
     <section class="change-group">
       <h2>${htmlEscape(new Intl.DateTimeFormat("en-US", {
         year: "numeric", month: "long", day: "numeric", timeZone: "UTC",
       }).format(new Date(`${date}T12:00:00Z`)))}</h2>
-      <ul>${items.map(item => `
-        <li><a class="changelog-cell-link" href="#${htmlEscape(item.target)}" data-target-id="${htmlEscape(item.target)}">${htmlEscape(item.summary)}</a></li>
-      `).join("")}</ul>
+      <div class="change-entries">${entries.map(entry => `
+        <div class="change-entry">
+          <p class="change-release"><span class="release-version">v${htmlEscape(entry.version || "unversioned")}</span>${entry.commit ? `<span class="release-commit">${htmlEscape(entry.commit)}</span>` : ""}${entry.title ? `<span class="release-title">${htmlEscape(entry.title)}</span>` : ""}</p>
+          <ul>${entry.items.map(item => `
+            <li><a class="changelog-cell-link" href="#${htmlEscape(item.target)}" data-target-id="${htmlEscape(item.target)}">${htmlEscape(item.summary)}</a></li>
+          `).join("")}</ul>
+        </div>
+      `).join("")}</div>
     </section>
   `).join("");
 }
@@ -178,7 +190,6 @@ a { color: inherit; text-decoration: none; }
 .feedback-btn:hover { background: #e8f1ee; }
 .hero { padding: 10px 14px 8px; border-bottom: 1px solid var(--line); background: var(--panel); }
 .hero p { margin: 0; color: var(--muted); font-size: 12px; }
-.price-sort-basis { display:block; margin-top:5px; color:var(--accent); font-size:10px; }
 .comparison-legend { margin-top:6px !important; }
 .support.not_applicable .dot, .support.unknown .dot { width:auto; min-width:18px; padding:0 3px; border-radius:3px; font-size:9px; }
 .meta-row { margin-top: 6px; display: flex; gap: 6px; flex-wrap: wrap; }
@@ -195,6 +206,14 @@ a { color: inherit; text-decoration: none; }
 .changelog-head span { color: var(--muted); font-size: 11px; white-space: nowrap; }
 .change-group { display: grid; grid-template-columns: 150px 1fr; gap: 24px; padding: 19px 0; border-bottom: 1px solid var(--line); }
 .change-group h2 { margin: 2px 0 0; color: var(--muted); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; }
+.change-entries { display: flex; flex-direction: column; gap: 15px; min-width: 0; }
+.change-release {
+  margin: 0 0 5px; display: flex; align-items: baseline; gap: 7px; flex-wrap: wrap;
+  font-size: 10px; color: var(--muted);
+}
+.release-version { font-weight: 700; color: var(--accent); font-variant-numeric: tabular-nums; letter-spacing: .01em; }
+.release-commit { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 9px; border: 1px solid var(--line); padding: 0 3px; }
+.release-title { min-width: 0; }
 .change-group ul { margin: 0; padding-left: 18px; }
 .change-group li { margin: 0 0 7px; padding-left: 3px; font-size: 13px; line-height: 1.4; }
 .change-group li:last-child { margin-bottom: 0; }
@@ -387,7 +406,7 @@ td.value .cell-value {
 <main id="matrixView" class="view-panel matrix-view">
 <section class="hero">
   <p>Compare ${htmlEscape(matrix.length)} search offerings by category, availability and pricing. Feature rows use the stated <strong>Capability basis</strong>: existing SDK mappings or reviewed native APIs. SDK availability is separate. <strong>Name or icon</strong> opens the provider site; <strong>⊙</strong> hides or shows a column; drag headers to reorder; use the <strong>API docs</strong> row for official references.</p>
-  <p class="comparison-legend">✓ supported · ◎ limited/conditional · ✕ not exposed by scoped contract · N/A not applicable · Undoc. specifically undocumented. Click Pricing / 1K for numeric ↑ / ↓ / reset using the displayed primary USD price per 1K billable units. Units and token/hosting surcharges differ: this is not a total-cost ranking. Token-, credit-, conflicting and unavailable prices remain last.</p>
+  <p class="comparison-legend">✓ supported · ◎ limited/conditional · ✕ not exposed by scoped contract · N/A not applicable · Undoc. specifically undocumented. Click Pricing / 1K to sort cheapest first (↑), most expensive first (↓), then reset. Ordering uses each provider's lowest documented per-1K price for its own search product, including volume tiers and annual plans; the cell keeps the full price ladder. Units and surcharges differ, so this is not a total-cost ranking. Free-only APIs, self-hosted SearXNG, open-library DuckDuckGo, credit- and token-priced, retired and unavailable prices stay last.</p>
   <div class="meta-row">
     <span class="pill">${htmlEscape(matrix.length)} offerings</span>
     <span class="pill"><a href="${GITHUB_REPO}">anysearch SDK</a></span>
@@ -404,8 +423,8 @@ td.value .cell-value {
 <main id="changelogView" class="view-panel changelog-view" hidden>
   <div class="changelog-shell">
     <header class="changelog-head">
-      <h1>Changelog</h1><p>Changes to this comparison, derived from repository history. Evidence reviews are not provider launch dates.</p>
-      <span>${htmlEscape(changelog.entry_count)} tracked website/data changes</span>
+      <h1>Changelog</h1><p>Versioned changes to this comparison, derived from repository history. Evidence reviews are not provider launch dates.</p>
+      <span>${htmlEscape(changelog.entry_count)} tracked website/data changes${changelog.version ? ` · current v${htmlEscape(changelog.version)}` : ""}</span>
     </header>
     ${renderChangelog()}
   </div>
@@ -479,7 +498,8 @@ let rowOrder = [];
 let hidden = new Set();
 let rowSort = [];
 const SORT_ORDER = { full:0, partial:1, none:2, not_applicable:3, unknown:4, "":5 };
-const comparePrimaryPriceCells = (${comparePrimaryPriceCells.toString()});
+const priceSortAmount = (${priceSortAmount.toString()});
+const compareLowestPriceCells = (${compareLowestPriceCells.toString()});
 const FORM_FACTOR_ORDER = ['CLI','IDE','Extension','SDK','Web','Mac App'];
 const MODE_ORDER = ['fast','balanced','deep'];
 const MULTI_VALUE_COLS = new Set(['form_factor','mode']);
@@ -640,10 +660,6 @@ function cell(agent, col) {
   var idAttr = ' id="'+cellId(agent, col.key)+'"';
   if (v && v.support) idAttr += ' data-support="'+esc(v.support)+'"';
   if (v && v.checked_at) idAttr += ' data-checked-at="'+esc(v.checked_at)+'"';
-  if (col.key === 'pricing_per_1k') {
-    var sortAmount = v && v.primary_price && v.primary_price.amount_usd_per_1k;
-    idAttr += ' data-primary-price="'+(typeof sortAmount === 'number' && Number.isFinite(sortAmount) ? esc(sortAmount) : '')+'"';
-  }
   if (!v) return '<td'+idAttr+'>&mdash;</td>';
   if (MULTI_VALUE_COLS.has(col.key)) {
     var sortFn = col.key === 'mode' ? sortModes : sortFormFactors;
@@ -665,14 +681,7 @@ function cell(agent, col) {
   var mark = hasSrc ? '<span class="source-mark" aria-hidden="true"></span>' : '';
   var wrapCls = 'cell-wrap'+(hasSrc?' has-source':'');
   if (v.value !== undefined) {
-    var primary = v.primary_price;
-    var priceBasis = '';
-    if (col.key === 'pricing_per_1k' && primary) {
-      var amount = primary.amount_usd_per_1k;
-      var ranked = typeof amount === 'number' && Number.isFinite(amount) && amount >= 0;
-      priceBasis = '<small class="price-sort-basis">'+(ranked ? 'Sort: $'+esc(amount)+' / 1K '+esc(primary.billing_unit) : 'Not ranked: '+esc(primary.billing_unit))+' · '+esc(primary.basis)+'</small>';
-    }
-    return '<td'+idAttr+' class="'+wrapCls+' value"><span class="cell-value">'+esc(v.value)+'</span>'+priceBasis+link+mark+tip+'</td>';
+    return '<td'+idAttr+' class="'+wrapCls+' value"><span class="cell-value">'+esc(v.value)+'</span>'+link+mark+tip+'</td>';
   }
   if (featureCols.some(function(c){ return c.key===col.key; })) {
     var g = {full:'&#10003;',partial:'&#9678;',none:'&#10005;',not_applicable:'N/A',unknown:'Undoc.','':'—'};
@@ -749,7 +758,7 @@ function sortVisibleColumnIndices(indices) {
     for (var p=0; p<priority.length; p++) {
       var key = priority[p].key;
       if (key === 'pricing_per_1k') {
-        var priceResult = comparePrimaryPriceCells(matrix[a][key], matrix[b][key], priority[p].direction);
+        var priceResult = compareLowestPriceCells(matrix[a][key], matrix[b][key], priority[p].direction);
         if (priceResult !== 0) return priceResult;
         continue;
       }

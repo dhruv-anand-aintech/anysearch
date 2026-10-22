@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import glob
 import json
+import re
 from collections import OrderedDict
 from pathlib import Path
 
@@ -45,12 +46,43 @@ def _validate_feature(filename: str, key: str, value: object) -> None:
             raise ValueError(f"{filename}: {key}.{req} must be a string")
 
 
+def _validate_price_block(filename: str, key: str, block: object) -> None:
+    if not isinstance(block, dict):
+        raise ValueError(f"{filename}: {key} must be an object")
+    for req in (
+        "amount_usd_per_1k",
+        "billing_unit",
+        "basis",
+        "source_url",
+        "checked_at",
+    ):
+        if req not in block:
+            raise ValueError(f"{filename}: {key}.{req} required")
+    amount = block["amount_usd_per_1k"]
+    if amount is not None and (
+        isinstance(amount, bool)
+        or not isinstance(amount, (int, float))
+        or amount < 0
+    ):
+        raise ValueError(f"{filename}: {key}.amount_usd_per_1k invalid: {amount!r}")
+    for req in ("billing_unit", "basis"):
+        if not isinstance(block[req], str) or not block[req].strip():
+            raise ValueError(f"{filename}: {key}.{req} must be a non-empty string")
+    if not str(block["source_url"]).startswith("https://"):
+        raise ValueError(f"{filename}: {key}.source_url must be HTTPS")
+    if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(block["checked_at"])):
+        raise ValueError(f"{filename}: {key}.checked_at must be YYYY-MM-DD")
+
+
 def _validate_string_field(filename: str, key: str, value: object) -> None:
     if not isinstance(value, dict):
         raise ValueError(f"{filename}: {key} must be an object")
     for req in ("value", "source_url", "comment"):
         if req not in value or not isinstance(value[req], str):
             raise ValueError(f"{filename}: {key}.{req} must be a string")
+    for price_key in ("primary_price", "lowest_price"):
+        if price_key in value:
+            _validate_price_block(filename, f"{key}.{price_key}", value[price_key])
 
 
 def _validate_string_list_field(filename: str, key: str, value: object) -> None:

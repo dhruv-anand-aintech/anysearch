@@ -123,12 +123,32 @@ function runClientScriptSmoke(clientScript, payload, cookie = "", expectedPriceO
   for (const [direction, order] of [['asc',ascending],['desc',descending]]) {
     let missing = false, previous = null;
     for (const index of order) {
-      const value = payload.matrix[index].pricing_per_1k.primary_price?.amount_usd_per_1k;
+      const value = payload.matrix[index].pricing_per_1k.lowest_price?.amount_usd_per_1k;
       if (typeof value !== 'number' || !Number.isFinite(value) || value < 0) { missing = true; continue; }
       assert.equal(missing, false, 'Unknown price must remain last in '+direction);
       if (previous !== null) assert.ok(direction === 'asc' ? value >= previous : value <= previous, 'Numeric order '+direction);
       previous = value;
     }
+  }
+  if (expectedPriceOrder) {
+    assert.deepEqual(ascending, expectedPriceOrder.asc);
+    assert.deepEqual(descending, expectedPriceOrder.desc);
+  }
+  for (const [slug, expected] of [['searxng', null], ['duckduckgo', null]]) {
+    const index = payload.matrix.findIndex(row => row.links.slug === slug);
+    if (index < 0) continue;
+    assert.equal(payload.matrix[index].pricing_per_1k.lowest_price.amount_usd_per_1k, expected,
+      slug+' must stay unranked for price sorting');
+  }
+  const rankedCount = payload.matrix.filter(row => {
+    const amount = row.pricing_per_1k.lowest_price.amount_usd_per_1k;
+    return typeof amount === 'number' && Number.isFinite(amount) && amount >= 0;
+  }).length;
+  for (const slug of ['searxng', 'duckduckgo']) {
+    const index = payload.matrix.findIndex(row => row.links.slug === slug);
+    if (index < 0) continue;
+    assert.ok(ascending.indexOf(index) >= rankedCount, slug+' must sort after every ranked provider');
+    assert.ok(descending.indexOf(index) >= rankedCount, slug+' must sort after every ranked provider descending');
   }
   if (expectedPriceOrder) {
     assert.deepEqual(ascending, expectedPriceOrder.asc);
@@ -169,6 +189,12 @@ async function main() {
     if (!html.includes(sym)) {
       throw new Error(`Rendered HTML missing required client symbol: ${sym}`);
     }
+  }
+  if (html.includes("price-sort-basis") || /Sort:\s*\$/.test(html)) {
+    throw new Error("Pricing cells must not render the sort key");
+  }
+  if (!html.includes("release-version")) {
+    throw new Error("Changelog is missing version labels");
   }
 
   const payloadMatch = html.match(
@@ -215,20 +241,40 @@ async function main() {
     const row = structuredClone(payload.matrix[0]);
     row.name = 'Price fixture ' + index; row.links.slug = 'fixture-' + index;
     row.comparison_only = false;
-    row.pricing_per_1k = {value: index === 1 ? '$10000; multiple tiers' : '$0.01 display text', primary_price:{amount_usd_per_1k:amount,billing_unit:'test requests',basis:'fixture'}};
+    row.pricing_per_1k = {value: index === 1 ? '$10000; multiple tiers' : '$0.01 display text', lowest_price:{amount_usd_per_1k:amount,billing_unit:'test requests',basis:'fixture',source_url:'https://example.invalid/pricing',checked_at:'2026-10-21'}, primary_price:{amount_usd_per_1k:amount,billing_unit:'test requests',basis:'fixture'}};
     return row;
   });
   runClientScriptSmoke(clientScript, priceFixture, '', {asc:[2,1,5,0,3,4],desc:[0,5,1,2,3,4]});
-  const compare = worker.comparePrimaryPriceCells;
-  assert.ok(compare({primary_price:{amount_usd_per_1k:0}}, {primary_price:{amount_usd_per_1k:0.75}}) < 0);
-  assert.ok(compare({}, {primary_price:{amount_usd_per_1k:0}}, 'desc') > 0);
-  assert.equal(compare({}, {primary_price:{amount_usd_per_1k:null}}, 'desc'), 0);
+  const compare = worker.compareLowestPriceCells;
+  assert.ok(compare({lowest_price:{amount_usd_per_1k:0}}, {lowest_price:{amount_usd_per_1k:0.03}}) < 0);
+  assert.ok(compare({}, {lowest_price:{amount_usd_per_1k:0.03}}, 'desc') > 0);
+  assert.equal(compare({}, {lowest_price:{amount_usd_per_1k:null}}, 'desc'), 0);
+  assert.ok(compare({lowest_price:{amount_usd_per_1k:0.03}}, {lowest_price:{amount_usd_per_1k:5}}, 'asc') < 0,
+    'ascending sorts the cheapest documented price first');
   const corrupt = {cols: Array(matrix.length).fill(9999), rows: Array(columns.length - 1).fill('invalid')};
   runClientScriptSmoke(clientScript, payload, 'asmat_state=' + encodeURIComponent(JSON.stringify(corrupt)));
   for (const route of ['/bundle.json','/llms.txt','/changelog.json','/updated.json','/deployment-info','/api/deployment-info']) {
     const response = await worker.default.fetch(new Request('https://matrix.test'+route), {});
     if (!response.ok) throw new Error(route+' failed');
     if (route.endsWith('.json')) await response.json();
+  }
+  const changelogResponse = await worker.default.fetch(new Request('https://matrix.test/changelog.json'), {});
+  const history = await changelogResponse.json();
+  const versionPattern = /^1\.\d+\.\d+$/;
+  if (!versionPattern.test(history.version || '')) {
+    throw new Error('Changelog current version invalid: ' + history.version);
+  }
+  for (const entry of history.entries) {
+    if (!versionPattern.test(entry.version || '')) {
+      throw new Error('Changelog entry missing version: ' + entry.commit + ' ' + entry.title);
+    }
+  }
+  const latest = history.entries[0].version;
+  if (!html.includes('current v' + latest)) {
+    throw new Error('Changelog view does not show current version ' + latest);
+  }
+  if (!html.includes('v' + latest)) {
+    throw new Error('Changelog does not render version ' + latest);
   }
 
   console.log(

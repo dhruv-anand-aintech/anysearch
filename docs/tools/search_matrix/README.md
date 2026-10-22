@@ -70,6 +70,8 @@ are retained in the research file and generated evidence objects. No paid provid
 calls or new quality/latency benchmarks were run. July latency evidence is visibly
 historical. DeepSeek's live October 21 guide specifies Search 100 QPS and Fetch 25 QPS;
 an earlier indexed snapshot reported 5 QPS each and is superseded by the live guide.
+TinyFish's Search API is free to 12,000 requests/day at 30 req/min, so it is listed but
+deliberately unranked in the price sort.
 
 The visible evidence date comes from source review dates, not the build clock.
 `npm run matrix:research-check` rejects missing evidence or reviews older than 45 days.
@@ -79,9 +81,13 @@ or deploy scheduled builds. Review failures require a human/agent refresh of
 `research.json`. A successful link check is not proof that a claim is still correct.
 
 Changelog is comparison repository history, not a fabricated provider release timeline.
-New files are included even before staging. `/changelog`, `/#changelog` and
-`/changelog.json` expose navigation and machine-readable history. `/updated.json` and
-`/deployment-info` expose evidence date and build identity. The release must run
+Every entry carries a date plus a semver-style comparison version: the first tracked
+change is 1.0.0, adding or removing an offering is a minor release, and any other data
+change is a patch. Versions come from the same Git history, so a clean regeneration does
+not renumber old releases. New files are included even before staging. `/changelog`,
+`/#changelog` and `/changelog.json` expose navigation, versions and machine-readable
+history. `/updated.json` and `/deployment-info` expose evidence date and build identity.
+The release must run
 `npm run matrix:sync`, `npm run matrix:research-check`, `npm run matrix:test`, then the
 existing push/deploy process. After committing data, regenerate changelog and commit
 its final Git provenance before deploying. Verify production bundle identity.
@@ -112,13 +118,16 @@ model/raw-output abstractions; Undoc. retains specific documentation gaps after
 review. This does not claim a missing SDK adapter or a silent doc page proves an API
 capability unsupported. Anysearch adapter availability remains unchanged.
 
-Pricing uses explicit `primary_price.amount_usd_per_1k`, never numbers parsed from
-display text. Click Pricing / 1K to cycle ascending, descending and original order.
-The primary price is the first documented priced offering shown in that column;
-plan commitments, promotions, model-token charges and billing units remain visible.
-For example, DataForSEO's $0.60 queued SERP page is not equivalent to a live request,
-and hosted model tool fees exclude token charges. This is a numeric primary-price
-ordering, not a normalized total-cost ranking. Credit-priced Firecrawl, token-priced
-Jina, conflicting Keiro, retired Bing and closed-to-new-users Google PSE are unranked
-and stay last in both directions. Zero software/library API fees sort as zero while
-hosting, proxy and upstream costs remain explicit.
+Pricing uses explicit `primary_price.amount_usd_per_1k` and `lowest_price.amount_usd_per_1k`,
+never numbers parsed from display text. Click Pricing / 1K to cycle cheapest-first,
+most-expensive-first and original order. Sorting uses the lowest documented per-1K price
+for each provider's own search product, including volume tiers and annual plans, so a
+provider is not ranked by whatever tier happened to be listed first. The displayed cell
+keeps the full price ladder and does not repeat the sort key. `primary_price` remains the
+first documented priced offering for reference. This is a cheapest-list-price ordering,
+not a normalized total-cost ranking. Free-only APIs (TinyFish), self-hosted SearXNG and
+open-library DuckDuckGo stay unranked at the end in both directions because $0 is not a
+paid per-1K rate; credit-priced Firecrawl, token-priced Jina, retired Bing and
+closed-to-new-users Google PSE are also unranked. Keiro is ranked from its live official
+pricing page rather than the earlier review that treated the separate browserfoundry
+product as a conflicting price.

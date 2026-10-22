@@ -92,6 +92,7 @@ def apply_research():
             + caveat,
         )
         out["pricing_per_1k"]["primary_price"] = review["primary_price"]
+        out["pricing_per_1k"]["lowest_price"] = review["lowest_price"]
         out["free_tier_limits"] = cell(
             review["free"],
             url,
