@@ -4,8 +4,12 @@ from __future__ import annotations
 
 from typing import Dict, List, Type
 
+from .anthropic import AnthropicProvider
 from .base import BaseProvider, Capability
 from .brave import BraveProvider
+from .brightdata import BrightDataProvider
+from .dataforseo import DataForSeoProvider
+from .deepseek import DeepSeekProvider
 from .duckduckgo import DuckDuckGoProvider
 from .exa import ExaProvider
 from .firecrawl import FirecrawlProvider
@@ -13,9 +17,11 @@ from .gemini import GeminiProvider
 from .google_pse import GooglePSEProvider
 from .jina import JinaProvider
 from .kagi import KagiProvider
+from .keenable import KeenableProvider
 from .keiro import KeiroProvider
 from .linkup import LinkupProvider
 from .octen import OctenProvider
+from .openai import OpenAIProvider
 from .parallel import ParallelProvider
 from .perplexity import PerplexityProvider
 from .searchapi import SearchApiProvider
@@ -23,6 +29,8 @@ from .searxng import SearxngProvider
 from .serpapi import SerpApiProvider
 from .serper import SerperProvider
 from .tavily import TavilyProvider
+from .tinyfish import TinyFishProvider
+from .xai import XAIProvider
 from .you import YouProvider
 
 PROVIDER_CLASSES: List[Type[BaseProvider]] = [
@@ -35,6 +43,14 @@ PROVIDER_CLASSES: List[Type[BaseProvider]] = [
     LinkupProvider,
     PerplexityProvider,
     GeminiProvider,
+    OpenAIProvider,
+    AnthropicProvider,
+    XAIProvider,
+    KeenableProvider,
+    DeepSeekProvider,
+    TinyFishProvider,
+    BrightDataProvider,
+    DataForSeoProvider,
     SerperProvider,
     SerpApiProvider,
     SearchApiProvider,

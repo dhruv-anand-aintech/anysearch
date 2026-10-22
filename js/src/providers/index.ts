@@ -2,7 +2,11 @@
 
 import { ProviderNotFoundError } from "../errors.js";
 import type { ProviderSpec } from "./base.js";
+import { anthropic } from "./anthropic.js";
 import { brave } from "./brave.js";
+import { brightdata } from "./brightdata.js";
+import { dataforseo } from "./dataforseo.js";
+import { deepseek } from "./deepseek.js";
 import { duckduckgo } from "./duckduckgo.js";
 import { exa } from "./exa.js";
 import { firecrawl } from "./firecrawl.js";
@@ -10,9 +14,11 @@ import { gemini } from "./gemini.js";
 import { googlePse } from "./googlePse.js";
 import { jina } from "./jina.js";
 import { kagi } from "./kagi.js";
+import { keenable } from "./keenable.js";
 import { keiro } from "./keiro.js";
 import { linkup } from "./linkup.js";
 import { octen } from "./octen.js";
+import { openai } from "./openai.js";
 import { parallel } from "./parallel.js";
 import { perplexity } from "./perplexity.js";
 import { searchapi } from "./searchapi.js";
@@ -20,6 +26,8 @@ import { searxng } from "./searxng.js";
 import { serpapi } from "./serpapi.js";
 import { serper } from "./serper.js";
 import { tavily } from "./tavily.js";
+import { tinyfish } from "./tinyfish.js";
+import { xai } from "./xai.js";
 import { you } from "./you.js";
 
 // Auto-selection order; keyless DuckDuckGo fallback last so it works out of the box.
@@ -33,6 +41,14 @@ export const PROVIDER_SPECS: ProviderSpec[] = [
   linkup,
   perplexity,
   gemini,
+  openai,
+  anthropic,
+  xai,
+  keenable,
+  deepseek,
+  tinyfish,
+  brightdata,
+  dataforseo,
   serper,
   serpapi,
   searchapi,
