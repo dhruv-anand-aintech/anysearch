@@ -4,8 +4,8 @@
   "entries": [
     {
       "date": "2026-11-16",
-      "commit": "",
-      "title": "Unreleased matrix update",
+      "commit": "5a12a2e",
+      "title": "docs(matrix): record You.com search and router updates",
       "items": [
         {
           "summary": "You: Availability evidence refreshed",
