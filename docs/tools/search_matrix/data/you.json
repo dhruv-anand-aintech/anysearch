@@ -104,7 +104,8 @@
       "checked_at": "2026-10-21"
     },
     "links": {
-      "Official source 1": "https://you.com/pricing"
+      "Official source 1": "https://you.com/pricing",
+      "Official source 2": "https://you.com/docs/changelog"
     }
   },
   "free_tier_limits": {
@@ -112,7 +113,8 @@
     "source_url": "https://you.com/docs/administration/billing",
     "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
     "links": {
-      "Official source 1": "https://you.com/pricing"
+      "Official source 1": "https://you.com/pricing",
+      "Official source 2": "https://you.com/docs/changelog"
     }
   },
   "p50_latency": {
@@ -136,15 +138,17 @@
     "source_url": "https://you.com/docs/administration/billing",
     "comment": "",
     "links": {
-      "Official source 1": "https://you.com/pricing"
+      "Official source 1": "https://you.com/pricing",
+      "Official source 2": "https://you.com/docs/changelog"
     }
   },
   "native_api": {
-    "value": "Web and news search; Research has separate pricing. Legacy marketing says $100 signup; current canonical page says $10.",
+    "value": "Web and news search with optional licensed knowledge results and extraction highlights. Inference Router added web search and extract tools on 2026-10-26; Research is separately priced.",
     "source_url": "https://you.com/docs/administration/billing",
     "comment": "",
     "links": {
-      "Official source 1": "https://you.com/pricing"
+      "Official source 1": "https://you.com/pricing",
+      "Official source 2": "https://you.com/docs/changelog"
     }
   },
   "rate_limits": {
@@ -152,7 +156,8 @@
     "source_url": "https://you.com/docs/administration/billing",
     "comment": "",
     "links": {
-      "Official source 1": "https://you.com/pricing"
+      "Official source 1": "https://you.com/pricing",
+      "Official source 2": "https://you.com/docs/changelog"
     }
   },
   "checked_at": {
@@ -160,7 +165,8 @@
     "source_url": "https://you.com/docs/administration/billing",
     "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
     "links": {
-      "Official source 1": "https://you.com/pricing"
+      "Official source 1": "https://you.com/pricing",
+      "Official source 2": "https://you.com/docs/changelog"
     }
   },
   "capability_basis": {
@@ -177,7 +183,8 @@
     "checked_at": "2026-10-21",
     "source_urls": [
       "https://you.com/docs/administration/billing",
-      "https://you.com/pricing"
+      "https://you.com/pricing",
+      "https://you.com/docs/changelog"
     ],
     "effective_date": null,
     "method": "official documentation; no new benchmarks"

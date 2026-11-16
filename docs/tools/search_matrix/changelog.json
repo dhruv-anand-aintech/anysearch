@@ -1,7 +1,39 @@
 {
-  "version": "1.8.0",
-  "entry_count": 1036,
+  "version": "1.8.1",
+  "entry_count": 1042,
   "entries": [
+    {
+      "date": "2026-11-16",
+      "commit": "",
+      "title": "Unreleased matrix update",
+      "items": [
+        {
+          "summary": "You: Availability evidence refreshed",
+          "target": "cell-you-api-status"
+        },
+        {
+          "summary": "You: Evidence checked evidence refreshed",
+          "target": "cell-you-checked-at"
+        },
+        {
+          "summary": "You: Free tier limits evidence refreshed",
+          "target": "cell-you-free-tier-limits"
+        },
+        {
+          "summary": "You: Native API overview updated to Web and news search with optional licensed knowledge results and extrac…",
+          "target": "cell-you-native-api"
+        },
+        {
+          "summary": "You: Pricing / 1K evidence refreshed",
+          "target": "cell-you-pricing-per-1k"
+        },
+        {
+          "summary": "You: Limits / billing caveats evidence refreshed",
+          "target": "cell-you-rate-limits"
+        }
+      ],
+      "version": "1.8.1"
+    },
     {
       "date": "2026-10-22",
       "commit": "b092209",

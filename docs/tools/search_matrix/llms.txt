@@ -796,7 +796,7 @@ Offerings: 33. Native API facts and existing anysearch SDK mappings; comparison-
 - News: none
 - Product category: Standalone search API
 - Availability: Available
-- Native API overview: Web and news search; Research has separate pricing. Legacy marketing says $100 signup; current canonical page says $10.
+- Native API overview: Web and news search with optional licensed knowledge results and extraction highlights. Inference Router added web search and extract tools on 2026-10-26; Research is separately priced.
 - anysearch SDK: Python + TypeScript adapters
 - Evidence checked: 2026-10-21
 - Limits / billing caveats: Up to 100 results; PAYG no minimum
