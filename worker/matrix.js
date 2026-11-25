@@ -638,46 +638,40 @@ function sortableLabelHtml(label, key) {
   return '<td class="row-label'+active+'" data-rowkey="'+key+'" onclick="cycleSort('+"'"+key+"'"+')" title="Sort columns by this date"><span class="row-label-tip">'+esc(label)+'</span><span class="arrow">'+arrow+'</span>'+esc(label)+'</td>';
 }
 
-// Pinned agents (always at top), then rest sorted by full-feature count
-const PINNED = [
-  'DeepSeek','Octen','Exa','Tavily','Brave','Parallel','Perplexity','Gemini',
-  'You','Linkup',
-  'Google · SerpApi','Bing · SerpApi','Baidu · SerpApi','Yandex · SerpApi',
-  'DuckDuckGo · SerpApi','Yahoo · SerpApi',
-];
+// Count the visible check marks first, then compare capabilities in a fixed order.
+const TIE_BREAK_FEATURES = ['snippet','content','domains','date','language','country','news','highlights','summary','answer','safe_search','requires_key'];
 function faviconSlugForAgent(agent) {
   return agent.links && agent.links.slug;
 }
-function serpapiPinRank(name) {
-  var i = PINNED.indexOf(name);
-  return i === -1 ? null : -900 + i;
-}
 const ALL_FEATS = featureCols.map(function(c){return c.key});
-function rankAgent(i) {
-  var agent = matrix[i];
-  if (agent.deprecated) return 2000 + i;
-  var sp = serpapiPinRank(agent.name);
-  if (sp !== null) return sp;
-  var p = PINNED.indexOf(agent.name);
-  if (p !== -1) return -1000 + p;
-  var cnt = 0;
-  ALL_FEATS.forEach(function(k){if((agent[k]||{}).support==='full')cnt++});
-  return -cnt;
+function compareDefaultColumns(a, b) {
+  var left = matrix[a], right = matrix[b];
+  var count = function(agent) { return ALL_FEATS.filter(function(k){return (agent[k]||{}).support === 'full'}).length; };
+  var diff = count(right) - count(left);
+  if (diff) return diff;
+  var priority = TIE_BREAK_FEATURES.concat(ALL_FEATS.filter(function(k){return !TIE_BREAK_FEATURES.includes(k)}));
+  for (var i = 0; i < priority.length; i++) {
+    var key = priority[i];
+    var leftRank = SORT_ORDER[(left[key]||{}).support] ?? 5;
+    var rightRank = SORT_ORDER[(right[key]||{}).support] ?? 5;
+    if (leftRank !== rightRank) return leftRank - rightRank;
+  }
+  return String(left.name).localeCompare(String(right.name)) || a - b;
 }
 
 function loadState() {
-  var def = { cols: matrix.map(function(_,i){return i}).sort(function(a,b){return rankAgent(a)-rankAgent(b)}), rows: featureCols.map(function(c){return c.key}) };
+  var def = { cols: matrix.map(function(_,i){return i}).sort(compareDefaultColumns), rows: featureCols.map(function(c){return c.key}) };
   try {
     var c = document.cookie.split('; ').find(r => r.startsWith(COOKIE+'='));
     if (c) { var p = JSON.parse(decodeURIComponent(c.split('=')[1]));
-      if (Array.isArray(p.cols) && p.cols.length===matrix.length && new Set(p.cols).size===matrix.length && p.cols.every(i => Number.isInteger(i) && i>=0 && i<matrix.length)) def.cols = p.cols;
+      if (p.orderVersion === 2 && Array.isArray(p.cols) && p.cols.length===matrix.length && new Set(p.cols).size===matrix.length && p.cols.every(i => Number.isInteger(i) && i>=0 && i<matrix.length)) def.cols = p.cols;
       if (Array.isArray(p.rows) && p.rows.length===featureCols.length && new Set(p.rows).size===featureCols.length && p.rows.every(k => featureCols.some(c => c.key===k))) def.rows = p.rows;
     }
   } catch(e) {}
   return def;
 }
 function saveState() {
-  document.cookie = COOKIE + '=' + encodeURIComponent(JSON.stringify({cols:colOrder, rows:rowOrder})) + ';path=/;max-age=31536000';
+  document.cookie = COOKIE + '=' + encodeURIComponent(JSON.stringify({orderVersion:2, cols:colOrder, rows:rowOrder})) + ';path=/;max-age=31536000';
 }
 var searchQuery = '';
 var searchMatches = new Set();

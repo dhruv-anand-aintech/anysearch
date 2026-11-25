@@ -103,6 +103,20 @@ function runClientScriptSmoke(clientScript, payload, cookie = "", expectedPriceO
   assert.ok(evidenceLabel, "Missing evidence checked column definition");
   assert.ok(renderedRows.at(-1)?.[1].includes(evidenceLabel), "Evidence checked must be the last table row");
 
+  const defaultOrder = Array.from(vm.runInNewContext("loadState().cols", sandbox));
+  const checkCount = (row) => payload.columns.filter((col) => row[col.key]?.support === "full").length;
+  for (let i = 1; i < defaultOrder.length; i++) {
+    assert.ok(checkCount(payload.matrix[defaultOrder[i - 1]]) >= checkCount(payload.matrix[defaultOrder[i]]),
+      "Default columns must be ordered by descending check marks");
+  }
+  assert.equal(vm.runInNewContext(`(() => {
+    const first = matrix.length;
+    matrix.push({name:'A', snippet:{support:'full'}, content:{support:'none'}},
+                {name:'B', snippet:{support:'none'}, content:{support:'full'}});
+    try { return compareDefaultColumns(first, first + 1) < 0; }
+    finally { matrix.splice(first, 2); }
+  })()`, sandbox), true, "Snippet breaks equal-count ties before content");
+
   vm.runInNewContext("showView('changelog')", sandbox);
   if (elements.changelogView.hidden || !elements.matrixView.hidden) throw new Error('Changelog tab did not activate');
   vm.runInNewContext("showView('matrix')", sandbox);
