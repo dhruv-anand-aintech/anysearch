@@ -98,6 +98,10 @@ function runClientScriptSmoke(clientScript, payload, cookie = "", expectedPriceO
 
   vm.runInNewContext(clientScript, sandbox, { timeout: 10_000 });
 
+  const popup = vm.runInNewContext(`cell({name:'Test', links:{slug:'test'}, latency:{value:'< 1s', comment:'Details', source_url:'https://example.com'}}, {key:'latency'})`, sandbox);
+  assert.ok(popup.includes('cell-tip-value">&lt; 1s</span>'), 'Popup must contain the escaped cell value');
+  assert.ok(popup.indexOf('cell-tip-value') < popup.indexOf('cell-tip-note'), 'Popup value must precede notes');
+
   const renderedRows = [...bodyEl.innerHTML.matchAll(/<tr[^>]*>([\s\S]*?)<\/tr>/g)];
   const evidenceLabel = payload.columns.find((col) => col.key === "checked_at")?.label;
   assert.ok(evidenceLabel, "Missing evidence checked column definition");

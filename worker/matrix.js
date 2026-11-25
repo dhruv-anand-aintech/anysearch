@@ -408,6 +408,7 @@ td.cell-wrap .dot {
   outline: 1px solid #555; text-align: left; font-weight: 400;
   box-shadow: 0 8px 24px rgba(23, 19, 13, .22);
 }
+.cell-tip-value { display: block; font-weight: 700; margin-bottom: 5px; padding-bottom: 5px; border-bottom: 1px solid rgba(246,244,238,.22); }
 .cell-tip-note { display: block; }
 .cell-tip-url {
   display: block; margin-top: 4px; padding-top: 4px; border-top: 1px solid rgba(246,244,238,.22);
@@ -778,10 +779,11 @@ function cellId(agent, key) {
 function rowLabelCell(label, extraClass, extraAttrs) {
   return '<td class="row-label'+extraClass+'"'+extraAttrs+'><span class="row-label-tip">'+esc(label)+'</span>'+esc(label)+'</td>';
 }
-function cellTipHtml(comment, sourceUrl, links) {
+function cellTipHtml(comment, sourceUrl, links, value) {
   var linkEntries = links ? Object.entries(links).filter(function(entry){ return entry[1]; }) : [];
   if (!comment && !sourceUrl && !linkEntries.length) return '';
   var html = '<div class="cell-tip">';
+  if (value !== undefined && value !== null && value !== '') html += '<span class="cell-tip-value">'+esc(value)+'</span>';
   if (comment) html += '<span class="cell-tip-note">'+esc(comment)+'</span>';
   if (linkEntries.length) {
     html += '<span class="cell-tip-links">';
@@ -849,7 +851,7 @@ function cell(agent, col) {
     var sortFn = col.key === 'mode' ? sortModes : sortFormFactors;
     var tags = sortFn((v.values||[v.value]).filter(Boolean));
     var links = v.links || {};
-    var tip = cellTipHtml((v.comment || '') + (v.checked_at ? ' Reviewed ' + v.checked_at + '.' : ''), v.source_url, links);
+    var tip = cellTipHtml((v.comment || '') + (v.checked_at ? ' Reviewed ' + v.checked_at + '.' : ''), v.source_url, links, tags.length ? tags.join(', ') : '—');
     if (!tags.length) return '<td'+idAttr+' class="cell-wrap value"><span class="cell-value">&mdash;</span>'+tip+'</td>';
     var tagHtml = tags.map(function(x){
       var href = links[x];
@@ -859,7 +861,9 @@ function cell(agent, col) {
     if (agent.deprecated) tagHtml += '<span class="form-tag deprecated-tag">deprecated</span>';
     return '<td'+idAttr+' class="cell-wrap"><div class="form-tags">'+tagHtml+'</div>'+tip+'</td>';
   }
-  var tip = cellTipHtml((v.comment || '') + (v.checked_at ? ' Reviewed ' + v.checked_at + '.' : ''), v.source_url, v.links || {});
+  var supportLabels = {full:'✓', partial:'◎', none:'✕', not_applicable:'N/A', unknown:'Undoc.'};
+  var displayValue = v.value !== undefined ? v.value : (supportLabels[v.support] || '—');
+  var tip = cellTipHtml((v.comment || '') + (v.checked_at ? ' Reviewed ' + v.checked_at + '.' : ''), v.source_url, v.links || {}, displayValue);
   var hasSrc = !!v.source_url;
   var link = hasSrc ? '<a class="cell-link" href="'+esc(v.source_url)+'" target="_blank" rel="noreferrer" title="Open source" aria-label="Open source"></a>' : '';
   var mark = hasSrc ? '<span class="source-mark" aria-hidden="true"></span>' : '';
