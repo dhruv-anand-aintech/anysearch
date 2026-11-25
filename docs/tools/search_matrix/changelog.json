@@ -4,8 +4,8 @@
   "entries": [
     {
       "date": "2026-11-25",
-      "commit": "",
-      "title": "Unreleased matrix update",
+      "commit": "beae4f7",
+      "title": "fix(matrix): move evidence row and refresh provider pricing",
       "items": [
         {
           "summary": "Keiro: Availability evidence refreshed",
