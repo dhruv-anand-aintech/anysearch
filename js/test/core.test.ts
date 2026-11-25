@@ -295,3 +295,22 @@ test("unknown options pass through to extra", () => {
   const req = client.buildRequest(getProviderSpec("exa"), "q", { extra: { foo: 1 } });
   assert.deepEqual(req.extra, { foo: 1 });
 });
+
+test("perplexity sends integration header only to the official host", async () => {
+  const seen: Record<string, string | null> = {};
+  globalThis.fetch = (async (input: string | URL | Request, init: RequestInit = {}) => {
+    const url = typeof input === "string" ? input : input.toString();
+    seen[new URL(url).hostname] = new Headers(init.headers).get("x-pplx-integration");
+    return new Response(JSON.stringify({ results: [] }), {
+      status: 200,
+      headers: { "content-type": "application/json" },
+    });
+  }) as typeof fetch;
+  await new AnySearch({ provider: "perplexity", apiKey: "pplx-test", env: {} }).search("q");
+  for (const baseUrl of ["https://proxy.example.com", "https://api.perplexity.ai.example.com"]) {
+    await new AnySearch({ provider: "perplexity", apiKey: "pplx-test", baseUrl, env: {} }).search("q");
+  }
+  assert.equal(seen["api.perplexity.ai"], "anysearch");
+  assert.equal(seen["proxy.example.com"], null);
+  assert.equal(seen["api.perplexity.ai.example.com"], null);
+});

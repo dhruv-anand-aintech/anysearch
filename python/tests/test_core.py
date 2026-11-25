@@ -321,6 +321,23 @@ def test_keiro_content_mode_uses_content_endpoint_and_full_text():
 
 
 @respx.mock
+def test_perplexity_sends_integration_header_only_to_official_host():
+    official = respx.post("https://api.perplexity.ai/search").mock(
+        return_value=httpx.Response(200, json={"results": []})
+    )
+    AnySearch(provider="perplexity", api_key="pplx-test", env={}).search("q")
+    sent = official.calls.last.request
+    assert sent.headers.get_list("x-pplx-integration") == ["anysearch"]
+
+    for base_url in ("https://proxy.example.com", "https://api.perplexity.ai.example.com"):
+        custom = respx.post(f"{base_url}/search").mock(
+            return_value=httpx.Response(200, json={"results": []})
+        )
+        AnySearch(provider="perplexity", api_key="pplx-test", base_url=base_url, env={}).search("q")
+        assert "x-pplx-integration" not in custom.calls.last.request.headers
+
+
+@respx.mock
 def test_brave_get_request_and_parse():
     respx.get(url__startswith="https://api.search.brave.com/res/v1/web/search").mock(
         return_value=httpx.Response(
