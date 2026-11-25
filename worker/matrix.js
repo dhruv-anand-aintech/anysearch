@@ -1120,6 +1120,15 @@ function setupCellTips() {
     cell.addEventListener('mouseleave', scheduleHide);
     tip.addEventListener('mouseenter', showTip);
     tip.addEventListener('mouseleave', scheduleHide);
+    tip.addEventListener('wheel', function(e){
+      if (e.ctrlKey) return; // Preserve browser pinch-to-zoom.
+      var scroller = document.querySelector('.table-wrap');
+      if (!scroller) return;
+      var unit = e.deltaMode === 1 ? 16 : e.deltaMode === 2 ? scroller.clientHeight : 1;
+      scroller.scrollBy({left: e.deltaX * unit, top: e.deltaY * unit, behavior: 'instant'});
+      e.preventDefault();
+      hideTip();
+    }, {passive: false});
     tip.addEventListener('click', function(e){ e.stopPropagation(); });
   });
 }
