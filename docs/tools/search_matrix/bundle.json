@@ -3243,9 +3243,9 @@
       "comment": "v2 Search `mode`: `light`\u2192fast, `ai`\u2192balanced, `deep`\u2192deep. anysearch uses `/api/v2/search/flash` for fast mode, `/api/v2/keiro` by default, and `/api/v2/search/content` for full-text content."
     },
     "pricing_per_1k": {
-      "value": "search/lite $0.10 / 1K on Essential, $0.06 Pro, $0.03 Startup (annual); plans from $29.99/mo; 750 free credits/mo",
+      "value": "search/lite $0.10 / 1K on Essential, $0.06 Pro, $0.03 Startup (annual); plans from $29.99/mo; 1,000 one-time signup credits",
       "source_url": "https://keirolabs.cloud/pricing",
-      "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. Pricing page reviewed 2026-11-23: the free plan table lists 1,000 credits once at signup, not refilled.",
       "primary_price": {
         "amount_usd_per_1k": 0.1,
         "billing_unit": "search/lite requests (Essential)",
@@ -3266,9 +3266,9 @@
       }
     },
     "free_tier_limits": {
-      "value": "750 credits/month free (about 750 lite searches); no credit card required",
+      "value": "1,000 one-time signup credits (about 1,000 lite searches); no card; not refilled",
       "source_url": "https://keirolabs.cloud/pricing",
-      "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
+      "comment": "Trial, monthly credits and model-tool promotions are distinct. Pricing page reviewed 2026-11-23: the free plan table lists 1,000 credits once at signup, not refilled.",
       "links": {
         "Official source 1": "https://keirolabs.cloud/pricing.md",
         "Official source 2": "https://platform.keirolabs.cloud/docs"
@@ -3291,7 +3291,7 @@
     "api_status": {
       "value": "Available",
       "source_url": "https://keirolabs.cloud/pricing",
-      "comment": "",
+      "comment": "Pricing page reviewed 2026-11-23: the free plan table lists 1,000 credits once at signup, not refilled.",
       "links": {
         "Official source 1": "https://keirolabs.cloud/pricing.md",
         "Official source 2": "https://platform.keirolabs.cloud/docs"
@@ -3300,7 +3300,7 @@
     "native_api": {
       "value": "Rebranded browserfoundry; existing keys and endpoints continue. Lite, Fast, Content, Answer, Extract, Deep and Agentic endpoints share one credit balance; paid plans halve most non-lite credit costs.",
       "source_url": "https://keirolabs.cloud/pricing",
-      "comment": "",
+      "comment": "Pricing page reviewed 2026-11-23: the free plan table lists 1,000 credits once at signup, not refilled.",
       "links": {
         "Official source 1": "https://keirolabs.cloud/pricing.md",
         "Official source 2": "https://platform.keirolabs.cloud/docs"
@@ -3309,7 +3309,7 @@
     "rate_limits": {
       "value": "Lite search 15 req/min free, 60 Essential, 300 Pro, 600 Startup; batch 0.5 credit per query",
       "source_url": "https://keirolabs.cloud/pricing",
-      "comment": "",
+      "comment": "Pricing page reviewed 2026-11-23: the free plan table lists 1,000 credits once at signup, not refilled.",
       "links": {
         "Official source 1": "https://keirolabs.cloud/pricing.md",
         "Official source 2": "https://platform.keirolabs.cloud/docs"
@@ -3318,7 +3318,7 @@
     "checked_at": {
       "value": "2026-10-21",
       "source_url": "https://keirolabs.cloud/pricing",
-      "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
+      "comment": "Official public documentation reviewed; no paid API or benchmark run. Pricing page reviewed 2026-11-23: the free plan table lists 1,000 credits once at signup, not refilled.",
       "links": {
         "Official source 1": "https://keirolabs.cloud/pricing.md",
         "Official source 2": "https://platform.keirolabs.cloud/docs"
@@ -3602,9 +3602,9 @@
       "comment": "POST `/search` exposes one Web Search tier. Octen's separate Broad Search and Deep Research endpoints are not mapped to the unified `mode` parameter."
     },
     "pricing_per_1k": {
-      "value": "Promotional Web Search $1 / 1K (normally $5), includes 10 full-content results; +$0.50 / 1K extra results",
+      "value": "Pulse Lite $0.10 / 1K calls, Standard $0.20; Web Search promotional $1 / 1K (normally $5), Premier $4 / 1K; content charges vary",
       "source_url": "https://octen.ai/pricing",
-      "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. ",
+      "comment": "Units and commitments differ; do not rank these as equivalent flat per-query prices. Pricing page reviewed 2026-11-23; Pulse and Premier are separate products, and SDK mapping is not verified.",
       "primary_price": {
         "amount_usd_per_1k": 1,
         "billing_unit": "promotional Search requests",
@@ -3613,11 +3613,11 @@
         "checked_at": "2026-10-21"
       },
       "lowest_price": {
-        "amount_usd_per_1k": 1,
-        "billing_unit": "promotional Web Search requests",
-        "basis": "Current promotional $1 / 1K; reverts to the $5 / 1K list price",
+        "amount_usd_per_1k": 0.1,
+        "billing_unit": "Pulse Lite calls",
+        "basis": "Pulse Lite $0.10 / 1K; one full-content result included, extra full-content results $0.50 / 1K",
         "source_url": "https://octen.ai/pricing",
-        "checked_at": "2026-10-21"
+        "checked_at": "2026-11-16"
       },
       "links": {
         "Official source 1": "https://docs.octen.ai/capabilities/web-search",
@@ -3627,7 +3627,7 @@
     "free_tier_limits": {
       "value": "One-time $5 signup credit; no card",
       "source_url": "https://octen.ai/pricing",
-      "comment": "Trial, monthly credits and model-tool promotions are distinct. ",
+      "comment": "Trial, monthly credits and model-tool promotions are distinct. Pricing page reviewed 2026-11-23; Pulse and Premier are separate products, and SDK mapping is not verified.",
       "links": {
         "Official source 1": "https://docs.octen.ai/capabilities/web-search",
         "Official source 2": "https://docs.octen.ai/api-reference/search"
@@ -3651,16 +3651,16 @@
     "api_status": {
       "value": "Available",
       "source_url": "https://octen.ai/pricing",
-      "comment": "",
+      "comment": "Pricing page reviewed 2026-11-23; Pulse and Premier are separate products, and SDK mapping is not verified.",
       "links": {
         "Official source 1": "https://docs.octen.ai/capabilities/web-search",
         "Official source 2": "https://docs.octen.ai/api-reference/search"
       }
     },
     "native_api": {
-      "value": "Search 1\u2013100 results; domain/language/date/safe-search, content/highlights. Broad mode bills per generated subquery. 62ms p50 is a vendor claim, not a guarantee.",
+      "value": "Search 1\u2013100 results; domain/language/date/safe-search, content/highlights. Broad mode bills per generated subquery. 62ms p50 is a vendor claim, not a guarantee. Pulse is a separate lower-cost search product; a $20/month Web Search subscription is advertised.",
       "source_url": "https://octen.ai/pricing",
-      "comment": "",
+      "comment": "Pricing page reviewed 2026-11-23; Pulse and Premier are separate products, and SDK mapping is not verified.",
       "links": {
         "Official source 1": "https://docs.octen.ai/capabilities/web-search",
         "Official source 2": "https://docs.octen.ai/api-reference/search"
@@ -3669,7 +3669,7 @@
     "rate_limits": {
       "value": "$5 minimum top-up; 10 QPS free, up to 20 after top-up; QPS subscription excludes usage",
       "source_url": "https://octen.ai/pricing",
-      "comment": "",
+      "comment": "Pricing page reviewed 2026-11-23; Pulse and Premier are separate products, and SDK mapping is not verified.",
       "links": {
         "Official source 1": "https://docs.octen.ai/capabilities/web-search",
         "Official source 2": "https://docs.octen.ai/api-reference/search"
@@ -3678,7 +3678,7 @@
     "checked_at": {
       "value": "2026-10-21",
       "source_url": "https://octen.ai/pricing",
-      "comment": "Official public documentation reviewed; no paid API or benchmark run. ",
+      "comment": "Official public documentation reviewed; no paid API or benchmark run. Pricing page reviewed 2026-11-23; Pulse and Premier are separate products, and SDK mapping is not verified.",
       "links": {
         "Official source 1": "https://docs.octen.ai/capabilities/web-search",
         "Official source 2": "https://docs.octen.ai/api-reference/search"

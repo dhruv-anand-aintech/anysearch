@@ -98,6 +98,11 @@ function runClientScriptSmoke(clientScript, payload, cookie = "", expectedPriceO
 
   vm.runInNewContext(clientScript, sandbox, { timeout: 10_000 });
 
+  const renderedRows = [...bodyEl.innerHTML.matchAll(/<tr[^>]*>([\s\S]*?)<\/tr>/g)];
+  const evidenceLabel = payload.columns.find((col) => col.key === "checked_at")?.label;
+  assert.ok(evidenceLabel, "Missing evidence checked column definition");
+  assert.ok(renderedRows.at(-1)?.[1].includes(evidenceLabel), "Evidence checked must be the last table row");
+
   vm.runInNewContext("showView('changelog')", sandbox);
   if (elements.changelogView.hidden || !elements.matrixView.hidden) throw new Error('Changelog tab did not activate');
   vm.runInNewContext("showView('matrix')", sandbox);

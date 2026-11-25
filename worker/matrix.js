@@ -581,7 +581,7 @@ setInterval(refreshUpdatedPill, 60000);
 // String/metadata rows in About; feature-shaped rows (e.g. requires_key) stay in featureCols.
 const metaCols = new Set(['name','env_keys','python_extra','notes','api_category','api_status','native_api','capability_basis','sdk_support','checked_at','rate_limits','capability_basis']);
 const featureCols = columns.filter(c => !metaCols.has(c.key));
-const ABOUT_ORDER = ['api_category','api_status','native_api','capability_basis','sdk_support','checked_at','rate_limits','env_keys','python_extra'];
+const ABOUT_ORDER = ['api_category','api_status','native_api','capability_basis','sdk_support','rate_limits','env_keys','python_extra'];
 const aboutCols = ABOUT_ORDER.map(key => columns.find(c => c.key === key)).filter(Boolean);
 const DATE_SORT_ROWS = new Set([]);
 const MONTH_MAP = {Jan:1,Feb:2,Mar:3,Apr:4,May:5,Jun:6,Jul:7,Aug:8,Sep:9,Oct:10,Nov:11,Dec:12};
@@ -1021,6 +1021,12 @@ function renderBody() {
     }).join('');
     rows.push('<tr>'+labelHtml+cells+'</tr>');
   });
+  var checkedCol = columns.find(function(c){ return c.key === 'checked_at'; });
+  if (checkedCol) {
+    rows.push('<tr>'+rowLabelCell(checkedCol.label,'','')+cols.map(function(i){
+      return colCell(i, checkedCol, function(){ return cell(matrix[i], checkedCol); });
+    }).join('')+'</tr>');
+  }
   document.getElementById('tbody').innerHTML = rows.join('');
   applySearchHighlights();
   setupRowDrag();

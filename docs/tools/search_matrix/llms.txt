@@ -461,8 +461,8 @@ Offerings: 33. Native API facts and existing anysearch SDK mappings; comparison-
 - Date range: none
 - Safe search: none
 - Mode: fast, balanced, deep
-- Pricing / 1K: search/lite $0.10 / 1K on Essential, $0.06 Pro, $0.03 Startup (annual); plans from $29.99/mo; 750 free credits/mo
-- Free tier limits: 750 credits/month free (about 750 lite searches); no credit card required
+- Pricing / 1K: search/lite $0.10 / 1K on Essential, $0.06 Pro, $0.03 Startup (annual); plans from $29.99/mo; 1,000 one-time signup credits
+- Free tier limits: 1,000 one-time signup credits (about 1,000 lite searches); no card; not refilled
 - Latency by tier: Historical July 2026: Flash: 0.312s p50 / 1.1s p99; indexed: 0.487s p50; balanced/deep: not published
 - AI Answer: none
 - Full text: full
@@ -511,7 +511,7 @@ Offerings: 33. Native API facts and existing anysearch SDK mappings; comparison-
 - Date range: full
 - Safe search: full
 - Mode: balanced
-- Pricing / 1K: Promotional Web Search $1 / 1K (normally $5), includes 10 full-content results; +$0.50 / 1K extra results
+- Pricing / 1K: Pulse Lite $0.10 / 1K calls, Standard $0.20; Web Search promotional $1 / 1K (normally $5), Premier $4 / 1K; content charges vary
 - Free tier limits: One-time $5 signup credit; no card
 - Latency by tier: Historical July 2026: Web Search: 62 ms p50; 68 ms p90
 - AI Answer: none
@@ -521,7 +521,7 @@ Offerings: 33. Native API facts and existing anysearch SDK mappings; comparison-
 - News: full
 - Product category: Standalone search API
 - Availability: Available
-- Native API overview: Search 1–100 results; domain/language/date/safe-search, content/highlights. Broad mode bills per generated subquery. 62ms p50 is a vendor claim, not a guarantee.
+- Native API overview: Search 1–100 results; domain/language/date/safe-search, content/highlights. Broad mode bills per generated subquery. 62ms p50 is a vendor claim, not a guarantee. Pulse is a separate lower-cost search product; a $20/month Web Search subscription is advertised.
 - anysearch SDK: Python + TypeScript adapters
 - Evidence checked: 2026-10-21
 - Limits / billing caveats: $5 minimum top-up; 10 QPS free, up to 20 after top-up; QPS subscription excludes usage

@@ -1,7 +1,63 @@
 {
-  "version": "1.8.1",
-  "entry_count": 1042,
+  "version": "1.8.2",
+  "entry_count": 1054,
   "entries": [
+    {
+      "date": "2026-11-25",
+      "commit": "",
+      "title": "Unreleased matrix update",
+      "items": [
+        {
+          "summary": "Keiro: Availability evidence refreshed",
+          "target": "cell-keiro-api-status"
+        },
+        {
+          "summary": "Keiro: Evidence checked evidence refreshed",
+          "target": "cell-keiro-checked-at"
+        },
+        {
+          "summary": "Keiro: Free tier limits updated to 1,000 one-time signup credits (about 1,000 lite searches); no card; not…",
+          "target": "cell-keiro-free-tier-limits"
+        },
+        {
+          "summary": "Keiro: Native API overview evidence refreshed",
+          "target": "cell-keiro-native-api"
+        },
+        {
+          "summary": "Keiro: Pricing / 1K updated to search/lite $0.10 / 1K on Essential, $0.06 Pro, $0.03 Startup (annual);…",
+          "target": "cell-keiro-pricing-per-1k"
+        },
+        {
+          "summary": "Keiro: Limits / billing caveats evidence refreshed",
+          "target": "cell-keiro-rate-limits"
+        },
+        {
+          "summary": "Octen: Availability evidence refreshed",
+          "target": "cell-octen-api-status"
+        },
+        {
+          "summary": "Octen: Evidence checked evidence refreshed",
+          "target": "cell-octen-checked-at"
+        },
+        {
+          "summary": "Octen: Free tier limits evidence refreshed",
+          "target": "cell-octen-free-tier-limits"
+        },
+        {
+          "summary": "Octen: Native API overview updated to Search 1–100 results; domain/language/date/safe-search, content/highlig…",
+          "target": "cell-octen-native-api"
+        },
+        {
+          "summary": "Octen: Pricing / 1K updated to Pulse Lite $0.10 / 1K calls, Standard $0.20; Web Search promotional $1…",
+          "target": "cell-octen-pricing-per-1k"
+        },
+        {
+          "summary": "Octen: Limits / billing caveats evidence refreshed",
+          "target": "cell-octen-rate-limits"
+        }
+      ],
+      "version": "1.8.2"
+    },
     {
       "date": "2026-11-16",
       "commit": "5a12a2e",

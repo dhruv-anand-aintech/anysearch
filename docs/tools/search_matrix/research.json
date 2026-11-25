@@ -636,8 +636,8 @@
     },
     "keiro": {
       "source_url": "https://keirolabs.cloud/pricing",
-      "pricing": "search/lite $0.10 / 1K on Essential, $0.06 Pro, $0.03 Startup (annual); plans from $29.99/mo; 750 free credits/mo",
-      "free": "750 credits/month free (about 750 lite searches); no credit card required",
+      "pricing": "search/lite $0.10 / 1K on Essential, $0.06 Pro, $0.03 Startup (annual); plans from $29.99/mo; 1,000 one-time signup credits",
+      "free": "1,000 one-time signup credits (about 1,000 lite searches); no card; not refilled",
       "limits": "Lite search 15 req/min free, 60 Essential, 300 Pro, 600 Startup; batch 0.5 credit per query",
       "overview": "Rebranded browserfoundry; existing keys and endpoints continue. Lite, Fast, Content, Answer, Extract, Deep and Agentic endpoints share one credit balance; paid plans halve most non-lite credit costs.",
       "category": "Standalone search API",
@@ -660,14 +660,15 @@
         "basis": "Startup plan billed annually lists $0.03 / 1K for the same lite search; Essential $0.10 and Pro $0.06 / 1K",
         "source_url": "https://keirolabs.cloud/pricing",
         "checked_at": "2026-10-21"
-      }
+      },
+      "caveat": "Pricing page reviewed 2026-11-23: the free plan table lists 1,000 credits once at signup, not refilled."
     },
     "octen": {
       "source_url": "https://octen.ai/pricing",
-      "pricing": "Promotional Web Search $1 / 1K (normally $5), includes 10 full-content results; +$0.50 / 1K extra results",
+      "pricing": "Pulse Lite $0.10 / 1K calls, Standard $0.20; Web Search promotional $1 / 1K (normally $5), Premier $4 / 1K; content charges vary",
       "free": "One-time $5 signup credit; no card",
       "limits": "$5 minimum top-up; 10 QPS free, up to 20 after top-up; QPS subscription excludes usage",
-      "overview": "Search 1\u2013100 results; domain/language/date/safe-search, content/highlights. Broad mode bills per generated subquery. 62ms p50 is a vendor claim, not a guarantee.",
+      "overview": "Search 1\u2013100 results; domain/language/date/safe-search, content/highlights. Broad mode bills per generated subquery. 62ms p50 is a vendor claim, not a guarantee. Pulse is a separate lower-cost search product; a $20/month Web Search subscription is advertised.",
       "category": "Standalone search API",
       "status": "Available",
       "checked_at": "2026-10-21",
@@ -683,12 +684,13 @@
         "checked_at": "2026-10-21"
       },
       "lowest_price": {
-        "amount_usd_per_1k": 1,
-        "billing_unit": "promotional Web Search requests",
-        "basis": "Current promotional $1 / 1K; reverts to the $5 / 1K list price",
+        "amount_usd_per_1k": 0.1,
+        "billing_unit": "Pulse Lite calls",
+        "basis": "Pulse Lite $0.10 / 1K; one full-content result included, extra full-content results $0.50 / 1K",
         "source_url": "https://octen.ai/pricing",
-        "checked_at": "2026-10-21"
-      }
+        "checked_at": "2026-11-16"
+      },
+      "caveat": "Pricing page reviewed 2026-11-23; Pulse and Premier are separate products, and SDK mapping is not verified."
     },
     "tinyfish": {
       "source_url": "https://docs.tinyfish.ai/search-api/reference",
